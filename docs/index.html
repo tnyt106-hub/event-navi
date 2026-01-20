@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YWFHCTX3JS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YWFHCTX3JS', { send_page_view: false });
+</script>
+  
+  <meta charset="UTF-8" />
+ <title>四国おすすめスポットマップ｜温泉・自然・グルメを地図で探す</title>
+  
+ <meta name="description" content="四国（徳島・香川・愛媛・高知）の観光スポット・温泉・自然・グルメを地図で探せる観光マップです。"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"/>
+  <!-- 自前CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+<h1>四国おすすめスポットマップ</h1>
+<p>四国（徳島・香川・愛媛・高知）のおすすめスポットを探せるマップガイドです。</p>
+<p class="site-notice">※本サイトは現在「試験公開中」です。掲載スポット・機能は順次拡充予定です。</p>
+
+<main>
+  <section aria-labelledby="map-title">
+    <h2 id="map-title" style="display:none;">四国おすすめスポット地図</h2>
+    
+    <div class="map-wrapper">
+      <!-- 検索ボックス -->
+      <div class="search-box">
+    <div class="search-input-wrapper">
+    <input
+      type="text"
+      id="search-input"
+      placeholder="スポット名で検索"
+      aria-label="スポット検索"
+    />
+    <button id="search-clear" type="button" aria-label="検索をクリア">×</button>
+  <ul id="search-suggestions"></ul>
+      </div>
+</div>
+      <!-- 現在地ボタン -->
+      <button id="locate-btn"
+        type="button" 
+       aria-label="現在地を地図の中心に表示">
+       <span class="icon">📍</span>
+       <span class="label">現在地</span>
+     </button>
+    <div id="map"></div>
+<section id="spot-panel" class="spot-panel is-empty" aria-live="polite">
+  <div class="spot-panel__body">
+    <button id="spot-panel-close" class="spot-panel__close" type="button" aria-label="スポット表示を閉じる">×</button>
+    <div class="spot-panel__kicker">地図でスポットを選択するとここに表示されます</div>
+    <h2 class="spot-panel__title">スポット未選択</h2>
+
+    <div class="spot-panel__meta">
+      <span id="spot-panel-category"></span>
+      <span id="spot-panel-area"></span>
+    </div>
+
+    <p id="spot-panel-desc" class="spot-panel__desc"></p>
+
+    <div class="spot-panel__actions">
+      <a id="spot-panel-google" class="btn btn-google" href="#" target="_blank" rel="noopener noreferrer">ルート検索</a>
+      <a id="spot-panel-detail" class="btn btn-primary" href="#" target="_self">詳細を見る</a>
+    </div>
+  </div>
+</section>
+
+      
+      </div>
+  </section>
+</main>
+
+  <!-- Leaflet JS（必ず map.js より前） -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- MarkerCluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <!-- 自前JS -->
+  <script src="js/map.js"></script>
+  <!-- フッター-->
+  <footer class="trial-footer">
+    ※ 本サイトは開発中の試験公開版です。内容は予告なく変更される場合があります。
+  </footer>
+</body>
+</html>

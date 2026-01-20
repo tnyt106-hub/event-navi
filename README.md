@@ -1,1 +1,1 @@
-# event-navi
+# spot-map
