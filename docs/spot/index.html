@@ -2,16 +2,16 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>スポット詳細｜四国おすすめスポットマップ</title>
-  <meta name="description" content="四国おすすめスポットの詳細ページです。" />
+  <title>イベント施設詳細｜四国イベントスポットマップ</title>
+  <meta name="description" content="四国のイベント施設の詳細ページです。" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body class="spot-page">
   <header class="spot-header">
     <a class="spot-back-link" href="../index.html">地図へ戻る</a>
-    <h1 class="spot-page-title">スポット詳細</h1>
-    <p class="spot-page-lead">スポット情報は自動で読み込みます。</p>
+    <h1 class="spot-page-title">イベント施設詳細</h1>
+    <p class="spot-page-lead">施設情報とイベント情報は自動で読み込みます。</p>
   </header>
 
   <main class="spot-container">
@@ -32,6 +32,18 @@
       <section class="spot-intro">
         <h3 class="spot-intro__title">このスポットについて</h3>
         <p id="spot-intro" class="spot-intro__text"></p>
+      </section>
+
+      <!-- イベント情報セクション（JSで描画） -->
+      <section class="spot-events">
+        <div class="spot-events__header">
+          <h3 class="spot-events__title">開催予定のイベント</h3>
+          <p id="spot-events-updated" class="spot-events__updated" hidden></p>
+        </div>
+        <div id="spot-events-body" class="spot-events__body">
+          <p id="spot-events-status" class="spot-events__status">イベント情報を読み込んでいます。</p>
+          <ul id="spot-events-list" class="spot-events__list" hidden></ul>
+        </div>
       </section>
 
       <!-- 導線ボタン領域（必要な項目のみ表示） -->

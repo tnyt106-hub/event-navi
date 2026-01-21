@@ -181,13 +181,15 @@ function createPopupContent(spot) {
   links.style.display = "flex";
   links.style.gap = "5px";
   links.style.flexWrap = "wrap";
-  if (spot.url) {
+  // 公式サイトは official_url を優先し、既存の url にも対応する
+  const officialUrl = spot.official_url ?? spot.url;
+  if (officialUrl) {
     const detailLink = document.createElement("a");
-    detailLink.href = spot.url;
+    detailLink.href = officialUrl;
     detailLink.target = "_blank";
     detailLink.rel = "noopener noreferrer";
     detailLink.className = "popup-link-btn";
-    detailLink.textContent = "詳細を見る";
+    detailLink.textContent = "公式サイト";
     links.appendChild(detailLink);
   }
   const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lng}`;

@@ -1,91 +1,28 @@
 {
   "venue_id": "kagawa_pref_museum",
-  "source_type": "HTML_LIST",
-  "list_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/07event.html",
-  "detail_url_mode": "FOLLOW_LINKS",
-  "extract": {
-    "preprocess": {
-      "strip_tags": ["script", "style"],
-      "collapse_whitespace": true
+  "last_success_at": "2024-03-18",
+  "events": [
+    {
+      "title": "歴史資料展",
+      "date_from": "2024-04-05",
+      "date_to": "2024-06-02",
+      "source_url": "https://www.kagawa-arts.or.jp/list/facility0030.php",
+      "open_time": "09:00",
+      "start_time": null,
+      "end_time": "17:00",
+      "price": "一般 410円",
+      "contact": "087-822-0247"
     },
-    "drop_rows_if_match_patterns": [
-      "通年"
-    ],
-    "range_patterns": [
-      {
-        "name": "range_mm_dd_to_mm_dd",
-        "regex": "(?<m1>\\d{1,2})月(?<d1>\\d{1,2})日\\s*(?:\\([月火水木金土日]\\)|（[^）]+）)?\\s*(?:から)?\\s*[〜～\\-−]?\\s*(?:(?:\\d{1,2})月)?(?<m2>\\d{1,2})月(?<d2>\\d{1,2})日\\s*(?:\\([月火水木金土日]\\)|（[^）]+）)?\\s*(?:まで)?"
-      },
-      {
-        "name": "range_yyyy_mm_dd_to_yyyy_mm_dd",
-        "regex": "(?<from>\\d{4}[./年]\\d{1,2}[./月]\\d{1,2}日?)\\s*[〜～\\-−]\\s*(?<to>\\d{4}[./年]\\d{1,2}[./月]\\d{1,2}日?)"
-      }
-    ],
-    "date_patterns": [
-      {
-        "name": "single_yyyy_mm_dd",
-        "regex": "(?<y>\\d{4})[./年](?<m>\\d{1,2})[./月](?<d>\\d{1,2})日?\\s*(?:\\([月火水木金土日]\\)|（[^）]+）)?"
-      },
-      {
-        "name": "single_reiwa_mm_dd",
-        "regex": "令和(?<ry>\\d{1,2})年(?<m>\\d{1,2})月(?<d>\\d{1,2})日\\s*(?:\\([月火水木金土日]\\)|（[^）]+）)?"
-      },
-      {
-        "name": "single_mm_dd",
-        "regex": "(?<m>\\d{1,2})月(?<d>\\d{1,2})日\\s*(?:\\([月火水木金土日]\\)|（[^）]+）)?"
-      }
-    ],
-    "multi_date_strategy": {
-      "type": "EXPLODE",
-      "max_dates_per_event": 20
-    },
-    "title_strategy": {
-      "type": "PREFER_BOLD_TEXT_NEAR_DATE",
-      "near_chars": 220,
-      "title_candidate_regex": "(?<title>[^0-9]{4,90})",
-      "reject_title_patterns": [
-        "参加費",
-        "定員",
-        "申込",
-        "受付",
-        "会場",
-        "時間",
-        "開始",
-        "終了",
-        "対象",
-        "問い合わせ",
-        "電話",
-        "TEL",
-        "FAX",
-        "URL"
-      ],
-      "cleanup": {
-        "trim": true,
-        "strip_brackets": true,
-        "collapse_whitespace": true
-      }
-    },
-    "source_url_strategy": {
-      "type": "PREFER_NEAR_LINK",
-      "fallback_to_list_url": true
-    },
-    "dedupe": {
-      "key": ["title_normalized", "date_from", "date_to"]
+    {
+      "title": "展示解説ミニトーク",
+      "date_from": "2024-04-20",
+      "date_to": "2024-04-20",
+      "source_url": "https://www.kagawa-arts.or.jp/list/facility0030.php",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "14:30",
+      "price": null,
+      "contact": null
     }
-  },
-  "normalize": {
-    "timezone": "Asia/Tokyo",
-    "assume_year_policy": "CURRENT_YEAR",
-    "reiwa_base_year": 2018,
-    "window_months": 7,
-    "null_fields": ["open_time", "start_time", "end_time", "price", "contact"]
-  },
-  "health": {
-    "window_months": 7,
-    "expected_min_events": 5,
-    "hard_fail_if_zero": true,
-    "soft_fail_drop_ratio": 0.7,
-    "soft_fail_min_date_hit_rate": 0.6,
-    "allow_publish_on_soft_fail": false
-  }
+  ]
 }

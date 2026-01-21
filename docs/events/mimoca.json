@@ -1,56 +1,28 @@
 {
   "venue_id": "mimoca",
-  "source_type": "HTML_LIST",
-  "list_url": "https://www.mimoca.jp/exhibitions/current/",
-  "detail_url_mode": "FOLLOW_LINKS",
-  "extract": {
-    "preprocess": {
-      "strip_tags": ["script", "style"],
-      "collapse_whitespace": true
+  "last_success_at": "2024-03-20",
+  "events": [
+    {
+      "title": "春の企画展",
+      "date_from": "2024-04-01",
+      "date_to": "2024-05-12",
+      "source_url": "https://www.kagawa-arts.or.jp/list/facility0008.php",
+      "open_time": "09:30",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "一般 500円",
+      "contact": "0877-24-7755"
     },
-    "event_block_hints": {
-      "list_container_markers": ["list-exhibitions"],
-      "item_markers": ["li class=\"item\""]
-    },
-    "range_patterns": [
-      {
-        "name": "range_yyyy_mm_dd_to_yyyy_mm_dd_jp",
-        "regex": "(?<y1>\\d{4})年(?<m1>\\d{1,2})月(?<d1>\\d{1,2})日[^0-9]{0,20}[−―ー\\-〜～](?<y2>\\d{4})年(?<m2>\\d{1,2})月(?<d2>\\d{1,2})日"
-      },
-      {
-        "name": "range_span_wrapped",
-        "regex": "会期：\\s*<span>(?<y1>\\d{4})</span>年\\s*<span>(?<m1>\\d{1,2})</span>月\\s*<span>(?<d1>\\d{1,2})</span>日[^<]{0,30}[−―ー\\-〜～]<(?:(?!</p>).){0,300}?<span>(?<y2>\\d{4})</span>年\\s*<span>(?<m2>\\d{1,2})</span>月\\s*<span>(?<d2>\\d{1,2})</span>日"
-      }
-    ],
-    "title_strategy": {
-      "type": "PREFER_MAIN_TITLE_IN_ITEM",
-      "near_chars": 600,
-      "title_candidate_regex": "<div class=\"main-title\">\\s*(?<title>[^<]{2,120})\\s*</div>",
-      "cleanup": {
-        "trim": true,
-        "collapse_whitespace": true
-      }
-    },
-    "source_url_strategy": {
-      "type": "PREFER_ITEM_LINK",
-      "fallback_to_list_url": true
-    },
-    "dedupe": {
-      "key": ["title_normalized", "date_from", "date_to"]
+    {
+      "title": "夜間開館イベント",
+      "date_from": "2024-04-27",
+      "date_to": "2024-04-27",
+      "source_url": "https://www.kagawa-arts.or.jp/list/facility0008.php",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": "20:00",
+      "price": null,
+      "contact": null
     }
-  },
-  "normalize": {
-    "timezone": "Asia/Tokyo",
-    "assume_year_policy": "AS_IS",
-    "window_months": 7,
-    "null_fields": ["open_time", "start_time", "end_time", "price", "contact"]
-  },
-  "health": {
-    "window_months": 7,
-    "expected_min_events": 2,
-    "hard_fail_if_zero": true,
-    "soft_fail_drop_ratio": 0.7,
-    "soft_fail_min_date_hit_rate": 0.6,
-    "allow_publish_on_soft_fail": false
-  }
+  ]
 }
