@@ -2,27 +2,6 @@
   "venue_id": "kagawa_pref_museum",
   "last_success_at": "2024-03-18",
   "events": [
-    {
-      "title": "歴史資料展",
-      "date_from": "2024-04-05",
-      "date_to": "2024-06-02",
-      "source_url": "https://www.kagawa-arts.or.jp/list/facility0030.php",
-      "open_time": "09:00",
-      "start_time": null,
-      "end_time": "17:00",
-      "price": "一般 410円",
-      "contact": "087-822-0247"
-    },
-    {
-      "title": "展示解説ミニトーク",
-      "date_from": "2024-04-20",
-      "date_to": "2024-04-20",
-      "source_url": "https://www.kagawa-arts.or.jp/list/facility0030.php",
-      "open_time": null,
-      "start_time": "14:00",
-      "end_time": "14:30",
-      "price": null,
-      "contact": null
-    }
+ 
   ]
 }
