@@ -9,7 +9,7 @@
     "municipality": "丸亀市",
     "official_url": "https://www.kagawa-arts.or.jp/list/facility0008.php",
     "description": "丸亀市にある現代美術館です。展示や関連イベントが開催されるため、来館前に公式情報の確認がおすすめです。",
-    "source": "https://www.kagawa-arts.or.jp/facility/"
+    "source": "https://www.mimoca.jp/"
   },
   {
     "name": "香川県立ミュージアム 博物館",
@@ -21,7 +21,7 @@
     "municipality": "高松市",
     "official_url": "https://www.kagawa-arts.or.jp/list/facility0030.php",
     "description": "香川県立の博物館です。展覧会や関連イベントの情報は公式サイトで案内されています。",
-    "source": "https://www.kagawa-arts.or.jp/facility/"
+    "source": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/index.html"
   },
   {
   "name": "香川県県民ホール レグザムホール",
@@ -33,6 +33,6 @@
   "municipality": "高松市",
   "official_url": "https://p-kanagawa.jp/",
   "description": "香川県高松市にある県立の大規模多目的ホールです。大ホール、小ホール、多目的大会議室などを備え、コンサートや演劇、式典など幅広く利用されています。",
-  "source": "https://p-kanagawa.jp/about/"
+  "source": "https://kenminhall.com/"
 }
 ]
