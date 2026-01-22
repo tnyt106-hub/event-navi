@@ -157,6 +157,27 @@ function applyTagsToEvent(event) {
   return { type, genres, flags };
 }
 
+// イベント配列に対してタグを付与する共通処理（既存タグは上書きしない）。
+function applyTagsToEventsData(data, options = {}) {
+  const events = Array.isArray(data?.events) ? data.events : [];
+  const overwrite = Boolean(options.overwrite);
+  let updatedCount = 0;
+  const updatedTags = [];
+
+  for (const event of events) {
+    if (event.tags && !overwrite) {
+      continue;
+    }
+
+    const tags = applyTagsToEvent(event);
+    event.tags = tags;
+    updatedCount += 1;
+    updatedTags.push(tags);
+  }
+
+  return { updatedCount, updatedTags };
+}
+
 function main() {
   const files = fs
     .readdirSync(INPUT_DIR)
@@ -174,23 +195,15 @@ function main() {
       continue;
     }
 
-    let fileUpdated = false;
+    const beforeCount = updatedEventCount;
+    const result = applyTagsToEventsData(data, { overwrite: false });
+    updatedEventCount += result.updatedCount;
 
-    for (const event of data.events) {
-      // 既に tags がある場合は上書きしません。
-      if (event.tags) {
-        continue;
-      }
-
-      const tags = applyTagsToEvent(event);
-      event.tags = tags;
-
-      updatedEventCount += 1;
+    for (const tags of result.updatedTags) {
       typeCounts[tags.type] = (typeCounts[tags.type] || 0) + 1;
-      fileUpdated = true;
     }
 
-    if (fileUpdated) {
+    if (updatedEventCount > beforeCount) {
       fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
     }
   }
@@ -203,4 +216,8 @@ function main() {
   }
 }
 
-main();
+module.exports = { applyTagsToEvent, applyTagsToEventsData };
+
+if (require.main === module) {
+  main();
+}
