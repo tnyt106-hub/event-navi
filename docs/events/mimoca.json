@@ -11,7 +11,17 @@
       "start_time": null,
       "end_time": "18:00",
       "price": "一般 500円",
-      "contact": "0877-24-7755"
+      "contact": "0877-24-7755",
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
+      }
     },
     {
       "title": "夜間開館イベント",
@@ -22,7 +32,15 @@
       "start_time": "18:00",
       "end_time": "20:00",
       "price": null,
-      "contact": null
+      "contact": null,
+      "tags": {
+        "type": "special_open",
+        "genres": [],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
     }
   ]
 }
