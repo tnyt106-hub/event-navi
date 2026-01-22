@@ -469,32 +469,40 @@ main {
 
 .spot-events__tabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   margin: 0 0 12px;
+  overflow-x: auto; /* スマホで折り返さず横スクロールできるようにする */
+  -webkit-overflow-scrolling: touch; /* iOSでスクロールの慣性を有効化 */
+  padding-bottom: 4px; /* スクロールバーと被らないように余白を追加 */
 }
 
 .spot-events__tab {
   border: 1px solid #d0d0d0;
-  border-radius: 999px;
-  padding: 6px 12px;
+  border-radius: 999px; /* ピル型の形状を強調 */
+  padding: 7px 14px;
   background: #fff;
   font-size: 12px;
+  font-weight: 600; /* 文字の視認性を上げる */
   color: #333;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap; /* ボタン内で折り返さない */
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06); /* 立体感を出す */
 }
 
 .spot-events__tab:hover,
 .spot-events__tab:focus-visible {
-  border-color: #007bff;
-  color: #007bff;
+  border-color: #1e63d9;
+  color: #1e63d9;
+  box-shadow: 0 2px 6px rgba(30, 99, 217, 0.2); /* ホバー/フォーカス時の強調 */
 }
 
 .spot-events__tab.is-active {
-  border-color: #007bff;
-  background: #007bff;
+  border-color: #1247a8;
+  background: #1247a8;
   color: #fff;
+  box-shadow: 0 3px 8px rgba(18, 71, 168, 0.28); /* 選択状態の視認性を高める */
 }
 
 .spot-events__list {
@@ -506,39 +514,76 @@ main {
 }
 
 .spot-event-card {
-  padding: 12px;
-  border-radius: 10px;
+  padding: 14px;
+  border-radius: 12px; /* 角丸をやや大きくしてカード感を出す */
   background: #fff;
   border: 1px solid #eee;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* 薄い影でカードの階層を表現 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .spot-event-card__title {
   margin: 0 0 6px;
   font-size: 15px;
+  color: #222;
 }
 
 .spot-event-card__date {
-  margin: 0 0 8px;
-  font-size: 13px;
-  color: #333;
+  display: inline-flex; /* バッジ風にするためのラベル */
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  padding: 4px 10px;
+  border-radius: 999px; /* バッジの丸みを強調 */
+  background: #eef3ff;
+  font-size: 12px;
+  font-weight: 700; /* 重要情報として強調 */
+  color: #1e3a8a;
 }
 
 .spot-event-card__details {
-  margin: 0 0 8px;
-  padding-left: 16px;
-  font-size: 12px;
-  color: #555;
+  margin: 0 0 10px;
+  padding-left: 18px;
+  font-size: 13px; /* スマホでも読みやすいサイズ */
+  line-height: 1.6; /* 行間を整えて読みやすくする */
+  letter-spacing: 0.02em; /* 字間を少し広げる */
+  color: #4a4a4a;
+}
+
+.spot-event-card__details li {
+  margin-bottom: 4px; /* 箇条書きの上下余白を詰める */
+}
+
+.spot-event-card__details li:last-child {
+  margin-bottom: 0; /* 最後の項目だけ余白を削除 */
 }
 
 .spot-event-card__link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 999px; /* ボタンらしい形状にする */
+  background: #f3f6ff;
+  border: 1px solid #d7e2ff;
   font-size: 12px;
-  color: #007bff;
+  font-weight: 600;
+  color: #1e63d9;
   text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .spot-event-card__link:hover {
-  text-decoration: underline;
+  background: #e6efff;
+  border-color: #b7cdfc;
+  color: #1247a8;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .spot-event-card:hover {
+    transform: translateY(-2px); /* PCのみ少し浮かせる */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  }
 }
 
 .spot-actions {
