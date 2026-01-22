@@ -63,6 +63,11 @@ function fetchHtml(url) {
 function extractEmbeddedObject(html) {
   const assignments = /\b(?:var|let|const)\s+[A-Za-z0-9_$]+\s*=\s*\{/g;
   const dateKeyPattern = /["']\d{4}\/\d{2}\/\d{2}["']/;
+  // HTML断片の目印となるキーワードで、正しい候補かどうかを判断する。
+  const eventDetailPattern = /event_detail/;
+  const iconPattern = /e_icon/;
+  // event_detail だけを満たす候補は、より良い候補が無い場合の予備として保持する。
+  let fallbackCandidate = null;
 
   for (const match of html.matchAll(assignments)) {
     const startIndex = match.index + match[0].lastIndexOf("{");
@@ -72,12 +77,24 @@ function extractEmbeddedObject(html) {
     }
 
     const objectLiteral = html.slice(startIndex, endIndex + 1);
-    if (dateKeyPattern.test(objectLiteral)) {
-      return objectLiteral;
+    // 日付キーとイベントHTML断片の両方を満たす候補だけを採用する。
+    if (dateKeyPattern.test(objectLiteral) && (iconPattern.test(objectLiteral) || eventDetailPattern.test(objectLiteral))) {
+      if (iconPattern.test(objectLiteral)) {
+        // e_icon を含む候補は最優先で採用する。
+        return objectLiteral;
+      }
+      // event_detail のみ含む候補は一旦保持し、より良い候補が無ければ採用する。
+      if (!fallbackCandidate) {
+        fallbackCandidate = objectLiteral;
+      }
     }
   }
 
-  throw new Error("埋め込みオブジェクトが見つかりませんでした。");
+  if (fallbackCandidate) {
+    return fallbackCandidate;
+  }
+
+  throw new Error("正しい埋め込みイベントオブジェクトが見つからない。");
 }
 
 // 開始位置の { から対応する } を探して返す。
@@ -363,6 +380,13 @@ async function main() {
     const eventKeys = Object.keys(eventMap || {});
     console.log(`DEBUG: eventMapキー数 = ${eventKeys.length}`);
     console.log(`DEBUG: eventMapキーサンプル = ${eventKeys.slice(0, 5).join(", ")}`);
+    // 埋め込みオブジェクトのサンプル値にHTML断片が含まれているか確認する。
+    const sampleValue = eventKeys.length > 0 ? String(eventMap[eventKeys[0]]) : "";
+    console.log(
+      `DEBUG: eventMapサンプル値に<spanまたはe_iconが含まれるか = ${
+        /<span|e_icon/.test(sampleValue)
+      }`
+    );
 
     if (!eventMap || typeof eventMap !== "object" || Array.isArray(eventMap)) {
       throw new Error("埋め込みデータの形式が想定と異なります。");
