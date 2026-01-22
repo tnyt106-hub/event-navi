@@ -16,6 +16,7 @@ const googleLinkElement = document.getElementById("spot-google-link");
 const eventsUpdatedElement = document.getElementById("spot-events-updated");
 const eventsStatusElement = document.getElementById("spot-events-status");
 const eventsListElement = document.getElementById("spot-events-list");
+const eventsTabsElement = document.getElementById("spot-events-tabs");
 
 // meta description を更新するための取得（存在しない場合は null になる）
 const metaDescription = document.querySelector('meta[name="description"]');
@@ -126,6 +127,108 @@ function formatEventDateRange(dateFrom, dateTo) {
   return `${startDate}〜${endDate}`;
 }
 
+// 日付文字列をローカル日付の Date に変換する（失敗時は null）
+function parseLocalDate(dateText) {
+  if (!dateText) return null;
+  const normalized = String(dateText).trim();
+  if (!normalized) return null;
+  const date = new Date(`${normalized}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return null;
+  return date;
+}
+
+// 今日の日付（ローカル）を 00:00 に丸めた Date を返す
+function getTodayLocalDate() {
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
+// イベントの日付（date_from）を比較できるように取り出す
+function getEventDateValue(eventItem) {
+  const dateFrom = parseLocalDate(eventItem?.date_from);
+  return dateFrom ? dateFrom.getTime() : null;
+}
+
+// 昇順/降順の並び替えに使う共通関数
+function sortEventsByDate(events, direction) {
+  return events.slice().sort((a, b) => {
+    const valueA = getEventDateValue(a);
+    const valueB = getEventDateValue(b);
+
+    // 両方ない場合は同順位
+    if (valueA === null && valueB === null) return 0;
+    // a だけ無い → a を後ろへ
+    if (valueA === null) return 1;
+    // b だけ無い → b を後ろへ
+    if (valueB === null) return -1;
+
+    return direction === "desc" ? valueB - valueA : valueA - valueB;
+  });
+}
+
+// イベントを「開催中 / 今後 / 過去」に分類してまとめる
+function buildEventBuckets(events) {
+  const buckets = {
+    ongoing: [],
+    upcoming: [],
+    past: [],
+  };
+  const today = getTodayLocalDate();
+
+  events.forEach((eventItem) => {
+    const dateFrom = parseLocalDate(eventItem?.date_from);
+    const dateTo = parseLocalDate(eventItem?.date_to) || dateFrom;
+
+    // date_from が無い場合は分類できないため、今後枠に入れて表示を優先する
+    if (!dateFrom) {
+      buckets.upcoming.push(eventItem);
+      return;
+    }
+
+    if (dateFrom <= today && dateTo && dateTo >= today) {
+      buckets.ongoing.push(eventItem);
+    } else if (dateFrom > today) {
+      buckets.upcoming.push(eventItem);
+    } else if (dateTo && dateTo < today) {
+      buckets.past.push(eventItem);
+    } else {
+      buckets.upcoming.push(eventItem);
+    }
+  });
+
+  // 並び順をタブごとのルールに合わせて整える
+  buckets.ongoing = sortEventsByDate(buckets.ongoing, "asc");
+  buckets.upcoming = sortEventsByDate(buckets.upcoming, "asc");
+  buckets.past = sortEventsByDate(buckets.past, "desc");
+
+  return buckets;
+}
+
+// タブごとの表示件数上限を適用して返す
+function buildTabData(buckets) {
+  const upcomingList = buckets.upcoming.slice(0, 20);
+  const pastList = buckets.past.slice(0, 20);
+  const ongoingList = buckets.ongoing;
+
+  return {
+    ongoing: {
+      label: "開催中",
+      status: "現在開催中・今後のイベントを表示しています",
+      list: ongoingList.concat(upcomingList),
+    },
+    upcoming: {
+      label: "今後",
+      status: "今後のイベントを表示しています",
+      list: upcomingList,
+    },
+    past: {
+      label: "過去",
+      status: "過去に開催されたイベントです（参考情報）",
+      list: pastList,
+    },
+  };
+}
+
 // イベント情報の表示状態を統一して切り替える
 function setEventsStatus(message, shouldShowList) {
   if (eventsStatusElement) {
@@ -137,89 +240,142 @@ function setEventsStatus(message, shouldShowList) {
   }
 }
 
+// イベントカード1件分のDOMを作成する
+function createEventCard(eventItem) {
+  // 必須情報が不足している場合でも、存在する要素だけ表示する
+  const listItem = document.createElement("li");
+  listItem.className = "spot-event-card";
+
+  const title = document.createElement("h4");
+  title.className = "spot-event-card__title";
+  title.textContent = eventItem?.title ? String(eventItem.title) : "イベント名未定";
+  listItem.appendChild(title);
+
+  const dateText = formatEventDateRange(eventItem?.date_from, eventItem?.date_to);
+  if (dateText) {
+    const dateElement = document.createElement("p");
+    dateElement.className = "spot-event-card__date";
+    dateElement.textContent = dateText;
+    listItem.appendChild(dateElement);
+  }
+
+  const detailList = document.createElement("ul");
+  detailList.className = "spot-event-card__details";
+
+  const detailItems = [
+    eventItem?.open_time ? `開場: ${eventItem.open_time}` : null,
+    eventItem?.start_time ? `開始: ${eventItem.start_time}` : null,
+    eventItem?.end_time ? `終了: ${eventItem.end_time}` : null,
+    eventItem?.price ? `料金: ${eventItem.price}` : null,
+    eventItem?.contact ? `問い合わせ: ${eventItem.contact}` : null,
+  ].filter(Boolean);
+
+  detailItems.forEach((detailText) => {
+    const detailItem = document.createElement("li");
+    detailItem.textContent = detailText;
+    detailList.appendChild(detailItem);
+  });
+
+  if (detailList.children.length > 0) {
+    listItem.appendChild(detailList);
+  }
+
+  if (eventItem?.source_url) {
+    const link = document.createElement("a");
+    link.className = "spot-event-card__link";
+    link.href = eventItem.source_url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "公式・参考リンク";
+    listItem.appendChild(link);
+  }
+
+  return listItem;
+}
+
+// イベント一覧を描画する（既存カード描画ロジックを再利用）
+function renderEventList(list) {
+  if (!eventsListElement) return;
+  eventsListElement.innerHTML = "";
+  list.forEach((eventItem) => {
+    eventsListElement.appendChild(createEventCard(eventItem));
+  });
+}
+
+// タブUIを描画し、選択状態を更新する
+function renderTabs(tabData, activeTabKey) {
+  if (!eventsTabsElement) return;
+  eventsTabsElement.innerHTML = "";
+  Object.keys(tabData).forEach((tabKey) => {
+    const tabInfo = tabData[tabKey];
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "spot-events__tab";
+    button.dataset.tabKey = tabKey;
+    button.textContent = `${tabInfo.label} (${tabInfo.list.length})`;
+    if (tabKey === activeTabKey) {
+      button.classList.add("is-active");
+    }
+    button.addEventListener("click", () => {
+      setActiveTab(tabKey);
+    });
+    eventsTabsElement.appendChild(button);
+  });
+}
+
+// タブに応じてイベント一覧とステータス文言を差し替える
+let cachedTabData = null;
+let currentTabKey = "ongoing";
+function setActiveTab(tabKey) {
+  if (!cachedTabData || !eventsTabsElement) return;
+  currentTabKey = tabKey;
+
+  // タブの見た目を切り替える
+  const buttons = eventsTabsElement.querySelectorAll(".spot-events__tab");
+  buttons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.tabKey === tabKey);
+  });
+
+  const tabInfo = cachedTabData[tabKey];
+  if (!tabInfo) return;
+
+  if (tabInfo.list.length === 0) {
+    // 対象タブにイベントが無い場合は一覧を空にしてメッセージ表示
+    if (eventsListElement) {
+      eventsListElement.innerHTML = "";
+    }
+    setEventsStatus("該当するイベントはありません。", false);
+    return;
+  }
+
+  renderEventList(tabInfo.list);
+  setEventsStatus(tabInfo.status, true);
+}
+
 // イベント一覧を描画する
 function renderEvents(eventsData) {
   if (!eventsListElement) return;
 
   const events = Array.isArray(eventsData?.events) ? eventsData.events : [];
-  const sortedEvents = events
-  .slice()
-  .sort((a, b) => {
-    const da = a?.date_from;
-    const db = b?.date_from;
+  if (eventsTabsElement) {
+    toggleElement(eventsTabsElement, false);
+  }
 
-    // 両方ない場合は同順位
-    if (!da && !db) return 0;
-    // a だけ無い → a を後ろへ
-    if (!da) return 1;
-    // b だけ無い → b を後ろへ
-    if (!db) return -1;
-
-    // 新しい日付が先（降順）
-    return String(db).localeCompare(String(da));
-  })
-  .slice(0, 20);
-
-  eventsListElement.innerHTML = "";
-
-  if (sortedEvents.length === 0) {
+  if (events.length === 0) {
+    eventsListElement.innerHTML = "";
     setEventsStatus("現在掲載中のイベントはありません。", false);
     return;
   }
 
-  sortedEvents.forEach((eventItem) => {
-    // 必須情報が不足している場合でも、存在する要素だけ表示する
-    const listItem = document.createElement("li");
-    listItem.className = "spot-event-card";
+  const buckets = buildEventBuckets(events);
+  cachedTabData = buildTabData(buckets);
+  if (eventsTabsElement) {
+    toggleElement(eventsTabsElement, true);
+  }
 
-    const title = document.createElement("h4");
-    title.className = "spot-event-card__title";
-    title.textContent = eventItem?.title ? String(eventItem.title) : "イベント名未定";
-    listItem.appendChild(title);
-
-    const dateText = formatEventDateRange(eventItem?.date_from, eventItem?.date_to);
-    if (dateText) {
-      const dateElement = document.createElement("p");
-      dateElement.className = "spot-event-card__date";
-      dateElement.textContent = dateText;
-      listItem.appendChild(dateElement);
-    }
-
-    const detailList = document.createElement("ul");
-    detailList.className = "spot-event-card__details";
-
-    const detailItems = [
-      eventItem?.open_time ? `開場: ${eventItem.open_time}` : null,
-      eventItem?.start_time ? `開始: ${eventItem.start_time}` : null,
-      eventItem?.end_time ? `終了: ${eventItem.end_time}` : null,
-      eventItem?.price ? `料金: ${eventItem.price}` : null,
-      eventItem?.contact ? `問い合わせ: ${eventItem.contact}` : null,
-    ].filter(Boolean);
-
-    detailItems.forEach((detailText) => {
-      const detailItem = document.createElement("li");
-      detailItem.textContent = detailText;
-      detailList.appendChild(detailItem);
-    });
-
-    if (detailList.children.length > 0) {
-      listItem.appendChild(detailList);
-    }
-
-    if (eventItem?.source_url) {
-      const link = document.createElement("a");
-      link.className = "spot-event-card__link";
-      link.href = eventItem.source_url;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.textContent = "公式・参考リンク";
-      listItem.appendChild(link);
-    }
-
-    eventsListElement.appendChild(listItem);
-  });
-
-  setEventsStatus("直近のイベントを表示しています。", true);
+  // 初期状態は「開催中 + 今後」のタブを選択する
+  renderTabs(cachedTabData, "ongoing");
+  setActiveTab("ongoing");
 }
 
 // イベントJSONを取得して表示する（取得失敗時は準備中メッセージに留める）
@@ -243,6 +399,9 @@ function loadEventsForSpot(spotIdValue) {
     .catch((error) => {
       console.warn(error);
       setEventsStatus("イベント情報は準備中です。", false);
+      if (eventsTabsElement) {
+        toggleElement(eventsTabsElement, false);
+      }
     });
 }
 
