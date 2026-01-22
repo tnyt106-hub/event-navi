@@ -1,0 +1,35 @@
+{
+  "type": {
+    "exhibition": "展覧会",
+    "event": "イベント",
+    "performance": "公演",
+    "workshop": "ワークショップ",
+    "lecture": "講演・講座",
+    "festival": "フェスティバル",
+    "special_open": "特別公開",
+    "sports": "スポーツ",
+    "other": "その他"
+  },
+  "genres": {
+    "art": "アート",
+    "history": "歴史",
+    "culture": "文化",
+    "science": "科学",
+    "music": "音楽",
+    "theater": "演劇",
+    "kids": "キッズ",
+    "local": "地域",
+    "food": "フード",
+    "nature": "自然",
+    "sports": "スポーツ"
+  },
+  "flags": {
+    "limited": "限定",
+    "free": "無料",
+    "paid": "有料",
+    "night": "夜間",
+    "weekend": "週末",
+    "family": "ファミリー",
+    "reservation_required": "要予約"
+  }
+}
