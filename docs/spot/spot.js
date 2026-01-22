@@ -143,14 +143,27 @@ function renderEvents(eventsData) {
 
   const events = Array.isArray(eventsData?.events) ? eventsData.events : [];
   const sortedEvents = events
-    .slice()
-    .sort((a, b) => String(a?.date_from ?? "").localeCompare(String(b?.date_from ?? "")))
-    .slice(0, 20);
+  .slice()
+  .sort((a, b) => {
+    const da = a?.date_from;
+    const db = b?.date_from;
+
+    // 両方ない場合は同順位
+    if (!da && !db) return 0;
+    // a だけ無い → a を後ろへ
+    if (!da) return 1;
+    // b だけ無い → b を後ろへ
+    if (!db) return -1;
+
+    // 新しい日付が先（降順）
+    return String(db).localeCompare(String(da));
+  })
+  .slice(0, 20);
 
   eventsListElement.innerHTML = "";
 
   if (sortedEvents.length === 0) {
-    setEventsStatus("イベント情報は準備中です。", false);
+    setEventsStatus("現在掲載中のイベントはありません。", false);
     return;
   }
 
