@@ -211,10 +211,15 @@ function buildTabData(buckets) {
   const ongoingList = buckets.ongoing;
 
   return {
-    ongoing: {
-      label: "開催中",
+    current_and_upcoming: {
+      label: "開催中+今後",
       status: "現在開催中・今後のイベントを表示しています",
       list: ongoingList.concat(upcomingList),
+    },
+    ongoing: {
+      label: "開催中",
+      status: "現在開催中のイベントを表示しています",
+      list: ongoingList,
     },
     upcoming: {
       label: "今後",
@@ -228,6 +233,7 @@ function buildTabData(buckets) {
     },
   };
 }
+
 
 // イベント情報の表示状態を統一して切り替える
 function setEventsStatus(message, shouldShowList) {
