@@ -150,57 +150,35 @@ function createPopupContent(spot) {
   const title = document.createElement("strong");
   title.textContent = spot.name ?? "名称不明";
   container.appendChild(title);
+  // ポップアップは「要約のみ」にして、下部カードへ視線を誘導する
+  const summaryText = (() => {
+    const areaText = [spot.prefecture, spot.municipality].filter(Boolean).join(" ");
+    const categoryText = spot.category ?? "";
+    if (categoryText || areaText) {
+      return [categoryText, areaText].filter(Boolean).join(" / ");
+    }
+    // 説明文がある場合は先頭の短いフレーズを表示して情報量を抑える
+    if (spot.description) {
+      const shortDescription = spot.description.slice(0, 30);
+      // 30文字を超える場合は省略記号で「続きがある」ことを示す
+      return spot.description.length > 30 ? `${shortDescription}…` : shortDescription;
+    }
+    return "詳細は下部カードをご覧ください";
+  })();
+  const summary = document.createElement("span");
+  summary.className = "popup-summary";
+  summary.textContent = summaryText;
   container.appendChild(document.createElement("br"));
-  if (spot.category) {
-    const category = document.createElement("span");
-    category.style.fontSize = "0.8em";
-    category.style.color = "#666";
-    category.textContent = spot.category;
-    container.appendChild(category);
-    container.appendChild(document.createElement("br"));
-  }
-  if (spot.image) {
-    const image = document.createElement("img");
-    image.src = spot.image;
-    image.alt = spot.name ?? "スポット画像";
-    image.style.width = "100%";
-    image.style.height = "auto";
-    image.style.marginTop = "5px";
-    image.style.borderRadius = "4px";
-    container.appendChild(image);
-  }
-  if (spot.description) {
-    const description = document.createElement("p");
-    description.style.margin = "8px 0";
-    description.style.fontSize = "0.9em";
-    description.textContent = spot.description;
-    container.appendChild(description);
-  }
-  const links = document.createElement("div");
-  links.style.marginTop = "10px";
-  links.style.display = "flex";
-  links.style.gap = "5px";
-  links.style.flexWrap = "wrap";
-  // 公式サイトは official_url を優先し、既存の url にも対応する
-  const officialUrl = spot.official_url ?? spot.url;
-  if (officialUrl) {
+  container.appendChild(summary);
+  if (spot.spot_id) {
     const detailLink = document.createElement("a");
-    detailLink.href = officialUrl;
-    detailLink.target = "_blank";
-    detailLink.rel = "noopener noreferrer";
-    detailLink.className = "popup-link-btn";
-    detailLink.textContent = "公式サイト";
-    links.appendChild(detailLink);
+    // 内部詳細ページへ誘導（下部カードとの導線を統一）
+    detailLink.href = `./spot/index.html?spot_id=${encodeURIComponent(spot.spot_id)}`;
+    detailLink.className = "popup-link-btn popup-link-btn--compact";
+    detailLink.textContent = "詳細を見る ▶";
+    container.appendChild(document.createElement("br"));
+    container.appendChild(detailLink);
   }
-  const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lng}`;
-  const routeLink = document.createElement("a");
-  routeLink.href = googleMapsUrl;
-  routeLink.target = "_blank";
-  routeLink.rel = "noopener noreferrer";
-  routeLink.className = "popup-link-btn route-btn";
-  routeLink.textContent = "Googleマップでルート検索";
-  links.appendChild(routeLink);
-  container.appendChild(links);
   return container;
 }
 function createMarkerLabelText(spot) {

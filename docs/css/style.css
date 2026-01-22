@@ -212,6 +212,25 @@ h2 {
     background-color: #0056b3;
 }
 
+/* ポップアップ要約文（1行表示） */
+.popup-summary {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ポップアップ内の詳細ボタンは小さめのピル型にする */
+.popup-link-btn--compact {
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+}
+
 /* ルート検索ボタン（Googleカラーの緑系） */
 .route-btn {
     background-color: #34a853;
