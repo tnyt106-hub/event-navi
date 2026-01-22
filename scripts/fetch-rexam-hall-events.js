@@ -237,25 +237,53 @@ function extractTimes(text) {
 // HTML断片からイベント情報を展開する。
 function parseEventsFromFragment(fragment, dateIso, baseUrl) {
   const events = [];
-  const eventRegex =
-    /<span[^>]*>([\s\S]*?)<\/span>[\s\S]*?<h3[^>]*>[\s\S]*?<a[^>]*href=['"]([^'"]+)['"][^>]*>([\s\S]*?)<\/a>[\s\S]*?<\/h3>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/g;
+  const stats = {
+    nonPublicExcluded: 0,
+    closedDayExcluded: 0,
+    emptyTitleExcluded: 0,
+  };
+  // HTML断片を「<span class='e_icon'」または「<span'」を起点に分割して、
+  // 各イベントブロックから最低限の情報を取り出す。
+  const blockStartRegex = /<span[^>]*class=['"]?e_icon[^>]*>|<span[^>]*>/g;
+  const blockStartMatches = [...fragment.matchAll(blockStartRegex)];
+  const blocks = [];
 
-  for (const match of fragment.matchAll(eventRegex)) {
-    const titleText = stripTags(match[3]);
-    const combinedText = stripTags(match[0]);
+  if (blockStartMatches.length > 0) {
+    for (let i = 0; i < blockStartMatches.length; i += 1) {
+      const startIndex = blockStartMatches[i].index;
+      const endIndex =
+        i + 1 < blockStartMatches.length ? blockStartMatches[i + 1].index : fragment.length;
+      blocks.push(fragment.slice(startIndex, endIndex));
+    }
+  } else if (fragment.trim()) {
+    blocks.push(fragment);
+  }
+
+  for (const block of blocks) {
+    const hrefMatch = block.match(/<a[^>]*href=['"]([^'"]+)['"][^>]*>/);
+    const titleMatch = block.match(/<a[^>]*href=['"][^'"]+['"][^>]*>([\s\S]*?)<\/a>/);
+    const titleText = titleMatch ? stripTags(titleMatch[1]) : "";
+    const combinedText = stripTags(block);
+
+    if (!titleText) {
+      stats.emptyTitleExcluded += 1;
+      continue;
+    }
 
     if (titleText === "非公開") {
+      stats.nonPublicExcluded += 1;
       continue;
     }
 
     if (combinedText.includes("休館") || combinedText.includes("臨時休館日")) {
+      stats.closedDayExcluded += 1;
       continue;
     }
 
-    const href = match[2];
-    const sourceUrl = new URL(href, baseUrl).toString();
-    const timeText = stripTags(match[4]);
-    const times = extractTimes(timeText);
+    const href = hrefMatch ? hrefMatch[1] : "";
+    const sourceUrl = href ? new URL(href, baseUrl).toString() : null;
+    // 時刻はブロック全体から抽出し、見つからなければ null のままにする。
+    const times = extractTimes(combinedText);
 
     events.push({
       title: titleText,
@@ -270,12 +298,18 @@ function parseEventsFromFragment(fragment, dateIso, baseUrl) {
     });
   }
 
-  return events;
+  return { events, stats };
 }
 
 // 取得したデータからイベント配列を構築する。
 function buildEventsFromMap(eventMap) {
   const events = [];
+  const stats = {
+    nonPublicExcluded: 0,
+    closedDayExcluded: 0,
+    emptyTitleExcluded: 0,
+  };
+  let sampleLogged = 0;
 
   for (const [dateKey, fragment] of Object.entries(eventMap)) {
     const dateIso = normalizeDateKey(dateKey);
@@ -285,11 +319,23 @@ function buildEventsFromMap(eventMap) {
     }
 
     const decodedFragment = decodeHtmlEntities(fragment);
-    const fragmentEvents = parseEventsFromFragment(decodedFragment, dateIso, ENTRY_URL);
+    if (sampleLogged < 2) {
+      console.log(`DEBUG: ${dateKey} の断片文字数 = ${decodedFragment.length}`);
+      sampleLogged += 1;
+    }
+    const { events: fragmentEvents, stats: fragmentStats } = parseEventsFromFragment(
+      decodedFragment,
+      dateIso,
+      ENTRY_URL
+    );
+    console.log(`DEBUG: ${dateKey} のイベント件数 = ${fragmentEvents.length}`);
+    stats.nonPublicExcluded += fragmentStats.nonPublicExcluded;
+    stats.closedDayExcluded += fragmentStats.closedDayExcluded;
+    stats.emptyTitleExcluded += fragmentStats.emptyTitleExcluded;
     events.push(...fragmentEvents);
   }
 
-  return events;
+  return { events, stats };
 }
 
 // 成功時のみファイルを書き換える。
@@ -309,16 +355,29 @@ function saveEventsFile(events) {
 async function main() {
   try {
     const html = await fetchHtml(ENTRY_URL);
+    console.log(`DEBUG: HTML文字数 = ${html.length}`);
     const objectLiteral = extractEmbeddedObject(html);
+    console.log(`DEBUG: objectLiteral先頭 = ${objectLiteral.slice(0, 200)}`);
+    console.log(`DEBUG: objectLiteral末尾 = ${objectLiteral.slice(-200)}`);
     const eventMap = parseEmbeddedObject(objectLiteral);
+    const eventKeys = Object.keys(eventMap || {});
+    console.log(`DEBUG: eventMapキー数 = ${eventKeys.length}`);
+    console.log(`DEBUG: eventMapキーサンプル = ${eventKeys.slice(0, 5).join(", ")}`);
 
     if (!eventMap || typeof eventMap !== "object" || Array.isArray(eventMap)) {
       throw new Error("埋め込みデータの形式が想定と異なります。");
     }
 
-    const events = buildEventsFromMap(eventMap);
+    const { events, stats } = buildEventsFromMap(eventMap);
+    console.log(
+      `DEBUG: 除外件数(非公開=${stats.nonPublicExcluded}, 休館/臨時休館=${stats.closedDayExcluded}, タイトル空=${stats.emptyTitleExcluded})`
+    );
+    console.log(`DEBUG: 最終イベント件数 = ${events.length}`);
 
     if (events.length === 0) {
+      console.warn(
+        "DEBUG: 除外の結果0件の可能性があります。フィルタ件数を確認してください。"
+      );
       throw new Error("イベントが0件のため上書きしません。");
     }
 
