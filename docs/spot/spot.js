@@ -206,16 +206,12 @@ function buildEventBuckets(events) {
 
 // タブごとの表示件数上限を適用して返す
 function buildTabData(buckets) {
+  // 各タブの表示件数を揃えて、UIの読みやすさを保つ
   const upcomingList = buckets.upcoming.slice(0, 20);
   const pastList = buckets.past.slice(0, 20);
   const ongoingList = buckets.ongoing;
 
   return {
-    current_and_upcoming: {
-      label: "開催中+今後",
-      status: "現在開催中・今後のイベントを表示しています",
-      list: ongoingList.concat(upcomingList),
-    },
     ongoing: {
       label: "開催中",
       status: "現在開催中のイベントを表示しています",
@@ -379,9 +375,11 @@ function renderEvents(eventsData) {
     toggleElement(eventsTabsElement, true);
   }
 
-  // 初期状態は「開催中 + 今後」のタブを選択する
-  renderTabs(cachedTabData, "ongoing");
-  setActiveTab("ongoing");
+  // 初期タブは「開催中があれば開催中、なければ今後」に自動で決める
+  const initialTabKey =
+    cachedTabData.ongoing.list.length > 0 ? "ongoing" : "upcoming";
+  renderTabs(cachedTabData, initialTabKey);
+  setActiveTab(initialTabKey);
 }
 
 // イベントJSONを取得して表示する（取得失敗時は準備中メッセージに留める）
