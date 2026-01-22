@@ -467,6 +467,36 @@ main {
   color: #555;
 }
 
+.spot-events__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.spot-events__tab {
+  border: 1px solid #d0d0d0;
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: #fff;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.spot-events__tab:hover,
+.spot-events__tab:focus-visible {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.spot-events__tab.is-active {
+  border-color: #007bff;
+  background: #007bff;
+  color: #fff;
+}
+
 .spot-events__list {
   list-style: none;
   margin: 0;
