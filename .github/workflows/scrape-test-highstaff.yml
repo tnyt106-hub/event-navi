@@ -1,0 +1,38 @@
+# highstaff のスクレイピングバッチを手動でテスト実行するワークフロー
+name: Scrape Test Highstaff
+
+on:
+  # 手動実行のみを許可するトリガー
+  workflow_dispatch:
+
+jobs:
+  scrape-highstaff:
+    # 実行環境は ubuntu-latest を使用
+    runs-on: ubuntu-latest
+    steps:
+      # リポジトリをチェックアウトする
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Node.js 18 以上をセットアップする
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # highstaff のイベント情報を取得する
+      - name: Fetch highstaff hall events
+        run: node scripts/fetch-highstaff-hall-events.js
+
+      # 取得したイベントにタグ付けを行う（任意だが既定で実行する）
+      - name: Apply tags
+        run: node tools/tagging/apply_tags.js
+
+      # 生成された JSON を Artifact としてアップロードする（失敗時も実行する）
+      - name: Upload highstaff hall artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: highstaff-hall-events
+          path: docs/events/highstaff_hall.json
+          if-no-files-found: warn
