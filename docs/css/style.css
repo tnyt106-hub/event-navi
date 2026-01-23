@@ -26,12 +26,17 @@ h2 {
 
 #map {
   width: 100%;
-  height: 58vh;
+  height: 100%; /* ラッパーの高さに追従して隙間を防ぐ */
 }
 .map-wrapper {
   position: relative;
   width: 100%;
-  height: 58vh;
+  /*
+    ヘッダーと説明文の分だけ高さを差し引き、
+    地図とBottom Sheetの間に隙間が生まれないようにする。
+  */
+  height: calc(100dvh - 210px);
+  min-height: 58vh; /* 既存の見え方を保つための下限 */
 }
 
 
@@ -171,8 +176,8 @@ h2 {
     margin: 0 12px 6px;
   }
 
-  #map {height: 58vh;}
-  .map-wrapper {height: 58vh;}
+  /* スマホでも地図が下部カードに近づくよう調整 */
+  .map-wrapper {height: calc(100dvh - 190px); min-height: 58vh;}
 }
 /* 試験公開用文言*/
 .site-notice {
@@ -241,22 +246,59 @@ h2 {
 }
 
 /* =======================
-   地図下スポット表示欄
+   地図下スポット表示欄（Bottom Sheet）
    ======================= */
 
 .spot-panel {
-  margin: 12px;
-  padding: 12px 14px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 12px calc(12px + env(safe-area-inset-bottom));
+  border-radius: 18px 18px 0 0;
+  background: transparent;
+  z-index: 1100;
+  pointer-events: none; /* クリックできるのは中のカードのみ */
 }
 
 /* 未選択時は説明だけ表示 */
 .spot-panel.is-empty .spot-panel__desc,
 .spot-panel.is-empty .spot-panel__actions {
   display: none;
+}
+
+/* Bottom Sheet本体カード */
+.spot-panel__body {
+  position: relative;
+  border: 1px solid #e4e4e4;
+  border-radius: 18px 18px 0 0;
+  background: #fff;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.12);
+  padding: 12px 14px 14px 20px; /* 左のアクセントラインと重ならない余白を確保 */
+  pointer-events: auto; /* カードはクリック可能 */
+}
+
+/* 選択中のアクセントライン（視認性向上） */
+.spot-panel:not(.is-empty) .spot-panel__body::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #3b82f6, #0ea5e9);
+}
+
+/* タップで展開/折りたたみするヘッダー */
+.spot-panel__toggle {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 /* 補足文 */
@@ -269,8 +311,9 @@ h2 {
 /* タイトル */
 .spot-panel__title {
   margin: 0 0 6px;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.3;
+  font-weight: 700;
 }
 
 /* メタ情報（カテゴリ・エリア） */
@@ -283,12 +326,28 @@ h2 {
   margin-bottom: 8px;
 }
 
+/* チップ（カテゴリ・エリア） */
+.spot-panel__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #4b5563;
+  font-size: 11px;
+  font-weight: 600;
+}
+
 /* 説明文 */
 .spot-panel__desc {
   margin: 0 0 12px;
   font-size: 14px;
   line-height: 1.6;
   color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 3行まで表示して省略する */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ボタンエリア */
@@ -300,7 +359,9 @@ h2 {
 
 /* ボタン共通 */
 .spot-panel .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid #ccc;
@@ -317,9 +378,21 @@ h2 {
   color: #fff;
 }
 
-/* spot-panel 閉じるボタン */
-.spot-panel__body { position: relative; }
+/* サブCTA（ルート検索） */
+.spot-panel .btn-secondary {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #fff;
+}
 
+/* 補助CTA（公式サイト） */
+.spot-panel .btn-tertiary {
+  border-color: #d1d5db;
+  background: #fff;
+  color: #111827;
+}
+
+/* spot-panel 閉じるボタン */
 .spot-panel__close {
   position: absolute;
   top: 8px;
@@ -339,29 +412,20 @@ h2 {
   background: #f3f3f3;
 }
 
+/* 展開状態の切り替え（collapsed時は内容を隠す） */
+.spot-panel:not(.is-expanded) .spot-panel__content {
+  display: none;
+}
+
 
 /* スマホ最適化 */
 @media (max-width: 600px) {
   .spot-panel {
-    margin: 8px;
-    padding: 12px;
+    padding: 0 8px calc(8px + env(safe-area-inset-bottom));
   }
   .spot-panel__title {
-    font-size: 16px;
+    font-size: 17px;
   }
-}
-
-/* spot-panel の Google ボタンを強調 */
-.spot-panel .btn-google {
-  background: #34a853;
-  border-color: #34a853;
-  color: #fff;
-  font-weight: 700;
-}
-
-.spot-panel .btn-google:hover {
-  background: #2d8a46;
-  border-color: #2d8a46;
 }
 
 /* 未選択時だけガイド文を表示（選択中は隠す） */

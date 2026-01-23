@@ -57,22 +57,28 @@
        <span class="label">現在地</span>
      </button>
     <div id="map"></div>
+<!-- Bottom Sheet: 施設カードをタップで展開/折りたたみする -->
 <section id="spot-panel" class="spot-panel is-empty" aria-live="polite">
   <div class="spot-panel__body">
     <button id="spot-panel-close" class="spot-panel__close" type="button" aria-label="スポット表示を閉じる">×</button>
-    <div class="spot-panel__kicker">地図でスポットを選択するとここに表示されます</div>
-    <h2 class="spot-panel__title">スポット未選択</h2>
+    <button id="spot-panel-toggle" class="spot-panel__toggle" type="button" aria-expanded="false" aria-controls="spot-panel-content">
+      <div class="spot-panel__kicker">地図でスポットを選択するとここに表示されます</div>
+      <h2 class="spot-panel__title">スポット未選択</h2>
 
-    <div class="spot-panel__meta">
-      <span id="spot-panel-category"></span>
-      <span id="spot-panel-area"></span>
-    </div>
+      <div class="spot-panel__meta">
+        <span id="spot-panel-category" class="spot-panel__chip"></span>
+        <span id="spot-panel-area" class="spot-panel__chip"></span>
+      </div>
+    </button>
 
-    <p id="spot-panel-desc" class="spot-panel__desc"></p>
+    <div id="spot-panel-content" class="spot-panel__content">
+      <p id="spot-panel-desc" class="spot-panel__desc"></p>
 
-    <div class="spot-panel__actions">
-      <a id="spot-panel-google" class="btn btn-google" href="#" target="_blank" rel="noopener noreferrer">ルート検索</a>
-      <a id="spot-panel-detail" class="btn btn-primary" href="#" target="_self">詳細を見る</a>
+      <div class="spot-panel__actions">
+        <a id="spot-panel-detail" class="btn btn-primary" href="#" target="_self">詳細を見る</a>
+        <a id="spot-panel-google" class="btn btn-secondary" href="#" target="_blank" rel="noopener noreferrer">ルート検索</a>
+        <a id="spot-panel-official" class="btn btn-tertiary" href="#" target="_blank" rel="noopener noreferrer">公式サイト</a>
+      </div>
     </div>
   </div>
 </section>
