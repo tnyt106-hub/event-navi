@@ -596,6 +596,29 @@ main {
   gap: 12px;
 }
 
+.spot-events__more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 8px 14px;
+  border-radius: 999px; /* タブと揃えて視認性を保つ */
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600; /* 重要な操作として目立たせる */
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.spot-events__more:hover,
+.spot-events__more:focus-visible {
+  border-color: #1e63d9;
+  color: #1e63d9;
+  background: #f3f7ff; /* 押せることを示す軽い強調 */
+}
+
 .spot-event-card {
   padding: 14px;
   border-radius: 12px; /* 角丸をやや大きくしてカード感を出す */

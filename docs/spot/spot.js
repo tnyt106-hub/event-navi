@@ -17,6 +17,17 @@ const eventsUpdatedElement = document.getElementById("spot-events-updated");
 const eventsStatusElement = document.getElementById("spot-events-status");
 const eventsListElement = document.getElementById("spot-events-list");
 const eventsTabsElement = document.getElementById("spot-events-tabs");
+const eventsMoreButton = document.getElementById("spot-events-more");
+
+// 1回に表示する件数を統一する（UXと負荷のバランスを取るため）
+const DEFAULT_VISIBLE_COUNT = 20;
+
+// タブごとの表示件数を保持する（タブ切替で初期値に戻す）
+const visibleCountByTab = {
+  ongoing: DEFAULT_VISIBLE_COUNT,
+  upcoming: DEFAULT_VISIBLE_COUNT,
+  past: DEFAULT_VISIBLE_COUNT,
+};
 
 // meta description を更新するための取得（存在しない場合は null になる）
 const metaDescription = document.querySelector('meta[name="description"]');
@@ -206,9 +217,9 @@ function buildEventBuckets(events) {
 
 // タブごとの表示件数上限を適用して返す
 function buildTabData(buckets) {
-  // 各タブの表示件数を揃えて、UIの読みやすさを保つ
-  const upcomingList = buckets.upcoming.slice(0, 20);
-  const pastList = buckets.past.slice(0, 20);
+  // タブの件数表示は全件数に統一するため、全件リストを保持する
+  const upcomingList = buckets.upcoming;
+  const pastList = buckets.past;
   const ongoingList = buckets.ongoing;
 
   return {
@@ -304,6 +315,19 @@ function renderEventList(list) {
   });
 }
 
+// 表示件数を考慮したイベント一覧を作成する
+function getDisplayedEvents(tabKey, tabInfo) {
+  const visibleCount = visibleCountByTab[tabKey] ?? DEFAULT_VISIBLE_COUNT;
+  return tabInfo.list.slice(0, visibleCount);
+}
+
+// 「もっと見る」ボタンの表示状態を更新する
+function updateEventsMoreButton(tabInfo, displayedList) {
+  if (!eventsMoreButton) return;
+  const shouldShow = tabInfo.list.length > displayedList.length;
+  eventsMoreButton.hidden = !shouldShow;
+}
+
 // タブUIを描画し、選択状態を更新する
 function renderTabs(tabData, activeTabKey) {
   if (!eventsTabsElement) return;
@@ -328,9 +352,15 @@ function renderTabs(tabData, activeTabKey) {
 // タブに応じてイベント一覧とステータス文言を差し替える
 let cachedTabData = null;
 let currentTabKey = "ongoing";
-function setActiveTab(tabKey) {
+function setActiveTab(tabKey, options = {}) {
   if (!cachedTabData || !eventsTabsElement) return;
   currentTabKey = tabKey;
+
+  // タブ切替時は表示件数を初期化する（「もっと見る」の状態をリセット）
+  const shouldResetVisibleCount = options.resetVisibleCount !== false;
+  if (shouldResetVisibleCount) {
+    visibleCountByTab[tabKey] = DEFAULT_VISIBLE_COUNT;
+  }
 
   // タブの見た目を切り替える
   const buttons = eventsTabsElement.querySelectorAll(".spot-events__tab");
@@ -347,11 +377,14 @@ function setActiveTab(tabKey) {
       eventsListElement.innerHTML = "";
     }
     setEventsStatus("該当するイベントはありません。", false);
+    updateEventsMoreButton(tabInfo, []);
     return;
   }
 
-  renderEventList(tabInfo.list);
+  const displayedList = getDisplayedEvents(tabKey, tabInfo);
+  renderEventList(displayedList);
   setEventsStatus(tabInfo.status, true);
+  updateEventsMoreButton(tabInfo, displayedList);
 }
 
 // イベント一覧を描画する
@@ -366,6 +399,9 @@ function renderEvents(eventsData) {
   if (events.length === 0) {
     eventsListElement.innerHTML = "";
     setEventsStatus("現在掲載中のイベントはありません。", false);
+    if (eventsMoreButton) {
+      eventsMoreButton.hidden = true;
+    }
     return;
   }
 
@@ -398,6 +434,11 @@ function loadEventsForSpot(spotIdValue) {
         eventsUpdatedElement.textContent = `最終更新日: ${eventsData.last_success_at}`;
         eventsUpdatedElement.hidden = false;
       }
+
+      // 取得したイベントに合わせて表示件数を初期化する
+      visibleCountByTab.ongoing = DEFAULT_VISIBLE_COUNT;
+      visibleCountByTab.upcoming = DEFAULT_VISIBLE_COUNT;
+      visibleCountByTab.past = DEFAULT_VISIBLE_COUNT;
       renderEvents(eventsData);
     })
     .catch((error) => {
@@ -406,7 +447,29 @@ function loadEventsForSpot(spotIdValue) {
       if (eventsTabsElement) {
         toggleElement(eventsTabsElement, false);
       }
+      if (eventsMoreButton) {
+        eventsMoreButton.hidden = true;
+      }
     });
+}
+
+// 「もっと見る」ボタンは現在のタブの表示件数を増やす
+if (eventsMoreButton) {
+  eventsMoreButton.addEventListener("click", () => {
+    if (!cachedTabData) return;
+    const tabInfo = cachedTabData[currentTabKey];
+    if (!tabInfo) return;
+
+    // 現在のタブの表示件数だけを増やして再描画する
+    visibleCountByTab[currentTabKey] =
+      (visibleCountByTab[currentTabKey] ?? DEFAULT_VISIBLE_COUNT) +
+      DEFAULT_VISIBLE_COUNT;
+
+    const displayedList = getDisplayedEvents(currentTabKey, tabInfo);
+    renderEventList(displayedList);
+    setEventsStatus(tabInfo.status, true);
+    updateEventsMoreButton(tabInfo, displayedList);
+  });
 }
 
 // spot_id が無い場合は早めにエラーを出す
