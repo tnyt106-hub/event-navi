@@ -6,6 +6,8 @@ html, body {
 
 body {
   font-family: sans-serif;
+  /* 詳細ページのカードを浮かせるためのベース背景色 */
+  background: #f6f7fb;
 }
 
 /* ページタイトル */
@@ -473,10 +475,10 @@ main {
 }
 
 .spot-container {
-  /* 画面幅の中心にカードを配置 */
-  max-width: 860px;
+  /* 画面幅の中心にカードを配置（モバイル最適化の最大幅） */
+  max-width: 760px;
   margin: 0 auto;
-  padding: 20px 16px 32px;
+  padding: 24px 16px 32px;
 }
 
 .spot-content {
@@ -485,6 +487,44 @@ main {
   border-radius: 18px;
   padding: 24px;
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* 施設情報ブロックをヒーローカードとして強調（ID指定） */
+#spot-content {
+  margin-top: 24px; /* 上部の余白でカードを浮かせる */
+  background: #fff;
+  border-radius: 16px; /* 角丸を大きめにしてやわらかく */
+  padding: 18px 16px; /* 8pxグリッドで内側の余白を統一 */
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+}
+
+/* メタ情報（カテゴリ/エリア）をチップ化 */
+#spot-category,
+#spot-area {
+  display: inline-block; /* 横並びのチップにする */
+  margin: 0 8px 8px 0; /* チップ間の余白を確保 */
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  font-size: 12px;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* 施設名の強調（視線の起点） */
+#spot-title {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4; /* 行間を広めにして読みやすく */
+  color: #111827;
+}
+
+/* 説明文を区切り線で整える */
+#spot-intro {
+  margin: 20px 0 0;
+  padding-left: 14px; /* 左ボーダーとの距離を確保 */
+  border-left: 3px solid #e5e7eb;
 }
 
 .spot-content__meta {
@@ -617,7 +657,7 @@ main {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 14px;
+  gap: 16px; /* カード間の余白を広げる */
 }
 
 .spot-events__more {
@@ -652,42 +692,50 @@ main {
   border-radius: 14px; /* 角丸をやや大きくしてカード感を出す */
   background: #fff;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06); /* 薄い影でカードの階層を表現 */
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.06); /* 薄い影でカードの階層を表現 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .spot-event-card__title {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   color: #111827;
+  /* タイトルは2行で省略して視線を止める */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .spot-event-card__date {
   /* 日付はバッジで強調 */
-  display: inline-flex; /* バッジ風にするためのラベル */
-  align-items: center;
-  gap: 6px;
-  margin: 0 0 10px;
-  padding: 5px 12px;
+  display: inline-block; /* バッジ風にするためのラベル */
+  margin: 0 0 8px;
+  padding: 6px 10px;
   border-radius: 999px; /* バッジの丸みを強調 */
-  background: #e8f0ff;
+  background: #eef2ff;
   font-size: 12px;
   font-weight: 700; /* 重要情報として強調 */
-  color: #1d4ed8;
+  color: #2563eb;
 }
 
 .spot-event-card__details {
   margin: 0 0 10px;
-  padding-left: 18px;
+  padding-left: 16px; /* 箇条書きの余白を詰める */
   font-size: 13px; /* スマホでも読みやすいサイズ */
   line-height: 1.6; /* 行間を整えて読みやすくする */
-  letter-spacing: 0.02em; /* 字間を少し広げる */
+  letter-spacing: 0.01em; /* 字間を少し広げる */
   color: #475569;
+  list-style-position: outside; /* マーカーを本文に揃える */
 }
 
 .spot-event-card__details li {
   margin-bottom: 4px; /* 箇条書きの上下余白を詰める */
+}
+
+.spot-event-card__details li::marker {
+  color: #cbd5f5; /* リストマーカーを軽く見せる */
 }
 
 .spot-event-card__details li:last-child {
@@ -699,11 +747,11 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 8px 14px;
+  padding: 10px 14px;
   min-height: 40px;
-  border-radius: 12px; /* ボタンらしい形状にする */
-  background: #f8faff;
-  border: 1px solid #d6e0ff;
+  border-radius: 999px; /* ピル型のボタンで押しやすく見せる */
+  background: #fff;
+  border: 1px solid #2563eb;
   font-size: 12px;
   font-weight: 600;
   color: #2563eb;
@@ -712,9 +760,13 @@ main {
 }
 
 .spot-event-card__link:hover {
-  background: #eef4ff;
-  border-color: #bcd0ff;
+  background: #eef2ff;
+  border-color: #2563eb;
   color: #1e40af;
+}
+
+.spot-event-card__link:active {
+  background: #e0e7ff;
 }
 
 @media (hover: hover) and (pointer: fine) {
