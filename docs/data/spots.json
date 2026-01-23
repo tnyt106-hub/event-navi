@@ -24,6 +24,18 @@
     "source": "https://www.kagawa-arts.or.jp/facility/"
   },
   {
+    "name": "サンポートホール高松",
+    "spot_id": "sunport_hall_takamatsu",
+    "lat": 34.352483,
+    "lng": 134.04719,
+    "category": "文化・芸術施設",
+    "prefecture": "香川県",
+    "municipality": "高松市",
+    "official_url": "https://www.sunport-hall.jp/",
+    "description": "高松シンボルタワー内にある文化芸術拠点。1,500名収容の大ホールのほか、2つの小ホールや会議室を備え、コンサートや国際会議など多様なイベントが開催されます。",
+    "source": "https://www.sunport-hall.jp/about/"
+  },
+  {
     "name": "香川県県民ホール レグザムホール",
     "spot_id": "rexam_hall",
     "lat": 34.350481,
