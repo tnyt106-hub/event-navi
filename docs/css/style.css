@@ -442,44 +442,49 @@ main {
    スポット詳細ページ
    ======================= */
 .spot-page {
-  background: #f7f7f7;
+  /* ページ全体は淡いグレーでカードが浮き立つようにする */
+  background: #f6f7fb;
 }
 
 .spot-header {
+  /* ヘッダーは白背景でコンテンツと分離 */
   padding: 16px;
   background: #fff;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e6e9f2;
 }
 
 .spot-page-title {
   margin: 8px 0 4px;
   font-size: 20px;
+  font-weight: 700;
 }
 
 .spot-page-lead {
   margin: 0;
   font-size: 13px;
-  color: #666;
+  color: #6b7280;
 }
 
 .spot-back-link {
   display: inline-block;
   font-size: 13px;
-  color: #007bff;
+  color: #2563eb;
   text-decoration: none;
 }
 
 .spot-container {
-  max-width: 760px;
+  /* 画面幅の中心にカードを配置 */
+  max-width: 860px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 20px 16px 32px;
 }
 
 .spot-content {
+  /* スポット詳細+イベントを1つの大きなカードにまとめる */
   background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
 .spot-content__meta {
@@ -487,29 +492,33 @@ main {
   gap: 10px;
   flex-wrap: wrap;
   font-size: 12px;
-  color: #777;
-  margin-bottom: 12px;
+  color: #8a94a6;
+  margin-bottom: 10px;
 }
 
 .spot-title {
   margin: 0 0 12px;
-  font-size: 22px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
 }
 
 .spot-intro {
-  margin: 0 0 16px;
+  margin: 0 0 20px;
 }
 
 .spot-intro__title {
   margin: 0 0 8px;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
 }
 
 .spot-intro__text {
   margin: 0;
   font-size: 14px;
   line-height: 1.7;
-  color: #333;
+  color: #374151;
   white-space: pre-line;
 }
 
@@ -517,11 +526,10 @@ main {
    イベント一覧
    ======================= */
 .spot-events {
-  margin: 0 0 20px;
-  padding: 12px;
-  border: 1px solid #e6e6e6;
-  border-radius: 12px;
-  background: #fafafa;
+  /* 「このスポットについて」との区切りを明確化 */
+  margin: 0 0 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e6ef;
 }
 
 .spot-events__header {
@@ -530,62 +538,78 @@ main {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .spot-events__title {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
 }
 
 .spot-events__updated {
   margin: 0;
   font-size: 12px;
-  color: #666;
+  color: #94a3b8;
+}
+
+.spot-events__body {
+  /* イベント一覧の背景を整えるための領域 */
+  margin: 0;
+}
+
+.spot-events__panel {
+  /* タブ・一覧・もっと見るのまとまりをカード風に */
+  padding: 16px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid #e5eaf5;
 }
 
 .spot-events__status {
   margin: 0;
   font-size: 13px;
-  color: #555;
+  color: #475569;
 }
 
 .spot-events__tabs {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 8px;
-  margin: 0 0 12px;
-  overflow-x: auto; /* スマホで折り返さず横スクロールできるようにする */
-  -webkit-overflow-scrolling: touch; /* iOSでスクロールの慣性を有効化 */
+  margin: 0 0 14px;
+  overflow-x: auto; /* スマホで横に収まらない場合は横スクロール */
+  -webkit-overflow-scrolling: touch; /* iOSの慣性スクロールを有効化 */
   padding-bottom: 4px; /* スクロールバーと被らないように余白を追加 */
 }
 
 .spot-events__tab {
-  border: 1px solid #d0d0d0;
+  /* ピル型のタブボタン */
+  border: 1px solid #d2d9e6;
   border-radius: 999px; /* ピル型の形状を強調 */
-  padding: 7px 14px;
+  padding: 8px 16px;
+  min-height: 40px;
   background: #fff;
   font-size: 12px;
   font-weight: 600; /* 文字の視認性を上げる */
-  color: #333;
+  color: #334155;
   cursor: pointer;
   white-space: nowrap; /* ボタン内で折り返さない */
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.06); /* 立体感を出す */
 }
 
 .spot-events__tab:hover,
 .spot-events__tab:focus-visible {
-  border-color: #1e63d9;
-  color: #1e63d9;
-  box-shadow: 0 2px 6px rgba(30, 99, 217, 0.2); /* ホバー/フォーカス時の強調 */
+  border-color: #2563eb;
+  color: #2563eb;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15); /* ホバー/フォーカス時の強調 */
 }
 
 .spot-events__tab.is-active {
-  border-color: #1247a8;
-  background: #1247a8;
+  border-color: #2563eb;
+  background: #2563eb;
   color: #fff;
-  box-shadow: 0 3px 8px rgba(18, 71, 168, 0.28); /* 選択状態の視認性を高める */
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25); /* 選択状態の視認性を高める */
 }
 
 .spot-events__list {
@@ -593,58 +617,64 @@ main {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .spot-events__more {
-  display: inline-flex;
+  /* 「もっと見る」は幅広で押しやすく */
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 12px;
-  padding: 8px 14px;
-  border-radius: 999px; /* タブと揃えて視認性を保つ */
-  border: 1px solid #d0d0d0;
-  background: #fff;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 14px;
+  min-height: 44px;
+  border-radius: 12px; /* CTAらしい形状 */
+  border: 1px solid #cbd5f5;
+  background: #f1f5ff;
   font-size: 12px;
   font-weight: 600; /* 重要な操作として目立たせる */
-  color: #333;
+  color: #1f2937;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .spot-events__more:hover,
 .spot-events__more:focus-visible {
-  border-color: #1e63d9;
-  color: #1e63d9;
-  background: #f3f7ff; /* 押せることを示す軽い強調 */
+  border-color: #2563eb;
+  color: #1e3a8a;
+  background: #e8efff; /* 押せることを示す軽い強調 */
 }
 
 .spot-event-card {
+  /* イベントカードは白背景+影で箱感を出す */
   padding: 14px;
-  border-radius: 12px; /* 角丸をやや大きくしてカード感を出す */
+  border-radius: 14px; /* 角丸をやや大きくしてカード感を出す */
   background: #fff;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* 薄い影でカードの階層を表現 */
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06); /* 薄い影でカードの階層を表現 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .spot-event-card__title {
   margin: 0 0 6px;
   font-size: 15px;
-  color: #222;
+  font-weight: 700;
+  color: #111827;
 }
 
 .spot-event-card__date {
+  /* 日付はバッジで強調 */
   display: inline-flex; /* バッジ風にするためのラベル */
   align-items: center;
   gap: 6px;
   margin: 0 0 10px;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 999px; /* バッジの丸みを強調 */
-  background: #eef3ff;
+  background: #e8f0ff;
   font-size: 12px;
   font-weight: 700; /* 重要情報として強調 */
-  color: #1e3a8a;
+  color: #1d4ed8;
 }
 
 .spot-event-card__details {
@@ -653,7 +683,7 @@ main {
   font-size: 13px; /* スマホでも読みやすいサイズ */
   line-height: 1.6; /* 行間を整えて読みやすくする */
   letter-spacing: 0.02em; /* 字間を少し広げる */
-  color: #4a4a4a;
+  color: #475569;
 }
 
 .spot-event-card__details li {
@@ -665,24 +695,26 @@ main {
 }
 
 .spot-event-card__link {
+  /* 公式リンクはアウトラインボタン風 */
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 6px 12px;
-  border-radius: 999px; /* ボタンらしい形状にする */
-  background: #f3f6ff;
-  border: 1px solid #d7e2ff;
+  padding: 8px 14px;
+  min-height: 40px;
+  border-radius: 12px; /* ボタンらしい形状にする */
+  background: #f8faff;
+  border: 1px solid #d6e0ff;
   font-size: 12px;
   font-weight: 600;
-  color: #1e63d9;
+  color: #2563eb;
   text-decoration: none;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .spot-event-card__link:hover {
-  background: #e6efff;
-  border-color: #b7cdfc;
-  color: #1247a8;
+  background: #eef4ff;
+  border-color: #bcd0ff;
+  color: #1e40af;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -696,33 +728,35 @@ main {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .spot-action-btn {
+  /* CTAボタンの共通スタイル */
   display: inline-block;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
-  color: #333;
+  padding: 10px 16px;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid #d3d9e6;
+  background: #f8fafc;
+  color: #1f2937;
   text-decoration: none;
   font-size: 13px;
 }
 
 .spot-action-btn--primary {
-  background: #34a853;
-  border-color: #34a853;
+  background: #22c55e;
+  border-color: #22c55e;
   color: #fff;
   font-weight: 700;
 }
 
 .spot-cta {
   margin-bottom: 20px;
-  padding: 12px;
-  border: 1px dashed #ddd;
-  border-radius: 10px;
-  background: #fafafa;
+  padding: 14px;
+  border: 1px dashed #d7dbe8;
+  border-radius: 14px;
+  background: #f8fafc;
 }
 
 .spot-cta__links {
@@ -733,8 +767,8 @@ main {
 
 .spot-related {
   padding-top: 12px;
-  border-top: 1px solid #eee;
-  color: #666;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7280;
   font-size: 13px;
 }
 
@@ -763,10 +797,10 @@ main {
 
 @media (max-width: 600px) {
   .spot-content {
-    padding: 16px;
+    padding: 20px 16px;
   }
 
   .spot-title {
-    font-size: 18px;
+    font-size: 20px;
   }
 }

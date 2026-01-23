@@ -35,16 +35,20 @@
       </section>
 
       <!-- イベント情報セクション（JSで描画） -->
+      <!-- イベント情報エリア（見た目のまとまりを作るためのラッパー） -->
       <section class="spot-events">
         <div class="spot-events__header">
           <h3 class="spot-events__title">開催予定のイベント</h3>
           <p id="spot-events-updated" class="spot-events__updated" hidden></p>
         </div>
+        <!-- タブ・一覧・もっと見るを1つのパネルとしてまとめる -->
         <div id="spot-events-body" class="spot-events__body">
-          <div id="spot-events-tabs" class="spot-events__tabs" hidden></div>
-          <p id="spot-events-status" class="spot-events__status">イベント情報を読み込んでいます。</p>
-          <ul id="spot-events-list" class="spot-events__list" hidden></ul>
-          <button id="spot-events-more" class="spot-events__more" type="button" hidden>もっと見る</button>
+          <div class="spot-events__panel">
+            <div id="spot-events-tabs" class="spot-events__tabs" hidden></div>
+            <p id="spot-events-status" class="spot-events__status">イベント情報を読み込んでいます。</p>
+            <ul id="spot-events-list" class="spot-events__list" hidden></ul>
+            <button id="spot-events-more" class="spot-events__more" type="button" hidden>もっと見る</button>
+          </div>
         </div>
       </section>
 
