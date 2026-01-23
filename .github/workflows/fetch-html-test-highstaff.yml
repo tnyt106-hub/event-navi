@@ -1,0 +1,82 @@
+# highstaff の HTML を取得してログと Artifact に保存するテストワークフロー
+name: Fetch HTML Test Highstaff
+
+on:
+  # 手動実行のみを許可するトリガー
+  workflow_dispatch:
+
+jobs:
+  fetch-html:
+    # 実行環境は ubuntu-latest を使用
+    runs-on: ubuntu-latest
+    steps:
+      # リポジトリをチェックアウトする
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Node.js 18 以上をセットアップする
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # highstaff の HTML を取得して logs/highstaff.html に保存する
+      # ステータスコード / Content-Type / HTML サイズをログに出力する
+      - name: Fetch highstaff HTML and log response
+        run: |
+          node <<'NODE'
+          // highstaff の URL を固定で取得する
+          const https = require('https');
+          const fs = require('fs');
+          const path = require('path');
+
+          const targetUrl = 'https://www.kanon-kaikan.jp/event/';
+          const outputDir = path.join(process.cwd(), 'logs');
+          const outputPath = path.join(outputDir, 'highstaff.html');
+
+          // 取得結果を必ず保存できるようにログディレクトリを作成する
+          fs.mkdirSync(outputDir, { recursive: true });
+
+          // 失敗時でも空ファイルを残すための初期書き込み
+          fs.writeFileSync(outputPath, '');
+
+          // URL を GET してレスポンスを取得する
+          https
+            .get(targetUrl, (res) => {
+              const statusCode = res.statusCode ?? 0;
+              const contentType = res.headers['content-type'] ?? 'unknown';
+              const chunks = [];
+
+              // 取得したデータをバッファに溜める
+              res.on('data', (chunk) => {
+                chunks.push(chunk);
+              });
+
+              // レスポンス完了時にファイル書き込みとログ出力を行う
+              res.on('end', () => {
+                const body = Buffer.concat(chunks);
+                fs.writeFileSync(outputPath, body);
+
+                // ステータスコードと Content-Type、HTML サイズを出力する
+                console.log(`status code: ${statusCode}`);
+                console.log(`content-type: ${contentType}`);
+                console.log(`html size: ${body.length} bytes`);
+              });
+            })
+            .on('error', (error) => {
+              // 例外時もログに残し、空ファイルを維持する
+              console.error('request error:', error.message);
+              console.log('status code: 0');
+              console.log('content-type: unknown');
+              console.log('html size: 0 bytes');
+            });
+          NODE
+
+      # 生成された HTML を Artifact としてアップロードする（失敗時も実行する）
+      - name: Upload highstaff HTML artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: highstaff-html
+          path: logs/highstaff.html
+          if-no-files-found: warn
