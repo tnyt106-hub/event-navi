@@ -26,7 +26,12 @@ function renderSpotPanel(spot) {
   const desc = document.getElementById("spot-panel-desc");
   const google = document.getElementById("spot-panel-google");
   const detail = document.getElementById("spot-panel-detail");
+  const official = document.getElementById("spot-panel-official");
+  const toggleBtn = document.getElementById("spot-panel-toggle");
   panel.classList.remove("is-empty");
+  // スポット選択時は詳細が見える状態で開き、視認性を高める
+  panel.classList.add("is-expanded");
+  if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "true");
   const name = spot.name ?? "名称不明";
   // パネル内の要素が存在しない場合は個別にスキップ（HTML変更時の保険）
   if (title) title.textContent = name;
@@ -52,6 +57,15 @@ function renderSpotPanel(spot) {
       detail.style.display = "none";
     }
   }
+  // 公式サイト（URLが無い場合は非表示にしてUIを崩さない）
+  if (official) {
+    if (spot.official_url) {
+      official.href = spot.official_url;
+      official.style.display = "inline-flex";
+    } else {
+      official.style.display = "none";
+    }
+  }
   // GA（任意：スポット表示）
   gaEvent("select_content", { content_type: "spot", item_id: spot.spot_id ?? name });
 }
@@ -62,6 +76,7 @@ function clearSpotPanel() {
   const panel = document.getElementById("spot-panel");
   if (!panel) return;
   panel.classList.add("is-empty");
+  panel.classList.remove("is-expanded");
   const title = panel.querySelector(".spot-panel__title");
   if (title) title.textContent = "スポット未選択";
   const cat = document.getElementById("spot-panel-category");
@@ -70,6 +85,12 @@ function clearSpotPanel() {
   if (cat) cat.textContent = "";
   if (area) area.textContent = "";
   if (desc) desc.textContent = "";
+  // 公式サイトボタンは未選択時に非表示にする
+  const official = document.getElementById("spot-panel-official");
+  if (official) official.style.display = "none";
+  // 空状態に戻すときはトグルのARIAも初期化しておく
+  const toggleBtn = document.getElementById("spot-panel-toggle");
+  if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
   // 検索で絞り込み中でも、全件表示に戻す
   setVisibleEntries(markerEntries);
   // 地図を“ホーム表示”に戻す（見栄えが毎回安定）
@@ -233,6 +254,17 @@ fetch("./data/spots.json")
     if (closeBtn) {
       closeBtn.addEventListener("click", () => {
         clearSpotPanel();
+      });
+    }
+    const toggleBtn = document.getElementById("spot-panel-toggle");
+    const panel = document.getElementById("spot-panel");
+    if (toggleBtn && panel) {
+      toggleBtn.addEventListener("click", () => {
+        // 未選択状態では展開処理を行わない（案内文のみ）
+        if (panel.classList.contains("is-empty")) return;
+        const isExpanded = panel.classList.toggle("is-expanded");
+        // ARIA属性を更新して、状態を支援技術へ伝える
+        toggleBtn.setAttribute("aria-expanded", String(isExpanded));
       });
     }
   })
