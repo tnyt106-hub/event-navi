@@ -1,0 +1,246 @@
+// ハイスタッフホール（高松市文化芸術ホール）のイベント情報ページから
+// 「開催予定の自主事業」セクションだけを抽出して保存するバッチ。
+// 使い方: node scripts/fetch-highstaff-hall-events.js
+
+const fs = require("fs");
+const path = require("path");
+const https = require("https");
+const { URL } = require("url");
+
+const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
+
+const ENTRY_URL = "https://www.kanon-kaikan.jp/event/";
+const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "highstaff_hall.json");
+const VENUE_ID = "highstaff_hall";
+const SECTION_TITLE = "開催予定の自主事業";
+
+// HTMLを取得する。HTTPエラーや明らかなエラーページはハード失敗とする。
+function fetchHtml(url) {
+  return new Promise((resolve, reject) => {
+    const request = https.get(
+      url,
+      {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (compatible; event-navi-bot/1.0)",
+          Accept: "text/html,application/xhtml+xml",
+        },
+      },
+      (response) => {
+        if (response.statusCode !== 200) {
+          reject(new Error(`HTTP ${response.statusCode} で失敗しました。`));
+          response.resume();
+          return;
+        }
+
+        let body = "";
+        response.setEncoding("utf8");
+        response.on("data", (chunk) => {
+          body += chunk;
+        });
+        response.on("end", () => {
+          if (!body) {
+            reject(new Error("HTMLの取得結果が空でした。"));
+            return;
+          }
+
+          const errorIndicators = ["Access Denied", "Forbidden", "Service Unavailable"];
+          if (errorIndicators.some((indicator) => body.includes(indicator))) {
+            reject(new Error("明らかなエラーページの可能性があります。"));
+            return;
+          }
+
+          resolve(body);
+        });
+      }
+    );
+
+    request.on("error", (error) => {
+      reject(error);
+    });
+  });
+}
+
+// HTMLエンティティを最低限デコードする。
+function decodeHtmlEntities(text) {
+  if (!text) return "";
+  return text
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ");
+}
+
+// タグを落としてプレーンテキスト化する。
+function stripTags(html) {
+  if (!html) return "";
+  return html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+}
+
+// タイトル用に文字列を整形する。
+function normalizeTitle(text) {
+  return text
+    .replace(/^[\s\-–—―~〜～:：・|｜]+/, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// 見出しテキストから対象セクションのHTML断片を抽出する。
+function extractSection(html, headingText) {
+  const headingRegex = new RegExp(
+    `<h[1-6][^>]*>[\\s\\S]*?${headingText}[\\s\\S]*?<\\/h[1-6]>`,
+    "i"
+  );
+  const headingMatch = html.match(headingRegex);
+  if (!headingMatch || headingMatch.index === undefined) {
+    throw new Error(`${headingText} の見出しが見つかりません。`);
+  }
+
+  const sectionStart = headingMatch.index + headingMatch[0].length;
+  const tail = html.slice(sectionStart);
+
+  // 次の見出し（対象外のセクション）より前までを抽出する。
+  const endMarkers = ["お預かりチケット", "開催終了"];
+  let sectionEnd = tail.length;
+
+  for (const marker of endMarkers) {
+    const markerRegex = new RegExp(`(<h[1-6][^>]*>[\\s\\S]*?${marker}[\\s\\S]*?<\\/h[1-6]>)`, "i");
+    const markerMatch = tail.match(markerRegex);
+    if (markerMatch && markerMatch.index !== undefined) {
+      sectionEnd = Math.min(sectionEnd, markerMatch.index);
+    }
+  }
+
+  return tail.slice(0, sectionEnd);
+}
+
+// 日付文字列を ISO 形式 (YYYY-MM-DD) に変換する。
+function buildIsoDate(yearText, monthText, dayText) {
+  const year = String(yearText);
+  const month = String(monthText).padStart(2, "0");
+  const day = String(dayText).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+// テキスト内の日付を検出してISO日付と一致情報を返す。
+function extractDateMatch(text) {
+  const patterns = [/([0-9]{4})[./年]([0-9]{1,2})[./月]([0-9]{1,2})日?/];
+
+  for (const pattern of patterns) {
+    const match = pattern.exec(text);
+    if (match) {
+      return {
+        dateIso: buildIsoDate(match[1], match[2], match[3]),
+        match,
+      };
+    }
+  }
+
+  return { dateIso: null, match: null };
+}
+
+// 日付部分を除いてタイトル文字列を生成する。
+function removeDateFromTitle(originalText, dateMatch) {
+  if (!dateMatch) {
+    return normalizeTitle(originalText);
+  }
+
+  const before = originalText.slice(0, dateMatch.index);
+  let after = originalText.slice(dateMatch.index + dateMatch[0].length);
+  // 日付の直後に曜日表記がある場合は取り除く。
+  after = after.replace(/^\s*[（(][^）)]+[）)]/, "");
+  const combined = `${before} ${after}`;
+  return normalizeTitle(combined);
+}
+
+// 対象セクション内のリンクからイベント情報を作る。
+function buildEventsFromSection(sectionHtml) {
+  const events = [];
+  const anchorRegex = /<a\b[^>]*href=['"]([^'"]+)['"][^>]*>([\s\S]*?)<\/a>/gi;
+  const baseUrl = ENTRY_URL;
+
+  for (const match of sectionHtml.matchAll(anchorRegex)) {
+    const href = match[1];
+    const rawText = stripTags(match[2]);
+    const decodedText = decodeHtmlEntities(rawText);
+    const { dateIso, match: dateMatch } = extractDateMatch(decodedText);
+
+    if (!dateIso) {
+      // 日付が無いリンクはイベントとして扱わない。
+      continue;
+    }
+
+    const title = removeDateFromTitle(decodedText, dateMatch);
+    if (!title) {
+      // タイトルが空になる場合は除外する。
+      continue;
+    }
+
+    const sourceUrl = href ? new URL(href, baseUrl).toString() : null;
+
+    events.push({
+      title,
+      date_from: dateIso,
+      date_to: dateIso,
+      source_url: sourceUrl,
+      open_time: null,
+      start_time: null,
+      end_time: null,
+      price: null,
+      contact: null,
+    });
+  }
+
+  return events;
+}
+
+// イベント配列を日付昇順で並べ替える。
+function sortEventsByDate(events) {
+  return [...events].sort((a, b) => {
+    if (a.date_from === b.date_from) {
+      return String(a.title).localeCompare(String(b.title));
+    }
+    return String(a.date_from).localeCompare(String(b.date_from));
+  });
+}
+
+// 成功時のみファイルを書き換える。
+function saveEventsFile(events) {
+  const today = new Date().toISOString().slice(0, 10);
+  const data = {
+    venue_id: VENUE_ID,
+    last_success_at: today,
+    events,
+  };
+
+  applyTagsToEventsData(data, { overwrite: false });
+
+  fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+}
+
+async function main() {
+  try {
+    const html = await fetchHtml(ENTRY_URL);
+    const sectionHtml = extractSection(html, SECTION_TITLE);
+    const events = buildEventsFromSection(sectionHtml);
+    const sortedEvents = sortEventsByDate(events);
+    const dateCount = sortedEvents.filter((event) => event.date_from).length;
+
+    if (sortedEvents.length === 0) {
+      throw new Error("イベントが0件のため上書きしません。");
+    }
+
+    if (dateCount === 0) {
+      throw new Error("date_from が1件も作成できませんでした。");
+    }
+
+    saveEventsFile(sortedEvents);
+    console.log(`完了: ${sortedEvents.length} 件のイベントを保存しました。`);
+  } catch (error) {
+    console.error(`失敗: ${error.message}`);
+    process.exitCode = 1;
+  }
+}
+
+main();
