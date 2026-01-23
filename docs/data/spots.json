@@ -24,15 +24,27 @@
     "source": "https://www.kagawa-arts.or.jp/facility/"
   },
   {
-  "name": "香川県県民ホール レグザムホール",
-  "spot_id": "rexam_hall",
-  "lat": 34.350481,
-  "lng": 134.053155,
-  "category": "ホール・劇場",
-  "prefecture": "香川県",
-  "municipality": "高松市",
-  "official_url": "https://kenminhall.com/",
-  "description": "香川県高松市にある県立の大規模多目的ホールです。大ホール、小ホール、多目的大会議室などを備え、コンサートや演劇、式典など幅広く利用されています。",
-  "source": "https://p-kanagawa.jp/about/"
-}
+    "name": "香川県県民ホール レグザムホール",
+    "spot_id": "rexam_hall",
+    "lat": 34.350481,
+    "lng": 134.053155,
+    "category": "ホール・劇場",
+    "prefecture": "香川県",
+    "municipality": "高松市",
+    "official_url": "https://kenminhall.com/",
+    "description": "香川県高松市にある県立の大規模多目的ホールです。大ホール、小ホール、多目的大会議室などを備え、コンサートや演劇、式典など幅広く利用されています。",
+    "source": "https://p-kanagawa.jp/about/"
+  },
+  {
+    "name": "高松市文化芸術ホール ハイスタッフホール",
+    "spot_id": "highstaff_hall",
+    "lat": 34.349676,
+    "lng": 134.05031,
+    "category": "ホール・劇場",
+    "prefecture": "香川県",
+    "municipality": "高松市",
+    "official_url": "https://www.kanon-kaikan.jp/",
+    "description": "高松市文化芸術ホール（ハイスタッフホール）です。自主事業や公演情報は公式サイトで確認できます。",
+    "source": "https://www.kanon-kaikan.jp/"
+  }
 ]
