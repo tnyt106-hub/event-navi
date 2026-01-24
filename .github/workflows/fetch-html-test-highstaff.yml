@@ -29,6 +29,7 @@ jobs:
           const https = require('https');
           const fs = require('fs');
           const path = require('path');
+          const { URL } = require('url');
 
           const targetUrl = 'https://www.kanon-kaikan.jp/event/';
           const outputDir = path.join(process.cwd(), 'logs');
@@ -40,36 +41,80 @@ jobs:
           // 失敗時でも空ファイルを残すための初期書き込み
           fs.writeFileSync(outputPath, '');
 
+          // URL をパースして https.request の設定を組み立てる
+          const parsedUrl = new URL(targetUrl);
+          const requestHeaders = {
+            // 最新の Chrome らしい User-Agent を指定する（Windows 例）
+            'User-Agent':
+              'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+            // ブラウザが HTML を要求する際の一般的な Accept を指定する
+            Accept:
+              'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+            // 日本語優先の Accept-Language を指定する
+            'Accept-Language': 'ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7',
+            // キャッシュを避けて最新レスポンスを取得する意図を明示する
+            'Cache-Control': 'no-cache',
+            Pragma: 'no-cache',
+            // 参照元を明示して 403 回避を試みる
+            Referer: 'https://www.kanon-kaikan.jp/',
+            // ブラウザ相当の Upgrade-Insecure-Requests を指定する
+            'Upgrade-Insecure-Requests': '1',
+            // keep-alive で接続を維持する意図を伝える
+            Connection: 'keep-alive',
+            // 可能であれば Sec-Fetch 系ヘッダを追加する
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'same-origin',
+          };
+
+          const requestOptions = {
+            protocol: parsedUrl.protocol,
+            hostname: parsedUrl.hostname,
+            path: parsedUrl.pathname + parsedUrl.search,
+            method: 'GET',
+            headers: requestHeaders,
+          };
+
+          // 取得対象 URL と送信ヘッダをログに残す
+          console.log(`request url: ${targetUrl}`);
+          console.log('request headers:', requestHeaders);
+
           // URL を GET してレスポンスを取得する
-          https
-            .get(targetUrl, (res) => {
-              const statusCode = res.statusCode ?? 0;
-              const contentType = res.headers['content-type'] ?? 'unknown';
-              const chunks = [];
+          const request = https.request(requestOptions, (res) => {
+            const statusCode = res.statusCode ?? 0;
+            const contentType = res.headers['content-type'] ?? 'unknown';
+            const location = res.headers.location ?? 'none';
+            const chunks = [];
 
-              // 取得したデータをバッファに溜める
-              res.on('data', (chunk) => {
-                chunks.push(chunk);
-              });
-
-              // レスポンス完了時にファイル書き込みとログ出力を行う
-              res.on('end', () => {
-                const body = Buffer.concat(chunks);
-                fs.writeFileSync(outputPath, body);
-
-                // ステータスコードと Content-Type、HTML サイズを出力する
-                console.log(`status code: ${statusCode}`);
-                console.log(`content-type: ${contentType}`);
-                console.log(`html size: ${body.length} bytes`);
-              });
-            })
-            .on('error', (error) => {
-              // 例外時もログに残し、空ファイルを維持する
-              console.error('request error:', error.message);
-              console.log('status code: 0');
-              console.log('content-type: unknown');
-              console.log('html size: 0 bytes');
+            // 取得したデータをバッファに溜める
+            res.on('data', (chunk) => {
+              chunks.push(chunk);
             });
+
+            // レスポンス完了時にファイル書き込みとログ出力を行う
+            res.on('end', () => {
+              const body = Buffer.concat(chunks);
+              fs.writeFileSync(outputPath, body);
+
+              // ステータスコードと Content-Type、Location、HTML サイズを出力する
+              console.log(`status code: ${statusCode}`);
+              console.log(`content-type: ${contentType}`);
+              console.log(`location: ${location}`);
+              console.log(`html size: ${body.length} bytes`);
+            });
+          });
+
+          request.on('error', (error) => {
+            // 例外時もログに残し、空ファイルを維持する
+            console.error('request error:', error.message);
+            console.log('status code: 0');
+            console.log('content-type: unknown');
+            console.log('location: none');
+            console.log('html size: 0 bytes');
+          });
+
+          // リクエストを送信する
+          request.end();
           NODE
 
       # 生成された HTML を Artifact としてアップロードする（失敗時も実行する）
