@@ -4,10 +4,34 @@ html, body {
   padding: 0;
 }
 
+:root {
+  /* デザインシステムの基準値を集約して一貫性を保つ */
+  --bg: #F6F7FB;
+  --surface: #FFFFFF;
+  --text: #111827;
+  --text-sub: #6B7280;
+  --border: #E5E7EB;
+  --accent: #2563EB;
+  --accent-soft: #EEF2FF;
+  --radius-sheet: 24px;
+  --radius-card: 18px;
+  --radius-subcard: 14px;
+  --radius-pill: 999px;
+  --shadow-sheet: 0 -10px 30px rgba(17,24,39,0.12);
+  --shadow-card: 0 12px 30px rgba(17,24,39,0.08);
+  --shadow-subcard: 0 6px 16px rgba(17,24,39,0.06);
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
 body {
-  font-family: sans-serif;
-  /* 詳細ページのカードを浮かせるためのベース背景色 */
-  background: #f6f7fb;
+  font-family: var(--font);
+  /* サイト全体のベース背景色と文字色を統一 */
+  background: var(--bg);
+  color: var(--text);
 }
 
 /* ページタイトル */
@@ -19,7 +43,7 @@ h1 {
 h1 + p {
   margin: 0 12px 8px;
   font-size: 13px;
-  color: #555;
+  color: var(--text-sub);
 }
 
 h2 {
@@ -54,36 +78,38 @@ h2 {
   width: 180px;
   padding: 8px 10px;
   font-size: 14px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  border-radius: var(--radius-subcard);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subcard);
+  background: var(--surface);
+  color: var(--text);
 }
 #search-container {
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 1000;
-  background: white;
+  background: var(--surface);
   padding: 6px;
-  border-radius: 6px;
+  border-radius: var(--radius-subcard);
   width: 180px;
 }
 #search-suggestions {
-  background: #fff; 
+  background: var(--surface);
   list-style: none;
   margin: 4px 0 0;
   padding: 0;
   max-height: 200px;
   overflow-y: auto;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
 }
 #search-suggestions li {
-  background: #fff;  
+  background: var(--surface);
   padding: 6px;
   cursor: pointer;
 }
 #search-suggestions li:hover {
-  background: #f0f0f0;
+  background: var(--accent-soft);
 }
 
 /* 検索クリアボタン（入力欄右端） */
@@ -98,18 +124,18 @@ h2 {
   transform: translateY(-50%);
   width: 22px;
   height: 22px;
-  border-radius: 999px;
-  border: 1px solid #ddd;
-  background: #fff;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
   cursor: pointer;
   line-height: 20px;
   font-size: 16px;
-  color: #666;
+  color: var(--text-sub);
   display: none; /* 入力がある時だけ表示 */
 }
 
 #search-clear:hover {
-  background: #f3f3f3;
+  background: var(--accent-soft);
 }
 
 
@@ -124,7 +150,7 @@ h2 {
   height: 52px;
   border-radius: 50%;
   border: none;
-  background: white;
+  background: var(--surface);
   cursor: pointer;
 
   display: flex;
@@ -134,7 +160,7 @@ h2 {
   padding: 0;
   font-size: 0;     
   line-height: 1;  
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow-subcard);
 }
 /* ピンアイコン */
 #locate-btn .icon {
@@ -149,16 +175,16 @@ h2 {
   transform: translateY(2px);
 }
 #locate-btn:hover {
-  background: #f0f0f0;
+  background: var(--accent-soft);
 }
 
 /* 地図上のスポット名ラベル（Leaflet tooltip） */
 .leaflet-tooltip.spot-label {
   background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  color: #333;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-subcard);
+  box-shadow: var(--shadow-subcard);
+  color: var(--text);
   font-size: 12px;
   padding: 2px 8px;
 }
@@ -185,7 +211,7 @@ h2 {
 .site-notice {
   margin: 4px 12px 8px;
   font-size: 11px;
-  color: #777;
+  color: var(--text-sub);
 }
 
 .trial-footer {
@@ -193,30 +219,31 @@ h2 {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--surface);
   font-size: 11px;
-  color: #555;
+  color: var(--text-sub);
   text-align: center;
   padding: 4px 6px;
   z-index: 1000;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
 }
 
 /* ポップアップ内のボタン共通スタイル */
 .popup-link-btn {
     display: inline-block;
     padding: 6px 10px;
-    background-color: #007bff;
+    background-color: var(--accent);
     color: white !important;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: var(--radius-pill);
     font-size: 11px;
     font-weight: bold;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, filter 0.2s;
 }
 
 .popup-link-btn:hover {
-    background-color: #0056b3;
+    background-color: var(--accent);
+    filter: brightness(0.95);
 }
 
 /* ポップアップ要約文（1行表示） */
@@ -224,7 +251,7 @@ h2 {
   display: block;
   margin-top: 4px;
   font-size: 11px;
-  color: #777;
+  color: var(--text-sub);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -234,17 +261,18 @@ h2 {
 .popup-link-btn--compact {
   margin-top: 6px;
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-size: 11px;
 }
 
 /* ルート検索ボタン（Googleカラーの緑系） */
 .route-btn {
-    background-color: #34a853;
+    background-color: var(--accent);
 }
 
 .route-btn:hover {
-    background-color: #2d8a46;
+    background-color: var(--accent);
+    filter: brightness(0.95);
 }
 
 /* =======================
@@ -258,7 +286,7 @@ h2 {
   bottom: 0;
   width: 100%;
   padding: 0 12px calc(12px + env(safe-area-inset-bottom));
-  border-radius: 18px 18px 0 0;
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
   background: transparent;
   z-index: 1100;
   pointer-events: none; /* クリックできるのは中のカードのみ */
@@ -273,10 +301,10 @@ h2 {
 /* Bottom Sheet本体カード */
 .spot-panel__body {
   position: relative;
-  border: 1px solid #e4e4e4;
-  border-radius: 18px 18px 0 0;
-  background: #fff;
-  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.12);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  background: var(--surface);
+  box-shadow: var(--shadow-sheet);
   padding: 12px 14px 14px 20px; /* 左のアクセントラインと重ならない余白を確保 */
   pointer-events: auto; /* カードはクリック可能 */
 }
@@ -289,8 +317,8 @@ h2 {
   top: 12px;
   bottom: 12px;
   width: 4px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #3b82f6, #0ea5e9);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
 }
 
 /* タップで展開/折りたたみするヘッダー */
@@ -306,7 +334,7 @@ h2 {
 /* 補足文 */
 .spot-panel__kicker {
   font-size: 12px;
-  color: #777;
+  color: var(--text-sub);
   margin-bottom: 6px;
 }
 
@@ -324,7 +352,7 @@ h2 {
   gap: 8px;
   flex-wrap: wrap;
   font-size: 12px;
-  color: #666;
+  color: var(--text-sub);
   margin-bottom: 8px;
 }
 
@@ -333,9 +361,9 @@ h2 {
   display: inline-flex;
   align-items: center;
   padding: 2px 8px;
-  border-radius: 999px;
-  background: #f3f4f6;
-  color: #4b5563;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
   font-size: 11px;
   font-weight: 600;
 }
@@ -345,7 +373,7 @@ h2 {
   margin: 0 0 12px;
   font-size: 14px;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
   display: -webkit-box;
   -webkit-line-clamp: 3; /* 3行まで表示して省略する */
   -webkit-box-orient: vertical;
@@ -365,33 +393,33 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid #ccc;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
   font-size: 13px;
   text-decoration: none;
-  color: #333;
-  background: #f9f9f9;
+  color: var(--text);
+  background: var(--surface);
 }
 
 /* メインCTA */
 .spot-panel .btn-primary {
-  border-color: #111;
-  background: #111;
+  border-color: var(--accent);
+  background: var(--accent);
   color: #fff;
 }
 
 /* サブCTA（ルート検索） */
 .spot-panel .btn-secondary {
-  border-color: #2563eb;
-  background: #2563eb;
-  color: #fff;
+  border-color: var(--accent);
+  background: var(--surface);
+  color: var(--accent);
 }
 
 /* 補助CTA（公式サイト） */
 .spot-panel .btn-tertiary {
-  border-color: #d1d5db;
-  background: #fff;
-  color: #111827;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 /* spot-panel 閉じるボタン */
@@ -401,17 +429,17 @@ h2 {
   right: 10px;
   width: 28px;
   height: 28px;
-  border-radius: 999px;
-  border: 1px solid #ddd;
-  background: #fff;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
   cursor: pointer;
   line-height: 26px;
   font-size: 18px;
-  color: #555;
+  color: var(--text-sub);
 }
 
 .spot-panel__close:hover {
-  background: #f3f3f3;
+  background: var(--accent-soft);
 }
 
 /* 展開状態の切り替え（collapsed時は内容を隠す） */
@@ -445,14 +473,14 @@ main {
    ======================= */
 .spot-page {
   /* ページ全体は淡いグレーでカードが浮き立つようにする */
-  background: #f6f7fb;
+  background: var(--bg);
 }
 
 .spot-header {
   /* ヘッダーは白背景でコンテンツと分離 */
   padding: 16px;
-  background: #fff;
-  border-bottom: 1px solid #e6e9f2;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
 
 .spot-page-title {
@@ -464,13 +492,13 @@ main {
 .spot-page-lead {
   margin: 0;
   font-size: 13px;
-  color: #6b7280;
+  color: var(--text-sub);
 }
 
 .spot-back-link {
   display: inline-block;
   font-size: 13px;
-  color: #2563eb;
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -483,19 +511,11 @@ main {
 
 .spot-content {
   /* スポット詳細+イベントを1つの大きなカードにまとめる */
-  background: #fff;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-}
-
-/* 施設情報ブロックをヒーローカードとして強調（ID指定） */
-#spot-content {
   margin-top: 24px; /* 上部の余白でカードを浮かせる */
-  background: #fff;
-  border-radius: 16px; /* 角丸を大きめにしてやわらかく */
-  padding: 18px 16px; /* 8pxグリッドで内側の余白を統一 */
-  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
 }
 
 /* メタ情報（カテゴリ/エリア）をチップ化 */
@@ -504,10 +524,10 @@ main {
   display: inline-block; /* 横並びのチップにする */
   margin: 0 8px 8px 0; /* チップ間の余白を確保 */
   padding: 4px 10px;
-  border-radius: 999px;
-  background: #eef2ff;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
   font-size: 12px;
-  color: #2563eb;
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -517,14 +537,14 @@ main {
   font-size: 22px;
   font-weight: 700;
   line-height: 1.4; /* 行間を広めにして読みやすく */
-  color: #111827;
+  color: var(--text);
 }
 
 /* 説明文を区切り線で整える */
 #spot-intro {
   margin: 20px 0 0;
   padding-left: 14px; /* 左ボーダーとの距離を確保 */
-  border-left: 3px solid #e5e7eb;
+  border-left: 3px solid var(--border);
 }
 
 .spot-content__meta {
@@ -532,7 +552,7 @@ main {
   gap: 10px;
   flex-wrap: wrap;
   font-size: 12px;
-  color: #8a94a6;
+  color: var(--text-sub);
   margin-bottom: 10px;
 }
 
@@ -540,7 +560,7 @@ main {
   margin: 0 0 12px;
   font-size: 24px;
   font-weight: 700;
-  color: #111827;
+  color: var(--text);
 }
 
 .spot-intro {
@@ -551,14 +571,14 @@ main {
   margin: 0 0 8px;
   font-size: 16px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text);
 }
 
 .spot-intro__text {
   margin: 0;
   font-size: 14px;
   line-height: 1.7;
-  color: #374151;
+  color: var(--text-sub);
   white-space: pre-line;
 }
 
@@ -569,7 +589,7 @@ main {
   /* 「このスポットについて」との区切りを明確化 */
   margin: 0 0 24px;
   padding-top: 20px;
-  border-top: 1px solid #e2e6ef;
+  border-top: 1px solid var(--border);
 }
 
 .spot-events__header {
@@ -585,13 +605,13 @@ main {
   margin: 0;
   font-size: 16px;
   font-weight: 700;
-  color: #111827;
+  color: var(--text);
 }
 
 .spot-events__updated {
   margin: 0;
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--text-sub);
 }
 
 .spot-events__body {
@@ -602,15 +622,16 @@ main {
 .spot-events__panel {
   /* タブ・一覧・もっと見るのまとまりをカード風に */
   padding: 16px;
-  border-radius: 16px;
-  background: #f8fafc;
-  border: 1px solid #e5eaf5;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
 }
 
 .spot-events__status {
   margin: 0;
   font-size: 13px;
-  color: #475569;
+  color: var(--text-sub);
 }
 
 .spot-events__tabs {
@@ -625,14 +646,14 @@ main {
 
 .spot-events__tab {
   /* ピル型のタブボタン */
-  border: 1px solid #d2d9e6;
-  border-radius: 999px; /* ピル型の形状を強調 */
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill); /* ピル型の形状を強調 */
   padding: 8px 16px;
   min-height: 40px;
-  background: #fff;
+  background: var(--surface);
   font-size: 12px;
   font-weight: 600; /* 文字の視認性を上げる */
-  color: #334155;
+  color: var(--text);
   cursor: pointer;
   white-space: nowrap; /* ボタン内で折り返さない */
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -640,16 +661,16 @@ main {
 
 .spot-events__tab:hover,
 .spot-events__tab:focus-visible {
-  border-color: #2563eb;
-  color: #2563eb;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15); /* ホバー/フォーカス時の強調 */
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--shadow-subcard); /* ホバー/フォーカス時の強調 */
 }
 
 .spot-events__tab.is-active {
-  border-color: #2563eb;
-  background: #2563eb;
+  border-color: var(--accent);
+  background: var(--accent);
   color: #fff;
-  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25); /* 選択状態の視認性を高める */
+  box-shadow: var(--shadow-card); /* 選択状態の視認性を高める */
 }
 
 .spot-events__list {
@@ -669,30 +690,30 @@ main {
   margin-top: 16px;
   padding: 10px 14px;
   min-height: 44px;
-  border-radius: 12px; /* CTAらしい形状 */
-  border: 1px solid #cbd5f5;
-  background: #f1f5ff;
+  border-radius: var(--radius-pill); /* CTAらしい形状 */
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
   font-size: 12px;
   font-weight: 600; /* 重要な操作として目立たせる */
-  color: #1f2937;
+  color: var(--text);
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .spot-events__more:hover,
 .spot-events__more:focus-visible {
-  border-color: #2563eb;
-  color: #1e3a8a;
-  background: #e8efff; /* 押せることを示す軽い強調 */
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft); /* 押せることを示す軽い強調 */
 }
 
 .spot-event-card {
   /* イベントカードは白背景+影で箱感を出す */
   padding: 14px;
-  border-radius: 14px; /* 角丸をやや大きくしてカード感を出す */
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.06); /* 薄い影でカードの階層を表現 */
+  border-radius: var(--radius-subcard); /* 角丸をやや大きくしてカード感を出す */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subcard); /* 薄い影でカードの階層を表現 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -700,7 +721,7 @@ main {
   margin: 0 0 8px;
   font-size: 15px;
   font-weight: 600;
-  color: #111827;
+  color: var(--text);
   /* タイトルは2行で省略して視線を止める */
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -713,11 +734,11 @@ main {
   display: inline-block; /* バッジ風にするためのラベル */
   margin: 0 0 8px;
   padding: 6px 10px;
-  border-radius: 999px; /* バッジの丸みを強調 */
-  background: #eef2ff;
+  border-radius: var(--radius-pill); /* バッジの丸みを強調 */
+  background: var(--accent-soft);
   font-size: 12px;
   font-weight: 700; /* 重要情報として強調 */
-  color: #2563eb;
+  color: var(--accent);
 }
 
 .spot-event-card__details {
@@ -726,7 +747,7 @@ main {
   font-size: 13px; /* スマホでも読みやすいサイズ */
   line-height: 1.6; /* 行間を整えて読みやすくする */
   letter-spacing: 0.01em; /* 字間を少し広げる */
-  color: #475569;
+  color: var(--text-sub);
   list-style-position: outside; /* マーカーを本文に揃える */
 }
 
@@ -735,7 +756,7 @@ main {
 }
 
 .spot-event-card__details li::marker {
-  color: #cbd5f5; /* リストマーカーを軽く見せる */
+  color: var(--border); /* リストマーカーを軽く見せる */
 }
 
 .spot-event-card__details li:last-child {
@@ -749,30 +770,30 @@ main {
   gap: 4px;
   padding: 10px 14px;
   min-height: 40px;
-  border-radius: 999px; /* ピル型のボタンで押しやすく見せる */
-  background: #fff;
-  border: 1px solid #2563eb;
+  border-radius: var(--radius-pill); /* ピル型のボタンで押しやすく見せる */
+  background: var(--surface);
+  border: 1px solid var(--accent);
   font-size: 12px;
   font-weight: 600;
-  color: #2563eb;
+  color: var(--accent);
   text-decoration: none;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .spot-event-card__link:hover {
-  background: #eef2ff;
-  border-color: #2563eb;
-  color: #1e40af;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .spot-event-card__link:active {
-  background: #e0e7ff;
+  background: var(--accent-soft);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .spot-event-card:hover {
     transform: translateY(-2px); /* PCのみ少し浮かせる */
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    box-shadow: var(--shadow-subcard);
   }
 }
 
@@ -788,17 +809,17 @@ main {
   display: inline-block;
   padding: 10px 16px;
   min-height: 44px;
-  border-radius: 12px;
-  border: 1px solid #d3d9e6;
-  background: #f8fafc;
-  color: #1f2937;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
   text-decoration: none;
   font-size: 13px;
 }
 
 .spot-action-btn--primary {
-  background: #22c55e;
-  border-color: #22c55e;
+  background: var(--accent);
+  border-color: var(--accent);
   color: #fff;
   font-weight: 700;
 }
@@ -806,9 +827,10 @@ main {
 .spot-cta {
   margin-bottom: 20px;
   padding: 14px;
-  border: 1px dashed #d7dbe8;
-  border-radius: 14px;
-  background: #f8fafc;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-subcard);
+  background: var(--surface);
+  box-shadow: var(--shadow-subcard);
 }
 
 .spot-cta__links {
@@ -819,14 +841,14 @@ main {
 
 .spot-related {
   padding-top: 12px;
-  border-top: 1px solid #e5e7eb;
-  color: #6b7280;
+  border-top: 1px solid var(--border);
+  color: var(--text-sub);
   font-size: 13px;
 }
 
 .spot-error {
-  background: #fff;
-  border-radius: 12px;
+  background: var(--surface);
+  border-radius: var(--radius-subcard);
   padding: 24px;
   border: 1px solid #f0c4c4;
   color: #7a1d1d;
@@ -843,7 +865,7 @@ main {
 }
 
 .spot-error__link {
-  color: #007bff;
+  color: var(--accent);
   text-decoration: none;
 }
 
