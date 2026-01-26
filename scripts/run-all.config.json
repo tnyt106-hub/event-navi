@@ -20,6 +20,11 @@
       "id": "anabuki_arena_kagawa",
       "script": "scripts/fetch-anabuki-arena-events.js",
       "enabled": true
+    },
+    {
+      "id": "kagawa_pref_museum",
+      "script": "scripts/fetch-kagawa_pref_museum.jss",
+      "enabled": true
     }
   ]
 }
