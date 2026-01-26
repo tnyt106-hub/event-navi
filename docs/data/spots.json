@@ -38,8 +38,8 @@
   {
     "name": "あなぶきアリーナ香川",
     "spot_id": "anabuki_arena_kagawa",
-    "lat": 34.35293,
-    "lng": 134.04776,
+    "lat": 34.35418,
+    "lng": 134.04675,
     "category": "アリーナ",
     "prefecture": "香川県",
     "municipality": "高松市",
@@ -68,7 +68,7 @@
     "prefecture": "香川県",
     "municipality": "観音寺市",
     "official_url": "https://www.kanon-kaikan.jp/",
-    "description": "香川県観音寺市にある西讃地区で最大規模の1200人収容のホール、ハイスタッフホール（観音寺市民会館）",
+    "description": "香川県観音寺市にある西讃地区で最大規模の1200人収容のホール、",
     "source": "https://www.kanon-kaikan.jp/"
   }
 ]
