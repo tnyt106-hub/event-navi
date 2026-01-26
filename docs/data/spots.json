@@ -36,6 +36,18 @@
     "source": "https://www.sunport-hall.jp/about/"
   },
   {
+    "name": "あなぶきアリーナ香川",
+    "spot_id": "anabuki_arena_kagawa",
+    "lat": 34.35293,
+    "lng": 134.04776,
+    "category": "アリーナ",
+    "prefecture": "香川県",
+    "municipality": "高松市",
+    "official_url": "https://kagawa-arena.com/",
+    "description": "高松市サンポートにある多目的アリーナで、スポーツやコンサートなど幅広いイベントが開催されます。",
+    "source": "https://kagawa-arena.com/"
+  },
+  {
     "name": "香川県県民ホール レグザムホール",
     "spot_id": "rexam_hall",
     "lat": 34.350481,
