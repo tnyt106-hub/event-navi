@@ -1,6 +1,6 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-01-22",
+  "last_success_at": "2026-01-26",
   "events": [
     {
       "title": "香川県立高松西高等学校吹奏楽部 第32回定期演奏会",
@@ -21452,7 +21452,7 @@
       "date_from": "2026-02-05",
       "date_to": "2026-02-05",
       "source_url": "http://kenminhall.com/visitors/event_detail/?id=10292",
-      "open_time": "09:30",
+      "open_time": "09:00",
       "start_time": "10:00",
       "end_time": "12:00",
       "price": null,

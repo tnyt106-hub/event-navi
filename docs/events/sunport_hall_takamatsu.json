@@ -1,5 +1,1031 @@
 {
   "venue_id": "sunport_hall_takamatsu",
-  "last_success_at": "1970-01-01",
-  "events": []
+  "last_success_at": "2026-01-26",
+  "events": [
+    {
+      "title": "KO SHIBASAKI LIVE TOUR 2025 ACTOR'S THE BEST ～邂逅～",
+      "date_from": "2026-01-04",
+      "date_to": "2026-01-04",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "17:00",
+      "start_time": "17:30",
+      "end_time": "19:30",
+      "price": "指定席9,500円お問合せデューク高松 087 822 2520",
+      "contact": "入場料等指定席9,500円デューク高松 087 822 2520",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "Rhodanthe 2026",
+      "date_from": "2026-01-04",
+      "date_to": "2026-01-04",
+      "venue_name": "第1小ホール",
+      "source_url": null,
+      "open_time": "13:30",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "price": "前売・当日とも",
+      "contact": "一般1,500円 学生800円Rhodanthe実行委員会 090 2899 5048",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業 2025 ピティナ 特級グランプリ受賞記念 稲沢朋華ピアノリサイタル",
+      "date_from": "2026-01-09",
+      "date_to": "2026-01-09",
+      "venue_name": "第1小ホール",
+      "source_url": null,
+      "open_time": "18:30",
+      "start_time": "19:00",
+      "end_time": "21:00",
+      "price": "前売・当日とも",
+      "contact": "学生（高校生まで）1,000円ピティナ香川支部 090 4789 3414（宮崎）",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "高松市合併20周年記念 2026年高松市二十歳のつどい",
+      "date_from": "2026-01-11",
+      "date_to": "2026-01-11",
+      "venue_name": "大ホール・第1小ホール・第2小ホール",
+      "source_url": null,
+      "open_time": "12:15",
+      "start_time": "13:00",
+      "end_time": "14:00",
+      "price": "関係者のみお問合せ高松市生涯学習課 087 839 2633",
+      "contact": "入場料等関係者のみ高松市生涯学習課 087 839 2633",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "go!go!vanillas SCARY MONSTERS TOUR 2025-2026",
+      "date_from": "2026-01-12",
+      "date_to": "2026-01-12",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "16:30",
+      "start_time": "17:30",
+      "end_time": "19:30",
+      "price": "全席指定6,900円お問合せデューク高松 087 822 2520",
+      "contact": "入場料等全席指定6,900円デューク高松 087 822 2520",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "植松起代子・漆川亜美門下生ピアノ発表会",
+      "date_from": "2026-01-12",
+      "date_to": "2026-01-12",
+      "venue_name": "第2小ホール",
+      "source_url": null,
+      "open_time": "9:30",
+      "start_time": "9:45",
+      "end_time": "12:30",
+      "price": "無料お問合せ植松起代子 090 4971 9404",
+      "contact": "入場料等無料植松起代子 090 4971 9404",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "時代を超えて愛される二人の国民画家 東山魁夷と平山郁夫展",
+      "date_from": "2026-01-16",
+      "date_to": "2026-01-16",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "price": "無料お問合せ(株)WAO! 092 481 2361",
+      "contact": "入場料等無料(株)WAO! 092 481 2361",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "Love Me Do ラブちゃんの開運・占いトークライブ 全国ツアー『Love Me Doの大予言2026』～羊と未に双方の声が鳴り響く!｢6月、君は\"獅子の目覚め\"を感じる!｣in香川～",
+      "date_from": "2026-01-17",
+      "date_to": "2026-01-17",
+      "venue_name": "第1小ホール",
+      "source_url": null,
+      "open_time": "13:30",
+      "start_time": "14:00",
+      "end_time": "15:30",
+      "price": "前売 一般5,000円",
+      "contact": "当日 一般5,500円 プレミアム8,000円 VIP13,000円吉本興業株式会社FANYチケット問合せダイヤル 0570 550 100",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music",
+          "education"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "時代を超えて愛される二人の国民画家 東山魁夷と平山郁夫展",
+      "date_from": "2026-01-17",
+      "date_to": "2026-01-17",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "price": "無料お問合せ(株)WAO! 092 481 2361",
+      "contact": "入場料等無料(株)WAO! 092 481 2361",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "スマイルフェスティバルinたかまつ 2025 ～広げよう!つなげよう!人権の輪!～",
+      "date_from": "2026-01-18",
+      "date_to": "2026-01-18",
+      "venue_name": "第1小ホール",
+      "source_url": null,
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "15:45",
+      "price": "無料お問合せ高松市教育委員会 087 839 2640",
+      "contact": "入場料等無料高松市教育委員会 087 839 2640",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "時代を超えて愛される二人の国民画家 東山魁夷と平山郁夫展",
+      "date_from": "2026-01-18",
+      "date_to": "2026-01-18",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "price": "無料お問合せ(株)WAO! 092 481 2361",
+      "contact": "入場料等無料(株)WAO! 092 481 2361",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第50回全日本ジュニアクラシック音楽コンクール 香川予選",
+      "date_from": "2026-01-18",
+      "date_to": "2026-01-18",
+      "venue_name": "第2小ホール",
+      "source_url": null,
+      "open_time": "10:00",
+      "start_time": "10:30",
+      "end_time": "16:00",
+      "price": "無料お問合せ一般社団法人東京国際芸術協会 03 6806 7108",
+      "contact": "入場料等無料一般社団法人東京国際芸術協会 03 6806 7108",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "令和7年度 人権・同和教育指導者研修会 兼 特別教養研修（人権・同和問題研修）",
+      "date_from": "2026-01-20",
+      "date_to": "2026-01-20",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "12:50",
+      "start_time": "13:30",
+      "end_time": "16:30",
+      "price": "関係者のみお問合せ香川県教育委員会人権・同和教育課 087 832 3780",
+      "contact": "入場料等関係者のみ香川県教育委員会人権・同和教育課 087 832 3780",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "令和7年度高松港ポートセミナー",
+      "date_from": "2026-01-20",
+      "date_to": "2026-01-20",
+      "venue_name": "第2小ホール",
+      "source_url": null,
+      "open_time": "13:00",
+      "start_time": "13:30",
+      "end_time": "16:30",
+      "price": "要事前申込お問合せ高松港コンテナターミナル振興協議会 087 832 3135",
+      "contact": "入場料等要事前申込高松港コンテナターミナル振興協議会 087 832 3135",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第32回愛媛真珠展",
+      "date_from": "2026-01-23",
+      "date_to": "2026-01-23",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "12:30",
+      "end_time": "18:00",
+      "price": "無料お問合せ伊豫パール株式会社 078 271 1431",
+      "contact": "入場料等無料伊豫パール株式会社 078 271 1431",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "むさしの会 合同演奏会",
+      "date_from": "2026-01-24",
+      "date_to": "2026-01-24",
+      "venue_name": "第1小ホール",
+      "source_url": null,
+      "open_time": "13:00",
+      "start_time": "13:30",
+      "end_time": "16:00",
+      "price": "無料お問合せ武蔵野音楽大学同窓会香川県支部 090 8970 0546",
+      "contact": "入場料等無料武蔵野音楽大学同窓会香川県支部 090 8970 0546",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第32回愛媛真珠展",
+      "date_from": "2026-01-24",
+      "date_to": "2026-01-24",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "18:00",
+      "price": "無料お問合せ伊豫パール株式会社 078 271 1431",
+      "contact": "入場料等無料伊豫パール株式会社 078 271 1431",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "FUNKY MONKEY BΛBY'S 20th anniversary TOUR ～そのまんま東へ西へ～",
+      "date_from": "2026-01-25",
+      "date_to": "2026-01-25",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "16:00",
+      "start_time": "17:00",
+      "end_time": "19:00",
+      "price": "指定席8,900円お問合せデューク高松 087 822 2520",
+      "contact": "入場料等指定席8,900円デューク高松 087 822 2520",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "杉ノ内柚樹リサイタル2026",
+      "date_from": "2026-01-25",
+      "date_to": "2026-01-25",
+      "venue_name": "第1小ホール",
+      "source_url": null,
+      "open_time": "13:30",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "price": "前売 一般3,000円 学生2,000円",
+      "contact": "当日 一般3,500円 学生2,500円杉ノ内柚樹リサイタル実行委員会 090 4336 4161",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第32回愛媛真珠展",
+      "date_from": "2026-01-25",
+      "date_to": "2026-01-25",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "16:00",
+      "price": "無料お問合せ伊豫パール株式会社 078 271 1431",
+      "contact": "入場料等無料伊豫パール株式会社 078 271 1431",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "令和7年度ハンセン病を正しく理解する講演会",
+      "date_from": "2026-01-28",
+      "date_to": "2026-01-28",
+      "venue_name": "第1小ホール",
+      "source_url": null,
+      "open_time": "13:30",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "price": "無料（要事前申込）お問合せ高松市人権・男女共同参画推進課 087 839 2292",
+      "contact": "入場料等無料（要事前申込）高松市人権・男女共同参画推進課 087 839 2292",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "宮崎世利子門下生ピアノ発表会",
+      "date_from": "2026-01-31",
+      "date_to": "2026-01-31",
+      "venue_name": "第1小ホール",
+      "source_url": null,
+      "open_time": "12:30",
+      "start_time": "13:00",
+      "end_time": "16:00",
+      "price": "無料お問合せ宮崎世利子 087 866 8468",
+      "contact": "入場料等無料宮崎世利子 087 866 8468",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "高橋 優 15th ANNIVERSARY SPECIAL LIVE TOUR 2025-2026「自由たる覚悟、然として奏ず」",
+      "date_from": "2026-01-31",
+      "date_to": "2026-01-31",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "16:30",
+      "start_time": "17:30",
+      "end_time": "19:30",
+      "price": "一般前売指定席9,500円(税込) お問合せ株式会社HIGHERSELF 082 545 0082",
+      "contact": "入場料等一般前売指定席9,500円(税込) 株式会社HIGHERSELF 082 545 0082",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "振袖EXPO in高松",
+      "date_from": "2026-01-31",
+      "date_to": "2026-01-31",
+      "venue_name": "第2小ホール",
+      "source_url": null,
+      "open_time": "11:00",
+      "start_time": "11:00",
+      "end_time": "19:00",
+      "price": "無料お問合せアケボノスタジオ高松本店 087 884 1367",
+      "contact": "入場料等無料アケボノスタジオ高松本店 087 884 1367",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第71回 県下幼・小・中学校 書き初め競書大会",
+      "date_from": "2026-01-31",
+      "date_to": "2026-01-31",
+      "venue_name": "市民ギャラリー・コミュニケーションプラザ",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "19:00",
+      "price": "無料お問合せ蓬莱書道会 0877 22 3936",
+      "contact": "入場料等無料蓬莱書道会 0877 22 3936",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "高松市役所吹奏楽団第52回定期演奏会",
+      "date_from": "2026-02-01",
+      "date_to": "2026-02-01",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "13:00",
+      "start_time": "14:00",
+      "end_time": "15:50",
+      "price": "無料お問合せ高松市広聴広報・シティプロモーション課 087 839 2161",
+      "contact": "入場料等無料高松市広聴広報・シティプロモーション課 087 839 2161",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music",
+          "festival"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "振袖EXPO in高松",
+      "date_from": "2026-02-01",
+      "date_to": "2026-02-01",
+      "venue_name": "第2小ホール",
+      "source_url": null,
+      "open_time": "9:30",
+      "start_time": "9:30",
+      "end_time": "19:00",
+      "price": "無料お問合せアケボノスタジオ高松本店 087 884 1367",
+      "contact": "入場料等無料アケボノスタジオ高松本店 087 884 1367",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第71回 県下幼・小・中学校 書き初め競書大会",
+      "date_from": "2026-02-01",
+      "date_to": "2026-02-01",
+      "venue_name": "市民ギャラリー・コミュニケーションプラザ",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "9:00",
+      "end_time": "16:00",
+      "price": "無料お問合せ蓬莱書道会 0877 22 3936",
+      "contact": "入場料等無料蓬莱書道会 0877 22 3936",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業令和7年度 劇団四季ミュージカル「こころの劇場」 『王子と少年』",
+      "date_from": "2026-02-02",
+      "date_to": "2026-02-02",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "13:15",
+      "start_time": "14:00",
+      "end_time": "16:05",
+      "price": "関係者のみお問合せ高松市教育委員会 学校教育課 087 839 2616",
+      "contact": "入場料等関係者のみ高松市教育委員会 学校教育課 087 839 2616",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業令和7年度 劇団四季ミュージカル「こころの劇場」 『王子と少年』",
+      "date_from": "2026-02-03",
+      "date_to": "2026-02-03",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "price": "関係者のみお問合せ高松市教育委員会 学校教育課 087 839 2616",
+      "contact": "入場料等関係者のみ高松市教育委員会 学校教育課 087 839 2616",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業令和7年度 劇団四季ミュージカル「こころの劇場」 『王子と少年』",
+      "date_from": "2026-02-04",
+      "date_to": "2026-02-04",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "9:15",
+      "start_time": "10:00",
+      "end_time": "12:05",
+      "price": "関係者のみお問合せ高松市教育委員会 学校教育課 087 839 2616",
+      "contact": "入場料等関係者のみ高松市教育委員会 学校教育課 087 839 2616",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "令和７年度香川県立高松東高等学校 芸術コース作品展",
+      "date_from": "2026-02-06",
+      "date_to": "2026-02-06",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "17:00",
+      "price": "無料お問合せ香川県立高松東高等学校 087 847 6221",
+      "contact": "入場料等無料香川県立高松東高等学校 087 847 6221",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "令和７年度香川県立高松東高等学校 芸術コース作品展",
+      "date_from": "2026-02-07",
+      "date_to": "2026-02-07",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "price": "無料お問合せ香川県立高松東高等学校 087 847 6221",
+      "contact": "入場料等無料香川県立高松東高等学校 087 847 6221",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "令和７年度香川県立高松東高等学校 芸術コース作品展",
+      "date_from": "2026-02-08",
+      "date_to": "2026-02-08",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "15:30",
+      "price": "無料お問合せ香川県立高松東高等学校 087 847 6221",
+      "contact": "入場料等無料香川県立高松東高等学校 087 847 6221",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール第1次審査",
+      "date_from": "2026-02-10",
+      "date_to": "2026-02-10",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "10:00",
+      "start_time": "10:30",
+      "end_time": "20:30",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール第1次審査",
+      "date_from": "2026-02-11",
+      "date_to": "2026-02-11",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "10:00",
+      "start_time": "10:30",
+      "end_time": "20:30",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール第1次審査",
+      "date_from": "2026-02-12",
+      "date_to": "2026-02-12",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "10:00",
+      "start_time": "10:30",
+      "end_time": "18:45",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール第2次審査",
+      "date_from": "2026-02-14",
+      "date_to": "2026-02-14",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "20:45",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "振袖EXPO in 高松",
+      "date_from": "2026-02-14",
+      "date_to": "2026-02-14",
+      "venue_name": "市民ギャラリー・コミュニケーションプラザ",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "9:15",
+      "end_time": "18:00",
+      "price": "無料お問合せアケボノスタジオ高松本店 087 884 1367",
+      "contact": "入場料等無料アケボノスタジオ高松本店 087 884 1367",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール第2次審査",
+      "date_from": "2026-02-15",
+      "date_to": "2026-02-15",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "18:45",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "振袖EXPO in 高松",
+      "date_from": "2026-02-15",
+      "date_to": "2026-02-15",
+      "venue_name": "市民ギャラリー・コミュニケーションプラザ",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "9:15",
+      "end_time": "18:00",
+      "price": "無料お問合せアケボノスタジオ高松本店 087 884 1367",
+      "contact": "入場料等無料アケボノスタジオ高松本店 087 884 1367",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール第3次審査",
+      "date_from": "2026-02-17",
+      "date_to": "2026-02-17",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "13:30",
+      "start_time": "14:00",
+      "end_time": "20:15",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール第3次審査",
+      "date_from": "2026-02-18",
+      "date_to": "2026-02-18",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "12:45",
+      "start_time": "13:15",
+      "end_time": "19:30",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "フォルトゥナ マルシェ",
+      "date_from": "2026-02-20",
+      "date_to": "2026-02-20",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "price": "無料お問合せフォルトゥナ マルシェ 090 2893 4533",
+      "contact": "入場料等無料フォルトゥナ マルシェ 090 2893 4533",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール本選",
+      "date_from": "2026-02-21",
+      "date_to": "2026-02-21",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "14:00",
+      "start_time": "14:30",
+      "end_time": "17:15",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "フォルトゥナ マルシェ",
+      "date_from": "2026-02-21",
+      "date_to": "2026-02-21",
+      "venue_name": "市民ギャラリー",
+      "source_url": null,
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "price": "無料お問合せフォルトゥナ マルシェ 090 2893 4533",
+      "contact": "入場料等無料フォルトゥナ マルシェ 090 2893 4533",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール本選",
+      "date_from": "2026-02-22",
+      "date_to": "2026-02-22",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "12:30",
+      "start_time": "13:00",
+      "end_time": "18:00",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "サンポートホール高松共催事業第6回高松国際ピアノコンクール入賞者披露演奏会",
+      "date_from": "2026-02-23",
+      "date_to": "2026-02-23",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "18:30",
+      "start_time": "19:00",
+      "end_time": "20:30",
+      "price": "1日券",
+      "contact": "入賞者披露演奏会高松国際ピアノコンクール事務局 087 812 5583",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "佐野元春 ＆ THE COYOTE BAND 「佐野元春45周年アニバーサリー・ツアー」【振替公演】",
+      "date_from": "2026-02-26",
+      "date_to": "2026-02-26",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "18:00",
+      "start_time": "19:00",
+      "end_time": "21:00",
+      "price": "指定席 12,000円",
+      "contact": "指定席 16,500円デューク高松 087 822 2520",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "SHISHAMO ファイナルツアー2026「さよならボヤージュ!!!」",
+      "date_from": "2026-02-27",
+      "date_to": "2026-02-27",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "17:30",
+      "start_time": "18:30",
+      "end_time": "20:30",
+      "price": "全席指定 8,800円お問合せデューク高松 087 822 2520",
+      "contact": "入場料等全席指定 8,800円デューク高松 087 822 2520",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "T.M.R. LIVE ELECTION -VOTE 30-",
+      "date_from": "2026-02-28",
+      "date_to": "2026-02-28",
+      "venue_name": "大ホール",
+      "source_url": null,
+      "open_time": "17:00",
+      "start_time": "17:30",
+      "end_time": "20:00",
+      "price": "全席指定 9,800円お問合せデューク高松 087 822 2520",
+      "contact": "入場料等全席指定 9,800円デューク高松 087 822 2520",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    }
+  ]
 }
