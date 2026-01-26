@@ -1,7 +1,109 @@
 {
   "venue_id": "kagawa_pref_museum",
-  "last_success_at": "2024-03-18",
+  "last_success_at": "2026-01-26",
   "events": [
- 
+    {
+      "title": "ミニチュアさぬきうどんを作ろう",
+      "date_from": "2026-01-11",
+      "date_to": "2026-01-11",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/miniature_udon.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "ミュージアム・プレゼンテーション2026",
+      "date_from": "2026-02-28",
+      "date_to": "2026-01-17",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/museum_presentation2026.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "宸翰の世界",
+      "date_from": "2026-03-21",
+      "date_to": "2026-03-21",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/kouza_shinkan.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "1 4月26日（土曜日） 高松築城ものがたり 胡光氏 （愛媛大学法文学部教授） 特別展「高松城ー海にのぞむ城のものがたりー」関連",
+      "date_from": "2026-04-26",
+      "date_to": "2026-04-26",
+      "source_url": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "1 4月29日（火曜日・祝日） 高松城下で生まれた保多織で作品づくり 平川めぐみ氏 （ファッションデザイナー） 参加料1,000円",
+      "date_from": "2026-04-29",
+      "date_to": "2026-04-29",
+      "source_url": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2 5月3日（土曜日）から 5月5日（月曜日・祝日）まで ゴールデン・ウィーク・スペシャル ー 一部有料",
+      "date_from": "2026-05-03",
+      "date_to": "2026-05-03",
+      "source_url": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "5月11日の来館に関するお願い",
+      "date_from": "2026-05-11",
+      "date_to": "2026-05-11",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/06event/5_11_raikan.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2 5月11日（土曜日） 海城町・高松のものがたり 西成典久氏 （香川大学経済学部教授） 特別展「高松城ー海にのぞむ城のものがたりー」関連",
+      "date_from": "2026-05-11",
+      "date_to": "2026-05-11",
+      "source_url": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "昭和100年・戦後80年を振り返る",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/05event/shouwasengo.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }
   ]
 }
