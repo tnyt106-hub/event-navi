@@ -124,23 +124,6 @@ function stripTags(html) {
   return html.replace(/<[^>]*>/g, "");
 }
 
-// HTMLを行単位のテキスト配列に変換する。
-function htmlToLines(html) {
-  if (!html) return [];
-  const normalized = decodeHtmlEntities(html)
-    .replace(/<br\s*\/?>/gi, "\n")
-    .replace(/<\/p>/gi, "\n")
-    .replace(/<\/div>/gi, "\n")
-    .replace(/<\/li>/gi, "\n")
-    .replace(/<[^>]*>/g, "");
-
-  return normalized
-    .replace(/\r/g, "")
-    .split("\n")
-    .map((line) => line.replace(/\s+/g, " ").trim())
-    .filter(Boolean);
-}
-
 // タイトルや本文に含まれる HTML をプレーンテキスト化する。
 function htmlToText(html) {
   return stripTags(decodeHtmlEntities(html)).replace(/\s+/g, " ").trim();
@@ -181,248 +164,112 @@ function resolveYearForMonthDay(month, day, startDate, endExclusive) {
   return baseYear;
 }
 
-// テキストから日付候補を抽出する。
-function extractDateCandidates(lines, startDate, endExclusive) {
-  const dates = [];
-  const seen = new Set();
-
-  const pushDate = (date) => {
-    if (!date) return;
-    const iso = formatDate(date);
-    if (seen.has(iso)) return;
-    seen.add(iso);
-    dates.push(date);
-  };
-
-  for (const line of lines) {
-    // 年が入っているパターン (2024/1/24, 2024.1.24, 2024年1月24日)
-    for (const match of line.matchAll(/(\d{4})\s*[./年]\s*(\d{1,2})\s*[./月]\s*(\d{1,2})\s*日?/g)) {
-      const year = Number(match[1]);
-      const month = Number(match[2]);
-      const day = Number(match[3]);
-      const date = buildDate(year, month, day);
-      pushDate(date);
-    }
-
-    // m.d 形式 (1.24, 12/5)
-    for (const match of line.matchAll(/(\d{1,2})\s*[./]\s*(\d{1,2})/g)) {
-      const month = Number(match[1]);
-      const day = Number(match[2]);
-      if (month < 1 || month > 12) continue;
-      const year = resolveYearForMonthDay(month, day, startDate, endExclusive);
-      const date = buildDate(year, month, day);
-      pushDate(date);
-    }
-
-    // m月d日 形式
-    for (const match of line.matchAll(/(\d{1,2})\s*月\s*(\d{1,2})\s*日/g)) {
-      const month = Number(match[1]);
-      const day = Number(match[2]);
-      if (month < 1 || month > 12) continue;
-      const year = resolveYearForMonthDay(month, day, startDate, endExclusive);
-      const date = buildDate(year, month, day);
-      pushDate(date);
-    }
+// HTML内の日時表示パーツから月日を抜き出す。
+function extractDateRangeFromHtml(html, startDate, endExclusive) {
+  // raw HTMLから span の中身を直接見ることで、画像URLなどの誤検知を避ける。
+  const startMatch = html.match(/class="date_start">(\d{1,2})\.(\d{1,2})/);
+  if (!startMatch) {
+    return { dateFrom: null, dateTo: null, reason: "missing-date_start" };
   }
 
-  return dates;
-}
-
-// ラベル行の近傍を抽出してスコープ行を作る。
-function buildScopeLines(lines, labels, windowSize) {
-  const indexes = [];
-  for (let i = 0; i < lines.length; i += 1) {
-    if (labels.some((label) => lines[i].includes(label))) {
-      indexes.push(i);
-    }
+  const startMonth = Number(startMatch[1]);
+  const startDay = Number(startMatch[2]);
+  const startYear = resolveYearForMonthDay(startMonth, startDay, startDate, endExclusive);
+  const dateFrom = buildDate(startYear, startMonth, startDay);
+  if (!dateFrom) {
+    return { dateFrom: null, dateTo: null, reason: "invalid-date_start" };
   }
 
-  if (indexes.length === 0) {
-    return { lines: [], found: false };
+  const endMatch = html.match(/class="date_end">(\d{1,2})\.(\d{1,2})/);
+  if (!endMatch) {
+    return { dateFrom, dateTo: dateFrom, reason: null };
   }
 
-  const scoped = [];
-  const seen = new Set();
-  for (const index of indexes) {
-    const start = Math.max(0, index - windowSize);
-    const end = Math.min(lines.length - 1, index + windowSize);
-    for (let i = start; i <= end; i += 1) {
-      if (seen.has(i)) continue;
-      seen.add(i);
-      scoped.push(lines[i]);
-    }
+  const endMonth = Number(endMatch[1]);
+  const endDay = Number(endMatch[2]);
+  const endYear = resolveYearForMonthDay(endMonth, endDay, startDate, endExclusive);
+  const dateTo = buildDate(endYear, endMonth, endDay);
+  if (!dateTo) {
+    return { dateFrom: null, dateTo: null, reason: "invalid-date_end" };
   }
 
-  return { lines: scoped, found: true };
+  return { dateFrom, dateTo, reason: null };
 }
 
-// タイトル近傍の行をフォールバックで抽出する。
-function buildTitleScopeLines(lines, title, windowSize) {
-  if (!title) return [];
-  const trimmed = title.trim();
-  if (!trimmed) return [];
-  const needle = trimmed.length > 12 ? trimmed.slice(0, 12) : trimmed;
-  const index = lines.findIndex((line) => line.includes(needle));
-  if (index === -1) return [];
-  const start = Math.max(0, index - windowSize);
-  const end = Math.min(lines.length - 1, index + windowSize);
-  return lines.slice(start, end + 1);
-}
-
-// 日付抽出対象の行から無関係な行を除外する。
-function filterDateScopeLines(lines) {
-  const blockers = [
-    "申込",
-    "募集",
-    "受付",
-    "締切",
-    "販売",
-    "発売",
-    "営業時間",
-    "利用時間",
-    "開館",
-    "開場時間",
-    "休館",
-  ];
-  return lines.filter((line) => !blockers.some((word) => line.includes(word)));
-}
-
-// 行から開場・開演・終演の時刻を抽出する。
-function extractTimes(lines) {
-  let openTime = null;
-  let startTime = null;
-  let endTime = null;
-
-  const normalizeTime = (text) => text.replace(/：/g, ":");
-
-  for (const line of lines) {
-    const openMatch = line.match(/開場\s*[:：]?\s*(\d{1,2}[：:]\d{2})/);
-    if (openMatch && !openTime) {
-      openTime = normalizeTime(openMatch[1]);
-    }
-
-    const startMatch = line.match(/開演\s*[:：]?\s*(\d{1,2}[：:]\d{2})/);
-    if (startMatch && !startTime) {
-      startTime = normalizeTime(startMatch[1]);
-    }
-
-    const beginMatch = line.match(/開始\s*[:：]?\s*(\d{1,2}[：:]\d{2})/);
-    if (beginMatch && !startTime) {
-      startTime = normalizeTime(beginMatch[1]);
-    }
-
-    const endMatch = line.match(/(終演|終了)\s*[:：]?\s*(\d{1,2}[：:]\d{2})/);
-    if (endMatch && !endTime) {
-      endTime = normalizeTime(endMatch[2]);
-    }
-
-    const rangeMatch = line.match(/(\d{1,2}[：:]\d{2})\s*[〜～\-–—]\s*(\d{1,2}[：:]\d{2})/);
-    if (rangeMatch) {
-      if (!startTime) startTime = normalizeTime(rangeMatch[1]);
-      if (!endTime) endTime = normalizeTime(rangeMatch[2]);
-    }
+// 詳細ページ内の <dl class="list-detail"> から dt/dd を抽出する。
+function extractDetailItems(html) {
+  const listMatch = html.match(/<dl class="list-detail">([\s\S]*?)<\/dl>/);
+  if (!listMatch) {
+    return [];
   }
 
-  return { openTime, startTime, endTime };
-}
-
-// 施設営業時間のような時間を除外しつつ、ラベル文脈のある行から時刻を抽出する。
-function extractTimesWithContext(lines, summary) {
-  const timeLabels = ["開場", "開演", "終演", "開始", "終了", "時間"];
-  const timeExcludes = ["利用時間", "営業時間"];
-  let openTime = null;
-  let startTime = null;
-  let endTime = null;
-
-  const normalizeTime = (text) => text.replace(/：/g, ":");
-
-  for (const line of lines) {
-    if (timeExcludes.some((word) => line.includes(word))) {
-      if (line.match(/(\d{1,2}[：:]\d{2})\s*[〜～\-–—]\s*(\d{1,2}[：:]\d{2})/)) {
-        summary.excludedFacilityTimeCount += 1;
-      }
-      continue;
+  const items = [];
+  const detailHtml = listMatch[1];
+  const pairRegex = /<dt[^>]*>([\s\S]*?)<\/dt>\s*<dd[^>]*>([\s\S]*?)<\/dd>/g;
+  let match = pairRegex.exec(detailHtml);
+  while (match) {
+    const rawLabel = htmlToText(match[1]);
+    const rawValue = match[2];
+    if (rawLabel) {
+      items.push({ label: rawLabel, valueHtml: rawValue });
     }
-
-    const hasContext = timeLabels.some((label) => line.includes(label));
-    if (!hasContext) {
-      continue;
-    }
-
-    const openMatch = line.match(/開場\s*[:：]?\s*(\d{1,2}[：:]\d{2})/);
-    if (openMatch && !openTime) {
-      openTime = normalizeTime(openMatch[1]);
-    }
-
-    const startMatch = line.match(/開演\s*[:：]?\s*(\d{1,2}[：:]\d{2})/);
-    if (startMatch && !startTime) {
-      startTime = normalizeTime(startMatch[1]);
-    }
-
-    const beginMatch = line.match(/開始\s*[:：]?\s*(\d{1,2}[：:]\d{2})/);
-    if (beginMatch && !startTime) {
-      startTime = normalizeTime(beginMatch[1]);
-    }
-
-    const endMatch = line.match(/(終演|終了)\s*[:：]?\s*(\d{1,2}[：:]\d{2})/);
-    if (endMatch && !endTime) {
-      endTime = normalizeTime(endMatch[2]);
-    }
-
-    const rangeMatch = line.match(/(\d{1,2}[：:]\d{2})\s*[〜～\-–—]\s*(\d{1,2}[：:]\d{2})/);
-    if (rangeMatch) {
-      if (!startTime) startTime = normalizeTime(rangeMatch[1]);
-      if (!endTime) endTime = normalizeTime(rangeMatch[2]);
-    }
+    match = pairRegex.exec(detailHtml);
   }
 
-  return { openTime, startTime, endTime };
+  return items;
 }
 
-// ラベル付き情報（料金・問い合わせ等）を抽出する。
-function extractLabeledValue(lines, labels) {
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    for (const label of labels) {
-      if (line.includes(label)) {
-        const cleaned = line.replace(label, "").replace(/[:：\-–—]/g, " ").trim();
-        if (cleaned) {
-          return cleaned.replace(/\s+/g, " ");
-        }
-        const nextLine = lines[i + 1];
-        if (nextLine) {
-          return nextLine.replace(/\s+/g, " ").trim();
-        }
-      }
-    }
+// 詳細情報の値をプレーンテキスト化し、空白を整える。
+function normalizeDetailValue(valueHtml) {
+  if (!valueHtml) return "";
+  const withBreaks = valueHtml.replace(/<br\s*\/?>/gi, " ");
+  return htmlToText(withBreaks).replace(/\s+/g, " ").trim();
+}
+
+// 詳細情報のラベルを検索して該当する dd を返す。
+function findDetailValue(detailItems, labels) {
+  return detailItems.find((item) => labels.some((label) => item.label.includes(label))) || null;
+}
+
+// dd のテキストから時刻を抜き出す。
+function extractTimeFromText(text) {
+  if (!text) return null;
+  const normalized = text.replace(/：/g, ":");
+  const match = normalized.match(/(\d{1,2}:\d{2})/);
+  return match ? match[1] : null;
+}
+
+// 問い合わせ dd から連絡先を取り出し、理由を付けて返す。
+function extractContactFromDetail(valueHtml, summary) {
+  if (!valueHtml) {
+    return { contact: null, reason: "missing-contact" };
   }
-  return null;
-}
 
-// 問い合わせの連絡先を、問い合わせブロック近傍から抽出する。
-function extractContactFromScope(lines, summary) {
-  const phonePattern = /\d{2,4}-\d{2,4}-\d{3,4}/;
-  const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+  const text = normalizeDetailValue(valueHtml);
+  if (!text) {
+    return { contact: null, reason: "empty-contact" };
+  }
+
   const linkPhrases = ["主催者の方はこちら", "お問い合わせはこちら", "こちら", "詳細はこちら"];
-
-  for (const line of lines) {
-    const phoneMatch = line.match(phonePattern);
-    if (phoneMatch) {
-      return phoneMatch[0];
-    }
-    const emailMatch = line.match(emailPattern);
-    if (emailMatch) {
-      return emailMatch[0];
-    }
-  }
-
-  const fallback = extractLabeledValue(lines, ["お問い合わせ", "問合せ", "問い合わせ", "連絡先", "電話", "TEL"]);
-  if (fallback && linkPhrases.some((phrase) => fallback.includes(phrase))) {
+  if (linkPhrases.some((phrase) => text === phrase)) {
     summary.contactLinkInvalidatedCount += 1;
-    return null;
+    return { contact: null, reason: "link-text-only" };
   }
 
-  return null;
+  const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+  const phonePattern = /\d{2,4}-\d{2,4}-\d{3,4}/;
+
+  const emailMatch = text.match(emailPattern);
+  if (emailMatch) {
+    return { contact: emailMatch[0], reason: null };
+  }
+
+  const phoneMatch = text.match(phonePattern);
+  if (phoneMatch) {
+    return { contact: phoneMatch[0], reason: null };
+  }
+
+  return { contact: text, reason: null };
 }
 
 // 現在月の月初と、そこから7か月後の排他終点を作る。
@@ -479,12 +326,8 @@ async function main() {
     missingDateCount: 0,
     filteredOutCount: 0,
     maxDateFrom: null,
-    dateScopeFoundCount: 0,
-    dateScopeMissingCount: 0,
-    abnormalRangeOver30Count: 0,
-    abnormalRangeOver90Count: 0,
+    dateStartMissingCount: 0,
     contactLinkInvalidatedCount: 0,
-    excludedFacilityTimeCount: 0,
   };
 
   let posts;
@@ -507,6 +350,7 @@ async function main() {
   const events = [];
   const datesFound = [];
 
+  let debugLogged = 0;
   for (const entry of entries) {
     if (!entry.link) {
       continue;
@@ -522,43 +366,17 @@ async function main() {
 
     summary.detailCount += 1;
 
-    const lines = htmlToLines(html);
-    const dateLabels = ["開催日", "開催期間", "開催日時", "日程", "会期", "日時"];
-    const dateScopeResult = buildScopeLines(lines, dateLabels, 6);
-    let dateScopeLines = dateScopeResult.lines;
-
-    if (!dateScopeResult.found) {
-      summary.dateScopeMissingCount += 1;
-      const titleScopeLines = buildTitleScopeLines(lines, entry.title, 6);
-      dateScopeLines = titleScopeLines.length > 0 ? titleScopeLines : lines.slice(0, 12);
-    } else {
-      summary.dateScopeFoundCount += 1;
-    }
-
-    const filteredDateScopeLines = filterDateScopeLines(dateScopeLines);
-    const dateCandidates = extractDateCandidates(filteredDateScopeLines, start, endExclusive);
-
-    if (dateCandidates.length === 0) {
+    const dateRange = extractDateRangeFromHtml(html, start, endExclusive);
+    if (!dateRange.dateFrom || !dateRange.dateTo) {
       summary.missingDateCount += 1;
+      if (dateRange.reason === "missing-date_start") {
+        summary.dateStartMissingCount += 1;
+      }
       continue;
     }
 
-    const range = findDateRange(dateCandidates);
-    if (!range) {
-      summary.missingDateCount += 1;
-      continue;
-    }
-
-    const dateFrom = range.min;
-    let dateTo = range.max;
-    const diffDays = Math.floor((dateTo - dateFrom) / (1000 * 60 * 60 * 24));
-    if (diffDays > 90) {
-      summary.abnormalRangeOver90Count += 1;
-    }
-    if (diffDays > 30) {
-      summary.abnormalRangeOver30Count += 1;
-      dateTo = dateFrom;
-    }
+    const dateFrom = dateRange.dateFrom;
+    const dateTo = dateRange.dateTo;
 
     // 開始日ベースで期間フィルタをかける。
     if (dateFrom < start || dateFrom >= endExclusive) {
@@ -566,14 +384,21 @@ async function main() {
       continue;
     }
 
-    const timeLabels = ["開場", "開演", "終演", "開始", "終了", "時間"];
-    const timeScopeResult = buildScopeLines(lines, timeLabels, 4);
-    const timeScopeLines = timeScopeResult.found ? timeScopeResult.lines : [];
-    const { openTime, startTime, endTime } = extractTimesWithContext(timeScopeLines, summary);
-    const price = extractLabeledValue(lines, ["料金", "入場料", "参加費", "チケット"]);
-    const contactLabels = ["お問い合わせ", "問合せ", "問い合わせ", "連絡先", "電話", "TEL"];
-    const contactScopeResult = buildScopeLines(lines, contactLabels, 4);
-    const contact = extractContactFromScope(contactScopeResult.lines, summary);
+    const detailItems = extractDetailItems(html);
+    const openDetail = findDetailValue(detailItems, ["開場時間"]);
+    const startDetail = findDetailValue(detailItems, ["開演時間"]);
+    const endDetail = findDetailValue(detailItems, ["終演時間"]);
+
+    const openTime = openDetail ? extractTimeFromText(normalizeDetailValue(openDetail.valueHtml)) : null;
+    const startTime = startDetail ? extractTimeFromText(normalizeDetailValue(startDetail.valueHtml)) : null;
+    const endTime = endDetail ? extractTimeFromText(normalizeDetailValue(endDetail.valueHtml)) : null;
+
+    const priceDetail = findDetailValue(detailItems, ["料金", "入場料", "参加費", "チケット"]);
+    const price = priceDetail ? normalizeDetailValue(priceDetail.valueHtml) : null;
+
+    const contactDetail = findDetailValue(detailItems, ["お問い合わせ", "問合せ", "問い合わせ", "連絡先", "電話", "TEL"]);
+    const contactResult = extractContactFromDetail(contactDetail?.valueHtml, summary);
+    const contact = contactResult.contact;
 
     const event = {
       title: entry.title || htmlToText(entry.link),
@@ -591,6 +416,17 @@ async function main() {
 
     events.push(event);
     datesFound.push(dateFrom);
+
+    if (debugLogged < 3) {
+      const priceStatus = price ? "found" : "missing";
+      const contactReason = contact ? "ok" : contactResult.reason || "unknown";
+      console.log(
+        `[debug] url=${entry.link} date_from=${event.date_from} date_to=${event.date_to} open_time=${
+          openTime || "null"
+        } price=${priceStatus} contact_reason=${contactReason}`
+      );
+      debugLogged += 1;
+    }
   }
 
   summary.adoptedCount = events.length;
@@ -602,12 +438,8 @@ async function main() {
   console.log(`詳細ページ取得件数: ${summary.detailCount}`);
   console.log(`採用イベント件数: ${summary.adoptedCount}`);
   console.log(`max date_from: ${summary.maxDateFrom || "なし"}`);
-  console.log(`dateScopeLines 発見: ${summary.dateScopeFoundCount}, なし: ${summary.dateScopeMissingCount}`);
-  console.log(
-    `異常レンジ検知: 30日超=${summary.abnormalRangeOver30Count}, 90日超=${summary.abnormalRangeOver90Count}`
-  );
+  console.log(`date_start 欠落件数: ${summary.dateStartMissingCount}`);
   console.log(`contactリンク文言無効化: ${summary.contactLinkInvalidatedCount}`);
-  console.log(`施設営業時間らしき時間の除外: ${summary.excludedFacilityTimeCount}`);
 
   if (events.length === 0 || datesFound.length === 0) {
     console.warn("採用イベントが0件のため、published を更新しません。");
