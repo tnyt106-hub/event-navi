@@ -15,6 +15,11 @@
       "id": "sunport_hall_takamatsu",
       "script": "scripts/fetch-sunport-hall-takamatsu-events.js",
       "enabled": true
+    },
+    {
+      "id": "anabuki_arena_kagawa",
+      "script": "scripts/fetch-anabuki-arena-events.js",
+      "enabled": true
     }
   ]
 }
