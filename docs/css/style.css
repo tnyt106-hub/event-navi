@@ -768,7 +768,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 2px 14px;
+  padding: 0px 14px;
   min-height: 40px;
   border-radius: var(--radius-pill); /* ピル型のボタンで押しやすく見せる */
   background: var(--surface);
