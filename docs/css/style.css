@@ -764,13 +764,14 @@ main {
 }
 
 .spot-event-card__link {
-  /* 公式リンクはアウトラインボタン風 */
+  align-self: flex-end;    
+  margin-top: auto;        
   display: inline-flex;
   align-items: center;
   gap: 4px;
   padding: 0px 14px;
   min-height: 40px;
-  border-radius: var(--radius-pill); /* ピル型のボタンで押しやすく見せる */
+  border-radius: var(--radius-pill);
   background: var(--surface);
   border: 1px solid var(--accent);
   font-size: 12px;
