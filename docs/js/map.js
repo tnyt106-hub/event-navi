@@ -139,7 +139,7 @@ const markers = L.markerClusterGroup({
     // 1. 集約の範囲（ピクセル単位）: 
     maxClusterRadius: 40, 
     // 2. クラスタリングを解除するズームレベル
-    disableClusteringAtZoom: 12,
+    disableClusteringAtZoom: 14,
     // 3. クラスタをクリックした際に、その範囲までズームするアニメーションの有効化
     showCoverageOnHover: false,
     // 4. マーカーが重なっている場合にクモの巣状に広げる設定
