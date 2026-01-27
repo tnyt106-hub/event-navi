@@ -259,11 +259,6 @@ function createEventCard(eventItem) {
   const listItem = document.createElement("li");
   listItem.className = "spot-event-card";
 
-  const title = document.createElement("h4");
-  title.className = "spot-event-card__title";
-  title.textContent = eventItem?.title ? String(eventItem.title) : "イベント名未定";
-  listItem.appendChild(title);
-
   const dateText = formatEventDateRange(eventItem?.date_from, eventItem?.date_to);
   if (dateText) {
     const dateElement = document.createElement("p");
@@ -271,6 +266,11 @@ function createEventCard(eventItem) {
     dateElement.textContent = dateText;
     listItem.appendChild(dateElement);
   }
+  
+  const title = document.createElement("h4");
+  title.className = "spot-event-card__title";
+  title.textContent = eventItem?.title ? String(eventItem.title) : "イベント名未定";
+  listItem.appendChild(title);
 
   const detailList = document.createElement("ul");
   detailList.className = "spot-event-card__details";
