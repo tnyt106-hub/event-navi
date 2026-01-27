@@ -18,6 +18,11 @@ const OUTPUT_DIR = path.join(process.cwd(), "docs", "date");
 const SPOTS_DATA_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 // 広告枠の HTML は partial を差し込む方式で管理し、後から編集しやすくする
 const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-ad.html");
+// トップページの更新対象は docs/index.html に固定する
+const INDEX_HTML_PATH = path.join(process.cwd(), "docs", "index.html");
+// 日付導線セクションの置換範囲を明確にするための固定マーカー
+const DATE_NAV_START_MARKER = "<!-- DATE_NAV_START -->";
+const DATE_NAV_END_MARKER = "<!-- DATE_NAV_END -->";
 
 // 0埋め2桁の数値文字列を作成する
 function pad2(value) {
@@ -32,6 +37,11 @@ function formatDateKey(dateObj) {
 // 日本語の見出し用に YYYY年MM月DD日 を作成する
 function formatJapaneseDate(dateObj) {
   return `${dateObj.getUTCFullYear()}年${pad2(dateObj.getUTCMonth() + 1)}月${pad2(dateObj.getUTCDate())}日`;
+}
+
+// UTC の Date を見出し用の MM/DD 表記に変換する
+function formatMonthDayLabel(dateObj) {
+  return `${pad2(dateObj.getUTCMonth() + 1)}/${pad2(dateObj.getUTCDate())}`;
 }
 
 // UTC の Date を安全に生成し、月日が正しいか検証する
@@ -172,6 +182,99 @@ function renderFooter() {
 </body>
 </html>
 `;
+}
+
+// トップページに差し込む日付導線セクションを HTML 文字列として組み立てる
+function renderDateNavSection(primaryLinks, weekLinks) {
+  const lines = [];
+  lines.push("    <!-- 日付別ページへの静的導線（自動生成） -->");
+  lines.push('    <p style="margin: 8px 12px 4px; font-size: 12px; font-weight: bold; color: var(--accent);">');
+  lines.push("      <strong>日付から探す</strong>");
+  lines.push("    </p>");
+  lines.push('    <section class="spot-actions" aria-label="日付別イベントへのクイックリンク" style="margin: 0 12px 12px;">');
+  primaryLinks.forEach((linkItem) => {
+    lines.push(
+      `      <a class="${escapeHtml(linkItem.className)}" href="${escapeHtml(linkItem.href)}">${escapeHtml(linkItem.label)}</a>`
+    );
+  });
+  if (weekLinks.length > 0) {
+    lines.push("      <!-- 今週7日分のリンク（UTC基準） -->");
+    weekLinks.forEach((linkItem) => {
+      lines.push(
+        `      <a class="${escapeHtml(linkItem.className)}" href="${escapeHtml(linkItem.href)}">${escapeHtml(linkItem.label)}</a>`
+      );
+    });
+  }
+  lines.push('      <a class="spot-action-btn" href="date/">日付一覧</a>');
+  lines.push("    </section>");
+  return lines.join("\n");
+}
+
+// トップページの固定マーカー範囲を置換して日付導線を更新する
+function updateIndexDateNav(todayUtc, publishStart, publishEnd, dateKeysWithEvents) {
+  if (!fs.existsSync(INDEX_HTML_PATH)) {
+    console.warn("トップページが見つからないため日付導線は更新しません:", INDEX_HTML_PATH);
+    return false;
+  }
+
+  const indexHtml = fs.readFileSync(INDEX_HTML_PATH, "utf8");
+  const markerRegex = new RegExp(
+    `${DATE_NAV_START_MARKER}[\\s\\S]*?${DATE_NAV_END_MARKER}`,
+    "m"
+  );
+
+  if (!markerRegex.test(indexHtml)) {
+    console.warn("日付導線のマーカーが見つからないため更新をスキップします。");
+    return false;
+  }
+
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const primaryLinks = [];
+
+  const todayKey = formatDateKey(todayUtc);
+  // イベントが存在する日だけリンクを出し、0件の日付は表示しない
+  if (todayUtc >= publishStart && todayUtc <= publishEnd && dateKeysWithEvents.has(todayKey)) {
+    primaryLinks.push({
+      label: "今日",
+      href: `date/${todayKey}/`,
+      className: "spot-action-btn spot-action-btn--primary",
+    });
+  }
+
+  const tomorrowUtc = new Date(todayUtc.getTime() + msPerDay);
+  const tomorrowKey = formatDateKey(tomorrowUtc);
+  // 翌日もイベントがある場合だけ表示する
+  if (tomorrowUtc >= publishStart && tomorrowUtc <= publishEnd && dateKeysWithEvents.has(tomorrowKey)) {
+    primaryLinks.push({
+      label: "明日",
+      href: `date/${tomorrowKey}/`,
+      className: "spot-action-btn",
+    });
+  }
+
+  const weekLinks = [];
+  for (let offset = 0; offset < 7; offset += 1) {
+    const dateObj = new Date(todayUtc.getTime() + msPerDay * offset);
+    if (dateObj < publishStart || dateObj > publishEnd) {
+      continue;
+    }
+    const dateKey = formatDateKey(dateObj);
+    // 今週分もイベントのある日だけリンクを出す
+    if (dateKeysWithEvents.has(dateKey)) {
+      weekLinks.push({
+        label: formatMonthDayLabel(dateObj),
+        href: `date/${dateKey}/`,
+        className: "spot-action-btn",
+      });
+    }
+  }
+
+  const navHtml = renderDateNavSection(primaryLinks, weekLinks);
+  const markerIndent = "    ";
+  const replacement = `${markerIndent}${DATE_NAV_START_MARKER}\n${navHtml}\n${markerIndent}${DATE_NAV_END_MARKER}`;
+  const updatedHtml = indexHtml.replace(markerRegex, replacement);
+
+  return writeFileIfChanged(INDEX_HTML_PATH, updatedHtml);
 }
 
 // 広告 partial を読み込み、存在しない場合は空文字で返して処理を継続する
@@ -498,6 +601,13 @@ function generatePages() {
     if (writeFileIfChanged(indexPath, indexHtml)) {
       writtenCount += 1;
     }
+  }
+
+  // トップページの日付導線を publish window に合わせて更新する
+  // トップページの導線はイベントが存在する日付だけ表示する
+  const dateKeysWithEvents = new Set(publishDates.map((entry) => formatDateKey(entry.date)));
+  if (updateIndexDateNav(todayUtc, publishStart, publishEnd, dateKeysWithEvents)) {
+    writtenCount += 1;
   }
 
   console.log("日付ページ生成完了:", writtenCount, "件更新");
