@@ -681,6 +681,38 @@ main {
   gap: 16px; /* カード間の余白を広げる */
 }
 
+/* 日付一覧専用のリストは grid を使わずにブロック表示へ分離する */
+.date-index__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* 日付一覧のカード風アイテム */
+.date-index__item {
+  margin-bottom: 16px;
+  padding: 14px;
+  border-radius: var(--radius-subcard);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subcard);
+}
+
+/* 日付一覧のサマリは小さめの文字と控えめな色で補足表示 */
+.date-index__summary {
+  margin: 8px 0 0;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-sub);
+  list-style: disc;
+}
+
+.date-index__summary li {
+  margin-bottom: 4px;
+}
+
 .spot-events__more {
   /* 「もっと見る」は幅広で押しやすく */
   display: flex;
@@ -718,6 +750,35 @@ main {
   box-shadow: var(--shadow-subcard);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;        
+}
+
+/* 広告枠は panel と同トーンのカードとして目立ち過ぎないようにする */
+.ad-card {
+  margin: 16px 0;
+  padding: 14px;
+  border-radius: var(--radius-subcard);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subcard);
+}
+
+.ad-card__title {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+
+.ad-card__body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.ad-card__disclaimer {
+  margin: 10px 0 0;
+  font-size: 11px;
+  color: var(--text-sub);
 }
 
 .spot-event-card__title {

@@ -16,6 +16,8 @@ const INPUT_DIR = process.argv[2]
 // GitHub Pages は docs/ 配下を公開する前提のため、出力先も docs/date にする
 const OUTPUT_DIR = path.join(process.cwd(), "docs", "date");
 const SPOTS_DATA_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
+// 広告枠の HTML は partial を差し込む方式で管理し、後から編集しやすくする
+const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-ad.html");
 
 // 0埋め2桁の数値文字列を作成する
 function pad2(value) {
@@ -141,7 +143,8 @@ function renderHeader(titleText, headingText, cssPath, isNoindex) {
   const safeTitle = escapeHtml(titleText);
   const safeHeading = escapeHtml(headingText);
   // noindex 指定が必要なページだけ robots メタタグを挿入する
-  const noindexMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />' : "";
+  // <title> の直前に独立行として入れることでテンプレを読みやすくする
+  const noindexMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />\n' : "";
 
   return `<!DOCTYPE html>
 <html lang="ja">
@@ -171,6 +174,32 @@ function renderFooter() {
 `;
 }
 
+// 広告 partial を読み込み、存在しない場合は空文字で返して処理を継続する
+function loadDateAdPartial() {
+  if (!fs.existsSync(DATE_AD_PARTIAL_PATH)) {
+    console.warn("date-ad.html が見つからないため広告枠は出力しません:", DATE_AD_PARTIAL_PATH);
+    return "";
+  }
+
+  try {
+    return fs.readFileSync(DATE_AD_PARTIAL_PATH, "utf8");
+  } catch (error) {
+    console.warn("date-ad.html の読み込みに失敗したため広告枠は出力しません:", error);
+    return "";
+  }
+}
+
+// 広告枠の差し込み位置を一元管理し、HTMLの編集場所を明確にする
+function renderAdSection(adHtml, positionLabel) {
+  if (!adHtml) return "";
+  const safePositionLabel = escapeHtml(positionLabel);
+
+  return `  <section class="date-ad" data-ad-position="${safePositionLabel}">
+${adHtml}
+  </section>
+`;
+}
+
 // イベントカードの HTML を生成する
 function renderEventCard(eventItem, venueLabel) {
   const titleText = eventItem.title || "イベント名未定";
@@ -193,7 +222,7 @@ ${linkHtml}
 }
 
 // 日付ページの本文を生成する
-function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex) {
+function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adHtml) {
   const navLinks = [];
   if (prevDateKey) {
     // docs 配信前提で docs/date/YYYY-MM-DD/ から相対リンクにする
@@ -213,11 +242,17 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex) {
 
   const eventCards = events.map((eventItem) => renderEventCard(eventItem, eventItem.venue_label)).join("");
   const dateText = formatJapaneseDate(dateObj);
+  // 広告の挿入位置は関数化しておき、後で差し込みやすくする
+  const topAdHtml = renderAdSection(adHtml, "top");
+  // 下部広告は必要になった時だけ有効化できるようにトグルを用意する
+  const includeBottomAd = false;
+  const bottomAdHtml = includeBottomAd ? renderAdSection(adHtml, "bottom") : "";
 
   return (
     // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
     renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex)
     + navHtml
+    + topAdHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
       <h2 id="events-title" class="spot-events__title">イベント一覧</h2>
@@ -229,13 +264,14 @@ ${eventCards}        </ul>
       </div>
     </div>
   </section>
+${bottomAdHtml}
 `
     + renderFooter()
   );
 }
 
 // 日付一覧ページを生成する
-function renderDateIndexPage(dateEntries) {
+function renderDateIndexPage(dateEntries, adHtml) {
   const titleText = `日付一覧｜${SITE_NAME}`;
   const headingText = "日付一覧";
 
@@ -262,21 +298,22 @@ function renderDateIndexPage(dateEntries) {
       return `        <li>${escapeHtml(titleText)}（${escapeHtml(venueText)}）</li>`;
     }).join("\n");
     const summaryHtml = summaryItems
-      ? `\n      <ul class="spot-date-index__summary">\n${summaryItems}\n      </ul>`
+      ? `\n      <ul class="date-index__summary">\n${summaryItems}\n      </ul>`
       : "";
-    return `    <li><a href="./${dateKey}/">${escapeHtml(dateLabel)}</a>（${escapeHtml(countText)}）${summaryHtml}</li>`;
+    return `    <li class="date-index__item"><a href="./${dateKey}/">${escapeHtml(dateLabel)}</a>（${escapeHtml(countText)}）${summaryHtml}</li>`;
   }).join("\n");
 
   return (
     // docs 配信前提で docs/date/index.html は ../css/style.css を参照する
     renderHeader(titleText, headingText, "../css/style.css", false)
+    + renderAdSection(adHtml, "index")
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
       <h2 id="events-title" class="spot-events__title">${escapeHtml(headingText)}</h2>
     </div>
     <div class="spot-events__body">
       <div class="spot-events__panel">
-        <ul class="spot-events__list">
+        <ul class="date-index__list">
 ${items}
         </ul>
       </div>
@@ -411,6 +448,7 @@ function collectEventsByDate(spotNameMap) {
 function generatePages() {
   const spotNameMap = loadSpotNameMap();
   const dateMap = collectEventsByDate(spotNameMap);
+  const dateAdHtml = loadDateAdPartial();
   const dates = Array.from(dateMap.values())
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
@@ -421,7 +459,6 @@ function generatePages() {
   const publishStart = new Date(todayUtc.getTime() - 365 * msPerDay);
   const publishEnd = new Date(todayUtc.getTime() + 365 * msPerDay);
   const indexStart = new Date(todayUtc.getTime() - 180 * msPerDay);
-  const indexEnd = new Date(todayUtc.getTime() + 365 * msPerDay);
 
   // publish window 外の日付は生成対象から除外する
   const publishDates = dates.filter((entry) => entry.date >= publishStart && entry.date <= publishEnd);
@@ -442,9 +479,10 @@ function generatePages() {
     const dateKey = formatDateKey(entry.date);
     const prevKey = prevEntry ? formatDateKey(prevEntry.date) : null;
     const nextKey = nextEntry ? formatDateKey(nextEntry.date) : null;
-    const isNoindex = entry.date < indexStart || entry.date > indexEnd;
+    // publishEnd と indexEnd は同値のため、noindex 判定は indexStart のみで行う
+    const isNoindex = entry.date < indexStart;
 
-    const html = renderDayPage(entry.date, entry.events, prevKey, nextKey, isNoindex);
+    const html = renderDayPage(entry.date, entry.events, prevKey, nextKey, isNoindex, dateAdHtml);
     const outputPath = path.join(OUTPUT_DIR, dateKey, "index.html");
 
     if (writeFileIfChanged(outputPath, html)) {
@@ -455,7 +493,7 @@ function generatePages() {
   // 日付一覧ページは直近60日分程度を対象にする
   const recentDates = publishDates.slice(-60).reverse();
   if (recentDates.length > 0) {
-    const indexHtml = renderDateIndexPage(recentDates);
+    const indexHtml = renderDateIndexPage(recentDates, dateAdHtml);
     const indexPath = path.join(OUTPUT_DIR, "index.html");
     if (writeFileIfChanged(indexPath, indexHtml)) {
       writtenCount += 1;
