@@ -864,22 +864,24 @@ main {
 
 .spot-actions {
   display: flex;
-  gap: 10px;
+  /* 日付ボタンの余白を詰めて一覧をスリムに見せる */
+  gap: 6px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .spot-action-btn {
   /* CTAボタンの共通スタイル */
   display: inline-block;
-  padding: 10px 16px;
-  min-height: 44px;
+  /* 押しやすさは確保しつつ、縦横サイズをスリム化する */
+  padding: 6px 12px;
+  min-height: 36px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .spot-action-btn--primary {
