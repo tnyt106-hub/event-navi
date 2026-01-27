@@ -8,7 +8,11 @@ const SITE_NAME = "イベントナビ【四国版】";
 // 年が省略された日付の補完は、実行日の月から数ヶ月先までに限定する
 const YEARLESS_LOOKAHEAD_MONTHS = 6;
 
-const INPUT_DIR = path.join(process.cwd(), "dist", "json");
+// 入力ディレクトリは既定で docs/events を参照し、引数で上書きできるようにする
+// 例: node scripts/generate-date-pages.js dist/json
+const INPUT_DIR = process.argv[2]
+  ? path.join(process.cwd(), process.argv[2])
+  : path.join(process.cwd(), "docs", "events");
 const OUTPUT_DIR = path.join(process.cwd(), "dist", "date");
 
 // 0埋め2桁の数値文字列を作成する
@@ -98,22 +102,54 @@ function expandDateRange(startDate, endDate) {
   return dates;
 }
 
+// HTML に埋め込む文字列を安全にするため、危険な記号をエスケープする
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// date_from と date_to の差が大きすぎる場合は安全のため丸める
+function normalizeDateRange(dateFromObj, dateToObj, venueId, index) {
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const diffDays = Math.floor((dateToObj.getTime() - dateFromObj.getTime()) / msPerDay);
+
+  if (diffDays > 31) {
+    console.warn(
+      "期間が31日超のため date_to を date_from に丸めました:",
+      venueId,
+      "#",
+      index,
+      "from",
+      formatDateKey(dateFromObj),
+      "to",
+      formatDateKey(dateToObj)
+    );
+    return dateFromObj;
+  }
+
+  return dateToObj;
+}
+
 // HTML のヘッダー部分を生成する
-function renderHeader(dateObj) {
-  const dateText = formatJapaneseDate(dateObj);
-  const titleText = `${dateText}のイベント一覧｜${SITE_NAME}`;
+function renderHeader(titleText, headingText, cssPath) {
+  const safeTitle = escapeHtml(titleText);
+  const safeHeading = escapeHtml(headingText);
 
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>${titleText}</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <title>${safeTitle}</title>
+  <link rel="stylesheet" href="${cssPath}" />
 </head>
 <body>
   <header>
-    <h1>${dateText}のイベント</h1>
+    <h1>${safeHeading}</h1>
   </header>
   <main>
 `;
@@ -138,12 +174,12 @@ function renderEventCard(eventItem) {
     : `${eventItem.date_from}〜${eventItem.date_to}`;
 
   const linkHtml = eventItem.source_url
-    ? `    <a class="spot-event-card__link" href="${eventItem.source_url}" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>`
+    ? `    <a class="spot-event-card__link" href="${escapeHtml(eventItem.source_url)}" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>`
     : "";
 
   return `  <li class="spot-event-card">
-    <p class="spot-event-card__date">${dateText}</p>
-    <h2 class="spot-event-card__title">${titleText}</h2>
+    <p class="spot-event-card__date">${escapeHtml(dateText)}</p>
+    <h2 class="spot-event-card__title">${escapeHtml(titleText)}</h2>
 ${linkHtml}
   </li>
 `;
@@ -167,9 +203,10 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey) {
     : "";
 
   const eventCards = events.map((eventItem) => renderEventCard(eventItem)).join("");
+  const dateText = formatJapaneseDate(dateObj);
 
   return (
-    renderHeader(dateObj)
+    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css")
     + navHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
@@ -179,6 +216,37 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey) {
       <div class="spot-events__panel">
         <ul class="spot-events__list">
 ${eventCards}        </ul>
+      </div>
+    </div>
+  </section>
+`
+    + renderFooter()
+  );
+}
+
+// 日付一覧ページを生成する
+function renderDateIndexPage(dateEntries) {
+  const titleText = `日付一覧｜${SITE_NAME}`;
+  const headingText = "日付一覧";
+
+  const items = dateEntries.map((entry) => {
+    const dateKey = formatDateKey(entry.date);
+    const dateLabel = formatJapaneseDate(entry.date);
+    const countText = `${entry.events.length}件`;
+    return `    <li><a href="./${dateKey}/">${escapeHtml(dateLabel)}</a>（${escapeHtml(countText)}）</li>`;
+  }).join("\n");
+
+  return (
+    renderHeader(titleText, headingText, "../css/style.css")
+    + `  <section class="spot-events" aria-labelledby="events-title">
+    <div class="spot-events__header">
+      <h2 id="events-title" class="spot-events__title">${escapeHtml(headingText)}</h2>
+    </div>
+    <div class="spot-events__body">
+      <div class="spot-events__panel">
+        <ul class="spot-events__list">
+${items}
+        </ul>
       </div>
     </div>
   </section>
@@ -253,17 +321,20 @@ function collectEventsByDate() {
         return;
       }
 
+      // 期間が長すぎる場合は date_to を date_from に丸めて安全に処理する
+      const safeDateToObj = normalizeDateRange(dateFromObj, dateToObj, venueId, index);
+
       const normalizedEvent = {
         venue_id: venueId,
         title: eventItem?.title ? String(eventItem.title) : "イベント名未定",
         date_from: formatDateKey(dateFromObj),
-        date_to: formatDateKey(dateToObj),
+        date_to: formatDateKey(safeDateToObj),
         source_url: eventItem?.source_url ? String(eventItem.source_url) : "",
         date_from_obj: dateFromObj,
       };
 
       // date_from 〜 date_to の範囲を1日ずつ展開する
-      const dateEntries = expandDateRange(dateFromObj, dateToObj);
+      const dateEntries = expandDateRange(dateFromObj, safeDateToObj);
       dateEntries.forEach((dateObj) => {
         const key = formatDateKey(dateObj);
         if (!dateMap.has(key)) {
@@ -307,6 +378,16 @@ function generatePages() {
       writtenCount += 1;
     }
   });
+
+  // 日付一覧ページは直近60日分程度を対象にする
+  const recentDates = dates.slice(-60).reverse();
+  if (recentDates.length > 0) {
+    const indexHtml = renderDateIndexPage(recentDates);
+    const indexPath = path.join(OUTPUT_DIR, "index.html");
+    if (writeFileIfChanged(indexPath, indexHtml)) {
+      writtenCount += 1;
+    }
+  }
 
   console.log("日付ページ生成完了:", writtenCount, "件更新");
 }
