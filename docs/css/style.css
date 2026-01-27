@@ -6,7 +6,7 @@ html, body {
 
 :root {
   /* デザインシステムの基準値を集約して一貫性を保つ */
-  --bg: #F6F7FB;
+  --bg: #F1F5F9;　/*#F6F7FB;*/
   --surface: #FFFFFF;
   --text: #111827;
   --text-sub: #6B7280;
