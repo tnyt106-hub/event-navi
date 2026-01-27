@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9H9QJLL4H8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9H9QJLL4H8', { send_page_view: false });
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9H9QJLL4H8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9H9QJLL4H8', { send_page_view: false });
+  </script>
   
   <meta charset="UTF-8" />
- <title>イベントナビ【四国版】 | 公共施設イベントガイド</title>
+  <title>イベントナビ【四国版】 | 公共施設イベントガイド</title>
   
- <meta name="description" content="四国（徳島・香川・愛媛・高知）のイベント施設やイベントスポットを地図で探せるマップです。"/>
- <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <!-- Leaflet CSS -->
+  <meta name="description" content="四国全域（香川・愛媛・徳島・高知）の公共施設・文化ホールのイベント情報を地図で探せる専門ガイド。公式サイトの一次情報に基づいた正確なスケジュールを確認できます。"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <!-- MarkerCluster CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"/>
-  <!-- 自前CSS -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-<header style="padding-top: 8px;">
+  <header style="padding-top: 8px;">
     <h1 style="margin-bottom: 4px;">イベントナビ【四国版】</h1>
     <p style="margin: 0 12px 4px; font-size: 13px; font-weight: bold; color: var(--accent);">公共施設イベントガイド</p>
     <p style="margin: 0 12px 8px; font-size: 12px; color: var(--text-sub);">
@@ -36,72 +31,65 @@
     <p class="site-notice">※本サイトは現在「試験公開中」です。掲載スポット・機能は順次拡充予定です。</p>
   </header>
 
-<main>
-  <section aria-labelledby="map-title">
-    <h2 id="map-title" style="display:none;">四国エリア イベント施設マップ</h2>
-    <div class="map-wrapper">
-      <!-- 検索ボックス -->
-      <div class="search-box">
-    <div class="search-input-wrapper">
-    <input
-      type="text"
-      id="search-input"
-      placeholder="施設名で検索"
-      aria-label="施設検索"
-    />
-    <button id="search-clear" type="button" aria-label="検索をクリア">×</button>
-  <ul id="search-suggestions"></ul>
-      </div>
-</div>
-      <!-- 現在地ボタン -->
-      <button id="locate-btn"
-        type="button" 
-       aria-label="現在地を地図の中心に表示">
-       <span class="icon">📍</span>
-       <span class="label">現在地</span>
-     </button>
-    <div id="map"></div>
-<!-- Bottom Sheet: 施設カードをタップで展開/折りたたみする -->
-<section id="spot-panel" class="spot-panel is-empty" aria-live="polite">
-  <div class="spot-panel__body">
-    <button id="spot-panel-close" class="spot-panel__close" type="button" aria-label="スポット表示を閉じる">×</button>
-    <button id="spot-panel-toggle" class="spot-panel__toggle" type="button" aria-expanded="false" aria-controls="spot-panel-content">
-      <div class="spot-panel__kicker">地図でスポットを選択するとここに表示されます</div>
-      <h2 class="spot-panel__title">スポット未選択</h2>
-
-      <div class="spot-panel__meta">
-        <span id="spot-panel-category" class="spot-panel__chip"></span>
-        <span id="spot-panel-area" class="spot-panel__chip"></span>
-      </div>
-    </button>
-
-    <div id="spot-panel-content" class="spot-panel__content">
-      <p id="spot-panel-desc" class="spot-panel__desc"></p>
-
-      <div class="spot-panel__actions">
-        <a id="spot-panel-detail" class="btn btn-primary" href="#" target="_self">イベントを見る</a>
-        <a id="spot-panel-google" class="btn btn-secondary" href="#" target="_blank" rel="noopener noreferrer">ルート検索</a>
-        <a id="spot-panel-official" class="btn btn-tertiary" href="#" target="_blank" rel="noopener noreferrer">公式サイト</a>
-      </div>
-    </div>
-  </div>
-</section>
-
+  <main>
+    <section aria-labelledby="map-title">
+      <h2 id="map-title" style="display:none;">四国エリア イベント施設マップ</h2>
       
-      </div>
-  </section>
-</main>
+      <div class="map-wrapper">
+        <div class="search-box">
+          <div class="search-input-wrapper">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="施設名で検索"
+              aria-label="施設検索"
+            />
+            <button id="search-clear" type="button" aria-label="検索をクリア">×</button>
+            <ul id="search-suggestions"></ul>
+          </div>
+        </div>
 
-  <!-- Leaflet JS（必ず map.js より前） -->
+        <button id="locate-btn" type="button" aria-label="現在地を地図の中心に表示">
+          <span class="icon">📍</span>
+          <span class="label">現在地</span>
+        </button>
+
+        <div id="map"></div>
+
+        <section id="spot-panel" class="spot-panel is-empty" aria-live="polite">
+          <div class="spot-panel__body">
+            <button id="spot-panel-close" class="spot-panel__close" type="button" aria-label="スポット表示を閉じる">×</button>
+            <button id="spot-panel-toggle" class="spot-panel__toggle" type="button" aria-expanded="false" aria-controls="spot-panel-content">
+              <div class="spot-panel__kicker">地図上のピンをタップするとイベント情報が表示されます</div>
+              <h2 class="spot-panel__title">スポットを選択してください</h2>
+
+              <div class="spot-panel__meta">
+                <span id="spot-panel-category" class="spot-panel__chip"></span>
+                <span id="spot-panel-area" class="spot-panel__chip"></span>
+              </div>
+            </button>
+
+            <div id="spot-panel-content" class="spot-panel__content">
+              <p id="spot-panel-desc" class="spot-panel__desc"></p>
+
+              <div class="spot-panel__actions">
+                <a id="spot-panel-detail" class="btn btn-primary" href="#" target="_self">イベント詳細を見る</a>
+                <a id="spot-panel-google" class="btn btn-secondary" href="#" target="_blank" rel="noopener noreferrer">ルート検索</a>
+                <a id="spot-panel-official" class="btn btn-tertiary" href="#" target="_blank" rel="noopener noreferrer">公式サイト</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- MarkerCluster JS -->
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-  <!-- 自前JS -->
   <script src="js/map.js"></script>
-  <!-- フッター-->
+
   <footer class="trial-footer">
-    ※ 本サイトは開発中の試験公開版です。内容は予告なく変更される場合があります。
-  　　© 2026 イベントナビ【四国版】 - 公共施設イベント情報を正確に届けるアーカイブサイト
+    © 2026 イベントナビ【四国版】 - 公共施設イベント情報を正確に届けるアーカイブサイト
   </footer>
 </body>
 </html>
