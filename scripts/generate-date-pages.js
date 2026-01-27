@@ -211,7 +211,7 @@ function renderDateNavSection(primaryLinks, weekLinks) {
 }
 
 // トップページの固定マーカー範囲を置換して日付導線を更新する
-function updateIndexDateNav(todayUtc, publishStart, publishEnd) {
+function updateIndexDateNav(todayUtc, availableDateKeys) {
   if (!fs.existsSync(INDEX_HTML_PATH)) {
     console.warn("トップページが見つからないため日付導線は更新しません:", INDEX_HTML_PATH);
     return false;
@@ -231,8 +231,9 @@ function updateIndexDateNav(todayUtc, publishStart, publishEnd) {
   const msPerDay = 24 * 60 * 60 * 1000;
   const primaryLinks = [];
 
+  // イベントが存在する日付だけに絞り、0件日のリンクを生成しないようにする
   const todayKey = formatDateKey(todayUtc);
-  if (todayUtc >= publishStart && todayUtc <= publishEnd) {
+  if (availableDateKeys.has(todayKey)) {
     primaryLinks.push({
       label: "今日",
       href: `date/${todayKey}/`,
@@ -242,7 +243,7 @@ function updateIndexDateNav(todayUtc, publishStart, publishEnd) {
 
   const tomorrowUtc = new Date(todayUtc.getTime() + msPerDay);
   const tomorrowKey = formatDateKey(tomorrowUtc);
-  if (tomorrowUtc >= publishStart && tomorrowUtc <= publishEnd) {
+  if (availableDateKeys.has(tomorrowKey)) {
     primaryLinks.push({
       label: "明日",
       href: `date/${tomorrowKey}/`,
@@ -253,12 +254,14 @@ function updateIndexDateNav(todayUtc, publishStart, publishEnd) {
   const weekLinks = [];
   for (let offset = 0; offset < 7; offset += 1) {
     const dateObj = new Date(todayUtc.getTime() + msPerDay * offset);
-    if (dateObj < publishStart || dateObj > publishEnd) {
+    const dateKey = formatDateKey(dateObj);
+    // 0件日は除外し、実在する日付ページだけを表示する
+    if (!availableDateKeys.has(dateKey)) {
       continue;
     }
     weekLinks.push({
       label: formatMonthDayLabel(dateObj),
-      href: `date/${formatDateKey(dateObj)}/`,
+      href: `date/${dateKey}/`,
       className: "spot-action-btn",
     });
   }
@@ -559,6 +562,8 @@ function generatePages() {
 
   // publish window 外の日付は生成対象から除外する
   const publishDates = dates.filter((entry) => entry.date >= publishStart && entry.date <= publishEnd);
+  // トップページではイベント0件日を表示しないため、存在する日付だけを集合化する
+  const availableDateKeys = new Set(publishDates.map((entry) => formatDateKey(entry.date)));
 
   let writtenCount = 0;
 
@@ -598,7 +603,7 @@ function generatePages() {
   }
 
   // トップページの日付導線を publish window に合わせて更新する
-  if (updateIndexDateNav(todayUtc, publishStart, publishEnd)) {
+  if (updateIndexDateNav(todayUtc, availableDateKeys)) {
     writtenCount += 1;
   }
 
