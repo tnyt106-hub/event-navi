@@ -14,6 +14,7 @@ const INPUT_DIR = process.argv[2]
   ? path.join(process.cwd(), process.argv[2])
   : path.join(process.cwd(), "docs", "events");
 const OUTPUT_DIR = path.join(process.cwd(), "dist", "date");
+const SPOTS_DATA_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 
 // 0埋め2桁の数値文字列を作成する
 function pad2(value) {
@@ -135,16 +136,18 @@ function normalizeDateRange(dateFromObj, dateToObj, venueId, index) {
 }
 
 // HTML のヘッダー部分を生成する
-function renderHeader(titleText, headingText, cssPath) {
+function renderHeader(titleText, headingText, cssPath, isNoindex) {
   const safeTitle = escapeHtml(titleText);
   const safeHeading = escapeHtml(headingText);
+  // noindex 指定が必要なページだけ robots メタタグを挿入する
+  const noindexMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />\n' : "";
 
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>${safeTitle}</title>
+${noindexMeta}  <title>${safeTitle}</title>
   <link rel="stylesheet" href="${cssPath}" />
 </head>
 <body>
@@ -167,8 +170,9 @@ function renderFooter() {
 }
 
 // イベントカードの HTML を生成する
-function renderEventCard(eventItem) {
+function renderEventCard(eventItem, venueLabel) {
   const titleText = eventItem.title || "イベント名未定";
+  const safeVenueLabel = venueLabel || "会場未定";
   const dateText = eventItem.date_from === eventItem.date_to
     ? eventItem.date_from
     : `${eventItem.date_from}〜${eventItem.date_to}`;
@@ -180,13 +184,14 @@ function renderEventCard(eventItem) {
   return `  <li class="spot-event-card">
     <p class="spot-event-card__date">${escapeHtml(dateText)}</p>
     <h2 class="spot-event-card__title">${escapeHtml(titleText)}</h2>
+    <p class="spot-event-card__venue">会場: ${escapeHtml(safeVenueLabel)}</p>
 ${linkHtml}
   </li>
 `;
 }
 
 // 日付ページの本文を生成する
-function renderDayPage(dateObj, events, prevDateKey, nextDateKey) {
+function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex) {
   const navLinks = [];
   if (prevDateKey) {
     navLinks.push(`<a class="spot-action-btn" href="/date/${prevDateKey}/">前日</a>`);
@@ -202,11 +207,11 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey) {
 `
     : "";
 
-  const eventCards = events.map((eventItem) => renderEventCard(eventItem)).join("");
+  const eventCards = events.map((eventItem) => renderEventCard(eventItem, eventItem.venue_label)).join("");
   const dateText = formatJapaneseDate(dateObj);
 
   return (
-    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css")
+    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex)
     + navHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
@@ -233,11 +238,20 @@ function renderDateIndexPage(dateEntries) {
     const dateKey = formatDateKey(entry.date);
     const dateLabel = formatJapaneseDate(entry.date);
     const countText = `${entry.events.length}件`;
-    return `    <li><a href="./${dateKey}/">${escapeHtml(dateLabel)}</a>（${escapeHtml(countText)}）</li>`;
+    // 日付ごとの先頭3件だけイベント名と会場名を軽量に表示する
+    const summaryItems = entry.events.slice(0, 3).map((eventItem) => {
+      const titleText = eventItem.title || "イベント名未定";
+      const venueText = eventItem.venue_label || eventItem.venue_id || "会場未定";
+      return `        <li>${escapeHtml(titleText)}（${escapeHtml(venueText)}）</li>`;
+    }).join("\n");
+    const summaryHtml = summaryItems
+      ? `\n      <ul class="spot-date-index__summary">\n${summaryItems}\n      </ul>`
+      : "";
+    return `    <li><a href="./${dateKey}/">${escapeHtml(dateLabel)}</a>（${escapeHtml(countText)}）${summaryHtml}</li>`;
   }).join("\n");
 
   return (
-    renderHeader(titleText, headingText, "../css/style.css")
+    renderHeader(titleText, headingText, "../css/style.css", false)
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
       <h2 id="events-title" class="spot-events__title">${escapeHtml(headingText)}</h2>
@@ -269,8 +283,32 @@ function writeFileIfChanged(filePath, content) {
   return true;
 }
 
+// スポットIDから会場名を引けるように辞書化する
+function loadSpotNameMap() {
+  const spotNameMap = new Map();
+
+  try {
+    const raw = fs.readFileSync(SPOTS_DATA_PATH, "utf8");
+    const spots = JSON.parse(raw);
+
+    if (Array.isArray(spots)) {
+      spots.forEach((spot) => {
+        const spotId = spot?.spot_id ? String(spot.spot_id) : "";
+        const spotName = spot?.name ? String(spot.name) : "";
+        if (spotId && spotName) {
+          spotNameMap.set(spotId, spotName);
+        }
+      });
+    }
+  } catch (error) {
+    console.warn("spots.json の読み込みに失敗したため、会場名はIDで代替します:", error);
+  }
+
+  return spotNameMap;
+}
+
 // JSON を読み込み、イベントを日付ごとに集約する
-function collectEventsByDate() {
+function collectEventsByDate(spotNameMap) {
   const now = new Date();
   const dateMap = new Map();
 
@@ -295,6 +333,8 @@ function collectEventsByDate() {
     }
 
     const venueId = jsonData.venue_id || fileName.replace(/\.json$/, "");
+    // 会場名が見つからない場合は venue_id をそのまま使う
+    const venueLabel = spotNameMap.get(venueId) || venueId;
     const events = Array.isArray(jsonData.events) ? jsonData.events : [];
 
     events.forEach((eventItem, index) => {
@@ -326,6 +366,7 @@ function collectEventsByDate() {
 
       const normalizedEvent = {
         venue_id: venueId,
+        venue_label: venueLabel,
         title: eventItem?.title ? String(eventItem.title) : "イベント名未定",
         date_from: formatDateKey(dateFromObj),
         date_to: formatDateKey(safeDateToObj),
@@ -350,15 +391,28 @@ function collectEventsByDate() {
 
 // 日付ごとのページを生成して保存する
 function generatePages() {
-  const dateMap = collectEventsByDate();
+  const spotNameMap = loadSpotNameMap();
+  const dateMap = collectEventsByDate(spotNameMap);
   const dates = Array.from(dateMap.values())
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
+  // 今日のUTC日付を基準に publish / index window を計算する
+  const now = new Date();
+  const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const publishStart = new Date(todayUtc.getTime() - 365 * msPerDay);
+  const publishEnd = new Date(todayUtc.getTime() + 365 * msPerDay);
+  const indexStart = new Date(todayUtc.getTime() - 180 * msPerDay);
+  const indexEnd = new Date(todayUtc.getTime() + 365 * msPerDay);
+
+  // publish window 外の日付は生成対象から除外する
+  const publishDates = dates.filter((entry) => entry.date >= publishStart && entry.date <= publishEnd);
+
   let writtenCount = 0;
 
-  dates.forEach((entry, index) => {
-    const prevEntry = index > 0 ? dates[index - 1] : null;
-    const nextEntry = index < dates.length - 1 ? dates[index + 1] : null;
+  publishDates.forEach((entry, index) => {
+    const prevEntry = index > 0 ? publishDates[index - 1] : null;
+    const nextEntry = index < publishDates.length - 1 ? publishDates[index + 1] : null;
 
     // 日付ごとにイベントを安定した順序で並べる
     entry.events.sort((a, b) => {
@@ -370,8 +424,9 @@ function generatePages() {
     const dateKey = formatDateKey(entry.date);
     const prevKey = prevEntry ? formatDateKey(prevEntry.date) : null;
     const nextKey = nextEntry ? formatDateKey(nextEntry.date) : null;
+    const isNoindex = entry.date < indexStart || entry.date > indexEnd;
 
-    const html = renderDayPage(entry.date, entry.events, prevKey, nextKey);
+    const html = renderDayPage(entry.date, entry.events, prevKey, nextKey, isNoindex);
     const outputPath = path.join(OUTPUT_DIR, dateKey, "index.html");
 
     if (writeFileIfChanged(outputPath, html)) {
@@ -380,7 +435,7 @@ function generatePages() {
   });
 
   // 日付一覧ページは直近60日分程度を対象にする
-  const recentDates = dates.slice(-60).reverse();
+  const recentDates = publishDates.slice(-60).reverse();
   if (recentDates.length > 0) {
     const indexHtml = renderDateIndexPage(recentDates);
     const indexPath = path.join(OUTPUT_DIR, "index.html");
