@@ -708,13 +708,16 @@ main {
 }
 
 .spot-event-card {
-  /* イベントカードは白背景+影で箱感を出す */
+  display: flex;            
+  flex-direction: column;    
+  align-items: flex-start;   
   padding: 14px;
-  border-radius: var(--radius-subcard); /* 角丸をやや大きくしてカード感を出す */
+  border-radius: var(--radius-subcard);
   background: var(--surface);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-subcard); /* 薄い影でカードの階層を表現 */
+  box-shadow: var(--shadow-subcard);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;        
 }
 
 .spot-event-card__title {
