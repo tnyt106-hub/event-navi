@@ -13,7 +13,8 @@ const YEARLESS_LOOKAHEAD_MONTHS = 6;
 const INPUT_DIR = process.argv[2]
   ? path.join(process.cwd(), process.argv[2])
   : path.join(process.cwd(), "docs", "events");
-const OUTPUT_DIR = path.join(process.cwd(), "dist", "date");
+// GitHub Pages は docs/ 配下を公開する前提のため、出力先も docs/date にする
+const OUTPUT_DIR = path.join(process.cwd(), "docs", "date");
 const SPOTS_DATA_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 
 // 0埋め2桁の数値文字列を作成する
@@ -140,14 +141,15 @@ function renderHeader(titleText, headingText, cssPath, isNoindex) {
   const safeTitle = escapeHtml(titleText);
   const safeHeading = escapeHtml(headingText);
   // noindex 指定が必要なページだけ robots メタタグを挿入する
-  const noindexMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />\n' : "";
+  const noindexMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />' : "";
 
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-${noindexMeta}  <title>${safeTitle}</title>
+${noindexMeta}
+  <title>${safeTitle}</title>
   <link rel="stylesheet" href="${cssPath}" />
 </head>
 <body>
@@ -194,10 +196,12 @@ ${linkHtml}
 function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex) {
   const navLinks = [];
   if (prevDateKey) {
-    navLinks.push(`<a class="spot-action-btn" href="/date/${prevDateKey}/">前日</a>`);
+    // docs 配信前提で docs/date/YYYY-MM-DD/ から相対リンクにする
+    navLinks.push(`<a class="spot-action-btn" href="../${prevDateKey}/">前日</a>`);
   }
   if (nextDateKey) {
-    navLinks.push(`<a class="spot-action-btn" href="/date/${nextDateKey}/">翌日</a>`);
+    // docs 配信前提で docs/date/YYYY-MM-DD/ から相対リンクにする
+    navLinks.push(`<a class="spot-action-btn" href="../${nextDateKey}/">翌日</a>`);
   }
 
   const navHtml = navLinks.length
@@ -211,6 +215,7 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex) {
   const dateText = formatJapaneseDate(dateObj);
 
   return (
+    // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
     renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex)
     + navHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
@@ -238,8 +243,20 @@ function renderDateIndexPage(dateEntries) {
     const dateKey = formatDateKey(entry.date);
     const dateLabel = formatJapaneseDate(entry.date);
     const countText = `${entry.events.length}件`;
+    // 日付一覧のサマリは date_from_obj → title で安定ソートしてから抽出する
+    const sortedEvents = entry.events
+      // 安定ソートを保証するため、元の並び順インデックスも保持する
+      .map((eventItem, sortIndex) => ({ eventItem, sortIndex }))
+      .sort((a, b) => {
+        const diff = a.eventItem.date_from_obj.getTime() - b.eventItem.date_from_obj.getTime();
+        if (diff !== 0) return diff;
+        const titleDiff = a.eventItem.title.localeCompare(b.eventItem.title, "ja");
+        if (titleDiff !== 0) return titleDiff;
+        return a.sortIndex - b.sortIndex;
+      })
+      .map(({ eventItem }) => eventItem);
     // 日付ごとの先頭3件だけイベント名と会場名を軽量に表示する
-    const summaryItems = entry.events.slice(0, 3).map((eventItem) => {
+    const summaryItems = sortedEvents.slice(0, 3).map((eventItem) => {
       const titleText = eventItem.title || "イベント名未定";
       const venueText = eventItem.venue_label || eventItem.venue_id || "会場未定";
       return `        <li>${escapeHtml(titleText)}（${escapeHtml(venueText)}）</li>`;
@@ -251,6 +268,7 @@ function renderDateIndexPage(dateEntries) {
   }).join("\n");
 
   return (
+    // docs 配信前提で docs/date/index.html は ../css/style.css を参照する
     renderHeader(titleText, headingText, "../css/style.css", false)
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
