@@ -2,6 +2,36 @@
   "sleepSecondsBetween": 7,
   "tasks": [
     {
+      "id": "rexam_hall",
+      "script": "scripts/fetch-rexam-hall-events.js",
+      "enabled": true
+    },
+    {
+      "id": "highstaff_hall",
+      "script": "scripts/fetch-highstaff-hall-events.js",
+      "enabled": true
+    },
+    {
+      "id": "sunport_hall_takamatsu",
+      "script": "scripts/fetch-sunport-hall-takamatsu-events.js",
+      "enabled": true
+    },
+    {
+      "id": "anabuki_arena_kagawa",
+      "script": "scripts/fetch-anabuki-arena-events.js",
+      "enabled": true
+    },
+    {
+      "id": "kagawa_pref_museum",
+      "script": "scripts/fetch-kagawa_pref_museum.js",
+      "enabled": true
+    },
+    {
+      "id": "marugame_ilex",
+      "script": "scripts/fetch-marugame-ilex-events.js",
+      "enabled": true
+    },
+    {
       "id": "generate-date-pages",
       "script": "scripts/generate-date-pages.js",
       "enabled": true
