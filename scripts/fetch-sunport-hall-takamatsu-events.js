@@ -212,21 +212,33 @@ function extractEventBlocks(html) {
 }
 
 // 見出しと本文からイベントデータを構築する。
+// 見出しと本文からイベントデータを構築する。
 function buildEventFromBlock(block, baseUrl) {
   const headingText = normalizeTitle(stripTags(block.headingHtml));
   if (!headingText) return null;
 
-let linkMatch = block.headingHtml.match(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/i);
-if (!linkMatch) {
-  const allLinks = Array.from(block.bodyHtml.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi));
-  const detailLink = allLinks.find(m => {
-    const href = m[1];
-    const text = m[2];
-    return text.includes("詳細") || href.includes("/event/");
-  });
-  linkMatch = detailLink || allLinks[0] || null;
-}
-const sourceUrl = (linkMatch && linkMatch[1]) ? new URL(linkMatch[1], baseUrl).toString() : null;
+  // --- 【修正箇所】URL取得とフォールバック（救済措置） ---
+  
+  // 1. まずは見出し(h4)の中からリンクを探す
+  let linkMatch = block.headingHtml.match(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/i);
+
+  // 2. 見出しになければ本文(bodyHtml)から「詳細」という文字を含むリンクを探す
+  if (!linkMatch) {
+    const allLinks = Array.from(block.bodyHtml.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi));
+    const detailLink = allLinks.find(m => {
+      const href = m[1];
+      const text = m[2];
+      return text.includes("詳細") || href.includes("/event/");
+    });
+    linkMatch = detailLink || allLinks[0] || null;
+  }
+
+  // 3. 【重要】URLが取得できなかった場合は baseUrl (一覧ページ) を代入する
+  const sourceUrl = (linkMatch && linkMatch[1]) 
+    ? new URL(linkMatch[1], baseUrl).toString() 
+    : baseUrl; // null の場合は https://www.sunport-hall.jp/hall/ が入る
+
+  // ----------------------------------------------------
 
   const lines = htmlToLines(block.bodyHtml);
   const dateLine = lines[0] || "";
@@ -245,7 +257,7 @@ const sourceUrl = (linkMatch && linkMatch[1]) ? new URL(linkMatch[1], baseUrl).t
     date_from: dateMatch.dateIso,
     date_to: dateMatch.dateIso,
     venue_name: venueName,
-    source_url: sourceUrl,
+    source_url: sourceUrl, // 取得に失敗していても baseUrl がセットされる
     open_time: openTime,
     start_time: startTime,
     end_time: endTime,
