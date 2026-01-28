@@ -23,7 +23,7 @@
     },
     {
       "id": "kagawa_pref_museum",
-      "script": "scripts/fetch-kagawa_pref_museum.jss",
+      "script": "scripts/fetch-kagawa_pref_museum.js",
       "enabled": true
     },
     {
