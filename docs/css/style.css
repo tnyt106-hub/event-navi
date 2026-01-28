@@ -8,11 +8,19 @@ html, body {
   /* デザインシステムの基準値を集約して一貫性を保つ */
   --bg: #F6F7FB;
   --surface: #FFFFFF;
-  --text: #111827;
-  --text-sub: #6B7280;
+  /* 基本文字色（案AのTextMainに合わせる） */
+  --text: #0F172A;
+  /* 補助テキスト色（案AのTextSubに合わせる） */
+  --text-sub: #475569;
+  /* 注記用の落ち着いた色（案AのTextNote） */
+  --text-note: #64748B;
   --border: #E5E7EB;
+  /* 主アクセントカラー（案AのAccent） */
   --accent: #2563EB;
-  --accent-soft: #EEF2FF;
+  /* アクセントの淡色（案AのAccentSoft） */
+  --accent-soft: #DBEAFE;
+  /* ヘッダー専用の背景色（案AのHeaderBG） */
+  --header-bg: #F8FAFC;
   --radius-sheet: 24px;
   --radius-card: 18px;
   --radius-subcard: 14px;
@@ -34,16 +42,47 @@ body {
   color: var(--text);
 }
 
-/* ページタイトル */
-h1 {
-  margin: 12px 12px 4px;
-  font-size: 20px;
+/* ヘッダー全体: 公式感を出すために背景と境界線を整える */
+.site-header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 12px 14px;
 }
-/* 説明文（SEO用） */
-h1 + p {
-  margin: 0 12px 8px;
-  font-size: 13px;
+
+/* ページタイトル（上段） */
+.site-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+/* サブ見出し（上段の補足） */
+.site-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* 説明文（中段） */
+.site-lead {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
   color: var(--text-sub);
+}
+
+/* 「日付から探す」見出し（下段の導線ラベル） */
+.site-date-heading {
+  margin: 12px 0 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* 下段CTAの並び（狭い幅でも自然に縦積みになるように調整） */
+.site-header .spot-actions {
+  margin: 0;
 }
 
 h2 {
@@ -201,14 +240,18 @@ h2 {
 ========================= */
 @media (max-width: 768px) {
 
-  h1 {
-    font-size: 18px;
-    margin: 8px 12px 2px;
+  .site-header {
+    /* スマホでは上下余白をわずかに詰める */
+    padding: 14px 12px 12px;
   }
 
-  h1 + p {
-    font-size: 12px;
-    margin: 0 12px 6px;
+  .site-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .site-subtitle,
+  .site-lead {
+    font-size: 0.8rem;
   }
 
   /* スマホでも地図が下部カードに近づくよう調整 */
@@ -216,9 +259,10 @@ h2 {
 }
 /* 試験公開用文言*/
 .site-notice {
-  margin: 4px 12px 8px;
-  font-size: 11px;
-  color: var(--text-sub);
+  /* 下段の注記は小さく控えめに表示 */
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  color: var(--text-note);
 }
 
 .trial-footer {
@@ -883,12 +927,19 @@ main {
   /* 押しやすさは確保しつつ、縦横サイズをスリム化する */
   padding: 6px 12px;
   min-height: 15px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
   text-decoration: none;
   font-size: 12px;
+  font-weight: 600;
+  transition: filter 0.2s ease;
+}
+
+.spot-action-btn:hover {
+  /* 派手すぎないホバー表現で公式感を維持 */
+  filter: brightness(0.98);
 }
 
 .spot-action-btn--primary {
