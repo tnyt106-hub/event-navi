@@ -877,7 +877,7 @@ main {
   display: inline-block;
   /* 押しやすさは確保しつつ、縦横サイズをスリム化する */
   padding: 6px 12px;
-  min-height: 36px;
+  min-height: 15px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--surface);
