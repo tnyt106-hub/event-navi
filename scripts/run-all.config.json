@@ -25,6 +25,11 @@
       "id": "kagawa_pref_museum",
       "script": "scripts/fetch-kagawa_pref_museum.jss",
       "enabled": true
+    },
+    {
+      "id": "marugame_ilex",
+      "script": "scripts/fetch-marugame-ilex-events.js",
+      "enabled": true
     }
   ]
 }

@@ -70,5 +70,17 @@
     "official_url": "https://www.kanon-kaikan.jp/",
     "description": "香川県観音寺市にある西讃地区で最大規模の1200人収容のホール、",
     "source": "https://www.kanon-kaikan.jp/"
+  },
+  {
+    "name": "丸亀市綾歌総合文化会館アイレックス",
+    "spot_id": "marugame_ilex",
+    "lat": 34.259921,
+    "lng": 133.822451,
+    "category": "ホール・劇場",
+    "prefecture": "香川県",
+    "municipality": "丸亀市",
+    "official_url": "https://www.marugame-ilex.org/",
+    "description": "丸亀市にある綾歌総合文化会館で、大ホール・小ホールなどを備えた文化拠点です。コンサートや公演、地域イベントが開催されています。",
+    "source": "https://www.marugame-ilex.org/"
   }
 ]
