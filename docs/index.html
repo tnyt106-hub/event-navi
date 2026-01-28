@@ -22,20 +22,23 @@
 </head>
 
 <body>
-  <header style="padding-top: 8px;">
-    <h1 style="margin-bottom: 4px;">イベントナビ【四国版】</h1>
-    <p style="margin: 0 12px 4px; font-size: 13px; font-weight: bold; color: var(--accent);">公共施設イベントガイド</p>
-    <p style="margin: 0 12px 8px; font-size: 12px; color: var(--text-sub);">
+  <header class="site-header">
+    <!-- 上段: タイトルとサブ見出し（サイトの主旨がすぐ伝わるよう整理） -->
+    <h1>イベントナビ【四国版】</h1>
+    <p class="site-subtitle">公共施設イベントガイド</p>
+    <!-- 中段: 説明文（信頼感のある語調で補足） -->
+    <p class="site-lead">
       四国各地のホールや施設のイベント情報を集約した専門アーカイブです
     </p>
-    <p class="site-notice">※本サイトは現在「試験公開中」です。掲載スポット・機能は順次拡充予定です。</p>
-    <!-- 日付別ページへの静的導線（自動生成） -->
-    <p style="margin: 8px 12px 4px; font-size: 12px; font-weight: bold; color: var(--accent);">
+    <!-- 下段: 日付導線（主CTA） -->
+    <p class="site-date-heading">
       <strong>日付から探す</strong>
     </p>
-    <section class="spot-actions" aria-label="日付別イベントへのクイックリンク" style="margin: 0 12px 12px;">
+    <section class="spot-actions" aria-label="日付別イベントへのクイックリンク">
       <a class="spot-action-btn" href="date/">日付一覧</a>
     </section>
+    <!-- 下段の補足: 試験公開中の注記（控えめに残す） -->
+    <p class="site-notice">※本サイトは現在「試験公開中」です。掲載スポット・機能は順次拡充予定です。</p>
   </header>
 
   <main>
