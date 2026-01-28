@@ -145,6 +145,10 @@ const markers = L.markerClusterGroup({
     // 4. マーカーが重なっている場合にクモの巣状に広げる設定
     spiderfyOnMaxZoom: false
 });
+// デフォルトのtooltipAnchorは右上寄りなので、ピンの真上にラベルが来るよう補正する
+const centeredTooltipIcon = new L.Icon.Default({
+  tooltipAnchor: [0, -28]
+});
 // =======================
 // 検索ボックス用
 // =======================
@@ -221,7 +225,8 @@ fetch("./data/spots.json")
     spots.forEach(s => {
       if (!s.lat || !s.lng) return;
       const popupContent = createPopupContent(s);
-      const marker = L.marker([s.lat, s.lng]).bindPopup(popupContent);
+      // ラベル位置をピン中央に合わせるため、tooltipAnchor調整済みアイコンを使う
+      const marker = L.marker([s.lat, s.lng], { icon: centeredTooltipIcon }).bindPopup(popupContent);
       // マーカー上にスポット名を常時表示（絞り込み後も表示中のマーカーのみ出る）
       marker.bindTooltip(createMarkerLabelText(s), {
         permanent: true,
