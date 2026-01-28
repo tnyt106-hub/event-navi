@@ -1,0 +1,5 @@
+# 生成HTML/JSONはLF固定（差分爆発防止）
+docs/date/** text eol=lf
+docs/events/** text eol=lf
+docs/index.html text eol=lf
+docs/partials/** text eol=lf
