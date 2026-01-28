@@ -30,6 +30,11 @@
       "id": "marugame_ilex",
       "script": "scripts/fetch-marugame-ilex-events.js",
       "enabled": true
+    },
+    {
+      "id": "generate-date-pages",
+      "script": "scripts/generate-date-pages.js",
+      "enabled": true
     }
   ]
 }
