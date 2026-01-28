@@ -142,14 +142,17 @@ h2 {
 /*現在地ボタン-------------------------------------------------  */
 #locate-btn {
   position: absolute;
-top: 80px; /* ズームボタンやレイヤーボタンとの重なりを避けるための高さ */
+  /* Leaflet標準のコントロール（ズーム/レイヤー）は右上(top: 10px)付近にあるため、
+     その下に配置されるよう top と right を指定します。
+  */
+  top: 80px; /* ズームボタンやレイヤーボタンとの重なりを避けるための高さ */
   right: 10px;
   z-index: 1000;
 
-  width: 44px;
+  width: 44px; /* 右上のコントロール類に合わせた少しコンパクトなサイズ */
   height: 44px;
-  border-radius: 50%;
-  border: none;
+  border-radius: 4px; /* 他の Leaflet コントロールに合わせて角を少し丸める */
+  border: 2px solid rgba(0,0,0,0.2); /* 標準コントロールに近い質感 */
   background: var(--surface);
   cursor: pointer;
 
@@ -158,24 +161,24 @@ top: 80px; /* ズームボタンやレイヤーボタンとの重なりを避け
   align-items: center;
   justify-content: center;
   padding: 0;
-  font-size: 0;     
-  line-height: 1;  
-  box-shadow: var(--shadow-subcard);
+  box-shadow: none; /* 標準コントロールに合わせるなら shadow は控えめ */
+  transition: background-color 0.2s;
 }
 /* ピンアイコン */
 #locate-btn .icon {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
-  margin: 0;
+  color: #444;
 }
 /* 「現在地」文字 */
 #locate-btn .label {
-  font-size: 9px;   
+  font-size: 8px;   
   line-height: 1;
-  transform: translateY(2px);
+  margin-top: 2px;
+  color: #444;
 }
 #locate-btn:hover {
-  background: var(--accent-soft);
+  background: #f4f4f4;
 }
 
 /* 地図上のスポット名ラベル（Leaflet tooltip） */
