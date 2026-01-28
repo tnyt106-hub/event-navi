@@ -1,98 +1,271 @@
-const fs = require('fs/promises');
-const path = require('path');
-const { spawn } = require('child_process');
+#!/usr/bin/env node
+"use strict";
 
-// 固定秒数スリープするためのユーティリティです。
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+/**
+ * run-all.js
+ * - run-all.config.json に従って tasks を順番に実行
+ * - 進捗ログを「RUN / PHASE / TASK」の粒度で出す
+ * - 失敗しても続行し、最後にサマリ出力
+ *
+ * 想定config:
+ * {
+ *   "sleepSecondsBetween": 7,
+ *   "tasks": [
+ *     { "id": "rexam_hall", "script": "scripts/fetch-rexam-hall-events.js", "enabled": true },
+ *     { "id": "highstaff_hall", "script": "scripts/fetch-highstaff-hall-events.js", "enabled": true },
+ *     { "id": "generate_date_pages", "script": "scripts/generate-date-pages.js", "enabled": true }
+ *   ]
+ * }
+ */
 
-// 子プロセスとして Node.js で指定スクリプトを実行します。
-// stdout/stderr を親プロセスへそのまま流し、終了コードを返します。
-const runTask = (scriptPath, taskId) =>
-  new Promise((resolve) => {
-    const child = spawn('node', [scriptPath], {
-      stdio: ['ignore', 'pipe', 'pipe'],
+const fs = require("fs");
+const path = require("path");
+const { spawn } = require("child_process");
+
+const REPO_ROOT = path.join(__dirname, "..");
+
+// ------------- logging helpers -------------
+
+function nowIso() {
+  return new Date().toISOString();
+}
+
+function msToSec(ms) {
+  return (ms / 1000).toFixed(1);
+}
+
+function logRun(msg) {
+  console.log(`[RUN] ${msg}`);
+}
+
+function logPhase(msg) {
+  console.log(`[PHASE] ${msg}`);
+}
+
+function logTask(msg) {
+  console.log(`  [TASK] ${msg}`);
+}
+
+function warnTask(msg) {
+  console.warn(`  [WARN] ${msg}`);
+}
+
+function errorTask(msg) {
+  console.error(`  [ERROR] ${msg}`);
+}
+
+// ------------- config loading -------------
+
+function findConfigPath() {
+  const candidates = [
+    path.join(REPO_ROOT, "scripts", "run-all.config.json"),
+    path.join(REPO_ROOT, "run-all.config.json"),
+    path.join(REPO_ROOT, "scripts", "run_all.config.json"),
+    path.join(REPO_ROOT, "run_all.config.json"),
+  ];
+  for (const p of candidates) {
+    if (fs.existsSync(p)) return p;
+  }
+  return null;
+}
+
+function loadConfig() {
+  const configPath = findConfigPath();
+  if (!configPath) {
+    throw new Error(
+      "run-all.config.json が見つかりません。候補: scripts/run-all.config.json または run-all.config.json"
+    );
+  }
+  const raw = fs.readFileSync(configPath, "utf8");
+  const json = JSON.parse(raw);
+
+  if (!json || typeof json !== "object") {
+    throw new Error("config JSON の形式が不正です。");
+  }
+  const tasks = Array.isArray(json.tasks) ? json.tasks : [];
+  const sleepSecondsBetween =
+    typeof json.sleepSecondsBetween === "number" && json.sleepSecondsBetween >= 0
+      ? json.sleepSecondsBetween
+      : 0;
+
+  return { configPath, tasks, sleepSecondsBetween };
+}
+
+// ------------- phase classification -------------
+
+function classifyPhase(task) {
+  const id = String(task.id || "").toLowerCase();
+  const script = String(task.script || "").toLowerCase();
+
+  // 生成系
+  if (id.includes("generate") || script.includes("generate")) return "generate";
+  if (script.includes("date") && script.includes("pages")) return "generate";
+
+  // タグ付与/整形系
+  if (id.includes("tag") || script.includes("tag")) return "tagging";
+  if (script.includes("apply_tags") || script.includes("apply-tags")) return "tagging";
+
+  // デフォルトはスクレイピング
+  return "scrape";
+}
+
+function phaseLabel(phase) {
+  if (phase === "scrape") return "scrape";
+  if (phase === "tagging") return "tagging";
+  if (phase === "generate") return "generate";
+  return String(phase);
+}
+
+// ------------- process runner -------------
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function runNodeScript(scriptPathAbs) {
+  return new Promise((resolve) => {
+    const child = spawn(process.execPath, [scriptPathAbs], {
+      cwd: REPO_ROOT,
+      stdio: "inherit", // bat/log側で拾える。進捗はこの上に出る
+      windowsHide: true,
     });
 
-    child.stdout.on('data', (chunk) => {
-      process.stdout.write(chunk);
+    child.on("close", (code, signal) => {
+      resolve({ code: code ?? 1, signal: signal ?? null });
     });
 
-    child.stderr.on('data', (chunk) => {
-      process.stderr.write(chunk);
-    });
-
-    child.on('error', (error) => {
-      console.error(`[run-all] failed to start ${taskId}:`, error);
-      resolve(1);
-    });
-
-    child.on('close', (code) => {
-      // code が null の場合は異常終了として 1 扱いにします。
-      resolve(code ?? 1);
+    child.on("error", (err) => {
+      resolve({ code: 1, signal: null, error: err });
     });
   });
+}
 
-const formatDuration = (ms) => {
-  const seconds = Math.floor(ms / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const remainSeconds = seconds % 60;
-  return `${minutes}m ${remainSeconds}s`;
-};
+function resolveScriptPath(taskScript) {
+  // configは repo root 起点の相対パス想定だが、絶対パスでもOK
+  if (!taskScript) return null;
+  const s = String(taskScript);
+  if (path.isAbsolute(s)) return s;
+  return path.join(REPO_ROOT, s);
+}
 
-const main = async () => {
-  const startTime = Date.now();
-  const configPath = path.resolve(__dirname, 'run-all.config.json');
-  const repoRoot = path.resolve(__dirname, '..');
+function formatTaskName(task) {
+  const id = task.id ? String(task.id) : "(no-id)";
+  const script = task.script ? String(task.script) : "(no-script)";
+  return `${id} (${script})`;
+}
 
-  // 設定ファイルを読み込み、enabled=true の task のみ順に実行します。
-  const config = JSON.parse(await fs.readFile(configPath, 'utf8'));
-  const sleepSecondsBetween = Number(config.sleepSecondsBetween ?? 0);
-  const tasks = (config.tasks ?? []).filter((task) => task.enabled);
+// ------------- main -------------
 
-  let executedCount = 0;
-  let successCount = 0;
-  const failedTaskIds = [];
+async function main() {
+  const runStart = Date.now();
+  logRun(`start ${nowIso()}`);
 
-  for (let index = 0; index < tasks.length; index += 1) {
-    const task = tasks[index];
-    const scriptPath = path.resolve(repoRoot, task.script);
+  let config;
+  try {
+    config = loadConfig();
+  } catch (e) {
+    errorTask(String(e?.message || e));
+    process.exitCode = 1;
+    return;
+  }
 
-    console.log(`[run-all] start ${task.id}`);
-    const exitCode = await runTask(scriptPath, task.id);
-    executedCount += 1;
+  logRun(`config: ${config.configPath}`);
+  const enabledTasks = config.tasks.filter((t) => t && t.enabled !== false);
 
-    if (exitCode === 0) {
-      successCount += 1;
-      console.log(`[run-all] success ${task.id}`);
+  if (enabledTasks.length === 0) {
+    warnTask("enabled な task がありません。config を確認してください。");
+    return;
+  }
+
+  logRun(`tasks: total=${config.tasks.length}, enabled=${enabledTasks.length}`);
+  if (config.sleepSecondsBetween > 0) {
+    logRun(`sleepSecondsBetween=${config.sleepSecondsBetween}s`);
+  }
+
+  // フェーズごとに集計したいので、実行しながらphase計測する
+  let currentPhase = null;
+  let phaseStart = 0;
+
+  const failed = [];
+  let okCount = 0;
+  let failCount = 0;
+
+  for (let i = 0; i < enabledTasks.length; i += 1) {
+    const task = enabledTasks[i];
+    const phase = classifyPhase(task);
+
+    if (phase !== currentPhase) {
+      // 前フェーズの終了ログ
+      if (currentPhase) {
+        const phaseElapsed = Date.now() - phaseStart;
+        logPhase(`${phaseLabel(currentPhase)}: done (${msToSec(phaseElapsed)}s)`);
+      }
+      // 新フェーズ開始
+      currentPhase = phase;
+      phaseStart = Date.now();
+      logPhase(`${phaseLabel(currentPhase)}: start`);
+    }
+
+    const label = formatTaskName(task);
+    const scriptPathAbs = resolveScriptPath(task.script);
+
+    if (!scriptPathAbs) {
+      warnTask(`${label}: script が未指定のためスキップ`);
+      failCount += 1;
+      failed.push(task.id || "(no-id)");
+      continue;
+    }
+
+    if (!fs.existsSync(scriptPathAbs)) {
+      warnTask(`${label}: script が存在しないためスキップ -> ${scriptPathAbs}`);
+      failCount += 1;
+      failed.push(task.id || "(no-id)");
+      continue;
+    }
+
+    const taskStart = Date.now();
+    logTask(`${task.id || "(no-id)"}: start`);
+
+    const result = await runNodeScript(scriptPathAbs);
+    const elapsed = Date.now() - taskStart;
+
+    if (result.code === 0) {
+      okCount += 1;
+      logTask(`${task.id || "(no-id)"}: done (${msToSec(elapsed)}s) exit=0`);
     } else {
-      failedTaskIds.push(task.id);
-      console.log(`[run-all] failed ${task.id} (exit=${exitCode})`);
+      failCount += 1;
+      const errText = result.error ? ` error=${String(result.error.message || result.error)}` : "";
+      warnTask(
+        `${task.id || "(no-id)"}: fail (${msToSec(elapsed)}s) exit=${result.code}${errText}`
+      );
+      failed.push(task.id || "(no-id)");
     }
 
-    // 最後の task 以外はスリープして次の施設に移ります。
-    if (index < tasks.length - 1 && sleepSecondsBetween > 0) {
-      console.log(`[run-all] sleep ${sleepSecondsBetween}s before next task`);
-      await sleep(sleepSecondsBetween * 1000);
+    // 次のtaskまでsleep（最後は不要）
+    const isLast = i === enabledTasks.length - 1;
+    if (!isLast && config.sleepSecondsBetween > 0) {
+      await sleep(config.sleepSecondsBetween * 1000);
     }
   }
 
-  const failedCount = failedTaskIds.length;
-  const totalDuration = Date.now() - startTime;
-
-  console.log('[run-all] summary');
-  console.log(`  executed: ${executedCount}`);
-  console.log(`  success: ${successCount}`);
-  console.log(`  failed: ${failedCount}`);
-  if (failedCount > 0) {
-    console.log(`  failedTaskIds: ${failedTaskIds.join(', ')}`);
+  // 最終フェーズの終了ログ
+  if (currentPhase) {
+    const phaseElapsed = Date.now() - phaseStart;
+    logPhase(`${phaseLabel(currentPhase)}: done (${msToSec(phaseElapsed)}s)`);
   }
-  console.log(`  duration: ${formatDuration(totalDuration)}`);
 
-  // 失敗が1件でもあれば終了コードを 1 にします。
-  process.exitCode = failedCount > 0 ? 1 : 0;
-};
+  const totalElapsed = Date.now() - runStart;
+  logRun(`done (${msToSec(totalElapsed)}s) ok=${okCount} fail=${failCount}`);
 
-main().catch((error) => {
-  console.error('[run-all] unexpected error:', error);
+  if (failed.length > 0) {
+    logRun(`failed tasks: ${failed.join(", ")}`);
+    process.exitCode = 1;
+  } else {
+    process.exitCode = 0;
+  }
+}
+
+main().catch((e) => {
+  errorTask(`unexpected error: ${String(e?.message || e)}`);
   process.exitCode = 1;
 });
