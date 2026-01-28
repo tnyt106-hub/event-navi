@@ -227,7 +227,7 @@ fetch("./data/spots.json")
         permanent: true,
         direction: "top",
         className: "spot-label",
-        offset: [0, -12],
+        offset: [0, 0],
         opacity: 0.9,
         interactive: true
       });
