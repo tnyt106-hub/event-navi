@@ -146,8 +146,8 @@ top: 80px; /* ズームボタンやレイヤーボタンとの重なりを避け
   right: 10px;
   z-index: 1000;
 
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: none;
   background: var(--surface);
