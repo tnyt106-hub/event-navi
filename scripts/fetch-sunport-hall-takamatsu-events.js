@@ -216,15 +216,17 @@ function buildEventFromBlock(block, baseUrl) {
   const headingText = normalizeTitle(stripTags(block.headingHtml));
   if (!headingText) return null;
 
-let linkMatch = block.headingHtml.match(/<a\b[^>]*href=['"]([^'"]+)['"][^>]*>/i);
+let linkMatch = block.headingHtml.match(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/i);
 if (!linkMatch) {
-  const allLinks = Array.from(block.bodyHtml.matchAll(/<a\b[^>]*href=['"]([^'"]+)['"][^>]*>([\s\S]*?)<\/a>/gi));
-  const detailLink = allLinks.find(m => 
-    m[2].includes("詳細") || m[1].includes("/event/")
-  ) || allLinks[0];
-  linkMatch = detailLink;
+  const allLinks = Array.from(block.bodyHtml.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi));
+  const detailLink = allLinks.find(m => {
+    const href = m[1];
+    const text = m[2];
+    return text.includes("詳細") || href.includes("/event/");
+  });
+  linkMatch = detailLink || allLinks[0] || null;
 }
-const sourceUrl = linkMatch ? new URL(linkMatch[1], baseUrl).toString() : null;
+const sourceUrl = (linkMatch && linkMatch[1]) ? new URL(linkMatch[1], baseUrl).toString() : null;
 
   const lines = htmlToLines(block.bodyHtml);
   const dateLine = lines[0] || "";
