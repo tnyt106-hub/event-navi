@@ -142,20 +142,16 @@ h2 {
 /*現在地ボタン-------------------------------------------------  */
 #locate-btn {
   position: absolute;
-  /* レイバーボタン（通常 top: 80px付近）のすぐ下に配置 */
-  top: 130px; 
+  /* レイバーボタン(top: 80px)のすぐ下に、標準の隙間(10px)を空けて配置 */
+  top: 124px; 
   right: 10px;
   z-index: 1000;
-
-  /* Leaflet標準サイズ (34px) よりも、文字を入れるために少しだけ縦を確保 */
   width: 34px;
-  height: 44px;
-  
-  /* Leaflet標準の角丸と枠線 */
-  border-radius: 4px;
+  height: 34px;
+  background-color: #fff;
   border: 2px solid rgba(0,0,0,0.2);
   background-clip: padding-box;
-  background-color: #fff;
+  border-radius: 4px;
   
   cursor: pointer;
   display: flex;
@@ -163,8 +159,6 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 0;
-  
-  /* Leaflet標準は影をつけず、枠線のみで表現されることが多い */
   box-shadow: none;
   transition: background-color 0.1s;
 }
