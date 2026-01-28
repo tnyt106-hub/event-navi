@@ -596,7 +596,7 @@ function generatePages() {
   const todayKey = formatDateKey(todayUtc);
   const recentDates = publishDates
     .filter(entry => formatDateKey(entry.date) >= todayKey)
-    .slice(0, 60);
+    .slice(0, 90);
 
   if (recentDates.length > 0) {
     const indexHtml = renderDateIndexPage(recentDates, dateAdHtml);
