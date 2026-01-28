@@ -189,8 +189,9 @@ h2 {
   color: var(--text);
   font-size: 12px;
   padding: 2px 8px;
-  white-space: nowrap;      /* 改行を防いで幅を安定させる */
-  transform: translateX(-50%); /* 水平方向の中央揃えを強制 */
+　white-space: nowrap;      /* 改行を禁止して幅を固定 */
+  margin-left: 0;           /* デフォルトのマージンをリセット */
+  transform: translateX(-50%); /* 自身の幅の半分だけ左にずらして中央へ */
   pointer-events: auto !important; /* クリックイベントを確実に拾う */
 }
 
