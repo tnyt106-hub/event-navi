@@ -164,13 +164,13 @@ h2 {
 }
 /* ピンアイコン */
 #locate-btn .icon {
-  font-size: 18px; 
+  font-size: 20px; 
   line-height: 1;
   margin-top: 2px;
 }
 /* 「現在地」文字 */
 #locate-btn .label {
-  font-size: 8px;   
+  font-size: 10px;   
   font-weight: bold;
   line-height: 1;
   margin-top: 1px;
@@ -180,7 +180,6 @@ h2 {
 #locate-btn:hover {
   background: #f4f4f4;
 }
-
 /* 地図上のスポット名ラベル（Leaflet tooltip） */
 .leaflet-tooltip.spot-label {
   background: rgba(255, 255, 255, 0.95);
