@@ -191,7 +191,8 @@ h2 {
   padding: 2px 8px;
 　white-space: nowrap;      /* 改行を禁止して幅を固定 */
   margin-left: 0;           /* デフォルトのマージンをリセット */
-  transform: translateX(-50%); /* 自身の幅の半分だけ左にずらして中央へ */
+  /* tooltipAnchorで中央合わせするため、追加の水平シフトはしない */
+  transform: translateX(0);
   pointer-events: auto !important; /* クリックイベントを確実に拾う */
 }
 
