@@ -142,8 +142,8 @@ h2 {
 /*現在地ボタン-------------------------------------------------  */
 #locate-btn {
   position: absolute;
-  bottom: calc(20px + env(safe-area-inset-bottom));
-  right: calc(20px + env(safe-area-inset-right));
+top: 80px; /* ズームボタンやレイヤーボタンとの重なりを避けるための高さ */
+  right: 10px;
   z-index: 1000;
 
   width: 52px;
