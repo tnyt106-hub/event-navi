@@ -593,7 +593,7 @@ function generatePages() {
   });
 
   // 日付一覧ページは直近60日分程度を対象にする
-  const recentDates = publishDates.slice(-60).reverse();
+  const recentDates = publishDates.slice(-60);
   if (recentDates.length > 0) {
     const indexHtml = renderDateIndexPage(recentDates, dateAdHtml);
     const indexPath = path.join(OUTPUT_DIR, "index.html");
