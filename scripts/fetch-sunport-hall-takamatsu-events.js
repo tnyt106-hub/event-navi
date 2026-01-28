@@ -216,8 +216,15 @@ function buildEventFromBlock(block, baseUrl) {
   const headingText = normalizeTitle(stripTags(block.headingHtml));
   if (!headingText) return null;
 
-  const linkMatch = block.headingHtml.match(/<a\b[^>]*href=['"]([^'"]+)['"][^>]*>/i);
-  const sourceUrl = linkMatch ? new URL(linkMatch[1], baseUrl).toString() : null;
+let linkMatch = block.headingHtml.match(/<a\b[^>]*href=['"]([^'"]+)['"][^>]*>/i);
+if (!linkMatch) {
+  const allLinks = Array.from(block.bodyHtml.matchAll(/<a\b[^>]*href=['"]([^'"]+)['"][^>]*>([\s\S]*?)<\/a>/gi));
+  const detailLink = allLinks.find(m => 
+    m[2].includes("詳細") || m[1].includes("/event/")
+  ) || allLinks[0];
+  linkMatch = detailLink;
+}
+const sourceUrl = linkMatch ? new URL(linkMatch[1], baseUrl).toString() : null;
 
   const lines = htmlToLines(block.bodyHtml);
   const dateLine = lines[0] || "";
