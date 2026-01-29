@@ -1,0 +1,61 @@
+{
+  "venue_id": "takamatsu_city_museum_of_art",
+  "venue_name": "高松市美術館",
+  "events": [
+    {
+      "title": "2025年度 コレクション展1",
+      "date_from": "2025-04-05",
+      "date_to": "2025-06-29",
+      "source_url": "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/index.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2025年度 コレクション展2",
+      "date_from": "2025-07-05",
+      "date_to": "2025-09-28",
+      "source_url": "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/index.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2025年度 コレクション展3",
+      "date_from": "2025-10-01",
+      "date_to": "2025-12-27",
+      "source_url": "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/index.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2025年度 コレクション展4",
+      "date_from": "2026-01-06",
+      "date_to": "2026-03-29",
+      "source_url": "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/index.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第43回日本伝統漆芸展",
+      "date_from": "2025-03-14",
+      "date_to": "2025-03-30",
+      "source_url": "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/index.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }
+  ]
+}
