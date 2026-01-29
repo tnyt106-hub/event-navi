@@ -179,10 +179,30 @@ function splitHtmlBySpecialSection(html) {
   }
 
   if (specialStart === -1) {
+    // 見出しが取れない場合でも「特別展」の文言からセクションを推定する。
+    const fallbackStart = cleaned.indexOf(SPECIAL_SECTION_LABEL);
+    if (fallbackStart === -1) {
+      return {
+        specialSectionHtml: "",
+        otherSectionHtml: cleaned,
+        specialSectionFound: false,
+      };
+    }
+
+    // 次のセクション候補から最も近い終端を探す。
+    const sectionEndCandidates = ["コレクション展", "その他展覧会", "企画展", "常設展"];
+    let fallbackEnd = cleaned.length;
+    for (const candidate of sectionEndCandidates) {
+      const candidateIndex = cleaned.indexOf(candidate, fallbackStart + SPECIAL_SECTION_LABEL.length);
+      if (candidateIndex !== -1 && candidateIndex < fallbackEnd) {
+        fallbackEnd = candidateIndex;
+      }
+    }
+
     return {
-      specialSectionHtml: "",
-      otherSectionHtml: cleaned,
-      specialSectionFound: false,
+      specialSectionHtml: cleaned.slice(fallbackStart, fallbackEnd),
+      otherSectionHtml: cleaned.slice(0, fallbackStart) + cleaned.slice(fallbackEnd),
+      specialSectionFound: true,
     };
   }
 
@@ -332,69 +352,70 @@ function extractSpecialEventsFromSection(sectionHtml) {
     };
   }
 
-  const rawLines = extractRawLinesFromHtml(sectionHtml);
   const dateIndicator = /\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日/;
   const events = [];
   const seen = new Set();
   let specialLinkCount = 0;
   let specialEventsCount = 0;
   const previewPairs = [];
+  const anchorPattern = /<a[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  // アンカー直後のHTML断片を走査するための文字数（壊れにくさ優先）。
+  const anchorLookaheadLength = 900;
 
-  for (let i = 0; i < rawLines.length; i += 1) {
-    const line = rawLines[i];
-    const anchors = [...line.matchAll(/<a[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)];
-    if (anchors.length === 0) {
+  for (const anchor of sectionHtml.matchAll(anchorPattern)) {
+    const href = anchor[1] ? anchor[1].trim() : "";
+    let title = normalizeText(anchor[2]);
+    if (!title) {
       continue;
     }
 
-    for (const anchor of anchors) {
-      const href = anchor[1] ? anchor[1].trim() : "";
-      let title = normalizeText(anchor[2]);
-      if (!title) {
-        continue;
-      }
+    specialLinkCount += 1;
+    // 特別展ラベルなどのノイズを除去してタイトルを整える。
+    title = removeTitleNoise(title);
+    const sourceUrl = buildSourceUrlFromHref(href);
 
-      specialLinkCount += 1;
-      title = removeTitleNoise(title);
-      const sourceUrl = buildSourceUrlFromHref(href);
+    // アンカー直後のHTML断片から日付情報を探す。
+    const anchorIndex = anchor.index ?? 0;
+    const lookaheadStart = anchorIndex;
+    const lookaheadEnd = Math.min(sectionHtml.length, lookaheadStart + anchorLookaheadLength);
+    const lookaheadHtml = sectionHtml.slice(lookaheadStart, lookaheadEnd);
+    const lookaheadLines = extractRawLinesFromHtml(lookaheadHtml);
+    let dateLine = "";
 
-      let dateLine = "";
-      const lookaheadLimit = Math.min(rawLines.length, i + 4);
-      for (let j = i; j < lookaheadLimit; j += 1) {
-        const normalizedLine = normalizeDateText(stripTags(rawLines[j]));
-        if (dateIndicator.test(normalizedLine)) {
-          dateLine = normalizedLine;
-          break;
-        }
+    for (const line of lookaheadLines) {
+      const normalizedLine = normalizeDateText(stripTags(line));
+      if (dateIndicator.test(normalizedLine)) {
+        dateLine = normalizedLine;
+        break;
       }
+    }
 
-      if (!dateLine) {
-        continue;
-      }
+    if (!dateLine) {
+      continue;
+    }
 
-      const dateRange = parseDateRange(dateLine);
-      if (!dateRange) {
-        continue;
-      }
+    const dateRange = parseDateRange(dateLine);
+    if (!dateRange) {
+      continue;
+    }
 
-      const dateFrom = formatDate(dateRange.start);
-      const dateTo = formatDate(dateRange.end);
-      const key = `${title}__${dateFrom}__${dateTo}`;
-      if (seen.has(key)) {
-        continue;
-      }
-      seen.add(key);
-      events.push({
-        title,
-        date_from: dateFrom,
-        date_to: dateTo,
-        source_url: sourceUrl,
-      });
-      specialEventsCount += 1;
+    const dateFrom = formatDate(dateRange.start);
+    const dateTo = formatDate(dateRange.end);
+    const key = `${title}__${dateFrom}__${dateTo}`;
+    if (seen.has(key)) {
+      continue;
+    }
+    seen.add(key);
+    events.push({
+      title,
+      date_from: dateFrom,
+      date_to: dateTo,
+      source_url: sourceUrl,
+    });
+    specialEventsCount += 1;
 
-      if (previewPairs.length < 3) {
-        previewPairs.push({ title, source_url: sourceUrl });
-      }
+    if (previewPairs.length < 3) {
+      previewPairs.push({ title, source_url: sourceUrl });
     }
   }
 
