@@ -13,6 +13,7 @@ const ENTRY_URL = "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/i
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "takamatsu_city_museum_of_art.json");
 const VENUE_ID = "takamatsu_city_museum_of_art";
 const VENUE_NAME = "高松市美術館";
+const TITLE_KEYWORDS = ["特別展", "コレクション展", "その他展覧会", "日本伝統漆芸展", "企画展", "常設展"];
 
 // HTML を取得する。HTTPエラーや明らかなエラーページはハード失敗とする。
 function fetchHtml(url) {
@@ -125,32 +126,55 @@ function buildDate(year, month, day) {
   return date;
 }
 
+// HTMLを行配列に変換する共通処理。
+function extractLinesFromHtml(html) {
+  // 区切りになりうるタグを改行に置き換えてからプレーンテキスト化する。
+  const cleaned = removeNoisyTags(html)
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<\/div>/gi, "\n")
+    .replace(/<\/h[1-6]>/gi, "\n")
+    .replace(/<\/section>/gi, "\n")
+    .replace(/<\/li>/gi, "\n");
+  const rawLines = cleaned.split(/\r?\n/);
+  return rawLines
+    .map((line) => normalizeText(line))
+    .map((line) => normalizeDateText(line))
+    .filter((line) => line.length > 0);
+}
+
+// タイトル候補かどうかを判定する。
+function isTitleCandidate(line) {
+  const titleKeywordPattern = new RegExp(TITLE_KEYWORDS.join("|"));
+  const titleOnlyPattern = new RegExp(`^(${TITLE_KEYWORDS.join("|")})$`);
+  // 2文字未満、キーワード未包含、キーワードのみの見出しは除外する。
+  if (line.length < 2 || !titleKeywordPattern.test(line) || titleOnlyPattern.test(line)) {
+    return false;
+  }
+  return true;
+}
+
 // HTML内のイベント候補ブロックを抽出する。
 function extractEventBlocks(html) {
-  const cleaned = removeNoisyTags(html);
+  // ブロック構造ではなく「タイトル行→日付行」の並びを行ベースで拾う。
+  const lines = extractLinesFromHtml(html);
   const blocks = [];
-  const selectors = [
-    /<article\b[\s\S]*?<\/article>/gi,
-    /<section\b[^>]*class=["'][^"']*(?:event|exhibition|exhibit|tenji|tenran|展示|展覧会)[^"']*["'][\s\S]*?<\/section>/gi,
-    /<div\b[^>]*class=["'][^"']*(?:event|exhibition|exhibit|tenji|tenran|展示|展覧会)[^"']*["'][\s\S]*?<\/div>/gi,
-    /<li\b[^>]*class=["'][^"']*(?:event|exhibition|exhibit|tenji|tenran|展示|展覧会)[^"']*["'][\s\S]*?<\/li>/gi,
-  ];
-
-  for (const selector of selectors) {
-    const matches = cleaned.match(selector);
-    if (matches && matches.length > 0) {
-      blocks.push(...matches);
-    }
-  }
-
-  if (blocks.length > 0) {
-    return blocks;
-  }
-
-  // クラスが取得できない場合でも、年付き日付が含まれる <li> を候補にする。
-  const listMatches = cleaned.match(/<li\b[\s\S]*?<\/li>/gi) || [];
   const dateIndicator = /\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日/;
-  return listMatches.filter((block) => dateIndicator.test(stripTags(block)));
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const titleLine = lines[i];
+    if (!isTitleCandidate(titleLine)) {
+      continue;
+    }
+    const dateLine = lines[i + 1];
+    if (!dateLine || !dateIndicator.test(dateLine)) {
+      continue;
+    }
+    // 既存のブロック解析を流用できるよう、簡易的に連結する。
+    blocks.push(`${titleLine}\n${dateLine}`);
+  }
+
+  return blocks;
 }
 
 // イベントブロックからタイトル候補を抽出する。
@@ -192,6 +216,7 @@ function extractSourceUrl(blockHtml) {
 
 // 日付テキストから開始日・終了日を取得する。
 function parseDateRange(text) {
+  // 日付判定は安全側に倒すため、開始日と終了日が揃っている場合だけ返す。
   const normalized = normalizeDateText(stripTags(text));
   const startMatch = normalized.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
 
@@ -208,10 +233,10 @@ function parseDateRange(text) {
   const remainder = normalized.slice(startMatch.index + startMatch[0].length);
   const hasRangeSeparator = /(~|-|から|まで)/.test(remainder);
   if (!hasRangeSeparator) {
-    return { start: startDate, end: startDate };
+    return null;
   }
 
-  // 終了日が「YYYY年M月D日」か「M月D日」で取得できる場合に限り許可する。
+  // 終了日は「YYYY年M月D日」または「M月D日」だけを許可する。
   const endMatchWithYear = remainder.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
   const endMatchWithoutYear = remainder.match(/(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
   let endDate = null;
@@ -224,6 +249,7 @@ function parseDateRange(text) {
     let endYear = startDate.getFullYear();
     const startMonth = startDate.getMonth() + 1;
     const startDay = startDate.getDate();
+    // 年の省略がある場合は、終了月日が開始月日より前なら翌年とみなす。
     if (endMonth < startMonth || (endMonth === startMonth && endDay < startDay)) {
       endYear += 1;
     }
@@ -240,18 +266,9 @@ function parseDateRange(text) {
   return { start: startDate, end: endDate };
 }
 
-// HTMLを行配列に分解してフォールバック抽出を行う。
+// HTMLを行配列に分解して展覧会（会期型）を抽出する。
 function extractEventsFromLines(html) {
-  const cleaned = removeNoisyTags(html)
-    .replace(/<br\s*\/?>/gi, "\n")
-    .replace(/<\/p>/gi, "\n")
-    .replace(/<\/li>/gi, "\n")
-    .replace(/<\/div>/gi, "\n")
-    .replace(/<\/tr>/gi, "\n")
-    .replace(/<\/section>/gi, "\n");
-  const rawLines = cleaned.split(/\r?\n/);
-  const lines = rawLines.map((line) => normalizeText(line)).filter((line) => line.length > 0);
-  const titleKeywordPattern = /(特別展|コレクション展|企画展|常設展|展)/;
+  const lines = extractLinesFromHtml(html);
   const startDatePattern = /\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日/;
   const events = [];
   const seen = new Set();
@@ -261,7 +278,8 @@ function extractEventsFromLines(html) {
 
   for (let i = 0; i < lines.length; i += 1) {
     const titleLine = lines[i];
-    if (titleLine.length < 2 || !titleKeywordPattern.test(titleLine)) {
+    // タイトル候補はキーワードを含み、見出し単体だけではないものを採用する。
+    if (!isTitleCandidate(titleLine)) {
       continue;
     }
     titleCandidates += 1;
@@ -300,49 +318,22 @@ function extractEventsFromLines(html) {
     lineCount: lines.length,
     titleCandidates,
     dateLineDetections,
+    linesPreview: lines.slice(0, 6).map((line) => (line.length > 40 ? `${line.slice(0, 40)}…` : line)),
   };
 }
 
 async function main() {
   const html = await fetchHtml(ENTRY_URL);
-  const blocks = extractEventBlocks(html);
-
-  const events = [];
-  let excludedCount = 0;
-
-  for (const block of blocks) {
-    const title = extractTitle(block);
-    if (!title || title.length < 2) {
-      excludedCount += 1;
-      continue;
-    }
-
-    const dateRange = parseDateRange(block);
-    if (!dateRange) {
-      excludedCount += 1;
-      continue;
-    }
-
-    const sourceUrl = extractSourceUrl(block);
-    events.push({
-      title,
-      date_from: formatDate(dateRange.start),
-      date_to: formatDate(dateRange.end),
-      source_url: sourceUrl,
-    });
-  }
-
-  if (blocks.length === 0 || events.length === 0) {
-    const fallback = extractEventsFromLines(html);
-    excludedCount += fallback.excludedCount;
-    events.push(...fallback.events);
-    console.log(
-      `[${VENUE_ID}] fallback lines=${fallback.lineCount}, titles=${fallback.titleCandidates}, dateLines=${fallback.dateLineDetections}`
-    );
-  }
+  // このページは「タイトル行→日付行」の並びなので、行ベースで抽出する。
+  const lineResult = extractEventsFromLines(html);
+  const events = lineResult.events;
+  const excludedCount = lineResult.excludedCount;
 
   if (events.length === 0) {
-    console.error(`[${VENUE_ID}] 抽出できた events が 0 件です。`);
+    // 失敗時に原因を追えるように、行数や候補数などの最小情報を出す。
+    console.error(
+      `[${VENUE_ID}] 抽出できた events が 0 件です。 lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, preview=${lineResult.linesPreview.join(" / ")}`
+    );
     process.exit(1);
     return;
   }
@@ -356,7 +347,9 @@ async function main() {
   applyTagsToEventsData(data, { overwrite: false });
 
   fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
-  console.log(`[${VENUE_ID}] blocks=${blocks.length}, events=${events.length}, excluded=${excludedCount}`);
+  console.log(
+    `[${VENUE_ID}] lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, events=${events.length}, excluded=${excludedCount}`
+  );
 }
 
 main().catch((error) => {
