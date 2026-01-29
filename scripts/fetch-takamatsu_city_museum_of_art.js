@@ -1,6 +1,6 @@
 // 高松市美術館の「展覧会・イベント（会期型中心）」ページから、
 // 展覧会の会期情報のみを抽出して JSON に保存するバッチ。
-// 使い方: node scripts/scrape-takamatsu_city_museum_of_art.js
+// 使い方: node scripts/fetch-takamatsu_city_museum_of_art.js
 
 const fs = require("fs");
 const path = require("path");
@@ -14,6 +14,7 @@ const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "takamatsu_city
 const VENUE_ID = "takamatsu_city_museum_of_art";
 const VENUE_NAME = "高松市美術館";
 const TITLE_KEYWORDS = ["特別展", "コレクション展", "その他展覧会", "日本伝統漆芸展", "企画展", "常設展"];
+const SPECIAL_SECTION_LABEL = "特別展";
 
 // HTML を取得する。HTTPエラーや明らかなエラーページはハード失敗とする。
 function fetchHtml(url) {
@@ -126,8 +127,9 @@ function buildDate(year, month, day) {
   return date;
 }
 
-// HTMLを行配列に変換する共通処理。
-function extractLinesFromHtml(html) {
+// HTMLを行配列に変換する共通処理（タグは残したまま改行だけ挿入）。
+function extractRawLinesFromHtml(html) {
+  if (!html) return [];
   // 区切りになりうるタグを改行に置き換えてからプレーンテキスト化する。
   const cleaned = removeNoisyTags(html)
     .replace(/<br\s*\/?>/gi, "\n")
@@ -136,7 +138,12 @@ function extractLinesFromHtml(html) {
     .replace(/<\/h[1-6]>/gi, "\n")
     .replace(/<\/section>/gi, "\n")
     .replace(/<\/li>/gi, "\n");
-  const rawLines = cleaned.split(/\r?\n/);
+  return cleaned.split(/\r?\n/).filter((line) => line.trim().length > 0);
+}
+
+// HTMLを行配列に変換する共通処理。
+function extractLinesFromHtml(html) {
+  const rawLines = extractRawLinesFromHtml(html);
   return rawLines
     .map((line) => normalizeText(line))
     .map((line) => normalizeDateText(line))
@@ -152,6 +159,62 @@ function isTitleCandidate(line) {
     return false;
   }
   return true;
+}
+
+// 「特別展」見出しから次の見出しまでを特別展セクションとして切り出す。
+function splitHtmlBySpecialSection(html) {
+  const cleaned = removeNoisyTags(html);
+  const headingRegex = /<h[1-6][^>]*>[\s\S]*?<\/h[1-6]>/gi;
+  let specialStart = -1;
+  let specialEnd = -1;
+
+  let headingMatch = headingRegex.exec(cleaned);
+  while (headingMatch) {
+    const headingText = normalizeText(headingMatch[0]);
+    if (headingText.includes(SPECIAL_SECTION_LABEL)) {
+      specialStart = headingMatch.index;
+      break;
+    }
+    headingMatch = headingRegex.exec(cleaned);
+  }
+
+  if (specialStart === -1) {
+    return {
+      specialSectionHtml: "",
+      otherSectionHtml: cleaned,
+      specialSectionFound: false,
+    };
+  }
+
+  const nextHeadingMatch = headingRegex.exec(cleaned);
+  specialEnd = nextHeadingMatch ? nextHeadingMatch.index : cleaned.length;
+
+  return {
+    specialSectionHtml: cleaned.slice(specialStart, specialEnd),
+    otherSectionHtml: cleaned.slice(0, specialStart) + cleaned.slice(specialEnd),
+    specialSectionFound: true,
+  };
+}
+
+// 見出しラベルのうち、タイトルに不要な先頭語を除去する。
+function removeTitleNoise(title) {
+  if (!title) return "";
+  return title
+    .replace(/^(特別展)\s*(開催予定|開催中)\s*/u, "$1 ")
+    .replace(/^(開催予定|開催中)\s*/u, "")
+    .trim();
+}
+
+// href から詳細ページURLを安全に組み立てる。
+function buildSourceUrlFromHref(href) {
+  if (!href) {
+    return ENTRY_URL;
+  }
+  try {
+    return new URL(href, ENTRY_URL).toString();
+  } catch (error) {
+    return ENTRY_URL;
+  }
 }
 
 // HTML内のイベント候補ブロックを抽出する。
@@ -203,15 +266,7 @@ function extractTitle(blockHtml) {
 function extractSourceUrl(blockHtml) {
   const anchorMatch = blockHtml.match(/<a[^>]*href=["']([^"']+)["'][^>]*>/i);
   const href = anchorMatch ? anchorMatch[1].trim() : "";
-  if (!href) {
-    return ENTRY_URL;
-  }
-
-  try {
-    return new URL(href, ENTRY_URL).toString();
-  } catch (error) {
-    return ENTRY_URL;
-  }
+  return buildSourceUrlFromHref(href);
 }
 
 // 日付テキストから開始日・終了日を取得する。
@@ -264,6 +319,91 @@ function parseDateRange(text) {
   }
 
   return { start: startDate, end: endDate };
+}
+
+// 特別展セクションから、タイトルリンクと直後の会期行をセットで抽出する。
+function extractSpecialEventsFromSection(sectionHtml) {
+  if (!sectionHtml) {
+    return {
+      events: [],
+      specialLinkCount: 0,
+      specialEventsCount: 0,
+      previewPairs: [],
+    };
+  }
+
+  const rawLines = extractRawLinesFromHtml(sectionHtml);
+  const dateIndicator = /\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日/;
+  const events = [];
+  const seen = new Set();
+  let specialLinkCount = 0;
+  let specialEventsCount = 0;
+  const previewPairs = [];
+
+  for (let i = 0; i < rawLines.length; i += 1) {
+    const line = rawLines[i];
+    const anchors = [...line.matchAll(/<a[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)];
+    if (anchors.length === 0) {
+      continue;
+    }
+
+    for (const anchor of anchors) {
+      const href = anchor[1] ? anchor[1].trim() : "";
+      let title = normalizeText(anchor[2]);
+      if (!title) {
+        continue;
+      }
+
+      specialLinkCount += 1;
+      title = removeTitleNoise(title);
+      const sourceUrl = buildSourceUrlFromHref(href);
+
+      let dateLine = "";
+      const lookaheadLimit = Math.min(rawLines.length, i + 4);
+      for (let j = i; j < lookaheadLimit; j += 1) {
+        const normalizedLine = normalizeDateText(stripTags(rawLines[j]));
+        if (dateIndicator.test(normalizedLine)) {
+          dateLine = normalizedLine;
+          break;
+        }
+      }
+
+      if (!dateLine) {
+        continue;
+      }
+
+      const dateRange = parseDateRange(dateLine);
+      if (!dateRange) {
+        continue;
+      }
+
+      const dateFrom = formatDate(dateRange.start);
+      const dateTo = formatDate(dateRange.end);
+      const key = `${title}__${dateFrom}__${dateTo}`;
+      if (seen.has(key)) {
+        continue;
+      }
+      seen.add(key);
+      events.push({
+        title,
+        date_from: dateFrom,
+        date_to: dateTo,
+        source_url: sourceUrl,
+      });
+      specialEventsCount += 1;
+
+      if (previewPairs.length < 3) {
+        previewPairs.push({ title, source_url: sourceUrl });
+      }
+    }
+  }
+
+  return {
+    events,
+    specialLinkCount,
+    specialEventsCount,
+    previewPairs,
+  };
 }
 
 // HTMLを行配列に分解して展覧会（会期型）を抽出する。
@@ -322,17 +462,38 @@ function extractEventsFromLines(html) {
   };
 }
 
+// 同じタイトル・会期のイベントを重複排除する。
+function dedupeEvents(events) {
+  const map = new Map();
+  for (const event of events) {
+    const key = `${event.title}__${event.date_from}__${event.date_to}`;
+    const existing = map.get(key);
+    if (!existing) {
+      map.set(key, event);
+      continue;
+    }
+    if (existing.source_url === ENTRY_URL && event.source_url !== ENTRY_URL) {
+      map.set(key, event);
+    }
+  }
+  return Array.from(map.values());
+}
+
 async function main() {
   const html = await fetchHtml(ENTRY_URL);
-  // このページは「タイトル行→日付行」の並びなので、行ベースで抽出する。
-  const lineResult = extractEventsFromLines(html);
-  const events = lineResult.events;
+  const sectionResult = splitHtmlBySpecialSection(html);
+  // 特別展セクションはタイトルリンクと直後の日付をペアにして抽出する。
+  const specialResult = extractSpecialEventsFromSection(sectionResult.specialSectionHtml);
+  // それ以外のセクションは従来通り行ベースで抽出する。
+  const lineResult = extractEventsFromLines(sectionResult.otherSectionHtml);
+  const mergedEvents = dedupeEvents([...specialResult.events, ...lineResult.events]);
+  const events = mergedEvents;
   const excludedCount = lineResult.excludedCount;
 
   if (events.length === 0) {
     // 失敗時に原因を追えるように、行数や候補数などの最小情報を出す。
     console.error(
-      `[${VENUE_ID}] 抽出できた events が 0 件です。 lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, preview=${lineResult.linesPreview.join(" / ")}`
+      `[${VENUE_ID}] 抽出できた events が 0 件です。 lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, specialSectionFound=${sectionResult.specialSectionFound}, specialLinks=${specialResult.specialLinkCount}, specialEvents=${specialResult.specialEventsCount}, preview=${lineResult.linesPreview.join(" / ")}`
     );
     process.exit(1);
     return;
@@ -348,8 +509,14 @@ async function main() {
 
   fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
   console.log(
-    `[${VENUE_ID}] lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, events=${events.length}, excluded=${excludedCount}`
+    `[${VENUE_ID}] lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, events=${events.length}, excluded=${excludedCount}, specialSectionFound=${sectionResult.specialSectionFound}, specialLinks=${specialResult.specialLinkCount}, specialEvents=${specialResult.specialEventsCount}`
   );
+  if (specialResult.previewPairs.length > 0) {
+    const previewText = specialResult.previewPairs
+      .map((pair) => `${pair.title} -> ${pair.source_url}`)
+      .join(" / ");
+    console.log(`[${VENUE_ID}] specialPreview=${previewText}`);
+  }
 }
 
 main().catch((error) => {

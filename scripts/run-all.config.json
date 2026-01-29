@@ -28,7 +28,7 @@
     },
     {
       "id": "takamatsu_city_museum_of_art",
-      "script": "scripts/scrape-takamatsu_city_museum_of_art.js",
+      "script": "scripts/fetch-takamatsu_city_museum_of_art.js",
       "enabled": true
     },
     {
