@@ -31,7 +31,13 @@ function nowIso() {
 }
 
 function msToSec(ms) {
+  // ログ表示用の秒数（小数1桁）
   return (ms / 1000).toFixed(1);
+}
+
+function msToSecNumber(ms) {
+  // taskResults の elapsedSeconds 用に数値型へ統一する
+  return Number((ms / 1000).toFixed(1));
 }
 
 function formatLogTimestamp() {
@@ -474,6 +480,7 @@ function outputsChanged(beforeStats, afterStats) {
 }
 
 function createTaskResult(task, status, elapsedSeconds, detail) {
+  // status は success/fail/skip のみを利用する
   return {
     id: task.id,
     name: task.name,
@@ -609,16 +616,18 @@ async function main() {
     loggerWithConfig.task(`${displayId}: start`);
 
     const outputPaths = Array.isArray(task.outputs) ? task.outputs : [];
-    const beforeStats = outputPaths.length > 0 ? getOutputStats(outputPaths) : [];
+    const hasOutputs = outputPaths.length > 0;
+    const beforeStats = hasOutputs ? getOutputStats(outputPaths) : [];
     let skipped = false;
 
-    if (taskSettings.skipIfOutputsUnchanged && outputPaths.length > 0) {
+    if (taskSettings.skipIfOutputsUnchanged && hasOutputs) {
       if (!task.id) {
         loggerWithConfig.warn(
           `${label}: skipIfOutputsUnchanged は id が必要なためスキップ判定できません`
         );
       } else {
         const cacheEntry = outputCache[String(task.id)];
+        // キャッシュ欠落・破損時は空扱いにして安全側（スキップしない）
         const cachedStats = cacheEntry?.outputs || [];
         const unchanged = !outputsChanged(cachedStats, beforeStats);
         if (unchanged) {
@@ -671,7 +680,9 @@ async function main() {
           `${displayId}: done (${msToSec(elapsed)}s) exit=0`
         );
         logHook(task.onSuccess, loggerWithConfig, `${displayId} onSuccess`);
-        taskResults.push(createTaskResult(task, "success", msToSec(elapsed)));
+        taskResults.push(
+          createTaskResult(task, "success", msToSecNumber(elapsed))
+        );
       } else {
         failCount += 1;
         const errText = result.error
@@ -682,7 +693,7 @@ async function main() {
           `${displayId}: fail (${msToSec(elapsed)}s) exit=${result.code}${timeoutText}${errText}`
         );
         logHook(task.onFailure, loggerWithConfig, `${displayId} onFailure`);
-        taskResults.push(createTaskResult(task, "fail", msToSec(elapsed)));
+        taskResults.push(createTaskResult(task, "fail", msToSecNumber(elapsed)));
         failed.push(displayId);
         if (config.config.stopOnError && !taskSettings.continueOnError) {
           break;
@@ -690,12 +701,13 @@ async function main() {
       }
     }
 
-    if (!skipped && outputPaths.length > 0) {
+    if (!skipped && hasOutputs) {
       const afterStats = getOutputStats(outputPaths);
       const changed = outputsChanged(beforeStats, afterStats);
-      if (!changed) {
-        loggerWithConfig.task(`${displayId}: outputs 更新なし`);
-      }
+      // outputs がある場合のみ差分を判定し、結果をログに出す
+      loggerWithConfig.task(
+        `${displayId}: outputs ${changed ? "更新あり" : "更新なし"}`
+      );
       if (task.id) {
         outputCache[String(task.id)] = { outputs: afterStats };
       }
