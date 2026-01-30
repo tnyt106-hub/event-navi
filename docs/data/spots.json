@@ -82,5 +82,17 @@
     "official_url": "https://www.marugame-ilex.org/",
     "description": "丸亀市にある綾歌総合文化会館で、大ホール・小ホールなどを備えた文化拠点です。コンサートや公演、地域イベントが開催されています。",
     "source": "https://www.marugame-ilex.org/"
+  },
+  {
+  "name": "愛媛県美術館",
+  "spot_id": "ehime-art-museum",
+  "lat": 33.8415865,
+  "lng": 132.7601666,
+  "category": "美術館",
+  "prefecture": "愛媛県",
+  "municipality": "松山市",
+  "official_url": "https://www.ehime-art.jp/",
+  "description": "松山城を望む城山公園内に位置する美術館です。「みる・つくる・まなぶ」の3本柱を掲げ、コレクション展示や多彩な企画展を開催しています。",
+  "source": "https://www.ehime-art.jp/guide/"
   }
 ]
