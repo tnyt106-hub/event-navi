@@ -267,8 +267,9 @@ function extractTitle(html) {
 }
 
 // 会期/日時ラベル付近の HTML 断片を抽出する。
-function extractDateScopedHtml(html) {
-  const labelMatch = html.match(/(会期|日時|開催日)/);
+function extractDateScopedHtml(html, labels, scopeRadius) {
+  const labelPattern = new RegExp(`(${labels.join("|")})`);
+  const labelMatch = html.match(labelPattern);
   if (!labelMatch || labelMatch.index === undefined) {
     return {
       scopedHtml: "",
@@ -277,7 +278,6 @@ function extractDateScopedHtml(html) {
   }
 
   // ラベル前後の断片だけを対象にすることで無関係日付の混入を避ける。
-  const scopeRadius = 1500;
   const start = Math.max(0, labelMatch.index - scopeRadius);
   const end = Math.min(html.length, labelMatch.index + scopeRadius);
   return {
@@ -305,8 +305,10 @@ function extractDates(html) {
 }
 
 // 詳細ページの本文から日付を抽出する。
-function extractDateRange(html) {
-  const scoped = extractDateScopedHtml(html);
+function extractDateRange(html, options) {
+  // 対象ラベル近傍の断片を優先し、必要時のみ全体抽出にフォールバックする。
+  const { labels, scopeRadius, fallbackMaxDates } = options;
+  const scoped = extractDateScopedHtml(html, labels, scopeRadius);
   const scopedDates = scoped.found ? extractDates(scoped.scopedHtml) : [];
 
   if (scopedDates.length > 0) {
@@ -316,9 +318,11 @@ function extractDateRange(html) {
       dateTo: formatDate(scopedDates[scopedDates.length - 1]),
       usedScoped: true,
       hasDate: true,
+      scopeFound: true,
     };
   }
 
+  // 断片で日付が取れない場合のみ全体抽出を行う。
   const fallbackDates = extractDates(html);
   if (fallbackDates.length === 0) {
     return {
@@ -326,16 +330,20 @@ function extractDateRange(html) {
       dateTo: "",
       usedScoped: false,
       hasDate: false,
+      scopeFound: scoped.found,
+      fallbackTooMany: false,
     };
   }
 
   // 全体抽出で日付が多すぎる場合は誤抽出の可能性が高いので除外する。
-  if (fallbackDates.length >= 10) {
+  if (fallbackDates.length >= fallbackMaxDates) {
     return {
       dateFrom: "",
       dateTo: "",
       usedScoped: false,
       hasDate: false,
+      scopeFound: scoped.found,
+      fallbackTooMany: true,
     };
   }
 
@@ -345,6 +353,8 @@ function extractDateRange(html) {
     dateTo: formatDate(fallbackDates[fallbackDates.length - 1]),
     usedScoped: false,
     hasDate: true,
+    scopeFound: scoped.found,
+    fallbackTooMany: false,
   };
 }
 
@@ -389,17 +399,19 @@ function findNextContentLine(lines, startIndex, keywords) {
 function extractPriceLine(html) {
   const keywords = ["料金", "観覧料", "入館料", "参加費"];
   const lines = buildTextLines(html);
+  // 価格らしい文字列だけを採用する（数字/円/無料が含まれる行）。
+  const pricePattern = /(\d|円|無料)/;
 
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
     if (!keywords.some((keyword) => line.includes(keyword))) continue;
 
-    if (!isHeadingOnly(line, keywords)) {
+    if (!isHeadingOnly(line, keywords) && pricePattern.test(line)) {
       return line;
     }
 
     const nextLine = findNextContentLine(lines, i, keywords);
-    if (nextLine) {
+    if (nextLine && pricePattern.test(nextLine)) {
       return nextLine;
     }
   }
@@ -411,8 +423,11 @@ function extractPriceLine(html) {
 function extractContactLine(html) {
   const keywords = ["お問い合わせ", "TEL", "電話"];
   const lines = buildTextLines(html);
-  const candidates = [];
-  const phonePattern = /\d{2,4}-\d{2,4}-\d{3,4}/;
+  const phoneCandidates = [];
+  const phonePattern = /(TEL[:：]?\s*)?\d{2,4}-\d{2,4}-\d{3,4}/;
+  const telKeywordPattern = /(TEL|電話)/;
+  // UI 文言や装飾記号を含む行は連絡先として採用しない。
+  const forbiddenPattern = /(Language|▲)/;
 
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
@@ -423,31 +438,34 @@ function extractContactLine(html) {
       candidate = findNextContentLine(lines, i, keywords);
     }
 
-    if (candidate) {
-      candidates.push(candidate);
+    if (!candidate || forbiddenPattern.test(candidate)) {
+      continue;
+    }
+
+    // 電話番号/電話表記を含む行のみ採用する。
+    if (phonePattern.test(candidate) || telKeywordPattern.test(candidate)) {
+      phoneCandidates.push(candidate);
     }
   }
 
-  if (candidates.length === 0) {
-    return "";
+  if (phoneCandidates.length > 0) {
+    return phoneCandidates[0];
   }
 
-  const prioritized = candidates.find(
-    (candidate) => phonePattern.test(candidate) || /TEL|電話/.test(candidate)
-  );
-  return prioritized || candidates[0];
+  return "";
 }
 
 // 詳細ページからイベント情報を組み立てる。
-function buildEventFromDetail(detailUrl, html) {
+function buildEventFromDetail(detailUrl, html, dateOptions) {
   const title = extractTitle(html);
   if (!title) {
     return { eventItem: null, invalidReason: "no_title", usedScoped: false };
   }
 
-  const dateRange = extractDateRange(html);
+  const dateRange = extractDateRange(html, dateOptions);
   if (!dateRange.hasDate) {
-    return { eventItem: null, invalidReason: "no_date", usedScoped: dateRange.usedScoped };
+    const invalidReason = dateRange.scopeFound ? "date_scope_failed" : "no_date";
+    return { eventItem: null, invalidReason, usedScoped: dateRange.usedScoped };
   }
 
   const eventItem = {
@@ -490,10 +508,24 @@ function loadExistingData() {
   const raw = fs.readFileSync(OUTPUT_PATH, "utf8");
   try {
     const parsed = JSON.parse(raw);
+    const events = Array.isArray(parsed.events) ? parsed.events : [];
+    const filteredEvents = events.filter((eventItem) => {
+      // MIMOCA 以外のドメインや URL 不在は混入防止のため除外する。
+      if (!eventItem || !eventItem.source_url) {
+        return false;
+      }
+      try {
+        const url = new URL(eventItem.source_url);
+        return url.host === "www.mimoca.jp";
+      } catch (error) {
+        return false;
+      }
+    });
+
     return {
       venue_id: parsed.venue_id || VENUE_ID,
       last_success_at: parsed.last_success_at || null,
-      events: Array.isArray(parsed.events) ? parsed.events : [],
+      events: filteredEvents,
     };
   } catch (error) {
     return { venue_id: VENUE_ID, last_success_at: null, events: [] };
@@ -508,15 +540,40 @@ function buildEventKey(eventItem) {
 // 既存イベントと新規イベントをマージする。
 function mergeEvents(existingEvents, newEvents) {
   const merged = new Map();
+  const sourceUrlKeyMap = new Map();
 
   existingEvents.forEach((eventItem) => {
-    merged.set(buildEventKey(eventItem), { ...eventItem });
+    const key = buildEventKey(eventItem);
+    merged.set(key, { ...eventItem });
+    if (eventItem.source_url) {
+      sourceUrlKeyMap.set(eventItem.source_url, key);
+    }
   });
 
   newEvents.forEach((eventItem) => {
     const key = buildEventKey(eventItem);
+    const sourceUrlKey = eventItem.source_url ? sourceUrlKeyMap.get(eventItem.source_url) : null;
+
+    if (sourceUrlKey && merged.has(sourceUrlKey)) {
+      const existing = merged.get(sourceUrlKey);
+      const updated = { ...existing, ...eventItem };
+
+      if (existing.tags && !eventItem.tags) {
+        updated.tags = existing.tags;
+      }
+
+      // source_url が同一の場合は新規データで置換する。
+      merged.delete(sourceUrlKey);
+      merged.set(key, updated);
+      sourceUrlKeyMap.set(eventItem.source_url, key);
+      return;
+    }
+
     if (!merged.has(key)) {
       merged.set(key, { ...eventItem });
+      if (eventItem.source_url) {
+        sourceUrlKeyMap.set(eventItem.source_url, key);
+      }
       return;
     }
 
@@ -548,7 +605,7 @@ function dedupeEvents(events) {
   return result;
 }
 
-async function fetchDetails(urls, label) {
+async function fetchDetails(urls, label, dateOptions) {
   const results = [];
   let successCount = 0;
   let failedCount = 0;
@@ -560,11 +617,14 @@ async function fetchDetails(urls, label) {
   for (const url of urls) {
     try {
       const html = await fetchHtml(url);
-      const { eventItem, invalidReason, usedScoped } = buildEventFromDetail(url, html);
+      const { eventItem, invalidReason, usedScoped } = buildEventFromDetail(url, html, dateOptions);
       console.log(`[date_scope] used_scoped=${usedScoped} url=${url}`);
       if (!eventItem) {
         excludedInvalidCount += 1;
-        if (invalidReason && invalidSamples.length < 3) {
+        if (
+          ["no_title", "no_date", "date_scope_failed"].includes(invalidReason) &&
+          invalidSamples.length < 3
+        ) {
           invalidSamples.push({ url, reason: invalidReason });
         }
         continue;
@@ -612,7 +672,12 @@ async function main() {
     }`
   );
 
-  const exhibitionResult = await fetchDetails(exhibitionUrls, "exhibitions");
+  const exhibitionResult = await fetchDetails(exhibitionUrls, "exhibitions", {
+    // 展覧会は「会期」近傍を優先して日付を抽出する。
+    labels: ["会期"],
+    scopeRadius: 1600,
+    fallbackMaxDates: 10,
+  });
   const exhibitionEvents = exhibitionResult.events;
   excludedInvalidCount += exhibitionResult.excludedInvalidCount;
 
@@ -629,7 +694,12 @@ async function main() {
     }`
   );
 
-  const eventResult = await fetchDetails(eventUrls, "events");
+  const eventResult = await fetchDetails(eventUrls, "events", {
+    // イベントは日時/開催日などのラベル近傍を優先して日付を抽出する。
+    labels: ["日時", "開催日", "開催日時", "日程"],
+    scopeRadius: 1600,
+    fallbackMaxDates: 10,
+  });
   const eventEvents = eventResult.events;
   excludedInvalidCount += eventResult.excludedInvalidCount;
 
