@@ -520,6 +520,19 @@ function extractContactLine(html) {
   return "";
 }
 
+// contact のノイズを除去する（Language ▲ なら null）
+function sanitizeContact(raw) {
+  if (raw == null) return null;
+  const text = String(raw).replace(/\s+/g, " ").trim();
+  if (!text) return null;
+
+  // 要件：Language▲系は null にする
+  if (text.includes("Language") || text.includes("▲")) return null;
+
+  return text;
+}
+
+
 // 詳細ページからイベント情報を組み立てる。
 function buildEventFromDetail(detailUrl, html, dateOptions) {
   const title = extractTitle(html);
@@ -570,10 +583,10 @@ function buildEventFromDetail(detailUrl, html, dateOptions) {
     eventItem.price = priceLine;
   }
 
-  const contactLine = extractContactLine(html);
-  if (contactLine) {
-    eventItem.contact = contactLine;
-  }
+    const contactLine = extractContactLine(html);
+  // 重要：nullでも代入して、既存JSONの "Language ▲" を確実に上書きする
+  eventItem.contact = sanitizeContact(contactLine);
+
 
   return {
     eventItem,
