@@ -154,36 +154,78 @@ function extractHrefList(html) {
 function extractExhibitionDetailUrls(html) {
   const hrefs = extractHrefList(html);
   const result = new Set();
+  const samplePathnames = [];
+  let invalidAbsCount = 0;
 
   hrefs.forEach((href) => {
-    if (!href.startsWith("/exhibitions/")) return;
-    const cleaned = href.replace(/[#?].*$/, "");
-    if (/^\/exhibitions\/(current|upcoming|past)\/?$/.test(cleaned)) return;
-    if (/^\/exhibitions\/20\d{2}\/?$/.test(cleaned)) return;
-    if (!/^\/exhibitions\/[^/]+\/?$/.test(cleaned)) return;
+    // href の形式が相対/絶対どちらでも正しく処理できるよう、必ず絶対 URL に変換する。
+    let absUrl = "";
+    try {
+      absUrl = new URL(href, EXHIBITIONS_LIST_URL).toString();
+    } catch (error) {
+      invalidAbsCount += 1;
+      return;
+    }
 
-    result.add(toAbsoluteUrl(EXHIBITIONS_LIST_URL, cleaned));
+    // pathname のみでフィルタ判断し、クエリやハッシュの違いに影響されないようにする。
+    const pathname = new URL(absUrl).pathname;
+    if (!pathname.startsWith("/exhibitions/")) return;
+    if (/^\/exhibitions\/(current|upcoming|past)\/?$/.test(pathname)) return;
+    if (/^\/exhibitions\/20\d{2}\/?$/.test(pathname)) return;
+    if (!/^\/exhibitions\/[^/]+\/?$/.test(pathname)) return;
+
+    if (samplePathnames.length < 3) {
+      samplePathnames.push(pathname);
+    }
+
+    result.add(absUrl);
   });
 
-  return { urls: Array.from(result), totalHrefCount: hrefs.length };
+  return {
+    urls: Array.from(result),
+    totalHrefCount: hrefs.length,
+    invalidAbsCount,
+    samplePathnames,
+  };
 }
 
 // イベント一覧の詳細 URL を抽出する。
 function extractEventDetailUrls(html) {
   const hrefs = extractHrefList(html);
   const result = new Set();
+  const samplePathnames = [];
+  let invalidAbsCount = 0;
 
   hrefs.forEach((href) => {
-    if (!href.startsWith("/events/")) return;
-    const cleaned = href.replace(/[#?].*$/, "");
-    if (/^\/events\/?$/.test(cleaned)) return;
-    if (/^\/events\/\d{4}\/?$/.test(cleaned)) return;
-    if (!/^\/events\/[^/]+\/?$/.test(cleaned)) return;
+    // href を絶対 URL に変換して、pathname 判定を安定させる。
+    let absUrl = "";
+    try {
+      absUrl = new URL(href, EVENTS_LIST_URL).toString();
+    } catch (error) {
+      invalidAbsCount += 1;
+      return;
+    }
 
-    result.add(toAbsoluteUrl(EVENTS_LIST_URL, cleaned));
+    // pathname だけを使って条件を判定する。
+    const pathname = new URL(absUrl).pathname;
+    if (!pathname.startsWith("/events/")) return;
+    if (/^\/events\/?$/.test(pathname)) return;
+    if (/^\/events\/\d{4}\/?$/.test(pathname)) return;
+    if (!/^\/events\/[^/]+\/?$/.test(pathname)) return;
+
+    if (samplePathnames.length < 3) {
+      samplePathnames.push(pathname);
+    }
+
+    result.add(absUrl);
   });
 
-  return { urls: Array.from(result), totalHrefCount: hrefs.length };
+  return {
+    urls: Array.from(result),
+    totalHrefCount: hrefs.length,
+    invalidAbsCount,
+    samplePathnames,
+  };
 }
 
 // 詳細ページの代表見出しからタイトルを抽出する。
@@ -407,6 +449,15 @@ async function main() {
   const exhibitionUrls = exhibitionHrefResult.urls;
   console.log(`exhibitions_list_href_total: ${exhibitionHrefResult.totalHrefCount}`);
   console.log(`exhibitions_list_links: ${exhibitionUrls.length}`);
+  // 絶対 URL 化に失敗した件数と、採用された pathname のサンプルを短く出力する。
+  console.log(`exhibitions_abs_url_invalid: ${exhibitionHrefResult.invalidAbsCount}`);
+  console.log(
+    `exhibitions_pathname_samples: ${
+      exhibitionHrefResult.samplePathnames.length > 0
+        ? exhibitionHrefResult.samplePathnames.join(", ")
+        : "none"
+    }`
+  );
 
   const exhibitionResult = await fetchDetails(exhibitionUrls, "exhibitions");
   const exhibitionEvents = exhibitionResult.events;
@@ -417,6 +468,13 @@ async function main() {
   const eventUrls = eventHrefResult.urls;
   console.log(`events_list_href_total: ${eventHrefResult.totalHrefCount}`);
   console.log(`events_list_links: ${eventUrls.length}`);
+  // 絶対 URL 化に失敗した件数と、採用された pathname のサンプルを短く出力する。
+  console.log(`events_abs_url_invalid: ${eventHrefResult.invalidAbsCount}`);
+  console.log(
+    `events_pathname_samples: ${
+      eventHrefResult.samplePathnames.length > 0 ? eventHrefResult.samplePathnames.join(", ") : "none"
+    }`
+  );
 
   const eventResult = await fetchDetails(eventUrls, "events");
   const eventEvents = eventResult.events;
