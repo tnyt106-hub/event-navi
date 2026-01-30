@@ -3,79 +3,6 @@
   "last_success_at": "2026-01-30",
   "events": [
     {
-      "title": "春の企画展",
-      "date_from": "2024-04-01",
-      "date_to": "2024-05-12",
-      "source_url": "https://www.kagawa-arts.or.jp/list/facility0008.php",
-      "open_time": "09:30",
-      "start_time": null,
-      "end_time": "18:00",
-      "price": "一般 500円",
-      "contact": "0877-24-7755",
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "paid",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "夜間開館イベント",
-      "date_from": "2024-04-27",
-      "date_to": "2024-04-27",
-      "source_url": "https://www.kagawa-arts.or.jp/list/facility0008.php",
-      "open_time": "17:00",
-      "start_time": "18:00",
-      "end_time": "20:00",
-      "price": null,
-      "contact": null,
-      "tags": {
-        "type": "special_open",
-        "genres": [],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "猪熊弦一郎展 夢をならべている",
-      "date_from": "1991-11-17",
-      "date_to": "2026-02-15",
-      "source_url": "https://www.mimoca.jp/exhibitions/20251213inokuma/",
-      "open_time": "10:00",
-      "start_time": null,
-      "end_time": "18:00",
-      "price": "料金",
-      "contact": "お問い合わせ"
-    },
-    {
-      "title": "ジャネット・カーディフ 40声のモテット",
-      "date_from": "2025-12-13",
-      "date_to": "2026-02-15",
-      "source_url": "https://www.mimoca.jp/exhibitions/janetcardiff1213/",
-      "open_time": "10:00",
-      "start_time": null,
-      "end_time": "18:00",
-      "price": "料金",
-      "contact": "お問い合わせ"
-    },
-    {
-      "title": "猪熊弦一郎展 物が在る 展示室A",
-      "date_from": "2025-12-13",
-      "date_to": "2026-02-15",
-      "source_url": "https://www.mimoca.jp/exhibitions/inokuma_stilllife/",
-      "open_time": "10:00",
-      "start_time": null,
-      "end_time": "18:00",
-      "price": "料金",
-      "contact": "お問い合わせ"
-    },
-    {
       "title": "キュレーター・トーク",
       "date_from": "2025-12-13",
       "date_to": "2026-02-15",
@@ -83,8 +10,8 @@
       "open_time": "10:00",
       "start_time": null,
       "end_time": "18:00",
-      "price": "料金",
-      "contact": "お問い合わせ"
+      "price": "無料（別途、本展観覧券が必要です）",
+      "contact": "Tel: 0877-24-7755 Fax: 0877-24-7766"
     },
     {
       "title": "説明会＆おさんぽ会＆妄想屋台ワークショップ",
@@ -94,8 +21,8 @@
       "open_time": "10:00",
       "start_time": null,
       "end_time": "12:00",
-      "price": "料金",
-      "contact": "お問い合わせ"
+      "price": "参加無料、申込不要",
+      "contact": null
     },
     {
       "title": "きむらとしろうじんじん 野点（のだて）と丸亀妄想屋台群",
@@ -105,7 +32,51 @@
       "open_time": "10:00",
       "start_time": null,
       "end_time": "12:00",
-      "contact": "お問い合わせ"
+      "contact": null
+    },
+    {
+      "title": "猪熊弦一郎展 夢をならべている",
+      "date_from": "1991-11-17",
+      "date_to": "2026-02-15",
+      "source_url": "https://www.mimoca.jp/exhibitions/20251213inokuma/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "一般 1,500 円（団体割引 1,200 円、市民割 900 円）、大学生 1,000 円（団体割引 800 円、市民割 600 円）、高校生以下または 18 歳未満・丸亀市内に在住の 65 歳以上・各種障害者手帳をお持ちの方とその介護者 1 名は無料",
+      "contact": null
+    },
+    {
+      "title": "ジャネット・カーディフ 40声のモテット",
+      "date_from": "2025-12-13",
+      "date_to": "2026-02-15",
+      "source_url": "https://www.mimoca.jp/exhibitions/janetcardiff1213/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "本作は、2001年にカナダ国立美術館（オタワ）で初めて公開され、同館のミレニアム賞を受賞して以来世界約60ヶ所で展示されてきた、彼女の代表作の一つです。16世紀イングランドの作曲家トマス・タリスが作曲した『Spem in Alium』（通称『40声のモテット』）をもとにしており、 楕円形に設置された40台の各スピーカーから、59人5声部（ソプラノ、アルト、テノール、バリトン、バス）で構成された聖歌隊の歌声が個別に再生されます。それはまるで今まさに歌っている聖歌隊の場に居合わせているかのような没入感を生み出し、重層的な音の広がりは彫刻のように空間のなかで立ち上がります。",
+      "contact": null
+    },
+    {
+      "title": "猪熊弦一郎展 物が在る 展示室A",
+      "date_from": "2025-12-13",
+      "date_to": "2026-02-15",
+      "source_url": "https://www.mimoca.jp/exhibitions/inokuma_stilllife/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "一般 300円（240円） 大学生 200円（160円）",
+      "contact": null
+    },
+    {
+      "title": "キュレーター・トーク",
+      "date_from": "2025-12-13",
+      "date_to": "2026-02-15",
+      "source_url": "https://www.mimoca.jp/events/20260104inokuma/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "本展担当キュレーター（松村円）が展覧会をご案内します。",
+      "contact": "Tel: 0877-24-7755 Fax: 0877-24-7766"
     }
   ]
 }
