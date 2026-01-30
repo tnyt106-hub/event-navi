@@ -12,6 +12,9 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const ENTRY_URL = "https://kenminhall.com/visitors/event/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "rexam_hall.json");
 const VENUE_ID = "rexam_hall";
+// 本文テキストは長すぎる場合に省略表記を付けて切り詰める。
+const MAX_BODY_LENGTH = 5000;
+const BODY_TRUNCATION_SUFFIX = "…（省略）";
 
 // HTMLを取得する。HTTPエラーや明らかなエラーページはハード失敗とする。
 function fetchHtml(url) {
@@ -251,6 +254,18 @@ function extractTimes(text) {
   };
 }
 
+// 抽出した連続テキストを body に格納するため、最大文字数で丸める。
+function trimBodyText(rawText) {
+  if (!rawText) return "";
+  const normalized = String(rawText).trim();
+  if (!normalized) return "";
+  if (normalized.length <= MAX_BODY_LENGTH) {
+    return normalized;
+  }
+  const safeLength = Math.max(0, MAX_BODY_LENGTH - BODY_TRUNCATION_SUFFIX.length);
+  return `${normalized.slice(0, safeLength)}${BODY_TRUNCATION_SUFFIX}`;
+}
+
 // HTML断片からイベント情報を展開する。
 function parseEventsFromFragment(fragment, dateIso, baseUrl) {
   const events = [];
@@ -301,6 +316,8 @@ function parseEventsFromFragment(fragment, dateIso, baseUrl) {
     const sourceUrl = href ? new URL(href, baseUrl).toString() : null;
     // 時刻はブロック全体から抽出し、見つからなければ null のままにする。
     const times = extractTimes(combinedText);
+    // 抽出が難しい断片は、取得できた連続テキストを本文に残す。
+    const bodyText = trimBodyText(combinedText);
 
     events.push({
       title: titleText,
@@ -312,6 +329,7 @@ function parseEventsFromFragment(fragment, dateIso, baseUrl) {
       end_time: times.end_time,
       price: null,
       contact: null,
+      body: bodyText || null,
     });
   }
 

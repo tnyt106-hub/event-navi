@@ -126,6 +126,29 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+// 空文字・null・undefined をまとめて「空」と判定する。
+function isBlank(value) {
+  if (value == null) return true;
+  return String(value).trim().length === 0;
+}
+
+// イベントカードで扱う構造化項目が存在するかどうかを判定する。
+function hasStructuredDetails(eventItem) {
+  const structuredFields = ["open_time", "start_time", "end_time", "price", "contact"];
+  return structuredFields.some((field) => !isBlank(eventItem?.[field]));
+}
+
+// body を「その他」で表示する際の文面を整える（長文は先頭300文字程度で省略する）。
+function buildOtherBodyText(bodyText) {
+  if (isBlank(bodyText)) return "";
+  const normalized = String(bodyText).replace(/\s+/g, " ").trim();
+  const maxLength = 300;
+  if (normalized.length > maxLength) {
+    return `${normalized.slice(0, maxLength)}…`;
+  }
+  return normalized;
+}
+
 // date_from と date_to の差が大きすぎる場合は安全のため丸める
 function normalizeDateRange(dateFromObj, dateToObj, venueId, index) {
   const msPerDay = 24 * 60 * 60 * 1000;
@@ -307,6 +330,15 @@ function renderEventCard(eventItem, venueLabel) {
   const dateText = eventItem.date_from === eventItem.date_to
     ? eventItem.date_from
     : `${eventItem.date_from}〜${eventItem.date_to}`;
+  // 構造化項目が取れない場合のみ、本文を「その他」として表示する。
+  const otherBodyText = buildOtherBodyText(eventItem?.body);
+  const showOther = otherBodyText && !hasStructuredDetails(eventItem);
+  const otherHtml = showOther
+    ? `    <ul class="spot-event-card__details">
+      <li>その他: ${escapeHtml(otherBodyText)}</li>
+    </ul>
+`
+    : "";
 
   const linkHtml = eventItem.source_url
     ? `    <a class="spot-event-card__link" href="${escapeHtml(eventItem.source_url)}" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>`
@@ -316,6 +348,7 @@ function renderEventCard(eventItem, venueLabel) {
     <p class="spot-event-card__date">${escapeHtml(dateText)}</p>
     <h2 class="spot-event-card__title">${escapeHtml(titleText)}</h2>
     <p class="spot-event-card__venue">会場: ${escapeHtml(safeVenueLabel)}</p>
+${otherHtml}
 ${linkHtml}
   </li>
 `;
@@ -526,6 +559,12 @@ function collectEventsByDate(spotNameMap) {
         date_from: formatDateKey(dateFromObj),
         date_to: formatDateKey(safeDateToObj),
         source_url: eventItem?.source_url ? String(eventItem.source_url) : "",
+        open_time: eventItem?.open_time ?? null,
+        start_time: eventItem?.start_time ?? null,
+        end_time: eventItem?.end_time ?? null,
+        price: eventItem?.price ?? null,
+        contact: eventItem?.contact ?? null,
+        body: typeof eventItem?.body === "string" ? eventItem.body : null,
         date_from_obj: dateFromObj,
       };
 
