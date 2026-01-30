@@ -104,19 +104,47 @@
       }
     },
     {
-      "title": "イベント",
+      "title": "コレクショントーク・ミニ",
       "date_from": "2025-10-01",
-      "date_to": "2026-04-19",
+      "date_to": "2026-03-04",
       "source_url": "https://www.ehime-art.jp/event/info/f505b86d-054c-42c0-bf7a-66fa12cd6cda",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
         "flags": []
       }
     },
     {
-      "title": "イベント",
-      "date_from": "2026-01-27",
+      "title": "コレクショントーク＋（プラス）",
+      "date_from": "2025-10-01",
+      "date_to": "2026-03-04",
+      "source_url": "https://www.ehime-art.jp/event/info/75519190-7d09-44e7-8f0c-bde4ed81a93c",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "コレクショントーク",
+      "date_from": "2025-10-15",
+      "date_to": "2026-03-18",
+      "source_url": "https://www.ehime-art.jp/event/info/f0a5a9e9-8f33-4081-a179-42efd46b9b1b",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "ワークシート＜17音で美術鑑賞＞言葉をつなげて俳句を作ろう！",
+      "date_from": "2026-01-28",
       "date_to": "2026-04-19",
       "source_url": "https://www.ehime-art.jp/event/info/de18784d-5f26-4f6e-8777-9a24e0dd1720",
       "tags": {
@@ -126,20 +154,22 @@
       }
     },
     {
-      "title": "イベント",
-      "date_from": "2025-10-01",
+      "title": "簡易機による織り体験",
+      "date_from": "2026-02-07",
       "date_to": "2026-03-21",
       "source_url": "https://www.ehime-art.jp/event/info/bfe92eb8-3323-4cfc-aa70-7fd35674d3fc",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "workshop",
+        "genres": [
+          "education"
+        ],
         "flags": []
       }
     },
     {
-      "title": "イベント",
-      "date_from": "2025-10-15",
-      "date_to": "2026-03-21",
+      "title": "フェルトボールをつくろう",
+      "date_from": "2026-02-08",
+      "date_to": "2026-02-22",
       "source_url": "https://www.ehime-art.jp/event/info/b23e5690-1079-43bc-9a52-8f5a8a834e38",
       "tags": {
         "type": "other",
@@ -148,9 +178,9 @@
       }
     },
     {
-      "title": "イベント",
-      "date_from": "2025-10-01",
-      "date_to": "2026-03-04",
+      "title": "インド藍染め",
+      "date_from": "2026-02-10",
+      "date_to": "2026-02-10",
       "source_url": "https://www.ehime-art.jp/event/info/f4c1998a-1ff1-4505-838d-e71ccb615d77",
       "tags": {
         "type": "other",
@@ -159,9 +189,9 @@
       }
     },
     {
-      "title": "イベント",
-      "date_from": "2026-01-30",
-      "date_to": "2026-03-07",
+      "title": "インド藍染め",
+      "date_from": "2026-02-12",
+      "date_to": "2026-02-12",
       "source_url": "https://www.ehime-art.jp/event/info/fe3612e4-847c-48bb-b2f7-f709362fae7c",
       "tags": {
         "type": "other",
@@ -170,20 +200,22 @@
       }
     },
     {
-      "title": "イベント",
-      "date_from": "2026-01-30",
+      "title": "シルクスクリーンの刷り体験",
+      "date_from": "2026-02-14",
       "date_to": "2026-03-28",
       "source_url": "https://www.ehime-art.jp/event/info/77cc491a-7063-4965-b767-04ccde2183d3",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "workshop",
+        "genres": [
+          "education"
+        ],
         "flags": []
       }
     },
     {
-      "title": "イベント",
-      "date_from": "2025-10-01",
-      "date_to": "2026-03-28",
+      "title": "スピンドル・紡ぎ（wool）",
+      "date_from": "2026-02-14",
+      "date_to": "2026-02-14",
       "source_url": "https://www.ehime-art.jp/event/info/a2a6bb02-f19d-4217-898e-a39d26e7559f",
       "tags": {
         "type": "other",
@@ -192,10 +224,21 @@
       }
     },
     {
-      "title": "イベント",
-      "date_from": "2026-01-30",
-      "date_to": "2026-03-21",
+      "title": "教育者としての杉浦非水の姿",
+      "date_from": "2026-03-07",
+      "date_to": "2026-03-07",
       "source_url": "https://www.ehime-art.jp/event/info/7ba37bbe-49bc-46b8-9ad8-0744a1c70833",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "みるキンWORK SHOP",
+      "date_from": "2026-03-29",
+      "date_to": "2026-03-29",
+      "source_url": "https://www.ehime-art.jp/event/info/ec474337-661f-432a-bef9-c6f00402b3e9",
       "tags": {
         "type": "other",
         "genres": [],
