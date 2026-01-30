@@ -47,6 +47,11 @@
       "enabled": true
     },
     {
+      "id": "apply-tags",
+      "script": "tools/tagging/apply_tags.js",
+      "enabled": true
+    },
+    {
       "id": "generate-date-pages",
       "script": "scripts/generate-date-pages.js",
       "enabled": true
