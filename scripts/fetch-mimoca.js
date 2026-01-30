@@ -83,6 +83,15 @@ function stripTags(html) {
   return html.replace(/<[^>]*>/g, " ");
 }
 
+// 指定タグを改行として扱ったうえでプレーンテキスト化する。
+function stripTagsWithLineBreaks(html) {
+  if (!html) return "";
+  const withLineBreaks = html
+    .replace(/<\s*br\s*\/?>/gi, "\n")
+    .replace(/<\/\s*(p|li|div|dt|dd)\s*>/gi, "\n");
+  return stripTags(withLineBreaks);
+}
+
 // 余分な空白を削除する。
 function normalizeWhitespace(text) {
   return text.replace(/\s+/g, " ").trim();
@@ -257,8 +266,28 @@ function extractTitle(html) {
   return mainTitle;
 }
 
-// 詳細ページの本文から日付を抽出する。
-function extractDateRange(html) {
+// 会期/日時ラベル付近の HTML 断片を抽出する。
+function extractDateScopedHtml(html) {
+  const labelMatch = html.match(/(会期|日時|開催日)/);
+  if (!labelMatch || labelMatch.index === undefined) {
+    return {
+      scopedHtml: "",
+      found: false,
+    };
+  }
+
+  // ラベル前後の断片だけを対象にすることで無関係日付の混入を避ける。
+  const scopeRadius = 1500;
+  const start = Math.max(0, labelMatch.index - scopeRadius);
+  const end = Math.min(html.length, labelMatch.index + scopeRadius);
+  return {
+    scopedHtml: html.slice(start, end),
+    found: true,
+  };
+}
+
+// HTML から日付リストを抽出する。
+function extractDates(html) {
   const text = normalizeNumbers(stripTags(html));
   const dates = [];
 
@@ -272,12 +301,50 @@ function extractDateRange(html) {
     }
   }
 
-  if (dates.length === 0) return null;
+  return dates;
+}
 
-  dates.sort((a, b) => a - b);
+// 詳細ページの本文から日付を抽出する。
+function extractDateRange(html) {
+  const scoped = extractDateScopedHtml(html);
+  const scopedDates = scoped.found ? extractDates(scoped.scopedHtml) : [];
+
+  if (scopedDates.length > 0) {
+    scopedDates.sort((a, b) => a - b);
+    return {
+      dateFrom: formatDate(scopedDates[0]),
+      dateTo: formatDate(scopedDates[scopedDates.length - 1]),
+      usedScoped: true,
+      hasDate: true,
+    };
+  }
+
+  const fallbackDates = extractDates(html);
+  if (fallbackDates.length === 0) {
+    return {
+      dateFrom: "",
+      dateTo: "",
+      usedScoped: false,
+      hasDate: false,
+    };
+  }
+
+  // 全体抽出で日付が多すぎる場合は誤抽出の可能性が高いので除外する。
+  if (fallbackDates.length >= 10) {
+    return {
+      dateFrom: "",
+      dateTo: "",
+      usedScoped: false,
+      hasDate: false,
+    };
+  }
+
+  fallbackDates.sort((a, b) => a - b);
   return {
-    dateFrom: formatDate(dates[0]),
-    dateTo: formatDate(dates[dates.length - 1]),
+    dateFrom: formatDate(fallbackDates[0]),
+    dateTo: formatDate(fallbackDates[fallbackDates.length - 1]),
+    usedScoped: false,
+    hasDate: true,
   };
 }
 
@@ -293,30 +360,95 @@ function extractTimeRange(html) {
   };
 }
 
-// 料金や連絡先らしき行を抽出する。
-function extractLineByKeywords(html, keywords) {
-  const text = decodeHtmlEntities(stripTags(html));
-  const lines = text
+// HTML を改行単位の配列に変換する。
+function buildTextLines(html) {
+  const text = decodeHtmlEntities(stripTagsWithLineBreaks(html));
+  return text
     .split(/\n|\r/)
     .map((line) => normalizeWhitespace(line))
     .filter((line) => line);
+}
 
-  for (const line of lines) {
-    if (keywords.some((keyword) => line.includes(keyword))) {
+// 見出し語だけかどうかを判定する。
+function isHeadingOnly(line, keywords) {
+  const normalizedLine = line.replace(/[：:\s]/g, "");
+  return keywords.some((keyword) => normalizedLine === keyword.replace(/[：:\s]/g, ""));
+}
+
+// 次の非空行を取得する。
+function findNextContentLine(lines, startIndex, keywords) {
+  for (let i = startIndex + 1; i < lines.length; i += 1) {
+    if (!isHeadingOnly(lines[i], keywords)) {
+      return lines[i];
+    }
+  }
+  return "";
+}
+
+// 料金行を抽出する。
+function extractPriceLine(html) {
+  const keywords = ["料金", "観覧料", "入館料", "参加費"];
+  const lines = buildTextLines(html);
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (!keywords.some((keyword) => line.includes(keyword))) continue;
+
+    if (!isHeadingOnly(line, keywords)) {
       return line;
+    }
+
+    const nextLine = findNextContentLine(lines, i, keywords);
+    if (nextLine) {
+      return nextLine;
     }
   }
 
   return "";
 }
 
+// 連絡先行を抽出する。
+function extractContactLine(html) {
+  const keywords = ["お問い合わせ", "TEL", "電話"];
+  const lines = buildTextLines(html);
+  const candidates = [];
+  const phonePattern = /\d{2,4}-\d{2,4}-\d{3,4}/;
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (!keywords.some((keyword) => line.includes(keyword))) continue;
+
+    let candidate = line;
+    if (isHeadingOnly(line, keywords)) {
+      candidate = findNextContentLine(lines, i, keywords);
+    }
+
+    if (candidate) {
+      candidates.push(candidate);
+    }
+  }
+
+  if (candidates.length === 0) {
+    return "";
+  }
+
+  const prioritized = candidates.find(
+    (candidate) => phonePattern.test(candidate) || /TEL|電話/.test(candidate)
+  );
+  return prioritized || candidates[0];
+}
+
 // 詳細ページからイベント情報を組み立てる。
 function buildEventFromDetail(detailUrl, html) {
   const title = extractTitle(html);
-  if (!title) return null;
+  if (!title) {
+    return { eventItem: null, invalidReason: "no_title", usedScoped: false };
+  }
 
   const dateRange = extractDateRange(html);
-  if (!dateRange) return null;
+  if (!dateRange.hasDate) {
+    return { eventItem: null, invalidReason: "no_date", usedScoped: dateRange.usedScoped };
+  }
 
   const eventItem = {
     title,
@@ -332,17 +464,21 @@ function buildEventFromDetail(detailUrl, html) {
     eventItem.end_time = timeRange.end;
   }
 
-  const priceLine = extractLineByKeywords(html, ["料金", "観覧料", "入館料"]);
+  const priceLine = extractPriceLine(html);
   if (priceLine) {
     eventItem.price = priceLine;
   }
 
-  const contactLine = extractLineByKeywords(html, ["お問い合わせ", "TEL", "電話"]);
+  const contactLine = extractContactLine(html);
   if (contactLine) {
     eventItem.contact = contactLine;
   }
 
-  return eventItem;
+  if (!priceLine && !contactLine) {
+    return { eventItem: null, invalidReason: "no_price_contact", usedScoped: dateRange.usedScoped };
+  }
+
+  return { eventItem, invalidReason: "", usedScoped: dateRange.usedScoped };
 }
 
 // 既存 JSON を読み込む。
@@ -417,23 +553,40 @@ async function fetchDetails(urls, label) {
   let successCount = 0;
   let failedCount = 0;
   let excludedInvalidCount = 0;
+  const invalidSamples = [];
+  let usedScopedCount = 0;
+  let usedFallbackCount = 0;
 
   for (const url of urls) {
     try {
       const html = await fetchHtml(url);
-      const eventItem = buildEventFromDetail(url, html);
+      const { eventItem, invalidReason, usedScoped } = buildEventFromDetail(url, html);
+      console.log(`[date_scope] used_scoped=${usedScoped} url=${url}`);
       if (!eventItem) {
         excludedInvalidCount += 1;
+        if (invalidReason && invalidSamples.length < 3) {
+          invalidSamples.push({ url, reason: invalidReason });
+        }
         continue;
       }
 
       results.push(eventItem);
       successCount += 1;
+      if (usedScoped) {
+        usedScopedCount += 1;
+      } else {
+        usedFallbackCount += 1;
+      }
     } catch (error) {
       failedCount += 1;
     }
   }
 
+  console.log(`${label}_date_scope_used_scoped: ${usedScopedCount}`);
+  console.log(`${label}_date_scope_used_fallback: ${usedFallbackCount}`);
+  invalidSamples.forEach((sample) => {
+    console.log(`[invalid] reason=${sample.reason} url=${sample.url}`);
+  });
   console.log(`${label}_detail_fetch_success: ${successCount}`);
   console.log(`${label}_detail_fetch_failed: ${failedCount}`);
 
