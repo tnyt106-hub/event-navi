@@ -1,6 +1,6 @@
 {
   "venue_id": "mimoca",
-  "last_success_at": "2024-03-20",
+  "last_success_at": "2026-01-30",
   "events": [
     {
       "title": "春の企画展",
@@ -41,6 +41,71 @@
           "weekend"
         ]
       }
+    },
+    {
+      "title": "猪熊弦一郎展 夢をならべている",
+      "date_from": "1991-11-17",
+      "date_to": "2026-02-15",
+      "source_url": "https://www.mimoca.jp/exhibitions/20251213inokuma/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "料金",
+      "contact": "お問い合わせ"
+    },
+    {
+      "title": "ジャネット・カーディフ 40声のモテット",
+      "date_from": "2025-12-13",
+      "date_to": "2026-02-15",
+      "source_url": "https://www.mimoca.jp/exhibitions/janetcardiff1213/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "料金",
+      "contact": "お問い合わせ"
+    },
+    {
+      "title": "猪熊弦一郎展 物が在る 展示室A",
+      "date_from": "2025-12-13",
+      "date_to": "2026-02-15",
+      "source_url": "https://www.mimoca.jp/exhibitions/inokuma_stilllife/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "料金",
+      "contact": "お問い合わせ"
+    },
+    {
+      "title": "キュレーター・トーク",
+      "date_from": "2025-12-13",
+      "date_to": "2026-02-15",
+      "source_url": "https://www.mimoca.jp/events/cardiff_curatortalk/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "料金",
+      "contact": "お問い合わせ"
+    },
+    {
+      "title": "説明会＆おさんぽ会＆妄想屋台ワークショップ",
+      "date_from": "2025-05-10",
+      "date_to": "2026-02-21",
+      "source_url": "https://www.mimoca.jp/events/2026-2-21-nodate-to-marugamemousouyataigun/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "12:00",
+      "price": "料金",
+      "contact": "お問い合わせ"
+    },
+    {
+      "title": "きむらとしろうじんじん 野点（のだて）と丸亀妄想屋台群",
+      "date_from": "2025-05-10",
+      "date_to": "2026-02-21",
+      "source_url": "https://www.mimoca.jp/events/nodate-to-marugame-mousouyataigun/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "12:00",
+      "contact": "お問い合わせ"
     }
   ]
 }
