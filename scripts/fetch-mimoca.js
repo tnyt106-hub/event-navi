@@ -23,6 +23,8 @@ function fetchHtml(url) {
         headers: {
           "User-Agent": "Mozilla/5.0 (compatible; event-navi-bot/1.0)",
           Accept: "text/html,application/xhtml+xml",
+          // 圧縮レスポンスだと utf8 連結が壊れるため、明示的に無圧縮を要求する。
+          "Accept-Encoding": "identity",
         },
       },
       (response) => {
@@ -31,6 +33,13 @@ function fetchHtml(url) {
           response.resume();
           return;
         }
+
+        // デバッグ用にレスポンスヘッダを短く記録する。
+        console.log(
+          `[fetchHtml] content-encoding: ${response.headers["content-encoding"] || "none"}, content-type: ${
+            response.headers["content-type"] || "unknown"
+          }`
+        );
 
         let body = "";
         response.setEncoding("utf8");
@@ -42,6 +51,9 @@ function fetchHtml(url) {
             reject(new Error("HTML の取得結果が空でした。"));
             return;
           }
+          // デバッグ用に body の先頭 200 文字を 1 行で記録する。
+          const bodySnippet = body.replace(/\s+/g, " ").slice(0, 200);
+          console.log(`[fetchHtml] body_head: ${bodySnippet}`);
           resolve(body);
         });
       }
@@ -153,7 +165,7 @@ function extractExhibitionDetailUrls(html) {
     result.add(toAbsoluteUrl(EXHIBITIONS_LIST_URL, cleaned));
   });
 
-  return Array.from(result);
+  return { urls: Array.from(result), totalHrefCount: hrefs.length };
 }
 
 // イベント一覧の詳細 URL を抽出する。
@@ -171,7 +183,7 @@ function extractEventDetailUrls(html) {
     result.add(toAbsoluteUrl(EVENTS_LIST_URL, cleaned));
   });
 
-  return Array.from(result);
+  return { urls: Array.from(result), totalHrefCount: hrefs.length };
 }
 
 // 詳細ページの代表見出しからタイトルを抽出する。
@@ -391,7 +403,9 @@ async function main() {
   let excludedInvalidCount = 0;
 
   const exhibitionsHtml = await fetchHtml(EXHIBITIONS_LIST_URL);
-  const exhibitionUrls = extractExhibitionDetailUrls(exhibitionsHtml);
+  const exhibitionHrefResult = extractExhibitionDetailUrls(exhibitionsHtml);
+  const exhibitionUrls = exhibitionHrefResult.urls;
+  console.log(`exhibitions_list_href_total: ${exhibitionHrefResult.totalHrefCount}`);
   console.log(`exhibitions_list_links: ${exhibitionUrls.length}`);
 
   const exhibitionResult = await fetchDetails(exhibitionUrls, "exhibitions");
@@ -399,7 +413,9 @@ async function main() {
   excludedInvalidCount += exhibitionResult.excludedInvalidCount;
 
   const eventsHtml = await fetchHtml(EVENTS_LIST_URL);
-  const eventUrls = extractEventDetailUrls(eventsHtml);
+  const eventHrefResult = extractEventDetailUrls(eventsHtml);
+  const eventUrls = eventHrefResult.urls;
+  console.log(`events_list_href_total: ${eventHrefResult.totalHrefCount}`);
   console.log(`events_list_links: ${eventUrls.length}`);
 
   const eventResult = await fetchDetails(eventUrls, "events");
