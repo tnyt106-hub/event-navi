@@ -1,0 +1,107 @@
+{
+  "venue_id": "ehime_prefectural_museum_of_art",
+  "venue_name": "愛媛県美術館",
+  "events": [
+    {
+      "title": "エントランス展示",
+      "date_from": "2025-12-23",
+      "date_to": "2026-02-02",
+      "source_url": "https://www.ehime-art.jp/exhibition/",
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "みる冒険 オノマトペで楽しむ 2025年度Ⅴ期",
+      "date_from": "2026-01-27",
+      "date_to": "2026-04-19",
+      "source_url": "https://www.ehime-art.jp/exhibition/",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "コレクション・ハイライト 2025年度Ⅴ期",
+      "date_from": "2026-01-27",
+      "date_to": "2026-04-19",
+      "source_url": "https://www.ehime-art.jp/exhibition/",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "旅する光の切り絵展 ～くうそうって、まほうだよ～",
+      "date_from": "2025-11-01",
+      "date_to": "2025-12-21",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/0519fb0e-1726-4e5c-9151-776e77676a81",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "田中達也展 みたてのくみたて MINIATURE LIFE・MITATE MIND",
+      "date_from": "2025-10-24",
+      "date_to": "2025-12-14",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/09f14332-526d-48f8-a6fb-9d5fef9e1e83",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2025年度Ⅳ期 コレクション・ハイライト",
+      "date_from": "2025-10-23",
+      "date_to": "2025-12-21",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/9b8fdb56-b2d7-465a-bf01-4ab0bea9129c",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2025年度Ⅳ期 いしづちさん、おかげさまで 石鎚国定公園指定70周年記念",
+      "date_from": "2025-10-23",
+      "date_to": "2025-12-21",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/80c55ee9-3c96-49fc-8dff-bfbecde877bc",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "愛媛／松山ミュージアム・ストリート特別企画 真鍋博 カコをみる、イマをみる、ミライをみる",
+      "date_from": "2025-09-06",
+      "date_to": "2025-10-22",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/01657a35-014f-4e9d-826f-2a48bc6a7fdc",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2025年度 Ⅲ期 観覧無料 コレクション・ハイライト 特別ミニ企画 祝うよろこび、畦地梅太郎、世界の美術",
+      "date_from": "2025-09-06",
+      "date_to": "2025-10-22",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/6652976e-5970-4727-b8ba-3de2cd322d24",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }
+  ]
+}
