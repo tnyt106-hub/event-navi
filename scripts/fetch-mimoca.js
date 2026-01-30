@@ -339,7 +339,11 @@ function extractDateRangeFromFragment(fragmentText) {
 // 詳細ページの本文から日付を抽出する。
 function extractDateRange(html, options) {
   // 対象ラベル近傍の断片を優先し、必要時のみ全体抽出にフォールバックする。
-  const { labels, fallbackLabels, scopeRadius, fallbackMaxDates } = options;
+  const { labels, fallbackLabels, scopeRadius, fallbackMaxDates, allowFallback, minDates } = options;
+  // minDates が未指定のときは 1 件以上を必須とする。
+  const requiredMinDates = Number.isInteger(minDates) ? minDates : 1;
+  // allowFallback が明示 false ならフォールバックしない。
+  const isFallbackAllowed = allowFallback !== false;
   const scopedFragmentPrimary = extractScopedTextFragment(html, labels, scopeRadius);
   const scopedFragmentFallback =
     !scopedFragmentPrimary && fallbackLabels
@@ -349,12 +353,27 @@ function extractDateRange(html, options) {
   const scopedResult = extractDateRangeFromFragment(scopedFragment);
   const scopedDateCount = scopedResult ? scopedResult.dateCount : 0;
 
-  if (scopedResult) {
+  // 断片から得られた日付件数が必要数を満たす場合のみ採用する。
+  if (scopedResult && scopedDateCount >= requiredMinDates) {
     return {
       dateFrom: scopedResult.dateFrom,
       dateTo: scopedResult.dateTo,
       usedScoped: true,
       hasDate: true,
+      scopeFound: Boolean(scopedFragment),
+      fallbackTooMany: false,
+      scopedDateCount,
+      fallbackDateCount: 0,
+    };
+  }
+
+  // 断片のみで完結させたい場合はここで終了する。
+  if (!isFallbackAllowed) {
+    return {
+      dateFrom: "",
+      dateTo: "",
+      usedScoped: true,
+      hasDate: false,
       scopeFound: Boolean(scopedFragment),
       fallbackTooMany: false,
       scopedDateCount,
@@ -474,7 +493,7 @@ function extractContactLine(html) {
   if (!scopedText) return "";
   const lines = buildTextLinesFromText(scopedText);
   const phoneCandidates = [];
-  const phonePattern = /\d{2,4}-\d{2,4}-\d{3,4}/;
+  const phonePattern = /(TEL|Tel|電話)?[:：]?\s*\d{2,4}-\d{2,4}-\d{3,4}/i;
   // UI 文言や装飾記号を含む行は連絡先として採用しない。
   const forbiddenPattern = /(Language|▲)/;
 
@@ -515,11 +534,10 @@ function buildEventFromDetail(detailUrl, html, dateOptions) {
 
   const dateRange = extractDateRange(html, dateOptions);
   if (!dateRange.hasDate) {
-    let invalidReason = "no_date_fallback";
+    // 断片のみで抽出しているため、日付が取れない場合は無効扱いにする。
+    let invalidReason = "no_date_scoped";
     if (dateRange.fallbackTooMany) {
       invalidReason = "too_many_dates";
-    } else if (dateRange.scopeFound) {
-      invalidReason = "no_date_scoped";
     }
     return {
       eventItem: null,
@@ -663,6 +681,7 @@ async function fetchDetails(urls, label, dateOptions) {
   const invalidSamples = [];
   let usedScopedCount = 0;
   let usedFallbackCount = 0;
+  const dateCountSamples = [];
 
   for (const url of urls) {
     try {
@@ -672,11 +691,8 @@ async function fetchDetails(urls, label, dateOptions) {
         html,
         dateOptions
       );
-      console.log(`[date_scope] used_scoped=${usedScoped} url=${url}`);
-      if (label === "exhibitions" && dateDebug) {
-        console.log(
-          `[date_debug] scoped_count=${dateDebug.scopedDateCount} fallback_count=${dateDebug.fallbackDateCount} fallback_too_many=${dateDebug.fallbackTooMany} url=${url}`
-        );
+      if (dateDebug && dateCountSamples.length < 3) {
+        dateCountSamples.push({ url, scopedDateCount: dateDebug.scopedDateCount });
       }
       if (!eventItem) {
         excludedInvalidCount += 1;
@@ -700,6 +716,9 @@ async function fetchDetails(urls, label, dateOptions) {
 
   console.log(`${label}_date_scope_used_scoped: ${usedScopedCount}`);
   console.log(`${label}_date_scope_used_fallback: ${usedFallbackCount}`);
+  dateCountSamples.forEach((sample) => {
+    console.log(`[date_scoped_count] label=${label} scoped_count=${sample.scopedDateCount} url=${sample.url}`);
+  });
   invalidSamples.forEach((sample) => {
     console.log(`[invalid] reason=${sample.reason} url=${sample.url}`);
   });
@@ -729,11 +748,13 @@ async function main() {
   );
 
   const exhibitionResult = await fetchDetails(exhibitionUrls, "exhibitions", {
-    // 展覧会は「会期」近傍を優先して日付を抽出する。
+    // 展覧会は「会期」近傍の断片のみで日付を抽出する。
     labels: ["会期"],
-    fallbackLabels: ["会期", "開催期間"],
     scopeRadius: 2000,
     fallbackMaxDates: 10,
+    allowFallback: false,
+    // 展覧会は会期の開始・終了が揃っている場合のみ採用する。
+    minDates: 2,
   });
   const exhibitionEvents = exhibitionResult.events;
   excludedInvalidCount += exhibitionResult.excludedInvalidCount;
@@ -752,10 +773,13 @@ async function main() {
   );
 
   const eventResult = await fetchDetails(eventUrls, "events", {
-    // イベントは日時/開催日などのラベル近傍を優先して日付を抽出する。
+    // イベントは日時/開催日などのラベル近傍の断片のみで日付を抽出する。
     labels: ["日時", "開催日", "日程"],
     scopeRadius: 2500,
     fallbackMaxDates: 10,
+    allowFallback: false,
+    // イベントは 1 件でも日時が取れれば採用する。
+    minDates: 1,
   });
   const eventEvents = eventResult.events;
   excludedInvalidCount += eventResult.excludedInvalidCount;
