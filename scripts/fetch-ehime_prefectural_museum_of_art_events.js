@@ -1,5 +1,5 @@
-// 愛媛県美術館のイベント一覧ページから詳細URLを収集し、
-// 詳細ページの開催日とタイトルを抽出して既存の展覧会JSONへ統合するバッチ。
+// 愛媛県美術館のイベント一覧ページだけを使って、
+// 一覧内のタイトル・日付・詳細URLを抽出して既存の展覧会JSONへ統合するバッチ。
 // 使い方: node scripts/fetch-ehime_prefectural_museum_of_art_events.js
 
 "use strict";
@@ -139,99 +139,60 @@ function buildPastThresholdUtc() {
   return threshold;
 }
 
-// 一覧ページから /event/info/ を含む詳細URLを抽出する。
-function extractDetailUrls(listHtml) {
-  const urls = new Set();
-  const regex = /href=["']([^"']*\/event\/info\/[^"']*)["']/gi;
+// 一覧ページから event-item ブロックを抽出する。
+function extractEventBlocks(listHtml) {
+  const blocks = [];
+  const regex = /<a\b[^>]*class=["'][^"']*event-item[^"']*["'][^>]*>[\s\S]*?<\/a>/gi;
   let match = regex.exec(listHtml);
   while (match) {
-    const href = match[1].trim();
-    try {
-      const absoluteUrl = new URL(href, LIST_URL).toString();
-      urls.add(absoluteUrl);
-    } catch (error) {
-      // 無効なURLは安全側で無視する。
-    }
+    blocks.push(match[0]);
     match = regex.exec(listHtml);
   }
-  return Array.from(urls);
+  return blocks;
 }
 
-// HTML内からメイン見出しを優先してタイトルを抽出する。
-function extractTitleFromHtml(html) {
-  const headingTags = ["h1", "h2"];
-  for (const tag of headingTags) {
-    const match = html.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i"));
-    if (match) {
-      const heading = normalizeText(stripTags(match[1]));
-      if (heading) return heading;
-    }
+// ブロック内の href を絶対URLに変換する。
+function extractHrefFromBlock(blockHtml) {
+  const hrefMatch = blockHtml.match(/href=["']([^"']+)["']/i);
+  if (!hrefMatch) return "";
+  try {
+    return new URL(hrefMatch[1], LIST_URL).toString();
+  } catch (error) {
+    return "";
   }
-
-  const ogTitle = html.match(/property=["']og:title["'][^>]*content=["']([^"']+)["']/i);
-  if (ogTitle) {
-    const title = normalizeText(ogTitle[1]);
-    if (title) return title;
-  }
-
-  const titleTag = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-  if (titleTag) {
-    const title = normalizeText(stripTags(titleTag[1]));
-    if (title) return title;
-  }
-
-  return "";
 }
 
-// テキストから YYYY年M月D日 (年省略を許容) を順番に抽出する。
-function extractDateTokens(text) {
+// event-item ブロック内のタイトルを抽出する。
+function extractTitleFromBlock(blockHtml) {
+  const titleMatch = blockHtml.match(/<h2[^>]*class=["'][^"']*event-item__title[^"']*["'][^>]*>([\s\S]*?)<\/h2>/i);
+  if (!titleMatch) return "";
+  return normalizeText(stripTags(titleMatch[1]));
+}
+
+// event-item ブロック内の日付テキストを抽出する。
+function extractDateTextFromBlock(blockHtml) {
+  const dateMatch = blockHtml.match(/<p[^>]*class=["'][^"']*post-term[^"']*["'][^>]*>([\s\S]*?)<\/p>/i);
+  if (!dateMatch) return "";
+  return htmlToText(dateMatch[1]);
+}
+
+// YYYY年M月D日 をすべて拾い、最小・最大日付を開始日・終了日にする。
+function extractDateRangeFromListText(text) {
   const normalized = normalizeDateText(text);
-  const tokens = [];
-  const regex = /(?:(\d{4})\s*年\s*)?(\d{1,2})\s*月\s*(\d{1,2})\s*日/g;
+  const regex = /(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/g;
+  const dates = [];
   let match = regex.exec(normalized);
   while (match) {
-    const year = match[1] ? Number(match[1]) : null;
+    const year = Number(match[1]);
     const month = Number(match[2]);
     const day = Number(match[3]);
-    tokens.push({ year, month, day });
+    const date = buildDate(year, month, day);
+    if (!date) return null;
+    dates.push(date);
     match = regex.exec(normalized);
   }
-  return tokens;
-}
 
-// 抽出した日付トークンから Date 配列を生成する。
-function resolveDateTokens(tokens) {
-  if (!tokens || tokens.length === 0) return null;
-  const baseToken = tokens.find((token) => token.year);
-  if (!baseToken || !baseToken.year) return null;
-
-  const baseYear = baseToken.year;
-  let startDate = null;
-  const dates = [];
-
-  for (const token of tokens) {
-    let year = token.year || baseYear;
-    let date = buildDate(year, token.month, token.day);
-    if (!date) return null;
-
-    if (!token.year && startDate && date < startDate) {
-      year += 1;
-      date = buildDate(year, token.month, token.day);
-      if (!date) return null;
-    }
-
-    if (!startDate) startDate = date;
-    dates.push(date);
-  }
-
-  return dates;
-}
-
-// ページ内の日付情報をまとめて開始日・終了日に変換する。
-function extractDateRangeFromText(text) {
-  const tokens = extractDateTokens(text);
-  const dates = resolveDateTokens(tokens);
-  if (!dates || dates.length === 0) return null;
+  if (dates.length === 0) return null;
 
   let minDate = dates[0];
   let maxDate = dates[0];
@@ -325,36 +286,28 @@ async function main() {
     return;
   }
 
-  const detailUrls = extractDetailUrls(listHtml);
-  console.log(`list_url_count: ${detailUrls.length}`);
+  const eventBlocks = extractEventBlocks(listHtml);
+  console.log(`found_event_blocks: ${eventBlocks.length}`);
 
-  let detailFetchSuccess = 0;
-  let detailFetchFailed = 0;
   let excludedInvalidCount = 0;
-
   const eventEvents = [];
 
-  for (const detailUrl of detailUrls) {
-    let detailHtml;
-    try {
-      detailHtml = await fetchHtml(detailUrl);
-      detailFetchSuccess += 1;
-    } catch (error) {
-      detailFetchFailed += 1;
-      console.warn(`[WARN] detail_fetch_failed: ${detailUrl}`, error);
-      continue;
-    }
-
-    const title = extractTitleFromHtml(detailHtml);
-    const textContent = htmlToText(detailHtml);
-    const dateRange = extractDateRangeFromText(textContent);
-
-    if (!title || !dateRange) {
+  for (const blockHtml of eventBlocks) {
+    const title = extractTitleFromBlock(blockHtml);
+    if (!title) {
       excludedInvalidCount += 1;
       continue;
     }
 
-    if (dateRange.endDate < dateRange.startDate) {
+    const dateText = extractDateTextFromBlock(blockHtml);
+    const dateRange = extractDateRangeFromListText(dateText);
+    if (!dateRange) {
+      excludedInvalidCount += 1;
+      continue;
+    }
+
+    const sourceUrl = extractHrefFromBlock(blockHtml);
+    if (!sourceUrl) {
       excludedInvalidCount += 1;
       continue;
     }
@@ -363,12 +316,9 @@ async function main() {
       title,
       date_from: dateRange.dateFrom,
       date_to: dateRange.dateTo,
-      source_url: detailUrl,
+      source_url: sourceUrl,
     });
   }
-
-  console.log(`detail_fetch_success: ${detailFetchSuccess}`);
-  console.log(`detail_fetch_failed: ${detailFetchFailed}`);
 
   const extractedCount = eventEvents.length;
   console.log(`extracted_event_items: ${extractedCount}`);
@@ -398,10 +348,6 @@ async function main() {
   console.log(`filtered_old_count: ${filteredOldCount}`);
   console.log(`excluded_invalid_count: ${excludedInvalidCount}`);
 
-  if (detailFetchFailed > 0) {
-    console.warn(`[WARN] detail_fetch_failed が ${detailFetchFailed} 件ありました。`);
-  }
-
   const existingData = loadExistingEvents();
   const mergedEvents = mergeEvents(existingData.events || [], filteredEvents);
   const data = {
@@ -414,6 +360,16 @@ async function main() {
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(data, null, 2));
   console.log(`merged_total_count: ${data.events.length}`);
+
+  const previewItems = data.events.slice(0, 2);
+  if (previewItems.length > 0) {
+    console.log("preview:");
+    previewItems.forEach((item, index) => {
+      console.log(
+        `  [${index + 1}] title="${item.title}" date="${item.date_from}~${item.date_to}" source_url="${item.source_url}"`
+      );
+    });
+  }
 }
 
 main();
