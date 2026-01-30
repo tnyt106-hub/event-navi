@@ -27,6 +27,11 @@
       "enabled": true
     },
     {
+      "id": "ehime_prefectural_museum_of_art",
+      "script": "scripts/fetch-ehime_prefectural_museum_of_art.js",
+      "enabled": true
+    },
+    {
       "id": "takamatsu_city_museum_of_art",
       "script": "scripts/fetch-takamatsu_city_museum_of_art.js",
       "enabled": true
