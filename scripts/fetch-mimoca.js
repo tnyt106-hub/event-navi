@@ -97,6 +97,15 @@ function normalizeWhitespace(text) {
   return text.replace(/\s+/g, " ").trim();
 }
 
+// 改行を残しながら各行の余分な空白を削除する。
+function normalizeWhitespacePreservingLineBreaks(text) {
+  return text
+    .split(/\n|\r/)
+    .map((line) => normalizeWhitespace(line))
+    .filter((line) => line)
+    .join("\n");
+}
+
 // 全角数字を半角に変換する。
 function normalizeNumbers(text) {
   return text.replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0));
@@ -181,6 +190,7 @@ function extractExhibitionDetailUrls(html) {
     if (!pathname.startsWith("/exhibitions/")) return;
     if (/^\/exhibitions\/(current|upcoming|past)\/?$/.test(pathname)) return;
     if (/^\/exhibitions\/20\d{2}\/?$/.test(pathname)) return;
+    if (/\/feed\/?$/.test(pathname)) return;
     if (!/^\/exhibitions\/[^/]+\/?$/.test(pathname)) return;
 
     if (samplePathnames.length < 3) {
@@ -220,6 +230,7 @@ function extractEventDetailUrls(html) {
     if (!pathname.startsWith("/events/")) return;
     if (/^\/events\/?$/.test(pathname)) return;
     if (/^\/events\/\d{4}\/?$/.test(pathname)) return;
+    if (/\/feed\/?$/.test(pathname)) return;
     if (!/^\/events\/[^/]+\/?$/.test(pathname)) return;
 
     if (samplePathnames.length < 3) {
@@ -267,12 +278,18 @@ function extractTitle(html) {
 }
 
 // ラベル近傍の HTML 断片を抽出する。
-function extractScopedFragment(html, keywords, windowChars) {
+function extractScopedTextFragment(html, keywords, windowChars) {
   if (!html || keywords.length === 0) return "";
+  // まず HTML を改行ありのプレーンテキストに変換し、タグ断片をなくす。
+  const textWithLineBreaks = stripTagsWithLineBreaks(html);
+  const textWithoutTags = stripTags(textWithLineBreaks);
+  const decodedText = decodeHtmlEntities(textWithoutTags);
+  const normalizedText = normalizeWhitespacePreservingLineBreaks(decodedText);
+
   // 最初に出現したキーワード位置を見つけ、周辺の断片だけを返す。
   let firstIndex = -1;
   keywords.forEach((keyword) => {
-    const index = html.indexOf(keyword);
+    const index = normalizedText.indexOf(keyword);
     if (index !== -1 && (firstIndex === -1 || index < firstIndex)) {
       firstIndex = index;
     }
@@ -284,16 +301,16 @@ function extractScopedFragment(html, keywords, windowChars) {
 
   // キーワード前後の断片だけを対象にすることで無関係日付やノイズの混入を避ける。
   const start = Math.max(0, firstIndex - windowChars);
-  const end = Math.min(html.length, firstIndex + windowChars);
-  return html.slice(start, end);
+  const end = Math.min(normalizedText.length, firstIndex + windowChars);
+  return normalizedText.slice(start, end);
 }
 
-// HTML から日付リストを抽出する。
-function extractDates(html) {
-  const text = normalizeNumbers(stripTags(html));
+// テキストから日付リストを抽出する。
+function extractDatesFromText(text) {
+  const normalizedText = normalizeNumbers(text);
   const dates = [];
 
-  for (const match of text.matchAll(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/g)) {
+  for (const match of normalizedText.matchAll(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/g)) {
     const year = Number(match[1]);
     const month = Number(match[2]);
     const day = Number(match[3]);
@@ -307,9 +324,9 @@ function extractDates(html) {
 }
 
 // 断片から日付レンジを抽出する。
-function extractDateRangeFromFragment(fragment) {
-  if (!fragment) return null;
-  const dates = extractDates(fragment);
+function extractDateRangeFromFragment(fragmentText) {
+  if (!fragmentText) return null;
+  const dates = extractDatesFromText(fragmentText);
   if (dates.length === 0) return null;
   dates.sort((a, b) => a - b);
   return {
@@ -322,8 +339,13 @@ function extractDateRangeFromFragment(fragment) {
 // 詳細ページの本文から日付を抽出する。
 function extractDateRange(html, options) {
   // 対象ラベル近傍の断片を優先し、必要時のみ全体抽出にフォールバックする。
-  const { labels, scopeRadius, fallbackMaxDates } = options;
-  const scopedFragment = extractScopedFragment(html, labels, scopeRadius);
+  const { labels, fallbackLabels, scopeRadius, fallbackMaxDates } = options;
+  const scopedFragmentPrimary = extractScopedTextFragment(html, labels, scopeRadius);
+  const scopedFragmentFallback =
+    !scopedFragmentPrimary && fallbackLabels
+      ? extractScopedTextFragment(html, fallbackLabels, scopeRadius)
+      : "";
+  const scopedFragment = scopedFragmentPrimary || scopedFragmentFallback;
   const scopedResult = extractDateRangeFromFragment(scopedFragment);
   const scopedDateCount = scopedResult ? scopedResult.dateCount : 0;
 
@@ -341,7 +363,10 @@ function extractDateRange(html, options) {
   }
 
   // 断片で日付が取れない場合のみ全体抽出を行う。
-  const fallbackDates = extractDates(html);
+  const fallbackText = normalizeWhitespacePreservingLineBreaks(
+    decodeHtmlEntities(stripTags(stripTagsWithLineBreaks(html)))
+  );
+  const fallbackDates = extractDatesFromText(fallbackText);
   const fallbackDateCount = fallbackDates.length;
   if (fallbackDates.length === 0) {
     return {
@@ -396,9 +421,8 @@ function extractTimeRange(html) {
 }
 
 // HTML を改行単位の配列に変換する。
-function buildTextLines(html) {
-  const text = decodeHtmlEntities(stripTagsWithLineBreaks(html));
-  return text
+function buildTextLinesFromText(text) {
+  return normalizeWhitespacePreservingLineBreaks(text)
     .split(/\n|\r/)
     .map((line) => normalizeWhitespace(line))
     .filter((line) => line);
@@ -423,15 +447,18 @@ function findNextContentLine(lines, startIndex, keywords) {
 // 料金行を抽出する。
 function extractPriceLine(html) {
   const keywords = ["料金", "観覧料", "入館料", "参加費"];
-  // 料金ラベル近傍の断片だけを対象にし、UI ノイズを避ける。
-  const scopedFragment = extractScopedFragment(html, keywords, 2000);
-  if (!scopedFragment) return "";
-  const lines = buildTextLines(scopedFragment);
-  // 価格らしい文字列だけを採用する（数字/円/無料が含まれる行）。
-  const pricePattern = /(\d|円|無料)/;
+  // 料金ラベル近傍のテキスト断片だけを対象にし、UI ノイズを避ける。
+  const scopedText = extractScopedTextFragment(html, keywords, 2000);
+  if (!scopedText) return "";
+  const lines = buildTextLinesFromText(scopedText);
+  // 価格らしい文字列だけを採用する（円/無料が含まれる行）。
+  const pricePattern = /(円|無料)/;
+  const forbiddenPattern = /(Language|▲|\.jpg|\.png)/i;
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
     if (isHeadingOnly(line, keywords)) continue;
+    if (forbiddenPattern.test(line)) continue;
+    if (line.includes("年") && line.includes("月") && line.includes("日")) continue;
     if (!pricePattern.test(line)) continue;
     return line;
   }
@@ -442,13 +469,12 @@ function extractPriceLine(html) {
 // 連絡先行を抽出する。
 function extractContactLine(html) {
   const keywords = ["お問い合わせ", "TEL", "電話"];
-  // 連絡先ラベル近傍の断片だけを対象にし、UI ノイズを避ける。
-  const scopedFragment = extractScopedFragment(html, keywords, 2000);
-  if (!scopedFragment) return "";
-  const lines = buildTextLines(scopedFragment);
+  // 連絡先ラベル近傍のテキスト断片だけを対象にし、UI ノイズを避ける。
+  const scopedText = extractScopedTextFragment(html, keywords, 2000);
+  if (!scopedText) return "";
+  const lines = buildTextLinesFromText(scopedText);
   const phoneCandidates = [];
-  const phonePattern = /(TEL[:：]?\s*)?\d{2,4}-\d{2,4}-\d{3,4}/;
-  const telKeywordPattern = /(TEL|電話)/;
+  const phonePattern = /\d{2,4}-\d{2,4}-\d{3,4}/;
   // UI 文言や装飾記号を含む行は連絡先として採用しない。
   const forbiddenPattern = /(Language|▲)/;
 
@@ -462,8 +488,8 @@ function extractContactLine(html) {
       continue;
     }
 
-    // 電話番号/電話表記を含む行のみ採用する。
-    if (phonePattern.test(line) || telKeywordPattern.test(line)) {
+    // 電話番号を含む行のみ採用する。
+    if (phonePattern.test(line)) {
       phoneCandidates.push(line);
     }
   }
@@ -529,19 +555,6 @@ function buildEventFromDetail(detailUrl, html, dateOptions) {
   const contactLine = extractContactLine(html);
   if (contactLine) {
     eventItem.contact = contactLine;
-  }
-
-  if (!priceLine && !contactLine) {
-    return {
-      eventItem: null,
-      invalidReason: "no_price_contact",
-      usedScoped: dateRange.usedScoped,
-      dateDebug: {
-        scopedDateCount: dateRange.scopedDateCount,
-        fallbackDateCount: dateRange.fallbackDateCount,
-        fallbackTooMany: dateRange.fallbackTooMany,
-      },
-    };
   }
 
   return {
@@ -718,6 +731,7 @@ async function main() {
   const exhibitionResult = await fetchDetails(exhibitionUrls, "exhibitions", {
     // 展覧会は「会期」近傍を優先して日付を抽出する。
     labels: ["会期"],
+    fallbackLabels: ["会期", "開催期間"],
     scopeRadius: 2000,
     fallbackMaxDates: 10,
   });
