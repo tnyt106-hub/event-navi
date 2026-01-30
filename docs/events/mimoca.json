@@ -11,7 +11,16 @@
       "start_time": null,
       "end_time": "18:00",
       "price": "無料（別途、本展観覧券が必要です）",
-      "contact": "Tel: 0877-24-7755 Fax: 0877-24-7766"
+      "contact": "Tel: 0877-24-7755 Fax: 0877-24-7766",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
     },
     {
       "title": "説明会＆おさんぽ会＆妄想屋台ワークショップ",
@@ -22,7 +31,16 @@
       "start_time": null,
       "end_time": "12:00",
       "price": "参加無料、申込不要",
-      "contact": null
+      "contact": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [
+          "education"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
     },
     {
       "title": "きむらとしろうじんじん 野点（のだて）と丸亀妄想屋台群",
@@ -32,7 +50,12 @@
       "open_time": "10:00",
       "start_time": null,
       "end_time": "12:00",
-      "contact": null
+      "contact": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
     },
     {
       "title": "猪熊弦一郎展 夢をならべている",
@@ -43,7 +66,15 @@
       "start_time": null,
       "end_time": "18:00",
       "price": "一般 1,500 円（団体割引 1,200 円、市民割 900 円）、大学生 1,000 円（団体割引 800 円、市民割 600 円）、高校生以下または 18 歳未満・丸亀市内に在住の 65 歳以上・各種障害者手帳をお持ちの方とその介護者 1 名は無料",
-      "contact": null
+      "contact": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
     },
     {
       "title": "ジャネット・カーディフ 40声のモテット",
@@ -54,7 +85,14 @@
       "start_time": null,
       "end_time": "18:00",
       "price": "本作は、2001年にカナダ国立美術館（オタワ）で初めて公開され、同館のミレニアム賞を受賞して以来世界約60ヶ所で展示されてきた、彼女の代表作の一つです。16世紀イングランドの作曲家トマス・タリスが作曲した『Spem in Alium』（通称『40声のモテット』）をもとにしており、 楕円形に設置された40台の各スピーカーから、59人5声部（ソプラノ、アルト、テノール、バリトン、バス）で構成された聖歌隊の歌声が個別に再生されます。それはまるで今まさに歌っている聖歌隊の場に居合わせているかのような没入感を生み出し、重層的な音の広がりは彫刻のように空間のなかで立ち上がります。",
-      "contact": null
+      "contact": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
     },
     {
       "title": "猪熊弦一郎展 物が在る 展示室A",
@@ -65,7 +103,17 @@
       "start_time": null,
       "end_time": "18:00",
       "price": "一般 300円（240円） 大学生 200円（160円）",
-      "contact": null
+      "contact": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
     },
     {
       "title": "キュレーター・トーク",
@@ -76,7 +124,16 @@
       "start_time": null,
       "end_time": "18:00",
       "price": "本展担当キュレーター（松村円）が展覧会をご案内します。",
-      "contact": "Tel: 0877-24-7755 Fax: 0877-24-7766"
+      "contact": "Tel: 0877-24-7755 Fax: 0877-24-7766",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": [
+          "paid"
+        ]
+      }
     }
   ]
 }
