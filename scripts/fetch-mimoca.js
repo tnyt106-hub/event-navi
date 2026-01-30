@@ -266,24 +266,26 @@ function extractTitle(html) {
   return mainTitle;
 }
 
-// 会期/日時ラベル付近の HTML 断片を抽出する。
-function extractDateScopedHtml(html, labels, scopeRadius) {
-  const labelPattern = new RegExp(`(${labels.join("|")})`);
-  const labelMatch = html.match(labelPattern);
-  if (!labelMatch || labelMatch.index === undefined) {
-    return {
-      scopedHtml: "",
-      found: false,
-    };
+// ラベル近傍の HTML 断片を抽出する。
+function extractScopedFragment(html, keywords, windowChars) {
+  if (!html || keywords.length === 0) return "";
+  // 最初に出現したキーワード位置を見つけ、周辺の断片だけを返す。
+  let firstIndex = -1;
+  keywords.forEach((keyword) => {
+    const index = html.indexOf(keyword);
+    if (index !== -1 && (firstIndex === -1 || index < firstIndex)) {
+      firstIndex = index;
+    }
+  });
+
+  if (firstIndex === -1) {
+    return "";
   }
 
-  // ラベル前後の断片だけを対象にすることで無関係日付の混入を避ける。
-  const start = Math.max(0, labelMatch.index - scopeRadius);
-  const end = Math.min(html.length, labelMatch.index + scopeRadius);
-  return {
-    scopedHtml: html.slice(start, end),
-    found: true,
-  };
+  // キーワード前後の断片だけを対象にすることで無関係日付やノイズの混入を避ける。
+  const start = Math.max(0, firstIndex - windowChars);
+  const end = Math.min(html.length, firstIndex + windowChars);
+  return html.slice(start, end);
 }
 
 // HTML から日付リストを抽出する。
@@ -304,34 +306,53 @@ function extractDates(html) {
   return dates;
 }
 
+// 断片から日付レンジを抽出する。
+function extractDateRangeFromFragment(fragment) {
+  if (!fragment) return null;
+  const dates = extractDates(fragment);
+  if (dates.length === 0) return null;
+  dates.sort((a, b) => a - b);
+  return {
+    dateFrom: formatDate(dates[0]),
+    dateTo: formatDate(dates[dates.length - 1]),
+    dateCount: dates.length,
+  };
+}
+
 // 詳細ページの本文から日付を抽出する。
 function extractDateRange(html, options) {
   // 対象ラベル近傍の断片を優先し、必要時のみ全体抽出にフォールバックする。
   const { labels, scopeRadius, fallbackMaxDates } = options;
-  const scoped = extractDateScopedHtml(html, labels, scopeRadius);
-  const scopedDates = scoped.found ? extractDates(scoped.scopedHtml) : [];
+  const scopedFragment = extractScopedFragment(html, labels, scopeRadius);
+  const scopedResult = extractDateRangeFromFragment(scopedFragment);
+  const scopedDateCount = scopedResult ? scopedResult.dateCount : 0;
 
-  if (scopedDates.length > 0) {
-    scopedDates.sort((a, b) => a - b);
+  if (scopedResult) {
     return {
-      dateFrom: formatDate(scopedDates[0]),
-      dateTo: formatDate(scopedDates[scopedDates.length - 1]),
+      dateFrom: scopedResult.dateFrom,
+      dateTo: scopedResult.dateTo,
       usedScoped: true,
       hasDate: true,
-      scopeFound: true,
+      scopeFound: Boolean(scopedFragment),
+      fallbackTooMany: false,
+      scopedDateCount,
+      fallbackDateCount: 0,
     };
   }
 
   // 断片で日付が取れない場合のみ全体抽出を行う。
   const fallbackDates = extractDates(html);
+  const fallbackDateCount = fallbackDates.length;
   if (fallbackDates.length === 0) {
     return {
       dateFrom: "",
       dateTo: "",
       usedScoped: false,
       hasDate: false,
-      scopeFound: scoped.found,
+      scopeFound: Boolean(scopedFragment),
       fallbackTooMany: false,
+      scopedDateCount,
+      fallbackDateCount,
     };
   }
 
@@ -342,8 +363,10 @@ function extractDateRange(html, options) {
       dateTo: "",
       usedScoped: false,
       hasDate: false,
-      scopeFound: scoped.found,
+      scopeFound: Boolean(scopedFragment),
       fallbackTooMany: true,
+      scopedDateCount,
+      fallbackDateCount,
     };
   }
 
@@ -353,8 +376,10 @@ function extractDateRange(html, options) {
     dateTo: formatDate(fallbackDates[fallbackDates.length - 1]),
     usedScoped: false,
     hasDate: true,
-    scopeFound: scoped.found,
+    scopeFound: Boolean(scopedFragment),
     fallbackTooMany: false,
+    scopedDateCount,
+    fallbackDateCount,
   };
 }
 
@@ -398,22 +423,17 @@ function findNextContentLine(lines, startIndex, keywords) {
 // 料金行を抽出する。
 function extractPriceLine(html) {
   const keywords = ["料金", "観覧料", "入館料", "参加費"];
-  const lines = buildTextLines(html);
+  // 料金ラベル近傍の断片だけを対象にし、UI ノイズを避ける。
+  const scopedFragment = extractScopedFragment(html, keywords, 2000);
+  if (!scopedFragment) return "";
+  const lines = buildTextLines(scopedFragment);
   // 価格らしい文字列だけを採用する（数字/円/無料が含まれる行）。
   const pricePattern = /(\d|円|無料)/;
-
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
-    if (!keywords.some((keyword) => line.includes(keyword))) continue;
-
-    if (!isHeadingOnly(line, keywords) && pricePattern.test(line)) {
-      return line;
-    }
-
-    const nextLine = findNextContentLine(lines, i, keywords);
-    if (nextLine && pricePattern.test(nextLine)) {
-      return nextLine;
-    }
+    if (isHeadingOnly(line, keywords)) continue;
+    if (!pricePattern.test(line)) continue;
+    return line;
   }
 
   return "";
@@ -422,7 +442,10 @@ function extractPriceLine(html) {
 // 連絡先行を抽出する。
 function extractContactLine(html) {
   const keywords = ["お問い合わせ", "TEL", "電話"];
-  const lines = buildTextLines(html);
+  // 連絡先ラベル近傍の断片だけを対象にし、UI ノイズを避ける。
+  const scopedFragment = extractScopedFragment(html, keywords, 2000);
+  if (!scopedFragment) return "";
+  const lines = buildTextLines(scopedFragment);
   const phoneCandidates = [];
   const phonePattern = /(TEL[:：]?\s*)?\d{2,4}-\d{2,4}-\d{3,4}/;
   const telKeywordPattern = /(TEL|電話)/;
@@ -431,20 +454,17 @@ function extractContactLine(html) {
 
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
-    if (!keywords.some((keyword) => line.includes(keyword))) continue;
-
-    let candidate = line;
-    if (isHeadingOnly(line, keywords)) {
-      candidate = findNextContentLine(lines, i, keywords);
+    if (forbiddenPattern.test(line)) {
+      continue;
     }
 
-    if (!candidate || forbiddenPattern.test(candidate)) {
+    if (isHeadingOnly(line, keywords)) {
       continue;
     }
 
     // 電話番号/電話表記を含む行のみ採用する。
-    if (phonePattern.test(candidate) || telKeywordPattern.test(candidate)) {
-      phoneCandidates.push(candidate);
+    if (phonePattern.test(line) || telKeywordPattern.test(line)) {
+      phoneCandidates.push(line);
     }
   }
 
@@ -459,13 +479,32 @@ function extractContactLine(html) {
 function buildEventFromDetail(detailUrl, html, dateOptions) {
   const title = extractTitle(html);
   if (!title) {
-    return { eventItem: null, invalidReason: "no_title", usedScoped: false };
+    return {
+      eventItem: null,
+      invalidReason: "no_title",
+      usedScoped: false,
+      dateDebug: null,
+    };
   }
 
   const dateRange = extractDateRange(html, dateOptions);
   if (!dateRange.hasDate) {
-    const invalidReason = dateRange.scopeFound ? "date_scope_failed" : "no_date";
-    return { eventItem: null, invalidReason, usedScoped: dateRange.usedScoped };
+    let invalidReason = "no_date_fallback";
+    if (dateRange.fallbackTooMany) {
+      invalidReason = "too_many_dates";
+    } else if (dateRange.scopeFound) {
+      invalidReason = "no_date_scoped";
+    }
+    return {
+      eventItem: null,
+      invalidReason,
+      usedScoped: dateRange.usedScoped,
+      dateDebug: {
+        scopedDateCount: dateRange.scopedDateCount,
+        fallbackDateCount: dateRange.fallbackDateCount,
+        fallbackTooMany: dateRange.fallbackTooMany,
+      },
+    };
   }
 
   const eventItem = {
@@ -493,10 +532,28 @@ function buildEventFromDetail(detailUrl, html, dateOptions) {
   }
 
   if (!priceLine && !contactLine) {
-    return { eventItem: null, invalidReason: "no_price_contact", usedScoped: dateRange.usedScoped };
+    return {
+      eventItem: null,
+      invalidReason: "no_price_contact",
+      usedScoped: dateRange.usedScoped,
+      dateDebug: {
+        scopedDateCount: dateRange.scopedDateCount,
+        fallbackDateCount: dateRange.fallbackDateCount,
+        fallbackTooMany: dateRange.fallbackTooMany,
+      },
+    };
   }
 
-  return { eventItem, invalidReason: "", usedScoped: dateRange.usedScoped };
+  return {
+    eventItem,
+    invalidReason: "",
+    usedScoped: dateRange.usedScoped,
+    dateDebug: {
+      scopedDateCount: dateRange.scopedDateCount,
+      fallbackDateCount: dateRange.fallbackDateCount,
+      fallbackTooMany: dateRange.fallbackTooMany,
+    },
+  };
 }
 
 // 既存 JSON を読み込む。
@@ -534,46 +591,26 @@ function loadExistingData() {
 
 // 重複キー用の文字列を作る。
 function buildEventKey(eventItem) {
+  // source_url がある場合は URL を優先キーにして誤レコードの重複を防ぐ。
+  if (eventItem.source_url) {
+    return eventItem.source_url;
+  }
   return `${eventItem.title}__${eventItem.date_from}__${eventItem.date_to}`;
 }
 
 // 既存イベントと新規イベントをマージする。
 function mergeEvents(existingEvents, newEvents) {
   const merged = new Map();
-  const sourceUrlKeyMap = new Map();
 
   existingEvents.forEach((eventItem) => {
     const key = buildEventKey(eventItem);
     merged.set(key, { ...eventItem });
-    if (eventItem.source_url) {
-      sourceUrlKeyMap.set(eventItem.source_url, key);
-    }
   });
 
   newEvents.forEach((eventItem) => {
     const key = buildEventKey(eventItem);
-    const sourceUrlKey = eventItem.source_url ? sourceUrlKeyMap.get(eventItem.source_url) : null;
-
-    if (sourceUrlKey && merged.has(sourceUrlKey)) {
-      const existing = merged.get(sourceUrlKey);
-      const updated = { ...existing, ...eventItem };
-
-      if (existing.tags && !eventItem.tags) {
-        updated.tags = existing.tags;
-      }
-
-      // source_url が同一の場合は新規データで置換する。
-      merged.delete(sourceUrlKey);
-      merged.set(key, updated);
-      sourceUrlKeyMap.set(eventItem.source_url, key);
-      return;
-    }
-
     if (!merged.has(key)) {
       merged.set(key, { ...eventItem });
-      if (eventItem.source_url) {
-        sourceUrlKeyMap.set(eventItem.source_url, key);
-      }
       return;
     }
 
@@ -617,15 +654,21 @@ async function fetchDetails(urls, label, dateOptions) {
   for (const url of urls) {
     try {
       const html = await fetchHtml(url);
-      const { eventItem, invalidReason, usedScoped } = buildEventFromDetail(url, html, dateOptions);
+      const { eventItem, invalidReason, usedScoped, dateDebug } = buildEventFromDetail(
+        url,
+        html,
+        dateOptions
+      );
       console.log(`[date_scope] used_scoped=${usedScoped} url=${url}`);
+      if (label === "exhibitions" && dateDebug) {
+        console.log(
+          `[date_debug] scoped_count=${dateDebug.scopedDateCount} fallback_count=${dateDebug.fallbackDateCount} fallback_too_many=${dateDebug.fallbackTooMany} url=${url}`
+        );
+      }
       if (!eventItem) {
         excludedInvalidCount += 1;
-        if (
-          ["no_title", "no_date", "date_scope_failed"].includes(invalidReason) &&
-          invalidSamples.length < 3
-        ) {
-          invalidSamples.push({ url, reason: invalidReason });
+        if (invalidSamples.length < 3) {
+          invalidSamples.push({ url, reason: invalidReason || "unknown" });
         }
         continue;
       }
@@ -675,7 +718,7 @@ async function main() {
   const exhibitionResult = await fetchDetails(exhibitionUrls, "exhibitions", {
     // 展覧会は「会期」近傍を優先して日付を抽出する。
     labels: ["会期"],
-    scopeRadius: 1600,
+    scopeRadius: 2000,
     fallbackMaxDates: 10,
   });
   const exhibitionEvents = exhibitionResult.events;
@@ -696,8 +739,8 @@ async function main() {
 
   const eventResult = await fetchDetails(eventUrls, "events", {
     // イベントは日時/開催日などのラベル近傍を優先して日付を抽出する。
-    labels: ["日時", "開催日", "開催日時", "日程"],
-    scopeRadius: 1600,
+    labels: ["日時", "開催日", "日程"],
+    scopeRadius: 2500,
     fallbackMaxDates: 10,
   });
   const eventEvents = eventResult.events;
