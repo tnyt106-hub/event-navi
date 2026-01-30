@@ -12,6 +12,9 @@ const ENTRY_URL = "https://www.marugame-ilex.org/event/eve_1/index.html";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "marugame_ilex.json");
 const VENUE_ID = "marugame_ilex";
 const ALLOWED_VENUE_KEYWORDS = ["アイレックス", "丸亀市綾歌総合文化会館"];
+// 連続テキストの本文は最大文字数を設け、長すぎる場合は省略表記を付ける。
+const MAX_BODY_LENGTH = 5000;
+const BODY_TRUNCATION_SUFFIX = "…（省略）";
 
 // Shift_JIS の HTML を取得して UTF-8 へ変換する。
 function fetchHtmlShiftJis(url) {
@@ -107,6 +110,18 @@ function normalizeDescription(rawHtml) {
     .map((line) => line.replace(/\s+/g, " ").trim())
     .filter((line) => line.length > 0);
   return lines.join("\n");
+}
+
+// 本文テキストを最大文字数で丸め、必要に応じて省略表記を付ける。
+function trimBodyText(rawText) {
+  if (!rawText) return "";
+  const normalized = String(rawText).trim();
+  if (!normalized) return "";
+  if (normalized.length <= MAX_BODY_LENGTH) {
+    return normalized;
+  }
+  const safeLength = Math.max(0, MAX_BODY_LENGTH - BODY_TRUNCATION_SUFFIX.length);
+  return `${normalized.slice(0, safeLength)}${BODY_TRUNCATION_SUFFIX}`;
 }
 
 // 1イベント分のブロックをアンカー位置で切り出す。
@@ -285,6 +300,8 @@ async function main() {
       }
 
       const description = normalizeDescription(detailHtml);
+      // 抽出が難しい施設では、連続テキストを body にも保持して後段で活用する。
+      const bodyText = trimBodyText(description);
       const status = description.includes("公演は終了しました") || description.includes("イベントは終了しました")
         ? "finished"
         : "scheduled";
@@ -295,6 +312,7 @@ async function main() {
         date_to: dateRange.dateTo,
         venue_name: venueName,
         description: description || null,
+        body: bodyText || null,
         status,
         source_url: `${ENTRY_URL}#${block.id}`,
         open_time: null,
