@@ -47,6 +47,11 @@
       "enabled": true
     },
     {
+      "id": "mimoca",
+      "script": "scripts/fetch-mimoca.js",
+      "enabled": true
+    },
+    {
       "id": "apply-tags",
       "script": "tools/tagging/apply_tags.js",
       "enabled": true
