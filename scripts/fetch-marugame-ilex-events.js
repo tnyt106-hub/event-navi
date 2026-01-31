@@ -4,9 +4,10 @@
 
 const fs = require("fs");
 const path = require("path");
-const https = require("https");
 
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
+// 共通 HTTP 取得ユーティリティで Shift_JIS を取得する。
+const { fetchText } = require("./lib/http");
 
 const ENTRY_URL = "https://www.marugame-ilex.org/event/eve_1/index.html";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "marugame_ilex.json");
@@ -15,60 +16,6 @@ const ALLOWED_VENUE_KEYWORDS = ["アイレックス", "丸亀市綾歌総合文�
 // 連続テキストの本文は最大文字数を設け、長すぎる場合は省略表記を付ける。
 const MAX_BODY_LENGTH = 5000;
 const BODY_TRUNCATION_SUFFIX = "…（省略）";
-
-// Shift_JIS の HTML を取得して UTF-8 へ変換する。
-function fetchHtmlShiftJis(url) {
-  return new Promise((resolve, reject) => {
-    const request = https.get(
-      url,
-      {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (compatible; event-navi-bot/1.0)",
-          Accept: "text/html,application/xhtml+xml",
-        },
-      },
-      (response) => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`HTTP ${response.statusCode} で失敗しました。`));
-          response.resume();
-          return;
-        }
-
-        const chunks = [];
-        response.on("data", (chunk) => {
-          chunks.push(chunk);
-        });
-        response.on("end", () => {
-          const buffer = Buffer.concat(chunks);
-          if (!buffer.length) {
-            reject(new Error("HTMLの取得結果が空でした。"));
-            return;
-          }
-
-          let decoded;
-          try {
-            decoded = new TextDecoder("shift_jis").decode(buffer);
-          } catch (error) {
-            reject(new Error("Shift_JIS のデコードに失敗しました。"));
-            return;
-          }
-
-          const errorIndicators = ["Access Denied", "Forbidden", "Service Unavailable"];
-          if (errorIndicators.some((indicator) => decoded.includes(indicator))) {
-            reject(new Error("明らかなエラーページの可能性があります。"));
-            return;
-          }
-
-          resolve(decoded);
-        });
-      }
-    );
-
-    request.on("error", (error) => {
-      reject(error);
-    });
-  });
-}
 
 // HTMLエンティティを最小限デコードする。
 function decodeHtmlEntities(text) {
@@ -241,7 +188,10 @@ function saveEventsFile(events) {
 
 async function main() {
   try {
-    const html = await fetchHtmlShiftJis(ENTRY_URL);
+    const html = await fetchText(ENTRY_URL, {
+      encoding: "shift_jis",
+      acceptEncoding: "identity",
+    });
     const blocks = splitEventBlocks(html);
 
     let excludedByVenue = 0;

@@ -4,8 +4,10 @@
 
 const fs = require("fs");
 const path = require("path");
-const https = require("https");
 const { URL } = require("url");
+
+// 共通 HTTP 取得ユーティリティで HTML を取得する。
+const { fetchText } = require("./lib/http");
 
 const EXHIBITIONS_LIST_URL = "https://www.mimoca.jp/exhibitions/current/";
 const EVENTS_LIST_URL = "https://www.mimoca.jp/events/";
@@ -14,57 +16,6 @@ const VENUE_ID = "mimoca";
 const JST_OFFSET_HOURS = 9;
 // 終了日が「今日から365日より前」のイベントを除外するための基準日数。
 const PAST_DAYS_LIMIT = 365;
-
-// HTML を取得する。HTTP エラーは失敗として扱う。
-function fetchHtml(url) {
-  return new Promise((resolve, reject) => {
-    const request = https.get(
-      url,
-      {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (compatible; event-navi-bot/1.0)",
-          Accept: "text/html,application/xhtml+xml",
-          // 圧縮レスポンスだと utf8 連結が壊れるため、明示的に無圧縮を要求する。
-          "Accept-Encoding": "identity",
-        },
-      },
-      (response) => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`HTTP ${response.statusCode} で失敗しました。`));
-          response.resume();
-          return;
-        }
-
-        // デバッグ用にレスポンスヘッダを短く記録する。
-        console.log(
-          `[fetchHtml] content-encoding: ${response.headers["content-encoding"] || "none"}, content-type: ${
-            response.headers["content-type"] || "unknown"
-          }`
-        );
-
-        let body = "";
-        response.setEncoding("utf8");
-        response.on("data", (chunk) => {
-          body += chunk;
-        });
-        response.on("end", () => {
-          if (!body) {
-            reject(new Error("HTML の取得結果が空でした。"));
-            return;
-          }
-          // デバッグ用に body の先頭 200 文字を 1 行で記録する。
-          const bodySnippet = body.replace(/\s+/g, " ").slice(0, 200);
-          console.log(`[fetchHtml] body_head: ${bodySnippet}`);
-          resolve(body);
-        });
-      }
-    );
-
-    request.on("error", (error) => {
-      reject(error);
-    });
-  });
-}
 
 // HTML エンティティを最低限デコードする。
 function decodeHtmlEntities(text) {
@@ -699,7 +650,11 @@ async function fetchDetails(urls, label, dateOptions) {
 
   for (const url of urls) {
     try {
-      const html = await fetchHtml(url);
+      const html = await fetchText(url, {
+        acceptEncoding: "identity",
+        encoding: "utf-8",
+        debugLabel: "mimoca-detail",
+      });
       const { eventItem, invalidReason, usedScoped, dateDebug } = buildEventFromDetail(
         url,
         html,
@@ -746,7 +701,11 @@ async function main() {
   const existingData = loadExistingData();
   let excludedInvalidCount = 0;
 
-  const exhibitionsHtml = await fetchHtml(EXHIBITIONS_LIST_URL);
+  const exhibitionsHtml = await fetchText(EXHIBITIONS_LIST_URL, {
+    acceptEncoding: "identity",
+    encoding: "utf-8",
+    debugLabel: "mimoca-exhibitions",
+  });
   const exhibitionHrefResult = extractExhibitionDetailUrls(exhibitionsHtml);
   const exhibitionUrls = exhibitionHrefResult.urls;
   console.log(`exhibitions_list_href_total: ${exhibitionHrefResult.totalHrefCount}`);
@@ -773,7 +732,11 @@ async function main() {
   const exhibitionEvents = exhibitionResult.events;
   excludedInvalidCount += exhibitionResult.excludedInvalidCount;
 
-  const eventsHtml = await fetchHtml(EVENTS_LIST_URL);
+  const eventsHtml = await fetchText(EVENTS_LIST_URL, {
+    acceptEncoding: "identity",
+    encoding: "utf-8",
+    debugLabel: "mimoca-events",
+  });
   const eventHrefResult = extractEventDetailUrls(eventsHtml);
   const eventUrls = eventHrefResult.urls;
   console.log(`events_list_href_total: ${eventHrefResult.totalHrefCount}`);
