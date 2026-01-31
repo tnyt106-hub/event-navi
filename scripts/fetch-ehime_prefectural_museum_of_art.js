@@ -15,7 +15,8 @@ const ENTRY_URL = "https://www.ehime-art.jp/exhibition/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
 const VENUE_ID = "ehime_prefectural_museum_of_art";
 const VENUE_NAME = "愛媛県美術館";
-const PAST_DAYS_LIMIT = 120;
+// 終了日が「今日から365日より前」のイベントを除外するための基準日数。
+const PAST_DAYS_LIMIT = 365;
 
 // HTML を取得する。HTTPエラーや明らかなエラーページはハード失敗とする。
 function fetchHtml(url) {
@@ -230,7 +231,7 @@ function buildJstTodayUtc() {
   return new Date(Date.UTC(nowJst.getUTCFullYear(), nowJst.getUTCMonth(), nowJst.getUTCDate()));
 }
 
-// 過去120日フィルタの閾値を作る。
+// 過去365日フィルタの閾値を作る（JST基準の日付で判定する）。
 function buildPastThresholdUtc() {
   const todayJst = buildJstTodayUtc();
   const threshold = new Date(todayJst.getTime());
@@ -299,8 +300,6 @@ async function main() {
     });
   }
 
-  const threshold = buildPastThresholdUtc();
-
   for (const block of pastBlocks) {
     const { title, href } = extractTitleAndUrlFromAnchor(
       block,
@@ -311,11 +310,6 @@ async function main() {
     const dateRange = parseDateRange(dateText);
     if (!dateRange || !title) {
       excludedInvalidCount += 1;
-      continue;
-    }
-
-    if (dateRange.endDate < threshold) {
-      filteredOldCount += 1;
       continue;
     }
 
@@ -341,10 +335,27 @@ async function main() {
   }
 
   const dedupedEvents = Array.from(dedupedMap.values());
+  const threshold = buildPastThresholdUtc();
+  const filteredEvents = dedupedEvents.filter((eventItem) => {
+    // 終了日が取れていないイベントは、既存ロジックに委ねて残す。
+    if (!eventItem.date_to) return true;
+
+    const [year, month, day] = eventItem.date_to.split("-").map(Number);
+    const dateTo = buildDate(year, month, day);
+    if (!dateTo) {
+      return false;
+    }
+    // 終了日が「今日 - 365日」より古ければ除外する。
+    if (dateTo < threshold) {
+      filteredOldCount += 1;
+      return false;
+    }
+    return true;
+  });
   const data = {
     venue_id: VENUE_ID,
     venue_name: VENUE_NAME,
-    events: dedupedEvents,
+    events: filteredEvents,
   };
 
   applyTagsToEventsData(data, { overwrite: false });
@@ -352,11 +363,11 @@ async function main() {
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(data, null, 2));
 
-  console.log(`kept_count=${dedupedEvents.length}`);
-  console.log(`filtered_old_count=${filteredOldCount}`);
+  console.log(`kept_count=${filteredEvents.length}`);
+  console.log(`filtered_old_count: ${filteredOldCount}`);
   console.log(`excluded_invalid_count=${excludedInvalidCount}`);
 
-  const previewEvents = dedupedEvents.slice(0, 2);
+  const previewEvents = filteredEvents.slice(0, 2);
   for (const event of previewEvents) {
     const titlePreview = event.title.length > 40 ? `${event.title.slice(0, 40)}...` : event.title;
     console.log(
@@ -364,7 +375,7 @@ async function main() {
     );
   }
 
-  if (dedupedEvents.length === 0) {
+  if (filteredEvents.length === 0) {
     console.error("kept_count が 0 です。ページ構造の変化を疑ってください。");
     process.exit(1);
   }
