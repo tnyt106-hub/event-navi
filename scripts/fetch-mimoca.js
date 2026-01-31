@@ -12,7 +12,8 @@ const EVENTS_LIST_URL = "https://www.mimoca.jp/events/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "mimoca.json");
 const VENUE_ID = "mimoca";
 const JST_OFFSET_HOURS = 9;
-const PAST_DAYS_LIMIT = 120;
+// 終了日が「今日から365日より前」のイベントを除外するための基準日数。
+const PAST_DAYS_LIMIT = 365;
 
 // HTML を取得する。HTTP エラーは失敗として扱う。
 function fetchHtml(url) {
@@ -802,12 +803,15 @@ async function main() {
   let filteredOldCount = 0;
 
   const filteredEvents = collectedEvents.filter((eventItem) => {
+    // 終了日が取れていないイベントは、既存ロジックに委ねて残す。
+    if (!eventItem.date_to) return true;
+
     const [year, month, day] = eventItem.date_to.split("-").map(Number);
     const dateTo = buildDate(year, month, day);
     if (!dateTo) {
-      excludedInvalidCount += 1;
       return false;
     }
+    // 終了日が「今日 - 365日」より古ければ除外する。
     if (dateTo < threshold) {
       filteredOldCount += 1;
       return false;

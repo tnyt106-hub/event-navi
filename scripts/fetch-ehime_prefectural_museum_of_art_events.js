@@ -15,7 +15,8 @@ const LIST_URL = "https://www.ehime-art.jp/event";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
 const VENUE_ID = "ehime_prefectural_museum_of_art";
 const VENUE_NAME = "愛媛県美術館";
-const PAST_DAYS_LIMIT = 120;
+// 終了日が「今日から365日より前」のイベントを除外するための基準日数。
+const PAST_DAYS_LIMIT = 365;
 
 // HTML を取得する。HTTPエラーや明らかなエラーページはハード失敗とする。
 function fetchHtml(url) {
@@ -131,7 +132,7 @@ function buildJstTodayUtc() {
   return new Date(Date.UTC(nowJst.getUTCFullYear(), nowJst.getUTCMonth(), nowJst.getUTCDate()));
 }
 
-// 過去120日フィルタの閾値を作る。
+// 過去365日フィルタの閾値を作る（JST基準の日付で判定する）。
 function buildPastThresholdUtc() {
   const todayJst = buildJstTodayUtc();
   const threshold = new Date(todayJst.getTime());
@@ -332,12 +333,15 @@ async function main() {
   const threshold = buildPastThresholdUtc();
   let filteredOldCount = 0;
   const filteredEvents = eventEvents.filter((eventItem) => {
+    // 終了日が取れていないイベントは、既存ロジックに委ねて残す。
+    if (!eventItem.date_to) return true;
+
     const [year, month, day] = eventItem.date_to.split("-").map(Number);
     const dateTo = buildDate(year, month, day);
     if (!dateTo) {
-      excludedInvalidCount += 1;
       return false;
     }
+    // 終了日が「今日 - 365日」より古ければ除外する。
     if (dateTo < threshold) {
       filteredOldCount += 1;
       return false;
