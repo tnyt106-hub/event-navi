@@ -56,8 +56,8 @@ function filterEvents(data, cutoffDate) {
     const endText = eventItem?.date_to || eventItem?.date_from;
     const endDate = parseDateStrict(endText);
 
-    // 日付が不明・不正な場合は安全側で残す
-    if (!endDate) return true;
+    // 日付が不明・不正な場合は、汚染回避のために削除
+    if (!endDate) return false;
 
     // cutoff より前なら削除対象
     return endDate >= cutoffDate;
