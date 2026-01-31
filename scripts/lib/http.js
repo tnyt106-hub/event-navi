@@ -12,7 +12,11 @@ const ERROR_INDICATORS = ["Access Denied", "Forbidden", "Service Unavailable"];
 // options: { headers, acceptEncoding, encoding, timeoutMs, debugLabel }
 async function fetchText(url, options = {}) {
   const acceptEncoding = options.acceptEncoding || "identity";
-  const encoding = options.encoding || "utf-8";
+
+  // 改善点2：encodingの正規化（大小・shift-jis表記揺れを吸収）
+  const encoding = String(options.encoding || "utf-8").toLowerCase();
+  const isShiftJis = encoding === "shift_jis" || encoding === "shift-jis";
+
   const timeoutMs = Number.isFinite(options.timeoutMs) ? options.timeoutMs : DEFAULT_TIMEOUT_MS;
   const debugLabel = options.debugLabel;
 
@@ -30,24 +34,25 @@ async function fetchText(url, options = {}) {
 
   return new Promise((resolve, reject) => {
     let settled = false;
+    let timeoutId = null;
 
     const resolveOnce = (value) => {
       if (settled) return;
       settled = true;
+      if (timeoutId) clearTimeout(timeoutId);
       resolve(value);
     };
 
     const rejectOnce = (error) => {
       if (settled) return;
       settled = true;
+      if (timeoutId) clearTimeout(timeoutId);
       reject(error);
     };
 
     const request = https.get(
       url,
-      {
-        headers,
-      },
+      { headers },
       (response) => {
         if (response.statusCode !== 200) {
           rejectOnce(new Error(`HTTP ${response.statusCode} で失敗しました。`));
@@ -64,9 +69,7 @@ async function fetchText(url, options = {}) {
         }
 
         const chunks = [];
-        response.on("data", (chunk) => {
-          chunks.push(chunk);
-        });
+        response.on("data", (chunk) => chunks.push(chunk));
         response.on("end", () => {
           let buffer = Buffer.concat(chunks);
           if (!buffer.length) {
@@ -74,22 +77,22 @@ async function fetchText(url, options = {}) {
             return;
           }
 
-          // gzip 圧縮されていれば解凍する（acceptEncoding=identity でも念のため対応）。
-          const contentEncoding = response.headers["content-encoding"] || "";
-          if (String(contentEncoding).toLowerCase().includes("gzip")) {
+          // gzip 圧縮されていれば解凍する（identity要求でも念のため対応）。
+          const contentEncoding = String(response.headers["content-encoding"] || "").toLowerCase();
+          if (contentEncoding.includes("gzip")) {
             try {
               buffer = zlib.gunzipSync(buffer);
-            } catch (error) {
+            } catch {
               rejectOnce(new Error("gzip の解凍に失敗しました。"));
               return;
             }
           }
 
           let decoded = "";
-          if (encoding === "shift_jis") {
+          if (isShiftJis) {
             try {
               decoded = new TextDecoder("shift_jis").decode(buffer);
-            } catch (error) {
+            } catch {
               rejectOnce(new Error("Shift_JIS のデコードに失敗しました。"));
               return;
             }
@@ -117,18 +120,12 @@ async function fetchText(url, options = {}) {
       }
     );
 
-    const timeoutId = setTimeout(() => {
+    timeoutId = setTimeout(() => {
       request.destroy();
       rejectOnce(new Error("タイムアウトしました。"));
     }, timeoutMs);
 
-    request.on("error", (error) => {
-      rejectOnce(error);
-    });
-
-    request.on("close", () => {
-      clearTimeout(timeoutId);
-    });
+    request.on("error", (error) => rejectOnce(error));
   });
 }
 
