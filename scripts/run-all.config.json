@@ -52,6 +52,11 @@
       "enabled": true
     },
     {
+      "id": "filter-old-events",
+      "script": "scripts/filter-old-events.js",
+      "enabled": true
+    },
+    {
       "id": "apply-tags",
       "script": "tools/tagging/apply_tags.js",
       "enabled": true
