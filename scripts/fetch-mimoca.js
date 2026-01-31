@@ -100,15 +100,6 @@ function buildPastThresholdJst() {
   return threshold;
 }
 
-// URL を絶対 URL に変換する。
-function toAbsoluteUrl(baseUrl, href) {
-  try {
-    return new URL(href, baseUrl).toString();
-  } catch (error) {
-    return "";
-  }
-}
-
 // 一覧 HTML から href を抽出する。
 function extractHrefList(html) {
   const links = [];
@@ -403,16 +394,6 @@ function buildTextLinesFromText(text) {
 function isHeadingOnly(line, keywords) {
   const normalizedLine = line.replace(/[：:\s]/g, "");
   return keywords.some((keyword) => normalizedLine === keyword.replace(/[：:\s]/g, ""));
-}
-
-// 次の非空行を取得する。
-function findNextContentLine(lines, startIndex, keywords) {
-  for (let i = startIndex + 1; i < lines.length; i += 1) {
-    if (!isHeadingOnly(lines[i], keywords)) {
-      return lines[i];
-    }
-  }
-  return "";
 }
 
 // 料金行を抽出する。
