@@ -12,7 +12,7 @@ html, body {
   
   --surface: #FFFFFF;
   /* 基本文字色（案AのTextMainに合わせる） */
-  --text: #0F172A;
+  --text: #ffffff; /*#0F172A;*/
   /* 補助テキスト色（案AのTextSubに合わせる） */
   --text-sub: #475569;
   /* 注記用の落ち着いた色（案AのTextNote） */
@@ -52,7 +52,6 @@ body {
   border-bottom: none; /* ← 下線を消す */
   /*border-bottom: 1px solid var(--border);*/
   padding: 16px 12px 14px;
-  color: #ffffff; /* ← ヘッダー内の文字を白に */
 }
 
 /* ページタイトル（上段） */
