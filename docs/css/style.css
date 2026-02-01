@@ -104,6 +104,7 @@ h2 {
 .map-wrapper {
   position: relative;
   width: 100%;
+  box-sizing: border-box;
   /* カード化（ここを追加） */ 
   background: var(--surface); /* 白背景 */ 
   border-radius: var(--radius-card); /* 角丸 */ 
