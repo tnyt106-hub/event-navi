@@ -47,10 +47,8 @@ body {
 
 /* ヘッダー全体: 公式感を出すために背景と境界線を整える */
 .site-header {
-  position: relative; z-index: 100;
   background: transparent; /* ← 背景を透明に */
   border-bottom: none; /* ← 下線を消す */
-  color: #ffffff;
   padding: 16px 12px 14px;
 }
 
