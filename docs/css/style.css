@@ -49,7 +49,7 @@ body {
 .site-header {
   background: transparent; /* ← 背景を透明に */
   border-bottom: none; /* ← 下線を消す */
-  color: #ffffff;
+  color: #fff999;
   padding: 16px 12px 14px;
 }
 
