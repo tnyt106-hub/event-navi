@@ -103,6 +103,8 @@ h2 {
 }
 .map-wrapper {
   position: relative;
+  width: calc(100% - 15px); 
+  margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
   /* カード化（ここを追加） */ 
