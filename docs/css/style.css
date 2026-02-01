@@ -8,8 +8,7 @@ html, body {
   /* デザインシステムの基準値を集約して一貫性を保つ */
   --bg: #F6F7FB;
   /* 青ベースのグラデーション背景 */
-  --bg-gradient: linear-gradient( 135deg, #3b82f6 0%,#60a5fa 40%, #93c5fd 100% );
-
+  --bg-gradient: linear-gradient( 135deg, #1e3a8a 0%,#2563eb 40%,#60a5fa 100%);
   
   
   --surface: #FFFFFF;
