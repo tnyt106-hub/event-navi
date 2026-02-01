@@ -104,6 +104,83 @@
       }
     },
     {
+      "title": "愛媛朝日テレビ開局30周年記念 谷川俊太郎 絵本★百貨展",
+      "date_from": "2025-07-05",
+      "date_to": "2025-09-01",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/5b189b7c-0b79-46d1-889a-2991d887cd96",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "コレクション展Ⅱ／2025 令和7年度アートの森プロジェクト 森のなぞなぞ美術館Ⅵ あぜちさん、いしづちさん",
+      "date_from": "2025-06-24",
+      "date_to": "2025-09-05",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/01084203-ba6e-4d44-a1c6-9401cd3d4b7a",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "2025年度Ⅱ期 コレクション・ハイライト",
+      "date_from": "2025-06-24",
+      "date_to": "2025-09-05",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/96d450df-2bdb-4d83-b80c-553978d09060",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "アルフォンス・ミュシャ展 ーアール・ヌーヴォーの華ー",
+      "date_from": "2025-04-12",
+      "date_to": "2025-06-22",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/72a5c320-67ac-4d16-8ece-8cf42fecc179",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "コレクション展Ⅰ／2025 コレクション・ハイライト/令和6年度新収蔵品展/日本美術にみる自然の線、かたち、色",
+      "date_from": "2025-04-07",
+      "date_to": "2025-06-15",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/6946b502-55aa-4990-b1e0-c9d858904dd7",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "山川コレクション収蔵記念 PHOTOGRAPHY 写真のこれまで／これから",
+      "date_from": "2025-01-31",
+      "date_to": "2025-03-20",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/395e0c7c-7574-44a7-a595-495174e3127b",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "コレクション・ハイライト/生誕200年 天野方壺 ―画と詩と旅と/みる冒険 かたちのカタチ",
+      "date_from": "2025-01-11",
+      "date_to": "2025-04-06",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/356d2d98-9628-49d9-8871-264148f733f1",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "コレクショントーク・ミニ",
       "date_from": "2025-10-01",
       "date_to": "2026-03-04",
@@ -154,19 +231,6 @@
       }
     },
     {
-      "title": "簡易機による織り体験",
-      "date_from": "2026-02-07",
-      "date_to": "2026-03-21",
-      "source_url": "https://www.ehime-art.jp/event/info/bfe92eb8-3323-4cfc-aa70-7fd35674d3fc",
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
-        "flags": []
-      }
-    },
-    {
       "title": "フェルトボールをつくろう",
       "date_from": "2026-02-08",
       "date_to": "2026-02-22",
@@ -200,10 +264,21 @@
       }
     },
     {
-      "title": "シルクスクリーンの刷り体験",
+      "title": "スピンドル・紡ぎ（wool）",
       "date_from": "2026-02-14",
-      "date_to": "2026-03-28",
-      "source_url": "https://www.ehime-art.jp/event/info/77cc491a-7063-4965-b767-04ccde2183d3",
+      "date_to": "2026-02-14",
+      "source_url": "https://www.ehime-art.jp/event/info/a2a6bb02-f19d-4217-898e-a39d26e7559f",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "簡易機による織り体験",
+      "date_from": "2026-02-21",
+      "date_to": "2026-03-21",
+      "source_url": "https://www.ehime-art.jp/event/info/bfe92eb8-3323-4cfc-aa70-7fd35674d3fc",
       "tags": {
         "type": "workshop",
         "genres": [
@@ -213,13 +288,15 @@
       }
     },
     {
-      "title": "スピンドル・紡ぎ（wool）",
-      "date_from": "2026-02-14",
-      "date_to": "2026-02-14",
-      "source_url": "https://www.ehime-art.jp/event/info/a2a6bb02-f19d-4217-898e-a39d26e7559f",
+      "title": "シルクスクリーンの刷り体験",
+      "date_from": "2026-02-28",
+      "date_to": "2026-03-28",
+      "source_url": "https://www.ehime-art.jp/event/info/77cc491a-7063-4965-b767-04ccde2183d3",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "workshop",
+        "genres": [
+          "education"
+        ],
         "flags": []
       }
     },

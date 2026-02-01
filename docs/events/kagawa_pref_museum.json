@@ -1,18 +1,7 @@
 {
   "venue_id": "kagawa_pref_museum",
-  "last_success_at": "2026-01-30",
+  "last_success_at": "2026-02-01",
   "events": [
-    {
-      "title": "ミニチュアさぬきうどんを作ろう",
-      "date_from": "2026-01-11",
-      "date_to": "2026-01-11",
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/miniature_udon.html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "ミュージアム・プレゼンテーション2026",
       "date_from": "2026-02-28",
@@ -99,6 +88,102 @@
       "date_from": "2026-06-28",
       "date_to": "2026-06-28",
       "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/05event/shouwasengo.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "特別展「小沢剛の讃岐七不思議」",
+      "date_from": "2026-08-09",
+      "date_to": "2026-07-09",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/tenji/tokubetsuten/r7/ozawaten.html",
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "屋島の立体模型をつくろう",
+      "date_from": "2026-08-10",
+      "date_to": "2026-08-10",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/rittaimokei.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "食文化体験講座「戦争中は何を食べていたの？―すいとん作り―」",
+      "date_from": "2026-08-11",
+      "date_to": "2026-08-11",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/suiton.html",
+      "tags": {
+        "type": "workshop",
+        "genres": [
+          "education"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "ミュージアム☆バックヤードツアー",
+      "date_from": "2026-08-16",
+      "date_to": "2026-08-16",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/bakkuya-do.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "ミュージアムからの挑戦状～旅をしながらミッションをクリアせよ！",
+      "date_from": "2026-08-17",
+      "date_to": "2026-08-17",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/chousennjyou.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "プレミアムナイトツアー「小沢剛とめぐる讃岐七不思議」",
+      "date_from": "2026-08-22",
+      "date_to": "2026-08-22",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/07night_ozawatsuyoshi.html",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "特別展「小沢剛の讃岐七不思議」関連",
+      "date_from": "2026-08-23",
+      "date_to": "2026-08-23",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/nanahushigi.html",
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "行ってみたいな宇宙旅行",
+      "date_from": "2026-08-24",
+      "date_to": "2026-08-24",
+      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/uchuu.html",
       "tags": {
         "type": "other",
         "genres": [],
