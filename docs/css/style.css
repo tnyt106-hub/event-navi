@@ -9,8 +9,6 @@ html, body {
   --bg: #F6F7FB;
   /* 青ベースのグラデーション背景 */
   --bg-gradient: linear-gradient( 135deg, #1e3a8a 0%,#2563eb 40%,#60a5fa 100%);
-  
-  
   --surface: #FFFFFF;
   /* 基本文字色（案AのTextMainに合わせる） */
   --text: #0F172A;
@@ -36,7 +34,9 @@ html, body {
   --space-2: 12px;
   --space-3: 16px;
   --space-4: 24px;
-  --font: "Noto Sans JP", "Inter", "Segoe UI", system-ui, sans-serif;
+  --font: "Inter", "Noto Sans JP", "Segoe UI", system-ui, sans-serif;
+}
+
 }
 
 body {
