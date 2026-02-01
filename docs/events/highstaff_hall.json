@@ -117,10 +117,58 @@
       }
     },
     {
+      "title": "河井 勇人 ヴァイオリン・リサイタル",
+      "date_from": "2026-04-05",
+      "date_to": "2026-04-05",
+      "source_url": "https://www.kanon-kaikan.jp/event/2026/910.html",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "price": null,
+      "contact": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "桑原 志織 ピアノ・リサイタル",
       "date_from": "2026-04-26",
       "date_to": "2026-04-26",
       "source_url": "https://www.kanon-kaikan.jp/event/2026/895.html",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "price": null,
+      "contact": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "大西 宇宙 バリトン・リサイタル",
+      "date_from": "2026-05-10",
+      "date_to": "2026-05-10",
+      "source_url": "https://www.kanon-kaikan.jp/event/2026/911.html",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "price": null,
+      "contact": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "小山 実稚恵 ピアノ・リサイタル",
+      "date_from": "2026-05-16",
+      "date_to": "2026-05-16",
+      "source_url": "https://www.kanon-kaikan.jp/event/2026/912.html",
       "open_time": null,
       "start_time": null,
       "end_time": null,
