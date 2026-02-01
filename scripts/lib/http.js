@@ -8,9 +8,9 @@ const { TextDecoder } = require("util");
 const DEFAULT_TIMEOUT_MS = 30000;
 const ERROR_INDICATORS = ["Access Denied", "Forbidden", "Service Unavailable"];
 
-// HTML テキストを取得する。
+// HTML テキストを取得し、本文とメタ情報を返す。
 // options: { headers, acceptEncoding, encoding, timeoutMs, debugLabel }
-async function fetchText(url, options = {}) {
+async function fetchTextWithMeta(url, options = {}) {
   const acceptEncoding = options.acceptEncoding || "identity";
 
   // 改善点2：encodingの正規化（大小・shift-jis表記揺れを吸収）
@@ -115,7 +115,11 @@ async function fetchText(url, options = {}) {
             console.log(`[fetchText:${debugLabel}] body_head: ${bodySnippet}`);
           }
 
-          resolveOnce(decoded);
+          resolveOnce({
+            text: decoded,
+            headers: response.headers,
+            statusCode: response.statusCode,
+          });
         });
       }
     );
@@ -129,6 +133,14 @@ async function fetchText(url, options = {}) {
   });
 }
 
+// HTML テキストのみを取得する。
+// options: { headers, acceptEncoding, encoding, timeoutMs, debugLabel }
+async function fetchText(url, options = {}) {
+  const { text } = await fetchTextWithMeta(url, options);
+  return text;
+}
+
 module.exports = {
   fetchText,
+  fetchTextWithMeta,
 };
