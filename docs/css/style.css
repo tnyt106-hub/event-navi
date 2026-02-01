@@ -102,12 +102,14 @@ h2 {
 .map-wrapper {
   position: relative;
   width: 100%;
-  /*
-    ヘッダーと説明文の分だけ高さを差し引き、
-    地図とBottom Sheetの間に隙間が生まれないようにする。
-  */
+  /* カード化（ここを追加） */ 
+  background: var(--surface); /* 白背景 */ 
+  border-radius: var(--radius-card); /* 角丸 */ 
+  box-shadow: var(--shadow-card); /* カードの影 */ 
+  padding: 12px; /* 内側余白（重要） */ 
+  /* 既存の高さ調整 */
   height: calc(100dvh - 210px);
-  min-height: 58vh; /* 既存の見え方を保つための下限 */
+  min-height: 58vh; 
 }
 
 
