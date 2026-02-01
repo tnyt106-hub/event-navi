@@ -7,6 +7,9 @@ html, body {
 :root {
   /* デザインシステムの基準値を集約して一貫性を保つ */
   --bg: #F6F7FB;
+  /* 青ベースのグラデーション背景 */
+  --bg-gradient: linear-gradient( 135deg, #dbeafe 0%, #93c5fd 40%, #3b82f6 100% );
+  
   --surface: #FFFFFF;
   /* 基本文字色（案AのTextMainに合わせる） */
   --text: #0F172A;
@@ -38,7 +41,7 @@ html, body {
 body {
   font-family: var(--font);
   /* サイト全体のベース背景色と文字色を統一 */
-  background: var(--bg);
+  background: var(--bg-gradient);
   color: var(--text);
 }
 
