@@ -47,8 +47,9 @@ body {
 
 /* ヘッダー全体: 公式感を出すために背景と境界線を整える */
 .site-header {
-  background: transparent;
-  border-bottom: 1px solid var(--border);
+  background: transparent; /* ← 背景を透明に */
+  border-bottom: none; /* ← 下線を消す */
+  /*border-bottom: 1px solid var(--border);*/
   padding: 16px 12px 14px;
 }
 
