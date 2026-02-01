@@ -7,8 +7,12 @@ html, body {
   /* デザインシステムの基準値を集約して一貫性を保つ */
   --bg: #F6F7FB;
   /* 青ベースのグラデーション背景 */
-  --bg-gradient: linear-gradient( 135deg,#2d3fae 0%,#4a7dff 40%,#c7c4ff 100%);
-
+  --bg-gradient: linear-gradient(
+  135deg,
+  #2c3faa 0%,   /* 左上：青＋紫の深み（画像の色相に最も近い） */
+  #4f8aff 38%,  /* 中央：鮮やかで少しシアン寄りの青 */
+  #d4d2ff 100%  /* 右下：白に近いラベンダー */
+);
   --surface: #FFFFFF;
   /* 基本文字色（案AのTextMainに合わせる） */
   --text: #0F172A;
