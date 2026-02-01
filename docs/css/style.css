@@ -20,7 +20,7 @@ html, body {
   /* アクセントの淡色（案AのAccentSoft） */
   --accent-soft: #DBEAFE;
   /* ヘッダー専用の背景色（案AのHeaderBG） */
-  --header-bg: #F6F7FB;/*#F8FAFC;*/
+  --header-bg: #F8FAFC;
   --radius-sheet: 24px;
   --radius-card: 18px;
   --radius-subcard: 14px;
