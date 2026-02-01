@@ -4,12 +4,11 @@
 
 const fs = require("fs");
 const path = require("path");
-const https = require("https");
 const { URL } = require("url");
 
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
-// 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+// 共通 HTTP 取得ユーティリティで HTML/JSON を取得する。
+const { fetchText, fetchTextWithMeta } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { writeJsonPretty } = require("./lib/io");
 // HTML テキスト処理の共通関数を使う。
@@ -21,49 +20,28 @@ const VENUE_ID = "anabuki_arena_kagawa";
 const PER_PAGE = 10; // ブロック回避のため、無理に増やさない。
 const MONTH_RANGE = 7;
 
-// HTTP GET で JSON を取得し、レスポンスヘッダーも返す。
-function fetchJson(url) {
-  return new Promise((resolve, reject) => {
-    const request = https.get(
-      url,
-      {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (compatible; event-navi-bot/1.0)",
-          Accept: "application/json",
-        },
-      },
-      (response) => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`HTTP ${response.statusCode} で失敗しました。`));
-          response.resume();
-          return;
-        }
-
-        let body = "";
-        response.setEncoding("utf8");
-        response.on("data", (chunk) => {
-          body += chunk;
-        });
-        response.on("end", () => {
-          if (!body) {
-            reject(new Error("JSONの取得結果が空でした。"));
-            return;
-          }
-
-          try {
-            const parsed = JSON.parse(body);
-            resolve({ data: parsed, headers: response.headers });
-          } catch (error) {
-            reject(new Error("JSONのパースに失敗しました。"));
-          }
-        });
-      }
-    );
-
-    request.on("error", (error) => {
-      reject(error);
-    });
+// HTTP GET で JSON を取得し、レスポンスヘッダーとともに返す。
+async function fetchJson(url) {
+  const { text, headers } = await fetchTextWithMeta(url, {
+    acceptEncoding: "identity",
+    encoding: "utf-8",
+    debugLabel: "anabuki-json",
+    headers: {
+      // API 用途のため Accept を明示する。
+      Accept: "application/json",
+    },
   });
+
+  if (!text) {
+    throw new Error("JSONの取得結果が空でした。");
+  }
+
+  try {
+    const parsed = JSON.parse(text);
+    return { data: parsed, headers };
+  } catch (error) {
+    throw new Error("JSONのパースに失敗しました。");
+  }
 }
 
 // タグを落としてプレーンテキスト化する。
