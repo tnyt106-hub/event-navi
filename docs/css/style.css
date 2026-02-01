@@ -529,9 +529,8 @@ main {
 /* =======================
    スポット詳細ページ
    ======================= */
-.spot-page {
-  /* ページ全体は淡いグレーでカードが浮き立つようにする */
-  background: var(--bg);
+.spot-page { 
+  background: var(--bg-gradient); 
 }
 
 .spot-header {
