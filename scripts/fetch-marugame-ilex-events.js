@@ -8,6 +8,10 @@ const path = require("path");
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 // 共通 HTTP 取得ユーティリティで Shift_JIS を取得する。
 const { fetchText } = require("./lib/http");
+// JSON 保存処理を共通化する。
+const { writeJsonPretty } = require("./lib/io");
+// HTML テキスト処理の共通関数を使う。
+const { decodeHtmlEntities } = require("./lib/text");
 
 const ENTRY_URL = "https://www.marugame-ilex.org/event/eve_1/index.html";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "marugame_ilex.json");
@@ -16,18 +20,6 @@ const ALLOWED_VENUE_KEYWORDS = ["アイレックス", "丸亀市綾歌総合文�
 // 連続テキストの本文は最大文字数を設け、長すぎる場合は省略表記を付ける。
 const MAX_BODY_LENGTH = 5000;
 const BODY_TRUNCATION_SUFFIX = "…（省略）";
-
-// HTMLエンティティを最小限デコードする。
-function decodeHtmlEntities(text) {
-  if (!text) return "";
-  return text
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ");
-}
 
 // タグを落としてテキスト化する。
 function stripTags(html) {
@@ -183,7 +175,7 @@ function saveEventsFile(events) {
 
   applyTagsToEventsData(data, { overwrite: false });
 
-  fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  writeJsonPretty(OUTPUT_PATH, data);
 }
 
 async function main() {

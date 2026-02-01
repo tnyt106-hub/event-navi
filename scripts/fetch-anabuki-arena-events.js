@@ -8,6 +8,12 @@ const https = require("https");
 const { URL } = require("url");
 
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
+// 共通 HTTP 取得ユーティリティで HTML を取得する。
+const { fetchText } = require("./lib/http");
+// JSON 保存処理を共通化する。
+const { writeJsonPretty } = require("./lib/io");
+// HTML テキスト処理の共通関数を使う。
+const { decodeHtmlEntities } = require("./lib/text");
 
 const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "anabuki_arena_kagawa.json");
@@ -58,64 +64,6 @@ function fetchJson(url) {
       reject(error);
     });
   });
-}
-
-// 詳細ページの HTML を取得する。
-function fetchHtml(url) {
-  return new Promise((resolve, reject) => {
-    const request = https.get(
-      url,
-      {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (compatible; event-navi-bot/1.0)",
-          Accept: "text/html,application/xhtml+xml",
-        },
-      },
-      (response) => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`HTTP ${response.statusCode} で失敗しました。`));
-          response.resume();
-          return;
-        }
-
-        let body = "";
-        response.setEncoding("utf8");
-        response.on("data", (chunk) => {
-          body += chunk;
-        });
-        response.on("end", () => {
-          if (!body) {
-            reject(new Error("HTMLの取得結果が空でした。"));
-            return;
-          }
-
-          const errorIndicators = ["Access Denied", "Forbidden", "Service Unavailable"];
-          if (errorIndicators.some((indicator) => body.includes(indicator))) {
-            reject(new Error("明らかなエラーページの可能性があります。"));
-            return;
-          }
-
-          resolve(body);
-        });
-      }
-    );
-
-    request.on("error", (error) => {
-      reject(error);
-    });
-  });
-}
-
-// HTMLエンティティを最低限デコードする。
-function decodeHtmlEntities(text) {
-  if (!text) return "";
-  return text
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ");
 }
 
 // タグを落としてプレーンテキスト化する。
@@ -358,7 +306,10 @@ async function main() {
 
     let html;
     try {
-      html = await fetchHtml(entry.link);
+      html = await fetchText(entry.link, {
+        acceptEncoding: "identity",
+        encoding: "utf-8",
+      });
     } catch (error) {
       console.warn(`詳細ページ取得失敗: ${entry.link} (${error.message})`);
       continue;
@@ -458,7 +409,7 @@ async function main() {
 
   applyTagsToEventsData(data, { overwrite: false });
 
-  fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  writeJsonPretty(OUTPUT_PATH, data);
   console.log(`[OK] events: ${events.length} -> ${OUTPUT_PATH}`);
 }
 

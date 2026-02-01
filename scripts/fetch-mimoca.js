@@ -8,6 +8,10 @@ const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
+// JSON 保存処理を共通化する。
+const { writeJsonPretty } = require("./lib/io");
+// HTML テキスト処理の共通関数を使う。
+const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitespace } = require("./lib/text");
 
 const EXHIBITIONS_LIST_URL = "https://www.mimoca.jp/exhibitions/current/";
 const EVENTS_LIST_URL = "https://www.mimoca.jp/events/";
@@ -16,38 +20,6 @@ const VENUE_ID = "mimoca";
 const JST_OFFSET_HOURS = 9;
 // 終了日が「今日から365日より前」のイベントを除外するための基準日数。
 const PAST_DAYS_LIMIT = 365;
-
-// HTML エンティティを最低限デコードする。
-function decodeHtmlEntities(text) {
-  if (!text) return "";
-  return text
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ");
-}
-
-// タグを落としてプレーンテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, " ");
-}
-
-// 指定タグを改行として扱ったうえでプレーンテキスト化する。
-function stripTagsWithLineBreaks(html) {
-  if (!html) return "";
-  const withLineBreaks = html
-    .replace(/<\s*br\s*\/?>/gi, "\n")
-    .replace(/<\/\s*(p|li|div|dt|dd)\s*>/gi, "\n");
-  return stripTags(withLineBreaks);
-}
-
-// 余分な空白を削除する。
-function normalizeWhitespace(text) {
-  return text.replace(/\s+/g, " ").trim();
-}
 
 // 改行を残しながら各行の余分な空白を削除する。
 function normalizeWhitespacePreservingLineBreaks(text) {
@@ -782,7 +754,7 @@ async function main() {
     events: mergedEvents,
   };
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(data, null, 2));
+  writeJsonPretty(OUTPUT_PATH, data);
 
   console.log(`merged_total: ${data.events.length}`);
 }

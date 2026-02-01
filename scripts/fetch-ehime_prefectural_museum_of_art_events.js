@@ -6,10 +6,15 @@
 
 const fs = require("fs");
 const path = require("path");
-const https = require("https");
 const { URL } = require("url");
 
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
+// 共通 HTTP 取得ユーティリティで HTML を取得する。
+const { fetchText } = require("./lib/http");
+// JSON 保存処理を共通化する。
+const { writeJsonPretty } = require("./lib/io");
+// HTML テキスト処理の共通関数を使う。
+const { decodeHtmlEntities } = require("./lib/text");
 
 const LIST_URL = "https://www.ehime-art.jp/event";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
@@ -17,64 +22,6 @@ const VENUE_ID = "ehime_prefectural_museum_of_art";
 const VENUE_NAME = "愛媛県美術館";
 // 終了日が「今日から365日より前」のイベントを除外するための基準日数。
 const PAST_DAYS_LIMIT = 365;
-
-// HTML を取得する。HTTPエラーや明らかなエラーページはハード失敗とする。
-function fetchHtml(url) {
-  return new Promise((resolve, reject) => {
-    const request = https.get(
-      url,
-      {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (compatible; event-navi-bot/1.0)",
-          Accept: "text/html,application/xhtml+xml",
-        },
-      },
-      (response) => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`HTTP ${response.statusCode} で失敗しました。`));
-          response.resume();
-          return;
-        }
-
-        let body = "";
-        response.setEncoding("utf8");
-        response.on("data", (chunk) => {
-          body += chunk;
-        });
-        response.on("end", () => {
-          if (!body) {
-            reject(new Error("HTMLの取得結果が空でした。"));
-            return;
-          }
-
-          const errorIndicators = ["Access Denied", "Forbidden", "Service Unavailable"];
-          if (errorIndicators.some((indicator) => body.includes(indicator))) {
-            reject(new Error("明らかなエラーページの可能性があります。"));
-            return;
-          }
-
-          resolve(body);
-        });
-      }
-    );
-
-    request.on("error", (error) => {
-      reject(error);
-    });
-  });
-}
-
-// HTMLエンティティを最低限デコードする。
-function decodeHtmlEntities(text) {
-  if (!text) return "";
-  return text
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ");
-}
 
 // タグを落としてプレーンテキスト化する。
 function stripTags(html) {
@@ -280,7 +227,10 @@ function mergeEvents(existingEvents, newEvents) {
 async function main() {
   let listHtml;
   try {
-    listHtml = await fetchHtml(LIST_URL);
+    listHtml = await fetchText(LIST_URL, {
+      acceptEncoding: "identity",
+      encoding: "utf-8",
+    });
   } catch (error) {
     console.error("[ERROR] LIST_URL の取得に失敗しました。", error);
     process.exit(1);
@@ -362,7 +312,7 @@ async function main() {
 
   applyTagsToEventsData(data, { overwrite: false });
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(data, null, 2));
+  writeJsonPretty(OUTPUT_PATH, data);
   console.log(`merged_total_count: ${data.events.length}`);
 
   const previewItems = data.events.slice(0, 2);
