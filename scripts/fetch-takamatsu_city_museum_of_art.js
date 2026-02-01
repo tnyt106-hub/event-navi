@@ -4,10 +4,15 @@
 
 const fs = require("fs");
 const path = require("path");
-const https = require("https");
 const { URL } = require("url");
 
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
+// 共通 HTTP 取得ユーティリティで HTML を取得する。
+const { fetchText } = require("./lib/http");
+// JSON 保存処理を共通化する。
+const { writeJsonPretty } = require("./lib/io");
+// HTML テキスト処理の共通関数を使う。
+const { decodeHtmlEntities } = require("./lib/text");
 
 const ENTRY_URL = "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/index.html";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "takamatsu_city_museum_of_art.json");
@@ -15,64 +20,6 @@ const VENUE_ID = "takamatsu_city_museum_of_art";
 const VENUE_NAME = "高松市美術館";
 const TITLE_KEYWORDS = ["特別展", "コレクション展", "その他展覧会", "日本伝統漆芸展", "企画展", "常設展"];
 const SPECIAL_SECTION_LABEL = "特別展";
-
-// HTML を取得する。HTTPエラーや明らかなエラーページはハード失敗とする。
-function fetchHtml(url) {
-  return new Promise((resolve, reject) => {
-    const request = https.get(
-      url,
-      {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (compatible; event-navi-bot/1.0)",
-          Accept: "text/html,application/xhtml+xml",
-        },
-      },
-      (response) => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`HTTP ${response.statusCode} で失敗しました。`));
-          response.resume();
-          return;
-        }
-
-        let body = "";
-        response.setEncoding("utf8");
-        response.on("data", (chunk) => {
-          body += chunk;
-        });
-        response.on("end", () => {
-          if (!body) {
-            reject(new Error("HTMLの取得結果が空でした。"));
-            return;
-          }
-
-          const errorIndicators = ["Access Denied", "Forbidden", "Service Unavailable"];
-          if (errorIndicators.some((indicator) => body.includes(indicator))) {
-            reject(new Error("明らかなエラーページの可能性があります。"));
-            return;
-          }
-
-          resolve(body);
-        });
-      }
-    );
-
-    request.on("error", (error) => {
-      reject(error);
-    });
-  });
-}
-
-// HTMLエンティティを最低限デコードする。
-function decodeHtmlEntities(text) {
-  if (!text) return "";
-  return text
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ");
-}
 
 // タグを落としてプレーンテキスト化する。
 function stripTags(html) {
@@ -501,7 +448,10 @@ function dedupeEvents(events) {
 }
 
 async function main() {
-  const html = await fetchHtml(ENTRY_URL);
+  const html = await fetchText(ENTRY_URL, {
+    acceptEncoding: "identity",
+    encoding: "utf-8",
+  });
   const sectionResult = splitHtmlBySpecialSection(html);
   // 特別展セクションはタイトルリンクと直後の日付をペアにして抽出する。
   const specialResult = extractSpecialEventsFromSection(sectionResult.specialSectionHtml);
@@ -528,7 +478,7 @@ async function main() {
 
   applyTagsToEventsData(data, { overwrite: false });
 
-  fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  writeJsonPretty(OUTPUT_PATH, data);
   console.log(
     `[${VENUE_ID}] lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, events=${events.length}, excluded=${excludedCount}, specialSectionFound=${sectionResult.specialSectionFound}, specialLinks=${specialResult.specialLinkCount}, specialEvents=${specialResult.specialEventsCount}`
   );
