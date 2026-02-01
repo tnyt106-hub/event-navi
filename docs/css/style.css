@@ -14,7 +14,7 @@ html, body {
   
   --surface: #FFFFFF;
   /* 基本文字色（案AのTextMainに合わせる） */
-  --text: #ffffff; /*#0F172A;*/
+  --text: #0F172A;
   /* 補助テキスト色（案AのTextSubに合わせる） */
   --text-sub: #475569;
   /* 注記用の落ち着いた色（案AのTextNote） */
