@@ -8,7 +8,7 @@ html, body {
   /* デザインシステムの基準値を集約して一貫性を保つ */
   --bg: #F6F7FB;
   /* 青ベースのグラデーション背景 */
-  --bg-gradient: linear-gradient( 135deg, #1e3a8a 0%,#2563eb 40%,#60a5fa 100%);
+  --bg-gradient: linear-gradient( 135deg, #1e3a8a 0%, /* 左：濃い青（深みのあるネイビー寄り） */ #2563eb 40%, /* 中央：鮮やかな青 */ #60a5fa 100% /* 右：淡い青 */ );
   --surface: #FFFFFF;
   /* 基本文字色（案AのTextMainに合わせる） */
   --text: #0F172A;
