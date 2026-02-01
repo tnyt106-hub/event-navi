@@ -23,8 +23,8 @@ html, body {
   /* 注記用の落ち着いた色（案AのTextNote） */
   --text-note: #64748B;
   --border: #E5E7EB;
-  /* 主アクセントカラー（案AのAccent） */
-  --accent: #2563EB;
+  /* 主アクセントカラー（明るいオレンジ） */
+  --accent: #f97316;
   /* アクセントの淡色（案AのAccentSoft） */
   --accent-soft: #DBEAFE;
   /* ヘッダー専用の背景色（案AのHeaderBG） */
