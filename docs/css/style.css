@@ -105,7 +105,6 @@ h2 {
   position: relative;
   width: calc(100% - 15px); 
   margin: 0 auto;
-  width: 100%;
   box-sizing: border-box;
   /* カード化（ここを追加） */ 
   background: var(--surface); /* 白背景 */ 
