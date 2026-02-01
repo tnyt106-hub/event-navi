@@ -3,7 +3,6 @@ html, body {
   margin: 0;
   padding: 0;
 }
-
 :root {
   /* デザインシステムの基準値を集約して一貫性を保つ */
   --bg: #F6F7FB;
@@ -44,6 +43,7 @@ body {
 
 /* ヘッダー全体: 公式感を出すために背景と境界線を整える */
 .site-header {
+  color: #FFFFFF;
   background: transparent; /* ← 背景を透明に */
   border-bottom: none; /* ← 下線を消す */
   padding: 16px 12px 14px;
