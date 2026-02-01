@@ -98,6 +98,8 @@ h2 {
 #map {
   width: 100%;
   height: 100%; /* ラッパーの高さに追従して隙間を防ぐ */
+  box-sizing: border-box; /* ← これで padding 内に収まる */ 
+  border-radius: var(--radius-subcard); /* カード内の角丸も綺麗に */
 }
 .map-wrapper {
   position: relative;
