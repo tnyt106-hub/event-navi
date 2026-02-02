@@ -36,15 +36,39 @@ function extractDate(text) {
 function formatBody(text) {
   if (!text) return "";
   const lines = text
+    // 改行ごとに分割する。
     .split(/\r?\n/)
+    // 各行の前後をトリムする。
     .map((line) => line.trim())
+    // 空行は除外する。
     .filter((line) => line.length > 0);
-  let result = lines.join("\n").trim();
   const maxLength = 5000;
-  if (result.length > maxLength) {
-    result = `${result.slice(0, maxLength - 1)}…`;
+  const resultLines = [];
+  let totalLength = 0;
+
+  for (const line of lines) {
+    // 既存行がある場合は改行 1 文字を追加する。
+    const separatorLength = resultLines.length > 0 ? 1 : 0;
+    const nextLength = totalLength + separatorLength + line.length;
+
+    if (nextLength > maxLength) {
+      // 追加しない代わりに、直前の行へ … を付与する。
+      if (resultLines.length > 0) {
+        if (totalLength + 1 <= maxLength) {
+          resultLines[resultLines.length - 1] = `${resultLines[resultLines.length - 1]}…`;
+        } else {
+          const lastLine = resultLines[resultLines.length - 1];
+          resultLines[resultLines.length - 1] = `${lastLine.slice(0, Math.max(0, lastLine.length - 1))}…`;
+        }
+      }
+      break;
+    }
+
+    resultLines.push(line);
+    totalLength = nextLength;
   }
-  return result;
+
+  return resultLines.join("\n");
 }
 
 // body を入れるべきか判定する。
@@ -70,11 +94,34 @@ function extractDetailLinks(html) {
   return links;
 }
 
+// HTML からタイトルを抽出する（h1 → h2 → h3 → fallback の順）。
+function extractTitleFromHtml(html) {
+  // 見出しタグから順に探す。
+  const headingTags = ["h1", "h2", "h3"];
+  for (const tag of headingTags) {
+    const regex = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i");
+    const match = regex.exec(html);
+    if (match) {
+      const headingText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(match[1])));
+      return headingText;
+    }
+  }
+
+  // fallback: プレーンテキストの先頭 60 文字を使う。
+  const plainText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(html)));
+  if (!plainText) return "";
+  const maxLength = 60;
+  if (plainText.length > maxLength) {
+    return `${plainText.slice(0, maxLength)}…`;
+  }
+  return plainText;
+}
+
 // 詳細 HTML からイベント情報を抽出する。
 // TODO: 施設の HTML 構造に合わせて抽出ロジックを調整する。
 function extractEventFromDetail(detailHtml, detailUrl) {
   const plainText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(detailHtml)));
-  const title = plainText.split(" ")[0] || "";
+  const title = extractTitleFromHtml(detailHtml);
   const dateFrom = extractDate(plainText);
 
   // TODO: 可能であれば構造化項目を抽出する。

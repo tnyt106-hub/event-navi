@@ -36,15 +36,39 @@ function extractDate(text) {
 function formatBody(text) {
   if (!text) return "";
   const lines = text
+    // 改行ごとに分割する。
     .split(/\r?\n/)
+    // 各行の前後をトリムする。
     .map((line) => line.trim())
+    // 空行は除外する。
     .filter((line) => line.length > 0);
-  let result = lines.join("\n").trim();
   const maxLength = 5000;
-  if (result.length > maxLength) {
-    result = `${result.slice(0, maxLength - 1)}…`;
+  const resultLines = [];
+  let totalLength = 0;
+
+  for (const line of lines) {
+    // 既存行がある場合は改行 1 文字を追加する。
+    const separatorLength = resultLines.length > 0 ? 1 : 0;
+    const nextLength = totalLength + separatorLength + line.length;
+
+    if (nextLength > maxLength) {
+      // 追加しない代わりに、直前の行へ … を付与する。
+      if (resultLines.length > 0) {
+        if (totalLength + 1 <= maxLength) {
+          resultLines[resultLines.length - 1] = `${resultLines[resultLines.length - 1]}…`;
+        } else {
+          const lastLine = resultLines[resultLines.length - 1];
+          resultLines[resultLines.length - 1] = `${lastLine.slice(0, Math.max(0, lastLine.length - 1))}…`;
+        }
+      }
+      break;
+    }
+
+    resultLines.push(line);
+    totalLength = nextLength;
   }
-  return result;
+
+  return resultLines.join("\n");
 }
 
 // body を入れるべきか判定する。
