@@ -85,7 +85,7 @@ function extractLabeledValue(lines, label) {
 }
 
 // 一覧 HTML から月別一覧ページのリンクを抽出する。
-function extractMonthPageLinks(listHtml) {
+function extractMonthPageLinks(listHtml, currentUrl) {
   const links = [];
   const regex = /href=["']([^"']+)["']/gi;
   let match = null;
@@ -93,8 +93,17 @@ function extractMonthPageLinks(listHtml) {
   while ((match = regex.exec(listHtml)) !== null) {
     const href = match[1];
     if (!href) continue;
-    if (/\/event\/date\/\d{4}\/\d{1,2}\/?/.test(href)) {
-      links.push(href);
+    // 相対/絶対どちらの href でも URL を正規化してから判定する。
+    let absUrl = "";
+    try {
+      absUrl = new URL(href, currentUrl).toString();
+    } catch (error) {
+      continue;
+    }
+    // pathname で月別一覧かどうかを厳密に判定する。
+    const pathname = new URL(absUrl).pathname;
+    if (/^\/event\/date\/\d{4}\/\d{1,2}\/?$/.test(pathname)) {
+      links.push(absUrl);
     }
   }
 
@@ -148,14 +157,8 @@ async function fetchAllListPages(seedUrl) {
       continue;
     }
 
-    const monthLinks = extractMonthPageLinks(html);
-    for (const href of monthLinks) {
-      let absUrl = "";
-      try {
-        absUrl = new URL(href, currentUrl).toString();
-      } catch (error) {
-        continue;
-      }
+    const monthLinks = extractMonthPageLinks(html, currentUrl);
+    for (const absUrl of monthLinks) {
       if (!visitedListUrls.has(absUrl)) {
         queue.push(absUrl);
       }
@@ -193,14 +196,8 @@ async function fetchAllDetailLinks(seedUrl) {
       continue;
     }
 
-    const monthLinks = extractMonthPageLinks(html);
-    for (const href of monthLinks) {
-      let absUrl = "";
-      try {
-        absUrl = new URL(href, currentUrl).toString();
-      } catch (error) {
-        continue;
-      }
+    const monthLinks = extractMonthPageLinks(html, currentUrl);
+    for (const absUrl of monthLinks) {
       if (!visitedListUrls.has(absUrl)) {
         queue.push(absUrl);
       }
@@ -338,13 +335,13 @@ function formatBody(text) {
     const nextLength = totalLength + separatorLength + line.length;
 
     if (nextLength > MAX_BODY_LENGTH) {
-      if (resultLines.length > 0) {
-        const lastIndex = resultLines.length - 1;
-        const truncatedLine = `${resultLines[lastIndex].slice(
-          0,
-          Math.max(0, MAX_BODY_LENGTH - totalLength - separatorLength)
-        )}${BODY_TRUNCATION_SUFFIX}`;
-        resultLines[lastIndex] = truncatedLine;
+      if (resultLines.length === 0) {
+        // 先頭行だけでも収めるため、末尾に … を付けて切り詰める。
+        const allowedLength = Math.max(0, MAX_BODY_LENGTH - BODY_TRUNCATION_SUFFIX.length);
+        resultLines.push(`${line.slice(0, allowedLength)}${BODY_TRUNCATION_SUFFIX}`);
+      } else {
+        // 既存の最後の行に … を付けて打ち切る。
+        resultLines[resultLines.length - 1] = `${resultLines[resultLines.length - 1]}${BODY_TRUNCATION_SUFFIX}`;
       }
       break;
     }
