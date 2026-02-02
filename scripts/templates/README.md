@@ -25,11 +25,12 @@
    node scripts/fetch-<venue_id>.js
    ```
 4. **run-all.config.json に task を追加**
-   - `outputs` を必ず指定する
+   - `outputs` は必須（run-all が差分判定に使うため、省略不可）
    ```json
    {
-     "name": "fetch-<venue_id>",
-     "command": "node scripts/fetch-<venue_id>.js",
+     "id": "<venue_id>",
+     "script": "scripts/fetch-<venue_id>.js",
+     "enabled": true,
      "outputs": ["docs/events/<venue_id>.json"]
    }
    ```
