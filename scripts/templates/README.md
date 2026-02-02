@@ -60,6 +60,25 @@
   - `events_built`
   - `output_path`
 
+## listing-plus-detail で一覧が複数ページ/複数月に分かれる場合
+
+- 月別一覧 URL（例: `/event/date/YYYY/MM/`）を抽出して巡回する
+  - 月別 URL は **正規化して重複巡回を防ぐ**
+    - 末尾 `/` を統一
+    - 月は 2 桁（`MM`）に統一
+    - http/https の揺れがある場合はどちらかに統一
+  - `page/2/` のような URL が 500 になるサイトがあるため、**月別 URL は pathname の完全一致で判定する**
+- 過去/未来の対象期間を日数で制限する（例: 過去 365 日 / 未来 365 日）
+- 巡回ログとして以下を出力する
+  - `list_pages`
+  - `list_links`
+  - `detail_links_unique`
+- kenbun（愛媛県県民文化会館）でのログ例（抜粋）
+  - `month_range: 2025-02 .. 2027-02`
+  - `list_pages: 25`
+  - `detail_links_unique: xxx`
+  - `events_built: xxx`
+
 ## テンプレ共通の取得方針
 
 - HTTP 取得は `fetchText` を利用

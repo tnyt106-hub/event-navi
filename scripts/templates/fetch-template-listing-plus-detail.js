@@ -16,6 +16,14 @@ const VENUE_ID = "your_venue_id";
 const LIST_URL = "https://example.com/events";
 const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", `${VENUE_ID}.json`);
 
+// TODO: 月別一覧を巡回したい施設は true にする（デフォルトは単一一覧ページ）。
+const USE_MONTHLY_LIST_PAGES = false;
+// TODO: 月別巡回時の最大ページ数（無限ループ防止用）。
+const MAX_LIST_PAGES = 36;
+// TODO: 月別巡回時の対象範囲（日数）。過去/未来の範囲を施設ごとに調整する。
+const PAST_DAYS_LIMIT = 365;
+const FUTURE_DAYS_LIMIT = 365;
+
 // 日付文字列を ISO 形式 (YYYY-MM-DD) に変換する。
 function toIsoDate(year, month, day) {
   const yyyy = String(year);
@@ -74,6 +82,85 @@ function formatBody(text) {
 // body を入れるべきか判定する。
 function shouldIncludeBody({ openTime, startTime, endTime, price, contact }) {
   return !openTime && !startTime && !endTime && !price && !contact;
+}
+
+// 月別一覧の巡回範囲を決める（当日を基準に過去/未来日数を加減算する）。
+function getMonthRangeFromToday() {
+  const today = new Date();
+  const start = new Date(today);
+  start.setDate(start.getDate() - PAST_DAYS_LIMIT);
+  const end = new Date(today);
+  end.setDate(end.getDate() + FUTURE_DAYS_LIMIT);
+  return { start, end };
+}
+
+// 月別 URL の正規化を行う。
+// TODO: 施設ごとに月別 URL のパスを調整する（page/2/ のような URL を拾わないこと）。
+function normalizeMonthUrl(absUrl) {
+  try {
+    const url = new URL(absUrl);
+    // 例: /event/date/YYYY/MM/ のみを許可する（完全一致が安全）。
+    const match = /^\/event\/date\/([0-9]{4})\/([0-9]{1,2})\/?$/.exec(url.pathname);
+    if (!match) {
+      return null;
+    }
+    const yyyy = match[1];
+    const mm = String(match[2]).padStart(2, "0");
+
+    url.pathname = `/event/date/${yyyy}/${mm}/`;
+    url.search = "";
+    url.hash = "";
+
+    return url.toString();
+  } catch (error) {
+    return null;
+  }
+}
+
+// 月別 URL から年月を取り出す（正規化済み URL を前提）。
+function extractYearMonthFromMonthUrl(absUrl) {
+  try {
+    const url = new URL(absUrl);
+    const match = /^\/event\/date\/([0-9]{4})\/([0-9]{2})\/$/.exec(url.pathname);
+    if (!match) {
+      return null;
+    }
+    return { year: Number(match[1]), month: Number(match[2]) };
+  } catch (error) {
+    return null;
+  }
+}
+
+// 月単位で指定範囲と交差するか判定する（月初〜月末でチェック）。
+function isMonthInRange(year, month, start, end) {
+  const monthStart = new Date(year, month - 1, 1, 0, 0, 0, 0);
+  const monthEnd = new Date(year, month, 0, 23, 59, 59, 999);
+  return monthEnd >= start && monthStart <= end;
+}
+
+// 一覧 HTML から月別ページリンクを抽出する。
+// TODO: 施設ごとに HTML 構造に合わせて抽出ロジックを調整する。
+function extractMonthPageLinks(listHtml, currentUrl) {
+  const links = [];
+  const anchorRegex = /<a\b[^>]*href=['"]([^'"]+)['"][^>]*>/gi;
+
+  for (const match of listHtml.matchAll(anchorRegex)) {
+    const href = match[1];
+    if (!href) {
+      continue;
+    }
+    try {
+      const absoluteUrl = new URL(href, currentUrl).toString();
+      const normalizedUrl = normalizeMonthUrl(absoluteUrl);
+      if (normalizedUrl) {
+        links.push(normalizedUrl);
+      }
+    } catch (error) {
+      continue;
+    }
+  }
+
+  return links;
 }
 
 // 一覧 HTML から詳細ページのリンク一覧を抽出する。
@@ -161,6 +248,93 @@ function extractEventFromDetail(detailHtml, detailUrl) {
   return event;
 }
 
+// 詳細ページ URL を解決する（相対/絶対をどちらでも受ける）。
+function resolveDetailUrl(link, baseUrl) {
+  return new URL(link.href, baseUrl).toString();
+}
+
+// 詳細リンクのユニーク数を数える（ログ用）。
+function countUniqueDetailLinks(detailLinks, baseUrl) {
+  const unique = new Set();
+  for (const link of detailLinks) {
+    try {
+      unique.add(resolveDetailUrl(link, baseUrl));
+    } catch (error) {
+      continue;
+    }
+  }
+  return unique.size;
+}
+
+// 月別一覧を巡回して詳細リンクを収集する（visited + queue で巡回）。
+async function fetchAllDetailLinks(seedUrl) {
+  const visited = new Set();
+  const queue = [seedUrl];
+  const detailLinkMap = new Map();
+  let listPages = 0;
+  let listLinks = 0;
+
+  const { start, end } = getMonthRangeFromToday();
+  const monthRangeLabel = `${start.toISOString().slice(0, 7)} .. ${end.toISOString().slice(0, 7)}`;
+
+  while (queue.length > 0 && listPages < MAX_LIST_PAGES) {
+    const currentUrl = queue.shift();
+    if (visited.has(currentUrl)) {
+      continue;
+    }
+    visited.add(currentUrl);
+    listPages += 1;
+
+    const listHtml = await fetchText(currentUrl, {
+      acceptEncoding: "identity",
+      encoding: "utf-8",
+    });
+
+    const detailLinks = extractDetailLinks(listHtml);
+    listLinks += detailLinks.length;
+
+    for (const link of detailLinks) {
+      try {
+        const absoluteUrl = resolveDetailUrl(link, currentUrl);
+        detailLinkMap.set(absoluteUrl, {
+          href: absoluteUrl,
+          text: link.text,
+        });
+      } catch (error) {
+        continue;
+      }
+    }
+
+    const monthLinks = extractMonthPageLinks(listHtml, currentUrl);
+    for (const monthUrl of monthLinks) {
+      const monthInfo = extractYearMonthFromMonthUrl(monthUrl);
+      if (!monthInfo) {
+        continue;
+      }
+      if (!isMonthInRange(monthInfo.year, monthInfo.month, start, end)) {
+        continue;
+      }
+      if (!visited.has(monthUrl)) {
+        queue.push(monthUrl);
+      }
+    }
+  }
+
+  if (queue.length > 0 && listPages >= MAX_LIST_PAGES) {
+    console.warn(`[fetch] list_pages が MAX_LIST_PAGES(${MAX_LIST_PAGES}) に到達したため打ち切り`);
+  }
+
+  return {
+    detailLinks: Array.from(detailLinkMap.values()),
+    stats: {
+      listPages,
+      listLinks,
+      detailLinksUnique: detailLinkMap.size,
+      monthRangeLabel,
+    },
+  };
+}
+
 // 成功時のみファイルを書き換える。
 function saveEventsFile(events) {
   const today = new Date().toISOString().slice(0, 10);
@@ -174,20 +348,36 @@ function saveEventsFile(events) {
 }
 
 async function main() {
+  let listPages = 0;
   let listLinks = 0;
+  let detailLinksUnique = 0;
   let detailFetchSuccess = 0;
   let detailFetchFailed = 0;
   let eventsBuilt = 0;
   let excludedInvalid = 0;
+  let monthRangeLabel = "";
 
   try {
-    const listHtml = await fetchText(LIST_URL, {
-      acceptEncoding: "identity",
-      encoding: "utf-8",
-    });
+    let detailLinks = [];
 
-    const detailLinks = extractDetailLinks(listHtml);
-    listLinks = detailLinks.length;
+    if (USE_MONTHLY_LIST_PAGES) {
+      const { detailLinks: monthlyDetailLinks, stats } = await fetchAllDetailLinks(LIST_URL);
+      detailLinks = monthlyDetailLinks;
+      listPages = stats.listPages;
+      listLinks = stats.listLinks;
+      detailLinksUnique = stats.detailLinksUnique;
+      monthRangeLabel = stats.monthRangeLabel;
+    } else {
+      const listHtml = await fetchText(LIST_URL, {
+        acceptEncoding: "identity",
+        encoding: "utf-8",
+      });
+
+      detailLinks = extractDetailLinks(listHtml);
+      listPages = 1;
+      listLinks = detailLinks.length;
+      detailLinksUnique = countUniqueDetailLinks(detailLinks, LIST_URL);
+    }
 
     const events = [];
 
@@ -196,7 +386,7 @@ async function main() {
     for (const link of detailLinks) {
       let detailUrl = "";
       try {
-        detailUrl = new URL(link.href, LIST_URL).toString();
+        detailUrl = resolveDetailUrl(link, LIST_URL);
       } catch (error) {
         detailFetchFailed += 1;
         console.warn(`詳細URLが不正のため除外: ${link.href}`);
@@ -223,7 +413,12 @@ async function main() {
 
     eventsBuilt = events.length;
 
+    if (USE_MONTHLY_LIST_PAGES && monthRangeLabel) {
+      console.log(`[fetch] month_range: ${monthRangeLabel}`);
+    }
+    console.log(`[fetch] list_pages: ${listPages}`);
     console.log(`[fetch] list_links: ${listLinks}`);
+    console.log(`[fetch] detail_links_unique: ${detailLinksUnique}`);
     console.log(`[fetch] detail_fetch_success: ${detailFetchSuccess}`);
     console.log(`[fetch] detail_fetch_failed: ${detailFetchFailed}`);
     console.log(`[fetch] excluded_invalid: ${excludedInvalid}`);
