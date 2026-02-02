@@ -92,6 +92,7 @@ function extractListItems(html) {
     items.push({ href, text });
   }
 
+  // TODO: 一覧に同一リンクが複数出る施設では、Set で重複除去する実装が必要になる可能性がある。
   return items;
 }
 

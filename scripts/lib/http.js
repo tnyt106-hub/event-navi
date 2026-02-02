@@ -8,7 +8,7 @@ const DEFAULT_TIMEOUT_MS = 30000;
 const ERROR_INDICATORS = ["Access Denied", "Forbidden", "Service Unavailable"];
 
 // HTML テキストを取得し、本文とメタ情報を返す。
-// options: { headers, acceptEncoding, encoding, timeoutMs, debugLabel }
+// options: { headers, acceptEncoding, encoding, timeoutMs, debugLabel, checkErrorIndicators }
 async function fetchTextWithMeta(url, options = {}) {
   const acceptEncoding = options.acceptEncoding || "identity";
 
@@ -52,10 +52,12 @@ async function fetchTextWithMeta(url, options = {}) {
     throw new Error(`HTTP ${response.status} で失敗しました。`);
   }
 
+  const contentType = String(response.headers.get("content-type") || "").toLowerCase();
+
   if (debugLabel) {
     console.log(
       `[fetchText:${debugLabel}] content-encoding: ${response.headers.get("content-encoding") || "none"}, content-type: ${
-        response.headers.get("content-type") || "unknown"
+        contentType || "unknown"
       }`
     );
   }
@@ -102,7 +104,11 @@ async function fetchTextWithMeta(url, options = {}) {
     throw new Error("HTML の取得結果が空でした。");
   }
 
-  if (ERROR_INDICATORS.some((indicator) => decoded.includes(indicator))) {
+  // 本文のエラーページ判定は HTML のみを対象にする。
+  // 施設側の事情で判定を無効化したい場合は checkErrorIndicators: false を指定する。
+  const isHtmlContent = contentType.includes("text/html");
+  const shouldCheckErrorIndicators = options.checkErrorIndicators !== false && isHtmlContent;
+  if (shouldCheckErrorIndicators && ERROR_INDICATORS.some((indicator) => decoded.includes(indicator))) {
     throw new Error("明らかなエラーページの可能性があります。");
   }
 
