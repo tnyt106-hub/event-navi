@@ -191,6 +191,8 @@ async function main() {
 
     const events = [];
 
+    // 詳細ページ取得は、サーバー負荷とログ追跡を安定させるために逐次処理としている。
+    // TODO: 将来的に concurrency 上限つきの並列取得へ切り替えられるように検討する（現状の挙動は維持）。
     for (const link of detailLinks) {
       let detailUrl = "";
       try {
