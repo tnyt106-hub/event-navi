@@ -104,7 +104,8 @@ function buildEvents(listItems) {
   for (const item of listItems) {
     const title = item.text;
     const dateFrom = extractDate(item.text);
-    let sourceUrl = \"\";
+    // sourceUrl は後続の URL 解決で埋めるため、初期値は空文字にする。
+    let sourceUrl = "";
     try {
       sourceUrl = new URL(item.href, ENTRY_URL).toString();
     } catch (error) {
