@@ -1,7 +1,6 @@
 // 共通の HTTP 取得ユーティリティ。
 // 圧縮/文字コード/タイムアウトを統一的に扱い、文字化けや圧縮崩れを防ぐ。
 
-const https = require("https");
 const zlib = require("zlib");
 const { TextDecoder } = require("util");
 
@@ -32,105 +31,91 @@ async function fetchTextWithMeta(url, options = {}) {
     ...(options.headers || {}),
   };
 
-  return new Promise((resolve, reject) => {
-    let settled = false;
-    let timeoutId = null;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => {
+    controller.abort();
+  }, timeoutMs);
 
-    const resolveOnce = (value) => {
-      if (settled) return;
-      settled = true;
-      if (timeoutId) clearTimeout(timeoutId);
-      resolve(value);
-    };
+  let response;
+  try {
+    response = await fetch(url, {
+      headers,
+      signal: controller.signal,
+    });
+  } catch (error) {
+    throw new Error(`HTTP 取得に失敗しました。 (${error.message})`);
+  } finally {
+    clearTimeout(timeoutId);
+  }
 
-    const rejectOnce = (error) => {
-      if (settled) return;
-      settled = true;
-      if (timeoutId) clearTimeout(timeoutId);
-      reject(error);
-    };
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status} で失敗しました。`);
+  }
 
-    const request = https.get(
-      url,
-      { headers },
-      (response) => {
-        if (response.statusCode !== 200) {
-          rejectOnce(new Error(`HTTP ${response.statusCode} で失敗しました。`));
-          response.resume();
-          return;
-        }
-
-        if (debugLabel) {
-          console.log(
-            `[fetchText:${debugLabel}] content-encoding: ${response.headers["content-encoding"] || "none"}, content-type: ${
-              response.headers["content-type"] || "unknown"
-            }`
-          );
-        }
-
-        const chunks = [];
-        response.on("data", (chunk) => chunks.push(chunk));
-        response.on("end", () => {
-          let buffer = Buffer.concat(chunks);
-          if (!buffer.length) {
-            rejectOnce(new Error("HTML の取得結果が空でした。"));
-            return;
-          }
-
-          // gzip 圧縮されていれば解凍する（identity要求でも念のため対応）。
-          const contentEncoding = String(response.headers["content-encoding"] || "").toLowerCase();
-          if (contentEncoding.includes("gzip")) {
-            try {
-              buffer = zlib.gunzipSync(buffer);
-            } catch {
-              rejectOnce(new Error("gzip の解凍に失敗しました。"));
-              return;
-            }
-          }
-
-          let decoded = "";
-          if (isShiftJis) {
-            try {
-              decoded = new TextDecoder("shift_jis").decode(buffer);
-            } catch {
-              rejectOnce(new Error("Shift_JIS のデコードに失敗しました。"));
-              return;
-            }
-          } else {
-            decoded = buffer.toString("utf8");
-          }
-
-          if (!decoded) {
-            rejectOnce(new Error("HTML の取得結果が空でした。"));
-            return;
-          }
-
-          if (ERROR_INDICATORS.some((indicator) => decoded.includes(indicator))) {
-            rejectOnce(new Error("明らかなエラーページの可能性があります。"));
-            return;
-          }
-
-          if (debugLabel) {
-            const bodySnippet = decoded.replace(/\s+/g, " ").slice(0, 200);
-            console.log(`[fetchText:${debugLabel}] body_head: ${bodySnippet}`);
-          }
-
-          resolveOnce({
-            text: decoded,
-            headers: response.headers,
-            statusCode: response.statusCode,
-          });
-        });
-      }
+  if (debugLabel) {
+    console.log(
+      `[fetchText:${debugLabel}] content-encoding: ${response.headers.get("content-encoding") || "none"}, content-type: ${
+        response.headers.get("content-type") || "unknown"
+      }`
     );
+  }
 
-    timeoutId = setTimeout(() => {
-      request.destroy();
-      rejectOnce(new Error("タイムアウトしました。"));
-    }, timeoutMs);
+  let buffer = Buffer.from(await response.arrayBuffer());
+  if (!buffer.length) {
+    throw new Error("HTML の取得結果が空でした。");
+  }
 
-    request.on("error", (error) => rejectOnce(error));
-  });
+  // gzip/deflate 圧縮が指定されている場合のみ、バイト列を解凍する。
+  const contentEncoding = String(response.headers.get("content-encoding") || "").toLowerCase();
+  if (contentEncoding.includes("gzip")) {
+    // gzip マジックを持つ場合のみ解凍することで、二重解凍を避ける。
+    if (buffer.length >= 2 && buffer[0] === 0x1f && buffer[1] === 0x8b) {
+      try {
+        buffer = zlib.gunzipSync(buffer);
+      } catch {
+        throw new Error("gzip の解凍に失敗しました。");
+      }
+    }
+  } else if (contentEncoding.includes("deflate")) {
+    // deflate は判別が難しいため、典型的なヘッダを持つ場合のみ解凍する。
+    if (buffer.length >= 2 && buffer[0] === 0x78) {
+      try {
+        buffer = zlib.inflateSync(buffer);
+      } catch {
+        throw new Error("deflate の解凍に失敗しました。");
+      }
+    }
+  }
+
+  let decoded = "";
+  if (isShiftJis) {
+    try {
+      decoded = new TextDecoder("shift_jis").decode(buffer);
+    } catch {
+      throw new Error("Shift_JIS のデコードに失敗しました。");
+    }
+  } else {
+    decoded = buffer.toString("utf8");
+  }
+
+  if (!decoded) {
+    throw new Error("HTML の取得結果が空でした。");
+  }
+
+  if (ERROR_INDICATORS.some((indicator) => decoded.includes(indicator))) {
+    throw new Error("明らかなエラーページの可能性があります。");
+  }
+
+  if (debugLabel) {
+    const bodySnippet = decoded.replace(/\s+/g, " ").slice(0, 200);
+    console.log(`[fetchText:${debugLabel}] body_head: ${bodySnippet}`);
+  }
+
+  return {
+    text: decoded,
+    headers: Object.fromEntries(response.headers.entries()),
+    statusCode: response.status,
+  };
 }
 
 // HTML テキストのみを取得する。

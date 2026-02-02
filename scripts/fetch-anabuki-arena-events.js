@@ -1,48 +1,22 @@
-// あなぶきアリーナ香川のイベント一覧 (WordPress REST API) から
+// あなぶきアリーナ香川のイベント一覧ページから
 // 詳細ページを辿って開催日を抽出し、JSONに保存するバッチ。
 // 使い方: node scripts/fetch-anabuki-arena-events.js
 
-const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
-// 共通 HTTP 取得ユーティリティで HTML/JSON を取得する。
-const { fetchText, fetchTextWithMeta } = require("./lib/http");
+// 共通 HTTP 取得ユーティリティで HTML を取得する。
+const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { writeJsonPretty } = require("./lib/io");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
 
-const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
+const LIST_URL = "https://kagawa-arena.com/event/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "anabuki_arena_kagawa.json");
 const VENUE_ID = "anabuki_arena_kagawa";
-const PER_PAGE = 10; // ブロック回避のため、無理に増やさない。
 const MONTH_RANGE = 7;
-
-// HTTP GET で JSON を取得し、レスポンスヘッダーとともに返す。
-async function fetchJson(url) {
-  const { text, headers } = await fetchTextWithMeta(url, {
-    acceptEncoding: "identity",
-    encoding: "utf-8",
-    debugLabel: "anabuki-json",
-    headers: {
-      // API 用途のため Accept を明示する。
-      Accept: "application/json",
-    },
-  });
-
-  if (!text) {
-    throw new Error("JSONの取得結果が空でした。");
-  }
-
-  try {
-    const parsed = JSON.parse(text);
-    return { data: parsed, headers };
-  } catch (error) {
-    throw new Error("JSONのパースに失敗しました。");
-  }
-}
 
 // タグを落としてプレーンテキスト化する。
 function stripTags(html) {
@@ -53,6 +27,144 @@ function stripTags(html) {
 // タイトルや本文に含まれる HTML をプレーンテキスト化する。
 function htmlToText(html) {
   return stripTags(decodeHtmlEntities(html)).replace(/\s+/g, " ").trim();
+}
+
+// URL がイベント詳細ページかどうかを判定する。
+function isDetailPageUrl(url) {
+  const pathName = url.pathname;
+  if (!pathName.startsWith("/event/")) {
+    return false;
+  }
+
+  if (pathName === "/event" || pathName === "/event/") {
+    return false;
+  }
+
+  if (pathName.startsWith("/event/page/")) {
+    return false;
+  }
+
+  return true;
+}
+
+// 一覧ページのページング URL かどうかを判定する。
+function isListPageUrl(url) {
+  const pathName = url.pathname;
+  if (!pathName.startsWith("/event/")) {
+    return false;
+  }
+
+  if (pathName.startsWith("/event/page/")) {
+    return true;
+  }
+
+  if (url.searchParams.has("paged") || url.searchParams.has("page")) {
+    return true;
+  }
+
+  return false;
+}
+
+// 一覧 HTML から詳細ページリンクとページングリンクを抽出する。
+function extractLinksFromList(html, baseUrl, stats) {
+  const detailLinks = [];
+  const pageLinks = [];
+  const anchorRegex = /<a\b[^>]*href=['"]([^'"]+)['"][^>]*>/gi;
+
+  for (const match of html.matchAll(anchorRegex)) {
+    const href = match[1];
+    if (!href) {
+      stats.excludedInvalid += 1;
+      continue;
+    }
+
+    let absoluteUrl;
+    try {
+      absoluteUrl = new URL(href, baseUrl);
+    } catch (error) {
+      stats.excludedInvalid += 1;
+      continue;
+    }
+
+    if (isDetailPageUrl(absoluteUrl)) {
+      detailLinks.push(absoluteUrl.toString());
+      continue;
+    }
+
+    if (isListPageUrl(absoluteUrl)) {
+      pageLinks.push(absoluteUrl.toString());
+    }
+  }
+
+  return { detailLinks, pageLinks };
+}
+
+// すべての一覧ページを巡回して詳細リンクを集める。
+async function fetchAllDetailLinks() {
+  const pending = [LIST_URL];
+  const visited = new Set();
+  const detailLinkSet = new Set();
+  const stats = {
+    listPages: 0,
+    excludedInvalid: 0,
+  };
+
+  while (pending.length > 0) {
+    const currentUrl = pending.shift();
+    if (!currentUrl || visited.has(currentUrl)) {
+      continue;
+    }
+
+    visited.add(currentUrl);
+    stats.listPages += 1;
+
+    const html = await fetchText(currentUrl, {
+      acceptEncoding: "identity",
+      encoding: "utf-8",
+    });
+
+    const { detailLinks, pageLinks } = extractLinksFromList(html, currentUrl, stats);
+
+    for (const link of detailLinks) {
+      if (!detailLinkSet.has(link)) {
+        detailLinkSet.add(link);
+      }
+    }
+
+    for (const pageLink of pageLinks) {
+      if (!visited.has(pageLink)) {
+        pending.push(pageLink);
+      }
+    }
+  }
+
+  return {
+    detailLinks: Array.from(detailLinkSet),
+    stats,
+  };
+}
+
+// 詳細 HTML からタイトルを抽出する（h1 > og:title > title の順）。
+function extractTitleFromHtml(html) {
+  const ogMatch = html.match(/<meta[^>]+property=["']og:title["'][^>]*content=["']([^"']+)["']/i);
+  if (ogMatch) {
+    const ogTitle = htmlToText(ogMatch[1]);
+    if (ogTitle) return ogTitle;
+  }
+
+  const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (h1Match) {
+    const h1Title = htmlToText(h1Match[1]);
+    if (h1Title) return h1Title;
+  }
+
+  const titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  if (titleMatch) {
+    const docTitle = htmlToText(titleMatch[1]);
+    if (docTitle) return docTitle;
+  }
+
+  return "";
 }
 
 // 年月日を ISO 形式の文字列にする。
@@ -214,34 +326,6 @@ function findDateRange(dates) {
   return { min: sorted[0], max: sorted[sorted.length - 1] };
 }
 
-// APIの投稿一覧をページングして取得する。
-async function fetchAllPosts() {
-  const posts = [];
-  let currentPage = 1;
-  let totalPages = 1;
-
-  while (currentPage <= totalPages) {
-    const url = new URL(REST_URL);
-    url.searchParams.set("per_page", String(PER_PAGE));
-    url.searchParams.set("page", String(currentPage));
-
-    const { data, headers } = await fetchJson(url.toString());
-    if (!Array.isArray(data)) {
-      throw new Error("APIのレスポンスが配列ではありません。");
-    }
-
-    if (currentPage === 1) {
-      const headerPages = Number(headers["x-wp-totalpages"] || headers["X-WP-TotalPages"] || 1);
-      totalPages = Number.isNaN(headerPages) ? 1 : headerPages;
-    }
-
-    posts.push(...data);
-    currentPage += 1;
-  }
-
-  return posts;
-}
-
 // メイン処理。
 async function main() {
   const { start, endExclusive } = buildTargetRange();
@@ -256,22 +340,23 @@ async function main() {
     contactLinkInvalidatedCount: 0,
   };
 
-  let posts;
+  let detailLinksResult;
   try {
-    posts = await fetchAllPosts();
+    detailLinksResult = await fetchAllDetailLinks();
   } catch (error) {
-    console.error(`一覧API取得エラー: ${error.message}`);
+    console.error(`一覧ページ取得エラー: ${error.message}`);
     console.error("0件のため published を更新しません。");
+    process.exit(1);
     return;
   }
 
-  const entries = posts.map((post) => ({
-    title: htmlToText(post?.title?.rendered || ""),
-    link: post?.link || "",
+  const entries = detailLinksResult.detailLinks.map((link) => ({
+    title: "",
+    link,
   }));
 
   summary.listCount = entries.length;
-  console.log(`restroute_links 件数: ${summary.listCount}`);
+  console.log(`list_links 件数: ${summary.listCount}`);
 
   const events = [];
   const datesFound = [];
@@ -295,6 +380,7 @@ async function main() {
 
     summary.detailCount += 1;
 
+    const extractedTitle = extractTitleFromHtml(html);
     const dateRange = extractDateRangeFromHtml(html, start, endExclusive);
     if (!dateRange.dateFrom || !dateRange.dateTo) {
       summary.missingDateCount += 1;
@@ -330,7 +416,7 @@ async function main() {
     const contact = contactResult.contact;
 
     const event = {
-      title: entry.title || htmlToText(entry.link),
+      title: extractedTitle || entry.title || htmlToText(entry.link),
       date_from: formatDate(dateFrom),
       date_to: formatDate(dateTo),
       source_url: entry.link,
@@ -369,12 +455,17 @@ async function main() {
   console.log(`max date_from: ${summary.maxDateFrom || "なし"}`);
   console.log(`date_start 欠落件数: ${summary.dateStartMissingCount}`);
   console.log(`contactリンク文言無効化: ${summary.contactLinkInvalidatedCount}`);
+  console.log(`[fetch] list_links: ${summary.listCount}`);
+  console.log(`[fetch] excluded_invalid: ${detailLinksResult.stats.excludedInvalid}`);
+  console.log(`[fetch] events_built: ${events.length}`);
+  console.log(`[fetch] output_path: ${OUTPUT_PATH}`);
 
   if (events.length === 0 || datesFound.length === 0) {
     console.warn("採用イベントが0件のため、published を更新しません。");
     console.warn(
       `内訳: 日付抽出失敗=${summary.missingDateCount}, 期間外除外=${summary.filteredOutCount}`
     );
+    process.exit(1);
     return;
   }
 
