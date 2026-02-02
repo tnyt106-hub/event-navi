@@ -18,6 +18,9 @@ const ENTRY_URL = "https://www.kenbun.jp/event/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "kenbun.json");
 // 月別一覧は3年分程度を上限にガードする。
 const MAX_LIST_PAGES = 36;
+// 過去・未来の対象日数は 1 年分に制限する。
+const PAST_DAYS_LIMIT = 365;
+const FUTURE_DAYS_LIMIT = 365;
 // body の最大長は既存方針に合わせる。
 const MAX_BODY_LENGTH = 5000;
 const BODY_TRUNCATION_SUFFIX = "…";
@@ -34,6 +37,38 @@ function buildJstDateString() {
   const month = String(jstNow.getUTCMonth() + 1).padStart(2, "0");
   const day = String(jstNow.getUTCDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
+}
+
+// JST 基準で "今日 00:00" を作る（Date.now + 9h 方式）。
+function buildTodayJst() {
+  const now = new Date();
+  const jstNow = new Date(now.getTime() + JST_OFFSET_HOURS * 60 * 60 * 1000);
+  return new Date(Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()));
+}
+
+// 月別一覧ページの URL から年・月を抽出する。
+function extractMonthFromUrl(url) {
+  try {
+    const pathname = new URL(url).pathname;
+    const match = pathname.match(/^\/event\/date\/(\d{4})\/(\d{1,2})\/?$/);
+    if (!match) {
+      return null;
+    }
+    return {
+      year: Number(match[1]),
+      month: Number(match[2]),
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
+// 月が指定範囲にかかるか判定する。
+function isMonthInRange(year, month, start, end) {
+  const monthStart = new Date(Date.UTC(year, month - 1, 1));
+  const monthEnd = new Date(Date.UTC(year, month, 1));
+  monthEnd.setUTCDate(monthEnd.getUTCDate() - 1);
+  return monthStart <= end && monthEnd >= start;
 }
 
 // 全角数字とコロンを半角へ正規化する。
@@ -134,6 +169,15 @@ async function fetchAllListPages(seedUrl) {
   const visitedListUrls = new Set();
   const queue = [seedUrl];
   const listHtmls = [];
+  const todayJst = buildTodayJst();
+  const rangeStart = new Date(todayJst);
+  rangeStart.setUTCDate(rangeStart.getUTCDate() - PAST_DAYS_LIMIT);
+  const rangeEnd = new Date(todayJst);
+  rangeEnd.setUTCDate(rangeEnd.getUTCDate() + FUTURE_DAYS_LIMIT);
+
+  console.log(
+    `[fetch] month_range: ${rangeStart.toISOString().slice(0, 7)} .. ${rangeEnd.toISOString().slice(0, 7)}`
+  );
 
   while (queue.length > 0) {
     if (visitedListUrls.size >= MAX_LIST_PAGES) {
@@ -159,6 +203,13 @@ async function fetchAllListPages(seedUrl) {
 
     const monthLinks = extractMonthPageLinks(html, currentUrl);
     for (const absUrl of monthLinks) {
+      const monthInfo = extractMonthFromUrl(absUrl);
+      if (!monthInfo) {
+        continue;
+      }
+      if (!isMonthInRange(monthInfo.year, monthInfo.month, rangeStart, rangeEnd)) {
+        continue;
+      }
       if (!visitedListUrls.has(absUrl)) {
         queue.push(absUrl);
       }
@@ -174,6 +225,15 @@ async function fetchAllDetailLinks(seedUrl) {
   const queue = [seedUrl];
   const detailLinks = new Set();
   let listLinks = 0;
+  const todayJst = buildTodayJst();
+  const rangeStart = new Date(todayJst);
+  rangeStart.setUTCDate(rangeStart.getUTCDate() - PAST_DAYS_LIMIT);
+  const rangeEnd = new Date(todayJst);
+  rangeEnd.setUTCDate(rangeEnd.getUTCDate() + FUTURE_DAYS_LIMIT);
+
+  console.log(
+    `[fetch] month_range: ${rangeStart.toISOString().slice(0, 7)} .. ${rangeEnd.toISOString().slice(0, 7)}`
+  );
 
   while (queue.length > 0) {
     if (visitedListUrls.size >= MAX_LIST_PAGES) {
@@ -198,6 +258,13 @@ async function fetchAllDetailLinks(seedUrl) {
 
     const monthLinks = extractMonthPageLinks(html, currentUrl);
     for (const absUrl of monthLinks) {
+      const monthInfo = extractMonthFromUrl(absUrl);
+      if (!monthInfo) {
+        continue;
+      }
+      if (!isMonthInRange(monthInfo.year, monthInfo.month, rangeStart, rangeEnd)) {
+        continue;
+      }
       if (!visitedListUrls.has(absUrl)) {
         queue.push(absUrl);
       }
