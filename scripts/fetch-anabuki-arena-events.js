@@ -4,8 +4,6 @@
 const path = require("path");
 
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
-// 共通 HTTP 取得ユーティリティで JSON を取得する。
-const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { writeJsonPretty } = require("./lib/io");
 // HTML エンティティをデコードする。
@@ -17,6 +15,7 @@ const VENUE_ID = "anabuki_arena_kagawa";
 const MONTH_RANGE = 7;
 const PER_PAGE = 10;
 const MAX_PAGES = 100;
+const DEFAULT_TIMEOUT_MS = 30000;
 
 // タグを落としてプレーンテキスト化する。
 function stripTags(html) {
@@ -74,16 +73,32 @@ function buildTargetRange() {
   return { start, endExclusive };
 }
 
-// JSON を HTTP で取得してパースする。
-async function fetchJson(url) {
-  const text = await fetchText(url, {
-    acceptEncoding: "identity",
-    encoding: "utf-8",
-    headers: {
-      Accept: "application/json",
-    },
-  });
-  return JSON.parse(text);
+// REST API を取得し、HTTP ステータスと本文を返す。
+// ページ終端検知に本文が必要なため、必ず text を返す。
+async function fetchJsonWithStatus(url) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => {
+    controller.abort();
+  }, DEFAULT_TIMEOUT_MS);
+
+  let response;
+  try {
+    response = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+        Referer: "https://kagawa-arena.com/",
+        "Accept-Language": "ja,en-US;q=0.9",
+      },
+      signal: controller.signal,
+    });
+  } catch (error) {
+    throw new Error(`HTTP 取得に失敗しました。 (${error.message})`);
+  } finally {
+    clearTimeout(timeoutId);
+  }
+
+  const text = await response.text();
+  return { status: response.status, text };
 }
 
 // ヘッダーに依存せずに全ページ分の投稿を取得する。
@@ -93,18 +108,47 @@ async function fetchAllPosts() {
 
   for (let page = 1; page <= MAX_PAGES; page += 1) {
     const url = `${REST_URL}&per_page=${PER_PAGE}&page=${page}`;
-    const data = await fetchJson(url);
+    const { status, text } = await fetchJsonWithStatus(url);
 
-    if (!Array.isArray(data)) {
-      throw new Error(`REST API 応答が配列ではありません: page=${page}`);
+    if (status === 200) {
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (error) {
+        throw new Error(`REST API JSON の解析に失敗しました: page=${page} (${error.message})`);
+      }
+
+      if (!Array.isArray(data)) {
+        throw new Error(`REST API 応答が配列ではありません: page=${page}`);
+      }
+
+      if (data.length === 0) {
+        break;
+      }
+
+      items.push(...data);
+      pagesFetched += 1;
+      continue;
     }
 
-    if (data.length === 0) {
-      break;
+    if (page === 1) {
+      throw new Error(`REST API HTTP ${status} で失敗しました: page=${page}`);
     }
 
-    items.push(...data);
-    pagesFetched += 1;
+    if (status === 400) {
+      let errorData = null;
+      try {
+        errorData = JSON.parse(text);
+      } catch {
+        errorData = null;
+      }
+      if (errorData && errorData.code === "rest_post_invalid_page_number") {
+        console.warn(`[fetch] reached end of pages: page=${page} code=rest_post_invalid_page_number`);
+        break;
+      }
+    }
+
+    throw new Error(`REST API HTTP ${status} で失敗しました: page=${page}`);
   }
 
   if (pagesFetched >= MAX_PAGES) {
