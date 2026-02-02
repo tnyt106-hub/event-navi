@@ -94,5 +94,17 @@
   "official_url": "https://www.ehime-art.jp/",
   "description": "松山城を望む城山公園内に位置する美術館です。「みる・つくる・まなぶ」の3本柱を掲げ、コレクション展示や多彩な企画展を開催しています。",
   "source": "https://www.ehime-art.jp/guide/"
-  }
+  },
+  {
+  "name": "愛媛県県民文化会館",
+  "spot_id": "ehime_prefectural_cultural_hall",
+  "lat": 33.84922,
+  "lng": 132.78469,
+  "category": "文化施設",
+  "prefecture": "愛媛県",
+  "municipality": "松山市",
+  "official_url": "https://www.kenbun.jp/",
+  "description": "四国最大級の規模を誇る多目的ホールです。3,000人収容可能なメインホールのほか、サブホール、国際会議場などを備え、コンサートや学会、展示会など幅広いイベントに利用されています。",
+  "source": "https://www.kenbun.jp/event/"
+}
 ]
