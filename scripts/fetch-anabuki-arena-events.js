@@ -1,22 +1,22 @@
-// あなぶきアリーナ香川のイベント一覧ページから
-// 詳細ページを辿って開催日を抽出し、JSONに保存するバッチ。
+// あなぶきアリーナ香川のイベント情報を WordPress REST API から取得し、JSONに保存するバッチ。
 // 使い方: node scripts/fetch-anabuki-arena-events.js
 
 const path = require("path");
-const { URL } = require("url");
 
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
-// 共通 HTTP 取得ユーティリティで HTML を取得する。
+// 共通 HTTP 取得ユーティリティで JSON を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { writeJsonPretty } = require("./lib/io");
-// HTML テキスト処理の共通関数を使う。
+// HTML エンティティをデコードする。
 const { decodeHtmlEntities } = require("./lib/text");
 
-const LIST_URL = "https://kagawa-arena.com/event/";
+const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "anabuki_arena_kagawa.json");
 const VENUE_ID = "anabuki_arena_kagawa";
 const MONTH_RANGE = 7;
+const PER_PAGE = 10;
+const MAX_PAGES = 100;
 
 // タグを落としてプレーンテキスト化する。
 function stripTags(html) {
@@ -24,150 +24,12 @@ function stripTags(html) {
   return html.replace(/<[^>]*>/g, "");
 }
 
-// タイトルや本文に含まれる HTML をプレーンテキスト化する。
+// タイトルなど HTML を含むテキストをプレーンテキスト化する。
 function htmlToText(html) {
   return stripTags(decodeHtmlEntities(html)).replace(/\s+/g, " ").trim();
 }
 
-// URL がイベント詳細ページかどうかを判定する。
-function isDetailPageUrl(url) {
-  const pathName = url.pathname;
-  if (!pathName.startsWith("/event/")) {
-    return false;
-  }
-
-  if (pathName === "/event" || pathName === "/event/") {
-    return false;
-  }
-
-  if (pathName.startsWith("/event/page/")) {
-    return false;
-  }
-
-  return true;
-}
-
-// 一覧ページのページング URL かどうかを判定する。
-function isListPageUrl(url) {
-  const pathName = url.pathname;
-  if (!pathName.startsWith("/event/")) {
-    return false;
-  }
-
-  if (pathName.startsWith("/event/page/")) {
-    return true;
-  }
-
-  if (url.searchParams.has("paged") || url.searchParams.has("page")) {
-    return true;
-  }
-
-  return false;
-}
-
-// 一覧 HTML から詳細ページリンクとページングリンクを抽出する。
-function extractLinksFromList(html, baseUrl, stats) {
-  const detailLinks = [];
-  const pageLinks = [];
-  const anchorRegex = /<a\b[^>]*href=['"]([^'"]+)['"][^>]*>/gi;
-
-  for (const match of html.matchAll(anchorRegex)) {
-    const href = match[1];
-    if (!href) {
-      stats.excludedInvalid += 1;
-      continue;
-    }
-
-    let absoluteUrl;
-    try {
-      absoluteUrl = new URL(href, baseUrl);
-    } catch (error) {
-      stats.excludedInvalid += 1;
-      continue;
-    }
-
-    if (isDetailPageUrl(absoluteUrl)) {
-      detailLinks.push(absoluteUrl.toString());
-      continue;
-    }
-
-    if (isListPageUrl(absoluteUrl)) {
-      pageLinks.push(absoluteUrl.toString());
-    }
-  }
-
-  return { detailLinks, pageLinks };
-}
-
-// すべての一覧ページを巡回して詳細リンクを集める。
-async function fetchAllDetailLinks() {
-  const pending = [LIST_URL];
-  const visited = new Set();
-  const detailLinkSet = new Set();
-  const stats = {
-    listPages: 0,
-    excludedInvalid: 0,
-  };
-
-  while (pending.length > 0) {
-    const currentUrl = pending.shift();
-    if (!currentUrl || visited.has(currentUrl)) {
-      continue;
-    }
-
-    visited.add(currentUrl);
-    stats.listPages += 1;
-
-    const html = await fetchText(currentUrl, {
-      acceptEncoding: "identity",
-      encoding: "utf-8",
-    });
-
-    const { detailLinks, pageLinks } = extractLinksFromList(html, currentUrl, stats);
-
-    for (const link of detailLinks) {
-      if (!detailLinkSet.has(link)) {
-        detailLinkSet.add(link);
-      }
-    }
-
-    for (const pageLink of pageLinks) {
-      if (!visited.has(pageLink)) {
-        pending.push(pageLink);
-      }
-    }
-  }
-
-  return {
-    detailLinks: Array.from(detailLinkSet),
-    stats,
-  };
-}
-
-// 詳細 HTML からタイトルを抽出する（h1 > og:title > title の順）。
-function extractTitleFromHtml(html) {
-  const ogMatch = html.match(/<meta[^>]+property=["']og:title["'][^>]*content=["']([^"']+)["']/i);
-  if (ogMatch) {
-    const ogTitle = htmlToText(ogMatch[1]);
-    if (ogTitle) return ogTitle;
-  }
-
-  const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-  if (h1Match) {
-    const h1Title = htmlToText(h1Match[1]);
-    if (h1Title) return h1Title;
-  }
-
-  const titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-  if (titleMatch) {
-    const docTitle = htmlToText(titleMatch[1]);
-    if (docTitle) return docTitle;
-  }
-
-  return "";
-}
-
-// 年月日を ISO 形式の文字列にする。
+// ISO 形式 (YYYY-MM-DD) の日付文字列にする。
 function formatDate(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -185,129 +47,22 @@ function buildDate(year, month, day) {
   return date;
 }
 
-// 年が省略された日付を、対象期間内に収まる年へ補完する。
-function resolveYearForMonthDay(month, day, startDate, endExclusive) {
-  const baseYear = startDate.getFullYear();
-  const candidates = [baseYear, baseYear + 1, baseYear - 1];
-
-  for (const year of candidates) {
-    const candidateDate = buildDate(year, month, day);
-    if (!candidateDate) continue;
-    if (candidateDate >= startDate && candidateDate < endExclusive) {
-      return year;
-    }
-  }
-
-  // 期間外しか無い場合は当年を返し、後続のフィルタで除外する。
-  return baseYear;
+// YYYY-MM-DD 文字列を Date に変換する。
+function parseDateString(value) {
+  if (!value) return null;
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+  return buildDate(Number(match[1]), Number(match[2]), Number(match[3]));
 }
 
-// HTML内の日時表示パーツから月日を抜き出す。
-function extractDateRangeFromHtml(html, startDate, endExclusive) {
-  // raw HTMLから span の中身を直接見ることで、画像URLなどの誤検知を避ける。
-  const startMatch = html.match(/class="date_start">(\d{1,2})\.(\d{1,2})/);
-  if (!startMatch) {
-    return { dateFrom: null, dateTo: null, reason: "missing-date_start" };
+// HH:MM のみ許容する時刻パーサー。
+function parseTimeStrict(value) {
+  if (!value) return null;
+  const trimmed = String(value).trim();
+  if (!/^\d{2}:\d{2}$/.test(trimmed)) {
+    return null;
   }
-
-  const startMonth = Number(startMatch[1]);
-  const startDay = Number(startMatch[2]);
-  const startYear = resolveYearForMonthDay(startMonth, startDay, startDate, endExclusive);
-  const dateFrom = buildDate(startYear, startMonth, startDay);
-  if (!dateFrom) {
-    return { dateFrom: null, dateTo: null, reason: "invalid-date_start" };
-  }
-
-  const endMatch = html.match(/class="date_end">(\d{1,2})\.(\d{1,2})/);
-  if (!endMatch) {
-    return { dateFrom, dateTo: dateFrom, reason: null };
-  }
-
-  const endMonth = Number(endMatch[1]);
-  const endDay = Number(endMatch[2]);
-  const endYear = resolveYearForMonthDay(endMonth, endDay, startDate, endExclusive);
-  const dateTo = buildDate(endYear, endMonth, endDay);
-  if (!dateTo) {
-    return { dateFrom: null, dateTo: null, reason: "invalid-date_end" };
-  }
-
-  return { dateFrom, dateTo, reason: null };
-}
-
-// 詳細ページ内の <dl class="list-detail"> から dt/dd を抽出する。
-function extractDetailItems(html) {
-  const listMatch = html.match(/<dl class="list-detail">([\s\S]*?)<\/dl>/);
-  if (!listMatch) {
-    return [];
-  }
-
-  const items = [];
-  const detailHtml = listMatch[1];
-  const pairRegex = /<dt[^>]*>([\s\S]*?)<\/dt>\s*<dd[^>]*>([\s\S]*?)<\/dd>/g;
-  let match = pairRegex.exec(detailHtml);
-  while (match) {
-    const rawLabel = htmlToText(match[1]);
-    const rawValue = match[2];
-    if (rawLabel) {
-      items.push({ label: rawLabel, valueHtml: rawValue });
-    }
-    match = pairRegex.exec(detailHtml);
-  }
-
-  return items;
-}
-
-// 詳細情報の値をプレーンテキスト化し、空白を整える。
-function normalizeDetailValue(valueHtml) {
-  if (!valueHtml) return "";
-  const withBreaks = valueHtml.replace(/<br\s*\/?>/gi, " ");
-  return htmlToText(withBreaks).replace(/\s+/g, " ").trim();
-}
-
-// 詳細情報のラベルを検索して該当する dd を返す。
-function findDetailValue(detailItems, labels) {
-  return detailItems.find((item) => labels.some((label) => item.label.includes(label))) || null;
-}
-
-// dd のテキストから時刻を抜き出す。
-function extractTimeFromText(text) {
-  if (!text) return null;
-  const normalized = text.replace(/：/g, ":");
-  const match = normalized.match(/(\d{1,2}:\d{2})/);
-  return match ? match[1] : null;
-}
-
-// 問い合わせ dd から連絡先を取り出し、理由を付けて返す。
-function extractContactFromDetail(valueHtml, summary) {
-  if (!valueHtml) {
-    return { contact: null, reason: "missing-contact" };
-  }
-
-  const text = normalizeDetailValue(valueHtml);
-  if (!text) {
-    return { contact: null, reason: "empty-contact" };
-  }
-
-  const linkPhrases = ["主催者の方はこちら", "お問い合わせはこちら", "こちら", "詳細はこちら"];
-  if (linkPhrases.some((phrase) => text === phrase)) {
-    summary.contactLinkInvalidatedCount += 1;
-    return { contact: null, reason: "link-text-only" };
-  }
-
-  const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
-  const phonePattern = /\d{2,4}-\d{2,4}-\d{3,4}/;
-
-  const emailMatch = text.match(emailPattern);
-  if (emailMatch) {
-    return { contact: emailMatch[0], reason: null };
-  }
-
-  const phoneMatch = text.match(phonePattern);
-  if (phoneMatch) {
-    return { contact: phoneMatch[0], reason: null };
-  }
-
-  return { contact: text, reason: null };
+  return trimmed;
 }
 
 // 現在月の月初と、そこから7か月後の排他終点を作る。
@@ -319,152 +74,139 @@ function buildTargetRange() {
   return { start, endExclusive };
 }
 
-// 日付の配列から最小/最大を返す。
-function findDateRange(dates) {
-  if (!dates || dates.length === 0) return null;
-  const sorted = [...dates].sort((a, b) => a - b);
-  return { min: sorted[0], max: sorted[sorted.length - 1] };
+// JSON を HTTP で取得してパースする。
+async function fetchJson(url) {
+  const text = await fetchText(url, {
+    acceptEncoding: "identity",
+    encoding: "utf-8",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+  return JSON.parse(text);
+}
+
+// ヘッダーに依存せずに全ページ分の投稿を取得する。
+async function fetchAllPosts() {
+  const items = [];
+  let pagesFetched = 0;
+
+  for (let page = 1; page <= MAX_PAGES; page += 1) {
+    const url = `${REST_URL}&per_page=${PER_PAGE}&page=${page}`;
+    const data = await fetchJson(url);
+
+    if (!Array.isArray(data)) {
+      throw new Error(`REST API 応答が配列ではありません: page=${page}`);
+    }
+
+    if (data.length === 0) {
+      break;
+    }
+
+    items.push(...data);
+    pagesFetched += 1;
+  }
+
+  if (pagesFetched >= MAX_PAGES) {
+    console.warn(`[fetch] MAX_PAGES に到達したため打ち切り: ${MAX_PAGES}`);
+  }
+
+  console.log(`[fetch] pages_fetched: ${pagesFetched}, posts_total: ${items.length}`);
+  return items;
+}
+
+// 投稿データからイベント情報を組み立てる。
+function buildEventFromPost(post, summary, start, endExclusive) {
+  const title = htmlToText(post?.title?.rendered || "");
+  const sourceUrl = typeof post?.link === "string" ? post.link.trim() : "";
+  const startDateRaw = typeof post?.acf?.start_date === "string" ? post.acf.start_date.trim() : "";
+
+  if (!title || !sourceUrl || !startDateRaw) {
+    summary.excludedInvalid += 1;
+    return null;
+  }
+
+  const dateFrom = parseDateString(startDateRaw);
+  if (!dateFrom) {
+    summary.excludedInvalid += 1;
+    return null;
+  }
+
+  // 開始日ベースで期間フィルタをかける。
+  if (dateFrom < start || dateFrom >= endExclusive) {
+    summary.filteredOutCount += 1;
+    return null;
+  }
+
+  let dateTo = dateFrom;
+  const endDateRaw = typeof post?.acf?.end_date === "string" ? post.acf.end_date.trim() : "";
+  if (endDateRaw) {
+    const parsedEnd = parseDateString(endDateRaw);
+    if (!parsedEnd) {
+      summary.excludedInvalid += 1;
+      return null;
+    }
+    dateTo = parsedEnd;
+  }
+
+  const detailGroup = post?.acf?.detail_group || {};
+
+  // 文字列が厳密に HH:MM でない場合は null にする。
+  const openTime = parseTimeStrict(detailGroup.e_start);
+  const startTime = parseTimeStrict(detailGroup.e_start2);
+  const endTime = parseTimeStrict(detailGroup.e_end);
+
+  const price = typeof detailGroup.e_price === "string" ? detailGroup.e_price.trim() : "";
+  const contact = typeof detailGroup.e_contact === "string" ? detailGroup.e_contact.trim() : "";
+
+  return {
+    title,
+    date_from: formatDate(dateFrom),
+    date_to: formatDate(dateTo),
+    source_url: sourceUrl,
+    open_time: openTime,
+    start_time: startTime,
+    end_time: endTime,
+    price: price || null,
+    contact: contact || null,
+    source_type: "rest_api",
+    tags: null,
+  };
 }
 
 // メイン処理。
 async function main() {
   const { start, endExclusive } = buildTargetRange();
   const summary = {
-    listCount: 0,
-    detailCount: 0,
-    adoptedCount: 0,
-    missingDateCount: 0,
+    excludedInvalid: 0,
     filteredOutCount: 0,
-    maxDateFrom: null,
-    dateStartMissingCount: 0,
-    contactLinkInvalidatedCount: 0,
   };
 
-  let detailLinksResult;
+  let posts;
   try {
-    detailLinksResult = await fetchAllDetailLinks();
+    posts = await fetchAllPosts();
   } catch (error) {
-    console.error(`一覧ページ取得エラー: ${error.message}`);
+    console.error(`REST API 取得エラー: ${error.message}`);
     console.error("0件のため published を更新しません。");
     process.exit(1);
     return;
   }
 
-  const entries = detailLinksResult.detailLinks.map((link) => ({
-    title: "",
-    link,
-  }));
-
-  summary.listCount = entries.length;
-  console.log(`list_links 件数: ${summary.listCount}`);
-
   const events = [];
-  const datesFound = [];
-
-  let debugLogged = 0;
-  for (const entry of entries) {
-    if (!entry.link) {
-      continue;
-    }
-
-    let html;
-    try {
-      html = await fetchText(entry.link, {
-        acceptEncoding: "identity",
-        encoding: "utf-8",
-      });
-    } catch (error) {
-      console.warn(`詳細ページ取得失敗: ${entry.link} (${error.message})`);
-      continue;
-    }
-
-    summary.detailCount += 1;
-
-    const extractedTitle = extractTitleFromHtml(html);
-    const dateRange = extractDateRangeFromHtml(html, start, endExclusive);
-    if (!dateRange.dateFrom || !dateRange.dateTo) {
-      summary.missingDateCount += 1;
-      if (dateRange.reason === "missing-date_start") {
-        summary.dateStartMissingCount += 1;
-      }
-      continue;
-    }
-
-    const dateFrom = dateRange.dateFrom;
-    const dateTo = dateRange.dateTo;
-
-    // 開始日ベースで期間フィルタをかける。
-    if (dateFrom < start || dateFrom >= endExclusive) {
-      summary.filteredOutCount += 1;
-      continue;
-    }
-
-    const detailItems = extractDetailItems(html);
-    const openDetail = findDetailValue(detailItems, ["開場時間"]);
-    const startDetail = findDetailValue(detailItems, ["開演時間"]);
-    const endDetail = findDetailValue(detailItems, ["終演時間"]);
-
-    const openTime = openDetail ? extractTimeFromText(normalizeDetailValue(openDetail.valueHtml)) : null;
-    const startTime = startDetail ? extractTimeFromText(normalizeDetailValue(startDetail.valueHtml)) : null;
-    const endTime = endDetail ? extractTimeFromText(normalizeDetailValue(endDetail.valueHtml)) : null;
-
-    const priceDetail = findDetailValue(detailItems, ["料金", "入場料", "参加費", "チケット"]);
-    const price = priceDetail ? normalizeDetailValue(priceDetail.valueHtml) : null;
-
-    const contactDetail = findDetailValue(detailItems, ["お問い合わせ", "問合せ", "問い合わせ", "連絡先", "電話", "TEL"]);
-    const contactResult = extractContactFromDetail(contactDetail?.valueHtml, summary);
-    const contact = contactResult.contact;
-
-    const event = {
-      title: extractedTitle || entry.title || htmlToText(entry.link),
-      date_from: formatDate(dateFrom),
-      date_to: formatDate(dateTo),
-      source_url: entry.link,
-      open_time: openTime,
-      start_time: startTime,
-      end_time: endTime,
-      price: price || null,
-      contact: contact || null,
-      source_type: "html",
-      tags: null,
-    };
-
-    events.push(event);
-    datesFound.push(dateFrom);
-
-    if (debugLogged < 3) {
-      const priceStatus = price ? "found" : "missing";
-      const contactReason = contact ? "ok" : contactResult.reason || "unknown";
-      console.log(
-        `[debug] url=${entry.link} date_from=${event.date_from} date_to=${event.date_to} open_time=${
-          openTime || "null"
-        } price=${priceStatus} contact_reason=${contactReason}`
-      );
-      debugLogged += 1;
+  for (const post of posts) {
+    const event = buildEventFromPost(post, summary, start, endExclusive);
+    if (event) {
+      events.push(event);
     }
   }
 
-  summary.adoptedCount = events.length;
-
-  if (datesFound.length > 0) {
-    summary.maxDateFrom = formatDate(datesFound.sort((a, b) => a - b)[datesFound.length - 1]);
-  }
-
-  console.log(`詳細ページ取得件数: ${summary.detailCount}`);
-  console.log(`採用イベント件数: ${summary.adoptedCount}`);
-  console.log(`max date_from: ${summary.maxDateFrom || "なし"}`);
-  console.log(`date_start 欠落件数: ${summary.dateStartMissingCount}`);
-  console.log(`contactリンク文言無効化: ${summary.contactLinkInvalidatedCount}`);
-  console.log(`[fetch] list_links: ${summary.listCount}`);
-  console.log(`[fetch] excluded_invalid: ${detailLinksResult.stats.excludedInvalid}`);
+  console.log(`[fetch] excluded_invalid: ${summary.excludedInvalid}`);
   console.log(`[fetch] events_built: ${events.length}`);
   console.log(`[fetch] output_path: ${OUTPUT_PATH}`);
 
-  if (events.length === 0 || datesFound.length === 0) {
+  if (events.length === 0) {
     console.warn("採用イベントが0件のため、published を更新しません。");
-    console.warn(
-      `内訳: 日付抽出失敗=${summary.missingDateCount}, 期間外除外=${summary.filteredOutCount}`
-    );
+    console.warn(`内訳: 無効データ除外=${summary.excludedInvalid}, 期間外除外=${summary.filteredOutCount}`);
     process.exit(1);
     return;
   }
