@@ -73,8 +73,9 @@ function buildTargetRange() {
   return { start, endExclusive };
 }
 
-// REST API を取得し、HTTP ステータスと本文を返す。
+// REST API を取得し、HTTP ステータス・本文・JSON (成功時のみ) を返す。
 // ページ終端検知に本文が必要なため、必ず text を返す。
+// status が 200 の場合のみ JSON を解析して data に入れる。
 async function fetchJsonWithStatus(url) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => {
@@ -97,8 +98,24 @@ async function fetchJsonWithStatus(url) {
     clearTimeout(timeoutId);
   }
 
+  // レスポンス本文はステータスに関係なく取得する。
   const text = await response.text();
-  return { status: response.status, text };
+  const status = response.status;
+
+  // diagnose 用に HTTP ステータスを出力する (終端判定の根拠になるため)。
+  console.log(`[diagnose] status=${status}`);
+
+  if (status === 200) {
+    try {
+      const data = JSON.parse(text);
+      return { status, text, data };
+    } catch (error) {
+      throw new Error(`REST API JSON の解析に失敗しました。 (${error.message})`);
+    }
+  }
+
+  // status !== 200 の場合は data を null のまま返す。
+  return { status, text, data: null };
 }
 
 // ヘッダーに依存せずに全ページ分の投稿を取得する。
@@ -108,15 +125,10 @@ async function fetchAllPosts() {
 
   for (let page = 1; page <= MAX_PAGES; page += 1) {
     const url = `${REST_URL}&per_page=${PER_PAGE}&page=${page}`;
-    const { status, text } = await fetchJsonWithStatus(url);
+    const result = await fetchJsonWithStatus(url);
 
-    if (status === 200) {
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch (error) {
-        throw new Error(`REST API JSON の解析に失敗しました: page=${page} (${error.message})`);
-      }
+    if (result.status === 200) {
+      const data = result.data;
 
       if (!Array.isArray(data)) {
         throw new Error(`REST API 応答が配列ではありません: page=${page}`);
@@ -132,23 +144,25 @@ async function fetchAllPosts() {
     }
 
     if (page === 1) {
-      throw new Error(`REST API HTTP ${status} で失敗しました: page=${page}`);
+      throw new Error(`REST API HTTP ${result.status} で失敗しました: page=${page}`);
     }
 
-    if (status === 400) {
+    if (result.status === 400) {
       let errorData = null;
       try {
-        errorData = JSON.parse(text);
+        errorData = JSON.parse(result.text);
       } catch {
         errorData = null;
       }
+
+      // 2ページ目以降の invalid_page_number は正常な終端とみなす。
       if (errorData && errorData.code === "rest_post_invalid_page_number") {
-        console.warn(`[fetch] reached end of pages: page=${page} code=rest_post_invalid_page_number`);
+        console.warn(`[fetch] reached end of pages: page=${page} code=${errorData.code}`);
         break;
       }
     }
 
-    throw new Error(`REST API HTTP ${status} で失敗しました: page=${page}`);
+    throw new Error(`REST API HTTP ${result.status} で失敗しました: page=${page}`);
   }
 
   if (pagesFetched >= MAX_PAGES) {
