@@ -62,6 +62,12 @@
       "outputs": ["docs/events/mimoca.json"]
     },
     {
+      "id": "kenbun",
+      "script": "scripts/fetch-kenbun.js",
+      "enabled": true,
+      "outputs": ["docs/events/kenbun.json"]
+    },
+    {
       "id": "filter-old-events",
       "script": "scripts/filter-old-events.js",
       "enabled": true,
