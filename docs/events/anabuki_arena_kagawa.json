@@ -7,12 +7,12 @@
       "date_from": "2026-02-03",
       "date_to": "2026-02-04",
       "source_url": "https://kagawa-arena.com/event/1109/",
-      "open_time": "9:30",
+      "open_time": null,
       "start_time": null,
       "end_time": null,
       "price": "参加無料/事前登録制",
-      "contact": "dgi-fbj-skx-event@fujifilm.com",
-      "source_type": "html",
+      "contact": "以下までお問合せください。\r\n富士フイルムビジネスイノベーションジャパン株式会社 四国支社 イベント事務局 加来\r\ndgi-fbj-skx-event@fujifilm.com",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -31,7 +31,7 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -43,12 +43,12 @@
       "date_from": "2026-02-07",
       "date_to": "2026-02-08",
       "source_url": "https://kagawa-arena.com/event/789/",
-      "open_time": "17:00",
-      "start_time": "18:00",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
-      "price": "＜席種・料金・年齢制限＞ 指定席 12,300円 (税込) ファミリー号車席 12,300円 (税込) 着席指定席 12,300円 (税込) ■全席共通 ※3歳以上はチケットが必要です。 ※3歳未満のお子様は必ず大人1名につき1名まで膝上に限り無料。 ただし、お席が必要な場合はチケットが必要です。",
-      "contact": "087-822-2520",
-      "source_type": "html",
+      "price": "＜席種・料金・年齢制限＞\r\n指定席 12,300円 (税込)\r\nファミリー号車席　12,300円 (税込)\r\n着席指定席 12,300円 (税込)\r\n\r\n■全席共通\r\n※3歳以上はチケットが必要です。\r\n※3歳未満のお子様は必ず大人1名につき1名まで膝上に限り無料。\r\n   ただし、お席が必要な場合はチケットが必要です。",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -67,8 +67,8 @@
       "start_time": null,
       "end_time": null,
       "price": null,
-      "contact": "090-9456-1525",
-      "source_type": "html",
+      "contact": "大会事務局　前田 清和　090-9456-1525",
+      "source_type": "rest_api",
       "tags": {
         "type": "sports",
         "genres": [
@@ -83,11 +83,11 @@
       "date_to": "2026-02-15",
       "source_url": "https://kagawa-arena.com/event/863/",
       "open_time": null,
-      "start_time": "13:00",
+      "start_time": null,
       "end_time": null,
       "price": null,
-      "contact": "t.fivearrows@gmail.com",
-      "source_type": "html",
+      "contact": "株式会社ファイブアローズ\r\nメール：t.fivearrows@gmail.com\r\n電話：087-813-7120（平日 10:00～18:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "sports",
         "genres": [
@@ -102,33 +102,16 @@
       "date_to": "2026-02-15",
       "source_url": "https://kagawa-arena.com/event/953/",
       "open_time": null,
-      "start_time": "9:20",
+      "start_time": null,
       "end_time": null,
       "price": null,
-      "contact": "090-1176-2239",
-      "source_type": "html",
+      "contact": "香川県ソフトバレー連盟\r\n大川原　090-1176-2239",
+      "source_type": "rest_api",
       "tags": {
         "type": "sports",
         "genres": [
           "sports"
         ],
-        "flags": []
-      }
-    },
-    {
-      "title": "開館記念式典",
-      "date_from": "2026-02-24",
-      "date_to": "2026-02-24",
-      "source_url": "https://kagawa-arena.com/event/225/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": null,
-      "contact": null,
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": []
       }
     },
@@ -142,31 +125,11 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": []
-      }
-    },
-    {
-      "title": "【サザンオールスターズ】サザンオールスターズ LIVE TOUR 2025「THANK YOU SO MUCH!!」",
-      "date_from": "2026-03-01",
-      "date_to": "2026-03-02",
-      "source_url": "https://kagawa-arena.com/event/233/",
-      "open_time": "16:00",
-      "start_time": "17:00",
-      "end_time": null,
-      "price": "全席指定 11,000円",
-      "contact": "087-822-2520",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
       }
     },
     {
@@ -179,7 +142,7 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -191,36 +154,16 @@
       "date_from": "2026-03-07",
       "date_to": "2026-03-08",
       "source_url": "https://kagawa-arena.com/event/995/",
-      "open_time": "11:00",
-      "start_time": "12:00",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
-      "price": "1日券 ￥9,900（税込） 小中学生/￥5,500（税込） 2日通し券 ￥17,600（税込） 小中学生/￥11,000（税込） 〈メインアリーナ〉席種 1Ｆ：スタンディング 2Ｆ：指定席・着席指定席 〈サブアリーナ〉席種 全自由 【スタンディング(メイン·サブ共通)】 未就学児入場禁止。※整理番号なし 【指定席·着席指定席】 未就学児は膝上観覧1名まで可。 座席が必要な場合は有料。 ▼今回はメインアリーナ・サブアリーナ2ステージでの開催です。出演日・出演ステージは後日発表です。 チケットの券種はメインアリーナでの券種となります。 メインアリーナは購入した券種の場所で観覧、サブアリーナは自由に行き来でき、全自由です。 (サブアリーナ1Fはスタンディング、2Fは席あり) ▼2日通し券：来場者は2日間同一が条件です。 ※再入場可",
-      "contact": "087-822-2520",
-      "source_type": "html",
+      "price": "1日券　　　　\r\n￥9,900（税込）\r\n小中学生/￥5,500（税込）\r\n2日通し券　\r\n￥17,600（税込）\r\n小中学生/￥11,000（税込）\r\n〈メインアリーナ〉席種\r\n1Ｆ：スタンディング\r\n2Ｆ：指定席・着席指定席\r\n〈サブアリーナ〉席種\r\n全自由\r\n\r\n【スタンディング(メイン·サブ共通)】\r\n未就学児入場禁止。※整理番号なし\r\n【指定席·着席指定席】\r\n未就学児は膝上観覧1名まで可。\r\n座席が必要な場合は有料。\r\n▼今回はメインアリーナ・サブアリーナ2ステージでの開催です。出演日・出演ステージは後日発表です。\r\n　チケットの券種はメインアリーナでの券種となります。\r\nメインアリーナは購入した券種の場所で観覧、サブアリーナは自由に行き来でき、全自由です。\r\n(サブアリーナ1Fはスタンディング、2Fは席あり)\r\n▼2日通し券：来場者は2日間同一が条件です。\r\n※再入場可",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "Hello Arena 2025",
-      "date_from": "2026-03-08",
-      "date_to": "2026-03-09",
-      "source_url": "https://kagawa-arena.com/event/216/",
-      "open_time": "11:30",
-      "start_time": "12:30",
-      "end_time": null,
-      "price": "【2日通し券】17,600円 【1日券】9,900円 【小・中学生】2日通し券：11,000円/1日券：5,500円 【券種】1Fアリーナ前方スタンディング/指定席/着席指定席",
-      "contact": "087-822-2520",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
           "paid"
         ]
       }
@@ -230,39 +173,17 @@
       "date_from": "2026-03-11",
       "date_to": "2026-03-12",
       "source_url": "https://kagawa-arena.com/event/923/",
-      "open_time": "17:30",
-      "start_time": "18:30",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
-      "price": "アリーナスタンディング ¥16,000 (入場整理番号付き/税込) スタンド指定席 ¥14,000 (全席指定/税込) ※本ツアーはセンターステージでの公演を予定しています。 ステージセットの構造上、一部演出・及び出演者が見えづらい可能性がございます。あらかじめご了承ください。 ※未就学児入場不可。小学生以上はチケットが必要。 ※＜アリーナスタンディング＞は整理番号付きとなります。 ※会場によっては＜アリーナスタンディング＞は「ブロック指定」となります。",
-      "contact": "087-822-2520",
-      "source_type": "html",
+      "price": "アリーナスタンディング ¥16,000 (入場整理番号付き/税込)\r\nスタンド指定席 ¥14,000 (全席指定/税込)\r\n※本ツアーはセンターステージでの公演を予定しています。\r\nステージセットの構造上、一部演出・及び出演者が見えづらい可能性がございます。あらかじめご了承ください。\r\n※未就学児入場不可。小学生以上はチケットが必要。\r\n※＜アリーナスタンディング＞は整理番号付きとなります。\r\n※会場によっては＜アリーナスタンディング＞は「ブロック指定」となります。",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
-          "paid",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "かがわMICEセミナー「サステナビリティの本質を体感し、未来へのアクションを考える」",
-      "date_from": "2026-03-13",
-      "date_to": "2026-03-13",
-      "source_url": "https://kagawa-arena.com/event/350/",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "16:30",
-      "price": "無料",
-      "contact": "087-832-3380",
-      "source_type": "html",
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
-        "flags": [
-          "free"
+          "paid"
         ]
       }
     },
@@ -272,11 +193,11 @@
       "date_to": "2026-03-15",
       "source_url": "https://kagawa-arena.com/event/1058/",
       "open_time": null,
-      "start_time": "10:00",
+      "start_time": null,
       "end_time": null,
       "price": "入場料無料",
-      "contact": "marathon@pref.kagawa.lg.jp",
-      "source_type": "html",
+      "contact": "かがわマラソン実行委員会事務局（香川県交流推進課マラソン準備室内）\r\nTEL: 087-832-3867\r\nE-mail：marathon@pref.kagawa.lg.jp",
+      "source_type": "rest_api",
       "tags": {
         "type": "sports",
         "genres": [
@@ -285,23 +206,6 @@
         "flags": [
           "free"
         ]
-      }
-    },
-    {
-      "title": "【県民参加型イベント】行ってみよう！みんなのアリーナ体感デー",
-      "date_from": "2026-03-15",
-      "date_to": "2026-03-16",
-      "source_url": "https://kagawa-arena.com/event/226/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": null,
-      "contact": null,
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
       }
     },
     {
@@ -314,53 +218,11 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": []
-      }
-    },
-    {
-      "title": "【WEST.】WEST. LIVE TOUR 2025 A.H.O. -Audio Hang Out-",
-      "date_from": "2026-03-21",
-      "date_to": "2026-03-23",
-      "source_url": "https://kagawa-arena.com/event/375/",
-      "open_time": null,
-      "start_time": "18:00",
-      "end_time": null,
-      "price": "●会員チケット（ファミリークラブ）9,500円(税込) 受付期間(抽選)：1/31(金)11:00～2/4(火)12:00 ●一般チケット（プレイガイド）10,000円(税込)",
-      "contact": null,
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "2024年度全日本バトントワーリング選手権大会",
-      "date_from": "2026-03-25",
-      "date_to": "2026-03-27",
-      "source_url": "https://kagawa-arena.com/event/368/",
-      "open_time": null,
-      "start_time": "9:10",
-      "end_time": null,
-      "price": "各日3,500円",
-      "contact": "https://www.baton-jp.org/usermail/index.php?id=123556",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
       }
     },
     {
@@ -368,12 +230,12 @@
       "date_from": "2026-03-29",
       "date_to": "2026-03-29",
       "source_url": "https://kagawa-arena.com/event/1068/",
-      "open_time": "9:00",
-      "start_time": "10:30",
-      "end_time": "16:00",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
       "price": null,
-      "contact": "090-6002-3402",
-      "source_type": "html",
+      "contact": "オリーブテコンドークラブ（TEL：090-6002-3402）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -381,60 +243,20 @@
       }
     },
     {
-      "title": "RIZIN.50",
-      "date_from": "2026-03-30",
-      "date_to": "2026-03-30",
-      "source_url": "https://kagawa-arena.com/event/252/",
-      "open_time": "11:00",
-      "start_time": "13:00",
-      "end_time": null,
-      "price": "VVIP席：220,000円＜特典付・1列目＞ VIP席：110,000円＜特典付＞ SRS席：27,500円 SA席：16,500円＜アリーナ後方・スタンド＞ ※消費税込み",
-      "contact": "087-831-4449",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
       "title": "【ケツメイシ】ケツメイシ25th Anniversary TOUR ケツメンCAMP 2026",
       "date_from": "2026-04-04",
       "date_to": "2026-04-04",
       "source_url": "https://kagawa-arena.com/event/978/",
-      "open_time": "15:00",
-      "start_time": "16:00",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
-      "price": "・アリーナ席 ￥12,000（税込） ・スタンド席 ￥12,000（税込） ＊4歳以上チケット必要/3歳以下入場不可",
-      "contact": "087-822-2520",
-      "source_type": "html",
+      "price": "・アリーナ席　￥12,000（税込）\r\n・スタンド席　￥12,000（税込）\r\n＊4歳以上チケット必要/3歳以下入場不可",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "【MISIA】STARTS presents THE TOUR OF MISIA 2025 LOVE NEVER DIES",
-      "date_from": "2026-04-05",
-      "date_to": "2026-04-06",
-      "source_url": "https://kagawa-arena.com/event/219/",
-      "open_time": "15:00",
-      "start_time": "16:00",
-      "end_time": null,
-      "price": "全席指定 13,500円",
-      "contact": "087-822-2520",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
           "paid"
         ]
       }
@@ -449,7 +271,7 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -462,28 +284,11 @@
       "date_to": "2026-04-12",
       "source_url": "https://kagawa-arena.com/event/987/",
       "open_time": null,
-      "start_time": "13:00",
+      "start_time": null,
       "end_time": null,
       "price": null,
-      "contact": "0570-033-366",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "【TOMORROW X TOGETHER】TOMORROW X TOGETHER WORLD TOUR ＜ACT : PROMISE＞ &#8211; EP. 2 &#8211; IN JAPAN",
-      "date_from": "2026-04-12",
-      "date_to": "2026-04-13",
-      "source_url": "https://kagawa-arena.com/event/244/",
-      "open_time": "16:00",
-      "start_time": "17:00",
-      "end_time": null,
-      "price": null,
-      "contact": null,
-      "source_type": "html",
+      "contact": "お問い合わせ先：\r\nファミリークラブ（0570-033-366）\r\nFAMILY CLUB Official Site：https://www.familyclub.jp",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -500,7 +305,7 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -513,72 +318,16 @@
       "date_to": "2026-04-19",
       "source_url": "https://kagawa-arena.com/event/865/",
       "open_time": null,
-      "start_time": "15:00",
+      "start_time": null,
       "end_time": null,
       "price": null,
-      "contact": "t.fivearrows@gmail.com",
-      "source_type": "html",
+      "contact": "株式会社ファイブアローズ\r\nメール：t.fivearrows@gmail.com\r\n電話：087-813-7120（平日 10:00～18:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "sports",
         "genres": [
           "sports"
         ],
-        "flags": []
-      }
-    },
-    {
-      "title": "【MAN WITH A MISSION】MAN WITH A “15th” MISSION “PLAY WHAT U WANT TOUR 2025”",
-      "date_from": "2026-04-19",
-      "date_to": "2026-04-19",
-      "source_url": "https://kagawa-arena.com/event/221/",
-      "open_time": "16:00",
-      "start_time": "17:00",
-      "end_time": null,
-      "price": "アリーナスタンディング/スタンド指定席/スタンド着席指定席 7,700円 アリーナスタンディング学割/スタンド指定席学割/スタンド着席指定席学割 6,700円 ファミリー席（スタンド着席指定席）大人 7,700円/中高生6,700円/小学生以下6,200円",
-      "contact": "087-822-2520",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "Nittaku杯・香川県卓球協会長杯卓球大会(個人)",
-      "date_from": "2026-04-20",
-      "date_to": "2026-04-20",
-      "source_url": "https://kagawa-arena.com/event/435/",
-      "open_time": "8:00",
-      "start_time": "9:00",
-      "end_time": null,
-      "price": "無料",
-      "contact": "一般社団法人香川県卓球協会",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "テコンドー合同練習会",
-      "date_from": "2026-04-20",
-      "date_to": "2026-04-20",
-      "source_url": "https://kagawa-arena.com/event/431/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": null,
-      "contact": null,
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": []
       }
     },
@@ -592,7 +341,7 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -604,119 +353,17 @@
       "date_from": "2026-04-25",
       "date_to": "2026-04-26",
       "source_url": "https://kagawa-arena.com/event/1031/",
-      "open_time": "15:30",
-      "start_time": "17:00",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
-      "price": "Premium席 ¥35,000 /B’z PARTYのみ ※Premium席専用オリジナルグッズ付 SS席 ¥18,000 / B’z PARTYのみ S席（VC席） ¥13,000 / B’z PARTYのみ S席 ¥13,000 ステージサイドバック席 ￥13,000 立見指定 ￥13,000 ※4歳未満入場不可、4歳以上からチケットが必要となります。",
-      "contact": "087-822-2520",
-      "source_type": "html",
+      "price": "Premium席 ¥35,000 /B’z PARTYのみ　※Premium席専用オリジナルグッズ付\r\nSS席 ¥18,000 / B’z PARTYのみ　　\r\nS席（VC席） ¥13,000 / B’z PARTYのみ\r\nS席 ¥13,000\r\nステージサイドバック席 ￥13,000\r\n立見指定 ￥13,000\r\n\r\n※4歳未満入場不可、4歳以上からチケットが必要となります。",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
           "paid"
-        ]
-      }
-    },
-    {
-      "title": "フラワーカップ2025",
-      "date_from": "2026-04-27",
-      "date_to": "2026-04-27",
-      "source_url": "https://kagawa-arena.com/event/508/",
-      "open_time": "9:00",
-      "start_time": "10:00",
-      "end_time": null,
-      "price": "入場無料",
-      "contact": "082-258-1040",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "みなスポ！かがわ2025",
-      "date_from": "2026-04-29",
-      "date_to": "2026-04-29",
-      "source_url": "https://kagawa-arena.com/event/514/",
-      "open_time": "9:30",
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "price": "入場料無料",
-      "contact": "087-832-3762",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "SETOLAS Holdings presents TGC KAGAWA 2025 by TOKYO GIRLS COLLECTION",
-      "date_from": "2026-05-06",
-      "date_to": "2026-05-06",
-      "source_url": "https://kagawa-arena.com/event/246/",
-      "open_time": "11:00",
-      "start_time": "12:30",
-      "end_time": "17:00",
-      "price": "【アリーナS席】お土産・応援グッズ・オリジナルノベルティ付き TGC CARD先行 9,000円（税込） 先行 13,000円（税込） 一般 13,500円（税込） 【アリーナA席】お土産袋・応援グッズ付き TGC CARD先行 8,500円（税込） 先行 11,000円（税込） 一般 11,500円（税込） 【スタンド席】お土産袋・応援グッズ付き TGC CARD先行 7,500円（税込） 先行 9,500円（税込） 一般 10,000円（税込）",
-      "contact": "info_tgc@sgw.st",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "2024-25 リーグＨ 女子第31節 香川銀行サンクスデー",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
-      "source_url": "https://kagawa-arena.com/event/495/",
-      "open_time": "11:30",
-      "start_time": "13:00",
-      "end_time": null,
-      "price": "無料",
-      "contact": "kagawabankgirasol@gmail.com",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "香川県レディース団体戦ダブルスリーグ卓球大会(前期)",
-      "date_from": "2026-05-11",
-      "date_to": "2026-05-11",
-      "source_url": "https://kagawa-arena.com/event/518/",
-      "open_time": "8:00",
-      "start_time": "9:00",
-      "end_time": "17:00",
-      "price": "無料",
-      "contact": "一般社団法人香川県卓球協会",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
         ]
       }
     },
@@ -730,49 +377,11 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": []
-      }
-    },
-    {
-      "title": "第77回 四国四県剣道大会",
-      "date_from": "2026-05-18",
-      "date_to": "2026-05-18",
-      "source_url": "https://kagawa-arena.com/event/485/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": null,
-      "contact": "香川県剣道連盟",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "香川×岡山つながる食の大博覧会",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-25",
-      "source_url": "https://kagawa-arena.com/event/527/",
-      "open_time": "10:00",
-      "start_time": "10:00",
-      "end_time": null,
-      "price": "無料",
-      "contact": "080-7732-4173",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
       }
     },
     {
@@ -785,52 +394,11 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": []
-      }
-    },
-    {
-      "title": "【NPO法人 Affectionate RG】15周年記念イベント「無料体験会」",
-      "date_from": "2026-05-27",
-      "date_to": "2026-05-27",
-      "source_url": "https://kagawa-arena.com/event/564/",
-      "open_time": null,
-      "start_time": "17:10",
-      "end_time": "18:20",
-      "price": "無料",
-      "contact": "NPO法人 Affectionate RG https://lin.ee/uDUjRas",
-      "source_type": "html",
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "2025JAIFA年次大会inさぬき",
-      "date_from": "2026-05-29",
-      "date_to": "2026-05-30",
-      "source_url": "https://kagawa-arena.com/event/506/",
-      "open_time": "10:00",
-      "start_time": "17:00",
-      "end_time": "19:00",
-      "price": "5/29(木) ウェルカムパーティ 13,000円 5/30(金) 年次大会 4,500円",
-      "contact": "03-3241-6633",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
       }
     },
     {
@@ -843,24 +411,7 @@
       "end_time": null,
       "price": null,
       "contact": null,
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "令和7年度 香川県高等学校総合体育大会 体操競技",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
-      "source_url": "https://kagawa-arena.com/event/608/",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": null,
-      "price": null,
-      "contact": "0877-98-2525",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -877,95 +428,11 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": []
-      }
-    },
-    {
-      "title": "【NPO法人 Affectionate RG】15周年記念イベント「無料体験会」",
-      "date_from": "2026-06-03",
-      "date_to": "2026-06-03",
-      "source_url": "https://kagawa-arena.com/event/566/",
-      "open_time": null,
-      "start_time": "17:10",
-      "end_time": "18:20",
-      "price": "無料",
-      "contact": "NPO法人 Affectionate RG https://lin.ee/uDUjRas",
-      "source_type": "html",
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第65回 香川県中学生柔道大会",
-      "date_from": "2026-06-07",
-      "date_to": "2026-06-07",
-      "source_url": "https://kagawa-arena.com/event/617/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": "無料",
-      "contact": "香川県中学校体育連盟柔道競技部 ０９０ー１５７９－４８２４",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "令和7年度 香川県高等学校総合体育大会バスケットボール競技",
-      "date_from": "2026-06-07",
-      "date_to": "2026-06-07",
-      "source_url": "https://kagawa-arena.com/event/569/",
-      "open_time": null,
-      "start_time": "9:30",
-      "end_time": null,
-      "price": "無料",
-      "contact": "087-802-3338",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "百十四銀行 ２０２５年度前期日本卓球リーグ ホームマッチ 百十四銀行 VS 中国電力ライシス",
-      "date_from": "2026-06-08",
-      "date_to": "2026-06-08",
-      "source_url": "https://kagawa-arena.com/event/498/",
-      "open_time": "13:00",
-      "start_time": "14:00",
-      "end_time": null,
-      "price": "無料",
-      "contact": "087-836-2916",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
       }
     },
     {
@@ -978,7 +445,7 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -990,57 +457,17 @@
       "date_from": "2026-06-13",
       "date_to": "2026-06-14",
       "source_url": "https://kagawa-arena.com/event/1066/",
-      "open_time": "16:00",
-      "start_time": "17:00",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
-      "price": "前売料金（全て税込） 指定席 ￥14,300 *未就学児入場不可",
-      "contact": "086-231-3531",
-      "source_type": "html",
+      "price": "前売料金（全て税込）\r\n指定席　￥14,300\r\n*未就学児入場不可",
+      "contact": "YUMEBANCHI（岡山）\r\n086-231-3531（平日 12:00～17:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
           "paid"
-        ]
-      }
-    },
-    {
-      "title": "第78回 四国高等学校バスケットボール選手権大会",
-      "date_from": "2026-06-14",
-      "date_to": "2026-06-15",
-      "source_url": "https://kagawa-arena.com/event/570/",
-      "open_time": "8:00",
-      "start_time": "9:00",
-      "end_time": null,
-      "price": "無料",
-      "contact": "087-802-3338",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-06-16",
-      "date_to": "2026-06-16",
-      "source_url": "https://kagawa-arena.com/event/629/",
-      "open_time": "17:00",
-      "start_time": "17:00",
-      "end_time": "21:00",
-      "price": "無料",
-      "contact": "公式サイトよりお問い合わせください。",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
         ]
       }
     },
@@ -1054,69 +481,10 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "百十四銀行 ２０２５年度前期日本卓球リーグ 香川大会",
-      "date_from": "2026-06-18",
-      "date_to": "2026-06-22",
-      "source_url": "https://kagawa-arena.com/event/490/",
-      "open_time": "8:30",
-      "start_time": "9:30",
-      "end_time": null,
-      "price": "無料",
-      "contact": "0877-45-6348",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "国際ヨガデー２０２５",
-      "date_from": "2026-06-21",
-      "date_to": "2026-06-21",
-      "source_url": "https://kagawa-arena.com/event/611/",
-      "open_time": "10:00",
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "price": "無料",
-      "contact": "日本ヨーガ道友協会 上記公式サイトURLをご参照ください",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "【剣道】第79回国民スポーツ大会 県予選会",
-      "date_from": "2026-06-22",
-      "date_to": "2026-06-22",
-      "source_url": "https://kagawa-arena.com/event/616/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": null,
-      "contact": "香川県剣道連盟",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
         "flags": []
       }
     },
@@ -1130,7 +498,7 @@
       "end_time": "21:00",
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
-      "source_type": "html",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
@@ -1142,178 +510,18 @@
       "date_from": "2026-06-27",
       "date_to": "2026-06-28",
       "source_url": "https://kagawa-arena.com/event/999/",
-      "open_time": "15:00",
-      "start_time": "16:00",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
       "price": "全席指定 12,500円（税込）",
-      "contact": "087-822-2520",
-      "source_type": "html",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
           "free",
           "paid"
-        ]
-      }
-    },
-    {
-      "title": "【INI】2025 INI 3RD ARENA LIVE TOUR [XQUARE]",
-      "date_from": "2026-06-28",
-      "date_to": "2026-06-29",
-      "source_url": "https://kagawa-arena.com/event/374/",
-      "open_time": "11:30",
-      "start_time": "12:30",
-      "end_time": null,
-      "price": "■指定席 12,100円（税込） ■着席指定席 12,100円（税込） ※小さなお子様、ご年配のお客様、ファミリー、その他ライブを着席してご覧になりたいという皆様の為にご用意させていただく、「着席指定」でのお席です。こちらのお席では公演中は立ち上がってのご鑑賞は出来ません。\"",
-      "contact": "087-822-2520",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-07-02",
-      "date_to": "2026-07-02",
-      "source_url": "https://kagawa-arena.com/event/630/",
-      "open_time": "17:00",
-      "start_time": "21:00",
-      "end_time": "21:00",
-      "price": "無料",
-      "contact": "公式サイトよりお問い合わせください。",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "サンポート高松トライアスロン",
-      "date_from": "2026-07-06",
-      "date_to": "2026-07-06",
-      "source_url": "https://kagawa-arena.com/event/627/",
-      "open_time": "6:00",
-      "start_time": "7:00",
-      "end_time": "12:30",
-      "price": "入場料無料",
-      "contact": "050-8882-5252",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-07-07",
-      "date_to": "2026-07-07",
-      "source_url": "https://kagawa-arena.com/event/631/",
-      "open_time": "17:00",
-      "start_time": "21:00",
-      "end_time": "21:00",
-      "price": "無料",
-      "contact": "公式サイトよりお問い合わせください。",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "全日本ラージボール卓球選手権大会",
-      "date_from": "2026-07-11",
-      "date_to": "2026-07-13",
-      "source_url": "https://kagawa-arena.com/event/561/",
-      "open_time": "8:00",
-      "start_time": "9:00",
-      "end_time": null,
-      "price": "無料",
-      "contact": "03-6721-0921",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第６４回 香川県なぎなた選手権大会",
-      "date_from": "2026-07-13",
-      "date_to": "2026-07-13",
-      "source_url": "https://kagawa-arena.com/event/682/",
-      "open_time": "9:00",
-      "start_time": "9:30",
-      "end_time": null,
-      "price": "入場無料",
-      "contact": "090-2895-3626",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-07-14",
-      "date_to": "2026-07-14",
-      "source_url": "https://kagawa-arena.com/event/632/",
-      "open_time": "17:00",
-      "start_time": "21:00",
-      "end_time": "21:00",
-      "price": "無料",
-      "contact": "公式サイトよりお問い合わせください。",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "三宅しんご個人演説会",
-      "date_from": "2026-07-15",
-      "date_to": "2026-07-15",
-      "source_url": "https://kagawa-arena.com/event/721/",
-      "open_time": null,
-      "start_time": "13:15",
-      "end_time": "14:00",
-      "price": "無料",
-      "contact": "主催者様へお問い合わせください。",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
         ]
       }
     },
@@ -1322,428 +530,17 @@
       "date_from": "2026-07-18",
       "date_to": "2026-07-19",
       "source_url": "https://kagawa-arena.com/event/1000/",
-      "open_time": "15:30",
-      "start_time": "17:00",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
-      "price": "指定席 ¥12,000（税込） 注釈付指定席 ¥11,000（税込） 立見 ¥11,000（税込）",
-      "contact": "082-249-3571",
-      "source_type": "html",
+      "price": "指定席　¥12,000（税込）\r\n注釈付指定席　¥11,000（税込）\r\n立見　¥11,000（税込）",
+      "contact": "YUMEBANCHI（広島）　\r\n082-249-3571（平日12:00〜17:00）",
+      "source_type": "rest_api",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
           "paid"
-        ]
-      }
-    },
-    {
-      "title": "【卓球】国民スポーツ大会(少年の部)香川県1次予選会",
-      "date_from": "2026-07-19",
-      "date_to": "2026-07-19",
-      "source_url": "https://kagawa-arena.com/event/623/",
-      "open_time": "8:00",
-      "start_time": null,
-      "end_time": null,
-      "price": "試合の参加費 一人８００円 入場料はありません。",
-      "contact": "090-9452-4707",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "JFA第22回全日本女子フットサル選手権大会 香川県大会",
-      "date_from": "2026-07-20",
-      "date_to": "2026-07-20",
-      "source_url": "https://kagawa-arena.com/event/599/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": "無料",
-      "contact": "kfa.futsal.committee.2020@gmail.com",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "高松港みなとフェスタ in サンポート高松",
-      "date_from": "2026-07-21",
-      "date_to": "2026-07-21",
-      "source_url": "https://kagawa-arena.com/event/723/",
-      "open_time": "10:00",
-      "start_time": "10:00",
-      "end_time": "15:00",
-      "price": "無料",
-      "contact": "087-851-5524",
-      "source_type": "html",
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第65回香川県中学校総合体育大会柔道競技",
-      "date_from": "2026-07-21",
-      "date_to": "2026-07-21",
-      "source_url": "https://kagawa-arena.com/event/706/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": null,
-      "contact": "香川県中学校体育連盟柔道競技部 部長 長野秀紀 ０９０－１５７９－４８２４",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "【卓球】国民スポーツ大会(少年の部)香川県2次予選会・(成年の部)香川県予選会",
-      "date_from": "2026-07-21",
-      "date_to": "2026-07-21",
-      "source_url": "https://kagawa-arena.com/event/624/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": "無し",
-      "contact": "090-9452-4707",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "第49回全国高等学校総合文化祭 マーチングバンド・バトントワリング",
-      "date_from": "2026-07-28",
-      "date_to": "2026-07-28",
-      "source_url": "https://kagawa-arena.com/event/731/",
-      "open_time": "9:00",
-      "start_time": "9:30",
-      "end_time": "18:00",
-      "price": "入場無料",
-      "contact": "087-832-3772",
-      "source_type": "html",
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第20回若年者ものづくり競技大会",
-      "date_from": "2026-08-03",
-      "date_to": "2026-08-04",
-      "source_url": "https://kagawa-arena.com/event/642/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": "入場無料",
-      "contact": "03-5843-3579",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-08-06",
-      "date_to": "2026-08-06",
-      "source_url": "https://kagawa-arena.com/event/633/",
-      "open_time": "17:00",
-      "start_time": "21:00",
-      "end_time": "21:00",
-      "price": "無料",
-      "contact": "公式サイトよりお問い合わせください。",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "あなぶきアリーナでフットサルをしよう！",
-      "date_from": "2026-08-06",
-      "date_to": "2026-08-06",
-      "source_url": "https://kagawa-arena.com/event/546/",
-      "open_time": "9:00",
-      "start_time": "9:30",
-      "end_time": null,
-      "price": "入場料金 体験会 2,000円 クリニック 1,000円",
-      "contact": "087-845-2155",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "生活協同組合コープかがわ 健康づくり教室",
-      "date_from": "2026-08-07",
-      "date_to": "2026-08-07",
-      "source_url": "https://kagawa-arena.com/event/738/",
-      "open_time": "9:30",
-      "start_time": "10:00",
-      "end_time": null,
-      "price": null,
-      "contact": "087-835-6809",
-      "source_type": "html",
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "夏休みわくわく大作戦！ in あなぶきアリーナ香川 サブアリーナ",
-      "date_from": "2026-08-09",
-      "date_to": "2026-08-09",
-      "source_url": "https://kagawa-arena.com/event/759/",
-      "open_time": "10:00",
-      "start_time": "10:00",
-      "end_time": "17:00",
-      "price": "無料",
-      "contact": null,
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "SETOUCHI GOURMET&#038;TOURISM EXPOプレイベント in あなぶきアリーナ香川",
-      "date_from": "2026-08-13",
-      "date_to": "2026-08-13",
-      "source_url": "https://kagawa-arena.com/event/687/",
-      "open_time": "11:00",
-      "start_time": "11:00",
-      "end_time": "16:00",
-      "price": "無料",
-      "contact": "087-899-7011",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "【乃⽊坂46】乃木坂46 真夏の全国ツアー2025",
-      "date_from": "2026-08-16",
-      "date_to": "2026-08-17",
-      "source_url": "https://kagawa-arena.com/event/562/",
-      "open_time": "16:00",
-      "start_time": "17:30",
-      "end_time": null,
-      "price": "●アリーナ指定 (のぎ動画プレミアムシート先行のみ) 17,000円(税込) ●指定席 11,000円(税込) ●親子・女性エリア 11,000円(税込)",
-      "contact": "ライブエグザム https://www.liveexsam.co.jp/contact_sakamichi/",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "令和7年度 香川県子育て支援員研修 地域保育コース 共通科目3日目",
-      "date_from": "2026-08-19",
-      "date_to": "2026-08-19",
-      "source_url": "https://kagawa-arena.com/event/777/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": "無料",
-      "contact": "shien@npo-wahaha.net",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-08-22",
-      "date_to": "2026-08-22",
-      "source_url": "https://kagawa-arena.com/event/634/",
-      "open_time": "17:00",
-      "start_time": "21:00",
-      "end_time": "21:00",
-      "price": "無料",
-      "contact": "公式サイトよりお問い合わせください。",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "県下剣道選手権大会 （全日本剣道選手権大会県予選会）",
-      "date_from": "2026-08-23",
-      "date_to": "2026-08-23",
-      "source_url": "https://kagawa-arena.com/event/815/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": "なし",
-      "contact": "香川県剣道連盟",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "全日本居合道連盟四国地区練成会",
-      "date_from": "2026-08-23",
-      "date_to": "2026-08-24",
-      "source_url": "https://kagawa-arena.com/event/801/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": "無料",
-      "contact": "090-5913-8432",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-08-29",
-      "date_to": "2026-08-29",
-      "source_url": "https://kagawa-arena.com/event/635/",
-      "open_time": "17:00",
-      "start_time": "21:00",
-      "end_time": "21:00",
-      "price": "無料",
-      "contact": "公式サイトよりお問い合わせください。",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "全日本卓球選手権大会(カデットの部)香川県予選会",
-      "date_from": "2026-08-30",
-      "date_to": "2026-08-30",
-      "source_url": "https://kagawa-arena.com/event/710/",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "price": null,
-      "contact": "0879-52-3182",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "2025-26 プレシーズンゲーム 香川ファイブアローズ vs 千葉ジェッツ",
-      "date_from": "2026-08-30",
-      "date_to": "2026-08-30",
-      "source_url": "https://kagawa-arena.com/event/679/",
-      "open_time": null,
-      "start_time": "14:00",
-      "end_time": null,
-      "price": "2F自由席(大人) 2,500円 ～",
-      "contact": "t.fivearrows@gmail.com",
-      "source_type": "html",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "U18日清食品ブロックリーグバスケットボール競技大会",
-      "date_from": "2026-08-31",
-      "date_to": "2026-08-31",
-      "source_url": "https://kagawa-arena.com/event/838/",
-      "open_time": "11:30",
-      "start_time": "13:00",
-      "end_time": null,
-      "price": "無料",
-      "contact": "kba@kagawabasuketball.jp",
-      "source_type": "html",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free"
         ]
       }
     }
