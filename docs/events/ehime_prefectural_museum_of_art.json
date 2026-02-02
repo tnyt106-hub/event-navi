@@ -6,7 +6,7 @@
       "title": "エントランス展示",
       "date_from": "2025-12-23",
       "date_to": "2026-02-02",
-      "source_url": "https://www.ehime-art.jp/exhibition/",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/71d28805-0bfa-45c5-b339-50bc6e27d91a",
       "tags": {
         "type": "exhibition",
         "genres": [
@@ -231,6 +231,17 @@
       }
     },
     {
+      "title": "シルクスクリーン",
+      "date_from": "2026-02-07",
+      "date_to": "2026-02-07",
+      "source_url": "https://www.ehime-art.jp/event/info/e14da99e-978d-4b15-a6ee-2e2db391a825",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "フェルトボールをつくろう",
       "date_from": "2026-02-08",
       "date_to": "2026-02-22",
@@ -290,7 +301,7 @@
     {
       "title": "シルクスクリーンの刷り体験",
       "date_from": "2026-02-28",
-      "date_to": "2026-03-28",
+      "date_to": "2026-03-14",
       "source_url": "https://www.ehime-art.jp/event/info/77cc491a-7063-4965-b767-04ccde2183d3",
       "tags": {
         "type": "workshop",
@@ -301,21 +312,10 @@
       }
     },
     {
-      "title": "教育者としての杉浦非水の姿",
+      "title": "杉浦非水の教育者としての姿",
       "date_from": "2026-03-07",
       "date_to": "2026-03-07",
       "source_url": "https://www.ehime-art.jp/event/info/7ba37bbe-49bc-46b8-9ad8-0744a1c70833",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "みるキンWORK SHOP",
-      "date_from": "2026-03-29",
-      "date_to": "2026-03-29",
-      "source_url": "https://www.ehime-art.jp/event/info/ec474337-661f-432a-bef9-c6f00402b3e9",
       "tags": {
         "type": "other",
         "genres": [],
