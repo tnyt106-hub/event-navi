@@ -63,6 +63,28 @@ function extractMonthFromUrl(url) {
   }
 }
 
+// 月別一覧ページの URL を正規化して返す（対象外は null）。
+function normalizeMonthUrl(absUrl) {
+  try {
+    const parsedUrl = new URL(absUrl);
+    const match = parsedUrl.pathname.match(/^\/event\/date\/(\d{4})\/(\d{1,2})\/?$/);
+    if (!match) {
+      return null;
+    }
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    // month は 1..12 の範囲のみ許可する。
+    if (Number.isNaN(month) || month < 1 || month > 12) {
+      return null;
+    }
+    const monthPadded = String(month).padStart(2, "0");
+    // 正規化した URL はホストと末尾スラッシュを固定する。
+    return `https://www.kenbun.jp/event/date/${year}/${monthPadded}/`;
+  } catch (error) {
+    return null;
+  }
+}
+
 // 月が指定範囲にかかるか判定する。
 function isMonthInRange(year, month, start, end) {
   const monthStart = new Date(Date.UTC(year, month - 1, 1));
@@ -135,10 +157,10 @@ function extractMonthPageLinks(listHtml, currentUrl) {
     } catch (error) {
       continue;
     }
-    // pathname で月別一覧かどうかを厳密に判定する。
-    const pathname = new URL(absUrl).pathname;
-    if (/^\/event\/date\/\d{4}\/\d{1,2}\/?$/.test(pathname)) {
-      links.push(absUrl);
+    // URL を正規化して、月別一覧ページだけを集める。
+    const normalizedUrl = normalizeMonthUrl(absUrl);
+    if (normalizedUrl) {
+      links.push(normalizedUrl);
     }
   }
 
@@ -167,7 +189,7 @@ function extractDetailLinksFromList(listHtml) {
 // 一覧ページを巡回して HTML を集める（主にデバッグ用）。
 async function fetchAllListPages(seedUrl) {
   const visitedListUrls = new Set();
-  const queue = [seedUrl];
+  const queue = [];
   const listHtmls = [];
   const todayJst = buildTodayJst();
   const rangeStart = new Date(todayJst);
@@ -178,6 +200,28 @@ async function fetchAllListPages(seedUrl) {
   console.log(
     `[fetch] month_range: ${rangeStart.toISOString().slice(0, 7)} .. ${rangeEnd.toISOString().slice(0, 7)}`
   );
+
+  // 入口ページは 1 回だけ取得し、月別 URL をキューに積む。
+  try {
+    const seedHtml = await fetchText(seedUrl, { acceptEncoding: "identity", encoding: "utf-8" });
+    listHtmls.push(seedHtml);
+    const monthLinks = extractMonthPageLinks(seedHtml, seedUrl);
+    for (const absUrl of monthLinks) {
+      const monthInfo = extractMonthFromUrl(absUrl);
+      if (!monthInfo) {
+        continue;
+      }
+      if (!isMonthInRange(monthInfo.year, monthInfo.month, rangeStart, rangeEnd)) {
+        continue;
+      }
+      if (!visitedListUrls.has(absUrl)) {
+        queue.push(absUrl);
+      }
+    }
+  } catch (error) {
+    console.warn(`一覧取得に失敗: ${seedUrl} (${error.message})`);
+    return listHtmls;
+  }
 
   while (queue.length > 0) {
     if (visitedListUrls.size >= MAX_LIST_PAGES) {
@@ -222,7 +266,7 @@ async function fetchAllListPages(seedUrl) {
 // 一覧ページを巡回しながら詳細リンクを集める。
 async function fetchAllDetailLinks(seedUrl) {
   const visitedListUrls = new Set();
-  const queue = [seedUrl];
+  const queue = [];
   const detailLinks = new Set();
   let listLinks = 0;
   const todayJst = buildTodayJst();
@@ -234,6 +278,40 @@ async function fetchAllDetailLinks(seedUrl) {
   console.log(
     `[fetch] month_range: ${rangeStart.toISOString().slice(0, 7)} .. ${rangeEnd.toISOString().slice(0, 7)}`
   );
+
+  // 入口ページは 1 回だけ取得し、月別 URL をキューに積む。
+  try {
+    const seedHtml = await fetchText(seedUrl, { acceptEncoding: "identity", encoding: "utf-8" });
+    const monthLinks = extractMonthPageLinks(seedHtml, seedUrl);
+    for (const absUrl of monthLinks) {
+      const monthInfo = extractMonthFromUrl(absUrl);
+      if (!monthInfo) {
+        continue;
+      }
+      if (!isMonthInRange(monthInfo.year, monthInfo.month, rangeStart, rangeEnd)) {
+        continue;
+      }
+      if (!visitedListUrls.has(absUrl)) {
+        queue.push(absUrl);
+      }
+    }
+
+    const detailLinksFromSeed = extractDetailLinksFromList(seedHtml);
+    listLinks += detailLinksFromSeed.length;
+    for (const href of detailLinksFromSeed) {
+      let absUrl = "";
+      try {
+        absUrl = new URL(href, seedUrl).toString();
+      } catch (error) {
+        continue;
+      }
+      detailLinks.add(absUrl);
+    }
+  } catch (error) {
+    console.warn(`一覧取得に失敗: ${seedUrl} (${error.message})`);
+    lastListStats = { listPages: visitedListUrls.size, listLinks };
+    return detailLinks;
+  }
 
   while (queue.length > 0) {
     if (visitedListUrls.size >= MAX_LIST_PAGES) {
