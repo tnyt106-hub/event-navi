@@ -10,13 +10,9 @@ const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { writeJsonPretty } = require("./lib/io");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks } = require("./lib/text");
+const { decodeHtmlEntities, normalizeWhitespace, stripTags } = require("./lib/text");
 // イベント詳細 URL 判定の共通ヘルパー。
 const { isEventDetailUrl } = require("./lib/event_url");
-// HTML からイベントタイトルを抽出する共通ヘルパー。
-const { extractEventTitleFromDetailHtml } = require("./lib/event_title");
-// 価格・問い合わせ情報の正規化ヘルパー。
-const { normalizePrice, normalizeContact } = require("./lib/event_fields");
 // source_url の重複を排除するヘルパー。
 const { dedupeEventsBySourceUrl } = require("./lib/dedupe");
 
@@ -52,30 +48,51 @@ function extractDate(text) {
   return toIsoDate(match[1], match[2], match[3]);
 }
 
-// 詳細 HTML の「イベント開催期間」から開始日・終了日を抽出する。
-function extractDateRangeFromDetailHtml(detailHtml) {
-  const text = decodeHtmlEntities(detailHtml)
-    // 全角数字を半角に揃えて日付パターンを安定させる。
-    .replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0))
-    // 余分な空白をまとめて HTML 断片の検索をしやすくする。
-    .replace(/\s+/g, " ");
+// <dl class="dl_postevent"> 内の dt/dd を Map 化する。
+function buildDetailMap(detailHtml) {
+  const map = new Map();
+  if (!detailHtml) return map;
 
-  // <dt>イベント開催期間</dt> に対応する <dd> からテキストを抜き出す。
-  const match = /イベント開催期間<\/dt>\s*<dd>(.*?)<\/dd>/.exec(text);
-  if (!match) return null;
+  // dl_postevent ブロックを抽出して、その中の dt/dd を 1:1 で対応付ける。
+  const dlRegex = /<dl class="dl_postevent[^"]*">[\s\S]*?<\/dl>/g;
+  for (const dlMatch of detailHtml.matchAll(dlRegex)) {
+    const dlHtml = dlMatch[0];
+    const pairRegex = /<dt>([\s\S]*?)<\/dt>\s*<dd>([\s\S]*?)<\/dd>/g;
+    for (const pair of dlHtml.matchAll(pairRegex)) {
+      const key = normalizeWhitespace(decodeHtmlEntities(stripTags(pair[1])));
+      const value = normalizeWhitespace(decodeHtmlEntities(stripTags(pair[2])));
+      if (key) {
+        map.set(key, value);
+      }
+    }
+  }
 
-  const body = match[1];
+  return map;
+}
 
-  // 年付きの年月日をすべて拾い、範囲があれば開始/終了に使う。
-  const dateMatches = [...body.matchAll(/(\d{4})年(\d{1,2})月(\d{1,2})日/g)];
+// <h3 class="h3_title01"> の innerText をタイトルとして抽出する。
+function extractTitleFromDetailHtml(detailHtml) {
+  if (!detailHtml) return "";
+  const match = /<h3 class="h3_title01[^"]*">([\s\S]*?)<\/h3>/i.exec(detailHtml);
+  if (!match) return "";
+  return normalizeWhitespace(decodeHtmlEntities(stripTags(match[1])));
+}
+
+// Map から「イベント開催期間」を取り出して日付範囲を作る。
+function extractDateRangeFromMap(detailMap) {
+  const dateText = detailMap.get("イベント開催期間");
+  if (!dateText) return null;
+
+  const normalized = normalizeJapaneseText(normalizeWhitespace(dateText));
+  const dateMatches = [...normalized.matchAll(/(\d{4})年(\d{1,2})月(\d{1,2})日/g)];
   if (dateMatches.length === 0) return null;
 
   const start = dateMatches[0];
-  const end = dateMatches[1] || start;
+  const end = dateMatches[dateMatches.length - 1];
 
   return {
-    date_from: `${start[1]}-${String(start[2]).padStart(2, "0")}-${String(start[3]).padStart(2, "0")}`,
-    date_to: `${end[1]}-${String(end[2]).padStart(2, "0")}-${String(end[3]).padStart(2, "0")}`,
+    date_from: toIsoDate(start[1], start[2], start[3]),
+    date_to: toIsoDate(end[1], end[2], end[3]),
   };
 }
 
@@ -172,8 +189,8 @@ function formatBody(text) {
 }
 
 // body を入れるべきか判定する。
-function shouldIncludeBody({ openTime, startTime, endTime, price, contact }) {
-  return !openTime && !startTime && !endTime && !price && !contact;
+function shouldIncludeBody({ startTime, endTime, price, contact }) {
+  return !startTime && !endTime && !price && !contact;
 }
 
 // JST の今日を基準に、過去/未来 1 年の範囲を作る。
@@ -242,26 +259,28 @@ function extractDetailLinks(html) {
 
 // 詳細 HTML からイベント情報を抽出する。
 function extractEventFromDetail(detailHtml, detailUrl) {
-  const textWithBreaks = decodeHtmlEntities(stripTagsWithLineBreaks(detailHtml));
-  const lines = textWithBreaks
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter((line) => line.length > 0);
+  // dl_postevent の dt/dd を HTML 構造ベースで読み取り、マップを作る。
+  const detailMap = buildDetailMap(detailHtml);
 
-  const title = extractEventTitleFromDetailHtml(detailHtml);
+  // タイトルは h3.h3_title01 の innerText を使う。
+  const title = extractTitleFromDetailHtml(detailHtml);
   // 詳細ページの「イベント開催期間」から日付範囲を取得する。
-  const range = extractDateRangeFromDetailHtml(detailHtml);
+  const range = extractDateRangeFromMap(detailMap);
 
   if (!title || !range) {
     return null;
   }
 
-  const openTime = extractTimeByLabels(lines, ["開場"]);
-  const startTime = extractTimeByLabels(lines, ["開演", "開始"]);
-  const endTime = extractTimeByLabels(lines, ["終演", "終了"]);
+  // 「時間」から HH:MM を抽出し、先頭と末尾を開始/終了時刻として使う。
+  const timeText = detailMap.get("時間") || "";
+  const timeMatches = [...normalizeJapaneseText(timeText).matchAll(/(\d{1,2}):(\d{2})/g)];
+  const startTime = timeMatches[0] ? parseTimeCandidate(timeMatches[0][0]) : null;
+  const endTime =
+    timeMatches.length >= 2 ? parseTimeCandidate(timeMatches[timeMatches.length - 1][0]) : null;
 
-  const price = normalizePrice(extractLabeledValue(lines, ["料金", "参加費", "入場料"]));
-  const contact = normalizeContact(extractLabeledValue(lines, ["問い合わせ", "お問い合わせ", "連絡先"]));
+  // 入場料・問い合わせは対応する dd をそのまま使う。
+  const price = detailMap.get("入場料") || "";
+  const contact = detailMap.get("お問合せ先") || "";
 
   const event = {
     title,
@@ -270,14 +289,14 @@ function extractEventFromDetail(detailHtml, detailUrl) {
     source_url: detailUrl,
   };
 
-  if (openTime) event.open_time = openTime;
   if (startTime) event.start_time = startTime;
   if (endTime) event.end_time = endTime;
   if (price) event.price = price;
   if (contact) event.contact = contact;
 
-  if (shouldIncludeBody({ openTime, startTime, endTime, price, contact })) {
-    const formattedBody = formatBody(textWithBreaks);
+  if (shouldIncludeBody({ startTime, endTime, price, contact })) {
+    const rawBodyText = decodeHtmlEntities(stripTags(detailHtml));
+    const formattedBody = formatBody(rawBodyText);
     if (formattedBody) {
       event.body = formattedBody;
     }
