@@ -52,6 +52,33 @@ function extractDate(text) {
   return toIsoDate(match[1], match[2], match[3]);
 }
 
+// 詳細 HTML の「イベント開催期間」から開始日・終了日を抽出する。
+function extractDateRangeFromDetailHtml(detailHtml) {
+  const text = decodeHtmlEntities(detailHtml)
+    // 全角数字を半角に揃えて日付パターンを安定させる。
+    .replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0))
+    // 余分な空白をまとめて HTML 断片の検索をしやすくする。
+    .replace(/\s+/g, " ");
+
+  // <dt>イベント開催期間</dt> に対応する <dd> からテキストを抜き出す。
+  const match = /イベント開催期間<\/dt>\s*<dd>(.*?)<\/dd>/.exec(text);
+  if (!match) return null;
+
+  const body = match[1];
+
+  // 年付きの年月日をすべて拾い、範囲があれば開始/終了に使う。
+  const dateMatches = [...body.matchAll(/(\d{4})年(\d{1,2})月(\d{1,2})日/g)];
+  if (dateMatches.length === 0) return null;
+
+  const start = dateMatches[0];
+  const end = dateMatches[1] || start;
+
+  return {
+    date_from: `${start[1]}-${String(start[2]).padStart(2, "0")}-${String(start[3]).padStart(2, "0")}`,
+    date_to: `${end[1]}-${String(end[2]).padStart(2, "0")}-${String(end[3]).padStart(2, "0")}`,
+  };
+}
+
 // 時刻表現を HH:MM 形式として解釈する。
 function parseTimeCandidate(value) {
   if (!value) return null;
@@ -220,12 +247,12 @@ function extractEventFromDetail(detailHtml, detailUrl) {
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter((line) => line.length > 0);
-  const plainText = normalizeWhitespace(textWithBreaks);
 
   const title = extractEventTitleFromDetailHtml(detailHtml);
-  const dateFrom = extractDate(plainText);
+  // 詳細ページの「イベント開催期間」から日付範囲を取得する。
+  const range = extractDateRangeFromDetailHtml(detailHtml);
 
-  if (!title || !dateFrom) {
+  if (!title || !range) {
     return null;
   }
 
@@ -238,8 +265,8 @@ function extractEventFromDetail(detailHtml, detailUrl) {
 
   const event = {
     title,
-    date_from: dateFrom,
-    date_to: dateFrom,
+    date_from: range.date_from,
+    date_to: range.date_to,
     source_url: detailUrl,
   };
 
