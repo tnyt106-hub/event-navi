@@ -68,6 +68,14 @@
       "outputs": ["docs/events/kenbun.json"]
     },
     {
+      "id": "fetch-itemehime",
+      "name": "fetch-itemehime",
+      "script": "scripts/fetch-itemehime.js",
+      "command": "node scripts/fetch-itemehime.js",
+      "enabled": true,
+      "outputs": ["docs/events/itemehime.json"]
+    },
+    {
       "id": "filter-old-events",
       "script": "scripts/filter-old-events.js",
       "enabled": true,
