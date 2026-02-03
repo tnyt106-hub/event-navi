@@ -223,7 +223,7 @@ function parseEventsFromFragment(fragment, dateIso, baseUrl) {
   };
   // HTML断片を「<span class='e_icon'」または「<span'」を起点に分割して、
   // 各イベントブロックから最低限の情報を取り出す。
-  const blockStartRegex = /<span[^>]*class=['"]?e_icon[^>]*>|<span[^>]*>/g;
+  const blockStartRegex = /<span[^>]*class=['"][^"']*\be_icon\b[^"']*['"][^>]*>/gi;
   const blockStartMatches = [...fragment.matchAll(blockStartRegex)];
   const blocks = [];
 
