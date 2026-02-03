@@ -1,0 +1,189 @@
+{
+  "venue_id": "itemehime",
+  "last_success_at": "2026-02-03",
+  "events": [
+    {
+      "title": "第231回 えひめ青空市場",
+      "date_from": "2026-03-29",
+      "date_to": "2026-03-29",
+      "source_url": "https://itemehime.com/event/sale/2026/03/6457/",
+      "start_time": "10:00",
+      "end_time": "15:00",
+      "price": "無料",
+      "contact": "089-953-0130",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "お仕事フェスタ2026",
+      "date_from": "2026-03-07",
+      "date_to": "2026-03-07",
+      "source_url": "https://itemehime.com/event/event-other/2026/03/6412/",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "price": "無料",
+      "contact": "一般社団法人愛媛県専修学校各種学校連合会 お仕事フェスタ2026予約係 （学校法人河原学園 本部内）電話番号089-935-4510 メールアドレスoshifes@kawahara.ac.jp",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "マイナビ 就職セミナー 松山会場",
+      "date_from": "2026-03-03",
+      "date_to": "2026-03-03",
+      "source_url": "https://itemehime.com/event/event-other/2026/03/6366/",
+      "start_time": "13:00",
+      "end_time": "17:00",
+      "price": "無料",
+      "contact": "【メール】csk-event3@mynavi.jp",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "全国くらしの器フェア in 愛媛 2026",
+      "date_from": "2026-02-20",
+      "date_to": "2026-02-20",
+      "source_url": "https://itemehime.com/event/sale/2026/02/6223/",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "price": "当日券500円・アソビューの前売り購入で400円（11月１日よりアソビュー前売券発売） ※招待ハガキ持参者・中学生以下は無料 ※アソビューチケットはこちら→https://www.asoview.com/channel/tickets/lmYwosU79h",
+      "contact": "089-953-0130",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "えひめハンドメイド雑貨フェア 2026",
+      "date_from": "2026-02-21",
+      "date_to": "2026-02-21",
+      "source_url": "https://itemehime.com/event/sale/2026/02/6233/",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "price": "当日券500円・アソビューの前売り購入で400円（11月１日よりアソビュー前売券発売） ※招待ハガキ持参者・中学生以下は無料 ※アソビューチケットはこちら→https://www.asoview.com/channel/tickets/lmYwosU79h",
+      "contact": "089-953-0130",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "お宝なんでも鑑定会",
+      "date_from": "2026-02-14",
+      "date_to": "2026-02-14",
+      "source_url": "https://itemehime.com/event/event-other/2026/02/6478/",
+      "start_time": "11:00",
+      "end_time": "15:00",
+      "price": "無料",
+      "contact": "【電話】０１２０ー５１８－１００ 【メール】info@hongou.jp",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "第33回 愛媛輸入車ショウ2026",
+      "date_from": "2026-02-14",
+      "date_to": "2026-02-14",
+      "source_url": "https://itemehime.com/event/exhibition/2026/02/6466/",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "price": "無料",
+      "contact": "愛媛輸入車ショウ事務局（スタッグ内）TEL:089-915-2113（月曜～金曜 10時～18時 ※祝日を除く） Email: info@stag-ehime.jp",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "おでかけライブin愛媛174",
+      "date_from": "2026-01-18",
+      "date_to": "2026-01-18",
+      "source_url": "https://itemehime.com/event/sale/2026/01/6341/",
+      "start_time": "11:30",
+      "end_time": "15:30",
+      "price": "有料 料金詳細：パンフレット代 900円",
+      "contact": "お問合せフォーム→https://www.youyou.co.jp/contact/ メールアドレス→abvert@youmedia.net",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第230回 えひめ青空市場",
+      "date_from": "2025-12-14",
+      "date_to": "2025-12-14",
+      "source_url": "https://itemehime.com/event/sale/2025/12/6124/",
+      "start_time": "10:00",
+      "end_time": "15:00",
+      "price": "無料",
+      "contact": "089-953-0130",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "製造業者様向け IT、IoTソリューション展 ＆暑熱対策展",
+      "date_from": "2025-12-12",
+      "date_to": "2025-12-12",
+      "source_url": "https://itemehime.com/event/exhibition/2025/12/6321/",
+      "start_time": "09:00",
+      "end_time": "17:00",
+      "price": "無料",
+      "contact": "四国三菱電機販売株式会社 愛媛支店 【ＴＥＬ】（０８９）－９９４－５０５０",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    }
+  ]
+}
