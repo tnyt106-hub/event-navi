@@ -26,6 +26,14 @@ const MAX_BODY_LENGTH = 5000;
 const BODY_TRUNCATION_SUFFIX = "…";
 // JST の日付を作るためのオフセット。
 const JST_OFFSET_HOURS = 9;
+// 詳細ページ取得の同時実行数（負荷が高ければ 2 に下げられる）。
+const DETAIL_CONCURRENCY = 3;
+// 詳細取得の再試行回数（初回失敗後に最大 2 回まで）。
+const DETAIL_RETRY = 2;
+// 再試行時のベース待機時間（指数バックオフの基準）。
+const DETAIL_RETRY_BASE_DELAY_MS = 500;
+// 連続アクセスを避けるためのジッター。
+const DETAIL_JITTER_MS = 200;
 
 let lastListStats = { listPages: 0, listLinks: 0 };
 
@@ -44,6 +52,43 @@ function buildTodayJst() {
   const now = new Date();
   const jstNow = new Date(now.getTime() + JST_OFFSET_HOURS * 60 * 60 * 1000);
   return new Date(Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()));
+}
+
+// 指定ミリ秒だけ待機する。
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+// リトライ対象かどうかを HTTP ステータスから判定する。
+function shouldRetryDetailFetch(error) {
+  if (!error || !error.message) {
+    return true;
+  }
+  const match = error.message.match(/HTTP\s+(\d+)/);
+  if (!match) {
+    return true;
+  }
+  const statusCode = Number(match[1]);
+  return statusCode === 429 || (statusCode >= 500 && statusCode < 600);
+}
+
+// 詳細取得のリトライ付きラッパー。
+async function fetchTextWithRetry(url) {
+  for (let attempt = 0; attempt <= DETAIL_RETRY; attempt += 1) {
+    try {
+      return await fetchText(url, { acceptEncoding: "identity", encoding: "utf-8" });
+    } catch (error) {
+      if (attempt >= DETAIL_RETRY || !shouldRetryDetailFetch(error)) {
+        throw error;
+      }
+      const delayMs = DETAIL_RETRY_BASE_DELAY_MS * 2 ** attempt + Math.random() * DETAIL_JITTER_MS;
+      console.warn(`[warn] detail retry ${attempt + 1}/${DETAIL_RETRY} (${url}): ${error.message}`);
+      await sleep(delayMs);
+    }
+  }
+  return "";
 }
 
 // 月別一覧ページの URL から年・月を抽出する。
@@ -569,33 +614,63 @@ async function main() {
     console.log(`[fetch] list_pages: ${lastListStats.listPages}`);
     console.log(`[fetch] list_links: ${lastListStats.listLinks}`);
     console.log(`[fetch] detail_links_unique: ${detailLinks.size}`);
+    console.log(`[fetch] detail_concurrency: ${DETAIL_CONCURRENCY}`);
 
     const events = [];
+    let currentIndex = 0;
+    const totalLinks = detailLinksList.length;
 
-    // 詳細ページ取得は逐次処理で安全に行う。
-    for (const detailUrl of detailLinksList) {
-      let normalizedUrl = "";
-      try {
-        normalizedUrl = new URL(detailUrl).toString();
-      } catch (error) {
-        excludedInvalid += 1;
-        continue;
+    // 共有インデックスから次の URL を取り出す。
+    const pickNextDetailUrl = () => {
+      if (currentIndex >= totalLinks) {
+        return null;
       }
+      const url = detailLinksList[currentIndex];
+      currentIndex += 1;
+      return url;
+    };
 
-      try {
-        const detailHtml = await fetchText(normalizedUrl, { acceptEncoding: "identity", encoding: "utf-8" });
-        detailFetchSuccess += 1;
-        const event = buildEventFromDetail(detailHtml, normalizedUrl);
-        if (!event) {
+    // 詳細ページ取得は同時数制限付きで並列処理する。
+    const worker = async (workerId) => {
+      for (;;) {
+        const detailUrl = pickNextDetailUrl();
+        if (!detailUrl) {
+          break;
+        }
+
+        let normalizedUrl = "";
+        try {
+          normalizedUrl = new URL(detailUrl).toString();
+        } catch (error) {
           excludedInvalid += 1;
           continue;
         }
-        events.push(event);
-      } catch (error) {
-        detailFetchFailed += 1;
-        console.warn(`詳細取得に失敗: ${normalizedUrl} (${error.message})`);
+
+        // 取得前に小さな待機を挟み、アクセス集中を避ける。
+        await sleep(Math.random() * DETAIL_JITTER_MS);
+
+        try {
+          const detailHtml = await fetchTextWithRetry(normalizedUrl);
+          detailFetchSuccess += 1;
+          const event = buildEventFromDetail(detailHtml, normalizedUrl);
+          if (!event) {
+            excludedInvalid += 1;
+            continue;
+          }
+          events.push(event);
+        } catch (error) {
+          detailFetchFailed += 1;
+          console.warn(`詳細取得に失敗: ${normalizedUrl} (${error.message})`);
+        } finally {
+          // 取得後にもジッターを入れて連続アクセスを緩和する。
+          await sleep(Math.random() * DETAIL_JITTER_MS);
+        }
       }
-    }
+    };
+
+    // 指定された同時数だけワーカーを起動する。
+    const workers = Array.from({ length: DETAIL_CONCURRENCY }, (_, index) => worker(index));
+    await Promise.all(workers);
 
     const dedupedEvents = dedupeEvents(events);
     const eventsBuilt = dedupedEvents.length;
