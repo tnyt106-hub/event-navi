@@ -11,6 +11,14 @@ const { fetchText } = require("./lib/http");
 const { writeJsonPretty } = require("./lib/io");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks } = require("./lib/text");
+// イベント詳細 URL 判定の共通ヘルパー。
+const { isEventDetailUrl } = require("./lib/event_url");
+// HTML からイベントタイトルを抽出する共通ヘルパー。
+const { extractEventTitleFromDetailHtml } = require("./lib/event_title");
+// 価格・問い合わせ情報の正規化ヘルパー。
+const { normalizePrice, normalizeContact } = require("./lib/event_fields");
+// source_url の重複を排除するヘルパー。
+const { dedupeEventsBySourceUrl } = require("./lib/dedupe");
 
 const VENUE_ID = "itemehime";
 const LIST_URL = "https://itemehime.com/event/";
@@ -42,37 +50,6 @@ function extractDate(text) {
   const match = /(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/.exec(normalized);
   if (!match) return null;
   return toIsoDate(match[1], match[2], match[3]);
-}
-
-// HTML からタイトルを抽出する（h1 → h2 → title → fallback の順）。
-function extractTitleFromHtml(html) {
-  const headingTags = ["h1", "h2"];
-  for (const tag of headingTags) {
-    const regex = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i");
-    const match = regex.exec(html);
-    if (match) {
-      const headingText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(match[1])));
-      if (headingText) {
-        return headingText;
-      }
-    }
-  }
-
-  const titleMatch = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(html);
-  if (titleMatch) {
-    const titleText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(titleMatch[1])));
-    if (titleText) {
-      return titleText;
-    }
-  }
-
-  const plainText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(html)));
-  if (!plainText) return "";
-  const maxLength = 60;
-  if (plainText.length > maxLength) {
-    return `${plainText.slice(0, maxLength)}…`;
-  }
-  return plainText;
 }
 
 // 時刻表現を HH:MM 形式として解釈する。
@@ -203,9 +180,6 @@ function extractDetailLinks(html) {
     if (!href) {
       continue;
     }
-    if (!href.includes("/event/")) {
-      continue;
-    }
 
     let absoluteUrl = "";
     try {
@@ -214,19 +188,15 @@ function extractDetailLinks(html) {
       continue;
     }
 
-    try {
-      const url = new URL(absoluteUrl);
-      if (url.pathname === "/event/") {
-        continue;
-      }
-      if (url.pathname.includes("/event/page/")) {
-        continue;
-      }
-    } catch (error) {
-      continue;
+    // /event/ を含むリンクは集計にカウントする。
+    if (absoluteUrl.includes("/event/")) {
+      listLinks += 1;
     }
 
-    listLinks += 1;
+    // イベント詳細ページと判定できない URL は除外する。
+    if (!isEventDetailUrl(absoluteUrl)) {
+      continue;
+    }
 
     if (seen.has(absoluteUrl)) {
       continue;
@@ -252,7 +222,7 @@ function extractEventFromDetail(detailHtml, detailUrl) {
     .filter((line) => line.length > 0);
   const plainText = normalizeWhitespace(textWithBreaks);
 
-  const title = extractTitleFromHtml(detailHtml);
+  const title = extractEventTitleFromDetailHtml(detailHtml);
   const dateFrom = extractDate(plainText);
 
   if (!title || !dateFrom) {
@@ -263,8 +233,8 @@ function extractEventFromDetail(detailHtml, detailUrl) {
   const startTime = extractTimeByLabels(lines, ["開演", "開始"]);
   const endTime = extractTimeByLabels(lines, ["終演", "終了"]);
 
-  const price = extractLabeledValue(lines, ["料金", "参加費", "入場料"]);
-  const contact = extractLabeledValue(lines, ["問い合わせ", "お問い合わせ", "連絡先"]);
+  const price = normalizePrice(extractLabeledValue(lines, ["料金", "参加費", "入場料"]));
+  const contact = normalizeContact(extractLabeledValue(lines, ["問い合わせ", "お問い合わせ", "連絡先"]));
 
   const event = {
     title,
@@ -318,7 +288,7 @@ async function main() {
     listLinks = detailLinkResult.listLinks;
     detailLinksUnique = detailLinkResult.detailLinksUnique;
 
-    const eventsMap = new Map();
+    const events = [];
     const range = buildJstRange();
 
     // 詳細ページは逐次取得して、負荷とログの追跡を安定させる。
@@ -337,30 +307,28 @@ async function main() {
           excludedInvalid += 1;
           continue;
         }
-        if (!eventsMap.has(event.source_url)) {
-          eventsMap.set(event.source_url, event);
-        }
+        events.push(event);
       } catch (error) {
         detailFetchFailed += 1;
         console.warn(`詳細取得に失敗: ${detailUrl} (${error.message})`);
       }
     }
 
-    const events = Array.from(eventsMap.values());
+    const dedupedEvents = dedupeEventsBySourceUrl(events);
 
     console.log(`[fetch] list_links: ${listLinks}`);
     console.log(`[fetch] detail_links_unique: ${detailLinksUnique}`);
     console.log(`[fetch] excluded_invalid: ${excludedInvalid}`);
     console.log(`[fetch] detail_fetch_failed: ${detailFetchFailed}`);
-    console.log(`[fetch] events_built: ${events.length}`);
+    console.log(`[fetch] events_built: ${dedupedEvents.length}`);
     console.log(`[fetch] output_path: ${OUTPUT_PATH}`);
 
-    if (events.length === 0) {
+    if (dedupedEvents.length === 0) {
       process.exit(1);
       return;
     }
 
-    saveEventsFile(events);
+    saveEventsFile(dedupedEvents);
   } catch (error) {
     console.error(`失敗: ${error.message}`);
     process.exit(1);
