@@ -110,13 +110,13 @@
   {
   "name": "アイテムえひめ（愛媛国際貿易センター）",
   "spot_id": "itemehime",
-  "lat": 33.85802,
-  "lng": 132.71714,
+  "lat": 33.85009,
+  "lng": 132.71497,
   "category": "展示・見本市会場",
   "prefecture": "愛媛県",
   "municipality": "松山市",
   "official_url": "https://itemehime.com/",
   "description": "愛媛県松山市にある四国最大級の展示・見本市施設です。広大な大展示場やFAZプラザ、会議室を備え、大規模な展示会や物産展、即売会、コンサートなど多目的なイベントに対応しています。",
-  "source": "https://itemehime.com/about/"
+  "source": "https://itemehime.com/event"
 }
 ]
