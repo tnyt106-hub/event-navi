@@ -2,7 +2,6 @@
 // リスト形式のイベント情報を抽出して JSON に保存するバッチ。
 // 使い方: node scripts/fetch-kagawa_pref_museum.js
 
-const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 
@@ -92,6 +91,21 @@ function extractTitleAndUrl(blockHtml) {
   const anchorMatch = blockHtml.match(/<a[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/i);
   const url = anchorMatch ? anchorMatch[1].trim() : "";
   const title = anchorMatch ? stripTags(anchorMatch[2]).replace(/\s+/g, " ").trim() : "";
+
+  // イベント詳細ページ以外のリンクはノイズなので除外する。
+  // （例: ページ内アンカー、カテゴリリンク、トップページなど）
+  if (!url) {
+    return { title: "", url: "" };
+  }
+  const isEventUrl = /\/kmuseum\/kmuseum\/event\/07event\//.test(url);
+  const isExcluded =
+    url.startsWith("#") ||
+    /^mailto:|^tel:/i.test(url) ||
+    /\/07event\/07event\.html$/.test(url);
+  if (!isEventUrl || isExcluded) {
+    return { title: "", url: "" };
+  }
+
   return { title, url };
 }
 
@@ -147,6 +161,11 @@ function parseDateRange(text, currentYear) {
     const startDate = resolveDate(dateParts[0], startYear);
     const endDate = resolveDate(dateParts[1], startYear);
     if (!startDate || !endDate) return null;
+    // 終了日が開始日より前なら単発扱いに倒して安全側にする。
+    if (endDate < startDate) {
+      console.warn("日付レンジが逆転しているため単発扱いに補正します。");
+      return { startDate, endDate: startDate };
+    }
     return { startDate, endDate };
   }
 
@@ -183,6 +202,10 @@ async function main() {
       const decoded = decodeHtmlEntities(block);
       const plainText = stripTags(decoded).replace(/\s+/g, " ").trim();
       const { title, url } = extractTitleAndUrl(decoded);
+      // source_url が無いものはイベント扱いしない。
+      if (!url) {
+        continue;
+      }
       const parsed = parseDateRange(plainText, currentYear);
 
       if (!parsed) {
@@ -197,18 +220,26 @@ async function main() {
         continue;
       }
 
-      const resolvedTitle = title || plainText;
+      // タイトルはリンクテキストのみ採用する。
+      const resolvedTitle = title;
       if (!resolvedTitle) {
         continue;
       }
 
       dateFromCount += 1;
 
+      // source_url が null になる場合はログを残してスキップする。
+      const sourceUrl = toAbsoluteUrl(url, ENTRY_URL);
+      if (!sourceUrl) {
+        console.warn("source_url が null になったためイベントをスキップします。");
+        continue;
+      }
+
       events.push({
         title: resolvedTitle,
         date_from: dateFrom,
         date_to: dateTo,
-        source_url: toAbsoluteUrl(url, ENTRY_URL),
+        source_url: sourceUrl,
         tags: null,
       });
     }
