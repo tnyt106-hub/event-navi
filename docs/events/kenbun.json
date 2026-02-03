@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-02-02",
+  "last_success_at": "2026-02-03",
   "events": [
     {
       "title": "宮本浩次 tour2026 新しい旅",
@@ -5190,36 +5190,6 @@
         "genres": [
           "art"
         ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "ホールdeレッスン",
-      "date_from": "2025-02-02",
-      "date_to": "2025-02-02",
-      "source_url": "https://www.kenbun.jp/event/1399/",
-      "start_time": "10:00",
-      "end_time": "19:00",
-      "price": "有料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "EHIME DANCE FESTIVAL 2025",
-      "date_from": "2025-02-02",
-      "date_to": "2025-02-02",
-      "source_url": "https://www.kenbun.jp/event/1152/",
-      "open_time": "11:00",
-      "start_time": "11:30",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": [
           "free"
         ]

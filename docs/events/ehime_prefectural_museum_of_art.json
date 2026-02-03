@@ -3,19 +3,6 @@
   "venue_name": "愛媛県美術館",
   "events": [
     {
-      "title": "エントランス展示",
-      "date_from": "2025-12-23",
-      "date_to": "2026-02-02",
-      "source_url": "https://www.ehime-art.jp/exhibition/detail/71d28805-0bfa-45c5-b339-50bc6e27d91a",
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": []
-      }
-    },
-    {
       "title": "みる冒険 オノマトペで楽しむ 2025年度Ⅴ期",
       "date_from": "2026-01-27",
       "date_to": "2026-04-19",
@@ -34,6 +21,19 @@
       "tags": {
         "type": "other",
         "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "エントランス展示",
+      "date_from": "2025-12-23",
+      "date_to": "2026-02-02",
+      "source_url": "https://www.ehime-art.jp/exhibition/detail/71d28805-0bfa-45c5-b339-50bc6e27d91a",
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
         "flags": []
       }
     },

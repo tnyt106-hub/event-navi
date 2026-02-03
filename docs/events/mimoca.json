@@ -1,6 +1,6 @@
 {
   "venue_id": "mimoca",
-  "last_success_at": "2026-02-02",
+  "last_success_at": "2026-02-03",
   "events": [
     {
       "title": "キュレーター・トーク",
@@ -132,6 +132,23 @@
         ],
         "flags": [
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "キュレーター・トーク",
+      "date_from": "2026-03-01",
+      "date_to": "2026-03-01",
+      "source_url": "https://www.mimoca.jp/events/260301ueno_ct/",
+      "price": "無料（別途、本展観覧券が必要です）",
+      "contact": "Tel: 0877-24-7755 Fax: 0877-24-7766",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": [
+          "free"
         ]
       }
     }
