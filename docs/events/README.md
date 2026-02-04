@@ -31,12 +31,9 @@ JSON 形式はコメントを書けないため、各項目の意味や使い方
 - `venue_name`
   - 会場名です。
 - `description`
-  - 短い概要です。
+  - 短い概要です。不明な場合は `null` にします。
 - `body`
-  - 詳細本文です。
-- `status`
-  - イベント状態です。
-  - 例: `finished`
+  - 詳細本文です。不明な場合は `null` にします。
 - `source_url`
   - 情報の取得元 URL です。
 - `open_time`
