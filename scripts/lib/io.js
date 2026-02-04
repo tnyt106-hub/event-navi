@@ -9,6 +9,22 @@ function writeJsonPretty(filePath, obj) {
   fs.writeFileSync(filePath, json, "utf8");
 }
 
+// JSON 保存前に 0 件を検知してスキップする。
+function saveEventJson(path, data) {
+  const events = Array.isArray(data) ? data : data?.events;
+  const count = Array.isArray(events) ? events.length : 0;
+
+  if (!events || count === 0) {
+    console.warn(`[SKIP] データの件数が0件のため、${path} の更新をスキップしました。`);
+    return false;
+  }
+
+  writeJsonPretty(path, data);
+  console.log(`[SUCCESS] ${count} 件のデータを ${path} に保存しました。`);
+  return true;
+}
+
 module.exports = {
   writeJsonPretty,
+  saveEventJson,
 };
