@@ -131,7 +131,13 @@ async function fetchText(url, options = {}) {
   return text;
 }
 
+// HTML テキスト取得の別名（呼び出し側の用途を明示するため）。
+async function fetchHtml(url, options = {}) {
+  return fetchText(url, options);
+}
+
 module.exports = {
+  fetchHtml,
   fetchText,
   fetchTextWithMeta,
 };
