@@ -433,7 +433,7 @@ function renderDateIndexPage(dateEntries, adHtml) {
     const summaryHtml = summaryItems
       ? `\n      <ul class="date-index__summary">\n${summaryItems}\n      </ul>`
       : "";
-    return `    <li class="date-index__item"><a href="./${dateKey}/">${escapeHtml(dateLabel)}</a>（${escapeHtml(countText)}）${summaryHtml}</li>`;
+    return `    <li class="date-index__item"><a href="./${dateKey}/">${escapeHtml(dateLabel)}（${escapeHtml(countText)}）</a>${summaryHtml}</li>`;
   }).join("\n");
 
   return (
