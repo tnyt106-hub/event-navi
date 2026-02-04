@@ -118,5 +118,17 @@
   "official_url": "https://itemehime.com/",
   "description": "愛媛県松山市にある四国最大級の展示・見本市施設です。広大な大展示場やFAZプラザ、会議室を備え、大規模な展示会や物産展、即売会、コンサートなど多目的なイベントに対応しています。",
   "source": "https://itemehime.com/event"
+},
+  {
+  "name": "愛媛県武道館",
+  "spot_id": "ehime-budoukan",
+  "lat": 33.81084,
+  "lng": 132.74547,
+  "category": "武道館",
+  "prefecture": "愛媛県",
+  "municipality": "松山市",
+  "official_url": "https://ehime-spa.jp/budoukan/",
+  "description": "松山市の松山総合公園（市坪）内にある日本最大級の武道館。武道だけでなくコンサートや式典など多目的に利用されます。",
+  "source": "https://ehime-spa.jp/budoukan/martial-event/"
 }
 ]
