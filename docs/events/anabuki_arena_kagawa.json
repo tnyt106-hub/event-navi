@@ -22,6 +22,25 @@
       }
     },
     {
+      "title": "平井卓也総決起大会",
+      "date_from": "2026-02-04",
+      "date_to": "2026-02-04",
+      "source_url": "https://kagawa-arena.com/event/1127/",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": null,
+      "price": null,
+      "contact": "平井卓也事務所\r\n０８７－８２６－２８１１",
+      "source_type": "rest_api",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
       "title": "プラセール フットサルスクール",
       "date_from": "2026-02-04",
       "date_to": "2026-02-04",
