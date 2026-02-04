@@ -1,0 +1,26 @@
+{
+  "venue_id": "marugame_ilex",
+  "last_success_at": "2026-02-04",
+  "events": [
+    {
+      "title": "イベントタイトル",
+      "date_from": "2025-04-27",
+      "date_to": "2025-04-27",
+      "venue_name": "丸亀市綾歌総合文化会館アイレックス 大ホール",
+      "description": "イベント概要の短い説明を入れます。",
+      "body": "イベント詳細の本文を入れます。",
+      "status": "finished",
+      "source_url": "https://www.marugame-ilex.org/event/eve_1/index.html#no250427",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "price": null,
+      "contact": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }
+  ]
+}
