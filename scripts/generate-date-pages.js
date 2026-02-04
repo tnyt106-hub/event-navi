@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 // 出力対象のサイト名（title と h1 に使用）
-const SITE_NAME = "イベントナビ【四国版】";
+const SITE_NAME = "イベントガイド【四国版】";
 // 年が省略された日付の補完は、実行日の月から数ヶ月先までに限定する
 const YEARLESS_LOOKAHEAD_MONTHS = 6;
 
