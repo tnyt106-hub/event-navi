@@ -9,7 +9,7 @@
       "venue_name": "〇〇ホール",
       "description": "イベント概要の短い説明を入れます。",
       "body": "イベント詳細の本文を入れます。",
-      "source_url": "https://",
+      "source_url": "イベント詳細ページのURLを入れます",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -20,6 +20,25 @@
         "genres": [],
         "flags": []
       }
-    }
+    },
+      {
+      "title": "イベントタイトル",
+      "date_from": "YYYY-MM-DD",
+      "date_to": "YYYY-MM-DD",
+      "venue_name": "〇〇ホール",
+      "description": "イベント概要の短い説明を入れます。",
+      "body": "イベント詳細の本文を入れます。",
+      "source_url": "イベント詳細ページのURLを入れます",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "price": null,
+      "contact": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }    
   ]
 }
