@@ -80,21 +80,49 @@ function extractTitleFromDetailHtml(detailHtml) {
 
 // Map から「イベント開催期間」を取り出して日付範囲を作る。
 function extractDateRangeFromMap(detailMap) {
-  const dateText = detailMap.get("イベント開催期間");
+  const dateText = detailMap.get("イベント開催期間") || detailMap.get("開催期間");
   if (!dateText) return null;
 
   const normalized = normalizeJapaneseText(normalizeWhitespace(dateText));
-  const dateMatches = [...normalized.matchAll(/(\d{4})年(\d{1,2})月(\d{1,2})日/g)];
-  if (dateMatches.length === 0) return null;
 
-  const start = dateMatches[0];
-  const end = dateMatches[dateMatches.length - 1];
+  // まず年あり日付を拾う
+  const ymd = [...normalized.matchAll(/(\d{4})年(\d{1,2})月(\d{1,2})日/g)];
+  if (ymd.length === 0) return null;
 
-  return {
-    date_from: toIsoDate(start[1], start[2], start[3]),
-    date_to: toIsoDate(end[1], end[2], end[3]),
-  };
+  const start = ymd[0];
+  const startYear = Number(start[1]);
+  const startIso = toIsoDate(start[1], start[2], start[3]);
+
+  // 年ありが複数あるなら最後を終了日にする
+  if (ymd.length >= 2) {
+    const end = ymd[ymd.length - 1];
+    return {
+      date_from: startIso,
+      date_to: toIsoDate(end[1], end[2], end[3]),
+    };
+  }
+
+  // 年ありが1つだけの場合：後続の「M月D日」を終了日候補として拾う
+  const tail = normalized.slice((start.index ?? 0) + start[0].length);
+  const md = /(\d{1,2})月(\d{1,2})日/.exec(tail);
+
+  if (!md) {
+    // 終了日が書かれていない（単日）扱い
+    return { date_from: startIso, date_to: startIso };
+  }
+
+  let endYear = startYear;
+  let endIso = toIsoDate(String(endYear), md[1], md[2]);
+
+  // 念のため逆転補正（年跨ぎを安全に処理）
+  if (new Date(`${endIso}T00:00:00+09:00`) < new Date(`${startIso}T00:00:00+09:00`)) {
+    endYear += 1;
+    endIso = toIsoDate(String(endYear), md[1], md[2]);
+  }
+
+  return { date_from: startIso, date_to: endIso };
 }
+
 
 // 時刻表現を HH:MM 形式として解釈する。
 function parseTimeCandidate(value) {
