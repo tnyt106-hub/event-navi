@@ -76,6 +76,14 @@
       "outputs": ["docs/events/itemehime.json"]
     },
     {
+      "id": "fetch-asty-tokushim",
+      "name": "fetch-asty-tokushim",
+      "script": "scripts/fetch-asty-tokushima-events.js",
+      "command": "node scripts/fetch-asty-tokushima-events.js",
+      "enabled": true,
+      "outputs": ["docs/events/asty-tokushima.json"]
+    },
+    {
       "id": "filter-old-events",
       "script": "scripts/filter-old-events.js",
       "enabled": true,
