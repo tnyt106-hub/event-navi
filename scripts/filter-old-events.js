@@ -4,6 +4,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { parseIsoDateStrict } = require("./lib/date");
 
 // 何日経過したイベントを削除対象にするか（将来変更しやすいように定数化）
 const CUTOFF_DAYS = 365;
@@ -19,32 +20,6 @@ function getJstTodayUtcDate() {
   return new Date(Date.UTC(year, month, day));
 }
 
-// YYYY-MM-DD 形式のみを受け付ける厳密な日付パース
-function parseDateStrict(dateText) {
-  if (!dateText) return null;
-  const match = String(dateText).match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!match) return null;
-
-  const year = Number(match[1]);
-  const month = Number(match[2]);
-  const day = Number(match[3]);
-  if (!year || !month || !day) return null;
-
-  const utcDate = new Date(Date.UTC(year, month - 1, day));
-  if (Number.isNaN(utcDate.getTime())) return null;
-
-  // 存在しない日付（例: 2024-02-30）を弾く
-  if (
-    utcDate.getUTCFullYear() !== year ||
-    utcDate.getUTCMonth() !== month - 1 ||
-    utcDate.getUTCDate() !== day
-  ) {
-    return null;
-  }
-
-  return utcDate;
-}
-
 // 1 ファイル分の events 配列をフィルタして結果を返す
 function filterEvents(data, cutoffDate) {
   if (!Array.isArray(data?.events)) {
@@ -54,7 +29,7 @@ function filterEvents(data, cutoffDate) {
   const beforeCount = data.events.length;
   const events = data.events.filter((eventItem) => {
     const endText = eventItem?.date_to || eventItem?.date_from;
-    const endDate = parseDateStrict(endText);
+    const endDate = parseIsoDateStrict(endText);
 
     // 日付が不明・不正な場合は、汚染回避のために削除
     if (!endDate) return false;
@@ -70,7 +45,8 @@ function filterEvents(data, cutoffDate) {
 }
 
 function main() {
-  const eventsDir = path.join(__dirname, "../docs/events");
+  // 実行場所ではなく、このスクリプト配置場所を起点に絶対パスを解決する
+  const eventsDir = path.join(__dirname, "..", "docs", "events");
   const files = fs
     .readdirSync(eventsDir)
     .filter((fileName) => path.extname(fileName) === ".json")
@@ -84,25 +60,36 @@ function main() {
   let removedTotal = 0;
 
   files.forEach((filePath) => {
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const data = JSON.parse(raw);
-    const result = filterEvents(data, cutoffDate);
+    const fileName = path.basename(filePath);
 
-    if (result.skipped) {
-      console.warn(`警告: events 配列がないためスキップしました -> ${path.basename(filePath)}`);
-      return;
-    }
+    try {
+      const raw = fs.readFileSync(filePath, "utf-8");
 
-    console.log(
-      `${path.basename(filePath)}: before=${result.beforeCount}, after=${result.afterCount}, removed=${result.removedCount}`
-    );
+      // 空ファイルは JSON.parse 前に明示的に検知し、処理継続する
+      if (!raw.trim()) {
+        throw new Error("ファイルが空です");
+      }
 
-    removedTotal += result.removedCount;
+      const data = JSON.parse(raw);
+      const result = filterEvents(data, cutoffDate);
 
-    if (result.beforeCount !== result.afterCount) {
-      const updatedData = { ...data, events: result.events };
-      fs.writeFileSync(filePath, `${JSON.stringify(updatedData, null, 2)}\n`, "utf-8");
-      updatedFiles += 1;
+      if (result.skipped) {
+        console.warn(`警告: events 配列がないためスキップしました -> ${fileName}`);
+        return;
+      }
+
+      console.log(`${fileName}: before=${result.beforeCount}, after=${result.afterCount}, removed=${result.removedCount}`);
+
+      removedTotal += result.removedCount;
+
+      if (result.beforeCount !== result.afterCount) {
+        const updatedData = { ...data, events: result.events };
+        fs.writeFileSync(filePath, `${JSON.stringify(updatedData, null, 2)}\n`, "utf-8");
+        updatedFiles += 1;
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error(`[ERROR] ${fileName}: ${message}`);
     }
   });
 
