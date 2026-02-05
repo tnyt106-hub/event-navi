@@ -6,6 +6,9 @@ const fs = require("fs");
 const path = require("path");
 const { parseIsoDateStrict } = require("./lib/date");
 
+// テンプレートは運用データではないため、自動更新対象から除外する。
+const EXCLUDED_FILE_NAMES = new Set(["template.json"]);
+
 // 何日経過したイベントを削除対象にするか（将来変更しやすいように定数化）
 const CUTOFF_DAYS = 365;
 // 1 日のミリ秒数
@@ -50,6 +53,7 @@ function main() {
   const files = fs
     .readdirSync(eventsDir)
     .filter((fileName) => path.extname(fileName) === ".json")
+    .filter((fileName) => !EXCLUDED_FILE_NAMES.has(fileName))
     .map((fileName) => path.join(eventsDir, fileName));
 
   const cutoffDate = new Date(getJstTodayUtcDate().getTime() - CUTOFF_DAYS * DAY_MS);
