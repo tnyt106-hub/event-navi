@@ -1,9 +1,7 @@
 /**
  * プロジェクト標準のイベントオブジェクト構造を定義
- * 項目の並び順、デフォルト値、型をここで一括管理します。
  */
 function createEvent(data = {}) {
-  // テンプレートの項目順序を厳密に守ってオブジェクトを生成
   return {
     title: data.title || null,
     date_from: data.date_from || null,
@@ -34,7 +32,37 @@ function createRootStructure(venueId, events = []) {
   };
 }
 
+/**
+ * 【追加】保存前の最終バリデーション
+ * 異常なデータを検知して、壊れたファイルの上書きを防ぎます。
+ */
+function validateFinalData(events, options = { minEvents: 1 }) {
+  // 1. 件数チェック
+  if (!Array.isArray(events) || events.length < options.minEvents) {
+    throw new Error(`[VALIDATION ERROR] イベント数が少なすぎます (${events.length}件)。解析に失敗している可能性があります。`);
+  }
+
+  // 2. 必須項目の型・形式チェック
+  events.forEach((event, index) => {
+    const id = event.title || `Index:${index}`;
+    
+    // タイトルチェック
+    if (!event.title || typeof event.title !== 'string' || event.title.length < 2) {
+      throw new Error(`[VALIDATION ERROR] タイトルが不正です: "${id}"`);
+    }
+
+    // 日付形式チェック (YYYY-MM-DD)
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    if (!datePattern.test(event.date_from)) {
+      throw new Error(`[VALIDATION ERROR] 開始日が不正な形式です: "${id}" (${event.date_from})`);
+    }
+  });
+
+  return true;
+}
+
 module.exports = {
   createEvent,
-  createRootStructure
+  createRootStructure,
+  validateFinalData
 };
