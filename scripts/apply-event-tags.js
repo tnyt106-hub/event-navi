@@ -5,9 +5,10 @@
 
 const fs = require("fs");
 const path = require("path");
+const { validateFinalData } = require("./lib/schema");
 
 // タグのラベル定義は JSON に集約して UI でも使えるようにしておく
-const TAG_LABELS_PATH = path.join(__dirname, "../docs/data/event-tags.json");
+const TAG_LABELS_PATH = path.join(__dirname, "..", "docs", "data", "event-tags.json");
 
 const MAX_GENRES = 2;
 const MAX_FLAGS = 2;
@@ -239,9 +240,15 @@ function determineFlags(eventItem, combinedText) {
   return flags;
 }
 
+// 「上書きなし」のときに再計算不要なイベントか判定する
+// ※要件の「tags.type が設定済みならスキップ」を明示的に維持する
+function hasExistingTypeTag(eventItem) {
+  return Boolean(eventItem?.tags && typeof eventItem.tags.type === "string" && eventItem.tags.type.trim());
+}
+
 // イベントにタグを付与する（既存タグは overwrite=true のときだけ上書き）
 function applyTagsToEvent(eventItem, venueCategory, options) {
-  if (eventItem?.tags && !options.overwrite) {
+  if (!options.overwrite && hasExistingTypeTag(eventItem)) {
     return { updated: false, tags: eventItem.tags };
   }
 
@@ -254,10 +261,18 @@ function applyTagsToEvent(eventItem, venueCategory, options) {
   return { updated: true, tags };
 }
 
+// JSONファイルを安全に読み込む（空ファイル・壊れたJSONを検知）
+function readJsonFileSafely(filePath) {
+  const raw = fs.readFileSync(filePath, "utf-8");
+  if (!raw.trim()) {
+    throw new Error("ファイルが空です");
+  }
+  return JSON.parse(raw);
+}
+
 // ファイルを読み込み、タグ付けして保存する
 function processEventsFile(filePath, options) {
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const data = JSON.parse(raw);
+  const data = readJsonFileSafely(filePath);
   const events = Array.isArray(data?.events) ? data.events : [];
 
   const venueCategory = data?.venue_category ?? null;
@@ -278,6 +293,9 @@ function processEventsFile(filePath, options) {
     }
   });
 
+  // 保存前に最低限の整合性を検証し、壊れたJSONの上書きを予防する
+  validateFinalData(events, { minEvents: 1 });
+
   if (!options.dryRun) {
     fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, "utf-8");
   }
@@ -289,6 +307,20 @@ function loadTagLabels() {
   if (!fs.existsSync(TAG_LABELS_PATH)) return null;
   const raw = fs.readFileSync(TAG_LABELS_PATH, "utf-8");
   return JSON.parse(raw);
+}
+
+function resolveTargetPath(target) {
+  // 絶対パス指定はそのまま使う
+  if (path.isAbsolute(target)) return target;
+
+  // 実行場所依存を避けるため、まず「スクリプト基準」で解決する
+  const byScriptDir = path.join(__dirname, "..", target);
+  if (fs.existsSync(byScriptDir)) {
+    return byScriptDir;
+  }
+
+  // 後方互換として、従来どおり CWD 基準にもフォールバックする
+  return path.resolve(process.cwd(), target);
 }
 
 function main() {
@@ -307,14 +339,22 @@ function main() {
     console.warn("タグラベル定義が見つかりませんでした。");
   }
 
-  const filePath = path.resolve(process.cwd(), target);
+  const filePath = resolveTargetPath(target);
+  const fileName = path.basename(filePath);
   const options = { overwrite, dryRun, log: true };
-  const updatedCount = processEventsFile(filePath, options);
 
-  if (dryRun) {
-    console.log(`dry-run: ${updatedCount} 件にタグを付与予定でした。`);
-  } else {
-    console.log(`完了: ${updatedCount} 件にタグを付与しました。`);
+  try {
+    const updatedCount = processEventsFile(filePath, options);
+
+    if (dryRun) {
+      console.log(`dry-run: ${updatedCount} 件にタグを付与予定でした。`);
+    } else {
+      console.log(`完了: ${updatedCount} 件にタグを付与しました。`);
+    }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`[ERROR] ${fileName}: ${message}`);
+    process.exit(1);
   }
 }
 
