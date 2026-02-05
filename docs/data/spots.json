@@ -130,5 +130,17 @@
   "official_url": "https://ehime-spa.jp/budoukan/",
   "description": "松山市の松山総合公園（市坪）内にある日本最大級の武道館。武道だけでなくコンサートや式典など多目的に利用されます。",
   "source": "https://ehime-spa.jp/budoukan/martial-event/"
+ ,
+  {
+  "name": "アスティとくしま",
+  "spot_id": "asty-tokushima",
+  "lat": 34.05324,
+  "lng": 134.56369,
+  "category": "イベントホール",
+  "prefecture": "徳島県",
+  "municipality": "徳島市",
+  "official_url": "https://www.asty-tokushima.jp/",
+  "description": "徳島県立産業観光交流センター（アスティとくしま）は、最大5,000人収容の多目的ホールや会議室を備えた四国最大級のコンベンション施設です。コンサートや展示会、国際会議など幅広く利用されています。",
+  "source": "https://www.asty-tokushima.jp/about/"
 }
 ]
