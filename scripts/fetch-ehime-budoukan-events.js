@@ -1,7 +1,10 @@
 const path = require("path");
 const { fetchHtml } = require("./lib/http");
 const { saveEventJson } = require("./lib/io");
-const { decodeHtmlEntities, normalizeWhitespace, stripTags } = require("./lib/text");
+const { decodeHtmlEntities, stripTags } = require("./lib/text");
+// --- 新設・強化した共通ライブラリをインポート ---
+const { createEvent, createRootStructure } = require("./lib/schema");
+const { extractDateRange } = require("./lib/date");
 
 const VENUE_ID = "ehime-budoukan";
 const TARGET_URL = "https://ehime-spa.jp/budoukan/martial-event/"; 
@@ -16,24 +19,20 @@ async function main() {
     fullText = fullText.replace(/\s+/g, " ").trim();
 
     const events = [];
-    const today = new Date();
-    const year = today.getFullYear();
-
     const datePattern = /(\d{1,2})\/(\d{1,2})\s*\([月火水木金土日]\)/g;
     let match;
     const blocks = [];
 
+    // 日付を基点にテキストを分割するロジックは継続（武道館特有のため）
     while ((match = datePattern.exec(fullText)) !== null) {
       blocks.push({
         index: match.index,
-        m: parseInt(match[1], 10),
-        d: parseInt(match[2], 10),
-        prefix: match[0]
+        rawDate: match[0] // 例: "2/1(日)"
       });
     }
 
     for (let i = 0; i < blocks.length; i++) {
-      const start = blocks[i].index + blocks[i].prefix.length;
+      const start = blocks[i].index + blocks[i].rawDate.length;
       const end = blocks[i + 1] ? blocks[i + 1].index : fullText.length;
       let rawContent = fullText.substring(start, end).trim();
 
@@ -43,43 +42,36 @@ async function main() {
       const organizer = (rawContent.match(/主催・主管\s*([^\s]+)/) || [])[1] || null;
 
       if (titlePart && titlePart.length > 1 && !titlePart.includes("休館日")) {
-        let eventYear = year;
-        if (today.getMonth() === 11 && blocks[i].m === 1) eventYear++;
-        const dateStr = `${eventYear}-${String(blocks[i].m).padStart(2, '0')}-${String(blocks[i].d).padStart(2, '0')}`;
         
-        // --- template.json の定義順（全11項目）に厳密に一致 ---
-        events.push({
-          title: titlePart,
-          date_from: dateStr,
-          date_to: dateStr,
-          time_start: null,
-          time_end: null,
-          description: venueName ? `会場: ${venueName}` : null,
-          image_url: null,
-          price: null,
-          contact: organizer,
-          source_url: TARGET_URL,
-          tags: {
-            type: "other",
-            genres: [],
-            flags: []
-          }
-        });
+        // --- 強化版 date.js を使用 ---
+        // 自前の年越し判定やpadStartが不要に
+        const range = extractDateRange(blocks[i].rawDate);
+        
+        if (range) {
+          // --- schema.js を使用 ---
+          // 項目の並び順や null 埋めを自動化
+          events.push(createEvent({
+            title: titlePart,
+            date_from: range.date_from,
+            date_to: range.date_to,
+            description: venueName ? `会場: ${venueName}` : null,
+            contact: organizer,
+            source_url: TARGET_URL
+          }));
+        }
       }
     }
 
+    // 重複除去
     const uniqueEvents = Array.from(new Map(
       events.map(e => [`${e.date_from}-${e.title}`, e])
     ).values());
 
-    const resultData = {
-      venue_id: VENUE_ID, // venue_id はルートのみ
-      last_success_at: new Date().toISOString().split('T')[0],
-      events: uniqueEvents
-    };
+    // --- schema.js でルート構造を作成 ---
+    const resultData = createRootStructure(VENUE_ID, uniqueEvents);
 
     saveEventJson(OUTPUT_PATH, resultData);
-    console.log(`[SUCCESS] JSON structure strictly follows template.json (venue_id is root-only).`);
+    console.log(`[SUCCESS] Refactored with schema.js and date.js.`);
 
   } catch (error) {
     console.error(`[FATAL] ${error.message}`);
