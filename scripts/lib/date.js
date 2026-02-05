@@ -80,4 +80,39 @@ function isDateInRange(isoDate, range) {
 module.exports = {
   extractDateRange,
   isDateInRange,
+  parseIsoDateStrict,
 };
+
+/**
+ * YYYY-MM-DD 形式の日付文字列を厳密に Date(UTC) へ変換する
+ * - 形式不正や存在しない日付(例: 2024-02-30)は null を返す
+ * - メンテナンス系スクリプトで共通利用するために追加
+ *
+ * @param {string} isoDateText
+ * @returns {Date|null}
+ */
+function parseIsoDateStrict(isoDateText) {
+  if (!isoDateText) return null;
+
+  const match = String(isoDateText).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  if (!year || !month || !day) return null;
+
+  const utcDate = new Date(Date.UTC(year, month - 1, day));
+  if (Number.isNaN(utcDate.getTime())) return null;
+
+  // Date が自動補正したケース（存在しない日付）を除外
+  if (
+    utcDate.getUTCFullYear() !== year ||
+    utcDate.getUTCMonth() !== month - 1 ||
+    utcDate.getUTCDate() !== day
+  ) {
+    return null;
+  }
+
+  return utcDate;
+}
