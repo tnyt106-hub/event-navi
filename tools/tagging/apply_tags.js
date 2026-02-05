@@ -63,6 +63,8 @@ const GENRE_RULES = [
 ];
 
 const INPUT_DIR = path.join(__dirname, "..", "..", "docs", "events");
+// template.json は説明用テンプレートのため、タグ自動付与の対象外とする。
+const EXCLUDED_FILE_NAMES = new Set(["template.json"]);
 
 // 文字列に含まれるかどうかを判定する共通関数です。
 function containsKeyword(text, keywords) {
@@ -180,7 +182,8 @@ function applyTagsToEventsData(data, options = {}) {
 function main() {
   const files = fs
     .readdirSync(INPUT_DIR)
-    .filter((filename) => filename.endsWith(".json"));
+    .filter((filename) => filename.endsWith(".json"))
+    .filter((filename) => !EXCLUDED_FILE_NAMES.has(filename));
 
   let updatedEventCount = 0;
   const typeCounts = {};
