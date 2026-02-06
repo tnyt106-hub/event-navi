@@ -158,7 +158,8 @@ function renderFacilityIndexPage(prefectureSummaries) {
     title: `県から探す｜${SITE_NAME}`,
     heading: "県から探す",
     cssPath: "../css/style.css",
-    description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設ページへ素早く移動できます。",
+    // Step1方針: 施設一覧の説明文を「対象・操作・遷移先」で簡潔に統一する
+    description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設詳細へ進めます。",
     canonicalPath: "/facility/",
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
     preHeaderHtml: breadcrumbHtml
