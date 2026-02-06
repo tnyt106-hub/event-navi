@@ -110,8 +110,8 @@ function renderFacilityIndexPage(prefectureSummaries) {
     .join("\n");
 
   return `${renderPageHeader({
-    title: `施設から探す｜${SITE_NAME}`,
-    heading: "施設から探す",
+    title: `県から探す｜${SITE_NAME}`,
+    heading: "県から探す",
     cssPath: "../css/style.css"
   })}    <section class="spot-events" aria-labelledby="facility-pref-title">
       <div class="spot-events__header">
