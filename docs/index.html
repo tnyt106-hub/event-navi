@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9H9QJLL4H8"></script>
+  <!-- Google Analytics 4 の計測タグ（測定IDは運用値を使用） -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RS12737WLG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-9H9QJLL4H8', { send_page_view: false });
+    // SPA ではないため、明示的に page_view の送信制御を維持
+    gtag('config', 'G-RS12737WLG', { send_page_view: false });
   </script>
   
   <meta charset="UTF-8" />
