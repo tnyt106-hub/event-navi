@@ -48,6 +48,25 @@ function formatMonthDayLabel(dateObj) {
   return `${pad2(dateObj.getUTCMonth() + 1)}/${pad2(dateObj.getUTCDate())}`;
 }
 
+// YYYY-MM-DD に曜日（例: 2025-01-01（水））を付与して表示する
+function formatDateWithWeekday(dateText) {
+  const match = String(dateText).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    // 想定外フォーマットはそのまま返し、表示崩れを防ぐ
+    return String(dateText);
+  }
+
+  const dateObj = buildUtcDate(Number(match[1]), Number(match[2]), Number(match[3]));
+  if (!dateObj) {
+    // 不正な日付（例: 2025-02-30）は変換せずに返す
+    return String(dateText);
+  }
+
+  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  const weekdayLabel = weekdays[dateObj.getUTCDay()];
+  return `${dateText}（${weekdayLabel}）`;
+}
+
 // UTC の Date を安全に生成し、月日が正しいか検証する
 function buildUtcDate(year, month, day) {
   const dateObj = new Date(Date.UTC(year, month - 1, day));
@@ -364,9 +383,12 @@ ${adHtml}
 function renderEventCard(eventItem, venueLabel) {
   const titleText = eventItem.title || "イベント名未定";
   const safeVenueLabel = venueLabel || "会場未定";
+  // 日付表示は曜日付きにして、日取りを直感的に把握しやすくする
+  const dateFromText = formatDateWithWeekday(eventItem.date_from);
+  const dateToText = formatDateWithWeekday(eventItem.date_to);
   const dateText = eventItem.date_from === eventItem.date_to
-    ? eventItem.date_from
-    : `${eventItem.date_from}〜${eventItem.date_to}`;
+    ? dateFromText
+    : `${dateFromText}〜${dateToText}`;
   // 構造化項目が取れない場合のみ、本文を「その他」として表示する。
   const otherBodyText = buildOtherBodyText(eventItem?.body);
   const showOther = otherBodyText && !hasStructuredDetails(eventItem);
