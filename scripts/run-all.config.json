@@ -100,6 +100,12 @@
       "script": "scripts/generate-date-pages.js",
       "enabled": true,
       "outputs": ["docs/date", "docs/index.html"]
+    },
+    {
+      "id": "generate-sitemap",
+      "script": "scripts/generate-sitemap.js",
+      "enabled": true,
+      "outputs": ["docs/sitemap.xml"]
     }
   ]
 }
