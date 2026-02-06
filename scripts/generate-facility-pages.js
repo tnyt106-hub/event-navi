@@ -19,6 +19,10 @@ const SPOTS_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 const EVENTS_DIR = path.join(process.cwd(), "docs", "events");
 const FACILITY_ROOT_DIR = path.join(process.cwd(), "docs", "facility");
 
+// GitHub Pagesの公開URLを正規URL（canonical）に使う。
+// 将来ドメインが変わっても、この定数だけ直せば全ページへ反映できる。
+const SITE_ORIGIN = "https://event-navi.jp";
+
 // HTMLに差し込む値は最低限エスケープして、表示崩れや意図しない解釈を防ぐ。
 function escapeHtml(value) {
   return String(value)
@@ -68,20 +72,33 @@ function buildEventCountMap() {
   return eventCountMap;
 }
 
-function renderPageHeader({ title, heading, cssPath }) {
+// ヘッダーにSEO用メタ情報をまとめて出力する。
+// description/canonicalPathはページごとに変わるため引数で受け取る。
+function renderPageHeader({ title, heading, cssPath, description, canonicalPath }) {
+  const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="${escapeHtml(description)}" />
+  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />
+  <meta property="og:title" content="${escapeHtml(title)}" />
+  <meta property="og:description" content="${escapeHtml(description)}" />
+  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
+  <meta name="twitter:card" content="summary" />
   <title>${escapeHtml(title)}</title>
   <link rel="stylesheet" href="${escapeHtml(cssPath)}" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">本文へスキップ</a>
   <header>
     <h1>${escapeHtml(heading)}</h1>
   </header>
-  <main>
+  <main id="main-content">
 `;
 }
 
@@ -139,7 +156,9 @@ function renderFacilityIndexPage(prefectureSummaries) {
   return `${renderPageHeader({
     title: `県から探す｜${SITE_NAME}`,
     heading: "県から探す",
-    cssPath: "../css/style.css"
+    cssPath: "../css/style.css",
+    description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設ページへ素早く移動できます。",
+    canonicalPath: "/facility/"
   })}${breadcrumbHtml}    <section class="spot-events" aria-labelledby="facility-pref-title">
       <div class="spot-events__header">
         <h2 id="facility-pref-title" class="spot-events__title">県別一覧</h2>
@@ -188,7 +207,9 @@ function renderPrefecturePage(prefecture, spots, eventCountMap) {
   const bodyHtml = `${renderPageHeader({
     title: `${prefecture}の施設一覧｜${SITE_NAME}`,
     heading: `${prefecture}の施設一覧`,
-    cssPath: "../../css/style.css"
+    cssPath: "../../css/style.css",
+    description: `${prefecture}の公共施設を一覧化したページです。市町村・カテゴリ・イベント件数の目安を確認しながら、各施設ページへ移動できます。`,
+    canonicalPath: `/facility/${toPrefSlug(prefecture)}/`
   })}${breadcrumbHtml}    <nav class="spot-actions" aria-label="施設ナビゲーション">
       <a class="spot-action-btn" href="../">施設一覧へ戻る</a>
       <a class="spot-action-btn" href="../../index.html">トップへ戻る</a>

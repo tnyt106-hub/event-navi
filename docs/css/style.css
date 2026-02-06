@@ -89,6 +89,24 @@ h2 {
   margin: 8px;
 }
 
+/* キーボード利用者向け: フォーカス時だけ見える本文スキップリンク */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  padding: 10px 14px;
+  border-radius: var(--radius-subcard);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: var(--shadow-subcard);
+  z-index: 2000;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
 /* パンくずリスト: ページ階層を視覚・音声の両方で伝えるための共通スタイル */
 .breadcrumb {
   margin: 8px 12px 0;
