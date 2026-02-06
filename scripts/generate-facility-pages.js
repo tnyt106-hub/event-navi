@@ -74,7 +74,8 @@ function buildEventCountMap() {
 
 // ヘッダーにSEO用メタ情報をまとめて出力する。
 // description/canonicalPathはページごとに変わるため引数で受け取る。
-function renderPageHeader({ title, heading, cssPath, description, canonicalPath }) {
+// preHeaderHtml を使うと、パンくずなどを <header> より前へ安全に配置できる。
+function renderPageHeader({ title, heading, cssPath, description, canonicalPath, preHeaderHtml = "" }) {
   const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
   return `<!DOCTYPE html>
 <html lang="ja">
@@ -95,7 +96,7 @@ function renderPageHeader({ title, heading, cssPath, description, canonicalPath 
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
-  <header>
+${preHeaderHtml}  <header>
     <h1>${escapeHtml(heading)}</h1>
   </header>
   <main id="main-content">
@@ -158,8 +159,10 @@ function renderFacilityIndexPage(prefectureSummaries) {
     heading: "県から探す",
     cssPath: "../css/style.css",
     description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設ページへ素早く移動できます。",
-    canonicalPath: "/facility/"
-  })}${breadcrumbHtml}    <section class="spot-events" aria-labelledby="facility-pref-title">
+    canonicalPath: "/facility/",
+    // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
+    preHeaderHtml: breadcrumbHtml
+  })}    <section class="spot-events" aria-labelledby="facility-pref-title">
       <div class="spot-events__header">
         <h2 id="facility-pref-title" class="spot-events__title">県別一覧</h2>
       </div>
@@ -209,8 +212,10 @@ function renderPrefecturePage(prefecture, spots, eventCountMap) {
     heading: `${prefecture}の施設一覧`,
     cssPath: "../../css/style.css",
     description: `${prefecture}の公共施設を一覧化したページです。市町村・カテゴリ・イベント件数の目安を確認しながら、各施設ページへ移動できます。`,
-    canonicalPath: `/facility/${toPrefSlug(prefecture)}/`
-  })}${breadcrumbHtml}    <nav class="spot-actions" aria-label="施設ナビゲーション">
+    canonicalPath: `/facility/${toPrefSlug(prefecture)}/`,
+    // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
+    preHeaderHtml: breadcrumbHtml
+  })}    <nav class="spot-actions" aria-label="施設ナビゲーション">
       <a class="spot-action-btn" href="../">施設一覧へ戻る</a>
       <a class="spot-action-btn" href="../../index.html">トップへ戻る</a>
     </nav>
