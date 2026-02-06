@@ -175,8 +175,8 @@ function normalizeDateRange(dateFromObj, dateToObj, venueId, index) {
   return dateToObj;
 }
 
-// HTML のヘッダー部分を生成する
-function renderHeader(titleText, headingText, cssPath, isNoindex, descriptionText = "", canonicalPath = "") {
+// HTML の先頭部分を生成する（パンくずをヘッダーより前に置けるように分離）。
+function renderHeader(titleText, headingText, cssPath, isNoindex, descriptionText = "", canonicalPath = "", preHeaderHtml = "") {
   const safeTitle = escapeHtml(titleText);
   const safeHeading = escapeHtml(headingText);
   // noindex 指定が必要なページだけ robots メタタグを挿入する
@@ -202,6 +202,7 @@ ${noindexMeta}${descriptionHtml}${canonicalHtml}${ogHtml}  <title>${safeTitle}</
   <link rel="stylesheet" href="${cssPath}" />
 </head>
 <body>
+${preHeaderHtml}
   <header>
     <h1>${safeHeading}</h1>
   </header>
@@ -424,8 +425,8 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
 
   return (
     // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
-    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex)
-    + breadcrumbHtml
+    // ユーザビリティ向上のため、パンくずはヘッダーより先に配置する。
+    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex, "", "", breadcrumbHtml)
     + navHtml
     + topAdHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
@@ -484,15 +485,16 @@ function renderDateIndexPage(dateEntries, adHtml) {
 
   return (
     // docs 配信前提で docs/date/index.html は ../css/style.css を参照する
+    // ユーザビリティ向上のため、パンくずはヘッダーより先に配置する。
     renderHeader(
       titleText,
       headingText,
       "../css/style.css",
       false,
       "開催日ごとのイベント件数と代表イベントを一覧で確認できるページです。日付を選んで、その日のイベント詳細ページへ移動できます。",
-      "/date/"
+      "/date/",
+      breadcrumbHtml
     )
-    + breadcrumbHtml
     + renderAdSection(adHtml, "index")
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
