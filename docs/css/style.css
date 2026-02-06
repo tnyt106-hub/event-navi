@@ -12,6 +12,9 @@ html, body {
   /* 基本文字色（案AのTextMainに合わせる） */
   --text: #0F172A;
   --text_white: #ffffff;
+  /* 白文字の透過バリエーション（パンくずで使用） */
+  --text-white-80: rgba(255, 255, 255, 0.8);
+  --text-white-60: rgba(255, 255, 255, 0.6);
   /* 補助テキスト色（案AのTextSubに合わせる） */
   --text-sub: #475569;
   /* 注記用の落ち着いた色（案AのTextNote） */
@@ -23,6 +26,15 @@ html, body {
   --accent-soft: #DBEAFE;
   /* ヘッダー専用の背景色（案AのHeaderBG） */
   --header-bg: #F8FAFC;
+  /* 地図UIのサーフェス色を変数化（局所ハードコード色の撤廃） */
+  --surface-strong: #fff;
+  --surface-hover: #f4f4f4;
+  --text-strong: #333;
+  --border-strong: rgba(0, 0, 0, 0.2);
+  --surface-frosted: rgba(255, 255, 255, 0.95);
+  /* エラー表示の配色を変数化（将来の調整を一箇所に集約） */
+  --error-border: #f0c4c4;
+  --error-text: #7a1d1d;
   --radius-sheet: 24px;
   --radius-card: 18px;
   --radius-subcard: 14px;
@@ -126,7 +138,7 @@ h2 {
   display: inline-flex;
   align-items: center;
   color: var(--text-sub);
-  color: rgba(255, 255, 255, 0.8); /*少し透過した白 */
+  color: var(--text-white-80); /*少し透過した白 */
 }
 
 /* 現在ページ以外の要素にだけ区切り記号を表示し、可読性を上げる */
@@ -134,13 +146,13 @@ h2 {
   content: "›";
   margin-left: 6px;
   color: var(--text-note);
-  color: rgba(255, 255, 255, 0.6); /* 区切りは少し控えめな白 */
+  color: var(--text-white-60); /* 区切りは少し控えめな白 */
   font-family: sans-serif; /* 記号の形を安定させる */
   line-height: 1;
 }
 
 .breadcrumb__item a {
-  color: #ffffff;
+  color: var(--text_white);
   text-decoration: none;
 }
 
@@ -150,7 +162,7 @@ h2 {
 
 /* 現在ページはリンクにせず、少し濃い色で現在位置だと分かるようにする */
 .breadcrumb__item[aria-current="page"] {
-  color: #ffffff;
+  color: var(--text_white);
   font-weight: 600;
 }
 
@@ -258,8 +270,8 @@ h2 {
   z-index: 1000;
   width: 48px;
   height: 48px;
-  background-color: #fff;
-  border: 2px solid rgba(0,0,0,0.2);
+  background-color: var(--surface-strong);
+  border: 2px solid var(--border-strong);
   background-clip: padding-box;
   border-radius: 4px;
   
@@ -284,15 +296,15 @@ h2 {
   font-weight: bold;
   line-height: 1;
   margin-top: 1px;
-  color: #333;
+  color: var(--text-strong);
   transform: scale(0.85); 
 }
 #locate-btn:hover {
-  background: #f4f4f4;
+  background: var(--surface-hover);
 }
 /* 地図上のスポット名ラベル（Leaflet tooltip） */
 .leaflet-tooltip.spot-label {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--surface-frosted);
   border: 1px solid var(--border);
   border-radius: var(--radius-subcard);
   box-shadow: var(--shadow-subcard);
@@ -527,7 +539,7 @@ h2 {
 .spot-panel .btn-primary {
   border-color: var(--accent);
   background: var(--accent);
-  color: #fff;
+  color: var(--text_white);
 }
 
 /* サブCTA（ルート検索） */
@@ -790,7 +802,7 @@ main {
 .spot-events__tab.is-active {
   border-color: var(--accent);
   background: var(--accent);
-  color: #fff;
+  color: var(--text_white);
   box-shadow: var(--shadow-card); /* 選択状態の視認性を高める */
 }
 
@@ -1000,7 +1012,7 @@ main {
   border-radius: 6px;
   border: 1px solid var(--accent);
   background: var(--accent);
-  color: #fff;
+  color: var(--text_white);
   text-decoration: none;
   font-size: 12px;
   font-weight: 600;
@@ -1015,7 +1027,7 @@ main {
 .spot-action-btn--primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--text_white);
   font-weight: 700;
 }
 
@@ -1045,8 +1057,8 @@ main {
   background: var(--surface);
   border-radius: var(--radius-subcard);
   padding: 24px;
-  border: 1px solid #f0c4c4;
-  color: #7a1d1d;
+  border: 1px solid var(--error-border);
+  color: var(--error-text);
 }
 
 .spot-error__title {
