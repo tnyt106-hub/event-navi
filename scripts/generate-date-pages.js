@@ -5,6 +5,8 @@ const path = require("path");
 
 // 出力対象のサイト名（title と h1 に使用）
 const SITE_NAME = "イベントガイド【四国版】";
+// Google Analytics 4 の測定ID（トップページと同じIDを日付ページにも適用する）
+const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // 年が省略された日付の補完は、実行日の月から数ヶ月先までに限定する
 const YEARLESS_LOOKAHEAD_MONTHS = 6;
 
@@ -178,11 +180,14 @@ function renderHeader(titleText, headingText, cssPath, isNoindex) {
   // noindex 指定が必要なページだけ robots メタタグを挿入する
   // <title> の直前に独立行として入れることでテンプレを読みやすくする
   const noindexMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />\n' : "";
+  // 日付ページでもアクセス計測できるよう、GA4タグをヘッダーに埋め込む。
+  // なお page_view は手動制御を維持するため send_page_view を false にしておく。
+  const ga4Snippet = `  <!-- Google Analytics 4 の計測タグ（日付ページ向け） -->\n  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n  </script>\n`;
 
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+${ga4Snippet}  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 ${noindexMeta}
   <title>${safeTitle}</title>
