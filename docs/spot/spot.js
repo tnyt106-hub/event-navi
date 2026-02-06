@@ -121,13 +121,35 @@ function showError(message) {
   toggleElement(contentSection, false);
 }
 
-// 日付を「YYYY-MM-DD」形式で表示できるように整える
+// 日付を「YYYY-MM-DD（曜）」形式で表示できるように整える
 function formatDateText(dateText) {
   if (!dateText) return "";
-  return String(dateText);
+
+  // 文字列前後の空白を除去し、想定フォーマット判定を安定させる
+  const normalized = String(dateText).trim();
+  const match = normalized.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    // 想定外フォーマットはそのまま返し、表示欠落を防ぐ
+    return normalized;
+  }
+
+  // 不正日付（例: 2025-02-30）を弾くことで誤った曜日表示を防ぐ
+  const utcDate = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+  const isValidDate =
+    utcDate.getUTCFullYear() === Number(match[1]) &&
+    utcDate.getUTCMonth() === Number(match[2]) - 1 &&
+    utcDate.getUTCDate() === Number(match[3]);
+
+  if (!isValidDate) {
+    return normalized;
+  }
+
+  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  const weekdayLabel = weekdays[utcDate.getUTCDay()];
+  return `${normalized}（${weekdayLabel}）`;
 }
 
-// 開催日を「YYYY-MM-DD」または「YYYY-MM-DD〜YYYY-MM-DD」で表示する
+// 開催日を「YYYY-MM-DD（曜）」または「YYYY-MM-DD（曜）〜YYYY-MM-DD（曜）」で表示する
 function formatEventDateRange(dateFrom, dateTo) {
   const startDate = formatDateText(dateFrom);
   const endDate = formatDateText(dateTo);
