@@ -135,6 +135,8 @@ h2 {
   margin-left: 6px;
   color: var(--text-note);
   color: rgba(255, 255, 255, 0.6); /* 区切りは少し控えめな白 */
+  font-family: sans-serif; /* 記号の形を安定させる */
+  line-height: 1;
 }
 
 .breadcrumb__item a {
