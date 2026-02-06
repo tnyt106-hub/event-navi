@@ -1,6 +1,6 @@
 {
   "venue_id": "mimoca",
-  "last_success_at": "2026-02-05",
+  "last_success_at": "2026-02-06",
   "events": [
     {
       "title": "キュレーター・トーク",
@@ -138,7 +138,7 @@
     {
       "title": "キュレーター・トーク",
       "date_from": "2026-03-01",
-      "date_to": "2026-03-01",
+      "date_to": "2026-04-25",
       "source_url": "https://www.mimoca.jp/events/260301ueno_ct/",
       "price": "無料（別途、本展観覧券が必要です）",
       "contact": "Tel: 0877-24-7755 Fax: 0877-24-7766",
@@ -149,6 +149,28 @@
         ],
         "flags": [
           "free"
+        ]
+      },
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00"
+    },
+    {
+      "title": "親子でMIMOCAの日",
+      "date_from": "2026-03-01",
+      "date_to": "2026-04-25",
+      "source_url": "https://www.mimoca.jp/events/2026-4-25-oyako-de-mimoca/",
+      "open_time": "10:00",
+      "start_time": null,
+      "end_time": "18:00",
+      "price": "当館は高校生以下または18歳未満の子どもの観覧料を常に無料としていますが、「親子でMIMOCAの日」は子どもの同伴者の方も2名まで観覧無料となります。ご家族やお友達と一緒にMIMOCAをお楽しみください。",
+      "contact": "Tel: 0877-35-9613",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
         ]
       }
     }

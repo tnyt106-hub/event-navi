@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-02-05",
+  "last_success_at": "2026-02-06",
   "events": [
     {
       "title": "ビジネスDXフェア in 高松 ～ ビジネスDXが、企業を変える。AIで変える。～",
@@ -368,7 +368,7 @@
       }
     },
     {
-      "title": "【B’z】B’z LIVE-GYM 2026 -FYOP+-",
+      "title": "【B’z】B’z LIVE-GYM 2026 -FYOP＋-",
       "date_from": "2026-04-25",
       "date_to": "2026-04-26",
       "source_url": "https://kagawa-arena.com/event/1031/",
@@ -421,7 +421,7 @@
       }
     },
     {
-      "title": "【FRUITS ZIPPER】FRUITS ZIPPER 4周年 ARENA TOUR",
+      "title": "【FRUITS ZIPPER】FRUITS ZIPPER ARENA TOUR 2026",
       "date_from": "2026-05-30",
       "date_to": "2026-05-31",
       "source_url": "https://kagawa-arena.com/event/1069/",
@@ -525,7 +525,7 @@
       }
     },
     {
-      "title": "【福山雅治】WE&#8217;RE BROS.TOUR 2026",
+      "title": "【福山雅治】NISSAY PRESENTS FUKUYAMA MASAHARU WE&#8217;RE BROS. TOUR 2026 龍、雷乃発声",
       "date_from": "2026-06-27",
       "date_to": "2026-06-28",
       "source_url": "https://kagawa-arena.com/event/999/",
