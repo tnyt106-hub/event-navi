@@ -496,8 +496,11 @@ ${bottomAdHtml}
 
 // 日付一覧ページを生成する
 function renderDateIndexPage(dateEntries, adHtml) {
-  const titleText = `日付一覧｜${SITE_NAME}`;
-  const headingText = "日付一覧";
+  // Step1方針: 一覧ページ名は「日付から探す」に統一し、検索意図と一致させる
+  const titleText = `日付から探す｜${SITE_NAME}`;
+  const headingText = "日付から探す";
+  // H1とH2を同名にすると読み上げ時の重複感が出るため、一覧セクションは別ラベルにする
+  const listSectionTitle = "開催日一覧";
   const breadcrumbHtml = renderBreadcrumbs([
     { label: "ホーム", href: "../index.html" },
     { label: headingText }
@@ -539,14 +542,14 @@ function renderDateIndexPage(dateEntries, adHtml) {
       headingText,
       "../css/style.css",
       false,
-      "開催日ごとのイベント件数と代表イベントを一覧で確認できるページです。日付を選んで、その日のイベント詳細ページへ移動できます。",
+      "四国で開催されるイベントを日付別に一覧で確認できるページです。日程ごとの件数と代表イベントから詳細ページへ進めます。",
       "/date/",
       breadcrumbHtml
     )
     + renderAdSection(adHtml, "index")
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
-      <h2 id="events-title" class="spot-events__title">${escapeHtml(headingText)}</h2>
+      <h2 id="events-title" class="spot-events__title">${escapeHtml(listSectionTitle)}</h2>
     </div>
     <div class="spot-events__body">
       <div class="spot-events__panel">
