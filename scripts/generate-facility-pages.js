@@ -95,6 +95,28 @@ function renderPageFooter() {
 `;
 }
 
+// パンくずリストを共通で生成する。
+// 最終要素は現在ページとして非リンクにし、スクリーンリーダー向けに aria-current を付与する。
+function renderBreadcrumbs(items) {
+  const listHtml = items.map((item, index) => {
+    const safeLabel = escapeHtml(item.label);
+    const isCurrent = index === items.length - 1;
+
+    if (isCurrent || !item.href) {
+      return `      <li class="breadcrumb__item" aria-current="page"><span>${safeLabel}</span></li>`;
+    }
+
+    return `      <li class="breadcrumb__item"><a href="${escapeHtml(item.href)}">${safeLabel}</a></li>`;
+  }).join("\n");
+
+  return `  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <ol class="breadcrumb__list">
+${listHtml}
+    </ol>
+  </nav>
+`;
+}
+
 function renderFacilityIndexPage(prefectureSummaries) {
   const cardsHtml = prefectureSummaries
     .map((summary) => {
@@ -109,11 +131,16 @@ function renderFacilityIndexPage(prefectureSummaries) {
     })
     .join("\n");
 
+  const breadcrumbHtml = renderBreadcrumbs([
+    { label: "ホーム", href: "../index.html" },
+    { label: "県から探す" }
+  ]);
+
   return `${renderPageHeader({
     title: `県から探す｜${SITE_NAME}`,
     heading: "県から探す",
     cssPath: "../css/style.css"
-  })}    <section class="spot-events" aria-labelledby="facility-pref-title">
+  })}${breadcrumbHtml}    <section class="spot-events" aria-labelledby="facility-pref-title">
       <div class="spot-events__header">
         <h2 id="facility-pref-title" class="spot-events__title">県別一覧</h2>
       </div>
@@ -152,11 +179,17 @@ function renderPrefecturePage(prefecture, spots, eventCountMap) {
             </ul>
           </li>`;
 
+  const breadcrumbHtml = renderBreadcrumbs([
+    { label: "ホーム", href: "../../index.html" },
+    { label: "県から探す", href: "../" },
+    { label: prefecture }
+  ]);
+
   const bodyHtml = `${renderPageHeader({
     title: `${prefecture}の施設一覧｜${SITE_NAME}`,
     heading: `${prefecture}の施設一覧`,
     cssPath: "../../css/style.css"
-  })}    <nav class="spot-actions" aria-label="施設ナビゲーション">
+  })}${breadcrumbHtml}    <nav class="spot-actions" aria-label="施設ナビゲーション">
       <a class="spot-action-btn" href="../">施設一覧へ戻る</a>
       <a class="spot-action-btn" href="../../index.html">トップへ戻る</a>
     </nav>

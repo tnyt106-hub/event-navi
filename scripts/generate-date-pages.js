@@ -201,6 +201,29 @@ ${noindexMeta}
 `;
 }
 
+// パンくずリストのHTMLを生成する。
+// items は [{ label: "表示名", href: "リンク先(任意)" }] の配列を受け取り、
+// 最後の要素（現在ページ）は自動的に非リンクとして出力する。
+function renderBreadcrumbs(items) {
+  const breadcrumbItems = items.map((item, index) => {
+    const safeLabel = escapeHtml(item.label);
+    const isCurrentPage = index === items.length - 1;
+
+    if (isCurrentPage || !item.href) {
+      return `      <li class="breadcrumb__item" aria-current="page"><span>${safeLabel}</span></li>`;
+    }
+
+    return `      <li class="breadcrumb__item"><a href="${escapeHtml(item.href)}">${safeLabel}</a></li>`;
+  }).join("\n");
+
+  return `  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <ol class="breadcrumb__list">
+${breadcrumbItems}
+    </ol>
+  </nav>
+`;
+}
+
 // HTML のフッター部分を生成する
 function renderFooter() {
   return `  </main>
@@ -380,6 +403,11 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
 
   const eventCards = events.map((eventItem) => renderEventCard(eventItem, eventItem.venue_label)).join("");
   const dateText = formatJapaneseDate(dateObj);
+  const breadcrumbHtml = renderBreadcrumbs([
+    { label: "ホーム", href: "../../index.html" },
+    { label: "日付一覧", href: "../" },
+    { label: dateText }
+  ]);
   // 広告の挿入位置は関数化しておき、後で差し込みやすくする
   const topAdHtml = renderAdSection(adHtml, "top");
   // 下部広告は必要になった時だけ有効化できるようにトグルを用意する
@@ -389,6 +417,7 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   return (
     // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
     renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex)
+    + breadcrumbHtml
     + navHtml
     + topAdHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
@@ -412,6 +441,10 @@ ${bottomAdHtml}
 function renderDateIndexPage(dateEntries, adHtml) {
   const titleText = `日付一覧｜${SITE_NAME}`;
   const headingText = "日付一覧";
+  const breadcrumbHtml = renderBreadcrumbs([
+    { label: "ホーム", href: "../index.html" },
+    { label: headingText }
+  ]);
 
   const items = dateEntries.map((entry) => {
     const dateKey = formatDateKey(entry.date);
@@ -444,6 +477,7 @@ function renderDateIndexPage(dateEntries, adHtml) {
   return (
     // docs 配信前提で docs/date/index.html は ../css/style.css を参照する
     renderHeader(titleText, headingText, "../css/style.css", false)
+    + breadcrumbHtml
     + renderAdSection(adHtml, "index")
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">

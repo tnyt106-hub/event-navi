@@ -14,6 +14,14 @@
   </header>
 
   <main class="spot-container">
+    <!-- 現在の階層が分かるよう、スポット詳細ページにもパンくずを配置する -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <ol class="breadcrumb__list">
+        <li class="breadcrumb__item"><a href="../index.html">ホーム</a></li>
+        <li class="breadcrumb__item" aria-current="page"><span>施設詳細</span></li>
+      </ol>
+    </nav>
+
     <!-- エラー時の表示領域（JSで切り替え） -->
     <section id="spot-error" class="spot-error" hidden>
       <h2 class="spot-error__title">スポットが見つかりません</h2>
