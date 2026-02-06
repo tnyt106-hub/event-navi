@@ -38,14 +38,40 @@ function formatDateKey(dateObj) {
   return `${dateObj.getUTCFullYear()}-${pad2(dateObj.getUTCMonth() + 1)}-${pad2(dateObj.getUTCDate())}`;
 }
 
-// 日本語の見出し用に YYYY年MM月DD日 を作成する
-function formatJapaneseDate(dateObj) {
-  return `${dateObj.getUTCFullYear()}年${pad2(dateObj.getUTCMonth() + 1)}月${pad2(dateObj.getUTCDate())}日`;
+// UTC の Date から曜日ラベル（日〜土）を取得する
+function getWeekdayLabelFromUtcDate(dateObj) {
+  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  return weekdays[dateObj.getUTCDay()];
 }
 
-// UTC の Date を見出し用の MM/DD 表記に変換する
+// 日本語の見出し用に YYYY年MM月DD日（曜）を作成する
+function formatJapaneseDate(dateObj) {
+  const weekdayLabel = getWeekdayLabelFromUtcDate(dateObj);
+  return `${dateObj.getUTCFullYear()}年${pad2(dateObj.getUTCMonth() + 1)}月${pad2(dateObj.getUTCDate())}日（${weekdayLabel}）`;
+}
+
+// UTC の Date を見出し用の MM/DD（曜）表記に変換する
 function formatMonthDayLabel(dateObj) {
-  return `${pad2(dateObj.getUTCMonth() + 1)}/${pad2(dateObj.getUTCDate())}`;
+  const weekdayLabel = getWeekdayLabelFromUtcDate(dateObj);
+  return `${pad2(dateObj.getUTCMonth() + 1)}/${pad2(dateObj.getUTCDate())}（${weekdayLabel}）`;
+}
+
+// YYYY-MM-DD に曜日（例: 2025-01-01（水））を付与して表示する
+function formatDateWithWeekday(dateText) {
+  const match = String(dateText).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    // 想定外フォーマットはそのまま返し、表示崩れを防ぐ
+    return String(dateText);
+  }
+
+  const dateObj = buildUtcDate(Number(match[1]), Number(match[2]), Number(match[3]));
+  if (!dateObj) {
+    // 不正な日付（例: 2025-02-30）は変換せずに返す
+    return String(dateText);
+  }
+
+  const weekdayLabel = getWeekdayLabelFromUtcDate(dateObj);
+  return `${dateText}（${weekdayLabel}）`;
 }
 
 // UTC の Date を安全に生成し、月日が正しいか検証する
@@ -364,9 +390,12 @@ ${adHtml}
 function renderEventCard(eventItem, venueLabel) {
   const titleText = eventItem.title || "イベント名未定";
   const safeVenueLabel = venueLabel || "会場未定";
+  // 日付表示は曜日付きにして、日取りを直感的に把握しやすくする
+  const dateFromText = formatDateWithWeekday(eventItem.date_from);
+  const dateToText = formatDateWithWeekday(eventItem.date_to);
   const dateText = eventItem.date_from === eventItem.date_to
-    ? eventItem.date_from
-    : `${eventItem.date_from}〜${eventItem.date_to}`;
+    ? dateFromText
+    : `${dateFromText}〜${dateToText}`;
   // 構造化項目が取れない場合のみ、本文を「その他」として表示する。
   const otherBodyText = buildOtherBodyText(eventItem?.body);
   const showOther = otherBodyText && !hasStructuredDetails(eventItem);
