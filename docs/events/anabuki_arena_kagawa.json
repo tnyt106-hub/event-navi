@@ -152,6 +152,25 @@
       }
     },
     {
+      "title": "マイナビ就職セミナー 高松会場",
+      "date_from": "2026-03-03",
+      "date_to": "2026-03-04",
+      "source_url": "https://kagawa-arena.com/event/1130/",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "price": "無し",
+      "contact": "s.c3s3-event@mynavi.jp",
+      "source_type": "rest_api",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
+        "flags": []
+      }
+    },
+    {
       "title": "プラセール フットサルスクール",
       "date_from": "2026-03-04",
       "date_to": "2026-03-04",
