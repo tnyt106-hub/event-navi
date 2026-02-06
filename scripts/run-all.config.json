@@ -102,6 +102,12 @@
       "outputs": ["docs/date", "docs/index.html"]
     },
     {
+      "id": "generate-facility-pages",
+      "script": "scripts/generate-facility-pages.js",
+      "enabled": true,
+      "outputs": ["docs/facility", "docs/facility/index.html"]
+    },
+    {
       "id": "generate-sitemap",
       "script": "scripts/generate-sitemap.js",
       "enabled": true,
