@@ -44,7 +44,11 @@
       <h2 id="map-title" style="display:none;">四国エリア イベント施設マップ</h2>
       
       <div class="map-wrapper">
-        <div class="search-box">
+        <!--
+          施設名検索UIは将来の再利用を想定してDOM上には残しつつ、
+          現在の要件では地図上に表示しないため hidden で非表示化する。
+        -->
+        <div class="search-box" hidden aria-hidden="true">
           <div class="search-input-wrapper">
             <input
               type="text"
