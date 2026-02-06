@@ -9,6 +9,8 @@ const SITE_NAME = "イベントガイド【四国版】";
 const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // 年が省略された日付の補完は、実行日の月から数ヶ月先までに限定する
 const YEARLESS_LOOKAHEAD_MONTHS = 6;
+// canonical/OGで使う公開URLの基点。ドメイン変更時はここだけ直せばよい。
+const SITE_ORIGIN = "https://event-navi.jp";
 
 // 入力ディレクトリは既定で docs/events を参照し、引数で上書きできるようにする
 // 例: node scripts/generate-date-pages.js dist/json
@@ -174,12 +176,19 @@ function normalizeDateRange(dateFromObj, dateToObj, venueId, index) {
 }
 
 // HTML のヘッダー部分を生成する
-function renderHeader(titleText, headingText, cssPath, isNoindex) {
+function renderHeader(titleText, headingText, cssPath, isNoindex, descriptionText = "", canonicalPath = "") {
   const safeTitle = escapeHtml(titleText);
   const safeHeading = escapeHtml(headingText);
   // noindex 指定が必要なページだけ robots メタタグを挿入する
   // <title> の直前に独立行として入れることでテンプレを読みやすくする
   const noindexMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />\n' : "";
+  const safeDescription = descriptionText ? escapeHtml(descriptionText) : "";
+  const canonicalUrl = canonicalPath ? `${SITE_ORIGIN}${canonicalPath}` : "";
+  const canonicalHtml = canonicalUrl ? `  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />\n` : "";
+  const descriptionHtml = safeDescription ? `  <meta name="description" content="${safeDescription}" />\n` : "";
+  const ogHtml = (safeDescription && canonicalUrl)
+    ? `  <meta property="og:type" content="website" />\n  <meta property="og:locale" content="ja_JP" />\n  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />\n  <meta property="og:title" content="${safeTitle}" />\n  <meta property="og:description" content="${safeDescription}" />\n  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />\n  <meta name="twitter:card" content="summary" />\n`
+    : "";
   // 日付ページでもアクセス計測できるよう、GA4タグをヘッダーに埋め込む。
   // なお page_view は手動制御を維持するため send_page_view を false にしておく。
   const ga4Snippet = `  <!-- Google Analytics 4 の計測タグ（日付ページ向け） -->\n  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n  </script>\n`;
@@ -189,8 +198,7 @@ function renderHeader(titleText, headingText, cssPath, isNoindex) {
 <head>
 ${ga4Snippet}  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-${noindexMeta}
-  <title>${safeTitle}</title>
+${noindexMeta}${descriptionHtml}${canonicalHtml}${ogHtml}  <title>${safeTitle}</title>
   <link rel="stylesheet" href="${cssPath}" />
 </head>
 <body>
@@ -476,7 +484,14 @@ function renderDateIndexPage(dateEntries, adHtml) {
 
   return (
     // docs 配信前提で docs/date/index.html は ../css/style.css を参照する
-    renderHeader(titleText, headingText, "../css/style.css", false)
+    renderHeader(
+      titleText,
+      headingText,
+      "../css/style.css",
+      false,
+      "開催日ごとのイベント件数と代表イベントを一覧で確認できるページです。日付を選んで、その日のイベント詳細ページへ移動できます。",
+      "/date/"
+    )
     + breadcrumbHtml
     + renderAdSection(adHtml, "index")
     + `  <section class="spot-events" aria-labelledby="events-title">
