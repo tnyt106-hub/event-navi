@@ -126,6 +126,7 @@ h2 {
   display: inline-flex;
   align-items: center;
   color: var(--text-sub);
+  color: rgba(255, 255, 255, 0.8); /*少し透過した白 */
 }
 
 /* 現在ページ以外の要素にだけ区切り記号を表示し、可読性を上げる */
@@ -133,10 +134,11 @@ h2 {
   content: "›";
   margin-left: 6px;
   color: var(--text-note);
+  color: rgba(255, 255, 255, 0.6); /* 区切りは少し控えめな白 */
 }
 
 .breadcrumb__item a {
-  color: var(--text-sub);
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -146,7 +148,7 @@ h2 {
 
 /* 現在ページはリンクにせず、少し濃い色で現在位置だと分かるようにする */
 .breadcrumb__item[aria-current="page"] {
-  color: var(--text);
+  color: #ffffff;
   font-weight: 600;
 }
 
