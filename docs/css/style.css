@@ -28,8 +28,14 @@ html, body {
   --accent-alt: #FF7043;
   /* アクセントの淡色（案AのAccentSoft） */
   --accent-soft: #E3F2FD;
-  /* ヘッダー専用の背景色（案AのHeaderBG） */
-  --header-bg: #F8FAFC;
+  /* ヘッダー専用の背景色（案A）: 背景グラデーションと馴染ませる半透明サーフェス */
+  --header-bg: rgba(248, 250, 252, 0.88);
+  /* ヘッダー主見出しの文字色（案A）: 半透明背景でも十分なコントラストを確保 */
+  --header-text: #1F2937;
+  /* ヘッダー補助テキストの文字色（案A）: 主見出しより一段落ち着かせて情報の優先度を表現 */
+  --header-subtext: #475569;
+  /* ヘッダー下端の境界色（案A）: 区切りは残しつつ、切り替わりの唐突感を緩和 */
+  --header-border: rgba(148, 163, 184, 0.35);
   /* 地図UIのサーフェス色を変数化（局所ハードコード色の撤廃） */
   --surface-strong: #fff;
   --surface-hover: #f4f4f4;
@@ -73,9 +79,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ヘッダー全体: 公式感を出すために背景と境界線を整える */
 .site-header {
-  /* 明るいベース背景上でもヘッダー領域を明確に認識できるようにアクセント面を採用 */
-  background: var(--accent);
-  border-bottom: 1px solid var(--border);
+  /* 案A: ヘッダーを半透明サーフェス化し、背景との色差による違和感を緩和 */
+  background: var(--header-bg);
+  /* ヘッダー境界は残して情報領域を認識しやすくする（ただし線色は柔らかくする） */
+  border-bottom: 1px solid var(--header-border);
+  /* 対応ブラウザでは背面を軽くぼかして、文字の可読性と上品さを両立 */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   padding: 16px 12px 14px;
 }
 
@@ -84,7 +94,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-size: 1.6rem;
   line-height: 1.3;
-  color: var(--text_white);
+  /* 案A: 半透明の明るい背景に合わせて濃色テキストへ変更 */
+  color: var(--header-text);
 }
 
 /* サブ見出し（上段の補足） */
@@ -92,14 +103,16 @@ h1, h2, h3, h4, h5, h6 {
   margin: 4px 0 0;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text_white);
+  /* 補助情報は主見出しより少し弱い色で、視線誘導を安定させる */
+  color: var(--header-subtext);
 }
 
 /* 説明文（中段） */
 .site-lead {
   margin: 8px 0 0;
   font-size: 0.85rem;
-  color: var(--text_white);
+  /* 説明文も濃色にして可読性を確保（白文字のにじみを防止） */
+  color: var(--header-subtext);
 }
 
 /* 「日付から探す」見出し（下段の導線ラベル） */
