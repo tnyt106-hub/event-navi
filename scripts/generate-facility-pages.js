@@ -151,12 +151,12 @@ function renderFacilityIndexPage(prefectureSummaries) {
 
   const breadcrumbHtml = renderBreadcrumbs([
     { label: "ホーム", href: "../index.html" },
-    { label: "県から探す" }
+    { label: "エリアから探す" }
   ]);
 
   return `${renderPageHeader({
-    title: `県から探す｜${SITE_NAME}`,
-    heading: "県から探す",
+    title: `エリアから探す｜${SITE_NAME}`,
+    heading: "エリアから探す",
     cssPath: "../css/style.css",
     // Step1方針: 施設一覧の説明文を「対象・操作・遷移先」で簡潔に統一する
     description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設詳細へ進めます。",
@@ -204,7 +204,7 @@ function renderPrefecturePage(prefecture, spots, eventCountMap) {
 
   const breadcrumbHtml = renderBreadcrumbs([
     { label: "ホーム", href: "../../index.html" },
-    { label: "県から探す", href: "../" },
+    { label: "エリアから探す", href: "../" },
     { label: prefecture }
   ]);
 
