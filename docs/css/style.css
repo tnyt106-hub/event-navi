@@ -4,26 +4,30 @@ html, body {
   padding: 0;
 }
 :root {
-  /* デザインシステムの基準値を集約して一貫性を保つ */
-  --bg: #F6F7FB;
-  /* 青ベースのグラデーション背景 */
-  --bg-gradient: linear-gradient( 135deg, #3a4fbd 0%, /* 左上：少し明るく、紫みは維持 */ #6aa0ff 38%, /* 中央：明るさ＋透明感アップ */ #e3e1ff 100% /* 右下：白寄りのラベンダーに */ );
+  /* 指定トークン: ページ全体のベース背景 */
+  --bg: #FAFAFA;
+  /* 既存方針を維持: トップ/詳細ページの背景グラデーション */
+  --bg-gradient: linear-gradient(135deg, #3a4fbd 0%, #6aa0ff 38%, #e3e1ff 100%);
+  /* 指定トークン: コンテンツ面の背景 */
   --surface: #FFFFFF;
-  /* 基本文字色（案AのTextMainに合わせる） */
-  --text: #0F172A;
+  /* 指定トークン: メインテキスト */
+  --text: #333333;
   --text_white: #ffffff;
-  /* 白文字の透過バリエーション（パンくずで使用） */
+  /* グラデーション背景上の可読性を保つための白系テキスト */
   --text-white-80: rgba(255, 255, 255, 0.8);
   --text-white-60: rgba(255, 255, 255, 0.6);
-  /* 補助テキスト色（案AのTextSubに合わせる） */
-  --text-sub: #475569;
+  /* 明るい背景上で使う補助テキスト */
+  --text-sub: #666666;
   /* 注記用の落ち着いた色（案AのTextNote） */
   --text-note: #64748B;
-  --border: #E5E7EB;
-  /* 主アクセントカラー（明るいオレンジ） */
-  --accent: #f97316;
+  /* 指定トークン: 境界線 */
+  --border: #E0E0E0;
+  /* 指定トークン: アクセント（青をデフォルト採用） */
+  --accent: #1E88E5;
+  /* オレンジ系アクセントも補助用途で保持 */
+  --accent-alt: #FF7043;
   /* アクセントの淡色（案AのAccentSoft） */
-  --accent-soft: #DBEAFE;
+  --accent-soft: #E3F2FD;
   /* ヘッダー専用の背景色（案AのHeaderBG） */
   --header-bg: #F8FAFC;
   /* 地図UIのサーフェス色を変数化（局所ハードコード色の撤廃） */
@@ -42,22 +46,36 @@ html, body {
   --shadow-sheet: 0 -10px 30px rgba(17,24,39,0.12);
   --shadow-card: 0 12px 30px rgba(17,24,39,0.08);
   --shadow-subcard: 0 6px 16px rgba(17,24,39,0.06);
-  --space-1: 8px;
-  --space-2: 12px;
-  --space-3: 16px;
-  --space-4: 24px;
-  --font: "Inter", "Noto Sans JP", "Segoe UI", system-ui, sans-serif;
+  /* 指定トークン: 余白スケール */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  /* 指定トークン: フォントファミリー */
+  --font: "Noto Sans JP", "BIZ UDPGothic", sans-serif;
+  --font-weight-body: 400;
+  --font-weight-heading: 600;
 }
 body {
   font-family: var(--font);
+  font-weight: var(--font-weight-body);
+  /* 背景は従来のグラデーションを維持し、地図画面の印象を崩さない */
   background: var(--bg-gradient);
   color: var(--text_white);
 }
 
+/* 指定トークンに合わせて見出しの太さを統一 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-heading);
+}
+
 /* ヘッダー全体: 公式感を出すために背景と境界線を整える */
 .site-header {
-  background: transparent; /* ← 背景を透明に */
-  border-bottom: none; /* ← 下線を消す */
+  /* 明るいベース背景上でもヘッダー領域を明確に認識できるようにアクセント面を採用 */
+  background: var(--accent);
+  border-bottom: 1px solid var(--border);
   padding: 16px 12px 14px;
 }
 
@@ -137,16 +155,15 @@ h2 {
 .breadcrumb__item {
   display: inline-flex;
   align-items: center;
-  color: var(--text-sub);
-  color: var(--text-white-80); /*少し透過した白 */
+  /* グラデーション背景上での視認性を優先 */
+  color: var(--text-white-80);
 }
 
 /* 現在ページ以外の要素にだけ区切り記号を表示し、可読性を上げる */
 .breadcrumb__item:not(:last-child)::after {
   content: "›";
   margin-left: 6px;
-  color: var(--text-note);
-  color: var(--text-white-60); /* 区切りは少し控えめな白 */
+  color: var(--text-white-60);
   font-family: sans-serif; /* 記号の形を安定させる */
   line-height: 1;
 }
@@ -477,7 +494,7 @@ h2 {
   margin: 0 0 6px;
   font-size: 19px;
   line-height: 1.3;
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
 }
 
 /* メタ情報（カテゴリ・エリア） */
@@ -606,6 +623,7 @@ main {
    スポット詳細ページ
    ======================= */
 .spot-page { 
+  /* 詳細ページもトップと同じ背景演出を維持 */
   background: var(--bg-gradient); 
 }
 
@@ -619,7 +637,7 @@ main {
 .spot-page-title {
   margin: 8px 0 4px;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
 }
 
 .spot-page-lead {
@@ -668,7 +686,7 @@ main {
 #spot-title {
   margin: 0 0 12px;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
   line-height: 1.4; /* 行間を広めにして読みやすく */
   color: var(--text);
 }
@@ -692,7 +710,7 @@ main {
 .spot-title {
   margin: 0 0 12px;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
   color: var(--text);
 }
 
@@ -703,7 +721,7 @@ main {
 .spot-intro__title {
   margin: 0 0 8px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
   color: var(--text);
 }
 
@@ -737,7 +755,7 @@ main {
 .spot-events__title {
   margin: 0;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
   color: var(--text);
 }
 
@@ -934,7 +952,7 @@ main {
   border-radius: var(--radius-pill); /* バッジの丸みを強調 */
   background: var(--accent-soft);
   font-size: 12px;
-  font-weight: 700; /* 重要情報として強調 */
+  font-weight: var(--font-weight-heading); /* 重要情報として強調 */
   color: var(--accent);
 }
 
@@ -1028,7 +1046,7 @@ main {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--text_white);
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
 }
 
 .spot-cta {
