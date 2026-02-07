@@ -116,6 +116,8 @@ const map = L.map("map", {
   maxBounds: shikokuBounds,
   maxBoundsViscosity: 0.7
 });
+// スポット名ラベルは「拡大時のみ表示」にするため、閾値を定数化しておく
+const SPOT_LABEL_MIN_ZOOM = 12;
 const isWide = window.matchMedia("(min-width: 1024px)").matches;
 map.setView(HOME_CENTER, isWide ? HOME_ZOOM_PC : HOME_ZOOM_MOBILE);
 gaPageView("/map", document.title);// GA4 helper（最小）
@@ -135,16 +137,8 @@ const baseMaps = {
 };
 baseMaps["標準1"].addTo(map);
 L.control.layers(baseMaps).addTo(map);
-const markers = L.markerClusterGroup({
-    // 1. 集約の範囲（ピクセル単位）: 
-    maxClusterRadius: 40, 
-    // 2. クラスタリングを解除するズームレベル
-    disableClusteringAtZoom: 14,
-    // 3. クラスタをクリックした際に、その範囲までズームするアニメーションの有効化
-    showCoverageOnHover: false,
-    // 4. マーカーが重なっている場合にクモの巣状に広げる設定
-    spiderfyOnMaxZoom: false
-});
+// 仕様変更: クラスタリングは行わず、常に個別のピンを表示する
+const markers = L.layerGroup();
 // デフォルトのtooltipAnchorは右上寄りなので、ピンの真上にラベルが来るよう補正する
 const centeredTooltipIcon = new L.Icon.Default({
   tooltipAnchor: [0, -28]
@@ -210,6 +204,16 @@ function createMarkerLabelText(spot) {
   // ラベル用の表示名は「不明」になる時も一貫して出す（初心者向けに分かりやすく）
   return spot.name ?? "名称不明";
 }
+function updateSpotLabelVisibility() {
+  // 地図のズーム値に応じてラベルの表示/非表示を切り替える
+  // zoom < 12 のときはラベルを非表示にして、縮小表示時の可読性を確保する
+  const shouldShowLabel = map.getZoom() >= SPOT_LABEL_MIN_ZOOM;
+  const mapElement = map.getContainer();
+  if (!mapElement) return;
+  mapElement.classList.toggle("hide-spot-labels", !shouldShowLabel);
+}
+// ズーム操作のたびにラベル表示状態を同期する
+map.on("zoomend", updateSpotLabelVisibility);
 // =======================
 // スポット読み込み
 // =======================
@@ -254,6 +258,8 @@ fetch("./data/spots.json")
     });
         map.addLayer(markers);
         setVisibleEntries(markerEntries);
+        // 初回描画時にもズーム値に応じたラベル表示へ合わせる
+        updateSpotLabelVisibility();
     // ×閉じるボタン（ここで有効化：markerEntriesが埋まった後）
     const closeBtn = document.getElementById("spot-panel-close");
     if (closeBtn) {

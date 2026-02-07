@@ -347,6 +347,10 @@ h2 {
   transform: translateX(0);
   pointer-events: auto !important; /* クリックイベントを確実に拾う */
 }
+/* 地図が縮小表示の間は、スポット名ラベルを非表示にして視認性を確保する */
+#map.hide-spot-labels .leaflet-tooltip.spot-label {
+  display: none;
+}
 
 /* =========================
    スマホ最適化
