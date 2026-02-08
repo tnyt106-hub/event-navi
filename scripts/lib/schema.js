@@ -1,3 +1,5 @@
+const { ERROR_TYPES, TypedError } = require("./error_types");
+
 /**
  * プロジェクト標準のイベント項目テンプレート。
  *
@@ -84,7 +86,8 @@ function createRootStructure(venueId, events = []) {
 function validateFinalData(events, options = { minEvents: 1 }) {
   // 1. 件数チェック
   if (!Array.isArray(events) || events.length < options.minEvents) {
-    throw new Error(
+    throw new TypedError(
+      ERROR_TYPES.EMPTY_RESULT,
       `[VALIDATION ERROR] イベント数が少なすぎます (${events.length}件)。解析に失敗している可能性があります。`
     );
   }
@@ -95,13 +98,13 @@ function validateFinalData(events, options = { minEvents: 1 }) {
 
     // タイトルチェック
     if (!event.title || typeof event.title !== "string" || event.title.length < 2) {
-      throw new Error(`[VALIDATION ERROR] タイトルが不正です: "${id}"`);
+      throw new TypedError(ERROR_TYPES.VALIDATION, `[VALIDATION ERROR] タイトルが不正です: "${id}"`);
     }
 
     // 日付形式チェック (YYYY-MM-DD)
     const datePattern = /^\d{4}-\d{2}-\d{2}$/;
     if (!datePattern.test(event.date_from)) {
-      throw new Error(`[VALIDATION ERROR] 開始日が不正な形式です: "${id}" (${event.date_from})`);
+      throw new TypedError(ERROR_TYPES.VALIDATION, `[VALIDATION ERROR] 開始日が不正な形式です: "${id}" (${event.date_from})`);
     }
   });
 
