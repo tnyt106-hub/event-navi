@@ -1,24 +1,69 @@
 /**
- * プロジェクト標準のイベントオブジェクト構造を定義
+ * プロジェクト標準のイベント項目テンプレート。
+ *
+ * 重要:
+ * - 項目定義はこの定数に1回だけ記述し、他では重複定義しない。
+ * - createEvent() はこのテンプレートを複製して値を上書きする。
+ */
+const EVENT_TEMPLATE = Object.freeze({
+  title: null,
+  date_from: null,
+  date_to: null,
+  open_time: null,
+  start_time: null,
+  end_time: null,
+  description: null,
+  image_url: null,
+  price: null,
+  contact: null,
+  source_url: null,
+  source_type: null,
+  venue_name: null,
+  status: null,
+  body: null,
+  tags: Object.freeze({
+    type: "other",
+    genres: Object.freeze([]),
+    flags: Object.freeze([]),
+  }),
+});
+
+/**
+ * 入力データからイベントオブジェクトを生成する。
+ *
+ * 実装意図:
+ * - 旧キー(time_start/time_end)は後方互換として受け取り、
+ *   標準キー(start_time/end_time)へ正規化する。
+ * - tags 配下は配列を都度複製し、参照共有の副作用を防ぐ。
  */
 function createEvent(data = {}) {
-  return {
-    title: data.title || null,
-    date_from: data.date_from || null,
-    date_to: data.date_to || null,
-    time_start: data.time_start || null,
-    time_end: data.time_end || null,
-    description: data.description || null,
-    image_url: data.image_url || null,
-    price: data.price || null,
-    contact: data.contact || null,
-    source_url: data.source_url || null,
-    tags: {
-      type: data.tags?.type || "other",
-      genres: data.tags?.genres || [],
-      flags: data.tags?.flags || []
+  // 旧フィールド名(time_start/time_end)で渡された場合も
+  // 新フィールド名(start_time/end_time)へ吸収して返す。
+  const normalizedStartTime = data.start_time || data.time_start || null;
+  const normalizedEndTime = data.end_time || data.time_end || null;
+
+  const event = { ...EVENT_TEMPLATE };
+
+  // テンプレートで定義したキーだけをコピーする。
+  // これにより、未定義キーが紛れ込んでJSON項目が再び散らばることを防ぐ。
+  Object.keys(EVENT_TEMPLATE).forEach((key) => {
+    if (key === "tags") return;
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
+      event[key] = data[key] ?? null;
     }
+  });
+
+  event.open_time = data.open_time || null;
+  event.start_time = normalizedStartTime;
+  event.end_time = normalizedEndTime;
+  event.tags = {
+    ...EVENT_TEMPLATE.tags,
+    ...(data.tags || {}),
+    genres: Array.isArray(data.tags?.genres) ? [...data.tags.genres] : [],
+    flags: Array.isArray(data.tags?.flags) ? [...data.tags.flags] : [],
   };
+
+  return event;
 }
 
 /**
@@ -27,27 +72,29 @@ function createEvent(data = {}) {
 function createRootStructure(venueId, events = []) {
   return {
     venue_id: venueId,
-    last_success_at: new Date().toISOString().split('T')[0],
-    events: events
+    last_success_at: new Date().toISOString().split("T")[0],
+    events: events,
   };
 }
 
 /**
- * 【追加】保存前の最終バリデーション
- * 異常なデータを検知して、壊れたファイルの上書きを防ぎます。
+ * 保存前の最終バリデーション。
+ * 異常なデータを検知して、壊れたファイルの上書きを防ぐ。
  */
 function validateFinalData(events, options = { minEvents: 1 }) {
   // 1. 件数チェック
   if (!Array.isArray(events) || events.length < options.minEvents) {
-    throw new Error(`[VALIDATION ERROR] イベント数が少なすぎます (${events.length}件)。解析に失敗している可能性があります。`);
+    throw new Error(
+      `[VALIDATION ERROR] イベント数が少なすぎます (${events.length}件)。解析に失敗している可能性があります。`
+    );
   }
 
   // 2. 必須項目の型・形式チェック
   events.forEach((event, index) => {
     const id = event.title || `Index:${index}`;
-    
+
     // タイトルチェック
-    if (!event.title || typeof event.title !== 'string' || event.title.length < 2) {
+    if (!event.title || typeof event.title !== "string" || event.title.length < 2) {
       throw new Error(`[VALIDATION ERROR] タイトルが不正です: "${id}"`);
     }
 
@@ -62,7 +109,8 @@ function validateFinalData(events, options = { minEvents: 1 }) {
 }
 
 module.exports = {
+  EVENT_TEMPLATE,
   createEvent,
   createRootStructure,
-  validateFinalData
+  validateFinalData,
 };
