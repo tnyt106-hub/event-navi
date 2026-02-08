@@ -5,6 +5,7 @@ const path = require("path");
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { decodeHtmlEntities } = require("./lib/text");
+const { formatIsoDateFromLocalDate, parseIsoDateAsLocalStrict } = require("./lib/date");
 
 const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "anabuki_arena_kagawa.json");
@@ -29,18 +30,13 @@ function htmlToText(html) {
 }
 
 function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  // Date から ISO 文字列へ整形する処理は共通関数を使って統一する。
+  return formatIsoDateFromLocalDate(date);
 }
 
 function parseDateString(value) {
-  if (!value) return null;
-  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!match) return null;
-  const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
-  return isNaN(date.getTime()) ? null : date;
+  // 入力形式と実在日付を厳密チェックして、無効値を早期に除外する。
+  return parseIsoDateAsLocalStrict(value);
 }
 
 function parseTimeStrict(value) {

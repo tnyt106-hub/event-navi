@@ -203,17 +203,38 @@ function formatIsoDateFromUtcDate(date) {
   return `${year}-${month}-${day}`;
 }
 
-module.exports = {
-  extractDateRange,
-  isDateInRange,
-  normalizeJapaneseDateText,
-  extractDatePartsFromJapaneseText,
-  buildLocalDate,
-  buildUtcDate,
-  formatIsoDateFromLocalDate,
-  formatIsoDateFromUtcDate,
-  parseIsoDateStrict,
-};
+/**
+ * YYYY-MM-DD 形式の日付文字列を厳密に Date(ローカル時刻) へ変換する
+ * - 形式不正や存在しない日付(例: 2024-02-30)は null を返す
+ * - fetch 系スクリプトでローカル日付を扱う処理を共通化する
+ *
+ * @param {string} isoDateText
+ * @returns {Date|null}
+ */
+function parseIsoDateAsLocalStrict(isoDateText) {
+  if (!isoDateText) return null;
+
+  const match = String(isoDateText).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  if (!year || !month || !day) return null;
+
+  return buildLocalDate(year, month, day);
+}
+
+/**
+ * JST基準の「今日 00:00」を UTC Date として返す
+ *
+ * @param {number} [nowMs]
+ * @returns {Date}
+ */
+function getJstTodayUtcDate(nowMs = Date.now()) {
+  const jstNow = new Date(nowMs + 9 * 60 * 60 * 1000);
+  return new Date(Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()));
+}
 
 /**
  * YYYY-MM-DD 形式の日付文字列を厳密に Date(UTC) へ変換する
@@ -248,3 +269,17 @@ function parseIsoDateStrict(isoDateText) {
 
   return utcDate;
 }
+
+module.exports = {
+  extractDateRange,
+  isDateInRange,
+  normalizeJapaneseDateText,
+  extractDatePartsFromJapaneseText,
+  buildLocalDate,
+  buildUtcDate,
+  formatIsoDateFromLocalDate,
+  formatIsoDateFromUtcDate,
+  parseIsoDateAsLocalStrict,
+  getJstTodayUtcDate,
+  parseIsoDateStrict,
+};

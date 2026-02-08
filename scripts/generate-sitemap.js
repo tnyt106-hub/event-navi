@@ -9,6 +9,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { formatIsoDateFromUtcDate } = require("./lib/date");
 
 const REPO_ROOT = path.join(__dirname, "..");
 const DOCS_DIR = path.join(REPO_ROOT, "docs");
@@ -93,8 +94,9 @@ function toPublicUrl(baseUrl, absoluteHtmlPath) {
  * - 日次バッチ想定なので、日付（YYYY-MM-DD）までを出力する
  */
 function formatLastmod(filePath) {
+  // ファイル更新日時は UTC 日付へ丸め、サイトマップ全体で形式を揃える。
   const stat = fs.statSync(filePath);
-  return new Date(stat.mtimeMs).toISOString().slice(0, 10);
+  return formatIsoDateFromUtcDate(new Date(stat.mtimeMs));
 }
 
 function buildSitemapXml(urlItems) {

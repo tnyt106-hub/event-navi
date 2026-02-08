@@ -3,10 +3,12 @@
 
 const { writeJsonPretty } = require("./io");
 const { ERROR_TYPES, TypedError } = require("./error_types");
+const { formatIsoDateFromUtcDate } = require("./date");
 
 // YYYY-MM-DD 形式の当日文字列を返す。
 function buildTodayIsoDate() {
-  return new Date().toISOString().slice(0, 10);
+  // 保存メタデータの日付は UTC 基準の ISO 文字列に統一する。
+  return formatIsoDateFromUtcDate(new Date());
 }
 
 // イベント配列が保存可能かを検証する。

@@ -19,6 +19,7 @@ const {
   normalizeJapaneseDateText,
   buildUtcDate,
   formatIsoDateFromUtcDate,
+  getJstTodayUtcDate,
 } = require("./lib/date");
 
 // 一覧ページURLは運用側で末尾スラッシュ有無が切り替わることがあるため
@@ -72,8 +73,8 @@ function buildDate(year, month, day) {
 // JST基準の現在日を Date (UTC) に揃える。
 
 function buildJstTodayUtc() {
-  const nowJst = new Date(Date.now() + 9 * 60 * 60 * 1000);
-  return new Date(Date.UTC(nowJst.getUTCFullYear(), nowJst.getUTCMonth(), nowJst.getUTCDate()));
+  // JST基準日の算出は共通関数を利用して、他スクリプトと境界条件をそろえる。
+  return getJstTodayUtcDate();
 }
 
 // 過去365日フィルタの閾値を作る（JST基準の日付で判定する）。
