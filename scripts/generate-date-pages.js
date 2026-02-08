@@ -57,6 +57,7 @@ function formatMonthDayLabel(dateObj) {
 }
 
 // YYYY-MM-DD に曜日（例: 2025-01-01（水））を付与して表示する
+// ※同名関数の二重定義があると後勝ち上書きで意図しない差分が出るため、定義は1つだけに保つ。
 function formatDateWithWeekday(dateText) {
   const match = String(dateText).match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (!match) {
@@ -74,24 +75,6 @@ function formatDateWithWeekday(dateText) {
   return `${dateText}（${weekdayLabel}）`;
 }
 
-// YYYY-MM-DD に曜日（例: 2025-01-01（水））を付与して表示する
-function formatDateWithWeekday(dateText) {
-  const match = String(dateText).match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!match) {
-    // 想定外フォーマットはそのまま返し、表示崩れを防ぐ
-    return String(dateText);
-  }
-
-  const dateObj = buildUtcDate(Number(match[1]), Number(match[2]), Number(match[3]));
-  if (!dateObj) {
-    // 不正な日付（例: 2025-02-30）は変換せずに返す
-    return String(dateText);
-  }
-
-  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-  const weekdayLabel = weekdays[dateObj.getUTCDay()];
-  return `${dateText}（${weekdayLabel}）`;
-}
 
 // UTC の Date を安全に生成し、月日が正しいか検証する
 function buildUtcDate(year, month, day) {
