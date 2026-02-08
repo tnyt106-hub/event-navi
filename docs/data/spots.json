@@ -132,6 +132,19 @@
   "source": "https://ehime-spa.jp/budoukan/martial-event/"
   },
   {
+    "name": "あかがねミュージアム",
+    "spot_id": "akagane-museum",
+    "lat": 33.960248,
+    "lng": 133.284345,
+    "category": "美術館・文化施設",
+    "prefecture": "愛媛県",
+    "municipality": "新居浜市",
+    "official_url": "https://akaganemuseum.jp/",
+    "description": "愛媛県新居浜市の総合文化施設。新居浜市美術館、多目的ホール、銅（あかがね）をテーマにした展示など、アートと地域文化が融合した拠点です。",
+    "source": "https://akaganemuseum.jp/about/"
+  }
+  ,
+  {
   "name": "アスティとくしま",
   "spot_id": "asty-tokushima",
   "lat": 34.05324,
