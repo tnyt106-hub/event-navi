@@ -1,0 +1,23 @@
+{
+  "venue_id": "akagane-museum",
+  "last_success_at": "2026-02-08",
+  "events": [
+    {
+      "title": "展覧会 BUTTON DESIGN ボタンにおける装飾の美たち",
+      "date_from": "2026-01-17",
+      "date_to": "2026-03-01",
+      "time_start": "09:30",
+      "time_end": null,
+      "description": "会場: 新居浜市美術館 展示室２（あかがねミュージアム２階）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/%E3%83%81%E3%83%A9%E3%82%B7%E7%94%BB%E5%83%8FA%E9%9D%A2-730x1024.jpg",
+      "price": "300（240）円 （ ）内は20名以上の団体料金 大学生以下 無料 身体障害者手帳、療育手帳、精神障害者保健福祉手帳のいずれかをお持ちの方は無料（介助者1名 無料） ＊一般料金以外でご利用の方は、学生証や年齢確認のできるものをご持参ください。 ＊小学生以下は保護者の同伴が必要です。",
+      "contact": "あかがねミュージアム運営グループ 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14108",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }
+  ]
+}

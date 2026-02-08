@@ -3,6 +3,25 @@
   "last_success_at": "2026-02-08",
   "events": [
     {
+      "title": "天使のはねランドセル展示会",
+      "date_from": "2026-04-04",
+      "date_to": "2026-04-05",
+      "source_url": "https://itemehime.com/event/exhibition/2026/04/6511/",
+      "start_time": "10:00",
+      "end_time": "15:30",
+      "price": "無料",
+      "contact": "セイバン カスタマーセンター 0120-749-440 (月～金曜日 9：00～17：00 ※祝日および年末年始、GW期間、夏季休暇期間を除く) https://www.seiban.co.jp/inquiry/ (セイバンお問い合わせフォーム)",
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "第231回 えひめ青空市場",
       "date_from": "2026-03-29",
       "date_to": "2026-03-29",
@@ -163,23 +182,6 @@
         "genres": [
           "festival"
         ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "製造業者様向け IT、IoTソリューション展 ＆暑熱対策展",
-      "date_from": "2025-12-12",
-      "date_to": "2025-12-12",
-      "source_url": "https://itemehime.com/event/exhibition/2025/12/6321/",
-      "start_time": "09:00",
-      "end_time": "17:00",
-      "price": "無料",
-      "contact": "四国三菱電機販売株式会社 愛媛支店 【ＴＥＬ】（０８９）－９９４－５０５０",
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": [
           "free"
         ]
