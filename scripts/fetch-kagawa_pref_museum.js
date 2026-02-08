@@ -12,6 +12,12 @@ const { fetchText } = require("./lib/http");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
+const {
+  normalizeJapaneseDateText,
+  extractDatePartsFromJapaneseText,
+  buildLocalDate,
+  formatIsoDateFromLocalDate,
+} = require("./lib/date");
 
 const ENTRY_URL = "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/07event.html";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "kagawa_pref_museum.json");
@@ -25,38 +31,25 @@ function stripTags(html) {
 }
 
 // 全角数字を半角に変換し、日付の区切り記号を正規化する。
+// 共通処理へ委譲し、施設ごとの差分（この施設ではカンマ正規化が必要）だけオプションで指定する。
 function normalizeDateText(text) {
-  if (!text) return "";
-  const halfWidth = text.replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0));
-  return halfWidth
-    .replace(/[／]/g, "/")
-    .replace(/[．]/g, ".")
-    .replace(/[〜～]/g, "~")
-    .replace(/[－–—]/g, "-")
-    .replace(/[、，]/g, ",")
-    .replace(/\s+/g, " ")
-    .trim();
+  return normalizeJapaneseDateText(text, { normalizeComma: true });
 }
 
 // 年月日を ISO 形式の文字列にする。
+
 function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return formatIsoDateFromLocalDate(date);
 }
 
 // 年月日が妥当な日付かチェックする。
+
 function buildDate(year, month, day) {
-  const date = new Date(year, month - 1, day);
-  if (Number.isNaN(date.getTime())) return null;
-  if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) {
-    return null;
-  }
-  return date;
+  return buildLocalDate(year, month, day);
 }
 
 // 今月の月初から +7か月の排他終点を作る。
+
 function buildTargetRange() {
   const now = new Date();
   const start = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -111,36 +104,14 @@ function extractTitleAndUrl(blockHtml) {
 
 // 日付文字列から年月日の配列を抽出する。
 function extractDateParts(text) {
-  const normalized = normalizeDateText(text);
-  const results = [];
-  let masked = normalized;
-
-  for (const match of normalized.matchAll(/(\d{4})\s*[年/.]\s*(\d{1,2})\s*[月/.]\s*(\d{1,2})\s*日?/g)) {
-    results.push({
-      year: Number(match[1]),
-      month: Number(match[2]),
-      day: Number(match[3]),
-    });
-
-    // 年付きの部分をマスクして、年なしの重複抽出を避ける。
-    if (match.index !== undefined) {
-      const mask = " ".repeat(match[0].length);
-      masked = masked.slice(0, match.index) + mask + masked.slice(match.index + match[0].length);
-    }
-  }
-
-  for (const match of masked.matchAll(/(\d{1,2})\s*月\s*(\d{1,2})\s*日/g)) {
-    results.push({
-      year: null,
-      month: Number(match[1]),
-      day: Number(match[2]),
-    });
-  }
-
-  return results;
+  // 既存の抽出順・抽出対象を変えないため、共通関数を同等オプションで呼び出す。
+  return extractDatePartsFromJapaneseText(normalizeDateText(text), {
+    allowYearlessMonthDay: true,
+  });
 }
 
 // 日付情報を正規化して開始日・終了日を返す。
+
 function parseDateRange(text, currentYear) {
   const normalized = normalizeDateText(text);
   const dateParts = extractDateParts(normalized);
