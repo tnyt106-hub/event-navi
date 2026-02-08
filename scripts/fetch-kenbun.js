@@ -30,7 +30,8 @@ const JST_OFFSET_HOURS = 9;
 // 詳細ページ取得の同時実行数（負荷が高ければ 2 に下げられる）。
 const DETAIL_CONCURRENCY = 3;
 // 連続アクセスを避けるためのジッター。
-const DETAIL_JITTER_MS = 200;
+// 1 リクエストごとの待機を短くしつつ、瞬間的な集中アクセスは避ける。
+const DETAIL_JITTER_MS = 80;
 // 詳細取得のリトライ回数は共通 HTTP ユーティリティへ委譲する。
 const DETAIL_FETCH_RETRY_COUNT = 2;
 // リトライ待機の基準値も共通 HTTP ユーティリティへ渡す。
@@ -205,6 +206,8 @@ function extractDetailLinksFromList(listHtml) {
 // 一覧ページを巡回しながら詳細リンクを集める。
 async function fetchAllDetailLinks(seedUrl) {
   const visitedListUrls = new Set();
+  // 既にキューへ積んだ URL も管理し、重複投入による無駄ループを防ぐ。
+  const queuedListUrls = new Set();
   const queue = [];
   const detailLinks = new Set();
   let listLinks = 0;
@@ -230,8 +233,9 @@ async function fetchAllDetailLinks(seedUrl) {
       if (!isMonthInRange(monthInfo.year, monthInfo.month, rangeStart, rangeEnd)) {
         continue;
       }
-      if (!visitedListUrls.has(absUrl)) {
+      if (!visitedListUrls.has(absUrl) && !queuedListUrls.has(absUrl)) {
         queue.push(absUrl);
+        queuedListUrls.add(absUrl);
       }
     }
 
@@ -263,6 +267,8 @@ async function fetchAllDetailLinks(seedUrl) {
       continue;
     }
 
+    // 取り出した時点でキュー管理集合からは除外する。
+    queuedListUrls.delete(currentUrl);
     visitedListUrls.add(currentUrl);
 
     let html = "";
@@ -282,8 +288,9 @@ async function fetchAllDetailLinks(seedUrl) {
       if (!isMonthInRange(monthInfo.year, monthInfo.month, rangeStart, rangeEnd)) {
         continue;
       }
-      if (!visitedListUrls.has(absUrl)) {
+      if (!visitedListUrls.has(absUrl) && !queuedListUrls.has(absUrl)) {
         queue.push(absUrl);
+        queuedListUrls.add(absUrl);
       }
     }
 
@@ -560,9 +567,6 @@ async function main() {
         } catch (error) {
           detailFetchFailed += 1;
           console.warn(`詳細取得に失敗: ${normalizedUrl} (${error.message})`);
-        } finally {
-          // 取得後にもジッターを入れて連続アクセスを緩和する。
-          await sleep(Math.random() * DETAIL_JITTER_MS);
         }
       }
     };
