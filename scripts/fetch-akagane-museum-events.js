@@ -87,60 +87,52 @@ function isTargetEventUrl(urlString) {
   }
 }
 
-// 一覧 HTML から article / a を解析して候補イベントを抽出する。
+// ボタン文言しか含まないリンクタイトルは、イベント名として不適切なので除外する。
+function isNoiseTitle(title) {
+  if (!title) return true;
+  const normalized = normalizeWhitespace(title).toLowerCase();
+  return /^(詳細を見る|more|read\s*more|view\s*more)$/i.test(normalized);
+}
+
+// 一覧 HTML から「URL 起点」で候補イベントを抽出する。
+// article/div/li などのコンテナ構造に依存せず、対象 URL の前後コンテキストから情報を拾う。
 function extractEventCandidatesFromList(html) {
   const candidates = [];
   const seenUrls = new Set();
 
-  const containerRegex = /<(article|a)\b[^>]*>[\s\S]*?<\/\1>/gi;
-  let containerMatch;
-  while ((containerMatch = containerRegex.exec(html)) !== null) {
-    const blockHtml = containerMatch[0];
-
-    // 各ブロック内の a タグから最初の有効 URL を使う。
-    const anchorRegex = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
-    let selectedUrl = null;
-    let selectedAnchorInner = "";
-    let anchorMatch;
-
-    while ((anchorMatch = anchorRegex.exec(blockHtml)) !== null) {
-      const absolute = resolveUrl(anchorMatch[1], LIST_URL);
-      if (!absolute || !isTargetEventUrl(absolute)) continue;
-      selectedUrl = absolute;
-      selectedAnchorInner = anchorMatch[2];
-      break;
-    }
-
-    if (!selectedUrl || seenUrls.has(selectedUrl)) {
+  // A: ページ全体から a[href] を順番に走査し、対象 URL のみ拾う。
+  const anchorRegex = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  let anchorMatch;
+  while ((anchorMatch = anchorRegex.exec(html)) !== null) {
+    const absoluteUrl = resolveUrl(anchorMatch[1], LIST_URL);
+    if (!absoluteUrl || !isTargetEventUrl(absoluteUrl) || seenUrls.has(absoluteUrl)) {
       continue;
     }
 
-    // タイトルは h3 または .mec-event-title を優先して抽出する。
-    let title = "";
-    const h3Match = blockHtml.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/i);
-    if (h3Match) {
-      title = cleanTitle(h3Match[1]);
+    // B: ヒット位置を中心に、前後のコンテキスト・ウィンドウを切り出す。
+    const anchorStart = anchorMatch.index;
+    const windowStart = Math.max(0, anchorStart - 500);
+    const windowEnd = Math.min(html.length, anchorStart + anchorMatch[0].length + 1500);
+    const contextWindowHtml = html.slice(windowStart, windowEnd);
+
+    // C-1: タイトルは近傍 h3 を最優先し、なければリンク内テキストを使う。
+    const h3Match = contextWindowHtml.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/i);
+    const rawTitle = h3Match ? h3Match[1] : anchorMatch[2];
+    const title = cleanTitle(rawTitle);
+
+    // D: 「詳細を見る」「MORE」などのノイズタイトルを除外する。
+    if (isNoiseTitle(title)) {
+      continue;
     }
 
-    if (!title) {
-      const mecMatch = blockHtml.match(/<[^>]*class=["'][^"']*mec-event-title[^"']*["'][^>]*>([\s\S]*?)<\/[^>]+>/i);
-      if (mecMatch) {
-        title = cleanTitle(mecMatch[1]);
-      }
-    }
+    // C-2: 日付はコンテキスト全体テキストから最初の和暦日付を抽出する。
+    const contextText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(contextWindowHtml)));
+    const dateFrom = extractFirstJpDate(contextText);
 
-    // タイトルが空なら、最終手段としてリンクテキストを使う。
-    if (!title) {
-      title = cleanTitle(selectedAnchorInner);
-    }
-
-    // 一覧テキストから date_from を抽出する。
-    const listText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(blockHtml)));
-    const dateFrom = extractFirstJpDate(listText);
-
-    seenUrls.add(selectedUrl);
+    // D: 同一 URL は最初に見つかった 1 件だけ採用する。
+    seenUrls.add(absoluteUrl);
     candidates.push({
-      source_url: selectedUrl,
+      source_url: absoluteUrl,
       title,
       date_from: dateFrom,
     });
