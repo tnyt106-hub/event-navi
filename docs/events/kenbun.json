@@ -1,25 +1,8 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-02-06",
+  "last_success_at": "2026-02-08",
   "events": [
-    {
-      "title": "宮本浩次 tour2026 新しい旅",
-      "date_from": "2026-02-01",
-      "date_to": "2026-02-01",
-      "source_url": "https://www.kenbun.jp/event/3362/",
-      "open_time": "16:30",
-      "start_time": "17:30",
-      "price": "指定席：12,100円",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
     {
       "title": "創立50周年記念式典・祝賀会",
       "date_from": "2026-02-07",
@@ -38,6 +21,23 @@
       }
     },
     {
+      "title": "宮本浩次 tour2026 新しい旅",
+      "date_from": "2026-02-01",
+      "date_to": "2026-02-01",
+      "source_url": "https://www.kenbun.jp/event/3362/",
+      "open_time": "16:30",
+      "start_time": "17:30",
+      "price": "指定席：12,100円",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
       "title": "反田恭平＆Japan National Orchestra",
       "date_from": "2026-02-07",
       "date_to": "2026-02-07",
@@ -52,23 +52,6 @@
         "flags": [
           "free",
           "paid"
-        ]
-      }
-    },
-    {
-      "title": "建国記念の日奉祝愛媛県中央大会",
-      "date_from": "2026-02-11",
-      "date_to": "2026-02-11",
-      "source_url": "https://www.kenbun.jp/event/2636/",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "15:40",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
         ]
       }
     },
@@ -106,12 +89,60 @@
       }
     },
     {
+      "title": "建国記念の日奉祝愛媛県中央大会",
+      "date_from": "2026-02-11",
+      "date_to": "2026-02-11",
+      "source_url": "https://www.kenbun.jp/event/2636/",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "15:40",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "第17回 アジアテレビドラマカンファレンス in 松山",
+      "date_from": "2026-02-13",
+      "date_to": "2026-02-13",
+      "source_url": "https://www.kenbun.jp/event/3594/",
+      "open_time": "8:30",
+      "start_time": "9:00",
+      "end_time": "19:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "KENBUN AFTERNOON MARKET",
       "date_from": "2026-02-15",
       "date_to": "2026-02-15",
       "source_url": "https://www.kenbun.jp/event/3619/",
       "start_time": "13:00",
       "end_time": "16:30",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "四国地区知的障害関係施設長等会議",
+      "date_from": "2026-02-18",
+      "date_to": "2026-02-18",
+      "source_url": "https://www.kenbun.jp/event/3036/",
+      "open_time": "12:30",
+      "start_time": "13:00",
+      "end_time": "16:45",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -138,27 +169,13 @@
       }
     },
     {
-      "title": "第17回 アジアテレビドラマカンファレンス in 松山",
-      "date_from": "2026-02-13",
-      "date_to": "2026-02-13",
-      "source_url": "https://www.kenbun.jp/event/3594/",
-      "open_time": "8:30",
-      "start_time": "9:00",
-      "end_time": "19:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "四国地区知的障害関係施設長等会議",
+      "title": "研鑽会",
       "date_from": "2026-02-18",
       "date_to": "2026-02-18",
-      "source_url": "https://www.kenbun.jp/event/3036/",
+      "source_url": "https://www.kenbun.jp/event/2637/",
       "open_time": "12:30",
       "start_time": "13:00",
-      "end_time": "16:45",
+      "end_time": "16:10",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -176,23 +193,6 @@
       "open_time": "9:30",
       "start_time": "10:00",
       "end_time": "16:00",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "研鑽会",
-      "date_from": "2026-02-18",
-      "date_to": "2026-02-18",
-      "source_url": "https://www.kenbun.jp/event/2637/",
-      "open_time": "12:30",
-      "start_time": "13:00",
-      "end_time": "16:10",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -237,20 +237,21 @@
       }
     },
     {
-      "title": "うさぽっぷ！EHIME SUBCULTURE EXPO",
-      "date_from": "2026-02-23",
-      "date_to": "2026-02-23",
-      "source_url": "https://www.kenbun.jp/event/3353/",
-      "open_time": "10:30",
-      "start_time": "11:00",
-      "end_time": "20:00",
-      "price": "【入場料】前売 1,500円／当日2,000円",
+      "title": "JAIFA四国ブロックセミナー",
+      "date_from": "2026-02-27",
+      "date_to": "2026-02-27",
+      "source_url": "https://www.kenbun.jp/event/3374/",
+      "open_time": "12:30",
+      "start_time": "13:00",
+      "end_time": "16:00",
+      "price": "無料",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
         "flags": [
-          "free",
-          "paid"
+          "free"
         ]
       }
     },
@@ -274,38 +275,35 @@
       }
     },
     {
-      "title": "JAIFA四国ブロックセミナー",
-      "date_from": "2026-02-27",
-      "date_to": "2026-02-27",
-      "source_url": "https://www.kenbun.jp/event/3374/",
-      "open_time": "12:30",
-      "start_time": "13:00",
-      "end_time": "16:00",
-      "price": "無料",
+      "title": "うさぽっぷ！EHIME SUBCULTURE EXPO",
+      "date_from": "2026-02-23",
+      "date_to": "2026-02-23",
+      "source_url": "https://www.kenbun.jp/event/3353/",
+      "open_time": "10:30",
+      "start_time": "11:00",
+      "end_time": "20:00",
+      "price": "【入場料】前売 1,500円／当日2,000円",
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": [
-          "free"
+          "free",
+          "paid"
         ]
       }
     },
     {
-      "title": "eスポーツフェスティバル「ポプカルえひめ」",
-      "date_from": "2026-02-28",
-      "date_to": "2026-02-28",
-      "source_url": "https://www.kenbun.jp/event/3221/",
-      "open_time": "10:00",
-      "start_time": "10:00",
+      "title": "2026年 年賀交歓会",
+      "date_from": "2026-01-05",
+      "date_to": "2026-01-05",
+      "source_url": "https://www.kenbun.jp/event/3446/",
+      "open_time": "14:30",
+      "start_time": "15:00",
       "end_time": "16:00",
-      "price": "無料 ※一部ブース有料",
+      "price": "無料",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": [
           "free"
         ]
@@ -332,17 +330,19 @@
       }
     },
     {
-      "title": "2026年 年賀交歓会",
-      "date_from": "2026-01-05",
-      "date_to": "2026-01-05",
-      "source_url": "https://www.kenbun.jp/event/3446/",
-      "open_time": "14:30",
-      "start_time": "15:00",
+      "title": "eスポーツフェスティバル「ポプカルえひめ」",
+      "date_from": "2026-02-28",
+      "date_to": "2026-02-28",
+      "source_url": "https://www.kenbun.jp/event/3221/",
+      "open_time": "10:00",
+      "start_time": "10:00",
       "end_time": "16:00",
-      "price": "無料",
+      "price": "無料 ※一部ブース有料",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
         "flags": [
           "free"
         ]
@@ -397,18 +397,21 @@
       }
     },
     {
-      "title": "第15回えひめこども新聞グランプリ表彰式",
-      "date_from": "2026-01-12",
-      "date_to": "2026-01-12",
-      "source_url": "https://www.kenbun.jp/event/3154/",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "16:00",
-      "price": "受賞者とその家族の方を対象",
+      "title": "ホールdeレッスン",
+      "date_from": "2026-01-17",
+      "date_to": "2026-01-17",
+      "source_url": "https://www.kenbun.jp/event/3128/",
+      "open_time": "10:00",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "price": "1枠（30分）2,000円",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -431,38 +434,18 @@
       }
     },
     {
-      "title": "マイナビ転職フェア 松山",
-      "date_from": "2026-01-17",
-      "date_to": "2026-01-17",
-      "source_url": "https://www.kenbun.jp/event/3441/",
-      "open_time": "10:00",
-      "start_time": "11:00",
-      "end_time": "17:00",
-      "price": "無料",
+      "title": "第15回えひめこども新聞グランプリ表彰式",
+      "date_from": "2026-01-12",
+      "date_to": "2026-01-12",
+      "source_url": "https://www.kenbun.jp/event/3154/",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "16:00",
+      "price": "受賞者とその家族の方を対象",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "ホールdeレッスン",
-      "date_from": "2026-01-17",
-      "date_to": "2026-01-17",
-      "source_url": "https://www.kenbun.jp/event/3128/",
-      "open_time": "10:00",
-      "start_time": "10:00",
-      "end_time": "17:00",
-      "price": "1枠（30分）2,000円",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -480,6 +463,23 @@
         "flags": [
           "free",
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "マイナビ転職フェア 松山",
+      "date_from": "2026-01-17",
+      "date_to": "2026-01-17",
+      "source_url": "https://www.kenbun.jp/event/3441/",
+      "open_time": "10:00",
+      "start_time": "11:00",
+      "end_time": "17:00",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
         ]
       }
     },
@@ -534,6 +534,20 @@
       }
     },
     {
+      "title": "2025～2026年度 国際ロータリー第2670地区 愛媛第I分区・II分区 合同インターシティ・ミーティング",
+      "date_from": "2026-01-24",
+      "date_to": "2026-01-24",
+      "source_url": "https://www.kenbun.jp/event/3189/",
+      "open_time": "13:00",
+      "start_time": "13:30",
+      "end_time": "15:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "SHIKOKUフードイノベーションサミット ピッチ・展示会",
       "date_from": "2026-01-23",
       "date_to": "2026-01-23",
@@ -550,20 +564,6 @@
         "flags": [
           "free"
         ]
-      }
-    },
-    {
-      "title": "2025～2026年度 国際ロータリー第2670地区 愛媛第I分区・II分区 合同インターシティ・ミーティング",
-      "date_from": "2026-01-24",
-      "date_to": "2026-01-24",
-      "source_url": "https://www.kenbun.jp/event/3189/",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
       }
     },
     {
@@ -637,27 +637,6 @@
       }
     },
     {
-      "title": "松山市民劇場 第367回例会 劇団NLT公演「ミュージカルO.G.II」",
-      "date_from": "2026-01-28",
-      "date_to": "2026-01-28",
-      "source_url": "https://www.kenbun.jp/event/3372/",
-      "open_time": "18:00",
-      "start_time": "18:30",
-      "end_time": "20:30",
-      "price": "会員制初回 5,500円 （当日入会可能）",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
       "title": "FUJIユニオン パートナー組合員 オープンセミナー",
       "date_from": "2026-01-29",
       "date_to": "2026-01-29",
@@ -686,6 +665,27 @@
         "type": "performance",
         "genres": [
           "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "松山市民劇場 第367回例会 劇団NLT公演「ミュージカルO.G.II」",
+      "date_from": "2026-01-28",
+      "date_to": "2026-01-28",
+      "source_url": "https://www.kenbun.jp/event/3372/",
+      "open_time": "18:00",
+      "start_time": "18:30",
+      "end_time": "20:30",
+      "price": "会員制初回 5,500円 （当日入会可能）",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music",
+          "festival"
         ],
         "flags": [
           "free",
@@ -846,6 +846,20 @@
       }
     },
     {
+      "title": "令和7年度 学校法人河原学園 専門学校卒業証書授与式",
+      "date_from": "2026-03-12",
+      "date_to": "2026-03-12",
+      "source_url": "https://www.kenbun.jp/event/3420/",
+      "open_time": "9:10",
+      "start_time": "10:00",
+      "end_time": "12:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "令和7年度 学校法人河原学園 河原医療福祉専門学校 謝恩会",
       "date_from": "2026-03-12",
       "date_to": "2026-03-12",
@@ -860,20 +874,6 @@
         "flags": [
           "free"
         ]
-      }
-    },
-    {
-      "title": "令和7年度 学校法人河原学園 専門学校卒業証書授与式",
-      "date_from": "2026-03-12",
-      "date_to": "2026-03-12",
-      "source_url": "https://www.kenbun.jp/event/3420/",
-      "open_time": "9:10",
-      "start_time": "10:00",
-      "end_time": "12:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
       }
     },
     {
@@ -913,6 +913,23 @@
       }
     },
     {
+      "title": "令和7年度人間環境大学・大学院",
+      "date_from": "2026-03-16",
+      "date_to": "2026-03-16",
+      "source_url": "https://www.kenbun.jp/event/3513/",
+      "open_time": "12:00",
+      "start_time": "13:30",
+      "end_time": "14:30",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "遊京改メ入船亭扇白真打昇進披露落語会",
       "date_from": "2026-03-15",
       "date_to": "2026-03-15",
@@ -927,23 +944,6 @@
         "flags": [
           "free",
           "paid"
-        ]
-      }
-    },
-    {
-      "title": "令和7年度人間環境大学・大学院",
-      "date_from": "2026-03-16",
-      "date_to": "2026-03-16",
-      "source_url": "https://www.kenbun.jp/event/3513/",
-      "open_time": "12:00",
-      "start_time": "13:30",
-      "end_time": "14:30",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
         ]
       }
     },
@@ -996,6 +996,23 @@
       }
     },
     {
+      "title": "DANCE STUDIO MOGA",
+      "date_from": "2026-03-21",
+      "date_to": "2026-03-21",
+      "source_url": "https://www.kenbun.jp/event/3527/",
+      "open_time": "14:30",
+      "start_time": "15:00",
+      "end_time": "17:30",
+      "price": "前売り 2,500 円（当日 2,800 円）",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
       "title": "マイナビ看護学生就職セミナー 松山会場",
       "date_from": "2026-03-21",
       "date_to": "2026-03-21",
@@ -1011,23 +1028,6 @@
         ],
         "flags": [
           "free"
-        ]
-      }
-    },
-    {
-      "title": "DANCE STUDIO MOGA",
-      "date_from": "2026-03-21",
-      "date_to": "2026-03-21",
-      "source_url": "https://www.kenbun.jp/event/3527/",
-      "open_time": "14:30",
-      "start_time": "15:00",
-      "end_time": "17:30",
-      "price": "前売り 2,500 円（当日 2,800 円）",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid"
         ]
       }
     },
@@ -1066,20 +1066,6 @@
       }
     },
     {
-      "title": "愛媛大学医学部学位記授与式",
-      "date_from": "2026-03-24",
-      "date_to": "2026-03-24",
-      "source_url": "https://www.kenbun.jp/event/3605/",
-      "open_time": "11:50",
-      "start_time": "12:00",
-      "end_time": "13:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "Ethics Fan Meeting 2026、春。",
       "date_from": "2026-03-26",
       "date_to": "2026-03-26",
@@ -1094,6 +1080,20 @@
         "flags": [
           "free"
         ]
+      }
+    },
+    {
+      "title": "愛媛大学医学部学位記授与式",
+      "date_from": "2026-03-24",
+      "date_to": "2026-03-24",
+      "source_url": "https://www.kenbun.jp/event/3605/",
+      "open_time": "11:50",
+      "start_time": "12:00",
+      "end_time": "13:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1173,6 +1173,23 @@
       }
     },
     {
+      "title": "キャリタス就活フォーラム インターンシップ＆キャリア",
+      "date_from": "2025-12-06",
+      "date_to": "2025-12-06",
+      "source_url": "https://www.kenbun.jp/event/3034/",
+      "open_time": "9:00",
+      "start_time": "12:30",
+      "end_time": "17:00",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "第53回愛媛交響楽団定期演奏会",
       "date_from": "2025-12-07",
       "date_to": "2025-12-07",
@@ -1193,12 +1210,12 @@
       }
     },
     {
-      "title": "キャリタス就活フォーラム インターンシップ＆キャリア",
-      "date_from": "2025-12-06",
-      "date_to": "2025-12-06",
-      "source_url": "https://www.kenbun.jp/event/3034/",
+      "title": "産業廃棄物講習会 試験会場",
+      "date_from": "2025-12-11",
+      "date_to": "2025-12-11",
+      "source_url": "https://www.kenbun.jp/event/2487/",
       "open_time": "9:00",
-      "start_time": "12:30",
+      "start_time": "9:00",
       "end_time": "17:00",
       "price": "無料",
       "tags": {
@@ -1217,23 +1234,6 @@
       "open_time": "9:30",
       "start_time": "10:00",
       "end_time": "16:25",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "産業廃棄物講習会 試験会場",
-      "date_from": "2025-12-11",
-      "date_to": "2025-12-11",
-      "source_url": "https://www.kenbun.jp/event/2487/",
-      "open_time": "9:00",
-      "start_time": "9:00",
-      "end_time": "17:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -1278,22 +1278,6 @@
       }
     },
     {
-      "title": "令和7年度 MICE地元誘致懇談会",
-      "date_from": "2025-12-15",
-      "date_to": "2025-12-15",
-      "source_url": "https://www.kenbun.jp/event/3349/",
-      "open_time": "17:30",
-      "start_time": "18:00",
-      "end_time": "19:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
       "title": "KENBUN MORNING MARKET Vol.10",
       "date_from": "2025-12-14",
       "date_to": "2025-12-14",
@@ -1306,6 +1290,22 @@
         "genres": [],
         "flags": [
           "free"
+        ]
+      }
+    },
+    {
+      "title": "令和7年度 MICE地元誘致懇談会",
+      "date_from": "2025-12-15",
+      "date_to": "2025-12-15",
+      "source_url": "https://www.kenbun.jp/event/3349/",
+      "open_time": "17:30",
+      "start_time": "18:00",
+      "end_time": "19:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night"
         ]
       }
     },
@@ -1366,6 +1366,21 @@
       }
     },
     {
+      "title": "それいけ！アンパンマン ミュージカル",
+      "date_from": "2025-12-21",
+      "date_to": "2025-12-21",
+      "source_url": "https://www.kenbun.jp/event/2862/",
+      "price": "前売・当日ともに税込3,600円",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
       "title": "フジ クリスマスコンサート Vol.20",
       "date_from": "2025-12-23",
       "date_to": "2025-12-23",
@@ -1386,21 +1401,6 @@
       }
     },
     {
-      "title": "それいけ！アンパンマン ミュージカル",
-      "date_from": "2025-12-21",
-      "date_to": "2025-12-21",
-      "source_url": "https://www.kenbun.jp/event/2862/",
-      "price": "前売・当日ともに税込3,600円",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
       "title": "第50回四国地区高等学校演劇研究大会",
       "date_from": "2025-12-26",
       "date_to": "2025-12-26",
@@ -1408,23 +1408,6 @@
       "open_time": "10:30",
       "start_time": "10:50",
       "end_time": "18:00",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第50回四国地区高等学校演劇研究大会",
-      "date_from": "2025-12-27",
-      "date_to": "2025-12-27",
-      "source_url": "https://www.kenbun.jp/event/3181/",
-      "open_time": "9:10",
-      "start_time": "9:50",
-      "end_time": "17:20",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -1448,6 +1431,23 @@
         "genres": [
           "festival"
         ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "第50回四国地区高等学校演劇研究大会",
+      "date_from": "2025-12-27",
+      "date_to": "2025-12-27",
+      "source_url": "https://www.kenbun.jp/event/3181/",
+      "open_time": "9:10",
+      "start_time": "9:50",
+      "end_time": "17:20",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
         "flags": [
           "free"
         ]
@@ -1499,6 +1499,20 @@
       }
     },
     {
+      "title": "令和8年度 愛媛大学 新入生オリエンテーション",
+      "date_from": "2026-04-07",
+      "date_to": "2026-04-07",
+      "source_url": "https://www.kenbun.jp/event/3416/",
+      "open_time": "8:00",
+      "start_time": "9:00",
+      "end_time": "12:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "令和8年度 愛媛大学 入学式",
       "date_from": "2026-04-06",
       "date_to": "2026-04-06",
@@ -1527,34 +1541,6 @@
       }
     },
     {
-      "title": "令和8年度 愛媛大学 新入生オリエンテーション",
-      "date_from": "2026-04-07",
-      "date_to": "2026-04-07",
-      "source_url": "https://www.kenbun.jp/event/3416/",
-      "open_time": "8:00",
-      "start_time": "9:00",
-      "end_time": "12:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "令和8年度 学校法人河原学園 未来高等学校",
-      "date_from": "2026-04-14",
-      "date_to": "2026-04-14",
-      "source_url": "https://www.kenbun.jp/event/3428/",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "16:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "第42回愛媛県高齢者大学校同窓会定期総会",
       "date_from": "2026-04-24",
       "date_to": "2026-04-24",
@@ -1572,6 +1558,20 @@
       }
     },
     {
+      "title": "令和8年度 学校法人河原学園 未来高等学校",
+      "date_from": "2026-04-14",
+      "date_to": "2026-04-14",
+      "source_url": "https://www.kenbun.jp/event/3428/",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "16:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "愛媛県人権対策協議会 第66回定期大会",
       "date_from": "2026-04-28",
       "date_to": "2026-04-28",
@@ -1583,6 +1583,26 @@
       "tags": {
         "type": "other",
         "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "令和7年度県民総合文化祭 邦楽・邦舞公演",
+      "date_from": "2025-11-03",
+      "date_to": "2025-11-03",
+      "source_url": "https://www.kenbun.jp/event/3098/",
+      "open_time": "11:30",
+      "start_time": "12:00",
+      "end_time": "17:00",
+      "price": "無料",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music",
+          "festival"
+        ],
         "flags": [
           "free"
         ]
@@ -1623,23 +1643,20 @@
       }
     },
     {
-      "title": "令和7年度県民総合文化祭 邦楽・邦舞公演",
-      "date_from": "2025-11-03",
-      "date_to": "2025-11-03",
-      "source_url": "https://www.kenbun.jp/event/3098/",
-      "open_time": "11:30",
-      "start_time": "12:00",
-      "end_time": "17:00",
-      "price": "無料",
+      "title": "第59回女流アマ囲碁都市対抗戦 松山大会",
+      "date_from": "2025-11-05",
+      "date_to": "2025-11-05",
+      "source_url": "https://www.kenbun.jp/event/2735/",
+      "open_time": "8:30",
+      "start_time": "9:00",
+      "end_time": "12:20",
+      "price": "関係者のみ",
       "tags": {
-        "type": "performance",
+        "type": "festival",
         "genres": [
-          "music",
           "festival"
         ],
-        "flags": [
-          "free"
-        ]
+        "flags": []
       }
     },
     {
@@ -1660,20 +1677,20 @@
       }
     },
     {
-      "title": "第59回女流アマ囲碁都市対抗戦 松山大会",
+      "title": "第73回愛媛県社会福祉大会",
       "date_from": "2025-11-05",
       "date_to": "2025-11-05",
-      "source_url": "https://www.kenbun.jp/event/2735/",
-      "open_time": "8:30",
-      "start_time": "9:00",
-      "end_time": "12:20",
-      "price": "関係者のみ",
+      "source_url": "https://www.kenbun.jp/event/2331/",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "15:15",
+      "price": "無料",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": []
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1690,23 +1707,6 @@
         "genres": [
           "festival"
         ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第73回愛媛県社会福祉大会",
-      "date_from": "2025-11-05",
-      "date_to": "2025-11-05",
-      "source_url": "https://www.kenbun.jp/event/2331/",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "15:15",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": [
           "free"
         ]
@@ -1792,23 +1792,6 @@
       }
     },
     {
-      "title": "SUPER BEAVER 20th Anniversary",
-      "date_from": "2025-11-10",
-      "date_to": "2025-11-10",
-      "source_url": "https://www.kenbun.jp/event/2486/",
-      "open_time": "17:30",
-      "start_time": "18:30",
-      "price": "有料（8,800円）",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
       "title": "愛媛大学工学部エンジニアリングモールシンポジウム",
       "date_from": "2025-11-10",
       "date_to": "2025-11-10",
@@ -1828,21 +1811,19 @@
       }
     },
     {
-      "title": "令和7年度四国ブロック保育組織次世代リーダー研修会及び保育士会リーダーセミナー",
-      "date_from": "2025-11-12",
-      "date_to": "2025-11-12",
-      "source_url": "https://www.kenbun.jp/event/2737/",
-      "open_time": "9:30",
-      "start_time": "10:00",
-      "end_time": "16:25",
-      "price": "無料",
+      "title": "SUPER BEAVER 20th Anniversary",
+      "date_from": "2025-11-10",
+      "date_to": "2025-11-10",
+      "source_url": "https://www.kenbun.jp/event/2486/",
+      "open_time": "17:30",
+      "start_time": "18:30",
+      "price": "有料（8,800円）",
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": [
-          "free"
+          "free",
+          "paid"
         ]
       }
     },
@@ -1858,6 +1839,25 @@
       "tags": {
         "type": "other",
         "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "令和7年度四国ブロック保育組織次世代リーダー研修会及び保育士会リーダーセミナー",
+      "date_from": "2025-11-12",
+      "date_to": "2025-11-12",
+      "source_url": "https://www.kenbun.jp/event/2737/",
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "16:25",
+      "price": "無料",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "education"
+        ],
         "flags": [
           "free"
         ]
@@ -1903,12 +1903,12 @@
     },
     {
       "title": "第65回全国退職女性校長会（梅の実会）全国大会愛媛大会",
-      "date_from": "2025-11-19",
-      "date_to": "2025-11-19",
-      "source_url": "https://www.kenbun.jp/event/3118/",
-      "open_time": "8:00",
-      "start_time": "9:00",
-      "end_time": "10:15",
+      "date_from": "2025-11-18",
+      "date_to": "2025-11-18",
+      "source_url": "https://www.kenbun.jp/event/3117/",
+      "open_time": "11:30",
+      "start_time": "12:20",
+      "end_time": "15:30",
       "price": "有料（一般の参加は不可）",
       "tags": {
         "type": "other",
@@ -1918,12 +1918,12 @@
     },
     {
       "title": "第65回全国退職女性校長会（梅の実会）全国大会愛媛大会",
-      "date_from": "2025-11-18",
-      "date_to": "2025-11-18",
-      "source_url": "https://www.kenbun.jp/event/3117/",
-      "open_time": "11:30",
-      "start_time": "12:20",
-      "end_time": "15:30",
+      "date_from": "2025-11-19",
+      "date_to": "2025-11-19",
+      "source_url": "https://www.kenbun.jp/event/3118/",
+      "open_time": "8:00",
+      "start_time": "9:00",
+      "end_time": "10:15",
       "price": "有料（一般の参加は不可）",
       "tags": {
         "type": "other",
@@ -2007,23 +2007,19 @@
       }
     },
     {
-      "title": "文化講座NEO「フラワーアレンジメント講座」",
-      "date_from": "2025-11-26",
-      "date_to": "2025-11-26",
-      "source_url": "https://www.kenbun.jp/event/3122/",
-      "open_time": "10:00",
+      "title": "令和7年度 えひめ生涯学習“夢”まつり",
+      "date_from": "2025-11-29",
+      "date_to": "2025-11-29",
+      "source_url": "https://www.kenbun.jp/event/3031/",
+      "open_time": "9:00",
       "start_time": "10:00",
-      "end_time": "12:00",
-      "price": "4,500円 ※要事前申込",
-      "contact": "お申込みは、主催（089-927-4777）へお電話ください。",
+      "end_time": "16:00",
+      "price": "無料",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": [
-          "free",
-          "paid"
+          "free"
         ]
       }
     },
@@ -2045,19 +2041,23 @@
       }
     },
     {
-      "title": "令和7年度 えひめ生涯学習“夢”まつり",
-      "date_from": "2025-11-29",
-      "date_to": "2025-11-29",
-      "source_url": "https://www.kenbun.jp/event/3031/",
-      "open_time": "9:00",
+      "title": "文化講座NEO「フラワーアレンジメント講座」",
+      "date_from": "2025-11-26",
+      "date_to": "2025-11-26",
+      "source_url": "https://www.kenbun.jp/event/3122/",
+      "open_time": "10:00",
       "start_time": "10:00",
-      "end_time": "16:00",
-      "price": "無料",
+      "end_time": "12:00",
+      "price": "4,500円 ※要事前申込",
+      "contact": "お申込みは、主催（089-927-4777）へお電話ください。",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "workshop",
+        "genres": [
+          "education"
+        ],
         "flags": [
-          "free"
+          "free",
+          "paid"
         ]
       }
     },
@@ -2079,6 +2079,25 @@
       }
     },
     {
+      "title": "第10回 四国藤本会 演奏会",
+      "date_from": "2026-05-14",
+      "date_to": "2026-05-14",
+      "source_url": "https://www.kenbun.jp/event/3632/",
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "price": "無料",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "令和7年度愛媛県県民総合文化祭 ジャズ公演",
       "date_from": "2025-11-30",
       "date_to": "2025-11-30",
@@ -2092,25 +2111,6 @@
         "genres": [
           "music",
           "festival"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第10回 四国藤本会 演奏会",
-      "date_from": "2026-05-14",
-      "date_to": "2026-05-14",
-      "source_url": "https://www.kenbun.jp/event/3632/",
-      "open_time": "9:30",
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "price": "無料",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
         ],
         "flags": [
           "free"
@@ -2213,20 +2213,6 @@
       }
     },
     {
-      "title": "29th International Conference",
-      "date_from": "2025-10-03",
-      "date_to": "2025-10-03",
-      "source_url": "https://www.kenbun.jp/event/2869/",
-      "open_time": "8:30",
-      "end_time": "12:00",
-      "price": "有料（事前に申し込みをされた方が対象）",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "ジェムテクパソコン有償譲渡会",
       "date_from": "2025-10-04",
       "date_to": "2025-10-04",
@@ -2241,6 +2227,20 @@
         "flags": [
           "free"
         ]
+      }
+    },
+    {
+      "title": "29th International Conference",
+      "date_from": "2025-10-03",
+      "date_to": "2025-10-03",
+      "source_url": "https://www.kenbun.jp/event/2869/",
+      "open_time": "8:30",
+      "end_time": "12:00",
+      "price": "有料（事前に申し込みをされた方が対象）",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -2328,9 +2328,9 @@
     },
     {
       "title": "ケンブンマーケット",
-      "date_from": "2025-10-12",
-      "date_to": "2025-10-12",
-      "source_url": "https://www.kenbun.jp/event/2958/",
+      "date_from": "2025-10-13",
+      "date_to": "2025-10-13",
+      "source_url": "https://www.kenbun.jp/event/2962/",
       "start_time": "11:00",
       "end_time": "16:00",
       "price": "無料",
@@ -2344,9 +2344,9 @@
     },
     {
       "title": "ケンブンマーケット",
-      "date_from": "2025-10-13",
-      "date_to": "2025-10-13",
-      "source_url": "https://www.kenbun.jp/event/2962/",
+      "date_from": "2025-10-12",
+      "date_to": "2025-10-12",
+      "source_url": "https://www.kenbun.jp/event/2958/",
       "start_time": "11:00",
       "end_time": "16:00",
       "price": "無料",
@@ -2371,6 +2371,25 @@
         "genres": [],
         "flags": [
           "free"
+        ]
+      }
+    },
+    {
+      "title": "シス・カンパニー公演「ライフ・イン・ザ・シアター」",
+      "date_from": "2025-10-17",
+      "date_to": "2025-10-17",
+      "source_url": "https://www.kenbun.jp/event/2490/",
+      "open_time": "16:30",
+      "start_time": "17:00",
+      "price": "全席指定 S席10,000円、A席8,000円",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
         ]
       }
     },
@@ -2405,25 +2424,6 @@
         "genres": [],
         "flags": [
           "free"
-        ]
-      }
-    },
-    {
-      "title": "シス・カンパニー公演「ライフ・イン・ザ・シアター」",
-      "date_from": "2025-10-17",
-      "date_to": "2025-10-17",
-      "source_url": "https://www.kenbun.jp/event/2490/",
-      "open_time": "16:30",
-      "start_time": "17:00",
-      "price": "全席指定 S席10,000円、A席8,000円",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
         ]
       }
     },
@@ -2514,6 +2514,25 @@
       }
     },
     {
+      "title": "令和7年度県民総合文化祭 いけばな展",
+      "date_from": "2025-10-25",
+      "date_to": "2025-10-25",
+      "source_url": "https://www.kenbun.jp/event/3025/",
+      "open_time": "10:00",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "price": "無料",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "（株）おの 展示会",
       "date_from": "2025-10-22",
       "date_to": "2025-10-22",
@@ -2534,12 +2553,12 @@
     },
     {
       "title": "令和7年度県民総合文化祭 いけばな展",
-      "date_from": "2025-10-25",
-      "date_to": "2025-10-25",
-      "source_url": "https://www.kenbun.jp/event/3025/",
+      "date_from": "2025-10-26",
+      "date_to": "2025-10-26",
+      "source_url": "https://www.kenbun.jp/event/3026/",
       "open_time": "10:00",
       "start_time": "10:00",
-      "end_time": "17:00",
+      "end_time": "16:00",
       "price": "無料",
       "tags": {
         "type": "festival",
@@ -2559,25 +2578,6 @@
       "open_time": "13:15",
       "start_time": "14:00",
       "end_time": "16:30",
-      "price": "無料",
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "令和7年度県民総合文化祭 いけばな展",
-      "date_from": "2025-10-26",
-      "date_to": "2025-10-26",
-      "source_url": "https://www.kenbun.jp/event/3026/",
-      "open_time": "10:00",
-      "start_time": "10:00",
-      "end_time": "16:00",
       "price": "無料",
       "tags": {
         "type": "festival",
@@ -2643,20 +2643,6 @@
       }
     },
     {
-      "title": "第65回愛媛電友会懇親会",
-      "date_from": "2026-06-04",
-      "date_to": "2026-06-04",
-      "source_url": "https://www.kenbun.jp/event/3625/",
-      "open_time": "11:30",
-      "start_time": "12:00",
-      "end_time": "14:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "第65回愛媛電友会総会",
       "date_from": "2026-06-04",
       "date_to": "2026-06-04",
@@ -2688,6 +2674,20 @@
       }
     },
     {
+      "title": "第65回愛媛電友会懇親会",
+      "date_from": "2026-06-04",
+      "date_to": "2026-06-04",
+      "source_url": "https://www.kenbun.jp/event/3625/",
+      "open_time": "11:30",
+      "start_time": "12:00",
+      "end_time": "14:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "演奏講座",
       "date_from": "2026-06-06",
       "date_to": "2026-06-06",
@@ -2701,23 +2701,6 @@
         "genres": [
           "education"
         ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "愛媛県高等学校総合体育大会 創作ダンス部門",
-      "date_from": "2026-06-07",
-      "date_to": "2026-06-07",
-      "source_url": "https://www.kenbun.jp/event/3624/",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "16:00",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": [
           "free"
         ]
@@ -2738,6 +2721,23 @@
       }
     },
     {
+      "title": "愛媛県高等学校総合体育大会 創作ダンス部門",
+      "date_from": "2026-06-07",
+      "date_to": "2026-06-07",
+      "source_url": "https://www.kenbun.jp/event/3624/",
+      "open_time": "13:00",
+      "start_time": "13:30",
+      "end_time": "16:00",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "FORUM 8 presents",
       "date_from": "2026-06-10",
       "date_to": "2026-06-10",
@@ -2752,6 +2752,21 @@
         "flags": [
           "night"
         ]
+      }
+    },
+    {
+      "title": "第144回日本医学放射線学会中国・四国地方会",
+      "date_from": "2026-06-19",
+      "date_to": "2026-06-19",
+      "source_url": "https://www.kenbun.jp/event/3112/",
+      "open_time": "11:00",
+      "start_time": "12:00",
+      "end_time": "18:00",
+      "price": "有料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -2787,13 +2802,13 @@
       }
     },
     {
-      "title": "愛媛医療生活協同組合",
-      "date_from": "2026-06-24",
-      "date_to": "2026-06-24",
-      "source_url": "https://www.kenbun.jp/event/3642/",
+      "title": "マイナビ転職フェア松山",
+      "date_from": "2025-09-06",
+      "date_to": "2025-09-06",
+      "source_url": "https://www.kenbun.jp/event/2817/",
       "open_time": "10:00",
-      "start_time": "10:30",
-      "end_time": "15:00",
+      "start_time": "11:00",
+      "end_time": "17:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -2801,21 +2816,6 @@
         "flags": [
           "free"
         ]
-      }
-    },
-    {
-      "title": "第144回日本医学放射線学会中国・四国地方会",
-      "date_from": "2026-06-19",
-      "date_to": "2026-06-19",
-      "source_url": "https://www.kenbun.jp/event/3112/",
-      "open_time": "11:00",
-      "start_time": "12:00",
-      "end_time": "18:00",
-      "price": "有料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
       }
     },
     {
@@ -2836,13 +2836,13 @@
       }
     },
     {
-      "title": "マイナビ転職フェア松山",
-      "date_from": "2025-09-06",
-      "date_to": "2025-09-06",
-      "source_url": "https://www.kenbun.jp/event/2817/",
+      "title": "愛媛医療生活協同組合",
+      "date_from": "2026-06-24",
+      "date_to": "2026-06-24",
+      "source_url": "https://www.kenbun.jp/event/3642/",
       "open_time": "10:00",
-      "start_time": "11:00",
-      "end_time": "17:00",
+      "start_time": "10:30",
+      "end_time": "15:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -2870,6 +2870,23 @@
       }
     },
     {
+      "title": "令和7年度 企業トップクラス及び公正採用選考",
+      "date_from": "2025-09-10",
+      "date_to": "2025-09-10",
+      "source_url": "https://www.kenbun.jp/event/2136/",
+      "open_time": "12:30",
+      "start_time": "13:15",
+      "end_time": "15:30",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "第70回愛媛県保育事業研修大会",
       "date_from": "2025-09-07",
       "date_to": "2025-09-07",
@@ -2887,20 +2904,17 @@
       }
     },
     {
-      "title": "令和7年度 企業トップクラス及び公正採用選考",
-      "date_from": "2025-09-10",
-      "date_to": "2025-09-10",
-      "source_url": "https://www.kenbun.jp/event/2136/",
+      "title": "今すぐ役立つ！在宅医療未来道場in松山",
+      "date_from": "2025-09-13",
+      "date_to": "2025-09-13",
+      "source_url": "https://www.kenbun.jp/event/2477/",
       "open_time": "12:30",
-      "start_time": "13:15",
-      "end_time": "15:30",
-      "price": "無料",
+      "start_time": "13:00",
+      "end_time": "17:10",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free"
-        ]
+        "flags": []
       }
     },
     {
@@ -2940,20 +2954,6 @@
       }
     },
     {
-      "title": "今すぐ役立つ！在宅医療未来道場in松山",
-      "date_from": "2025-09-13",
-      "date_to": "2025-09-13",
-      "source_url": "https://www.kenbun.jp/event/2477/",
-      "open_time": "12:30",
-      "start_time": "13:00",
-      "end_time": "17:10",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "第92回NHK全国学校音楽コンクール",
       "date_from": "2025-09-13",
       "date_to": "2025-09-13",
@@ -2961,6 +2961,23 @@
       "open_time": "13:00",
       "start_time": "13:45",
       "end_time": "16:15",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "第92回NHK全国学校音楽コンクール",
+      "date_from": "2025-09-14",
+      "date_to": "2025-09-14",
+      "source_url": "https://www.kenbun.jp/event/2822/",
+      "open_time": "9:00",
+      "start_time": "9:45",
+      "end_time": "12:30",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -2988,44 +3005,10 @@
       "title": "第92回NHK全国学校音楽コンクール",
       "date_from": "2025-09-14",
       "date_to": "2025-09-14",
-      "source_url": "https://www.kenbun.jp/event/2822/",
-      "open_time": "9:00",
-      "start_time": "9:45",
-      "end_time": "12:30",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第92回NHK全国学校音楽コンクール",
-      "date_from": "2025-09-14",
-      "date_to": "2025-09-14",
       "source_url": "https://www.kenbun.jp/event/2823/",
       "open_time": "13:30",
       "start_time": "14:15",
       "end_time": "16:50",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "ジェトロ 商社マッチング（日用品）in 四国",
-      "date_from": "2025-09-18",
-      "date_to": "2025-09-18",
-      "source_url": "https://www.kenbun.jp/event/2875/",
-      "open_time": "8:40",
-      "start_time": "9:00",
-      "end_time": "17:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -3053,6 +3036,23 @@
       }
     },
     {
+      "title": "ジェトロ 商社マッチング（日用品）in 四国",
+      "date_from": "2025-09-18",
+      "date_to": "2025-09-18",
+      "source_url": "https://www.kenbun.jp/event/2875/",
+      "open_time": "8:40",
+      "start_time": "9:00",
+      "end_time": "17:00",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "松山市民劇場 第365回例会",
       "date_from": "2025-09-19",
       "date_to": "2025-09-19",
@@ -3072,23 +3072,6 @@
       }
     },
     {
-      "title": "愛媛県立北条高等学校吹奏楽部",
-      "date_from": "2025-09-21",
-      "date_to": "2025-09-21",
-      "source_url": "https://www.kenbun.jp/event/2292/",
-      "open_time": "16:30",
-      "start_time": "17:30",
-      "end_time": "20:00",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
       "title": "Superfly Hall Tour 2025",
       "date_from": "2025-09-23",
       "date_to": "2025-09-23",
@@ -3102,6 +3085,23 @@
         "flags": [
           "free",
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "愛媛県立北条高等学校吹奏楽部",
+      "date_from": "2025-09-21",
+      "date_to": "2025-09-21",
+      "source_url": "https://www.kenbun.jp/event/2292/",
+      "open_time": "16:30",
+      "start_time": "17:30",
+      "end_time": "20:00",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
         ]
       }
     },
@@ -3233,20 +3233,19 @@
       }
     },
     {
-      "title": "-K’s-Ballet・Pilates 第6回発表会",
-      "date_from": "2025-08-03",
-      "date_to": "2025-08-03",
-      "source_url": "https://www.kenbun.jp/event/2208/",
-      "open_time": "10:00",
-      "start_time": "10:30",
-      "end_time": "16:45",
-      "price": "有料（入場料2,500円予定）",
+      "title": "令和7年度（2025年度）全国福祉高等学校長会",
+      "date_from": "2025-08-07",
+      "date_to": "2025-08-07",
+      "source_url": "https://www.kenbun.jp/event/2154/",
+      "open_time": "8:30",
+      "start_time": "9:00",
+      "end_time": "16:30",
+      "price": "無料",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
-          "free",
-          "paid"
+          "free"
         ]
       }
     },
@@ -3271,19 +3270,20 @@
       }
     },
     {
-      "title": "令和7年度（2025年度）全国福祉高等学校長会",
-      "date_from": "2025-08-07",
-      "date_to": "2025-08-07",
-      "source_url": "https://www.kenbun.jp/event/2154/",
-      "open_time": "8:30",
-      "start_time": "9:00",
-      "end_time": "16:30",
-      "price": "無料",
+      "title": "-K’s-Ballet・Pilates 第6回発表会",
+      "date_from": "2025-08-03",
+      "date_to": "2025-08-03",
+      "source_url": "https://www.kenbun.jp/event/2208/",
+      "open_time": "10:00",
+      "start_time": "10:30",
+      "end_time": "16:45",
+      "price": "有料（入場料2,500円予定）",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
-          "free"
+          "free",
+          "paid"
         ]
       }
     },
@@ -3391,21 +3391,6 @@
       }
     },
     {
-      "title": "令和7年毒物劇物取扱者試験",
-      "date_from": "2025-08-20",
-      "date_to": "2025-08-20",
-      "source_url": "https://www.kenbun.jp/event/2558/",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "price": "受験者のみ",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "愛媛大学社会共創学部創立10周年記念行事",
       "date_from": "2025-08-22",
       "date_to": "2025-08-22",
@@ -3423,21 +3408,18 @@
       }
     },
     {
-      "title": "双葉バレエ Summer Concert",
-      "date_from": "2025-08-29",
-      "date_to": "2025-08-29",
-      "source_url": "https://www.kenbun.jp/event/2287/",
-      "open_time": "17:30",
-      "start_time": "18:00",
-      "end_time": "20:10",
-      "price": "無料",
+      "title": "令和7年毒物劇物取扱者試験",
+      "date_from": "2025-08-20",
+      "date_to": "2025-08-20",
+      "source_url": "https://www.kenbun.jp/event/2558/",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "15:30",
+      "price": "受験者のみ",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3473,6 +3455,24 @@
         "genres": [],
         "flags": [
           "free"
+        ]
+      }
+    },
+    {
+      "title": "双葉バレエ Summer Concert",
+      "date_from": "2025-08-29",
+      "date_to": "2025-08-29",
+      "source_url": "https://www.kenbun.jp/event/2287/",
+      "open_time": "17:30",
+      "start_time": "18:00",
+      "end_time": "20:10",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
         ]
       }
     },
@@ -3595,23 +3595,6 @@
       }
     },
     {
-      "title": "第64回中国・四国地区知的障害者関係職員",
-      "date_from": "2025-07-16",
-      "date_to": "2025-07-16",
-      "source_url": "https://www.kenbun.jp/event/1969/",
-      "open_time": "10:00",
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
       "title": "劇団四季ミュージカル『赤毛のアン』",
       "date_from": "2025-07-15",
       "date_to": "2025-07-15",
@@ -3625,6 +3608,23 @@
         "flags": [
           "free",
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "第64回中国・四国地区知的障害者関係職員",
+      "date_from": "2025-07-16",
+      "date_to": "2025-07-16",
+      "source_url": "https://www.kenbun.jp/event/1969/",
+      "open_time": "10:00",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
         ]
       }
     },
@@ -3790,12 +3790,12 @@
     },
     {
       "title": "日本歯科保存学会",
-      "date_from": "2025-06-06",
-      "date_to": "2025-06-06",
-      "source_url": "https://www.kenbun.jp/event/1894/",
+      "date_from": "2025-06-05",
+      "date_to": "2025-06-05",
+      "source_url": "https://www.kenbun.jp/event/1893/",
       "open_time": "8:30",
-      "start_time": "9:00",
-      "end_time": "16:00",
+      "start_time": "8:50",
+      "end_time": "18:00",
       "price": "有料（申し込みをされた方が対象）",
       "tags": {
         "type": "other",
@@ -3805,12 +3805,12 @@
     },
     {
       "title": "日本歯科保存学会",
-      "date_from": "2025-06-05",
-      "date_to": "2025-06-05",
-      "source_url": "https://www.kenbun.jp/event/1893/",
+      "date_from": "2025-06-06",
+      "date_to": "2025-06-06",
+      "source_url": "https://www.kenbun.jp/event/1894/",
       "open_time": "8:30",
-      "start_time": "8:50",
-      "end_time": "18:00",
+      "start_time": "9:00",
+      "end_time": "16:00",
       "price": "有料（申し込みをされた方が対象）",
       "tags": {
         "type": "other",
@@ -3866,38 +3866,6 @@
       }
     },
     {
-      "title": "第50回えひめこどものための音楽会",
-      "date_from": "2025-06-14",
-      "date_to": "2025-06-14",
-      "source_url": "https://www.kenbun.jp/event/2221/",
-      "open_time": "14:00",
-      "start_time": "14:30",
-      "end_time": "15:30",
-      "price": "小学校を通して事前申し込み",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "研鑽会",
-      "date_from": "2025-06-18",
-      "date_to": "2025-06-18",
-      "source_url": "https://www.kenbun.jp/event/2206/",
-      "open_time": "12:30",
-      "start_time": "13:00",
-      "end_time": "16:10",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
       "title": "第52回愛媛交響楽団サマーコンサート",
       "date_from": "2025-06-15",
       "date_to": "2025-06-15",
@@ -3917,10 +3885,42 @@
       }
     },
     {
+      "title": "第50回えひめこどものための音楽会",
+      "date_from": "2025-06-14",
+      "date_to": "2025-06-14",
+      "source_url": "https://www.kenbun.jp/event/2221/",
+      "open_time": "14:00",
+      "start_time": "14:30",
+      "end_time": "15:30",
+      "price": "小学校を通して事前申し込み",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "KISUKE SUMMIT2025",
       "date_from": "2025-06-19",
       "date_to": "2025-06-19",
       "source_url": "https://www.kenbun.jp/event/2561/",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "研鑽会",
+      "date_from": "2025-06-18",
+      "date_to": "2025-06-18",
+      "source_url": "https://www.kenbun.jp/event/2206/",
+      "open_time": "12:30",
+      "start_time": "13:00",
+      "end_time": "16:10",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4026,13 +4026,13 @@
       }
     },
     {
-      "title": "愛媛医療生活協同組合",
-      "date_from": "2025-06-25",
-      "date_to": "2025-06-25",
-      "source_url": "https://www.kenbun.jp/event/2119/",
-      "open_time": "10:00",
-      "start_time": "10:30",
-      "end_time": "15:00",
+      "title": "第20回愛媛県老人福祉施設大会",
+      "date_from": "2025-06-26",
+      "date_to": "2025-06-26",
+      "source_url": "https://www.kenbun.jp/event/2277/",
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "16:30",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4043,13 +4043,13 @@
       }
     },
     {
-      "title": "第20回愛媛県老人福祉施設大会",
-      "date_from": "2025-06-26",
-      "date_to": "2025-06-26",
-      "source_url": "https://www.kenbun.jp/event/2277/",
-      "open_time": "9:30",
-      "start_time": "10:00",
-      "end_time": "16:30",
+      "title": "愛媛医療生活協同組合",
+      "date_from": "2025-06-25",
+      "date_to": "2025-06-25",
+      "source_url": "https://www.kenbun.jp/event/2119/",
+      "open_time": "10:00",
+      "start_time": "10:30",
+      "end_time": "15:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4148,11 +4148,11 @@
     },
     {
       "title": "おきなわフェスタin四国2025",
-      "date_from": "2025-05-05",
-      "date_to": "2025-05-05",
-      "source_url": "https://www.kenbun.jp/event/2024/",
-      "open_time": "11:00",
-      "end_time": "17:00",
+      "date_from": "2025-05-06",
+      "date_to": "2025-05-06",
+      "source_url": "https://www.kenbun.jp/event/2027/",
+      "open_time": "10:00",
+      "end_time": "16:00",
       "price": "入場無料（県民広場・県民プラザ）",
       "tags": {
         "type": "festival",
@@ -4166,11 +4166,11 @@
     },
     {
       "title": "おきなわフェスタin四国2025",
-      "date_from": "2025-05-06",
-      "date_to": "2025-05-06",
-      "source_url": "https://www.kenbun.jp/event/2027/",
-      "open_time": "10:00",
-      "end_time": "16:00",
+      "date_from": "2025-05-05",
+      "date_to": "2025-05-05",
+      "source_url": "https://www.kenbun.jp/event/2024/",
+      "open_time": "11:00",
+      "end_time": "17:00",
       "price": "入場無料（県民広場・県民プラザ）",
       "tags": {
         "type": "festival",
@@ -4221,22 +4221,6 @@
       }
     },
     {
-      "title": "令和7年度第1回中・四国身体障害者施設協議会",
-      "date_from": "2025-05-12",
-      "date_to": "2025-05-12",
-      "source_url": "https://www.kenbun.jp/event/2202/",
-      "open_time": "18:00",
-      "start_time": "18:30",
-      "end_time": "20:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
       "title": "松山市民劇場 第363回例会",
       "date_from": "2025-05-13",
       "date_to": "2025-05-13",
@@ -4250,6 +4234,22 @@
         "genres": [
           "festival"
         ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "令和7年度第1回中・四国身体障害者施設協議会",
+      "date_from": "2025-05-12",
+      "date_to": "2025-05-12",
+      "source_url": "https://www.kenbun.jp/event/2202/",
+      "open_time": "18:00",
+      "start_time": "18:30",
+      "end_time": "20:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
         "flags": [
           "night"
         ]
@@ -4290,13 +4290,13 @@
       }
     },
     {
-      "title": "令和8年3月新規学校卒業予定者対象",
-      "date_from": "2025-05-20",
-      "date_to": "2025-05-20",
-      "source_url": "https://www.kenbun.jp/event/1778/",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "14:30",
+      "title": "マイナビ転職フェア松山",
+      "date_from": "2025-05-17",
+      "date_to": "2025-05-17",
+      "source_url": "https://www.kenbun.jp/event/2214/",
+      "open_time": "10:00",
+      "start_time": "11:00",
+      "end_time": "17:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4323,13 +4323,13 @@
       }
     },
     {
-      "title": "マイナビ転職フェア松山",
-      "date_from": "2025-05-17",
-      "date_to": "2025-05-17",
-      "source_url": "https://www.kenbun.jp/event/2214/",
-      "open_time": "10:00",
-      "start_time": "11:00",
-      "end_time": "17:00",
+      "title": "令和8年3月新規学校卒業予定者対象",
+      "date_from": "2025-05-20",
+      "date_to": "2025-05-20",
+      "source_url": "https://www.kenbun.jp/event/1778/",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "14:30",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4392,6 +4392,25 @@
       }
     },
     {
+      "title": "第45回愛媛囲碁フェスティバル",
+      "date_from": "2025-05-25",
+      "date_to": "2025-05-25",
+      "source_url": "https://www.kenbun.jp/event/2117/",
+      "open_time": "10:00",
+      "start_time": "10:30",
+      "end_time": "15:00",
+      "price": "無料",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "学校法人聖カタリナ学園・創立100周年記念事業",
       "date_from": "2025-05-23",
       "date_to": "2025-05-23",
@@ -4415,42 +4434,6 @@
       "open_time": "11:30",
       "start_time": "12:00",
       "end_time": "16:00",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第45回愛媛囲碁フェスティバル",
-      "date_from": "2025-05-25",
-      "date_to": "2025-05-25",
-      "source_url": "https://www.kenbun.jp/event/2117/",
-      "open_time": "10:00",
-      "start_time": "10:30",
-      "end_time": "15:00",
-      "price": "無料",
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "松山商工会議所 会員大会2025",
-      "date_from": "2025-05-27",
-      "date_to": "2025-05-27",
-      "source_url": "https://www.kenbun.jp/event/2276/",
-      "open_time": "15:00",
-      "start_time": "15:30",
-      "end_time": "17:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4494,13 +4477,13 @@
       }
     },
     {
-      "title": "令和7年度（一社）愛媛県建設業協会",
-      "date_from": "2025-05-30",
-      "date_to": "2025-05-30",
-      "source_url": "https://www.kenbun.jp/event/2219/",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "15:10",
+      "title": "松山商工会議所 会員大会2025",
+      "date_from": "2025-05-27",
+      "date_to": "2025-05-27",
+      "source_url": "https://www.kenbun.jp/event/2276/",
+      "open_time": "15:00",
+      "start_time": "15:30",
+      "end_time": "17:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4528,13 +4511,13 @@
       }
     },
     {
-      "title": "公益社団法人日本船舶海洋工学会",
+      "title": "令和7年度（一社）愛媛県建設業協会",
       "date_from": "2025-05-30",
       "date_to": "2025-05-30",
-      "source_url": "https://www.kenbun.jp/event/2055/",
-      "open_time": "9:00",
-      "start_time": "9:30",
-      "end_time": "16:00",
+      "source_url": "https://www.kenbun.jp/event/2219/",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "15:10",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4545,13 +4528,13 @@
       }
     },
     {
-      "title": "Ethics Fan Meeting 2025、春。",
-      "date_from": "2025-04-01",
-      "date_to": "2025-04-01",
-      "source_url": "https://www.kenbun.jp/event/1772/",
-      "open_time": "8:20",
+      "title": "公益社団法人日本船舶海洋工学会",
+      "date_from": "2025-05-30",
+      "date_to": "2025-05-30",
+      "source_url": "https://www.kenbun.jp/event/2055/",
+      "open_time": "9:00",
       "start_time": "9:30",
-      "end_time": "11:00",
+      "end_time": "16:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4579,6 +4562,23 @@
       }
     },
     {
+      "title": "Ethics Fan Meeting 2025、春。",
+      "date_from": "2025-04-01",
+      "date_to": "2025-04-01",
+      "source_url": "https://www.kenbun.jp/event/1772/",
+      "open_time": "8:20",
+      "start_time": "9:30",
+      "end_time": "11:00",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "令和7年度 松山大学 入学宣誓式",
       "date_from": "2025-04-03",
       "date_to": "2025-04-03",
@@ -4593,20 +4593,6 @@
       }
     },
     {
-      "title": "令和七年度 学校法人河原学園 専門学校 入学式",
-      "date_from": "2025-04-04",
-      "date_to": "2025-04-04",
-      "source_url": "https://www.kenbun.jp/event/1775/",
-      "open_time": "9:10",
-      "start_time": "10:00",
-      "end_time": "13:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "令和7年度愛媛大学入学式",
       "date_from": "2025-04-07",
       "date_to": "2025-04-07",
@@ -4614,6 +4600,20 @@
       "open_time": "9:00",
       "start_time": "10:00",
       "end_time": "10:50",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "令和七年度 学校法人河原学園 専門学校 入学式",
+      "date_from": "2025-04-04",
+      "date_to": "2025-04-04",
+      "source_url": "https://www.kenbun.jp/event/1775/",
+      "open_time": "9:10",
+      "start_time": "10:00",
+      "end_time": "13:30",
       "tags": {
         "type": "other",
         "genres": [],
@@ -4702,21 +4702,6 @@
     },
     {
       "title": "RubyKaigi 2025",
-      "date_from": "2025-04-17",
-      "date_to": "2025-04-17",
-      "source_url": "https://www.kenbun.jp/event/2044/",
-      "open_time": "9:00",
-      "start_time": "10:00",
-      "end_time": "18:20",
-      "price": "有料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "RubyKaigi 2025",
       "date_from": "2025-04-18",
       "date_to": "2025-04-18",
       "source_url": "https://www.kenbun.jp/event/2045/",
@@ -4731,19 +4716,18 @@
       }
     },
     {
-      "title": "KENBUN MORNING MARKET Vol.4",
-      "date_from": "2025-04-20",
-      "date_to": "2025-04-20",
-      "source_url": "https://www.kenbun.jp/event/2062/",
+      "title": "RubyKaigi 2025",
+      "date_from": "2025-04-17",
+      "date_to": "2025-04-17",
+      "source_url": "https://www.kenbun.jp/event/2044/",
+      "open_time": "9:00",
       "start_time": "10:00",
-      "end_time": "14:00",
-      "price": "無料",
+      "end_time": "18:20",
+      "price": "有料",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free"
-        ]
+        "flags": []
       }
     },
     {
@@ -4754,6 +4738,22 @@
       "open_time": "9:00",
       "start_time": "9:50",
       "end_time": "11:45",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "KENBUN MORNING MARKET Vol.4",
+      "date_from": "2025-04-20",
+      "date_to": "2025-04-20",
+      "source_url": "https://www.kenbun.jp/event/2062/",
+      "start_time": "10:00",
+      "end_time": "14:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -4781,19 +4781,17 @@
       }
     },
     {
-      "title": "東亜樹コンサート",
-      "date_from": "2025-04-28",
-      "date_to": "2025-04-28",
-      "source_url": "https://www.kenbun.jp/event/1777/",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": "16:45",
-      "price": "無料",
+      "title": "ケンブンマーケット",
+      "date_from": "2025-03-01",
+      "date_to": "2025-03-01",
+      "source_url": "https://www.kenbun.jp/event/1985/",
+      "open_time": "11:00",
+      "start_time": "11:00",
+      "end_time": "17:00",
+      "price": "入場無料",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": [
           "free"
         ]
@@ -4817,35 +4815,18 @@
       }
     },
     {
-      "title": "ケンブンマーケット",
-      "date_from": "2025-03-01",
-      "date_to": "2025-03-01",
-      "source_url": "https://www.kenbun.jp/event/1985/",
-      "open_time": "11:00",
-      "start_time": "11:00",
-      "end_time": "17:00",
-      "price": "入場無料",
+      "title": "東亜樹コンサート",
+      "date_from": "2025-04-28",
+      "date_to": "2025-04-28",
+      "source_url": "https://www.kenbun.jp/event/1777/",
+      "open_time": "13:30",
+      "start_time": "14:00",
+      "end_time": "16:45",
+      "price": "無料",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "Space Of Sounds / 愛媛カレーフェス",
-      "date_from": "2025-03-01",
-      "date_to": "2025-03-01",
-      "source_url": "https://www.kenbun.jp/event/1987/",
-      "open_time": "11:00",
-      "start_time": "11:00",
-      "end_time": "17:00",
-      "price": "入場無料",
-      "tags": {
-        "type": "festival",
+        "type": "performance",
         "genres": [
-          "festival"
+          "music"
         ],
         "flags": [
           "free"
@@ -4866,6 +4847,25 @@
         "flags": [
           "free",
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "Space Of Sounds / 愛媛カレーフェス",
+      "date_from": "2025-03-01",
+      "date_to": "2025-03-01",
+      "source_url": "https://www.kenbun.jp/event/1987/",
+      "open_time": "11:00",
+      "start_time": "11:00",
+      "end_time": "17:00",
+      "price": "入場無料",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "festival"
+        ],
+        "flags": [
+          "free"
         ]
       }
     },
@@ -4951,23 +4951,6 @@
       }
     },
     {
-      "title": "第36回建設業経理士検定試験（1級・2級）",
-      "date_from": "2025-03-09",
-      "date_to": "2025-03-09",
-      "source_url": "https://www.kenbun.jp/event/1876/",
-      "open_time": "9:00",
-      "start_time": "9:30",
-      "end_time": "16:40",
-      "price": "無料（受験票）",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
       "title": "トライアングルエヒメ",
       "date_from": "2025-03-10",
       "date_to": "2025-03-10",
@@ -4993,6 +4976,23 @@
       "start_time": "10:00",
       "end_time": "11:40",
       "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "第36回建設業経理士検定試験（1級・2級）",
+      "date_from": "2025-03-09",
+      "date_to": "2025-03-09",
+      "source_url": "https://www.kenbun.jp/event/1876/",
+      "open_time": "9:00",
+      "start_time": "9:30",
+      "end_time": "16:40",
+      "price": "無料（受験票）",
       "tags": {
         "type": "other",
         "genres": [],
@@ -5103,6 +5103,20 @@
       }
     },
     {
+      "title": "令和6年度 松山大学",
+      "date_from": "2025-03-19",
+      "date_to": "2025-03-19",
+      "source_url": "https://www.kenbun.jp/event/1682/",
+      "open_time": "10:20",
+      "start_time": "11:00",
+      "end_time": "12:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "DANCE STUDIO MOGA",
       "date_from": "2025-03-16",
       "date_to": "2025-03-16",
@@ -5118,20 +5132,6 @@
           "free",
           "paid"
         ]
-      }
-    },
-    {
-      "title": "令和6年度 松山大学",
-      "date_from": "2025-03-19",
-      "date_to": "2025-03-19",
-      "source_url": "https://www.kenbun.jp/event/1682/",
-      "open_time": "10:20",
-      "start_time": "11:00",
-      "end_time": "12:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
       }
     },
     {
@@ -5233,34 +5233,6 @@
       }
     },
     {
-      "title": "第55回 中小企業問題全国研究集会㏌愛媛",
-      "date_from": "2025-02-06",
-      "date_to": "2025-02-06",
-      "source_url": "https://www.kenbun.jp/event/1679/",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "18:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "第55回 中小企業問題全国研究集会㏌愛媛",
-      "date_from": "2025-02-07",
-      "date_to": "2025-02-07",
-      "source_url": "https://www.kenbun.jp/event/1680/",
-      "open_time": "8:00",
-      "start_time": "9:00",
-      "end_time": "12:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "キャリタス就活フォーラム",
       "date_from": "2025-02-08",
       "date_to": "2025-02-08",
@@ -5268,6 +5240,23 @@
       "open_time": "12:30",
       "start_time": "13:00",
       "end_time": "17:00",
+      "price": "無料",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "建国記念の日奉祝愛媛県中央大会",
+      "date_from": "2025-02-11",
+      "date_to": "2025-02-11",
+      "source_url": "https://www.kenbun.jp/event/1200/",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "16:00",
       "price": "無料",
       "tags": {
         "type": "other",
@@ -5291,23 +5280,6 @@
           "music"
         ],
         "flags": []
-      }
-    },
-    {
-      "title": "建国記念の日奉祝愛媛県中央大会",
-      "date_from": "2025-02-11",
-      "date_to": "2025-02-11",
-      "source_url": "https://www.kenbun.jp/event/1200/",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "16:00",
-      "price": "無料",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
       }
     },
     {
@@ -5346,12 +5318,12 @@
     },
     {
       "title": "第77回済生会学会",
-      "date_from": "2025-02-16",
-      "date_to": "2025-02-16",
-      "source_url": "https://www.kenbun.jp/event/1861/",
-      "open_time": "7:30",
-      "start_time": "8:30",
-      "end_time": "16:40",
+      "date_from": "2025-02-15",
+      "date_to": "2025-02-15",
+      "source_url": "https://www.kenbun.jp/event/1860/",
+      "open_time": "13:30",
+      "start_time": "13:30",
+      "end_time": "17:30",
       "tags": {
         "type": "other",
         "genres": [],
@@ -5360,12 +5332,12 @@
     },
     {
       "title": "第77回済生会学会",
-      "date_from": "2025-02-15",
-      "date_to": "2025-02-15",
-      "source_url": "https://www.kenbun.jp/event/1860/",
-      "open_time": "13:30",
-      "start_time": "13:30",
-      "end_time": "17:30",
+      "date_from": "2025-02-16",
+      "date_to": "2025-02-16",
+      "source_url": "https://www.kenbun.jp/event/1861/",
+      "open_time": "7:30",
+      "start_time": "8:30",
+      "end_time": "16:40",
       "tags": {
         "type": "other",
         "genres": [],

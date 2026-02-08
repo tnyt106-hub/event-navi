@@ -1,26 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-02-06",
+  "last_success_at": "2026-02-08",
   "events": [
-    {
-      "title": "令和7年 新春フェスタ映画祭",
-      "date_from": "2025-02-06",
-      "date_to": "2025-02-06",
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8297",
-      "open_time": "09:30",
-      "start_time": "10:00",
-      "end_time": "12:00",
-      "price": null,
-      "contact": null,
-      "body": "小ホール令和7年 新春フェスタ映画祭開場 09:30/開演 10:00/終演 12:00小ホール令和7年 新春フェスタ映画祭開場 13:00/開演 13:30/終演 15:30",
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": []
-      }
-    },
     {
       "title": "認定こども園高松東幼稚園第62回お遊戯会",
       "date_from": "2025-02-08",
