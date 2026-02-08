@@ -6,8 +6,10 @@ const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("../lib/http");
-// JSON 保存処理を共通化する。
-const { writeJsonPretty } = require("../lib/io");
+// JSON 保存処理と検証を共通化する。
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+// CLI エラー終了コードを共通化する。
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks } = require("../lib/text");
 
@@ -158,14 +160,13 @@ function buildEvents(listItems) {
 
 // 成功時のみファイルを書き換える。
 function saveEventsFile(events) {
-  const today = new Date().toISOString().slice(0, 10);
-  const data = {
-    venue_id: VENUE_ID,
-    last_success_at: today,
+  finalizeAndSaveEvents({
+    venueId: VENUE_ID,
+    outputPath: OUTPUT_PATH,
     events,
-  };
-
-  writeJsonPretty(OUTPUT_PATH, data);
+    // 一覧テンプレートでは title/date_from が構築できる前提で保存する。
+    requireDateFrom: true,
+  });
 }
 
 async function main() {
@@ -191,15 +192,9 @@ async function main() {
     console.log(`[fetch] events_built: ${eventsBuilt}`);
     console.log(`[fetch] output_path: ${OUTPUT_PATH}`);
 
-    if (eventsBuilt === 0) {
-      process.exit(1);
-      return;
-    }
-
     saveEventsFile(result.events);
   } catch (error) {
-    console.error(`失敗: ${error.message}`);
-    process.exit(1);
+    handleCliFatalError(error, { prefix: `[${VENUE_ID}] 失敗` });
   }
 }
 
