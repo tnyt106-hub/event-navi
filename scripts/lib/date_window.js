@@ -6,25 +6,13 @@
  * スクリプトごとの実装差による判定ゆれを防ぐ。
  */
 
-const { parseIsoDateStrict } = require("./date");
+const { parseIsoDateStrict, getJstTodayUtcDate } = require("./date");
 
 // 既存運用に合わせたデフォルト値（方針メモ準拠）。
 const DEFAULT_PAST_DAYS = 365;
 
 // 1日をミリ秒で表した定数。
 const DAY_MS = 24 * 60 * 60 * 1000;
-
-/**
- * JST基準の「今日 00:00」を UTC Date として返す。
- *
- * @param {number} [nowMs] - テスト時に固定時刻を差し込みたい場合の UNIX ms。
- * @returns {Date}
- */
-function getJstTodayUtcDate(nowMs = Date.now()) {
-  // JSTはUTC+9時間なので、現在時刻に +9h して UTC の日付部を取り出す。
-  const jstNow = new Date(nowMs + 9 * 60 * 60 * 1000);
-  return new Date(Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()));
-}
 
 /**
  * 過去フィルタのカットオフ日（today - pastDays）を返す。

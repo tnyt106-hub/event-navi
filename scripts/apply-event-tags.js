@@ -6,6 +6,7 @@
 const fs = require("fs");
 const path = require("path");
 const { validateFinalData } = require("./lib/schema");
+const { parseIsoDateStrict } = require("./lib/date");
 
 // タグのラベル定義は JSON に集約して UI でも使えるようにしておく
 const TAG_LABELS_PATH = path.join(__dirname, "..", "docs", "data", "event-tags.json");
@@ -223,12 +224,8 @@ function parseTimeToMinutes(timeText) {
 
 // 開催期間内に週末が含まれるかを判定する
 function parseDateAsUtc(dateText) {
-  if (!dateText) return null;
-  const [year, month, day] = String(dateText).split("-").map(Number);
-  if (!year || !month || !day) return null;
-  const utcDate = new Date(Date.UTC(year, month - 1, day));
-  if (Number.isNaN(utcDate.getTime())) return null;
-  return utcDate;
+  // 日付文字列の厳密パースは共通関数に委譲し、存在しない日付を除外する。
+  return parseIsoDateStrict(dateText);
 }
 
 function includesWeekend(dateFrom, dateTo) {

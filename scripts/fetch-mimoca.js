@@ -13,10 +13,14 @@ const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitespace } = require("./lib/text");
 const {
+  buildLocalDate,
+  formatIsoDateFromLocalDate,
+  getJstTodayUtcDate,
+} = require("./lib/date");
+const {
   buildPastCutoffDate,
   evaluateEventAgainstPastCutoff,
   formatUtcDateToIso,
-  getJstTodayUtcDate,
 } = require("./lib/date_window");
 
 const EXHIBITIONS_LIST_URL = "https://www.mimoca.jp/exhibitions/current/";
@@ -40,20 +44,14 @@ function normalizeNumbers(text) {
 
 // YYYY-MM-DD 文字列を返す。
 function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  // 日付整形は共通関数に寄せて、施設間で表記揺れが出ないようにする。
+  return formatIsoDateFromLocalDate(date);
 }
 
 // 年月日が妥当な日付かチェックする。
 function buildDate(year, month, day) {
-  const date = new Date(year, month - 1, day);
-  if (Number.isNaN(date.getTime())) return null;
-  if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) {
-    return null;
-  }
-  return date;
+  // 不正日付を弾くロジックを共通化して、重複実装をなくす。
+  return buildLocalDate(year, month, day);
 }
 
 // JST の日付文字列 (YYYY-MM-DD) を返す。
