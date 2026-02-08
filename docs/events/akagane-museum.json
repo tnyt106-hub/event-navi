@@ -18,6 +18,142 @@
         "genres": [],
         "flags": []
       }
+    },
+    {
+      "title": "展覧会 第50回 東予地区高等学校美術・工芸、書道展",
+      "date_from": "2026-01-17",
+      "date_to": "2026-02-08",
+      "time_start": "09:30",
+      "time_end": null,
+      "description": "会場: 展示室1・市民ギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-11-1-724x1024.jpg",
+      "price": "観覧無料",
+      "contact": "愛媛県高等学校文化連盟 0897-43-6191",
+      "source_url": "https://akaganemuseum.jp/event/event-14089",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "イベント ジャズとワインと石村嘉成。",
+      "date_from": "2026-01-22",
+      "date_to": "2026-02-08",
+      "time_start": "16:00",
+      "time_end": null,
+      "description": "会場: 多目的ホール（あかがね座）& RED COPPER COFFE",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/11/%E3%82%B8%E3%83%A3%E3%82%BA%E3%81%A8%E7%9F%B3%E6%9D%91%E5%98%89%E6%88%90%E3%83%81%E3%83%A9%E3%82%B7FIX-724x1024.jpg",
+      "price": null,
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-13786",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
+      "date_from": "2026-02-08",
+      "date_to": "2026-03-29",
+      "time_start": "09:30",
+      "time_end": null,
+      "description": "会場: にいはまギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/11/IMG_3768s-1024x768.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-13815",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "イベント 劇団あかがね座「ロミオとロザライン」",
+      "date_from": "2025-11-22",
+      "date_to": "2026-03-14",
+      "time_start": "13:00",
+      "time_end": null,
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/12/%E3%81%82%E3%81%8B%E3%81%8C%E3%81%AD%E8%A1%A8-727x1024.jpg",
+      "price": "一般：2,000円（当日2,500円） 小学生から高校生：500円（当日1,000円） ※未就学児入場不可",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14334",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "ワークショップ・教室 あかがね子どもいけばな教室",
+      "date_from": "2026-01-22",
+      "date_to": "2026-02-07",
+      "time_start": "10:30",
+      "time_end": null,
+      "description": "会場: 創作スペース ［対象・定員］年長〜小学生・18名",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2023/03/2023springIMG-07-300x257.jpg",
+      "price": "毎回1,700円",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-13279",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "展覧会 令和7年度 第13回新居浜市小中学生ふるさと学習奨励賞作品展",
+      "date_from": "2026-02-08",
+      "date_to": "2026-02-23",
+      "time_start": "09:30",
+      "time_end": null,
+      "description": "会場: アート工房・展示スペース",
+      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
+      "price": "無料",
+      "contact": "新居浜市教育委員会学校教育課 0897-65-3501",
+      "source_url": "https://akaganemuseum.jp/event/event-14104",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "展覧会 第45回にいはまこども美術展",
+      "date_from": "2026-02-10",
+      "date_to": "2026-02-23",
+      "time_start": "09:30",
+      "time_end": null,
+      "description": "会場: 市民ギャラリー・展示室1",
+      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
+      "price": "無料",
+      "contact": "新居浜市教育委員会学校教育課 0897-65-1301",
+      "source_url": "https://akaganemuseum.jp/event/event-14158",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "イベント 阿部一成の篠笛スタジオ〜心呼吸で奏でる笛の音〜 第14回 篠笛発表会",
+      "date_from": "2026-02-11",
+      "date_to": "2026-02-15",
+      "time_start": "13:00",
+      "time_end": null,
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/12/%E7%AF%A0%E7%AC%9B%E7%99%BA%E8%A1%A8%E4%BC%9A14%E3%83%81%E3%83%A9%E3%82%B7-724x1024.jpg",
+      "price": "無料（入場券が必要です） ※あかがねミュージアムにて入場券配布中！ （定員に達しましたら配布を終了いたします）",
+      "contact": "篠笛スタジオ 090-6622-6331 shinobuestudio@cg7.so-net.ne.jp",
+      "source_url": "https://akaganemuseum.jp/event/event-13964",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
     }
   ]
 }
