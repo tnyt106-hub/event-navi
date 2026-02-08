@@ -2,6 +2,7 @@ const path = require("path");
 const cheerio = require("cheerio");
 const { fetchHtml } = require("./lib/http");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 const { normalizeWhitespace } = require("./lib/text");
 const { createEvent, createRootStructure, validateFinalData } = require("./lib/schema");
 
@@ -106,7 +107,7 @@ async function main() {
     console.log(`[SUCCESS] ${VENUE_ID}: ${finalEvents.length}件を ${duration}秒 で処理しました。`);
 
   } catch (error) {
-    console.error(`[ERROR] ${error.message}`);
+    handleCliFatalError(error, { prefix: "[ERROR]" });
   }
 }
 

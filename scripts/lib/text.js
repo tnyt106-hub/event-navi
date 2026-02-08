@@ -33,9 +33,25 @@ function normalizeWhitespace(text) {
   return text.replace(/\s+/g, " ").trim();
 }
 
+
+// HTML タグを除去してプレーンテキスト化する（タグの位置に空白を入れない）。
+// 施設ごとに「タグ除去後の空白を残したくない」実装があるため、明示的に分けて提供する。
+function stripTagsCompact(html) {
+  if (!html) return "";
+  return html.replace(/<[^>]*>/g, "");
+}
+
+// HTML エンティティをデコードした後に空白を正規化する。
+// 複数スクリプトで重複していた処理を 1 箇所へ寄せる。
+function normalizeDecodedText(text) {
+  return normalizeWhitespace(decodeHtmlEntities(String(text || "")));
+}
+
 module.exports = {
   decodeHtmlEntities,
   stripTags,
   stripTagsWithLineBreaks,
+  stripTagsCompact,
   normalizeWhitespace,
+  normalizeDecodedText,
 };

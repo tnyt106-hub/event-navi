@@ -11,8 +11,9 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities } = require("./lib/text");
+const { stripTagsCompact, normalizeDecodedText } = require("./lib/text");
 const {
   normalizeJapaneseDateText,
   buildLocalDate,
@@ -26,12 +27,6 @@ const VENUE_NAME = "高松市美術館";
 const TITLE_KEYWORDS = ["特別展", "コレクション展", "その他展覧会", "日本伝統漆芸展", "企画展", "常設展"];
 const SPECIAL_SECTION_LABEL = "特別展";
 
-// タグを落としてプレーンテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, "");
-}
-
 // スクリプトやスタイルなど、抽出対象外の要素を削除する。
 function removeNoisyTags(html) {
   if (!html) return "";
@@ -43,7 +38,8 @@ function removeNoisyTags(html) {
 
 // テキストを正規化して読みやすくする。
 function normalizeText(text) {
-  return decodeHtmlEntities(stripTags(text)).replace(/\s+/g, " ").trim();
+  // 施設固有ロジックでも、基本的な文字参照デコードと空白正規化は共通化する。
+  return normalizeDecodedText(stripTagsCompact(text));
 }
 
 // 全角数字を半角に変換し、日付の区切り記号を正規化する。
@@ -178,7 +174,7 @@ function buildSourceUrlFromHref(href) {
 // 日付テキストから開始日・終了日を取得する。
 function parseDateRange(text) {
   // 日付判定は安全側に倒すため、開始日と終了日が揃っている場合だけ返す。
-  const normalized = normalizeDateText(stripTags(text));
+  const normalized = normalizeDateText(stripTagsCompact(text));
   const startMatch = normalized.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
 
   // 開始日が「YYYY年M月D日」で取得できない場合は除外する。
@@ -269,7 +265,7 @@ function extractSpecialEventsFromSection(sectionHtml) {
     let dateLine = "";
 
     for (const line of lookaheadLines) {
-      const normalizedLine = normalizeDateText(stripTags(line));
+      const normalizedLine = normalizeDateText(stripTagsCompact(line));
       if (dateIndicator.test(normalizedLine)) {
         dateLine = normalizedLine;
         break;
@@ -405,8 +401,7 @@ async function main() {
     console.error(
       `[${VENUE_ID}] 抽出できた events が 0 件です。 lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, specialSectionFound=${sectionResult.specialSectionFound}, specialLinks=${specialResult.specialLinkCount}, specialEvents=${specialResult.specialEventsCount}, preview=${lineResult.linesPreview.join(" / ")}`
     );
-    process.exit(1);
-    return;
+    throw new Error("抽出できた events が 0 件のため中断します。");
   }
 
   finalizeAndSaveEvents({
@@ -431,6 +426,5 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(`[${VENUE_ID}] 失敗: ${error?.message || error}`);
-  process.exit(1);
+  handleCliFatalError(error, { prefix: `[${VENUE_ID}] 失敗` });
 });

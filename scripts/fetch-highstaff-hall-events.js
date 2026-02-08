@@ -11,6 +11,7 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { fetchText } = require("./lib/http");
 // 保存前検証と総件数ログを含む共通保存処理を使う。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTags, normalizeWhitespace } = require("./lib/text");
 
@@ -170,8 +171,7 @@ async function main() {
     const sortedEvents = sortEventsByDate(events);
     saveEventsFile(sortedEvents);
   } catch (error) {
-    console.error(`失敗: ${error.message}`);
-    process.exitCode = 1;
+    handleCliFatalError(error, { prefix: "失敗" });
   }
 }
 

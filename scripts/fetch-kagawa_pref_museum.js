@@ -10,8 +10,9 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities } = require("./lib/text");
+const { decodeHtmlEntities, stripTagsCompact } = require("./lib/text");
 const {
   normalizeJapaneseDateText,
   extractDatePartsFromJapaneseText,
@@ -23,12 +24,6 @@ const ENTRY_URL = "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/0
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "kagawa_pref_museum.json");
 const VENUE_ID = "kagawa_pref_museum";
 const MONTH_RANGE = 7;
-
-// タグを落としてプレーンテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, "");
-}
 
 // 全角数字を半角に変換し、日付の区切り記号を正規化する。
 // 共通処理へ委譲し、施設ごとの差分（この施設ではカンマ正規化が必要）だけオプションで指定する。
@@ -83,7 +78,7 @@ function extractEventBlocks(html) {
 function extractTitleAndUrl(blockHtml) {
   const anchorMatch = blockHtml.match(/<a[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/i);
   const url = anchorMatch ? anchorMatch[1].trim() : "";
-  const title = anchorMatch ? stripTags(anchorMatch[2]).replace(/\s+/g, " ").trim() : "";
+  const title = anchorMatch ? stripTagsCompact(anchorMatch[2]).replace(/\s+/g, " ").trim() : "";
 
   // イベント詳細ページ以外のリンクはノイズなので除外する。
   // （例: ページ内アンカー、カテゴリリンク、トップページなど）
@@ -171,7 +166,7 @@ async function main() {
 
     for (const block of blocks) {
       const decoded = decodeHtmlEntities(block);
-      const plainText = stripTags(decoded).replace(/\s+/g, " ").trim();
+      const plainText = stripTagsCompact(decoded).replace(/\s+/g, " ").trim();
       const { title, url } = extractTitleAndUrl(decoded);
       // source_url が無いものはイベント扱いしない。
       if (!url) {
@@ -233,8 +228,7 @@ async function main() {
       },
     });
   } catch (error) {
-    console.error(`失敗: ${error.message}`);
-    process.exitCode = 1;
+    handleCliFatalError(error, { prefix: "失敗" });
   }
 }
 

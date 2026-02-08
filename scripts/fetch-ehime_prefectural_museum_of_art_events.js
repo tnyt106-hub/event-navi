@@ -13,8 +13,9 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities } = require("./lib/text");
+const { stripTagsCompact, normalizeDecodedText } = require("./lib/text");
 const {
   normalizeJapaneseDateText,
   buildUtcDate,
@@ -34,22 +35,17 @@ const VENUE_NAME = "愛媛県美術館";
 // 終了日が「今日から365日より前」のイベントを除外するための基準日数。
 const PAST_DAYS_LIMIT = 365;
 
-// タグを落としてプレーンテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, "");
-}
-
 // テキストの空白を整える。
 function normalizeText(text) {
-  return decodeHtmlEntities(text).replace(/\s+/g, " ").trim();
+  // HTML エンティティのデコードと空白正規化は共通関数へ寄せる。
+  return normalizeDecodedText(text);
 }
 
 // HTML内の改行タグをスペースに置き換えてテキスト化する。
 function htmlToText(html) {
   if (!html) return "";
   const withBreaks = html.replace(/<br\s*\/?\s*>/gi, " ");
-  return normalizeText(stripTags(withBreaks));
+  return normalizeText(stripTagsCompact(withBreaks));
 }
 
 // 全角数字を半角に変換し、不要な括弧注記などを除去する。
@@ -135,7 +131,7 @@ async function fetchListHtmlWithFallback() {
 function extractTitleFromBlock(blockHtml) {
   const titleMatch = blockHtml.match(/<h2[^>]*class=["'][^"']*event-item__title[^"']*["'][^>]*>([\s\S]*?)<\/h2>/i);
   if (!titleMatch) return "";
-  return normalizeText(stripTags(titleMatch[1]));
+  return normalizeText(stripTagsCompact(titleMatch[1]));
 }
 
 // event-item ブロック内の日付テキストを抽出する。
@@ -254,8 +250,7 @@ async function main() {
     listUrl = fetched.listUrl;
     console.log(`used_list_url: ${listUrl}`);
   } catch (error) {
-    console.error("[ERROR] LIST_URL の取得に失敗しました。", error);
-    process.exit(1);
+    handleCliFatalError(error, { prefix: "[ERROR] LIST_URL の取得に失敗しました。" });
     return;
   }
 
@@ -297,8 +292,7 @@ async function main() {
   console.log(`extracted_event_items: ${extractedCount}`);
 
   if (extractedCount === 0) {
-    console.error("[ERROR] extracted_event_items が 0 件のため中断します。");
-    process.exit(1);
+    handleCliFatalError(new Error("extracted_event_items が 0 件のため中断します。"), { prefix: "[ERROR]" });
     return;
   }
 
