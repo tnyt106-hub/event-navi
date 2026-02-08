@@ -3,6 +3,7 @@
 
 const zlib = require("zlib");
 const { TextDecoder } = require("util");
+const { ERROR_TYPES, TypedError } = require("./error_types");
 
 const DEFAULT_TIMEOUT_MS = 30000;
 const ERROR_INDICATORS = ["Access Denied", "Forbidden", "Service Unavailable"];
@@ -43,13 +44,17 @@ async function fetchTextWithMeta(url, options = {}) {
       signal: controller.signal,
     });
   } catch (error) {
-    throw new Error(`HTTP 取得に失敗しました。 (${error.message})`);
+    throw new TypedError(
+      ERROR_TYPES.NETWORK,
+      `HTTP 取得に失敗しました。 (${error.message})`,
+      { cause: error }
+    );
   } finally {
     clearTimeout(timeoutId);
   }
 
   if (!response.ok) {
-    throw new Error(`HTTP ${response.status} で失敗しました。`);
+    throw new TypedError(ERROR_TYPES.NETWORK, `HTTP ${response.status} で失敗しました。`);
   }
 
   const contentType = String(response.headers.get("content-type") || "").toLowerCase();
@@ -64,7 +69,7 @@ async function fetchTextWithMeta(url, options = {}) {
 
   let buffer = Buffer.from(await response.arrayBuffer());
   if (!buffer.length) {
-    throw new Error("HTML の取得結果が空でした。");
+    throw new TypedError(ERROR_TYPES.EMPTY_RESULT, "HTML の取得結果が空でした。");
   }
 
   // gzip/deflate 圧縮が指定されている場合のみ、バイト列を解凍する。
@@ -75,7 +80,7 @@ async function fetchTextWithMeta(url, options = {}) {
       try {
         buffer = zlib.gunzipSync(buffer);
       } catch {
-        throw new Error("gzip の解凍に失敗しました。");
+        throw new TypedError(ERROR_TYPES.PARSE, "gzip の解凍に失敗しました。");
       }
     }
   } else if (contentEncoding.includes("deflate")) {
@@ -84,7 +89,7 @@ async function fetchTextWithMeta(url, options = {}) {
       try {
         buffer = zlib.inflateSync(buffer);
       } catch {
-        throw new Error("deflate の解凍に失敗しました。");
+        throw new TypedError(ERROR_TYPES.PARSE, "deflate の解凍に失敗しました。");
       }
     }
   }
@@ -94,14 +99,14 @@ async function fetchTextWithMeta(url, options = {}) {
     try {
       decoded = new TextDecoder("shift_jis").decode(buffer);
     } catch {
-      throw new Error("Shift_JIS のデコードに失敗しました。");
+      throw new TypedError(ERROR_TYPES.PARSE, "Shift_JIS のデコードに失敗しました。");
     }
   } else {
     decoded = buffer.toString("utf8");
   }
 
   if (!decoded) {
-    throw new Error("HTML の取得結果が空でした。");
+    throw new TypedError(ERROR_TYPES.EMPTY_RESULT, "HTML の取得結果が空でした。");
   }
 
   // 本文のエラーページ判定は HTML のみを対象にする。
@@ -109,7 +114,7 @@ async function fetchTextWithMeta(url, options = {}) {
   const isHtmlContent = contentType.includes("text/html");
   const shouldCheckErrorIndicators = options.checkErrorIndicators !== false && isHtmlContent;
   if (shouldCheckErrorIndicators && ERROR_INDICATORS.some((indicator) => decoded.includes(indicator))) {
-    throw new Error("明らかなエラーページの可能性があります。");
+    throw new TypedError(ERROR_TYPES.NETWORK, "明らかなエラーページの可能性があります。");
   }
 
   if (debugLabel) {

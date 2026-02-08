@@ -21,6 +21,14 @@
 const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
+const {
+  exitCodeToErrorType,
+  normalizeErrorType,
+  isRetryableErrorType,
+  formatErrorTypeLabel,
+  detectErrorType,
+  ERROR_TYPES,
+} = require("./lib/error_types");
 
 const REPO_ROOT = path.join(__dirname, "..");
 
@@ -251,31 +259,39 @@ function sleep(ms) {
 
 function runNodeScript(scriptPathAbs, options) {
   return new Promise((resolve) => {
-    const stdioMode = options.captureStdoutStderr ? "pipe" : "inherit";
+    // 失敗原因を判定するため、常に stdout/stderr を受け取りつつコンソールへ転送する。
+    // これにより、ERROR_TYPE=... の機械可読ログや例外メッセージを run-all 側で解析できる。
     const child = spawn(process.execPath, [scriptPathAbs], {
       cwd: REPO_ROOT,
-      stdio: ["inherit", stdioMode, stdioMode],
+      stdio: ["inherit", "pipe", "pipe"],
       windowsHide: true,
       env: options.env,
     });
 
     let timeoutId = null;
     let timedOut = false;
+    let stdoutText = "";
+    let stderrText = "";
 
-    if (options.captureStdoutStderr) {
-      // コンソールは従来通り表示しつつ、ファイルにも保存する
-      if (child.stdout) {
-        child.stdout.on("data", (chunk) => {
-          process.stdout.write(chunk);
+    if (child.stdout) {
+      child.stdout.on("data", (chunk) => {
+        const text = String(chunk);
+        stdoutText += text;
+        process.stdout.write(chunk);
+        if (options.captureStdoutStderr) {
           options.logger?.writeStdout(chunk);
-        });
-      }
-      if (child.stderr) {
-        child.stderr.on("data", (chunk) => {
-          process.stderr.write(chunk);
+        }
+      });
+    }
+    if (child.stderr) {
+      child.stderr.on("data", (chunk) => {
+        const text = String(chunk);
+        stderrText += text;
+        process.stderr.write(chunk);
+        if (options.captureStdoutStderr) {
           options.logger?.writeStdout(chunk);
-        });
-      }
+        }
+      });
     }
 
     if (typeof options.timeoutSeconds === "number" && options.timeoutSeconds > 0) {
@@ -287,12 +303,12 @@ function runNodeScript(scriptPathAbs, options) {
 
     child.on("close", (code, signal) => {
       if (timeoutId) clearTimeout(timeoutId);
-      resolve({ code: code ?? 1, signal: signal ?? null, timedOut });
+      resolve({ code: code ?? 1, signal: signal ?? null, timedOut, stdoutText, stderrText });
     });
 
     child.on("error", (err) => {
       if (timeoutId) clearTimeout(timeoutId);
-      resolve({ code: 1, signal: null, error: err, timedOut });
+      resolve({ code: 1, signal: null, error: err, timedOut, stdoutText, stderrText });
     });
   });
 }
@@ -501,6 +517,27 @@ function logHook(hook, logger, label) {
   }
 }
 
+function detectErrorTypeFromTaskResult(result) {
+  // 1) 終了コードで明示されていれば最優先で採用する。
+  const byExitCode = exitCodeToErrorType(result?.code);
+  if (byExitCode && byExitCode !== ERROR_TYPES.UNKNOWN) {
+    return byExitCode;
+  }
+
+  // 2) stderr の ERROR_TYPE=... を拾う。
+  const stderrText = String(result?.stderrText || "");
+  const marker = stderrText.match(/ERROR_TYPE=([A-Z_]+)/);
+  if (marker) {
+    return normalizeErrorType(marker[1]);
+  }
+
+  // 3) 既存スクリプト互換のため、エラーメッセージから推定する。
+  const combined = `${stderrText}
+${String(result?.stdoutText || "")}`;
+  const detected = detectErrorType({ message: combined });
+  return detected ? normalizeErrorType(detected) : ERROR_TYPES.UNKNOWN;
+}
+
 // ------------- main -------------
 
 async function main() {
@@ -561,6 +598,7 @@ async function main() {
   let failCount = 0;
   let skipCount = 0;
   const taskResults = [];
+  const failByType = {};
 
   const outputCachePath = path.join(REPO_ROOT, "logs", "run-all-output-cache.json");
   const outputCache = loadOutputCache(outputCachePath);
@@ -661,13 +699,16 @@ async function main() {
         break;
       }
 
-      if (attempt > taskSettings.retries) {
+      const errorType = detectErrorTypeFromTaskResult(result);
+      const retryable = isRetryableErrorType(errorType);
+      const retriesExhausted = attempt > taskSettings.retries;
+      if (!retryable || retriesExhausted) {
         break;
       }
 
       if (taskSettings.retryDelaySeconds > 0) {
         loggerWithConfig.warn(
-          `${displayId}: retry ${attempt}/${taskSettings.retries} wait ${taskSettings.retryDelaySeconds}s`
+          `${displayId}: retry ${attempt}/${taskSettings.retries} wait ${taskSettings.retryDelaySeconds}s type=${formatErrorTypeLabel(errorType)}`
         );
         await sleep(taskSettings.retryDelaySeconds * 1000);
       }
@@ -685,15 +726,29 @@ async function main() {
         );
       } else {
         failCount += 1;
+        const errorType = detectErrorTypeFromTaskResult(result);
+        const retryable = isRetryableErrorType(errorType);
         const errText = result.error
           ? ` error=${String(result.error.message || result.error)}`
           : "";
         const timeoutText = result.timedOut ? " timeout=true" : "";
         loggerWithConfig.warn(
-          `${displayId}: fail (${msToSec(elapsed)}s) exit=${result.code}${timeoutText}${errText}`
+          `${displayId}: fail (${msToSec(elapsed)}s) exit=${result.code} type=${formatErrorTypeLabel(errorType)} retryable=${retryable}${timeoutText}${errText}`
         );
+        if (errorType === ERROR_TYPES.PARSE) {
+          // 解析失敗は恒久的な変更の可能性が高いため、目立つログで通知を強める。
+          loggerWithConfig.error(`${displayId}: PARSE failure detected / 解析失敗を検出`);
+        }
+        failByType[errorType] = (failByType[errorType] || 0) + 1;
         logHook(task.onFailure, loggerWithConfig, `${displayId} onFailure`);
-        taskResults.push(createTaskResult(task, "fail", msToSecNumber(elapsed)));
+        taskResults.push(
+          createTaskResult(
+            task,
+            "fail",
+            msToSecNumber(elapsed),
+            `type=${formatErrorTypeLabel(errorType)} retryable=${retryable}`
+          )
+        );
         failed.push(displayId);
         if (config.config.stopOnError && !taskSettings.continueOnError) {
           break;
@@ -746,6 +801,12 @@ async function main() {
   });
 
   if (failed.length > 0) {
+    const failTypeSummary = Object.entries(failByType)
+      .map(([type, count]) => `${formatErrorTypeLabel(type)}=${count}`)
+      .join(", ");
+    if (failTypeSummary) {
+      loggerWithConfig.run(`failed by type: ${failTypeSummary}`);
+    }
     loggerWithConfig.run(`failed tasks: ${failed.join(", ")}`);
     process.exitCode = 1;
   } else {

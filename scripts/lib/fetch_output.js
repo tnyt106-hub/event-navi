@@ -2,6 +2,7 @@
 // 保存前の最小検証と、総件数を含む結果ログの出力をまとめて行う。
 
 const { writeJsonPretty } = require("./io");
+const { ERROR_TYPES, TypedError } = require("./error_types");
 
 // YYYY-MM-DD 形式の当日文字列を返す。
 function buildTodayIsoDate() {
@@ -13,13 +14,13 @@ function validateEvents(events, options = {}) {
   const requireDateFrom = options.requireDateFrom !== false;
 
   if (!Array.isArray(events) || events.length === 0) {
-    throw new Error("イベントが0件のため上書きしません。");
+    throw new TypedError(ERROR_TYPES.EMPTY_RESULT, "イベントが0件のため上書きしません。");
   }
 
   if (requireDateFrom) {
     const dateCount = events.filter((event) => event && event.date_from).length;
     if (dateCount === 0) {
-      throw new Error("date_from が1件も作成できませんでした。");
+      throw new TypedError(ERROR_TYPES.EMPTY_RESULT, "date_from が1件も作成できませんでした。");
     }
   }
 }
