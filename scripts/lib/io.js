@@ -2,10 +2,25 @@
 // すべてのスクレイピングスクリプトで同じ保存形式を使うために用意する。
 
 const fs = require("fs");
+const { createEvent } = require("./schema");
+
+// ルートJSONに events 配列がある場合は、保存直前にイベント項目を標準化する。
+// これにより、各スクレイパー実装の差異があっても、
+// 出力時点で EVENT_TEMPLATE に沿った統一構造を保証できる。
+function normalizeEventPayload(obj) {
+  if (!obj || typeof obj !== "object") return obj;
+  if (!Array.isArray(obj.events)) return obj;
+
+  return {
+    ...obj,
+    events: obj.events.map((eventItem) => createEvent(eventItem || {})),
+  };
+}
 
 // JSON を2スペースインデント + 末尾改行で UTF-8 保存する。
 function writeJsonPretty(filePath, obj) {
-  const json = `${JSON.stringify(obj, null, 2)}\n`;
+  const normalized = normalizeEventPayload(obj);
+  const json = `${JSON.stringify(normalized, null, 2)}\n`;
   fs.writeFileSync(filePath, json, "utf8");
 }
 
@@ -25,6 +40,7 @@ function saveEventJson(path, data) {
 }
 
 module.exports = {
+  normalizeEventPayload,
   writeJsonPretty,
   saveEventJson,
 };
