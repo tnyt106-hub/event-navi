@@ -10,7 +10,7 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
-const { writeJsonPretty } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
 
@@ -418,15 +418,16 @@ async function main() {
     return;
   }
 
-  const data = {
-    venue_id: VENUE_ID,
-    venue_name: VENUE_NAME,
+  finalizeAndSaveEvents({
+    venueId: VENUE_ID,
+    venueName: VENUE_NAME,
+    outputPath: OUTPUT_PATH,
     events,
-  };
-
-  applyTagsToEventsData(data, { overwrite: false });
-
-  writeJsonPretty(OUTPUT_PATH, data);
+    beforeWrite(data) {
+      applyTagsToEventsData(data, { overwrite: false });
+    },
+    requireDateFrom: false,
+  });
   console.log(
     `[${VENUE_ID}] lines=${lineResult.lineCount}, titles=${lineResult.titleCandidates}, dateLines=${lineResult.dateLineDetections}, events=${events.length}, excluded=${excludedCount}, specialSectionFound=${sectionResult.specialSectionFound}, specialLinks=${specialResult.specialLinkCount}, specialEvents=${specialResult.specialEventsCount}`
   );

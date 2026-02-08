@@ -1,6 +1,6 @@
 const path = require("path");
 const { fetchHtml } = require("./lib/http");
-const { saveEventJson } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { decodeHtmlEntities, stripTags } = require("./lib/text");
 const { createEvent, createRootStructure } = require("./lib/schema");
 const { extractDateRange } = require("./lib/date");
@@ -92,8 +92,13 @@ async function main() {
 
     // 5. 保存
     const resultData = createRootStructure(VENUE_ID, uniqueEvents);
-    saveEventJson(OUTPUT_PATH, resultData);
-    
+    finalizeAndSaveEvents({
+      venueId: resultData.venue_id,
+      outputPath: OUTPUT_PATH,
+      events: resultData.events,
+      lastSuccessAt: resultData.last_success_at,
+    });
+
     console.log(`[SUCCESS] 抽出完了: ${uniqueEvents.length} 件のイベントを保存しました。`);
 
   } catch (error) {

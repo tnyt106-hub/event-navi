@@ -12,7 +12,7 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
-const { writeJsonPretty } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
 const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("./lib/date_window");
@@ -284,16 +284,17 @@ async function main() {
     }
     return evaluation.keep;
   });
-  const data = {
-    venue_id: VENUE_ID,
-    venue_name: VENUE_NAME,
-    events: filteredEvents,
-  };
-
-  applyTagsToEventsData(data, { overwrite: false });
-
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
-  writeJsonPretty(OUTPUT_PATH, data);
+
+  finalizeAndSaveEvents({
+    venueId: VENUE_ID,
+    venueName: VENUE_NAME,
+    outputPath: OUTPUT_PATH,
+    events: filteredEvents,
+    beforeWrite(data) {
+      applyTagsToEventsData(data, { overwrite: false });
+    },
+  });
 
   console.log(`kept_count=${filteredEvents.length}`);
   console.log(`filtered_old_count: ${filteredOldCount}`);

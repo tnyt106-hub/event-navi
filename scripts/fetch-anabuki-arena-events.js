@@ -3,7 +3,7 @@
 
 const path = require("path");
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
-const { writeJsonPretty, readJson } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { decodeHtmlEntities } = require("./lib/text");
 
 const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
@@ -20,6 +20,7 @@ const DEFAULT_TIMEOUT_MS = 30000;
  */
 function stripTags(html) {
   if (!html) return "";
+  // HTML タグを削除して、タイトル比較に使えるプレーンテキストへ変換する。
   return html.replace(/<[^>]*>/g, "");
 }
 
@@ -201,14 +202,15 @@ async function main() {
 
   const validEvents = events.filter(e => e !== null).sort((a, b) => a.date_from.localeCompare(b.date_from));
 
-  const resultData = {
-    venue_id: VENUE_ID,
-    last_success_at: formatDate(new Date()),
-    events: validEvents
-  };
-
-  applyTagsToEventsData(resultData, { overwrite: false });
-  writeJsonPretty(OUTPUT_PATH, resultData);
+  finalizeAndSaveEvents({
+    venueId: VENUE_ID,
+    outputPath: OUTPUT_PATH,
+    events: validEvents,
+    lastSuccessAt: formatDate(new Date()),
+    beforeWrite(data) {
+      applyTagsToEventsData(data, { overwrite: false });
+    },
+  });
 
   console.log(`\n[Summary]`);
   console.log(`- API Total: ${posts.length}`);
