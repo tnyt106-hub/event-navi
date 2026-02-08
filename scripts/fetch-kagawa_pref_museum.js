@@ -9,7 +9,7 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
-const { writeJsonPretty } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
 
@@ -252,17 +252,15 @@ async function main() {
       throw new Error("date_from が1件も作成できませんでした。");
     }
 
-    const today = formatDate(new Date());
-    const data = {
-      venue_id: VENUE_ID,
-      last_success_at: today,
+    finalizeAndSaveEvents({
+      venueId: VENUE_ID,
+      outputPath: OUTPUT_PATH,
       events: events.sort((a, b) => a.date_from.localeCompare(b.date_from)),
-    };
-
-    applyTagsToEventsData(data, { overwrite: false });
-
-    writeJsonPretty(OUTPUT_PATH, data);
-    console.log(`完了: ${events.length} 件のイベントを保存しました。`);
+      lastSuccessAt: formatDate(new Date()),
+      beforeWrite(data) {
+        applyTagsToEventsData(data, { overwrite: false });
+      },
+    });
   } catch (error) {
     console.error(`失敗: ${error.message}`);
     process.exitCode = 1;

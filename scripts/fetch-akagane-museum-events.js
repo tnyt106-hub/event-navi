@@ -8,7 +8,7 @@ const { URL } = require("url");
 // 共通 HTTP 取得ユーティリティ。
 const { fetchText } = require("./lib/http");
 // JSON 保存を共通化。
-const { writeJsonPretty } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // テキスト整形の共通関数。
 const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks, stripTags } = require("./lib/text");
 // イベントの標準スキーマ生成。
@@ -317,8 +317,13 @@ async function main() {
     }
 
     const output = createRootStructure(VENUE_ID, events);
-    writeJsonPretty(OUTPUT_PATH, output);
-    console.log(`[success] ${events.length} 件を ${OUTPUT_PATH} に保存しました。`);
+    finalizeAndSaveEvents({
+      venueId: VENUE_ID,
+      outputPath: OUTPUT_PATH,
+      events: output.events,
+      venueName: output.venue_name,
+      lastSuccessAt: output.last_success_at,
+    });
   } catch (error) {
     console.error(`[fatal] ${error.message}`);
     process.exit(1);

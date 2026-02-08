@@ -1,7 +1,7 @@
 const path = require("path");
 const cheerio = require("cheerio");
 const { fetchHtml } = require("./lib/http");
-const { saveEventJson } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { normalizeWhitespace } = require("./lib/text");
 const { createEvent, createRootStructure, validateFinalData } = require("./lib/schema");
 
@@ -94,8 +94,14 @@ async function main() {
     }
 
     validateFinalData(finalEvents, { minEvents: 1 });
-    saveEventJson(OUTPUT_PATH, createRootStructure(VENUE_ID, finalEvents));
-    
+    const result = createRootStructure(VENUE_ID, finalEvents);
+    finalizeAndSaveEvents({
+      venueId: result.venue_id,
+      outputPath: OUTPUT_PATH,
+      events: result.events,
+      lastSuccessAt: result.last_success_at,
+    });
+
     const duration = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log(`[SUCCESS] ${VENUE_ID}: ${finalEvents.length}件を ${duration}秒 で処理しました。`);
 

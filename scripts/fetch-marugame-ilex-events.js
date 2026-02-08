@@ -9,7 +9,7 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 // 共通 HTTP 取得ユーティリティで Shift_JIS を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
-const { writeJsonPretty } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
 
@@ -166,16 +166,14 @@ function sortEventsByDate(events) {
 
 // 成功時のみファイルを書き換える。
 function saveEventsFile(events) {
-  const today = new Date().toISOString().slice(0, 10);
-  const data = {
-    venue_id: VENUE_ID,
-    last_success_at: today,
+  finalizeAndSaveEvents({
+    venueId: VENUE_ID,
+    outputPath: OUTPUT_PATH,
     events,
-  };
-
-  applyTagsToEventsData(data, { overwrite: false });
-
-  writeJsonPretty(OUTPUT_PATH, data);
+    beforeWrite(data) {
+      applyTagsToEventsData(data, { overwrite: false });
+    },
+  });
 }
 
 async function main() {
@@ -291,7 +289,6 @@ async function main() {
     }
 
     saveEventsFile(sortedEvents);
-    console.log(`完了: ${sortedEvents.length} 件のイベントを保存しました。`);
   } catch (error) {
     console.error(`失敗: ${error.message}`);
     process.exitCode = 1;

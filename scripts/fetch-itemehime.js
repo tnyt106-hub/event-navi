@@ -8,7 +8,7 @@ const { URL } = require("url");
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
-const { writeJsonPretty } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, normalizeWhitespace, stripTags } = require("./lib/text");
 // イベント詳細 URL 判定の共通ヘルパー。
@@ -283,14 +283,11 @@ function extractEventFromDetail(detailHtml, detailUrl) {
 
 // 成功時のみファイルを書き換える。
 function saveEventsFile(events) {
-  const today = new Date().toISOString().slice(0, 10);
-  const data = {
-    venue_id: VENUE_ID,
-    last_success_at: today,
+  finalizeAndSaveEvents({
+    venueId: VENUE_ID,
+    outputPath: OUTPUT_PATH,
     events,
-  };
-
-  writeJsonPretty(OUTPUT_PATH, data);
+  });
 }
 
 async function main() {

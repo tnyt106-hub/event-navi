@@ -9,7 +9,7 @@ const { URL } = require("url");
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
-const { writeJsonPretty } = require("./lib/io");
+const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitespace } = require("./lib/text");
 const {
@@ -735,15 +735,12 @@ async function main() {
   }
 
   const mergedEvents = mergeEvents(existingData.events || [], filteredEvents);
-  const data = {
-    venue_id: existingData.venue_id || VENUE_ID,
-    last_success_at: buildJstDateString(),
+  finalizeAndSaveEvents({
+    venueId: existingData.venue_id || VENUE_ID,
+    outputPath: OUTPUT_PATH,
     events: mergedEvents,
-  };
-
-  writeJsonPretty(OUTPUT_PATH, data);
-
-  console.log(`merged_total: ${data.events.length}`);
+    lastSuccessAt: buildJstDateString(),
+  });
 }
 
 main().catch((error) => {
