@@ -6,7 +6,22 @@ const { TextDecoder } = require("util");
 const { ERROR_TYPES, TypedError } = require("./error_types");
 
 const DEFAULT_TIMEOUT_MS = 30000;
+const DEFAULT_RETRY_COUNT = 2;
+const DEFAULT_RETRY_BASE_DELAY_MS = 600;
 const ERROR_INDICATORS = ["Access Denied", "Forbidden", "Service Unavailable"];
+
+// リトライ対象の HTTP ステータスか判定する。
+function isRetryableStatusCode(statusCode) {
+  return statusCode === 429 || (statusCode >= 500 && statusCode <= 599);
+}
+
+// 指数バックオフ + ジッターで待機時間を計算する。
+function buildRetryDelayMs(attempt, baseDelayMs) {
+  const safeAttempt = Math.max(1, attempt);
+  const exponential = baseDelayMs * (2 ** (safeAttempt - 1));
+  const jitter = Math.floor(Math.random() * 150);
+  return exponential + jitter;
+}
 
 // HTML テキストを取得し、本文とメタ情報を返す。
 // options: { headers, acceptEncoding, encoding, timeoutMs, debugLabel, checkErrorIndicators }
@@ -54,7 +69,13 @@ async function fetchTextWithMeta(url, options = {}) {
   }
 
   if (!response.ok) {
-    throw new TypedError(ERROR_TYPES.NETWORK, `HTTP ${response.status} で失敗しました。`);
+    const statusCode = Number(response.status || 0);
+    const retryableText = isRetryableStatusCode(statusCode) ? " retryable=true" : "";
+    throw new TypedError(
+      ERROR_TYPES.NETWORK,
+      `HTTP ${statusCode} で失敗しました。${retryableText}`.trim(),
+      { statusCode, retryable: isRetryableStatusCode(statusCode) }
+    );
   }
 
   const contentType = String(response.headers.get("content-type") || "").toLowerCase();
@@ -132,8 +153,36 @@ async function fetchTextWithMeta(url, options = {}) {
 // HTML テキストのみを取得する。
 // options: { headers, acceptEncoding, encoding, timeoutMs, debugLabel }
 async function fetchText(url, options = {}) {
-  const { text } = await fetchTextWithMeta(url, options);
-  return text;
+  const retryCount = Number.isInteger(options.retryCount) ? options.retryCount : DEFAULT_RETRY_COUNT;
+  const retryBaseDelayMs = Number.isFinite(options.retryBaseDelayMs)
+    ? Number(options.retryBaseDelayMs)
+    : DEFAULT_RETRY_BASE_DELAY_MS;
+
+  let lastError = null;
+  for (let attempt = 1; attempt <= retryCount + 1; attempt += 1) {
+    try {
+      const { text } = await fetchTextWithMeta(url, options);
+      return text;
+    } catch (error) {
+      lastError = error;
+      const statusCode = Number(error?.statusCode || error?.details?.statusCode || 0);
+      const retryable =
+        error?.type === ERROR_TYPES.NETWORK &&
+        (statusCode === 0 || isRetryableStatusCode(statusCode));
+      const canRetry = retryable && attempt <= retryCount;
+      if (!canRetry) {
+        throw error;
+      }
+
+      const waitMs = buildRetryDelayMs(attempt, retryBaseDelayMs);
+      console.warn(
+        `[fetchText] retry ${attempt}/${retryCount} wait=${waitMs}ms url=${url} status=${statusCode || "network"}`
+      );
+      await new Promise((resolve) => setTimeout(resolve, waitMs));
+    }
+  }
+
+  throw lastError;
 }
 
 // HTML テキスト取得の別名（呼び出し側の用途を明示するため）。
