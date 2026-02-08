@@ -10,8 +10,9 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities } = require("./lib/text");
+const { decodeHtmlEntities, stripTagsCompact } = require("./lib/text");
 
 const ENTRY_URL = "https://www.marugame-ilex.org/event/eve_1/index.html";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "marugame_ilex.json");
@@ -20,12 +21,6 @@ const ALLOWED_VENUE_KEYWORDS = ["アイレックス", "丸亀市綾歌総合文�
 // 連続テキストの本文は最大文字数を設け、長すぎる場合は省略表記を付ける。
 const MAX_BODY_LENGTH = 5000;
 const BODY_TRUNCATION_SUFFIX = "…（省略）";
-
-// タグを落としてテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, "");
-}
 
 // <br> を指定した区切り文字へ置換する。
 function replaceBreaks(html, separator) {
@@ -36,14 +31,14 @@ function replaceBreaks(html, separator) {
 // タイトル用に <br> をスペースへ変換し、空白を整える。
 function normalizeTitle(rawHtml) {
   const withSpaces = replaceBreaks(rawHtml, " ");
-  const text = decodeHtmlEntities(stripTags(withSpaces));
+  const text = decodeHtmlEntities(stripTagsCompact(withSpaces));
   return text.replace(/\s+/g, " ").trim();
 }
 
 // 説明文用に <br> を改行へ変換し、行ごとに整える。
 function normalizeDescription(rawHtml) {
   const withBreaks = replaceBreaks(rawHtml, "\n");
-  const text = decodeHtmlEntities(stripTags(withBreaks));
+  const text = decodeHtmlEntities(stripTagsCompact(withBreaks));
   const lines = text
     .split("\n")
     .map((line) => line.replace(/\s+/g, " ").trim())
@@ -207,7 +202,7 @@ async function main() {
         continue;
       }
 
-      const metaText = decodeHtmlEntities(stripTags(replaceBreaks(metaHtml, "\n")));
+      const metaText = decodeHtmlEntities(stripTagsCompact(replaceBreaks(metaHtml, "\n")));
       const metaLines = metaText
         .split("\n")
         .map((line) => line.replace(/\s+/g, " ").trim())
@@ -290,8 +285,7 @@ async function main() {
 
     saveEventsFile(sortedEvents);
   } catch (error) {
-    console.error(`失敗: ${error.message}`);
-    process.exitCode = 1;
+    handleCliFatalError(error, { prefix: "失敗" });
   }
 }
 

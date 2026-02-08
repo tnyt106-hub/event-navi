@@ -11,19 +11,14 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities } = require("./lib/text");
+const { decodeHtmlEntities, stripTagsCompact } = require("./lib/text");
 
 const ENTRY_URL = "https://www.sunport-hall.jp/hall/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "sunport_hall_takamatsu.json");
 const VENUE_ID = "sunport_hall_takamatsu";
 const MONTH_LIMIT = 7;
-
-// タグを落としてプレーンテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, "");
-}
 
 // HTML断片を行単位のテキスト配列に変換する。
 function htmlToLines(html) {
@@ -131,7 +126,7 @@ function findNextMonthUrl(html, baseUrl) {
 
   for (const match of html.matchAll(anchorRegex)) {
     const href = match[1];
-    const text = normalizeTitle(stripTags(match[2]));
+    const text = normalizeTitle(stripTagsCompact(match[2]));
     if (text.includes("来月のイベント") || text.includes("次月のイベント") || text.includes("翌月のイベント")) {
       return href ? new URL(href, baseUrl).toString() : null;
     }
@@ -161,7 +156,7 @@ function extractEventBlocks(html) {
 // 見出しと本文からイベントデータを構築する。
 // 見出しと本文からイベントデータを構築する。
 function buildEventFromBlock(block, baseUrl) {
-  const headingText = normalizeTitle(stripTags(block.headingHtml));
+  const headingText = normalizeTitle(stripTagsCompact(block.headingHtml));
   if (!headingText) return null;
 
   // --- 【修正箇所】URL取得とフォールバック（救済措置） ---
@@ -305,8 +300,7 @@ async function main() {
 
     saveEventsFile(sortedEvents);
   } catch (error) {
-    console.error(`失敗: ${error.message}`);
-    process.exitCode = 1;
+    handleCliFatalError(error, { prefix: "失敗" });
   }
 }
 

@@ -21,6 +21,7 @@
 const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
+const { writeTextAtomic } = require("./lib/io");
 const {
   exitCodeToErrorType,
   normalizeErrorType,
@@ -454,7 +455,8 @@ function loadOutputCache(cachePath) {
 function saveOutputCache(cachePath, cacheData) {
   const dir = path.dirname(cachePath);
   ensureDirExists(dir);
-  fs.writeFileSync(cachePath, JSON.stringify(cacheData, null, 2));
+  // キャッシュも原子的に保存し、途中中断で JSON が壊れる事故を防ぐ。
+  writeTextAtomic(cachePath, `${JSON.stringify(cacheData, null, 2)}\n`, "utf8");
 }
 
 function getOutputStats(outputPaths) {

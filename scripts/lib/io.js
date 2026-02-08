@@ -2,7 +2,22 @@
 // すべてのスクレイピングスクリプトで同じ保存形式を使うために用意する。
 
 const fs = require("fs");
+const path = require("path");
 const { createEvent } = require("./schema");
+
+// 同一ディレクトリ内へ一時ファイルを書いてから rename することで、
+// 書き込み途中の破損ファイルが公開ファイルとして見える時間を無くす。
+function writeTextAtomic(filePath, text, encoding = "utf8") {
+  const dirPath = path.dirname(filePath);
+  const baseName = path.basename(filePath);
+  const tempName = `.${baseName}.${process.pid}.${Date.now()}.${Math.random()
+    .toString(16)
+    .slice(2)}.tmp`;
+  const tempPath = path.join(dirPath, tempName);
+
+  fs.writeFileSync(tempPath, text, encoding);
+  fs.renameSync(tempPath, filePath);
+}
 
 // ルートJSONに events 配列がある場合は、保存直前にイベント項目を標準化する。
 // これにより、各スクレイパー実装の差異があっても、
@@ -21,7 +36,7 @@ function normalizeEventPayload(obj) {
 function writeJsonPretty(filePath, obj) {
   const normalized = normalizeEventPayload(obj);
   const json = `${JSON.stringify(normalized, null, 2)}\n`;
-  fs.writeFileSync(filePath, json, "utf8");
+  writeTextAtomic(filePath, json, "utf8");
 }
 
 // JSON 保存前に 0 件を検知してスキップする。
@@ -41,6 +56,7 @@ function saveEventJson(path, data) {
 
 module.exports = {
   normalizeEventPayload,
+  writeTextAtomic,
   writeJsonPretty,
   saveEventJson,
 };

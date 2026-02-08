@@ -9,6 +9,7 @@ const { URL } = require("url");
 const { fetchText } = require("./lib/http");
 // JSON 保存を共通化。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // テキスト整形の共通関数。
 const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks, stripTags } = require("./lib/text");
 // イベントの標準スキーマ生成。
@@ -325,8 +326,7 @@ async function main() {
       lastSuccessAt: output.last_success_at,
     });
   } catch (error) {
-    console.error(`[fatal] ${error.message}`);
-    process.exit(1);
+    handleCliFatalError(error, { prefix: "[fatal]" });
   }
 }
 

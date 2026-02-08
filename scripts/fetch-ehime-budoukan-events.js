@@ -1,6 +1,7 @@
 const path = require("path");
 const { fetchHtml } = require("./lib/http");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 const { decodeHtmlEntities, stripTags } = require("./lib/text");
 const { createEvent, createRootStructure } = require("./lib/schema");
 const { extractDateRange } = require("./lib/date");
@@ -102,8 +103,7 @@ async function main() {
     console.log(`[SUCCESS] 抽出完了: ${uniqueEvents.length} 件のイベントを保存しました。`);
 
   } catch (error) {
-    console.error(`[FATAL] ${error.message}`);
-    process.exit(1);
+    handleCliFatalError(error, { prefix: "[FATAL]" });
   }
 }
 

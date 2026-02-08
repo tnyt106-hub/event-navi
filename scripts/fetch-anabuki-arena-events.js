@@ -4,7 +4,8 @@
 const path = require("path");
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { decodeHtmlEntities } = require("./lib/text");
+const { handleCliFatalError } = require("./lib/cli_error");
+const { decodeHtmlEntities, stripTagsCompact, normalizeDecodedText } = require("./lib/text");
 const { formatIsoDateFromLocalDate, parseIsoDateAsLocalStrict } = require("./lib/date");
 
 const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
@@ -19,14 +20,9 @@ const DEFAULT_TIMEOUT_MS = 30000;
 /**
  * ユーティリティ関数
  */
-function stripTags(html) {
-  if (!html) return "";
-  // HTML タグを削除して、タイトル比較に使えるプレーンテキストへ変換する。
-  return html.replace(/<[^>]*>/g, "");
-}
-
 function htmlToText(html) {
-  return stripTags(decodeHtmlEntities(html)).replace(/\s+/g, " ").trim();
+  // HTML タグ除去 + 空白正規化は共通ユーティリティに統一する。
+  return normalizeDecodedText(stripTagsCompact(decodeHtmlEntities(html)));
 }
 
 function formatDate(date) {
@@ -217,7 +213,6 @@ async function main() {
 
 if (require.main === module) {
   main().catch(err => {
-    console.error(err);
-    process.exit(1);
+    handleCliFatalError(err, { prefix: "[ERROR]" });
   });
 }

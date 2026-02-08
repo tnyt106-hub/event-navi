@@ -10,6 +10,7 @@ const { URL } = require("url");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitespace } = require("./lib/text");
 const {
@@ -727,8 +728,7 @@ async function main() {
   console.log(`deduped_total: ${dedupedTotal}`);
 
   if (dedupedTotal === 0) {
-    console.error("[ERROR] deduped_total が 0 件のため中断します。");
-    process.exit(1);
+    handleCliFatalError(new Error("deduped_total が 0 件のため中断します。"), { prefix: "[ERROR]" });
     return;
   }
 
@@ -742,6 +742,5 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error("[ERROR] スクリプト実行中に失敗しました。", error);
-  process.exit(1);
+  handleCliFatalError(error, { prefix: "[ERROR] スクリプト実行中に失敗しました。" });
 });

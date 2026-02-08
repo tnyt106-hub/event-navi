@@ -13,8 +13,9 @@ const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities } = require("./lib/text");
+const { stripTagsCompact, normalizeDecodedText } = require("./lib/text");
 const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("./lib/date_window");
 const {
   normalizeJapaneseDateText,
@@ -28,15 +29,10 @@ const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "ehime_prefectu
 const VENUE_ID = "ehime_prefectural_museum_of_art";
 const VENUE_NAME = "愛媛県美術館";
 
-// タグを落としてプレーンテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, "");
-}
-
 // テキストの空白を整える。
 function normalizeText(text) {
-  return decodeHtmlEntities(text).replace(/\s+/g, " ").trim();
+  // HTML エンティティのデコードと空白正規化は共通関数へ寄せる。
+  return normalizeDecodedText(text);
 }
 
 // 全角数字を半角に変換し、日付の区切り記号を正規化する。
@@ -122,7 +118,7 @@ function extractTextByClass(blockHtml, tagName, className) {
     "i"
   );
   const match = blockHtml.match(regex);
-  return match ? normalizeText(stripTags(match[1])) : "";
+  return match ? normalizeText(stripTagsCompact(match[1])) : "";
 }
 
 // タイトルとURLを h4 > a から抽出する。
@@ -130,7 +126,7 @@ function extractTitleAndUrlFromAnchor(blockHtml, anchorRegex) {
   const match = blockHtml.match(anchorRegex);
   if (!match) return { title: "", href: "" };
   const href = match[1].trim();
-  const title = normalizeText(stripTags(match[2]));
+  const title = normalizeText(stripTagsCompact(match[2]));
   return { title, href };
 }
 
@@ -282,12 +278,10 @@ async function main() {
   }
 
   if (filteredEvents.length === 0) {
-    console.error("kept_count が 0 です。ページ構造の変化を疑ってください。");
-    process.exit(1);
+    throw new Error("kept_count が 0 です。ページ構造の変化を疑ってください。");
   }
 }
 
 main().catch((error) => {
-  console.error("fetch に失敗しました:", error);
-  process.exit(1);
+  handleCliFatalError(error, { prefix: "fetch に失敗しました" });
 });
