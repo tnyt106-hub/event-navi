@@ -16,8 +16,11 @@ const { decodeHtmlEntities, normalizeWhitespace, stripTags } = require("./lib/te
 const { isEventDetailUrl } = require("./lib/event_url");
 // source_url の重複を排除するヘルパー。
 const { dedupeEventsBySourceUrl } = require("./lib/dedupe");
+const { mapWithConcurrencyLimit, sleep } = require("./lib/concurrency");
 
 const VENUE_ID = "itemehime";
+const DETAIL_CONCURRENCY = 3;
+const DETAIL_JITTER_MS = 250;
 const LIST_URL = "https://itemehime.com/event/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "itemehime.json");
 
@@ -308,36 +311,51 @@ async function main() {
     listLinks = detailLinkResult.listLinks;
     detailLinksUnique = detailLinkResult.detailLinksUnique;
 
-    const events = [];
     const range = buildJstRange();
 
-    // 詳細ページは逐次取得して、負荷とログの追跡を安定させる。
-    for (const detailUrl of detailLinks) {
+    // 詳細ページは同時数制限付きで並列取得し、先方負荷を抑えながら高速化する。
+    const detailResults = await mapWithConcurrencyLimit(detailLinks, DETAIL_CONCURRENCY, async (detailUrl) => {
+      // アクセスの瞬間集中を避けるため、各リクエスト前にジッターを入れる。
+      await sleep(Math.floor(Math.random() * DETAIL_JITTER_MS));
       try {
         const detailHtml = await fetchText(detailUrl, {
           acceptEncoding: "identity",
           encoding: "utf-8",
         });
         const event = extractEventFromDetail(detailHtml, detailUrl);
-        if (!event) {
-          excludedInvalid += 1;
-          continue;
-        }
-        if (!isDateInRange(event.date_from, range)) {
-          excludedInvalid += 1;
-          continue;
-        }
-        events.push(event);
+        return { detailUrl, event, error: null };
       } catch (error) {
-        detailFetchFailed += 1;
-        console.warn(`詳細取得に失敗: ${detailUrl} (${error.message})`);
+        return { detailUrl, event: null, error };
       }
-    }
+    });
+
+    const events = [];
+    detailResults.forEach((result) => {
+      if (result.error) {
+        detailFetchFailed += 1;
+        const message = result.error instanceof Error ? result.error.message : String(result.error);
+        console.warn(`詳細取得に失敗: ${result.detailUrl} (${message})`);
+        return;
+      }
+
+      if (!result.event) {
+        excludedInvalid += 1;
+        return;
+      }
+
+      if (!isDateInRange(result.event.date_from, range)) {
+        excludedInvalid += 1;
+        return;
+      }
+
+      events.push(result.event);
+    });
 
     const dedupedEvents = dedupeEventsBySourceUrl(events);
 
     console.log(`[fetch] list_links: ${listLinks}`);
     console.log(`[fetch] detail_links_unique: ${detailLinksUnique}`);
+    console.log(`[fetch] detail_concurrency: ${DETAIL_CONCURRENCY}`);
     console.log(`[fetch] excluded_invalid: ${excludedInvalid}`);
     console.log(`[fetch] detail_fetch_failed: ${detailFetchFailed}`);
     console.log(`[fetch] events_built: ${dedupedEvents.length}`);

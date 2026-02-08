@@ -5,6 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("./lib/date_window");
+const { writeJsonPretty } = require("./lib/io");
 
 // テンプレートは運用データではないため、自動更新対象から除外する。
 const EXCLUDED_FILE_NAMES = new Set(["template.json"]);
@@ -75,7 +76,8 @@ function main() {
 
       if (result.beforeCount !== result.afterCount) {
         const updatedData = { ...data, events: result.events };
-        fs.writeFileSync(filePath, `${JSON.stringify(updatedData, null, 2)}\n`, "utf-8");
+        // 原子的保存で中断時の JSON 破損を避ける。
+        writeJsonPretty(filePath, updatedData);
         updatedFiles += 1;
       }
     } catch (error) {

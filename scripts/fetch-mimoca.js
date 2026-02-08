@@ -23,11 +23,14 @@ const {
   evaluateEventAgainstPastCutoff,
   formatUtcDateToIso,
 } = require("./lib/date_window");
+const { mapWithConcurrencyLimit, sleep } = require("./lib/concurrency");
 
 const EXHIBITIONS_LIST_URL = "https://www.mimoca.jp/exhibitions/current/";
 const EVENTS_LIST_URL = "https://www.mimoca.jp/events/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "mimoca.json");
 const VENUE_ID = "mimoca";
+const DETAIL_CONCURRENCY = 3;
+const DETAIL_JITTER_MS = 300;
 
 // 改行を残しながら各行の余分な空白を削除する。
 function normalizeWhitespacePreservingLineBreaks(text) {
@@ -477,7 +480,7 @@ function buildEventFromDetail(detailUrl, html, dateOptions) {
     eventItem.price = priceLine;
   }
 
-    const contactLine = extractContactLine(html);
+  const contactLine = extractContactLine(html);
   // 重要：nullでも代入して、既存JSONの "Language ▲" を確実に上書きする
   eventItem.contact = sanitizeContact(contactLine);
 
@@ -590,41 +593,56 @@ async function fetchDetails(urls, label, dateOptions) {
   let usedFallbackCount = 0;
   const dateCountSamples = [];
 
-  for (const url of urls) {
+  // 詳細ページは同時数を制限して並列取得し、先方負荷を抑えつつ実行時間を短縮する。
+  const detailResults = await mapWithConcurrencyLimit(urls, DETAIL_CONCURRENCY, async (url) => {
+    // リクエストの瞬間集中を避けるため、取得前に小さなジッターを入れる。
+    await sleep(Math.floor(Math.random() * DETAIL_JITTER_MS));
+
     try {
       const html = await fetchText(url, {
         acceptEncoding: "identity",
         encoding: "utf-8",
         debugLabel: "mimoca-detail",
       });
-      const { eventItem, invalidReason, usedScoped, dateDebug } = buildEventFromDetail(
-        url,
-        html,
-        dateOptions
-      );
-      if (dateDebug && dateCountSamples.length < 3) {
-        dateCountSamples.push({ url, scopedDateCount: dateDebug.scopedDateCount });
-      }
-      if (!eventItem) {
-        excludedInvalidCount += 1;
-        if (invalidSamples.length < 3) {
-          invalidSamples.push({ url, reason: invalidReason || "unknown" });
-        }
-        continue;
-      }
-
-      results.push(eventItem);
-      successCount += 1;
-      if (usedScoped) {
-        usedScopedCount += 1;
-      } else {
-        usedFallbackCount += 1;
-      }
+      const parsed = buildEventFromDetail(url, html, dateOptions);
+      return { url, ok: true, ...parsed };
     } catch (error) {
-      failedCount += 1;
+      return { url, ok: false, error };
     }
-  }
+  });
 
+  detailResults.forEach((result) => {
+    if (!result.ok) {
+      failedCount += 1;
+      if (invalidSamples.length < 3) {
+        const errorMessage = result.error instanceof Error ? result.error.message : String(result.error);
+        invalidSamples.push({ url: result.url, reason: `fetch_failed:${errorMessage}` });
+      }
+      return;
+    }
+
+    const { eventItem, invalidReason, usedScoped, dateDebug } = result;
+    if (dateDebug && dateCountSamples.length < 3) {
+      dateCountSamples.push({ url: result.url, scopedDateCount: dateDebug.scopedDateCount });
+    }
+    if (!eventItem) {
+      excludedInvalidCount += 1;
+      if (invalidSamples.length < 3) {
+        invalidSamples.push({ url: result.url, reason: invalidReason || "unknown" });
+      }
+      return;
+    }
+
+    results.push(eventItem);
+    successCount += 1;
+    if (usedScoped) {
+      usedScopedCount += 1;
+    } else {
+      usedFallbackCount += 1;
+    }
+  });
+
+  console.log(`${label}_detail_concurrency: ${DETAIL_CONCURRENCY}`);
   console.log(`${label}_date_scope_used_scoped: ${usedScopedCount}`);
   console.log(`${label}_date_scope_used_fallback: ${usedFallbackCount}`);
   dateCountSamples.forEach((sample) => {
@@ -638,6 +656,7 @@ async function fetchDetails(urls, label, dateOptions) {
 
   return { events: results, excludedInvalidCount };
 }
+
 
 async function main() {
   const existingData = loadExistingData();

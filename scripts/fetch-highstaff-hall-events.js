@@ -2,7 +2,6 @@
 // 「開催予定の自主事業」セクションだけを抽出して保存するバッチ。
 // 使い方: node scripts/fetch-highstaff-hall-events.js
 
-const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 
@@ -19,6 +18,8 @@ const ENTRY_URL = "https://www.kanon-kaikan.jp/event/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "highstaff_hall.json");
 const VENUE_ID = "highstaff_hall";
 const SECTION_TITLE = "開催予定の自主事業";
+// セクション終端候補を配列化し、文言変更に追従しやすくする。
+const SECTION_END_MARKERS = ["お預かりチケット", "開催終了", "自主事業アーカイブ"];
 
 // タイトル用に文字列を整形する。
 function normalizeTitle(text) {
@@ -43,10 +44,9 @@ function extractSection(html, headingText) {
   const tail = html.slice(sectionStart);
 
   // 次の見出し（対象外のセクション）より前までを抽出する。
-  const endMarkers = ["お預かりチケット", "開催終了"];
   let sectionEnd = tail.length;
 
-  for (const marker of endMarkers) {
+  for (const marker of SECTION_END_MARKERS) {
     const markerRegex = new RegExp(`(<h[1-6][^>]*>[\\s\\S]*?${marker}[\\s\\S]*?<\\/h[1-6]>)`, "i");
     const markerMatch = tail.match(markerRegex);
     if (markerMatch && markerMatch.index !== undefined) {
