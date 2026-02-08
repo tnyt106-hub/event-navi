@@ -125,16 +125,17 @@ function extractEventCandidatesFromList(html) {
       continue;
     }
 
-    // C-2: 日付はコンテキスト全体テキストから最初の和暦日付を抽出する。
+    // C-2: 日付は「詳細ページが壊れていた場合のフェイルセーフ」専用として保持する。
+    //      一覧の日付は誤紐付けが起きやすいため、この段階では event の date_from には採用しない。
     const contextText = normalizeWhitespace(decodeHtmlEntities(stripTagsWithLineBreaks(contextWindowHtml)));
-    const dateFrom = extractFirstJpDate(contextText);
+    const fallbackDateFrom = extractFirstJpDate(contextText);
 
     // D: 同一 URL は最初に見つかった 1 件だけ採用する。
     seenUrls.add(absoluteUrl);
     candidates.push({
       source_url: absoluteUrl,
       title,
-      date_from: dateFrom,
+      fallback_date_from: fallbackDateFrom,
     });
   }
 
@@ -208,18 +209,37 @@ function extractImageUrl(detailHtml, detailUrl) {
 
 // 詳細ページを解析して、候補イベントへ詳細情報を合成する。
 function mergeDetailFields(candidate, detailHtml) {
+  // eventTable の有無を先に判定し、フェイルセーフ利用条件を明確にする。
+  const hasEventTable = /<table\b[^>]*class=["'][^"']*eventTable[^"']*["'][^>]*>/i.test(detailHtml);
   const dateCell = extractFieldFromEventTable(detailHtml, "開催日");
   const timeCell = extractFieldFromEventTable(detailHtml, "時間");
   const locationCell = extractFieldFromEventTable(detailHtml, "会場");
   const priceCell = extractFieldFromEventTable(detailHtml, "料金");
   const contactCell = extractFieldFromEventTable(detailHtml, "お問合せ");
 
-  // 「〜」以降の日付を date_to として採用（なければ一覧/先頭日付を利用）。
+  // 開催日は「詳細ページ eventTable の開催日セル」を唯一の正とする。
+  // 例: 2026年01月17日（土） 〜 2026年03月01日（日）
+  // -> 先頭を date_from、末尾を date_to として扱う。
+  let dateFrom = null;
   let dateTo = null;
   if (dateCell) {
-    const rangeParts = dateCell.split(/〜|～/);
-    const dateToText = rangeParts.length >= 2 ? rangeParts[rangeParts.length - 1] : rangeParts[0];
-    dateTo = toIsoDateFromJpDateText(dateToText) || extractFirstJpDate(dateCell);
+    const normalizedDateCell = dateCell.replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0));
+    const dateTexts = normalizedDateCell.match(/\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日/g);
+    if (dateTexts && dateTexts.length >= 1) {
+      dateFrom = toIsoDateFromJpDateText(dateTexts[0]);
+      dateTo = toIsoDateFromJpDateText(dateTexts[dateTexts.length - 1]);
+    }
+  }
+
+  // フェイルセーフ: eventTable が存在しない、または開催日セルが欠落している場合のみ
+  // 一覧近傍から取得した fallback_date_from を利用する。
+  if ((!hasEventTable || !dateCell) && !dateFrom) {
+    dateFrom = candidate.fallback_date_from || null;
+  }
+
+  // date_to が取れない場合は単日イベントとして date_from を補完する。
+  if (!dateTo && dateFrom) {
+    dateTo = dateFrom;
   }
 
   const detailTitle = (() => {
@@ -229,8 +249,6 @@ function mergeDetailFields(candidate, detailHtml) {
   })();
 
   const title = candidate.title || detailTitle;
-  const dateFrom = candidate.date_from || extractFirstJpDate(dateCell);
-  const resolvedDateTo = dateTo || dateFrom;
   const location = locationCell || null;
 
   if (!title || !dateFrom) {
@@ -240,7 +258,7 @@ function mergeDetailFields(candidate, detailHtml) {
   return createEvent({
     title,
     date_from: dateFrom,
-    date_to: resolvedDateTo,
+    date_to: dateTo,
     time_start: extractTimeStart(timeCell),
     description: extractDescription(detailHtml, location),
     image_url: extractImageUrl(detailHtml, candidate.source_url),
