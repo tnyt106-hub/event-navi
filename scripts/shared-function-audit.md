@@ -1,91 +1,135 @@
-# scripts ディレクトリ共有化・ハードコード監査メモ
+# scripts ディレクトリ共有化・不要処理監査メモ
 
 作成日: 2026-02-08
 最終更新日: 2026-02-08
 
-## 1) 共有関数化できる処理（安全性を加味した優先度順）
+## 0. このメモの目的
 
-### 優先度 P0（最優先: 挙動変更を最小化しつつ不具合リスクを下げる）
-
-#### P0-1. `generate-date-pages.js` の同名関数二重定義を解消
-- `formatDateWithWeekday` が同一ファイル内で二重定義されており、後勝ちで上書きされる状態。
-- この状態は「意図しない関数差し替え」が起きうるため、機能追加より先に解消すべき。
-- **安全策**: まず重複定義を1つに統一し、入力/出力（`YYYY-MM-DD（曜）`）が変わらないことを確認する。
-
-#### P0-2. 既存の共通関数がある箇所だけを置換（局所置換）
-- `stripTags` / `normalizeWhitespace` / `stripTagsWithLineBreaks` は `scripts/lib/text.js` ですでに共通化済み。
-- ローカル実装を一気に統合せず、**挙動が同等の箇所のみ**段階的に置換する。
-- **安全策**: 1スクリプト単位で置換→実行確認→次へ進む。
-
-### 優先度 P1（高: 影響範囲が広いが、段階適用で安全に進められる）
-
-#### P1-1. 日付処理の共通化
-- `toIsoDate` / `formatDate` / `buildDate` / 年跨ぎ補正ロジックが複数スクリプトに分散。
-- `scripts/lib/date.js` と `scripts/lib/date_window.js` を中核に寄せる。
-- **安全策**:
-  - 既存の入力フォーマット（`YYYY年M月D日`、`M/D`、範囲表記）を先に棚卸し。
-  - 互換レイヤー（旧関数名で共通関数を呼ぶ薄いラッパー）を先に導入。
-
-#### P1-2. JSON保存処理の共通化
-- `saveEventsFile` が各 fetch で重複。
-- `scripts/lib/io.js` の `writeJsonPretty` / `saveEventJson` をベースに、共通ペイロード生成を追加する余地あり。
-- **安全策**: 出力キー順・`last_success_at` 形式・改行有無が変わらないよう snapshot 比較する。
-
-### 優先度 P2（中: 効果は大きいが、差分が広がりやすい）
-
-#### P2-1. `source_url` 重複排除の完全統一
-- `scripts/lib/dedupe.js` 利用済み/未利用が混在。
-- `fetch-kenbun.js` 等のローカル `dedupeEvents` を段階置換可能。
-- **安全策**: 重複判定キーを `source_url` に固定し、件数差分をログ比較する。
-
-#### P2-2. SEOヘッダ/フッタのテンプレート共通化
-- `generate-date-pages.js` と `generate-facility-pages.js` でヘッダ/フッタ実装が類似。
-- 共通化の価値は高いが、HTML出力差分が大きくなりやすい。
-- **安全策**: 先に `escapeHtml` など小粒関数のみ共通化し、HTML全体テンプレ共通化は後段で実施。
+- `scripts/` 配下で、過去修正の影響で残った**不要処理（未使用関数）**と、各ファイルで重複実装されている**共通化候補**を整理する。
+- 「一気に全面改修」ではなく、**壊しにくい順序**で段階的に進める優先順位を明確化する。
 
 ---
 
-## 2) 「本体で変数化すべき」ハードコード候補（安全優先順）
+## 1. 現状分析サマリ（重複が多い処理）
 
-### 優先度 A（先に対応）
-- `generate-date-pages.js`
-  - `buildOtherBodyText` の `maxLength = 300`。
-  - `normalizeDateRange` の `31日` 制限。
-  - `formatDateWithWeekday` 二重定義（ハードコードというより構造不整合）。
-- 理由: 閾値や関数構造が分散していると、修正時に差し替え漏れが起きやすい。
+関数定義を横断スキャンした結果、以下の重複が目立つ。
 
-### 優先度 B（次に対応）
-- `generate-date-pages.js` / `generate-facility-pages.js` の `© 2026` 固定。
-- 理由: 年更新漏れリスクは高いが、即時の処理破壊リスクはAより低い。
+- `stripTags`: 9 ファイルで個別実装
+- `formatDate`: 6 ファイルで個別実装
+- `saveEventsFile`: 6 ファイルで個別実装
+- `buildDate`: 5 ファイルで個別実装
+- `dedupeEvents`: 4 ファイルで個別実装
 
-### 優先度 C（計画対応）
-- `fetch-kenbun.js` の `normalizeMonthUrl` 内で URL を直接組み立て。
-- 理由: ドメイン変更時の保守性に影響するが、現行稼働への即時影響は限定的。
+一方で、すでに `scripts/lib/` 側には以下の共通関数が存在している。
 
----
+- テキスト処理: `stripTags` / `normalizeWhitespace` / `stripTagsWithLineBreaks` (`scripts/lib/text.js`)
+- JSON 保存: `writeJsonPretty` / `saveEventJson` (`scripts/lib/io.js`)
+- 重複排除: `dedupeEventsBySourceUrl` (`scripts/lib/dedupe.js`)
 
-## 3) 安全に進める実装順（壊さないための実行計画）
-
-1. **P0対応**: `generate-date-pages.js` の二重定義解消（最小差分）。
-2. **P0/P1対応**: `text.js` の既存共通関数へ局所置換（1ファイルずつ）。
-3. **P1対応**: 日付共通化（互換ラッパー方式で段階移行）。
-4. **P1対応**: JSON保存共通化（出力差分比較を必須化）。
-5. **P2対応**: dedupe/SEOテンプレの広域共通化。
-6. 各段階で `run-all` ではなく、対象スクリプト単体実行で影響を局所確認してから次へ進む。
+つまり、**共通基盤はあるのに移行が途中で止まっている**状態。
 
 ---
 
-## 4) チェックリスト（各変更で必ず実施）
+## 2. 現状分析サマリ（過去修正で不要になった可能性が高い処理）
 
-- [ ] 対象スクリプトのイベント件数が想定範囲内か。
-- [ ] `date_from` / `date_to` 形式が `YYYY-MM-DD` を維持しているか。
-- [ ] `source_url` の重複排除結果が悪化していないか。
-- [ ] 出力JSONの必須キー（`venue_id`, `last_success_at`, `events`）が保持されているか。
-- [ ] HTML生成スクリプトは title/description/canonical が欠落していないか（SEO観点）。
+未使用関数を機械的に洗い出したところ、少なくとも以下が「定義のみで参照なし」。
+
+- `scripts/fetch-takamatsu_city_museum_of_art.js`
+  - `extractEventBlocks`
+  - `extractTitle`
+  - `extractSourceUrl`
+- `scripts/fetch-kenbun.js`
+  - `fetchAllListPages`
+- `scripts/fetch-itemehime.js`
+  - `extractDate`
+  - `extractTimeByLabels`
+  - `extractLabeledValue`
+
+これらは、実装の途中で抽出方式を切り替えた際に残った「旧ルート」の可能性が高い。
+
+> 注意: 未使用判定は静的スキャン結果。削除前に 1 ファイルずつ実行し、ログと出力件数で最終確認する。
 
 ---
 
-## 5) 補足（今回見つかった不整合）
+## 3. 修正優先順位（推奨）
 
-- `generate-date-pages.js` で `formatDateWithWeekday` が二重定義されているため、後勝ちで上書きされる。
-  - 意図しない動作差の温床になりうるため、**最優先（P0）**で1つに統一推奨。
+### P0（最優先）: 未使用関数の削除（安全性が高く効果が大きい）
+
+### 対象
+- `fetch-takamatsu_city_museum_of_art.js` の 3 関数
+- `fetch-kenbun.js` の 1 関数
+- `fetch-itemehime.js` の 3 関数
+
+### 理由
+- 参照されない処理は将来の誤読・誤修正の温床になる。
+- 依存がないため、影響範囲が狭く、レビュー容易性が高い。
+
+### 具体方針
+1. 1 ファイルずつ未使用関数を削除。
+2. 対象スクリプトを単体実行し、イベント件数・必須キーを確認。
+3. 問題なければ次ファイルへ進む。
+
+---
+
+### P1（高）: 既存共通関数へ「同等挙動だけ」置換
+
+### 対象
+- `stripTags` 系を `scripts/lib/text.js` に寄せる。
+- `saveEventsFile` 相当を `scripts/lib/io.js` の `saveEventJson` または `writeJsonPretty` に寄せる。
+- `source_url` ベース重複排除を `scripts/lib/dedupe.js` に寄せる。
+
+### 理由
+- 既存の共通化基盤を活用でき、重複削減効果が高い。
+- ただし細かな挙動差（空白扱い、0件時の保存スキップ方針）があるため段階導入が必要。
+
+### 具体方針
+1. まず `stripTags` だけを対象にし、差分が小さいファイルから移行。
+2. 次に保存処理を移行し、JSON のキー構造・整形・`last_success_at` の扱いを比較。
+3. 最後に重複排除処理を共通化し、件数差分を監視。
+
+---
+
+### P2（中）: 日付処理の再統合（効果大だが壊しやすい）
+
+### 対象
+- `formatDate` / `buildDate` / `toIsoDate` / 年跨ぎ補正ロジック
+
+### 理由
+- 変換仕様の差異が混在しており、統合時に挙動変化が起きやすい。
+- ただし長期保守の観点では最も共通化メリットが大きい。
+
+### 具体方針
+1. `scripts/lib/date.js` の責務を「パース」「妥当性チェック」「年跨ぎ補正」に分割して明文化。
+2. 既存関数名の薄いラッパーを各 fetch 側に一時的に残し、内部だけ共通関数呼び出しへ置換。
+3. 全移行後にラッパー削除。
+
+---
+
+## 4. 実行順（壊しにくい順）
+
+1. **未使用関数削除（P0）**
+2. **テキスト処理共通化（P1 前半）**
+3. **JSON 保存処理共通化（P1 後半）**
+4. **重複排除共通化（P1 後半）**
+5. **日付処理統合（P2）**
+
+---
+
+## 5. 各ステップの受け入れ条件（Done 条件）
+
+- スクリプト単体実行で `events.length > 0`（通常想定のサイト）
+- 出力 JSON の必須キー維持: `venue_id`, `venue_name`, `events`
+- `date_from`, `date_to` が `YYYY-MM-DD`
+- `source_url` が空文字になっていない
+- 改修前後でイベント件数の差分が説明可能
+
+---
+
+## 6. 直近の着手提案（最初の 1 スプリント）
+
+- Step 1: `fetch-takamatsu_city_museum_of_art.js` の未使用 3 関数削除
+- Step 2: `fetch-itemehime.js` の未使用 3 関数削除
+- Step 3: `fetch-kenbun.js` の未使用 1 関数削除
+- Step 4: `stripTags` 重複ファイルから 2 ファイルだけを試験的に共通化
+
+この順であれば、**まず不要処理を減らして可読性を上げた上で共通化に入れる**ため、レビュー負荷とリスクのバランスが良い。

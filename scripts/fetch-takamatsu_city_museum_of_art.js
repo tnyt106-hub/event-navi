@@ -184,58 +184,6 @@ function buildSourceUrlFromHref(href) {
   }
 }
 
-// HTML内のイベント候補ブロックを抽出する。
-function extractEventBlocks(html) {
-  // ブロック構造ではなく「タイトル行→日付行」の並びを行ベースで拾う。
-  const lines = extractLinesFromHtml(html);
-  const blocks = [];
-  const dateIndicator = /\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日/;
-
-  for (let i = 0; i < lines.length; i += 1) {
-    const titleLine = lines[i];
-    if (!isTitleCandidate(titleLine)) {
-      continue;
-    }
-    const dateLine = lines[i + 1];
-    if (!dateLine || !dateIndicator.test(dateLine)) {
-      continue;
-    }
-    // 既存のブロック解析を流用できるよう、簡易的に連結する。
-    blocks.push(`${titleLine}\n${dateLine}`);
-  }
-
-  return blocks;
-}
-
-// イベントブロックからタイトル候補を抽出する。
-function extractTitle(blockHtml) {
-  const headingMatch = blockHtml.match(/<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/i);
-  if (headingMatch) {
-    return normalizeText(headingMatch[1]);
-  }
-
-  const titleClassMatch = blockHtml.match(
-    /<[^>]*class=["'][^"']*(?:title|ttl|heading|name)[^"']*["'][^>]*>([\s\S]*?)<\/[^>]+>/i
-  );
-  if (titleClassMatch) {
-    return normalizeText(titleClassMatch[1]);
-  }
-
-  const anchorMatch = blockHtml.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
-  if (anchorMatch) {
-    return normalizeText(anchorMatch[1]);
-  }
-
-  return "";
-}
-
-// ブロック内から詳細ページの URL を抽出する。
-function extractSourceUrl(blockHtml) {
-  const anchorMatch = blockHtml.match(/<a[^>]*href=["']([^"']+)["'][^>]*>/i);
-  const href = anchorMatch ? anchorMatch[1].trim() : "";
-  return buildSourceUrlFromHref(href);
-}
-
 // 日付テキストから開始日・終了日を取得する。
 function parseDateRange(text) {
   // 日付判定は安全側に倒すため、開始日と終了日が揃っている場合だけ返す。

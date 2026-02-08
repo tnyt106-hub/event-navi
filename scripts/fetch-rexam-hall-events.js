@@ -12,7 +12,7 @@ const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { writeJsonPretty } = require("./lib/io");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities } = require("./lib/text");
+const { decodeHtmlEntities, stripTags, normalizeWhitespace } = require("./lib/text");
 
 const ENTRY_URL = "https://kenminhall.com/visitors/event/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "rexam_hall.json");
@@ -174,12 +174,6 @@ function convertSingleQuotedStrings(text) {
   return result;
 }
 
-// タグを落としてプレーンテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
-}
-
 // 日付キーを ISO 形式に変換する。
 function normalizeDateKey(dateKey) {
   const match = String(dateKey).match(/^(\d{4})\/(\d{2})\/(\d{2})$/);
@@ -241,8 +235,9 @@ function parseEventsFromFragment(fragment, dateIso, baseUrl) {
   for (const block of blocks) {
     const hrefMatch = block.match(/<a[^>]*href=['"]([^'"]+)['"][^>]*>/);
     const titleMatch = block.match(/<a[^>]*href=['"][^'"]+['"][^>]*>([\s\S]*?)<\/a>/);
-    const titleText = titleMatch ? stripTags(titleMatch[1]) : "";
-    const combinedText = stripTags(block);
+    // 共通 stripTags は空白を残すため、既存と同じ空白圧縮 + trim を明示して揃える。
+    const titleText = titleMatch ? normalizeWhitespace(stripTags(titleMatch[1])) : "";
+    const combinedText = normalizeWhitespace(stripTags(block));
 
     if (!titleText) {
       stats.emptyTitleExcluded += 1;

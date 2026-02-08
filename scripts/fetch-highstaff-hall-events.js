@@ -12,18 +12,12 @@ const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { writeJsonPretty } = require("./lib/io");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities } = require("./lib/text");
+const { decodeHtmlEntities, stripTags, normalizeWhitespace } = require("./lib/text");
 
 const ENTRY_URL = "https://www.kanon-kaikan.jp/event/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "highstaff_hall.json");
 const VENUE_ID = "highstaff_hall";
 const SECTION_TITLE = "開催予定の自主事業";
-
-// タグを落としてプレーンテキスト化する。
-function stripTags(html) {
-  if (!html) return "";
-  return html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
-}
 
 // タイトル用に文字列を整形する。
 function normalizeTitle(text) {
@@ -109,7 +103,8 @@ function buildEventsFromSection(sectionHtml) {
 
   for (const match of sectionHtml.matchAll(anchorRegex)) {
     const href = match[1];
-    const rawText = stripTags(match[2]);
+    // 共通 stripTags は空白を残す実装のため、従来挙動（空白圧縮 + trim）を維持する。
+    const rawText = normalizeWhitespace(stripTags(match[2]));
     const decodedText = decodeHtmlEntities(rawText);
     const { dateIso, match: dateMatch } = extractDateMatch(decodedText);
 

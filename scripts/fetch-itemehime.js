@@ -40,14 +40,6 @@ function toIsoDate(year, month, day) {
   return `${yyyy}-${mm}-${dd}`;
 }
 
-// テキストから日本語の日付を抽出する。
-function extractDate(text) {
-  const normalized = normalizeJapaneseText(normalizeWhitespace(text));
-  const match = /(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/.exec(normalized);
-  if (!match) return null;
-  return toIsoDate(match[1], match[2], match[3]);
-}
-
 // <dl class="dl_postevent"> 内の dt/dd を Map 化する。
 function buildDetailMap(detailHtml) {
   const map = new Map();
@@ -136,50 +128,6 @@ function parseTimeCandidate(value) {
     return null;
   }
   return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
-}
-
-// ラベル付きの時刻を探して返す。
-function extractTimeByLabels(lines, labels) {
-  const labelPattern = labels.map((label) => label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
-  const regex = new RegExp(`(${labelPattern})[^0-9]*([0-2]?\\d[:：][0-5]\\d)`);
-
-  for (const line of lines) {
-    const normalizedLine = normalizeJapaneseText(line);
-    const match = regex.exec(normalizedLine);
-    if (match) {
-      const time = parseTimeCandidate(match[2]);
-      if (time) {
-        return time;
-      }
-    }
-  }
-  return null;
-}
-
-// ラベル付きの値（価格や問い合わせ先）を探す。
-function extractLabeledValue(lines, labels) {
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    for (const label of labels) {
-      if (!line.includes(label)) {
-        continue;
-      }
-      const normalizedLine = normalizeWhitespace(line);
-      const labelRegex = new RegExp(`${label}[^:：]*[:：]?\s*(.+)`);
-      const match = labelRegex.exec(normalizedLine);
-      if (match && match[1]) {
-        return match[1].trim();
-      }
-      const nextLine = lines[i + 1];
-      if (nextLine) {
-        const nextValue = normalizeWhitespace(nextLine);
-        if (nextValue) {
-          return nextValue;
-        }
-      }
-    }
-  }
-  return null;
 }
 
 // body 用のテキストを整形する（改行単位でトリムし、最大 5000 文字に収める）。
