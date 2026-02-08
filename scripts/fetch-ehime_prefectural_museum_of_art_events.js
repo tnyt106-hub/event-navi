@@ -16,7 +16,12 @@ const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
 
-const LIST_URL = "https://www.ehime-art.jp/event";
+// 一覧ページURLは運用側で末尾スラッシュ有無が切り替わることがあるため
+// フォールバック候補を複数持つ。
+const LIST_URL_CANDIDATES = [
+  "https://www.ehime-art.jp/event",
+  "https://www.ehime-art.jp/event/",
+];
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
 const VENUE_ID = "ehime_prefectural_museum_of_art";
 const VENUE_NAME = "愛媛県美術館";
@@ -100,14 +105,37 @@ function extractEventBlocks(listHtml) {
 }
 
 // ブロック内の href を絶対URLに変換する。
-function extractHrefFromBlock(blockHtml) {
+function extractHrefFromBlock(blockHtml, baseUrl) {
   const hrefMatch = blockHtml.match(/href=["']([^"']+)["']/i);
   if (!hrefMatch) return "";
   try {
-    return new URL(hrefMatch[1], LIST_URL).toString();
+    return new URL(hrefMatch[1], baseUrl).toString();
   } catch (error) {
     return "";
   }
+}
+
+// 候補URLを順に試し、最初に取得できたHTMLと採用URLを返す。
+async function fetchListHtmlWithFallback() {
+  // 一時的な切り替えやデバッグに使えるよう環境変数でも上書き可能にする。
+  const envUrl = process.env.EHIME_ART_EVENT_URL;
+  const candidates = envUrl ? [envUrl, ...LIST_URL_CANDIDATES] : LIST_URL_CANDIDATES;
+  const tried = [];
+
+  for (const url of candidates) {
+    try {
+      const html = await fetchText(url, {
+        acceptEncoding: "identity",
+        encoding: "utf-8",
+      });
+      return { html, listUrl: url };
+    } catch (error) {
+      // どのURLで失敗したか把握できるようにログ文字列として保持しておく。
+      tried.push(`${url}: ${error.message}`);
+    }
+  }
+
+  throw new Error(`一覧ページの取得に失敗しました。 tried=${tried.join(" | ")}`);
 }
 
 // event-item ブロック内のタイトルを抽出する。
@@ -226,11 +254,12 @@ function mergeEvents(existingEvents, newEvents) {
 
 async function main() {
   let listHtml;
+  let listUrl;
   try {
-    listHtml = await fetchText(LIST_URL, {
-      acceptEncoding: "identity",
-      encoding: "utf-8",
-    });
+    const fetched = await fetchListHtmlWithFallback();
+    listHtml = fetched.html;
+    listUrl = fetched.listUrl;
+    console.log(`used_list_url: ${listUrl}`);
   } catch (error) {
     console.error("[ERROR] LIST_URL の取得に失敗しました。", error);
     process.exit(1);
@@ -257,7 +286,7 @@ async function main() {
       continue;
     }
 
-    const sourceUrl = extractHrefFromBlock(blockHtml);
+    const sourceUrl = extractHrefFromBlock(blockHtml, listUrl);
     if (!sourceUrl) {
       excludedInvalidCount += 1;
       continue;
@@ -314,7 +343,7 @@ async function main() {
     },
   });
 
-  const previewItems = data.events.slice(0, 2);
+  const previewItems = mergedEvents.slice(0, 2);
   if (previewItems.length > 0) {
     console.log("preview:");
     previewItems.forEach((item, index) => {
