@@ -15,13 +15,12 @@ const { fetchText } = require("./lib/http");
 const { writeJsonPretty } = require("./lib/io");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
+const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("./lib/date_window");
 
 const ENTRY_URL = "https://www.ehime-art.jp/exhibition/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
 const VENUE_ID = "ehime_prefectural_museum_of_art";
 const VENUE_NAME = "愛媛県美術館";
-// 終了日が「今日から365日より前」のイベントを除外するための基準日数。
-const PAST_DAYS_LIMIT = 365;
 
 // タグを落としてプレーンテキスト化する。
 function stripTags(html) {
@@ -172,20 +171,6 @@ function resolveUrl(href) {
   }
 }
 
-// JST基準の現在日を Date (UTC) に揃える。
-function buildJstTodayUtc() {
-  const nowJst = new Date(Date.now() + 9 * 60 * 60 * 1000);
-  return new Date(Date.UTC(nowJst.getUTCFullYear(), nowJst.getUTCMonth(), nowJst.getUTCDate()));
-}
-
-// 過去365日フィルタの閾値を作る（JST基準の日付で判定する）。
-function buildPastThresholdUtc() {
-  const todayJst = buildJstTodayUtc();
-  const threshold = new Date(todayJst.getTime());
-  threshold.setUTCDate(threshold.getUTCDate() - PAST_DAYS_LIMIT);
-  return threshold;
-}
-
 // 重複キーごとにより適切な URL を選ぶ。
 function choosePreferredUrl(currentUrl, candidateUrl) {
   const preferredKeyword = "/exhibition/detail/";
@@ -285,22 +270,19 @@ async function main() {
   }
 
   const dedupedEvents = Array.from(dedupedMap.values());
-  const threshold = buildPastThresholdUtc();
+  // 過去365日フィルタの閾値は共通モジュールから取得する。
+  const cutoffDate = buildPastCutoffDate();
   const filteredEvents = dedupedEvents.filter((eventItem) => {
-    // 終了日が取れていないイベントは、既存ロジックに委ねて残す。
-    if (!eventItem.date_to) return true;
-
-    const [year, month, day] = eventItem.date_to.split("-").map(Number);
-    const dateTo = buildDate(year, month, day);
-    if (!dateTo) {
-      return false;
-    }
-    // 終了日が「今日 - 365日」より古ければ除外する。
-    if (dateTo < threshold) {
+    // 既存仕様維持: date_to 欠損イベントは残す。
+    const evaluation = evaluateEventAgainstPastCutoff(eventItem, cutoffDate, {
+      fallbackToDateFrom: false,
+      keepOnMissingDate: true,
+      keepOnInvalidDate: false,
+    });
+    if (!evaluation.keep && evaluation.reason === "expired") {
       filteredOldCount += 1;
-      return false;
     }
-    return true;
+    return evaluation.keep;
   });
   const data = {
     venue_id: VENUE_ID,

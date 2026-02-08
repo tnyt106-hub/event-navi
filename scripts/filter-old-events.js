@@ -4,24 +4,10 @@
 
 const fs = require("fs");
 const path = require("path");
-const { parseIsoDateStrict } = require("./lib/date");
+const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("./lib/date_window");
 
 // テンプレートは運用データではないため、自動更新対象から除外する。
 const EXCLUDED_FILE_NAMES = new Set(["template.json"]);
-
-// 何日経過したイベントを削除対象にするか（将来変更しやすいように定数化）
-const CUTOFF_DAYS = 365;
-// 1 日のミリ秒数
-const DAY_MS = 24 * 60 * 60 * 1000;
-
-// JST 基準の「今日」を作る（既存方針に合わせて Date.now() + 9h を使う）
-function getJstTodayUtcDate() {
-  const jstNow = new Date(Date.now() + 9 * 60 * 60 * 1000);
-  const year = jstNow.getUTCFullYear();
-  const month = jstNow.getUTCMonth();
-  const day = jstNow.getUTCDate();
-  return new Date(Date.UTC(year, month, day));
-}
 
 // 1 ファイル分の events 配列をフィルタして結果を返す
 function filterEvents(data, cutoffDate) {
@@ -31,14 +17,14 @@ function filterEvents(data, cutoffDate) {
 
   const beforeCount = data.events.length;
   const events = data.events.filter((eventItem) => {
-    const endText = eventItem?.date_to || eventItem?.date_from;
-    const endDate = parseIsoDateStrict(endText);
-
-    // 日付が不明・不正な場合は、汚染回避のために削除
-    if (!endDate) return false;
-
-    // cutoff より前なら削除対象
-    return endDate >= cutoffDate;
+    // date_to（なければ date_from）を使って、共通ルールで保持可否を判定する。
+    const evaluation = evaluateEventAgainstPastCutoff(eventItem, cutoffDate, {
+      fallbackToDateFrom: true,
+      // filter-old-events はデータ汚染回避のため、日付欠損・不正を保持しない。
+      keepOnMissingDate: false,
+      keepOnInvalidDate: false,
+    });
+    return evaluation.keep;
   });
 
   const afterCount = events.length;
@@ -56,7 +42,8 @@ function main() {
     .filter((fileName) => !EXCLUDED_FILE_NAMES.has(fileName))
     .map((fileName) => path.join(eventsDir, fileName));
 
-  const cutoffDate = new Date(getJstTodayUtcDate().getTime() - CUTOFF_DAYS * DAY_MS);
+  // 過去365日フィルタの閾値は共通モジュールから取得する。
+  const cutoffDate = buildPastCutoffDate();
 
   console.log(`対象ファイル数: ${files.length}`);
 

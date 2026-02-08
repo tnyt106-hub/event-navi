@@ -91,3 +91,7 @@
 - **文字化けする** → `encoding` を確認（Shift_JIS なら明示）
 - **圧縮崩れする** → `acceptEncoding: "identity"` を指定
 - **古いイベントが消える** → `filter-old-events.js` の past filter を確認
+
+## 期間指定の共通化方針
+
+- 期間フィルタ（過去 N 日など）の共通化方針は `scripts/date-range-standardization.md` を参照。
