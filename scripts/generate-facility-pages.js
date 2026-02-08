@@ -22,6 +22,8 @@ const FACILITY_ROOT_DIR = path.join(process.cwd(), "docs", "facility");
 // GitHub Pagesの公開URLを正規URL（canonical）に使う。
 // 将来ドメインが変わっても、この定数だけ直せば全ページへ反映できる。
 const SITE_ORIGIN = "https://event-navi.jp";
+// フッター年は実行年を使い、年更新漏れを防ぐ。
+const CURRENT_YEAR = new Date().getFullYear();
 
 // HTMLに差し込む値は最低限エスケープして、表示崩れや意図しない解釈を防ぐ。
 function escapeHtml(value) {
@@ -106,7 +108,7 @@ ${preHeaderHtml}  <header>
 function renderPageFooter() {
   return `  </main>
   <footer class="trial-footer">
-    © 2026 ${SITE_NAME} - 公共施設イベント情報を正確に届けるアーカイブサイト
+    © ${CURRENT_YEAR} ${SITE_NAME} - 公共施設イベント情報を正確に届けるアーカイブサイト
   </footer>
 </body>
 </html>

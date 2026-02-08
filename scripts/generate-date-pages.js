@@ -11,6 +11,17 @@ const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 const YEARLESS_LOOKAHEAD_MONTHS = 6;
 // canonical/OGで使う公開URLの基点。ドメイン変更時はここだけ直せばよい。
 const SITE_ORIGIN = "https://event-navi.jp";
+// 長文本文を「その他」表示で省略する際の最大文字数。
+// 数値を1か所に集約しておくと、将来調整時に置換漏れを防げる。
+const OTHER_BODY_MAX_LENGTH = 300;
+// date_from/date_to の許容日数上限。
+// 安全対策の閾値を定数化し、条件式と警告文の整合性を保ちやすくする。
+const MAX_DATE_RANGE_DAYS = 31;
+// 日付加算・差分計算で使う「1日」のミリ秒。
+// 複数箇所で同じ式を再利用するため、マジックナンバーを排除する。
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+// フッター年は実行年を使い、年更新漏れを防ぐ。
+const CURRENT_YEAR = new Date().getFullYear();
 
 // 入力ディレクトリは既定で docs/events を参照し、引数で上書きできるようにする
 // 例: node scripts/generate-date-pages.js dist/json
@@ -174,21 +185,19 @@ function hasStructuredDetails(eventItem) {
 function buildOtherBodyText(bodyText) {
   if (isBlank(bodyText)) return "";
   const normalized = String(bodyText).replace(/\s+/g, " ").trim();
-  const maxLength = 300;
-  if (normalized.length > maxLength) {
-    return `${normalized.slice(0, maxLength)}…`;
+  if (normalized.length > OTHER_BODY_MAX_LENGTH) {
+    return `${normalized.slice(0, OTHER_BODY_MAX_LENGTH)}…`;
   }
   return normalized;
 }
 
 // date_from と date_to の差が大きすぎる場合は安全のため丸める
 function normalizeDateRange(dateFromObj, dateToObj, venueId, index) {
-  const msPerDay = 24 * 60 * 60 * 1000;
-  const diffDays = Math.floor((dateToObj.getTime() - dateFromObj.getTime()) / msPerDay);
+  const diffDays = Math.floor((dateToObj.getTime() - dateFromObj.getTime()) / ONE_DAY_MS);
 
-  if (diffDays > 31) {
+  if (diffDays > MAX_DATE_RANGE_DAYS) {
     console.warn(
-      "期間が31日超のため date_to を date_from に丸めました:",
+      `期間が${MAX_DATE_RANGE_DAYS}日超のため date_to を date_from に丸めました:`,
       venueId,
       "#",
       index,
@@ -265,7 +274,7 @@ ${breadcrumbItems}
 function renderFooter() {
   return `  </main>
   <footer class="trial-footer">
-    © 2026 ${SITE_NAME} - 公共施設イベント情報を正確に届けるアーカイブサイト
+    © ${CURRENT_YEAR} ${SITE_NAME} - 公共施設イベント情報を正確に届けるアーカイブサイト
   </footer>
 </body>
 </html>
@@ -316,7 +325,6 @@ function updateIndexDateNav(todayUtc, availableDateKeys) {
     return false;
   }
 
-  const msPerDay = 24 * 60 * 60 * 1000;
   const primaryLinks = [];
 
   // イベントが存在する日付だけに絞り、0件日のリンクを生成しないようにする
@@ -329,7 +337,7 @@ function updateIndexDateNav(todayUtc, availableDateKeys) {
     });
   }
 
-  const tomorrowUtc = new Date(todayUtc.getTime() + msPerDay);
+  const tomorrowUtc = new Date(todayUtc.getTime() + ONE_DAY_MS);
   const tomorrowKey = formatDateKey(tomorrowUtc);
   if (availableDateKeys.has(tomorrowKey)) {
     primaryLinks.push({
@@ -341,7 +349,7 @@ function updateIndexDateNav(todayUtc, availableDateKeys) {
 
   const weekLinks = [];
   for (let offset = 0; offset < 7; offset += 1) {
-    const dateObj = new Date(todayUtc.getTime() + msPerDay * offset);
+    const dateObj = new Date(todayUtc.getTime() + ONE_DAY_MS * offset);
     const dateKey = formatDateKey(dateObj);
     // 0件日は除外し、実在する日付ページだけを表示する
     if (!availableDateKeys.has(dateKey)) {
@@ -684,10 +692,9 @@ function generatePages() {
   // 今日のUTC日付を基準に publish / index window を計算する
   const now = new Date();
   const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
-  const msPerDay = 24 * 60 * 60 * 1000;
-  const publishStart = new Date(todayUtc.getTime() - 365 * msPerDay);
-  const publishEnd = new Date(todayUtc.getTime() + 365 * msPerDay);
-  const indexStart = new Date(todayUtc.getTime() - 180 * msPerDay);
+  const publishStart = new Date(todayUtc.getTime() - 365 * ONE_DAY_MS);
+  const publishEnd = new Date(todayUtc.getTime() + 365 * ONE_DAY_MS);
+  const indexStart = new Date(todayUtc.getTime() - 180 * ONE_DAY_MS);
 
   // publish window 外の日付は生成対象から除外する
   const publishDates = dates.filter((entry) => entry.date >= publishStart && entry.date <= publishEnd);
