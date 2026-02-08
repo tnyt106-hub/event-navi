@@ -2,6 +2,13 @@
   "sleepSecondsBetween": 7,
   "allowSharedOutputs": [
     {
+      "output": "docs/events",
+      "taskIds": [
+        "filter-old-events",
+        "apply-tags"
+      ]
+    },
+    {
       "output": "docs/events/ehime_prefectural_museum_of_art.json",
       "taskIds": [
         "ehime_prefectural_museum_of_art",
