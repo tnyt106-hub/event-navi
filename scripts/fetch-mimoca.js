@@ -12,14 +12,17 @@ const { fetchText } = require("./lib/http");
 const { writeJsonPretty } = require("./lib/io");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitespace } = require("./lib/text");
+const {
+  buildPastCutoffDate,
+  evaluateEventAgainstPastCutoff,
+  formatUtcDateToIso,
+  getJstTodayUtcDate,
+} = require("./lib/date_window");
 
 const EXHIBITIONS_LIST_URL = "https://www.mimoca.jp/exhibitions/current/";
 const EVENTS_LIST_URL = "https://www.mimoca.jp/events/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "mimoca.json");
 const VENUE_ID = "mimoca";
-const JST_OFFSET_HOURS = 9;
-// 終了日が「今日から365日より前」のイベントを除外するための基準日数。
-const PAST_DAYS_LIMIT = 365;
 
 // 改行を残しながら各行の余分な空白を削除する。
 function normalizeWhitespacePreservingLineBreaks(text) {
@@ -54,22 +57,9 @@ function buildDate(year, month, day) {
 }
 
 // JST の日付文字列 (YYYY-MM-DD) を返す。
+// 期間共通モジュールの JST 基準日を使って、日付表現を統一する。
 function buildJstDateString() {
-  const now = new Date();
-  const jstNow = new Date(now.getTime() + JST_OFFSET_HOURS * 60 * 60 * 1000);
-  const year = jstNow.getUTCFullYear();
-  const month = String(jstNow.getUTCMonth() + 1).padStart(2, "0");
-  const day = String(jstNow.getUTCDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-// 過去フィルタのしきい値を JST で作る。
-function buildPastThresholdJst() {
-  const now = new Date();
-  const jstNow = new Date(now.getTime() + JST_OFFSET_HOURS * 60 * 60 * 1000);
-  const threshold = new Date(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate());
-  threshold.setDate(threshold.getDate() - PAST_DAYS_LIMIT);
-  return threshold;
+  return formatUtcDateToIso(getJstTodayUtcDate());
 }
 
 // 一覧 HTML から href を抽出する。
@@ -715,24 +705,21 @@ async function main() {
   excludedInvalidCount += eventResult.excludedInvalidCount;
 
   const collectedEvents = dedupeEvents([...exhibitionEvents, ...eventEvents]);
-  const threshold = buildPastThresholdJst();
+  // 過去365日フィルタの閾値は共通モジュールで計算する。
+  const cutoffDate = buildPastCutoffDate();
   let filteredOldCount = 0;
 
   const filteredEvents = collectedEvents.filter((eventItem) => {
-    // 終了日が取れていないイベントは、既存ロジックに委ねて残す。
-    if (!eventItem.date_to) return true;
-
-    const [year, month, day] = eventItem.date_to.split("-").map(Number);
-    const dateTo = buildDate(year, month, day);
-    if (!dateTo) {
-      return false;
-    }
-    // 終了日が「今日 - 365日」より古ければ除外する。
-    if (dateTo < threshold) {
+    // 既存仕様維持: date_to 欠損イベントは残す。
+    const evaluation = evaluateEventAgainstPastCutoff(eventItem, cutoffDate, {
+      fallbackToDateFrom: false,
+      keepOnMissingDate: true,
+      keepOnInvalidDate: false,
+    });
+    if (!evaluation.keep && evaluation.reason === "expired") {
       filteredOldCount += 1;
-      return false;
     }
-    return true;
+    return evaluation.keep;
   });
 
   console.log(`filtered_old_count: ${filteredOldCount}`);
