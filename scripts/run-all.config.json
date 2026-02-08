@@ -1,6 +1,24 @@
 {
   "sleepSecondsBetween": 7,
+  "allowSharedOutputs": [
+    {
+      "output": "docs/events/ehime_prefectural_museum_of_art.json",
+      "taskIds": [
+        "ehime_prefectural_museum_of_art",
+        "ehime_prefectural_museum_of_art_events"
+      ]
+    }
+  ],
   "tasks": [
+    {
+      "id": "check-template-links",
+      "type": "validate",
+      "script": "scripts/check-template-links.js",
+      "enabled": true,
+      "outputs": [
+        "scripts/templates/README.md"
+      ]
+    },
     {
       "id": "rexam_hall",
       "script": "scripts/fetch-rexam-hall-events.js",
@@ -52,6 +70,9 @@
     {
       "id": "ehime_prefectural_museum_of_art_events",
       "script": "scripts/fetch-ehime_prefectural_museum_of_art_events.js",
+      "dependsOn": [
+        "ehime_prefectural_museum_of_art"
+      ],
       "enabled": true,
       "outputs": [
         "docs/events/ehime_prefectural_museum_of_art.json"
@@ -99,8 +120,8 @@
       ]
     },
     {
-      "id": "fetch-asty-tokushim",
-      "name": "fetch-asty-tokushim",
+      "id": "fetch-asty-tokushima",
+      "name": "fetch-asty-tokushima",
       "script": "scripts/fetch-asty-tokushima-events.js",
       "enabled": true,
       "outputs": [

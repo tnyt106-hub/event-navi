@@ -192,6 +192,9 @@ function normalizeLogConfig(rawLog) {
 
 function normalizeConfig(raw) {
   const tasks = Array.isArray(raw.tasks) ? raw.tasks : [];
+  const allowSharedOutputs = Array.isArray(raw.allowSharedOutputs)
+    ? raw.allowSharedOutputs
+    : [];
   return {
     version: raw.version,
     timezone: typeof raw.timezone === "string" ? raw.timezone : "Asia/Tokyo",
@@ -201,8 +204,108 @@ function normalizeConfig(raw) {
     defaultRetryDelaySeconds: parseNumber(raw.defaultRetryDelaySeconds, 0),
     stopOnError: parseBoolean(raw.stopOnError, false),
     log: normalizeLogConfig(raw.log),
+    allowSharedOutputs,
     tasks,
   };
+}
+
+function normalizeTaskId(id) {
+  return typeof id === "string" ? id.trim() : "";
+}
+
+function buildSharedOutputAllowanceMap(allowSharedOutputs) {
+  const allowanceMap = new Map();
+  allowSharedOutputs.forEach((entry) => {
+    if (!entry || typeof entry !== "object") return;
+    const outputPath = typeof entry.output === "string" ? entry.output : "";
+    if (!outputPath) return;
+
+    // タスクIDは前後空白を除去して比較を安定化する。
+    const taskIdSet = new Set(
+      Array.isArray(entry.taskIds)
+        ? entry.taskIds
+            .map((id) => normalizeTaskId(id))
+            .filter((id) => id.length > 0)
+        : []
+    );
+    allowanceMap.set(outputPath, taskIdSet);
+  });
+  return allowanceMap;
+}
+
+function validateConfigStructure(config) {
+  const errors = [];
+
+  if (!Array.isArray(config.tasks) || config.tasks.length === 0) {
+    errors.push("tasks が空です。少なくとも1件の task を定義してください。");
+    return errors;
+  }
+
+  const seenTaskIds = new Set();
+  const outputOwners = new Map();
+
+  config.tasks.forEach((task, index) => {
+    if (!task || typeof task !== "object") {
+      errors.push(`tasks[${index}] が object ではありません。`);
+      return;
+    }
+
+    const taskId = normalizeTaskId(task.id);
+    if (!taskId) {
+      errors.push(`tasks[${index}] は id が必須です。`);
+    } else if (seenTaskIds.has(taskId)) {
+      errors.push(`task id "${taskId}" が重複しています。`);
+    } else {
+      seenTaskIds.add(taskId);
+    }
+
+    if (typeof task.script !== "string" || task.script.trim().length === 0) {
+      errors.push(`task ${taskId || `tasks[${index}]`} は script が必須です。`);
+    }
+
+    if (!Array.isArray(task.outputs) || task.outputs.length === 0) {
+      errors.push(
+        `task ${taskId || `tasks[${index}]`} は outputs が必須です（差分判定に必要）。`
+      );
+    } else {
+      task.outputs.forEach((outputPath, outputIndex) => {
+        if (typeof outputPath !== "string" || outputPath.trim().length === 0) {
+          errors.push(
+            `task ${taskId || `tasks[${index}]`} の outputs[${outputIndex}] が不正です。`
+          );
+          return;
+        }
+
+        const owners = outputOwners.get(outputPath) || [];
+        owners.push(taskId || `(index-${index})`);
+        outputOwners.set(outputPath, owners);
+      });
+    }
+  });
+
+  const sharedOutputAllowance = buildSharedOutputAllowanceMap(config.allowSharedOutputs);
+
+  outputOwners.forEach((ownerIds, outputPath) => {
+    if (ownerIds.length <= 1) return;
+
+    const allowedTaskIds = sharedOutputAllowance.get(outputPath);
+    if (!allowedTaskIds || allowedTaskIds.size === 0) {
+      errors.push(
+        `output "${outputPath}" を複数 task (${ownerIds.join(", ")}) が共有しています。allowSharedOutputs で明示してください。`
+      );
+      return;
+    }
+
+    // 実際に共有する task が許可リストにすべて含まれているか確認する。
+    const unknownOwners = ownerIds.filter((taskId) => !allowedTaskIds.has(taskId));
+    if (unknownOwners.length > 0) {
+      errors.push(
+        `output "${outputPath}" の共有 task に未許可IDがあります: ${unknownOwners.join(", ")}`
+      );
+    }
+  });
+
+  return errors;
 }
 
 function loadConfig() {
@@ -219,6 +322,10 @@ function loadConfig() {
     throw new Error("config JSON の形式が不正です。");
   }
   const normalized = normalizeConfig(json);
+  const configErrors = validateConfigStructure(normalized);
+  if (configErrors.length > 0) {
+    throw new Error(`config 検証エラー:\n- ${configErrors.join("\n- ")}`);
+  }
 
   return { configPath, config: normalized };
 }

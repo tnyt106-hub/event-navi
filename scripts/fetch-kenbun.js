@@ -29,12 +29,12 @@ const BODY_TRUNCATION_SUFFIX = "…";
 const JST_OFFSET_HOURS = 9;
 // 詳細ページ取得の同時実行数（負荷が高ければ 2 に下げられる）。
 const DETAIL_CONCURRENCY = 3;
-// 詳細取得の再試行回数（初回失敗後に最大 2 回まで）。
-const DETAIL_RETRY = 2;
-// 再試行時のベース待機時間（指数バックオフの基準）。
-const DETAIL_RETRY_BASE_DELAY_MS = 500;
 // 連続アクセスを避けるためのジッター。
 const DETAIL_JITTER_MS = 200;
+// 詳細取得のリトライ回数は共通 HTTP ユーティリティへ委譲する。
+const DETAIL_FETCH_RETRY_COUNT = 2;
+// リトライ待機の基準値も共通 HTTP ユーティリティへ渡す。
+const DETAIL_FETCH_RETRY_BASE_DELAY_MS = 500;
 
 let lastListStats = { listPages: 0, listLinks: 0 };
 
@@ -55,41 +55,11 @@ function buildTodayJst() {
   return new Date(Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()));
 }
 
-// 指定ミリ秒だけ待機する。
+// 指定ミリ秒だけ待機する（アクセス間隔調整用）。
 function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
-}
-
-// リトライ対象かどうかを HTTP ステータスから判定する。
-function shouldRetryDetailFetch(error) {
-  if (!error || !error.message) {
-    return true;
-  }
-  const match = error.message.match(/HTTP\s+(\d+)/);
-  if (!match) {
-    return true;
-  }
-  const statusCode = Number(match[1]);
-  return statusCode === 429 || (statusCode >= 500 && statusCode < 600);
-}
-
-// 詳細取得のリトライ付きラッパー。
-async function fetchTextWithRetry(url) {
-  for (let attempt = 0; attempt <= DETAIL_RETRY; attempt += 1) {
-    try {
-      return await fetchText(url, { acceptEncoding: "identity", encoding: "utf-8" });
-    } catch (error) {
-      if (attempt >= DETAIL_RETRY || !shouldRetryDetailFetch(error)) {
-        throw error;
-      }
-      const delayMs = DETAIL_RETRY_BASE_DELAY_MS * 2 ** attempt + Math.random() * DETAIL_JITTER_MS;
-      console.warn(`[warn] detail retry ${attempt + 1}/${DETAIL_RETRY} (${url}): ${error.message}`);
-      await sleep(delayMs);
-    }
-  }
-  return "";
 }
 
 // 月別一覧ページの URL から年・月を抽出する。
@@ -573,7 +543,13 @@ async function main() {
         await sleep(Math.random() * DETAIL_JITTER_MS);
 
         try {
-          const detailHtml = await fetchTextWithRetry(normalizedUrl);
+          const detailHtml = await fetchText(normalizedUrl, {
+            acceptEncoding: "identity",
+            encoding: "utf-8",
+            // 個別実装の retry/backoff ではなく共通実装に寄せる。
+            retryCount: DETAIL_FETCH_RETRY_COUNT,
+            retryBaseDelayMs: DETAIL_FETCH_RETRY_BASE_DELAY_MS,
+          });
           detailFetchSuccess += 1;
           const event = buildEventFromDetail(detailHtml, normalizedUrl);
           if (!event) {
