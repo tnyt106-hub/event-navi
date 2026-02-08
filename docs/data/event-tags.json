@@ -8,7 +8,9 @@
     "festival": "フェスティバル",
     "special_open": "特別公開",
     "sports": "スポーツ",
-    "other": "その他"
+    "other": "その他",
+    "screening": "上映会",
+    "business": "ビジネス・就職"
   },
   "genres": {
     "art": "アート",
@@ -21,7 +23,8 @@
     "local": "地域",
     "food": "フード",
     "nature": "自然",
-    "sports": "スポーツ"
+    "sports": "スポーツ",
+    "business": "ビジネス"
   },
   "flags": {
     "limited": "限定",
@@ -30,6 +33,7 @@
     "night": "夜間",
     "weekend": "週末",
     "family": "ファミリー",
-    "reservation_required": "要予約"
+    "reservation_required": "要予約",
+    "sold_out": "完売・予定枚数終了"
   }
 }

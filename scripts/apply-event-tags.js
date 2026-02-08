@@ -36,7 +36,69 @@ const SPORTS_KEYWORDS = [
   "水泳",
   "トライアスロン",
   "スポーツ",
+  "リーグ",
+  "フットサル",
+  "パブリックビューイング",
 ];
+
+// 現在取得できているイベントの題名傾向（上映会・就職フェア・展示会など）に合わせて、
+// タイプ判定に使う語彙をカテゴリごとに整理しておく。
+const EXHIBITION_KEYWORDS = [
+  "展覧会",
+  "企画展",
+  "特別展",
+  "常設展",
+  "展示",
+  "コレクション展",
+  "作品展",
+  "写真展",
+  "漆芸展",
+];
+
+const PERFORMANCE_KEYWORDS = [
+  "公演",
+  "ライブ",
+  "コンサート",
+  "演奏会",
+  "舞台",
+  "ミュージカル",
+  "ステージ",
+  "リサイタル",
+  "吹奏楽",
+  "オーケストラ",
+  "歌謡祭",
+  "dance",
+  "演芸",
+];
+
+const WORKSHOP_KEYWORDS = [
+  "ワークショップ",
+  "体験",
+  "教室",
+  "つくろう",
+  "作り",
+  "づくり",
+  "バックヤードツアー",
+  "見学ツアー",
+];
+
+const LECTURE_KEYWORDS = [
+  "講演",
+  "講座",
+  "セミナー",
+  "トーク",
+  "トークショー",
+  "シンポジウム",
+  "説明会",
+  "カンファレンス",
+  "商談会",
+  "就職",
+  "インターンシップ",
+];
+
+const FESTIVAL_KEYWORDS = ["祭", "フェス", "フェスティバル", "マルシェ", "市", "市場", "マーケット"];
+
+const SCREENING_KEYWORDS = ["上映", "映画", "シネマ", "映画祭"];
 
 const TYPE_RULES = [
   {
@@ -45,23 +107,31 @@ const TYPE_RULES = [
   },
   {
     key: "exhibition",
-    patterns: ["展覧会", "企画展", "特別展", "常設展", "展示"],
+    patterns: EXHIBITION_KEYWORDS,
   },
   {
     key: "performance",
-    patterns: ["公演", "ライブ", "コンサート", "演奏会", "舞台", "ミュージカル", "ステージ"],
+    patterns: PERFORMANCE_KEYWORDS,
+  },
+  {
+    key: "screening",
+    patterns: SCREENING_KEYWORDS,
   },
   {
     key: "workshop",
-    patterns: ["ワークショップ", "体験", "教室"],
+    patterns: WORKSHOP_KEYWORDS,
   },
   {
     key: "lecture",
-    patterns: ["講演", "講座", "セミナー", "トーク", "シンポジウム"],
+    patterns: LECTURE_KEYWORDS,
+  },
+  {
+    key: "business",
+    patterns: ["フェア", "expo", "ショウ", "合同企業説明会", "キャリア", "ビジネス", "展示商談会"],
   },
   {
     key: "festival",
-    patterns: ["祭", "フェス", "フェスティバル", "マルシェ", "市"],
+    patterns: FESTIVAL_KEYWORDS,
   },
   {
     key: "special_open",
@@ -80,11 +150,12 @@ const GENRE_RULES = [
   { key: "culture", patterns: ["文化", "伝統", "工芸", "民芸"] },
   { key: "science", patterns: ["科学", "サイエンス", "技術", "プラネタリウム"] },
   { key: "music", patterns: ["音楽", "コンサート", "ライブ", "演奏"] },
-  { key: "theater", patterns: ["演劇", "舞台", "ミュージカル"] },
+  { key: "theater", patterns: ["演劇", "舞台", "ミュージカル", "映画", "上映"] },
   { key: "kids", patterns: ["子ども", "こども", "キッズ", "親子"] },
   { key: "local", patterns: ["地域", "地元", "まち", "商店街"] },
-  { key: "food", patterns: ["グルメ", "食", "フード", "マルシェ"] },
+  { key: "food", patterns: ["グルメ", "食", "フード", "マルシェ", "市場", "物産"] },
   { key: "nature", patterns: ["自然", "公園", "山", "花", "海", "森"] },
+  { key: "business", patterns: ["ビジネス", "キャリア", "就職", "インターンシップ", "商談"] },
 ];
 
 const FLAG_RULES = [
@@ -115,6 +186,10 @@ const FLAG_RULES = [
   {
     key: "reservation_required",
     patterns: ["要予約", "予約制", "事前予約"],
+  },
+  {
+    key: "sold_out",
+    patterns: ["予定枚数終了", "完売", "soldout"],
   },
 ];
 
