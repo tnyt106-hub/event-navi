@@ -2,11 +2,8 @@
 // 使い方: node scripts/fetch-anabuki-arena-events.js
 
 const path = require("path");
-
 const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
-// JSON 保存処理を共通化する。
 const { writeJsonPretty } = require("./lib/io");
-// HTML エンティティをデコードする。
 const { decodeHtmlEntities } = require("./lib/text");
 
 const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
@@ -16,19 +13,17 @@ const MONTH_RANGE = 7;
 const PER_PAGE = 10;
 const MAX_PAGES = 100;
 const DEFAULT_TIMEOUT_MS = 30000;
+const CONCURRENCY = 5; // 同時に5ページ分取得する
 
-// タグを落としてプレーンテキスト化する。
 function stripTags(html) {
   if (!html) return "";
   return html.replace(/<[^>]*>/g, "");
 }
 
-// タイトルなど HTML を含むテキストをプレーンテキスト化する。
 function htmlToText(html) {
   return stripTags(decodeHtmlEntities(html)).replace(/\s+/g, " ").trim();
 }
 
-// ISO 形式 (YYYY-MM-DD) の日付文字列にする。
 function formatDate(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -36,7 +31,6 @@ function formatDate(date) {
   return `${year}-${month}-${day}`;
 }
 
-// 日付が有効かどうかをチェックする。
 function buildDate(year, month, day) {
   const date = new Date(year, month - 1, day);
   if (Number.isNaN(date.getTime())) return null;
@@ -46,7 +40,6 @@ function buildDate(year, month, day) {
   return date;
 }
 
-// YYYY-MM-DD 文字列を Date に変換する。
 function parseDateString(value) {
   if (!value) return null;
   const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -54,7 +47,6 @@ function parseDateString(value) {
   return buildDate(Number(match[1]), Number(match[2]), Number(match[3]));
 }
 
-// HH:MM のみ許容する時刻パーサー。
 function parseTimeStrict(value) {
   if (!value) return null;
   const trimmed = String(value).trim();
@@ -64,7 +56,6 @@ function parseTimeStrict(value) {
   return trimmed;
 }
 
-// 現在月の月初と、そこから7か月後の排他終点を作る。
 function buildTargetRange() {
   const now = new Date();
   const start = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -73,9 +64,6 @@ function buildTargetRange() {
   return { start, endExclusive };
 }
 
-// REST API を取得し、HTTP ステータス・本文・JSON (成功時のみ) を返す。
-// ページ終端検知に本文が必要なため、必ず text を返す。
-// status が 200 の場合のみ JSON を解析して data に入れる。
 async function fetchJsonWithStatus(url) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => {
@@ -98,11 +86,10 @@ async function fetchJsonWithStatus(url) {
     clearTimeout(timeoutId);
   }
 
-  // レスポンス本文はステータスに関係なく取得する。
   const text = await response.text();
   const status = response.status;
 
-  // diagnose 用に HTTP ステータスを出力する (終端判定の根拠になるため)。
+  // ログ出力を維持
   console.log(`[diagnose] status=${status}`);
 
   if (status === 200) {
@@ -113,67 +100,65 @@ async function fetchJsonWithStatus(url) {
       throw new Error(`REST API JSON の解析に失敗しました。 (${error.message})`);
     }
   }
-
-  // status !== 200 の場合は data を null のまま返す。
   return { status, text, data: null };
 }
 
-// ヘッダーに依存せずに全ページ分の投稿を取得する。
+// 高速化版：全ページ取得
 async function fetchAllPosts() {
-  const items = [];
-  let pagesFetched = 0;
+  const allItems = [];
+  let page = 1;
+  let reachedEnd = false;
 
-  for (let page = 1; page <= MAX_PAGES; page += 1) {
-    const url = `${REST_URL}&per_page=${PER_PAGE}&page=${page}`;
-    const result = await fetchJsonWithStatus(url);
+  // 並列リクエスト用のワーカー
+  while (!reachedEnd && page <= MAX_PAGES) {
+    const promises = [];
+    const batchSize = Math.min(CONCURRENCY, MAX_PAGES - page + 1);
 
-    if (result.status === 200) {
-      const data = result.data;
-
-      if (!Array.isArray(data)) {
-        throw new Error(`REST API 応答が配列ではありません: page=${page}`);
-      }
-
-      if (data.length === 0) {
-        break;
-      }
-
-      items.push(...data);
-      pagesFetched += 1;
-      continue;
+    for (let i = 0; i < batchSize; i++) {
+      const currentPage = page + i;
+      const url = `${REST_URL}&per_page=${PER_PAGE}&page=${currentPage}`;
+      promises.push(fetchJsonWithStatus(url).then(res => ({ ...res, page: currentPage })));
     }
 
-    if (page === 1) {
-      throw new Error(`REST API HTTP ${result.status} で失敗しました: page=${page}`);
-    }
+    const results = await Promise.all(promises);
+    // ページ番号順にソートして処理（ログの順序を守るため）
+    results.sort((a, b) => a.page - b.page);
 
-    if (result.status === 400) {
-      let errorData = null;
-      try {
-        errorData = JSON.parse(result.text);
-      } catch {
-        errorData = null;
+    for (const result of results) {
+      if (result.status === 200) {
+        if (Array.isArray(result.data) && result.data.length > 0) {
+          allItems.push(...result.data);
+          page++;
+        } else {
+          reachedEnd = true;
+          break;
+        }
+      } else {
+        // 400エラー（終端）またはその他のエラー処理
+        if (result.page > 1 && result.status === 400) {
+          let errorData = null;
+          try { errorData = JSON.parse(result.text); } catch { }
+          if (errorData && errorData.code === "rest_post_invalid_page_number") {
+            console.warn(`[fetch] reached end of pages: page=${result.page} code=${errorData.code}`);
+            reachedEnd = true;
+            break;
+          }
+        }
+        // 1ページ目での失敗、または想定外のエラー
+        throw new Error(`REST API HTTP ${result.status} で失敗しました: page=${result.page}`);
       }
-
-      // 2ページ目以降の invalid_page_number は正常な終端とみなす。
-      if (errorData && errorData.code === "rest_post_invalid_page_number") {
-        console.warn(`[fetch] reached end of pages: page=${page} code=${errorData.code}`);
-        break;
-      }
     }
-
-    throw new Error(`REST API HTTP ${result.status} で失敗しました: page=${page}`);
+    if (reachedEnd) break;
   }
 
-  if (pagesFetched >= MAX_PAGES) {
+  if (page > MAX_PAGES) {
     console.warn(`[fetch] MAX_PAGES に到達したため打ち切り: ${MAX_PAGES}`);
   }
 
-  console.log(`[fetch] pages_fetched: ${pagesFetched}, posts_total: ${items.length}`);
-  return items;
+  console.log(`[fetch] pages_fetched: ${page - 1}, posts_total: ${allItems.length}`);
+  return allItems;
 }
 
-// 投稿データからイベント情報を組み立てる。
 function buildEventFromPost(post, summary, start, endExclusive) {
   const title = htmlToText(post?.title?.rendered || "");
   const sourceUrl = typeof post?.link === "string" ? post.link.trim() : "";
@@ -190,7 +175,6 @@ function buildEventFromPost(post, summary, start, endExclusive) {
     return null;
   }
 
-  // 開始日ベースで期間フィルタをかける。
   if (dateFrom < start || dateFrom >= endExclusive) {
     summary.filteredOutCount += 1;
     return null;
@@ -208,8 +192,6 @@ function buildEventFromPost(post, summary, start, endExclusive) {
   }
 
   const detailGroup = post?.acf?.detail_group || {};
-
-  // 文字列が厳密に HH:MM でない場合は null にする。
   const openTime = parseTimeStrict(detailGroup.e_start);
   const startTime = parseTimeStrict(detailGroup.e_start2);
   const endTime = parseTimeStrict(detailGroup.e_end);
@@ -232,20 +214,15 @@ function buildEventFromPost(post, summary, start, endExclusive) {
   };
 }
 
-// メイン処理。
 async function main() {
   const { start, endExclusive } = buildTargetRange();
-  const summary = {
-    excludedInvalid: 0,
-    filteredOutCount: 0,
-  };
+  const summary = { excludedInvalid: 0, filteredOutCount: 0 };
 
   let posts;
   try {
     posts = await fetchAllPosts();
   } catch (error) {
     console.error(`REST API 取得エラー: ${error.message}`);
-    console.error("0件のため published を更新しません。");
     process.exit(1);
     return;
   }
@@ -253,9 +230,7 @@ async function main() {
   const events = [];
   for (const post of posts) {
     const event = buildEventFromPost(post, summary, start, endExclusive);
-    if (event) {
-      events.push(event);
-    }
+    if (event) events.push(event);
   }
 
   console.log(`[fetch] excluded_invalid: ${summary.excludedInvalid}`);
@@ -264,7 +239,6 @@ async function main() {
 
   if (events.length === 0) {
     console.warn("採用イベントが0件のため、published を更新しません。");
-    console.warn(`内訳: 無効データ除外=${summary.excludedInvalid}, 期間外除外=${summary.filteredOutCount}`);
     process.exit(1);
     return;
   }
@@ -277,7 +251,6 @@ async function main() {
   };
 
   applyTagsToEventsData(data, { overwrite: false });
-
   writeJsonPretty(OUTPUT_PATH, data);
   console.log(`[OK] events: ${events.length} -> ${OUTPUT_PATH}`);
 }
