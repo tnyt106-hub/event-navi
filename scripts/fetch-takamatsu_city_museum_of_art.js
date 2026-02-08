@@ -13,6 +13,11 @@ const { fetchText } = require("./lib/http");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
+const {
+  normalizeJapaneseDateText,
+  buildLocalDate,
+  formatIsoDateFromLocalDate,
+} = require("./lib/date");
 
 const ENTRY_URL = "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/index.html";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "takamatsu_city_museum_of_art.json");
@@ -43,35 +48,21 @@ function normalizeText(text) {
 
 // 全角数字を半角に変換し、日付の区切り記号を正規化する。
 function normalizeDateText(text) {
-  if (!text) return "";
-  const halfWidth = text.replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0));
-  return halfWidth
-    .replace(/[／]/g, "/")
-    .replace(/[．]/g, ".")
-    .replace(/[〜～]/g, "~")
-    .replace(/[－–—]/g, "-")
-    .replace(/[、，]/g, ",")
-    .replace(/[（(][^）)]*[）)]/g, " ") // 曜日や注記を除去する。
-    .replace(/\s+/g, " ")
-    .trim();
+  // この施設は読点揺れと括弧注記を除去してから判定する既存ルールを維持する。
+  return normalizeJapaneseDateText(text, {
+    normalizeComma: true,
+    removeParenthesizedText: true,
+  });
 }
 
 // 年月日を ISO 形式の文字列にする。
 function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return formatIsoDateFromLocalDate(date);
 }
 
 // 年月日が妥当な日付かチェックする。
 function buildDate(year, month, day) {
-  const date = new Date(year, month - 1, day);
-  if (Number.isNaN(date.getTime())) return null;
-  if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) {
-    return null;
-  }
-  return date;
+  return buildLocalDate(year, month, day);
 }
 
 // HTMLを行配列に変換する共通処理（タグは残したまま改行だけ挿入）。

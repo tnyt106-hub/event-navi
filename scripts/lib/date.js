@@ -77,9 +77,141 @@ function isDateInRange(isoDate, range) {
   return target >= start && target <= end;
 }
 
+/**
+ * 日本語日付テキストで頻出する表記揺れを正規化する。
+ *
+ * 実装意図:
+ * - 施設ごとに散らばっていた「全角数字→半角」「区切り文字の統一」を共通化し、
+ *   将来の修正漏れを防ぐ。
+ * - options で施設ごとの微差（例: から/まで、カンマ）を吸収できるようにする。
+ *
+ * @param {string} text
+ * @param {object} options
+ * @param {boolean} options.removeParenthesizedText - 丸括弧内テキストを除去するか
+ * @param {boolean} options.replaceRangeWords - 「から」「まで」を範囲記号へ寄せるか
+ * @param {boolean} options.normalizeComma - 読点/カンマを "," に揃えるか
+ * @returns {string}
+ */
+function normalizeJapaneseDateText(text, options = {}) {
+  if (!text) return "";
+
+  const {
+    removeParenthesizedText = false,
+    replaceRangeWords = false,
+    normalizeComma = false,
+  } = options;
+
+  let normalized = String(text).replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0));
+
+  if (removeParenthesizedText) {
+    normalized = normalized.replace(/[（(][^）)]*[）)]/g, " ");
+  }
+
+  normalized = normalized
+    .replace(/[／]/g, "/")
+    .replace(/[．]/g, ".")
+    .replace(/[〜～]/g, "~")
+    .replace(/[－–—]/g, "-");
+
+  if (replaceRangeWords) {
+    normalized = normalized.replace(/から/g, "~").replace(/まで/g, "~");
+  }
+
+  if (normalizeComma) {
+    normalized = normalized.replace(/[、，]/g, ",");
+  }
+
+  return normalized.replace(/\s+/g, " ").trim();
+}
+
+/**
+ * 年付き/年なし（月日のみ）の日付要素を抽出する。
+ *
+ * @param {string} text
+ * @param {object} options
+ * @param {boolean} options.allowYearlessMonthDay - 月日のみを抽出対象に含めるか
+ * @returns {Array<{year: number|null, month: number, day: number}>}
+ */
+function extractDatePartsFromJapaneseText(text, options = {}) {
+  const { allowYearlessMonthDay = true } = options;
+  const normalized = String(text || "");
+  const results = [];
+  let masked = normalized;
+
+  for (const match of normalized.matchAll(/(\d{4})\s*[年/.]\s*(\d{1,2})\s*[月/.]\s*(\d{1,2})\s*日?/g)) {
+    results.push({
+      year: Number(match[1]),
+      month: Number(match[2]),
+      day: Number(match[3]),
+    });
+
+    // 年付き部分をマスクして、後段の月日抽出で重複追加されることを防ぐ。
+    if (match.index !== undefined) {
+      const mask = " ".repeat(match[0].length);
+      masked = masked.slice(0, match.index) + mask + masked.slice(match.index + match[0].length);
+    }
+  }
+
+  if (!allowYearlessMonthDay) {
+    return results;
+  }
+
+  for (const match of masked.matchAll(/(\d{1,2})\s*月\s*(\d{1,2})\s*日/g)) {
+    results.push({
+      year: null,
+      month: Number(match[1]),
+      day: Number(match[2]),
+    });
+  }
+
+  return results;
+}
+
+// ローカルタイム基準で妥当な年月日かを検証して Date を作る。
+function buildLocalDate(year, month, day) {
+  const date = new Date(year, month - 1, day);
+  if (Number.isNaN(date.getTime())) return null;
+  if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) {
+    return null;
+  }
+  return date;
+}
+
+// UTC基準で妥当な年月日かを検証して Date を作る。
+function buildUtcDate(year, month, day) {
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (Number.isNaN(date.getTime())) return null;
+  if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) {
+    return null;
+  }
+  return date;
+}
+
+// Date を YYYY-MM-DD へ整形する（ローカル時刻ベース）。
+function formatIsoDateFromLocalDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+// Date を YYYY-MM-DD へ整形する（UTCベース）。
+function formatIsoDateFromUtcDate(date) {
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 module.exports = {
   extractDateRange,
   isDateInRange,
+  normalizeJapaneseDateText,
+  extractDatePartsFromJapaneseText,
+  buildLocalDate,
+  buildUtcDate,
+  formatIsoDateFromLocalDate,
+  formatIsoDateFromUtcDate,
   parseIsoDateStrict,
 };
 

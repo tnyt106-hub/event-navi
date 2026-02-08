@@ -15,6 +15,11 @@ const { fetchText } = require("./lib/http");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities } = require("./lib/text");
+const {
+  normalizeJapaneseDateText,
+  buildUtcDate,
+  formatIsoDateFromUtcDate,
+} = require("./lib/date");
 
 // 一覧ページURLは運用側で末尾スラッシュ有無が切り替わることがあるため
 // フォールバック候補を複数持つ。
@@ -48,37 +53,24 @@ function htmlToText(html) {
 
 // 全角数字を半角に変換し、不要な括弧注記などを除去する。
 function normalizeDateText(text) {
-  if (!text) return "";
-  const halfWidth = text.replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0));
-  return halfWidth
-    .replace(/[（(][^）)]*[）)]/g, " ")
-    .replace(/[／]/g, "/")
-    .replace(/[．]/g, ".")
-    .replace(/[〜～]/g, "~")
-    .replace(/[－–—]/g, "-")
-    .replace(/\s+/g, " ")
-    .trim();
+  // 一覧側のテキストは括弧内ノイズを除いてから日付抽出する。
+  return normalizeJapaneseDateText(text, { removeParenthesizedText: true });
 }
 
 // YYYY-MM-DD 形式に整形する（UTCベース）。
+
 function formatDate(date) {
-  const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
-  const day = String(date.getUTCDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return formatIsoDateFromUtcDate(date);
 }
 
 // 年月日が妥当な日付かチェックする（UTCベース）。
+
 function buildDate(year, month, day) {
-  const date = new Date(Date.UTC(year, month - 1, day));
-  if (Number.isNaN(date.getTime())) return null;
-  if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) {
-    return null;
-  }
-  return date;
+  return buildUtcDate(year, month, day);
 }
 
 // JST基準の現在日を Date (UTC) に揃える。
+
 function buildJstTodayUtc() {
   const nowJst = new Date(Date.now() + 9 * 60 * 60 * 1000);
   return new Date(Date.UTC(nowJst.getUTCFullYear(), nowJst.getUTCMonth(), nowJst.getUTCDate()));
