@@ -97,7 +97,6 @@ async function main() {
       venueId: resultData.venue_id,
       outputPath: OUTPUT_PATH,
       events: resultData.events,
-      lastSuccessAt: resultData.last_success_at,
     });
 
     console.log(`[SUCCESS] 抽出完了: ${uniqueEvents.length} 件のイベントを保存しました。`);
@@ -107,4 +106,6 @@ async function main() {
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}

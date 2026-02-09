@@ -100,7 +100,6 @@ async function main() {
       venueId: result.venue_id,
       outputPath: OUTPUT_PATH,
       events: result.events,
-      lastSuccessAt: result.last_success_at,
     });
 
     const duration = ((Date.now() - startTime) / 1000).toFixed(1);
@@ -111,4 +110,6 @@ async function main() {
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}

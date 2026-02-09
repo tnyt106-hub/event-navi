@@ -8,7 +8,6 @@ const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 
-const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
@@ -325,9 +324,6 @@ async function main() {
     venueName: VENUE_NAME,
     outputPath: OUTPUT_PATH,
     events: mergedEvents,
-    beforeWrite(data) {
-      applyTagsToEventsData(data, { overwrite: false });
-    },
   });
 
   const previewItems = mergedEvents.slice(0, 2);
@@ -341,4 +337,6 @@ async function main() {
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}

@@ -6,7 +6,6 @@ const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 
-const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
@@ -322,9 +321,6 @@ function saveEventsFile(events) {
     venueId: VENUE_ID,
     outputPath: OUTPUT_PATH,
     events,
-    beforeWrite(data) {
-      applyTagsToEventsData(data, { overwrite: false });
-    },
   });
 }
 
@@ -378,4 +374,6 @@ async function main() {
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}

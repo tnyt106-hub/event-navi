@@ -25,8 +25,6 @@ const FUTURE_DAYS_LIMIT = 365;
 // body の最大長は既存方針に合わせる。
 const MAX_BODY_LENGTH = 5000;
 const BODY_TRUNCATION_SUFFIX = "…";
-// JST の日付を作るためのオフセット。
-const JST_OFFSET_HOURS = 9;
 // 詳細ページ取得の同時実行数（負荷が高ければ 2 に下げられる）。
 const DETAIL_CONCURRENCY = 3;
 // 連続アクセスを避けるためのジッター。
@@ -39,20 +37,10 @@ const DETAIL_FETCH_RETRY_BASE_DELAY_MS = 500;
 
 let lastListStats = { listPages: 0, listLinks: 0 };
 
-// JST の日付文字列 (YYYY-MM-DD) を返す。
-function buildJstDateString() {
-  const now = new Date();
-  const jstNow = new Date(now.getTime() + JST_OFFSET_HOURS * 60 * 60 * 1000);
-  const year = jstNow.getUTCFullYear();
-  const month = String(jstNow.getUTCMonth() + 1).padStart(2, "0");
-  const day = String(jstNow.getUTCDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
 // JST 基準で "今日 00:00" を作る（Date.now + 9h 方式）。
 function buildTodayJst() {
   const now = new Date();
-  const jstNow = new Date(now.getTime() + JST_OFFSET_HOURS * 60 * 60 * 1000);
+  const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000);
   return new Date(Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()));
 }
 
@@ -498,7 +486,6 @@ function saveEventsFile(events) {
     venueName: VENUE_NAME,
     outputPath: OUTPUT_PATH,
     events,
-    lastSuccessAt: buildJstDateString(),
   });
 }
 
@@ -594,4 +581,6 @@ async function main() {
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}

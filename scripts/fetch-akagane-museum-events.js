@@ -323,11 +323,12 @@ async function main() {
       outputPath: OUTPUT_PATH,
       events: output.events,
       venueName: output.venue_name,
-      lastSuccessAt: output.last_success_at,
     });
   } catch (error) {
     handleCliFatalError(error, { prefix: "[fatal]" });
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}

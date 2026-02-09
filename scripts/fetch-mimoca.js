@@ -16,12 +16,10 @@ const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitesp
 const {
   buildLocalDate,
   formatIsoDateFromLocalDate,
-  getJstTodayUtcDate,
 } = require("./lib/date");
 const {
   buildPastCutoffDate,
   evaluateEventAgainstPastCutoff,
-  formatUtcDateToIso,
 } = require("./lib/date_window");
 const { mapWithConcurrencyLimit, sleep } = require("./lib/concurrency");
 
@@ -56,12 +54,6 @@ function formatDate(date) {
 function buildDate(year, month, day) {
   // 不正日付を弾くロジックを共通化して、重複実装をなくす。
   return buildLocalDate(year, month, day);
-}
-
-// JST の日付文字列 (YYYY-MM-DD) を返す。
-// 期間共通モジュールの JST 基準日を使って、日付表現を統一する。
-function buildJstDateString() {
-  return formatUtcDateToIso(getJstTodayUtcDate());
 }
 
 // 一覧 HTML から href を抽出する。
@@ -756,10 +748,11 @@ async function main() {
     venueId: existingData.venue_id || VENUE_ID,
     outputPath: OUTPUT_PATH,
     events: mergedEvents,
-    lastSuccessAt: buildJstDateString(),
   });
 }
 
-main().catch((error) => {
-  handleCliFatalError(error, { prefix: "[ERROR] スクリプト実行中に失敗しました。" });
-});
+if (require.main === module) {
+  main().catch((error) => {
+    handleCliFatalError(error, { prefix: "[ERROR] スクリプト実行中に失敗しました。" });
+  });
+}
