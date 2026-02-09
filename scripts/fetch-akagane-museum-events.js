@@ -13,7 +13,7 @@ const { handleCliFatalError } = require("./lib/cli_error");
 // テキスト整形の共通関数。
 const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks, stripTags } = require("./lib/text");
 // イベントの標準スキーマ生成。
-const { createEvent, createRootStructure } = require("./lib/schema");
+const { createEvent } = require("./lib/schema");
 // 価格・問い合わせの正規化。
 const { normalizePrice, normalizeContact } = require("./lib/event_fields");
 // source_url 重複の除去。
@@ -317,12 +317,11 @@ async function main() {
       throw new Error("詳細解析後のイベント件数が 0 件です。保存を中止します。");
     }
 
-    const output = createRootStructure(VENUE_ID, events);
+    // 保存処理は共通関数に統一し、出力フォーマットの揺れを防ぐ。
     finalizeAndSaveEvents({
       venueId: VENUE_ID,
       outputPath: OUTPUT_PATH,
-      events: output.events,
-      venueName: output.venue_name,
+      events,
     });
   } catch (error) {
     handleCliFatalError(error, { prefix: "[fatal]" });

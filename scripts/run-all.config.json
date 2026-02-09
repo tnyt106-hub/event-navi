@@ -144,6 +144,14 @@
       ]
     },
     {
+      "id": "ehime-budoukan",
+      "script": "scripts/fetch-ehime-budoukan-events.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/ehime-budoukan.json"
+      ]
+    },
+    {
       "id": "filter-old-events",
       "script": "scripts/filter-old-events.js",
       "enabled": true,

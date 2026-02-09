@@ -7,6 +7,8 @@ const fs = require("fs");
 const path = require("path");
 const { validateFinalData } = require("./lib/schema");
 const { parseIsoDateStrict } = require("./lib/date");
+const { writeJsonPretty } = require("./lib/io");
+const { handleCliFatalError } = require("./lib/cli_error");
 
 // タグのラベル定義は JSON に集約して UI でも使えるようにしておく
 const TAG_LABELS_PATH = path.join(__dirname, "..", "docs", "data", "event-tags.json");
@@ -369,7 +371,8 @@ function processEventsFile(filePath, options) {
   validateFinalData(events, { minEvents: 1 });
 
   if (!options.dryRun) {
-    fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, "utf-8");
+    // JSON 保存は原子的に行い、書き込み途中での破損を防ぐ。
+    writeJsonPretty(filePath, data);
   }
 
   return updatedCount;
@@ -403,7 +406,7 @@ function main() {
 
   if (!target) {
     console.log("Usage: node scripts/apply-event-tags.js <events.json> [--overwrite] [--dry-run]");
-    process.exit(1);
+    return handleCliFatalError(new Error("引数が不足しています。"), { prefix: "[ERROR]" });
   }
 
   const tagLabels = loadTagLabels();
@@ -424,10 +427,17 @@ function main() {
       console.log(`完了: ${updatedCount} 件にタグを付与しました。`);
     }
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error(`[ERROR] ${fileName}: ${message}`);
-    process.exit(1);
+    // run-all.js 側で失敗分類できるよう、共通の CLI エラー出力形式を使う。
+    handleCliFatalError(error, { prefix: `[ERROR] ${fileName}` });
   }
 }
 
-main();
+module.exports = {
+  applyTagsToEvent,
+  processEventsFile,
+  resolveTargetPath,
+};
+
+if (require.main === module) {
+  main();
+}
