@@ -64,10 +64,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -374,10 +372,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -398,10 +394,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -422,10 +416,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -556,10 +548,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -602,10 +592,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },

@@ -85,10 +85,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -155,9 +153,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -177,10 +173,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },

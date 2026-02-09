@@ -107,10 +107,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },

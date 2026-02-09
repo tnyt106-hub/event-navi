@@ -19,15 +19,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -49,10 +43,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -74,10 +65,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -99,9 +87,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -123,9 +109,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -147,9 +131,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -171,10 +153,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -196,10 +175,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -221,10 +197,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -246,9 +219,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -270,9 +241,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -294,9 +263,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -318,9 +285,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -342,10 +307,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -367,9 +329,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -391,10 +351,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -416,9 +373,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -440,9 +395,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -462,14 +415,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -491,9 +439,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -513,14 +459,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -542,9 +483,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -564,14 +503,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "paid",
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -591,14 +525,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -620,10 +549,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -645,10 +571,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -692,10 +615,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -717,9 +637,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -741,9 +659,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -765,9 +681,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -789,10 +703,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -814,9 +725,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -858,14 +767,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -887,10 +791,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -912,9 +813,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -936,9 +835,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -960,10 +857,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -985,10 +879,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1010,10 +901,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1057,10 +945,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1080,14 +965,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1109,10 +989,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1134,10 +1011,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1157,14 +1031,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1208,10 +1077,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1231,14 +1097,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1260,9 +1121,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1282,13 +1141,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1308,13 +1163,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1334,13 +1185,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1360,14 +1207,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1389,10 +1231,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1412,14 +1251,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1439,14 +1273,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1468,9 +1297,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid"
-        ]
+        "flags": []
       }
     },
     {
@@ -1492,9 +1319,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free"
-        ]
+        "flags": []
       }
     },
     {
@@ -1514,10 +1339,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     }

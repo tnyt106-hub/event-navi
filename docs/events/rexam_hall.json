@@ -19,10 +19,8 @@
       "status": null,
       "body": "小ホール さぬき映画祭2025上映会「黒の牛」 開場 09:30/開演 10:00/終演 12:20 小ホール さぬき映画祭2025上映会「からかい上手の高木さん」 開場 13:30/開演 14:00/終演 16:30",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -43,10 +41,8 @@
       "status": null,
       "body": "大ホール 第25回香川ジュニアコーラスフェスティヴァル2025 開場 13:00/開演 13:30/終演 15:30 小ホール 「建国記念の日」を祝う香川県民の集い 開場 13:00/開演 13:30/終演 16:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -67,10 +63,8 @@
       "status": null,
       "body": "大ホール JAバンク香川presentsプレミアムライブ2025 開場 12:00/開演 12:40/終演 15:00 大ホール JAバンク香川presentsプレミアムライブ2025 開場 16:20/開演 17:00/終演 19:20 小ホール ハンバート ハンバート ツアー2025「寝ても覚めても」 開場 16:30/開演 17:30/終演 19:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -113,10 +107,8 @@
       "status": null,
       "body": "大ホール 天童よしみコンサートツアー2025～音楽の旅・心の贈り物～ 開場 13:45/開演 14:30/終演 16:45",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -137,10 +129,8 @@
       "status": null,
       "body": "大ホール ビバ！ブラス第27回小学校バンドフェスティバル 開場 12:00/開演 12:30/終演 16:30 小ホール 川原霊宗 作舞発表会「心の舞」 開場 12:00/開演 12:45/終演 16:15",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -163,9 +153,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -207,10 +195,8 @@
       "status": null,
       "body": "大ホール NHK交響楽団演奏会 高松公演 開場 14:45/開演 15:30/終演 17:30 小ホール オラトリオ「メサイア」演奏会 naomi SATAKE memorial 開場 13:30/開演 14:00/終演 17:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -299,9 +285,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -323,9 +307,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -345,10 +327,8 @@
       "status": null,
       "body": "大ホール 2025年 第18期 香川県民文化大学 3月講座 開場 12:00/開演 12:40/終演 15:00",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -413,13 +393,9 @@
       "status": null,
       "body": "大ホール 香川県立高松桜井高等学校吹奏楽部 第28回定期演奏会 開場 17:30/開演 18:00/終演 20:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -439,10 +415,8 @@
       "status": null,
       "body": "大ホール 高松高等学校吹奏楽委員会 第50回記念定期演奏会 開場 17:00/開演 17:30/終演 20:30 小ホール 第14回 香川誠陵中学校・高等学校吹奏楽部 定期演奏会 開場 14:30/開演 15:00/終演 17:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -465,9 +439,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -487,10 +459,8 @@
       "status": null,
       "body": "大ホール 第13回全国選抜中学校テニス大会 開場 13:00/開演 14:00/終演 16:00",
       "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -511,10 +481,8 @@
       "status": null,
       "body": "大ホール 高松第一高等学校吹奏楽部第53回定期演奏会 開場 13:00/開演 13:30/終演 16:30 小ホール かがわジュニア・フィルハーモニック・オーケストラ合奏コース公開レッスン＆基礎コース成果発表会 開場 12:30/開演 13:00/終演 16:00（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -557,10 +525,8 @@
       "status": null,
       "body": "大ホール 2025年 第18期 香川県民文化大学 4月講座 開場 12:00/開演 13:00/終演 15:00 小ホール コレギウム・ムジクム高松 第29回演奏会 開場 13:20/開演 14:00/終演 16:00",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -649,9 +615,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -671,10 +635,8 @@
       "status": null,
       "body": "大ホール 島津亜矢コンサート2025 開場 12:30/開演 13:00/終演 15:00 大ホール 島津亜矢コンサート2025 開場 17:00/開演 17:30/終演 19:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -695,11 +657,8 @@
       "status": null,
       "body": "小ホール 玉藻能2025特別企画「能舞台体験講座」 開場 13:30/開演 14:00/終演 15:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -742,10 +701,8 @@
       "status": null,
       "body": "小ホール ベリーグッドマン “サンキュー” TOUR 2025 開場 16:15/開演 17:00/終演 19:00",
       "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -768,9 +725,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -792,9 +747,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -838,9 +791,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -906,9 +857,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -928,10 +877,8 @@
       "status": null,
       "body": "小ホール 第9回マンドリンアンサンブルソナチネコンサート 開場 13:30/開演 14:00/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -952,10 +899,8 @@
       "status": null,
       "body": "大ホール 高松ウインドシンフォニー第39回定期演奏会 開場 13:00/開演 14:00/終演 16:00 小ホール 香川市民劇場5月例会「オペラ あん」（オペラシアターこんにゃく座公演） 開場 12:30/開演 13:00/終演 14:40",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -976,10 +921,8 @@
       "status": null,
       "body": "大ホール 2025年 第18期 香川県民文化大学 5月講座 開場 12:00/開演 13:00/終演 15:00 小ホール ベストボディ・ジャパン2025香川・高松大会 開場 12:00/開演 12:30/終演 17:00",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1024,9 +967,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1048,9 +989,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1094,9 +1033,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1138,10 +1075,8 @@
       "status": null,
       "body": "小ホール 結成30周年 記念コンサート 開場 13:00/開演 13:30/終演 15:30（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1164,9 +1099,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1188,9 +1121,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1210,10 +1141,8 @@
       "status": null,
       "body": "大ホール 2025年 第18期 香川県民文化大学 6月講座 開場 12:00/開演 13:00/終演 15:00 小ホール 高松混声合唱団 第47回定期演奏会 開場 18:00/開演 18:30/終演 20:30",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1256,10 +1185,8 @@
       "status": null,
       "body": "小ホール アフィニス夏の音楽祭2025かがわ 記者発表＆音楽監督による特別演奏 開場 13:30/開演 14:00/終演 15:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1348,9 +1275,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1372,9 +1297,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1394,10 +1317,8 @@
       "status": null,
       "body": "大ホール 高松交響楽団 第132回定期演奏会 開場 13:00/開演 14:00/終演 16:20 小ホール 第24回玉藻寄席 六代目 神田伯山 独演会 開場 13:15/開演 14:00/終演 16:00（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1420,9 +1341,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1442,13 +1361,9 @@
       "status": null,
       "body": "大ホール SLENDERIE RECORD ファミリーコンサート2025 開場 18:00/開演 19:00/終演 21:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1468,10 +1383,8 @@
       "status": null,
       "body": "大ホール 第47回自衛隊音楽隊高松定期演奏会 開場 13:00/開演 14:00/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1538,9 +1451,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1560,10 +1471,8 @@
       "status": null,
       "body": "大ホール 2025年 第18期 香川県民文化大学 7月講座 開場 12:00/開演 13:00/終演 15:00（予定）",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1586,9 +1495,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1608,14 +1515,9 @@
       "status": null,
       "body": "小ホール 香川市民劇場7月例会「5月35日」（Pカンパニー公演） 開場 18:00/開演 18:30/終演 20:10",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1657,13 +1559,9 @@
       "status": null,
       "body": "大ホール 劇団四季ミュージカル「赤毛のアン」高松公演 開場 17:45/開演 18:30/終演 21:10 小ホール 非公開",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1685,9 +1583,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -1707,10 +1603,8 @@
       "status": null,
       "body": "小ホール サマーフェスタ親子映画会 開場 10:00/開演 10:30/終演 12:30 小ホール サマーフェスタ親子映画会 開場 13:00/開演 13:30/終演 15:30",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1753,13 +1647,9 @@
       "status": null,
       "body": "大ホール 第29回ふるさとコンサート 開場 17:30/開演 18:30/終演 20:40",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -1779,10 +1669,8 @@
       "status": null,
       "body": "小ホール フラウエンコール・かがわ 第44回定期演奏会 開場 13:00/開演 14:00/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1803,10 +1691,8 @@
       "status": null,
       "body": "小ホール 第66回 香川県合唱祭",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1827,10 +1713,8 @@
       "status": null,
       "body": "小ホール 第32回 トリムフェスティバル香川 開場 13:00/開演 13:30/終演 16:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1873,10 +1757,8 @@
       "status": null,
       "body": "大ホール 第49回全国高等学校総合文化祭「かがわ総文祭2025」日本音楽部門大会 開場 09:00/開演 09:40/終演 16:20",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1897,10 +1779,8 @@
       "status": null,
       "body": "大ホール 第49回全国高等学校総合文化祭「かがわ総文祭2025」日本音楽部門大会 開場 09:00/開演 10:00/終演 16:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1921,10 +1801,8 @@
       "status": null,
       "body": "大ホール 第49回全国高等学校総合文化祭「かがわ総文祭2025」吹奏楽部門大会 開場 09:00/開演 09:40/終演 17:30",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1945,10 +1823,8 @@
       "status": null,
       "body": "大ホール 第49回全国高等学校総合文化祭「かがわ総文祭2025」吹奏楽部門大会 開場 09:00/開演 09:40/終演 17:40",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1969,10 +1845,8 @@
       "status": null,
       "body": "大ホール 第49回全国高等学校総合文化祭「かがわ総文祭2025」写真部門大会（閉会式） 開場 09:00/開演 09:20/終演 12:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -1995,9 +1869,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -2019,9 +1891,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -2131,9 +2001,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -2153,13 +2021,9 @@
       "status": null,
       "body": "小ホール 高松第一高等学校合唱部 第49回定期演奏会 開場 18:00/開演 18:30/終演 20:45",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -2179,10 +2043,8 @@
       "status": null,
       "body": "大ホール 四国解放プロジェクト チャリティーコンサート 開場 12:00/開演 13:00/終演 15:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2203,10 +2065,8 @@
       "status": null,
       "body": "大ホール 第50回 高松商業高等学校吹奏楽部 定期演奏会 開場 17:00/開演 17:30/終演 20:00 小ホール アフィニス夏の音楽祭2025かがわ 公開セミナー＆ワークショップ /開演 10:00/終演 18:00 小ホール アフィニス夏の音楽祭2025かがわ 音楽交流プログラムホワイエコンサート /開演 12:30/終演 13:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2227,11 +2087,8 @@
       "status": null,
       "body": "大ホール アフィニス夏の音楽祭2025かがわ 公開セミナー＆ワークショップ /開演 10:00/終演 18:00 小ホール アフィニス夏の音楽祭2025かがわ 公開セミナー＆ワークショップ /開演 10:00/終演 18:00 小ホール アフィニス夏の音楽祭2025かがわ 音楽交流プログラムホワイエコンサート /開演 12:30/終演 13:30",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education",
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2252,10 +2109,8 @@
       "status": null,
       "body": "大ホール アフィニス夏の音楽祭2025かがわ 音楽交流プログラムオープンハウス /開演 11:00/終演 13:30 小ホール アフィニス夏の音楽祭2025かがわ 音楽交流プログラムあいうえ音楽会 開場 13:30/開演 14:00/終演 15:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2276,11 +2131,8 @@
       "status": null,
       "body": "大ホール アフィニス夏の音楽祭2025かがわ 公開セミナー /開演 10:00/終演 17:00 小ホール アフィニス夏の音楽祭2025かがわ 公開セミナー /開演 10:00/終演 17:00",
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education",
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2301,11 +2153,8 @@
       "status": null,
       "body": "大ホール アフィニス夏の音楽祭2025かがわ 公開セミナー /開演 10:00/終演 17:00 小ホール アフィニス夏の音楽祭2025かがわ 公開セミナー /開演 10:00/終演 17:00",
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education",
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2326,14 +2175,9 @@
       "status": null,
       "body": "小ホール アフィニス夏の音楽祭2025かがわ 室内楽演奏会[1] 開場 18:00/開演 18:30/終演 20:30（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -2353,14 +2197,9 @@
       "status": null,
       "body": "小ホール アフィニス夏の音楽祭2025かがわ 室内楽演奏会[2] 開場 18:00/開演 18:30/終演 20:30（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -2380,10 +2219,8 @@
       "status": null,
       "body": "大ホール 辻本茂雄還暦特別公演記念ツアー 香川公演 開場 11:00/開演 11:30/終演 13:30（予定） 大ホール 辻本茂雄還暦特別公演記念ツアー 香川公演 開場 15:00/開演 15:30/終演 17:30（予定） 小ホール 舞台映像上映Reライブシアター こまつ座「母と暮せば（2024 ver）」 開場 10:00/開演 10:30/終演 12:00 小ホール 舞台映像上映Reライブシアター 二兎社「ザ・空気 ver.3 そして彼は去った…」 開場 13:30/開演 14:00/終演 15:45",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2426,10 +2263,8 @@
       "status": null,
       "body": "小ホール おさらい小発表会 プレコンサート2025 開場 13:30/開演 14:00/終演 15:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2450,10 +2285,8 @@
       "status": null,
       "body": "大ホール かがわジュニア・フィルハーモニック・オーケストラ KJO第24回定期演奏会 開場 13:30/開演 14:00/終演 16:00（予定） 小ホール ヴァリエーショントライアル 2025 開場 13:30/開演 14:00/終演 16:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2474,13 +2307,9 @@
       "status": null,
       "body": "大ホール さだまさしコンサートツアー2025 「生命の樹～Tree of Life～」 開場 17:00/開演 18:00/終演 20:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -2500,10 +2329,8 @@
       "status": null,
       "body": "大ホール 2025年 第18期 香川県民文化大学 9月講座 開場 12:00/開演 13:00/終演 15:00",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2524,10 +2351,8 @@
       "status": null,
       "body": "小ホール 香川県三曲協会創立５０周年記念演奏会 開場 12:00/開演 12:30/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2570,10 +2395,8 @@
       "status": null,
       "body": "大ホール 第4回レクザムホール 避難訓練コンサート 開場 13:30/開演 14:00/終演 15:30（予定） 小ホール 非公開",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2594,10 +2417,8 @@
       "status": null,
       "body": "大ホール デビュー30周年記念 高嶋ちさ子 12人のヴァイオリニスト コンサートツアー 2025～2026 開場 14:45/開演 15:30/終演 17:30 小ホール 第8回香川大学OB管弦楽団定期演奏会 開場 13:30/開演 14:00/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2618,13 +2439,9 @@
       "status": null,
       "body": "大ホール 第52回坂出高校吹奏楽部サマーコンサート 開場 17:30/開演 18:00/終演 20:30 小ホール 第35回日本フルートフェスティヴァルinかがわ 開場 13:00/開演 14:00/終演 16:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -2710,14 +2527,9 @@
       "status": null,
       "body": "大ホール 香川市民劇場９月例会「夜の来訪者」（俳優座劇場プロデュース公演） 開場 18:00/開演 18:30/終演 20:20 小ホール The 10th Y.Ballet Concert 開場 12:30/開演 13:00/終演 15:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -2759,10 +2571,8 @@
       "status": null,
       "body": "小ホール 第50回 四国二期会オペラ公演 開場 13:30/開演 14:00/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2807,9 +2617,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -2851,10 +2659,8 @@
       "status": null,
       "body": "小ホール 香川現代邦楽研究会 第44回定期演奏会 開場 13:30/開演 14:00/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2875,10 +2681,8 @@
       "status": null,
       "body": "大ホール 第39回 東雲祭兄弟姉妹学級コーラス大会 開場 09:30/開演 10:00/終演 13:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2899,10 +2703,8 @@
       "status": null,
       "body": "大ホール 2025年 第18期 香川県民文化大学 10月講座 開場 12:00/開演 13:00/終演 15:00 小ホール 第20回香川県私学振興大会 開場 12:30/開演 13:30/終演 15:00",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -2925,9 +2727,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -2969,10 +2769,8 @@
       "status": null,
       "body": "大ホール 『大誘拐』～四人で大スペクタクル～高松公演 開場 13:15/開演 14:00/終演 16:15 小ホール クラシカル･バレエ･ワークス「第6回 クラス・パフォーマンス」 開場 18:00/開演 18:30/終演 20:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3059,10 +2857,8 @@
       "status": null,
       "body": "大ホール 東海東京フィナンシャル・グループpresents 葉加瀬太郎 コンサートツアー2025 TARO HAKASE 35th Anniversary The Best of My 35Years 開場 15:00/開演 16:00/終演 18:30 小ホール 石田泰尚ヴァイオリン・リサイタル 開場 13:00/開演 13:30/終演 15:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3195,9 +2991,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3217,10 +3011,8 @@
       "status": null,
       "body": "大ホール 香川県小・中学校総合文化祭 音楽会（中学校） 開場 12:30/開演 13:00/終演 16:00 小ホール 高松第一高等学校音楽科第45回定期演奏会 開場 12:30/開演 13:00/終演 15:30",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3243,9 +3035,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3267,9 +3057,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3289,10 +3077,8 @@
       "status": null,
       "body": "大ホール 2025年 第18期 香川県民文化大学 11月講座 開場 12:00/開演 13:00/終演 15:00 小ホール 非公開",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3313,10 +3099,8 @@
       "status": null,
       "body": "大ホール 香川県小・中学校総合文化祭 音楽会（小学校） 開場 12:00/開演 12:30/終演 16:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3337,10 +3121,8 @@
       "status": null,
       "body": "小ホール 夢グループ石田社長「私のおススメ」夢コンサート 開場 12:30/開演 13:00/終演 15:30（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3363,9 +3145,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3385,10 +3165,8 @@
       "status": null,
       "body": "大ホール 第42回 香川県高等学校総合文化祭 「吹奏楽・器楽管弦楽フェスティバル」 開場 09:30/開演 10:00/終演 17:00 小ホール 第42回香川県高等学校総合文化祭「合唱の祭典」 開場 12:30/開演 13:00/終演 16:00",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3475,10 +3253,8 @@
       "status": null,
       "body": "大ホール 高松交響楽団・島田バレエ団によるチャイコフスキー作曲「くるみ割り人形」全幕公演 開場 13:00/開演 14:00/終演 17:00（予定） 小ホール 中四国郷土芸能フェスタ2025 in かがわ 開場 12:30/開演 13:00/終演 16:45",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3499,14 +3275,9 @@
       "status": null,
       "body": "小ホール 香川市民劇場11月例会「昭和虞美人草」（文学座公演） 開場 18:00/開演 18:30/終演 21:15",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -3526,10 +3297,8 @@
       "status": null,
       "body": "大ホール 部落解放第41回香川県講演会 開場 09:00/開演 10:00/終演 14:30 小ホール アインザッツ 開場 18:00/開演 18:30/終演 20:30",
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3550,13 +3319,9 @@
       "status": null,
       "body": "大ホール 松山千春コンサート・ツアー2025 開場 17:45/開演 18:30/終演 21:00 小ホール 非公開",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -3598,13 +3363,9 @@
       "status": null,
       "body": "大ホール 島田歌穂デビュー50周年記念コンサートツアー 開場 18:00/開演 18:30/終演 20:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -3646,13 +3407,9 @@
       "status": null,
       "body": "小ホール 高松大学・高松短期大学ウインターコンサート 開場 18:00/開演 18:30/終演 21:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -3672,10 +3429,8 @@
       "status": null,
       "body": "大ホール 2025「かがわ第九」演奏会 開場 13:00/開演 14:00/終演 16:00 小ホール 都山流尺八 都香社発会65周年記念尺八演奏会 開場 12:00/開演 12:30/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3696,10 +3451,8 @@
       "status": null,
       "body": "小ホール 令和7年度 四国ブロック再犯防止シンポジウム 開場 12:00/開演 13:00/終演 16:00",
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3742,10 +3495,8 @@
       "status": null,
       "body": "大ホール 大阪桐蔭高等学校吹奏楽部サンタコンサートin高松 開場 12:45/開演 13:30/終演 16:00 小ホール 香川県合唱祭 2025 開場 12:40/開演 13:00/終演 16:00（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3766,13 +3517,9 @@
       "status": null,
       "body": "小ホール 二兎社公演49「狩場の悲劇」 開場 18:15/開演 19:00/終演 21:45（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -3792,13 +3539,9 @@
       "status": null,
       "body": "大ホール 香川大学吹奏楽団 第53回定期演奏会 開場 17:00/開演 18:00/終演 20:00 小ホール 児島・宮崎門下生による第20回ピアノコンサート 開場 13:00/開演 13:30/終演 16:10",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -3820,9 +3563,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3866,9 +3607,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3890,9 +3629,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3914,9 +3651,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -3936,10 +3671,8 @@
       "status": null,
       "body": "大ホール 第10回香川県警察音楽隊演奏会 開場 13:00/開演 14:00/終演 16:00 小ホール レクザムホール リサイタルシリーズ 漆原 啓子＆阪田 知樹 Duoリサイタル 開場 13:30/開演 14:00/終演 16:00（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -3960,10 +3693,8 @@
       "status": null,
       "body": "小ホール 令和7年度 高校・中学公開演劇ワークショップ 開場 13:00/開演 14:00/終演 16:00（予定）",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4006,10 +3737,8 @@
       "status": null,
       "body": "小ホール 第13回ピティナ・ピアノコンペティション入賞者記念コンサート 開場 09:40/開演 10:00/終演 17:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4030,10 +3759,8 @@
       "status": null,
       "body": "大ホール 瀬戸フィルハーモニー交響楽団第44回定期演奏会 開場 13:00/開演 14:00/終演 16:00 小ホール 清水ミチコのHAPPY PARADISE 開場 15:00/開演 15:30/終演 17:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4054,10 +3781,8 @@
       "status": null,
       "body": "大ホール NHKチャリティーコンサート 「おかあさんといっしょファミリーコンサート」高松公演 開場 09:30/開演 10:30/終演 11:30（予定） 大ホール NHKチャリティーコンサート 「おかあさんといっしょファミリーコンサート」高松公演 開場 13:30/開演 14:30/終演 15:30（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4100,14 +3825,9 @@
       "status": null,
       "body": "小ホール 香川市民劇場1月例会「ミュージカルO.G.Ⅱ」（劇団ＮＬＴ公演） 開場 18:00/開演 18:30/終演 20:15",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -4129,9 +3849,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -4173,10 +3891,8 @@
       "status": null,
       "body": "大ホール 香川銀行 香川ニュービジネスクラブ2026 講演会 開場 13:00/開演 14:00/終演 15:30",
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4199,9 +3915,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -4221,10 +3935,8 @@
       "status": null,
       "body": "大ホール 百十四銀行新春講演会 開場 13:30/開演 14:00/終演 15:30 小ホール 新春フェスタ映画祭 お終活 再春！人生ラプソディ 開場 09:00/開演 10:00/終演 12:00 小ホール 新春フェスタ映画祭 お終活 再春！人生ラプソディ 開場 13:00/開演 13:30/終演 15:30",
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4245,10 +3957,8 @@
       "status": null,
       "body": "大ホール JAバンク香川presentsプレミアムライブ2026 開場 12:15/開演 13:00/終演 15:00 大ホール JAバンク香川presentsプレミアムライブ2026 開場 16:15/開演 17:00/終演 19:00 小ホール さぬき映画祭2026 開会式＆「ワタシ、発酵します！」 開場 13:30/開演 14:00/終演 16:00（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4335,10 +4045,8 @@
       "status": null,
       "body": "大ホール 令和7年度 第14旅団 音楽まつり 第1回公演 開場 12:30/開演 13:30/終演 15:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4359,10 +4067,8 @@
       "status": null,
       "body": "大ホール 令和7年度 第14旅団 音楽まつり 第2回公演 開場 12:30/開演 13:30/終演 15:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4383,10 +4089,8 @@
       "status": null,
       "body": "大ホール 角野隼斗 全国ツアー2026“Chopin Orbit” supported by ロート製薬 香川公演 開場 15:00/開演 16:00/終演 18:00（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4407,10 +4111,8 @@
       "status": null,
       "body": "小ホール 高松メサイア演奏会 Naomi SATAKEメモリアル 開場 13:30/開演 14:00/終演 17:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4453,10 +4155,8 @@
       "status": null,
       "body": "小ホール 集まれ！小学、中学、高校生！演劇体験ワークショップ 開場 09:30/開演 10:00/終演 11:30",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4479,9 +4179,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -4503,9 +4201,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "night"
-        ]
+        "flags": []
       }
     },
     {
@@ -4547,13 +4243,9 @@
       "status": null,
       "body": "小ホール 香川県立高松工芸高等学校吹奏楽部 第20回定期演奏会 開場 17:30/開演 18:00/終演 20:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -4573,10 +4265,8 @@
       "status": null,
       "body": "大ホール 岡山フィルハーモニック管弦楽団 第87回定期演奏会 開場 13:00/開演 14:00/終演 16:15 小ホール 全四国男声合唱フェスティバル2026 開場 13:00/開演 13:30/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4597,13 +4287,9 @@
       "status": null,
       "body": "小ホール 明治大学マンドリン倶楽部演奏会 開場 17:30/開演 18:00/終演 20:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -4623,13 +4309,9 @@
       "status": null,
       "body": "大ホール 五嶋みどり＆ルツェルン・フェスティバル室内管弦楽団 開場 17:30/開演 18:30/終演 20:30",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -4649,10 +4331,8 @@
       "status": null,
       "body": "大ホール 第26回香川ジュニアコーラスフェスティヴァル2026 開場 13:00/開演 13:30/終演 15:30",
       "tags": {
-        "type": "festival",
-        "genres": [
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4673,10 +4353,8 @@
       "status": null,
       "body": "大ホール 2026年 第19期 香川県民文化大学 3月講座 開場 12:00/開演 12:40/終演 15:00",
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "education"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4719,11 +4397,8 @@
       "status": null,
       "body": "小ホール 香川市民劇場3月例会「あかんべえ」（劇団前進座公演） 開場 12:30/開演 13:00/終演 15:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "festival"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4744,13 +4419,9 @@
       "status": null,
       "body": "大ホール 第29回香川県立高松桜井高等学校吹奏楽部 定期演奏会 開場 17:30/開演 18:00/終演 20:30 小ホール 児玉桃 ピアノ・リサイタル 開場 13:30/開演 14:00/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -4770,13 +4441,9 @@
       "status": null,
       "body": "大ホール 香川県立高松高等学校吹奏楽委員会 創部70周年記念 第51回定期演奏会 開場 17:30/開演 18:00/終演 20:30 小ホール 宮田大＆LEO DUOリサイタル 開場 13:30/開演 14:00/終演 16:00",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -4796,13 +4463,9 @@
       "status": null,
       "body": "大ホール 香川県立高松北中学校・高等学校吹奏楽部 第38回定期演奏会 開場 17:30/開演 18:00/終演 20:30 小ホール 第2回「讃岐葵会」京都能楽養成会研究発表会 開場 12:00/開演 13:00/終演 16:50",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -4822,10 +4485,8 @@
       "status": null,
       "body": "小ホール 第14回全国選抜中学校テニス大会 開場 13:00/開演 14:00/終演 16:00",
       "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4846,10 +4507,8 @@
       "status": null,
       "body": "大ホール 高松第一高等学校吹奏楽部第54回定期演奏会 開場 17:00/開演 17:30/終演 20:00（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4870,10 +4529,8 @@
       "status": null,
       "body": "大ホール 藤井フミヤ47都道府県コンサートツアー 2025-2026 FUTATABI 開場 15:00/開演 16:00/終演 18:00 小ホール かがわジュニア・フィルハーモニック・オーケストラ合奏コース公開レッスン＆基礎コース成果発表会 開場 12:30/開演 13:00/終演 16:00（予定）",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     },
@@ -4894,10 +4551,8 @@
       "status": null,
       "body": "小ホール 香川誠陵中学校・高等学校吹奏楽部 第15回定期演奏会 開場 17:00/開演 17:30/終演 19:30",
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "other",
+        "genres": [],
         "flags": []
       }
     }
