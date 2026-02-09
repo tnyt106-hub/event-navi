@@ -9,6 +9,7 @@ const { validateFinalData } = require("./lib/schema");
 const { parseIsoDateStrict } = require("./lib/date");
 const { writeJsonPretty } = require("./lib/io");
 const { handleCliFatalError } = require("./lib/cli_error");
+const { parseJsonOrThrowTyped } = require("./lib/json");
 
 // タグのラベル定義は JSON に集約して UI でも使えるようにしておく
 const TAG_LABELS_PATH = path.join(__dirname, "..", "docs", "data", "event-tags.json");
@@ -341,7 +342,7 @@ function readJsonFileSafely(filePath) {
   if (!raw.trim()) {
     throw new Error("ファイルが空です");
   }
-  return JSON.parse(raw);
+  return parseJsonOrThrowTyped(raw, `events file (${filePath})`);
 }
 
 // ファイルを読み込み、タグ付けして保存する
@@ -367,8 +368,15 @@ function processEventsFile(filePath, options) {
     }
   });
 
-  // 保存前に最低限の整合性を検証し、壊れたJSONの上書きを予防する
-  validateFinalData(events, { minEvents: 1 });
+  // イベント0件は、filter-old-events 後に正しく起こり得る状態。
+  // ここで異常扱いにすると run-all の apply-tags が運用上失敗するため、
+  // 0件時は「検証不要でそのまま通す」を明示する。
+  if (events.length > 0) {
+    // 保存前に最低限の整合性を検証し、壊れたJSONの上書きを予防する
+    validateFinalData(events, { minEvents: 1 });
+  } else if (options.log) {
+    console.log("[skip] events が 0 件のためタグ付けと検証をスキップします。");
+  }
 
   if (!options.dryRun) {
     // JSON 保存は原子的に行い、書き込み途中での破損を防ぐ。
@@ -381,7 +389,7 @@ function processEventsFile(filePath, options) {
 function loadTagLabels() {
   if (!fs.existsSync(TAG_LABELS_PATH)) return null;
   const raw = fs.readFileSync(TAG_LABELS_PATH, "utf-8");
-  return JSON.parse(raw);
+  return parseJsonOrThrowTyped(raw, `tag labels (${TAG_LABELS_PATH})`);
 }
 
 function resolveTargetPath(target) {

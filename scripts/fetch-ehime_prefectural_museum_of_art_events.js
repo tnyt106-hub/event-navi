@@ -12,6 +12,7 @@ const { URL } = require("url");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { parseJsonOrThrowTyped } = require("./lib/json");
 const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
 const { stripTagsCompact, normalizeDecodedText } = require("./lib/text");
@@ -183,7 +184,7 @@ function loadExistingEvents() {
 
   try {
     const raw = fs.readFileSync(OUTPUT_PATH, "utf8");
-    const parsed = JSON.parse(raw);
+    const parsed = parseJsonOrThrowTyped(raw, `existing data (${OUTPUT_PATH})`);
     const events = Array.isArray(parsed.events) ? parsed.events : [];
     return {
       venue_id: VENUE_ID,
