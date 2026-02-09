@@ -20,19 +20,6 @@ function parseJsonOrThrowTyped(text, contextLabel = "JSON") {
     );
   }
 }
-
-/**
- * JSON 文字列をパースし、失敗時は fallbackValue を返す。
- * - キャッシュ読み込みなど「壊れていても空扱いで続行したい」用途向け。
- */
-function parseJsonOrFallback(text, fallbackValue) {
-  try {
-    return JSON.parse(text);
-  } catch (_error) {
-    return fallbackValue;
-  }
-}
-
 module.exports = {
   parseJsonOrThrowTyped,
   parseJsonOrFallback,
