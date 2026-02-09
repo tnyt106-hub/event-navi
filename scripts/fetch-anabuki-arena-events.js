@@ -10,6 +10,7 @@ const { mapWithConcurrencyLimit } = require("./lib/concurrency");
 const { decodeHtmlEntities, stripTagsCompact, normalizeDecodedText } = require("./lib/text");
 const { formatIsoDateFromLocalDate, parseIsoDateAsLocalStrict } = require("./lib/date");
 const { ERROR_TYPES } = require("./lib/error_types");
+const { parseJsonOrThrowTyped } = require("./lib/json");
 
 const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "anabuki_arena_kagawa.json");
@@ -95,7 +96,7 @@ async function fetchAllPostsFromApi() {
       throw error;
     }
 
-    const data = JSON.parse(text);
+    const data = parseJsonOrThrowTyped(text, `anabuki arena REST API page=${page}`);
     if (!data.length) break;
     allPosts.push(...data);
   }
