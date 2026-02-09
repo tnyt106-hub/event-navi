@@ -135,6 +135,8 @@ function extractEventBlocks(html) {
 
 // 見出し・本文からイベントの優先リンクを選ぶ。
 // 優先順: 見出しリンク > 本文の「詳細」リンク > 本文の /event/ リンク > 本文先頭リンク。
+// 実装意図: 競合解消時に「リンク抽出ロジック」と「イベント組み立てロジック」を分離し、
+// どちらの変更意図も失わない形で保守しやすくする。
 function extractPrimaryEventUrl(block, baseUrl) {
   // まずは見出し(h4)内のリンクを使う。ここが最もイベント代表URLになりやすい。
   const headingLinkMatch = block.headingHtml.match(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/i);

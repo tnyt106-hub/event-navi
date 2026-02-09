@@ -45,13 +45,15 @@ function normalizeHeadingLikeTitle(text) {
  * - 同じ行に値がある形式: 「開催日：2024年2月3日」
  * - 次行に値がある形式: 「開催日」+ 改行 + 値
  */
+// ラベル文字列を正規表現に安全に埋め込むため、メタ文字をエスケープする。
+// 共通関数として切り出し、他の抽出処理でも再利用しやすくする。
+function escapeRegExp(text) {
+  return String(text).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function extractLabeledValue(lines, labels) {
   const safeLines = Array.isArray(lines) ? lines : [];
   const labelList = Array.isArray(labels) ? labels : [labels];
-
-  // ラベル文字列を正規表現に安全に埋め込むため、メタ文字をエスケープする。
-  // これにより、将来的に "(" や "+" を含むラベルでも意図通りに一致判定できる。
-  const escapeRegExp = (text) => String(text).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
   for (let i = 0; i < safeLines.length; i += 1) {
     const line = safeLines[i];
