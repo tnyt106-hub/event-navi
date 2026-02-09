@@ -13,6 +13,7 @@ const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTagsCompact } = require("./lib/text");
+const { normalizeHeadingLikeTitle, extractLabeledValue: extractLabeledValueFromLines } = require("./lib/scraping");
 
 const ENTRY_URL = "https://www.sunport-hall.jp/hall/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "sunport_hall_takamatsu.json");
@@ -34,14 +35,6 @@ function htmlToLines(html) {
     .split("\n")
     .map((line) => line.replace(/\s+/g, " ").trim())
     .filter(Boolean);
-}
-
-// タイトル用に文字列を整形する。
-function normalizeTitle(text) {
-  return String(text || "")
-    .replace(/\s+/g, " ")
-    .replace(/^[\s\-–—―~〜～:：・|｜]+/, "")
-    .trim();
 }
 
 // 行の中から日付を ISO 形式 (YYYY-MM-DD) に変換する。
@@ -101,22 +94,10 @@ function extractVenueName(line, dateMatch) {
 
 // ラベル付き情報（入場料等・お問合せ）を抽出する。
 function extractLabeledValue(lines, labels) {
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    for (const label of labels) {
-      if (line.includes(label)) {
-        const cleaned = line.replace(label, "").replace(/[:：\-–—]/g, " ").trim();
-        if (cleaned) {
-          return cleaned.replace(/\s+/g, " ");
-        }
-        const nextLine = lines[i + 1];
-        if (nextLine) {
-          return nextLine.replace(/\s+/g, " ").trim();
-        }
-      }
-    }
-  }
-  return null;
+  // 共通ラベル抽出は空文字を返すため、このスクリプトの従来仕様（未検出は null）へ変換する。
+  const value = extractLabeledValueFromLines(lines, labels);
+  if (!value) return null;
+  return value.replace(/\s+/g, " ").trim() || null;
 }
 
 // 月別ページに含まれる「来月のイベント」リンクを探す。
@@ -125,7 +106,7 @@ function findNextMonthUrl(html, baseUrl) {
 
   for (const match of html.matchAll(anchorRegex)) {
     const href = match[1];
-    const text = normalizeTitle(stripTagsCompact(match[2]));
+    const text = normalizeHeadingLikeTitle(stripTagsCompact(match[2]));
     if (text.includes("来月のイベント") || text.includes("次月のイベント") || text.includes("翌月のイベント")) {
       return href ? new URL(href, baseUrl).toString() : null;
     }
@@ -152,34 +133,51 @@ function extractEventBlocks(html) {
   return blocks;
 }
 
-// 見出しと本文からイベントデータを構築する。
-// 見出しと本文からイベントデータを構築する。
-function buildEventFromBlock(block, baseUrl) {
-  const headingText = normalizeTitle(stripTagsCompact(block.headingHtml));
-  if (!headingText) return null;
-
-  // --- 【修正箇所】URL取得とフォールバック（救済措置） ---
-  
-  // 1. まずは見出し(h4)の中からリンクを探す
-  let linkMatch = block.headingHtml.match(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/i);
-
-  // 2. 見出しになければ本文(bodyHtml)から「詳細」という文字を含むリンクを探す
-  if (!linkMatch) {
-    const allLinks = Array.from(block.bodyHtml.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi));
-    const detailLink = allLinks.find(m => {
-      const href = m[1];
-      const text = m[2];
-      return text.includes("詳細") || href.includes("/event/");
-    });
-    linkMatch = detailLink || allLinks[0] || null;
+// 見出し・本文からイベントの優先リンクを選ぶ。
+// 優先順: 見出しリンク > 本文の「詳細」リンク > 本文の /event/ リンク > 本文先頭リンク。
+function extractPrimaryEventUrl(block, baseUrl) {
+  // まずは見出し(h4)内のリンクを使う。ここが最もイベント代表URLになりやすい。
+  const headingLinkMatch = block.headingHtml.match(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/i);
+  if (headingLinkMatch?.[1]) {
+    return new URL(headingLinkMatch[1], baseUrl).toString();
   }
 
-  // 3. 【重要】URLが取得できなかった場合は baseUrl (一覧ページ) を代入する
-  const sourceUrl = (linkMatch && linkMatch[1]) 
-    ? new URL(linkMatch[1], baseUrl).toString() 
-    : baseUrl; // null の場合は https://www.sunport-hall.jp/hall/ が入る
+  // 次に本文内のリンクを探索する。リンク文言とURLパターンの両方で優先度を決める。
+  const bodyLinks = Array.from(
+    block.bodyHtml.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)
+  );
+  if (bodyLinks.length === 0) {
+    return null;
+  }
 
-  // ----------------------------------------------------
+  // リンクテキストはタグ除去+整形して判定する。
+  const candidates = bodyLinks.map((match) => ({
+    href: match[1],
+    text: normalizeHeadingLikeTitle(stripTagsCompact(match[2])),
+  }));
+
+  const detailTextLink = candidates.find((item) => item.text.includes("詳細"));
+  if (detailTextLink?.href) {
+    return new URL(detailTextLink.href, baseUrl).toString();
+  }
+
+  const eventPathLink = candidates.find((item) => item.href.includes("/event/"));
+  if (eventPathLink?.href) {
+    return new URL(eventPathLink.href, baseUrl).toString();
+  }
+
+  // 最後のフォールバックとして本文先頭リンクを使う。
+  return candidates[0]?.href ? new URL(candidates[0].href, baseUrl).toString() : null;
+}
+
+// 見出しと本文からイベントデータを構築する。
+function buildEventFromBlock(block, baseUrl) {
+  const headingText = normalizeHeadingLikeTitle(stripTagsCompact(block.headingHtml));
+  if (!headingText) return null;
+  // source_url は「イベント固有URL」を優先して設定する。
+  // 取得できない場合でも、データ参照先を失わないために一覧ページURLを必ず設定する。
+  // （運用要件: source_url を null にしない）
+  const sourceUrl = extractPrimaryEventUrl(block, baseUrl) || baseUrl;
 
   const lines = htmlToLines(block.bodyHtml);
   const dateLine = lines[0] || "";
@@ -198,7 +196,7 @@ function buildEventFromBlock(block, baseUrl) {
     date_from: dateMatch.dateIso,
     date_to: dateMatch.dateIso,
     venue_name: venueName,
-    source_url: sourceUrl, // 取得に失敗していても baseUrl がセットされる
+    source_url: sourceUrl,
     open_time: openTime,
     start_time: startTime,
     end_time: endTime,
