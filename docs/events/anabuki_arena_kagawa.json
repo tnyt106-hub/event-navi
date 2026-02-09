@@ -685,6 +685,28 @@
       }
     },
     {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-07-01",
+      "date_to": "2026-07-01",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1146/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "【DREAMS COME TRUE】DREAMS COME TRUE CONCERT TOUR 2026",
       "date_from": "2026-07-18",
       "date_to": "2026-07-19",
@@ -696,6 +718,50 @@
       "price": "指定席　¥12,000（税込）\r\n注釈付指定席　¥11,000（税込）\r\n立見　¥11,000（税込）",
       "contact": "YUMEBANCHI（広島）　\r\n082-249-3571（平日12:00〜17:00）",
       "source_url": "https://kagawa-arena.com/event/1000/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-07-29",
+      "date_to": "2026-07-29",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1147/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-08-19",
+      "date_to": "2026-08-19",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1148/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,
