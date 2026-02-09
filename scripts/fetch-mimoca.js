@@ -10,6 +10,7 @@ const { URL } = require("url");
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
+const { parseJsonOrThrowTyped } = require("./lib/json");
 const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitespace } = require("./lib/text");
@@ -497,7 +498,7 @@ function loadExistingData() {
 
   const raw = fs.readFileSync(OUTPUT_PATH, "utf8");
   try {
-    const parsed = JSON.parse(raw);
+    const parsed = parseJsonOrThrowTyped(raw, `existing data (${OUTPUT_PATH})`);
     const events = Array.isArray(parsed.events) ? parsed.events : [];
     const filteredEvents = events.filter((eventItem) => {
       // MIMOCA 以外のドメインや URL 不在は混入防止のため除外する。

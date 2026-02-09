@@ -9,6 +9,7 @@ const { validateFinalData } = require("./lib/schema");
 const { parseIsoDateStrict } = require("./lib/date");
 const { writeJsonPretty } = require("./lib/io");
 const { handleCliFatalError } = require("./lib/cli_error");
+const { parseJsonOrThrowTyped } = require("./lib/json");
 
 // タグのラベル定義は JSON に集約して UI でも使えるようにしておく
 const TAG_LABELS_PATH = path.join(__dirname, "..", "docs", "data", "event-tags.json");
@@ -341,7 +342,7 @@ function readJsonFileSafely(filePath) {
   if (!raw.trim()) {
     throw new Error("ファイルが空です");
   }
-  return JSON.parse(raw);
+  return parseJsonOrThrowTyped(raw, `events file (${filePath})`);
 }
 
 // ファイルを読み込み、タグ付けして保存する
@@ -388,7 +389,7 @@ function processEventsFile(filePath, options) {
 function loadTagLabels() {
   if (!fs.existsSync(TAG_LABELS_PATH)) return null;
   const raw = fs.readFileSync(TAG_LABELS_PATH, "utf-8");
-  return JSON.parse(raw);
+  return parseJsonOrThrowTyped(raw, `tag labels (${TAG_LABELS_PATH})`);
 }
 
 function resolveTargetPath(target) {

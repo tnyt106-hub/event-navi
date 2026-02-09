@@ -22,6 +22,7 @@ const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
 const { writeTextAtomic } = require("./lib/io");
+const { parseJsonOrThrowTyped, parseJsonOrFallback } = require("./lib/json");
 const {
   exitCodeToErrorType,
   normalizeErrorType,
@@ -316,7 +317,7 @@ function loadConfig() {
     );
   }
   const raw = fs.readFileSync(configPath, "utf8");
-  const json = JSON.parse(raw);
+  const json = parseJsonOrThrowTyped(raw, `run-all config (${configPath})`);
 
   if (!json || typeof json !== "object") {
     throw new Error("config JSON の形式が不正です。");
@@ -552,7 +553,8 @@ function loadOutputCache(cachePath) {
   if (!fs.existsSync(cachePath)) return {};
   try {
     const raw = fs.readFileSync(cachePath, "utf8");
-    const parsed = JSON.parse(raw);
+    // キャッシュ破損時は処理継続を優先し、空キャッシュとして扱う。
+    const parsed = parseJsonOrFallback(raw, {});
     return parsed && typeof parsed === "object" ? parsed : {};
   } catch (e) {
     return {};
@@ -735,7 +737,7 @@ async function main() {
     const scriptPathAbs = resolveScriptPath(task.script);
 
     if (!scriptPathAbs) {
-      loggerWithConfig.warn(`${label}: script が未指定のためスキップ`);
+      loggerWithConfig.warn(`${label}: script が未指定のため失敗`);
       failCount += 1;
       taskResults.push(createTaskResult(task, "fail", 0, "script 未指定"));
       failed.push(task.id || "(no-id)");
@@ -747,7 +749,7 @@ async function main() {
 
     if (!fs.existsSync(scriptPathAbs)) {
       loggerWithConfig.warn(
-        `${label}: script が存在しないためスキップ -> ${scriptPathAbs}`
+        `${label}: script が存在しないため失敗 -> ${scriptPathAbs}`
       );
       failCount += 1;
       taskResults.push(createTaskResult(task, "fail", 0, "script 不存在"));
