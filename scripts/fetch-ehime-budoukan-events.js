@@ -3,7 +3,7 @@ const { fetchHtml } = require("./lib/http");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { handleCliFatalError } = require("./lib/cli_error");
 const { decodeHtmlEntities, stripTags } = require("./lib/text");
-const { createEvent, createRootStructure } = require("./lib/schema");
+const { createEvent } = require("./lib/schema");
 const { extractDateRange } = require("./lib/date");
 
 const VENUE_ID = "ehime-budoukan";
@@ -92,11 +92,11 @@ async function main() {
     ).values());
 
     // 5. 保存
-    const resultData = createRootStructure(VENUE_ID, uniqueEvents);
+    // 保存処理は共通関数に統一し、イベントJSONの項目揺れを防ぐ。
     finalizeAndSaveEvents({
-      venueId: resultData.venue_id,
+      venueId: VENUE_ID,
       outputPath: OUTPUT_PATH,
-      events: resultData.events,
+      events: uniqueEvents,
     });
 
     console.log(`[SUCCESS] 抽出完了: ${uniqueEvents.length} 件のイベントを保存しました。`);

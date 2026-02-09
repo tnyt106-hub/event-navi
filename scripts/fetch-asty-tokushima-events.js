@@ -4,7 +4,7 @@ const { fetchHtml } = require("./lib/http");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { handleCliFatalError } = require("./lib/cli_error");
 const { normalizeWhitespace } = require("./lib/text");
-const { createEvent, createRootStructure, validateFinalData } = require("./lib/schema");
+const { createEvent, validateFinalData } = require("./lib/schema");
 
 const VENUE_ID = "asty-tokushima";
 const BASE_URL = "https://www.asty-tokushima.jp";
@@ -95,11 +95,11 @@ async function main() {
     }
 
     validateFinalData(finalEvents, { minEvents: 1 });
-    const result = createRootStructure(VENUE_ID, finalEvents);
+    // 保存処理は共通関数に統一し、last_success_at などの整形を一元化する。
     finalizeAndSaveEvents({
-      venueId: result.venue_id,
+      venueId: VENUE_ID,
       outputPath: OUTPUT_PATH,
-      events: result.events,
+      events: finalEvents,
     });
 
     const duration = ((Date.now() - startTime) / 1000).toFixed(1);
