@@ -106,7 +106,7 @@ function extractHrefFromBlock(blockHtml, baseUrl) {
 
 // 候補URLを順に試し、最初に取得できたHTMLと採用URLを返す。
 async function fetchListHtmlWithFallback() {
-  // 一時的な切り替えやデバッグに使えるよう環境変数でも上書き可能にする。
+  // 取得元の切り替えに対応できるよう、環境変数でも上書き可能にする。
   const envUrl = process.env.EHIME_ART_EVENT_URL;
   const candidates = envUrl ? [envUrl, ...LIST_URL_CANDIDATES] : LIST_URL_CANDIDATES;
   const tried = [];

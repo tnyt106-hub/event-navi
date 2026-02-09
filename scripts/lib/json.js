@@ -33,11 +33,8 @@ function parseJsonOrFallback(text, fallbackValue) {
   }
 }
 
-// 注意:
-// - 競合解消時に「safe変数の定義だけ落ちる / 関数定義だけ落ちる」と、
-//   module.exports 評価時に ReferenceError が起こり得る。
-// - その再発を防ぐため、exports 側で typeof 判定を直接行い、
-//   欠落時は同等のローカル実装へ即時フォールバックする。
+// exports では typeof 判定を使い、関数参照が欠落していても
+// 同等のローカル実装へフォールバックできる形にしておく。
 module.exports = {
   parseJsonOrThrowTyped,
   parseJsonOrFallback:
