@@ -191,6 +191,35 @@ function normalizeLogConfig(rawLog) {
   };
 }
 
+function normalizeQualityGateConfig(rawQualityGate) {
+  // 品質ゲートは「施設単位」の欠損率判定を行うための設定。
+  // ユーザーが未設定でも安全に動くよう、デフォルト値を持たせる。
+  const titleMissingWarnThreshold = parseNumber(
+    rawQualityGate?.titleMissingWarnThreshold,
+    0.01
+  );
+  const titleMissingFailThreshold = parseNumber(
+    rawQualityGate?.titleMissingFailThreshold,
+    0.03
+  );
+  const dateMissingWarnThreshold = parseNumber(
+    rawQualityGate?.dateMissingWarnThreshold,
+    0.01
+  );
+  const dateMissingFailThreshold = parseNumber(
+    rawQualityGate?.dateMissingFailThreshold,
+    0.03
+  );
+
+  return {
+    enabled: parseBoolean(rawQualityGate?.enabled, true),
+    titleMissingWarnThreshold,
+    titleMissingFailThreshold,
+    dateMissingWarnThreshold,
+    dateMissingFailThreshold,
+  };
+}
+
 function normalizeConfig(raw) {
   const tasks = Array.isArray(raw.tasks) ? raw.tasks : [];
   const allowSharedOutputs = Array.isArray(raw.allowSharedOutputs)
@@ -205,6 +234,7 @@ function normalizeConfig(raw) {
     defaultRetryDelaySeconds: parseNumber(raw.defaultRetryDelaySeconds, 0),
     stopOnError: parseBoolean(raw.stopOnError, false),
     log: normalizeLogConfig(raw.log),
+    qualityGate: normalizeQualityGateConfig(raw.qualityGate),
     allowSharedOutputs,
     tasks,
   };
@@ -649,6 +679,127 @@ ${String(result?.stdoutText || "")}`;
   return detected ? normalizeErrorType(detected) : ERROR_TYPES.UNKNOWN;
 }
 
+function isMissingText(value) {
+  return typeof value !== "string" || value.trim().length === 0;
+}
+
+function toPercent(rate) {
+  return `${(rate * 100).toFixed(2)}%`;
+}
+
+function classifyRate(rate, warnThreshold, failThreshold) {
+  // 例: 0〜1% OK, 1〜3% warn, 3%超 fail。
+  if (rate > failThreshold) return "fail";
+  if (rate > warnThreshold) return "warn";
+  return "ok";
+}
+
+function isEventJsonOutputPath(outputPath) {
+  const normalized = String(outputPath || "").replace(/\\/g, "/");
+  return /^docs\/events\/.+\.json$/i.test(normalized);
+}
+
+function evaluateQualityForTaskOutputs(task, outputPaths, qualityGate, logger) {
+  if (!qualityGate?.enabled) {
+    return null;
+  }
+
+  let totalEvents = 0;
+  let missingTitleCount = 0;
+  let missingDateCount = 0;
+  const checkedOutputs = [];
+
+  for (const outputPath of outputPaths) {
+    if (!isEventJsonOutputPath(outputPath)) {
+      continue;
+    }
+
+    const absPath = path.isAbsolute(outputPath)
+      ? outputPath
+      : path.join(REPO_ROOT, outputPath);
+    if (!fs.existsSync(absPath)) {
+      // 成功したはずのタスクで出力が無い場合、根本的な異常として失敗扱いにする。
+      return {
+        status: "fail",
+        detail: `quality_gate output missing: ${outputPath}`,
+      };
+    }
+
+    const raw = fs.readFileSync(absPath, "utf8");
+    const parsed = parseJsonOrThrowTyped(raw, `quality gate (${outputPath})`);
+    const events = Array.isArray(parsed?.events) ? parsed.events : null;
+    if (!events) {
+      return {
+        status: "fail",
+        detail: `quality_gate invalid structure: ${outputPath} (events 配列がありません)`,
+      };
+    }
+
+    checkedOutputs.push(outputPath);
+    totalEvents += events.length;
+
+    events.forEach((event) => {
+      if (isMissingText(event?.title)) {
+        missingTitleCount += 1;
+      }
+
+      // date が将来追加されても対応できるよう、date/date_from/date_to のいずれかを許容する。
+      const hasDate =
+        !isMissingText(event?.date) ||
+        !isMissingText(event?.date_from) ||
+        !isMissingText(event?.date_to);
+      if (!hasDate) {
+        missingDateCount += 1;
+      }
+    });
+  }
+
+  if (checkedOutputs.length === 0) {
+    return null;
+  }
+
+  if (totalEvents === 0) {
+    // 0件は各 fetch スクリプト側で異常終了する前提。
+    // ここでは追加の情報として警告を残す。
+    return {
+      status: "warn",
+      detail: "quality_gate events=0",
+    };
+  }
+
+  const titleMissingRate = missingTitleCount / totalEvents;
+  const dateMissingRate = missingDateCount / totalEvents;
+  const titleLevel = classifyRate(
+    titleMissingRate,
+    qualityGate.titleMissingWarnThreshold,
+    qualityGate.titleMissingFailThreshold
+  );
+  const dateLevel = classifyRate(
+    dateMissingRate,
+    qualityGate.dateMissingWarnThreshold,
+    qualityGate.dateMissingFailThreshold
+  );
+
+  const combinedStatus =
+    titleLevel === "fail" || dateLevel === "fail"
+      ? "fail"
+      : titleLevel === "warn" || dateLevel === "warn"
+        ? "warn"
+        : "ok";
+
+  const detail =
+    `quality_gate events=${totalEvents}` +
+    ` title_missing=${missingTitleCount}/${totalEvents}(${toPercent(titleMissingRate)})` +
+    ` date_missing=${missingDateCount}/${totalEvents}(${toPercent(dateMissingRate)})`;
+
+  logger.task(`${task.id}: ${detail}`);
+
+  return {
+    status: combinedStatus,
+    detail,
+  };
+}
+
 // ------------- main -------------
 
 async function main() {
@@ -827,14 +978,50 @@ async function main() {
 
     if (!skipped && result) {
       if (result.code === 0) {
-        okCount += 1;
-        loggerWithConfig.task(
-          `${displayId}: done (${msToSec(elapsed)}s) exit=0`
+        const qualityResult = evaluateQualityForTaskOutputs(
+          task,
+          outputPaths,
+          config.config.qualityGate,
+          loggerWithConfig
         );
-        logHook(task.onSuccess, loggerWithConfig, `${displayId} onSuccess`);
-        taskResults.push(
-          createTaskResult(task, "success", msToSecNumber(elapsed))
-        );
+
+        if (qualityResult?.status === "fail") {
+          failCount += 1;
+          loggerWithConfig.warn(
+            `${displayId}: fail (${msToSec(elapsed)}s) exit=0 ${qualityResult.detail}`
+          );
+          taskResults.push(
+            createTaskResult(
+              task,
+              "fail",
+              msToSecNumber(elapsed),
+              qualityResult.detail
+            )
+          );
+          failed.push(displayId);
+          if (config.config.stopOnError && !taskSettings.continueOnError) {
+            break;
+          }
+        } else {
+          if (qualityResult?.status === "warn") {
+            loggerWithConfig.warn(
+              `${displayId}: warning ${qualityResult.detail}`
+            );
+          }
+          okCount += 1;
+          loggerWithConfig.task(
+            `${displayId}: done (${msToSec(elapsed)}s) exit=0`
+          );
+          logHook(task.onSuccess, loggerWithConfig, `${displayId} onSuccess`);
+          taskResults.push(
+            createTaskResult(
+              task,
+              "success",
+              msToSecNumber(elapsed),
+              qualityResult?.detail
+            )
+          );
+        }
       } else {
         failCount += 1;
         const errorType = detectErrorTypeFromTaskResult(result);
