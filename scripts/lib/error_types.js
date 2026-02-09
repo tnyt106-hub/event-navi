@@ -37,8 +37,20 @@ class TypedError extends Error {
     super(message);
     this.name = "TypedError";
     this.type = normalizeErrorType(type);
-    if (options.cause) {
-      this.cause = options.cause;
+    // HTTP ステータスなどの追加情報を details に保持し、
+    // 呼び出し側が再試行や分岐判定に使えるようにする。
+    const { cause, ...details } = options || {};
+    if (Object.keys(details).length > 0) {
+      this.details = details;
+
+      // 既存コードの互換性のため、よく使うキーはトップレベルにも写す。
+      // 例: error.statusCode / error.retryable を直接参照する実装。
+      for (const [key, value] of Object.entries(details)) {
+        this[key] = value;
+      }
+    }
+    if (cause) {
+      this.cause = cause;
     }
   }
 }
