@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("./lib/date_window");
 const { writeJsonPretty } = require("./lib/io");
+const { parseJsonOrThrowTyped } = require("./lib/json");
 
 // テンプレートは運用データではないため、自動更新対象から除外する。
 const EXCLUDED_FILE_NAMES = new Set(["template.json"]);
@@ -62,7 +63,7 @@ function main() {
         throw new Error("ファイルが空です");
       }
 
-      const data = JSON.parse(raw);
+      const data = parseJsonOrThrowTyped(raw, `events file (${filePath})`);
       const result = filterEvents(data, cutoffDate);
 
       if (result.skipped) {
