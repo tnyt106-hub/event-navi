@@ -13,6 +13,7 @@ const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTagsCompact } = require("./lib/text");
+const { normalizeHeadingLikeTitle, extractLabeledValue: extractLabeledValueFromLines } = require("./lib/scraping");
 
 const ENTRY_URL = "https://www.sunport-hall.jp/hall/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "sunport_hall_takamatsu.json");
@@ -34,14 +35,6 @@ function htmlToLines(html) {
     .split("\n")
     .map((line) => line.replace(/\s+/g, " ").trim())
     .filter(Boolean);
-}
-
-// タイトル用に文字列を整形する。
-function normalizeTitle(text) {
-  return String(text || "")
-    .replace(/\s+/g, " ")
-    .replace(/^[\s\-–—―~〜～:：・|｜]+/, "")
-    .trim();
 }
 
 // 行の中から日付を ISO 形式 (YYYY-MM-DD) に変換する。
@@ -101,22 +94,10 @@ function extractVenueName(line, dateMatch) {
 
 // ラベル付き情報（入場料等・お問合せ）を抽出する。
 function extractLabeledValue(lines, labels) {
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    for (const label of labels) {
-      if (line.includes(label)) {
-        const cleaned = line.replace(label, "").replace(/[:：\-–—]/g, " ").trim();
-        if (cleaned) {
-          return cleaned.replace(/\s+/g, " ");
-        }
-        const nextLine = lines[i + 1];
-        if (nextLine) {
-          return nextLine.replace(/\s+/g, " ").trim();
-        }
-      }
-    }
-  }
-  return null;
+  // 共通ラベル抽出は空文字を返すため、このスクリプトの従来仕様（未検出は null）へ変換する。
+  const value = extractLabeledValueFromLines(lines, labels);
+  if (!value) return null;
+  return value.replace(/\s+/g, " ").trim() || null;
 }
 
 // 月別ページに含まれる「来月のイベント」リンクを探す。
@@ -125,7 +106,7 @@ function findNextMonthUrl(html, baseUrl) {
 
   for (const match of html.matchAll(anchorRegex)) {
     const href = match[1];
-    const text = normalizeTitle(stripTagsCompact(match[2]));
+    const text = normalizeHeadingLikeTitle(stripTagsCompact(match[2]));
     if (text.includes("来月のイベント") || text.includes("次月のイベント") || text.includes("翌月のイベント")) {
       return href ? new URL(href, baseUrl).toString() : null;
     }
@@ -155,7 +136,7 @@ function extractEventBlocks(html) {
 // 見出しと本文からイベントデータを構築する。
 // 見出しと本文からイベントデータを構築する。
 function buildEventFromBlock(block, baseUrl) {
-  const headingText = normalizeTitle(stripTagsCompact(block.headingHtml));
+  const headingText = normalizeHeadingLikeTitle(stripTagsCompact(block.headingHtml));
   if (!headingText) return null;
 
   // --- 【修正箇所】URL取得とフォールバック（救済措置） ---
