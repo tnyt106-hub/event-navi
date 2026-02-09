@@ -22,5 +22,5 @@ function parseJsonOrThrowTyped(text, contextLabel = "JSON") {
 }
 module.exports = {
   parseJsonOrThrowTyped,
-  parseJsonOrFallback,
+  parseJsonOrFallback: safeParseJsonOrFallback,
 };
