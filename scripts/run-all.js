@@ -737,7 +737,7 @@ async function main() {
     if (!scriptPathAbs) {
       loggerWithConfig.warn(`${label}: script が未指定のためスキップ`);
       failCount += 1;
-      taskResults.push(createTaskResult(task, "skip", 0, "script 未指定"));
+      taskResults.push(createTaskResult(task, "fail", 0, "script 未指定"));
       failed.push(task.id || "(no-id)");
       if (config.config.stopOnError && !taskSettings.continueOnError) {
         break;
@@ -750,7 +750,7 @@ async function main() {
         `${label}: script が存在しないためスキップ -> ${scriptPathAbs}`
       );
       failCount += 1;
-      taskResults.push(createTaskResult(task, "skip", 0, "script 不存在"));
+      taskResults.push(createTaskResult(task, "fail", 0, "script 不存在"));
       failed.push(task.id || "(no-id)");
       if (config.config.stopOnError && !taskSettings.continueOnError) {
         break;

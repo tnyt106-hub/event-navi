@@ -367,8 +367,15 @@ function processEventsFile(filePath, options) {
     }
   });
 
-  // 保存前に最低限の整合性を検証し、壊れたJSONの上書きを予防する
-  validateFinalData(events, { minEvents: 1 });
+  // イベント0件は、filter-old-events 後に正しく起こり得る状態。
+  // ここで異常扱いにすると run-all の apply-tags が運用上失敗するため、
+  // 0件時は「検証不要でそのまま通す」を明示する。
+  if (events.length > 0) {
+    // 保存前に最低限の整合性を検証し、壊れたJSONの上書きを予防する
+    validateFinalData(events, { minEvents: 1 });
+  } else if (options.log) {
+    console.log("[skip] events が 0 件のためタグ付けと検証をスキップします。");
+  }
 
   if (!options.dryRun) {
     // JSON 保存は原子的に行い、書き込み途中での破損を防ぐ。
