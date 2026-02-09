@@ -20,7 +20,34 @@ function parseJsonOrThrowTyped(text, contextLabel = "JSON") {
     );
   }
 }
+
+/**
+ * JSON 文字列をパースし、失敗時は fallbackValue を返す。
+ * - キャッシュ読み込みなど「壊れていても空扱いで続行したい」用途向け。
+ */
+function parseJsonOrFallback(text, fallbackValue) {
+  try {
+    return JSON.parse(text);
+  } catch (_error) {
+    return fallbackValue;
+  }
+}
+
+// 注意:
+// - 競合解消時に「safe変数の定義だけ落ちる / 関数定義だけ落ちる」と、
+//   module.exports 評価時に ReferenceError が起こり得る。
+// - その再発を防ぐため、exports 側で typeof 判定を直接行い、
+//   欠落時は同等のローカル実装へ即時フォールバックする。
 module.exports = {
   parseJsonOrThrowTyped,
-  parseJsonOrFallback: safeParseJsonOrFallback,
+  parseJsonOrFallback:
+    typeof parseJsonOrFallback === "function"
+      ? parseJsonOrFallback
+      : function parseJsonOrFallbackFallback(text, fallbackValue) {
+          try {
+            return JSON.parse(text);
+          } catch (_error) {
+            return fallbackValue;
+          }
+        },
 };
