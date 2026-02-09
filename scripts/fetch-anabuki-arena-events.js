@@ -2,11 +2,14 @@
 // 使い方: node scripts/fetch-anabuki-arena-events.js
 
 const path = require("path");
-const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
+// HTTP 取得は共通ユーティリティへ寄せて、リトライ/タイムアウト/エラー分類を統一する。
+const { fetchText } = require("./lib/http");
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { handleCliFatalError } = require("./lib/cli_error");
+const { mapWithConcurrencyLimit } = require("./lib/concurrency");
 const { decodeHtmlEntities, stripTagsCompact, normalizeDecodedText } = require("./lib/text");
 const { formatIsoDateFromLocalDate, parseIsoDateAsLocalStrict } = require("./lib/date");
+const { ERROR_TYPES } = require("./lib/error_types");
 
 const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "anabuki_arena_kagawa.json");
@@ -15,7 +18,6 @@ const MONTH_RANGE = 7;
 const PER_PAGE = 20; // 1ページあたりの件数を増やして効率化
 const MAX_PAGES = 50;
 const CONCURRENCY = 5; // 並列数
-const DEFAULT_TIMEOUT_MS = 30000;
 
 /**
  * ユーティリティ関数
@@ -71,23 +73,6 @@ function extractTimesFromDetailHtml(html) {
 }
 
 /**
- * HTTP 取得
- */
-async function fetchWithTimeout(url) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
-  try {
-    const res = await fetch(url, {
-      headers: { "User-Agent": "Mozilla/5.0", "Accept": "text/html,application/json" },
-      signal: controller.signal
-    });
-    return { status: res.status, text: await res.text() };
-  } finally {
-    clearTimeout(timeoutId);
-  }
-}
-
-/**
  * REST APIから全投稿を取得
  */
 async function fetchAllPostsFromApi() {
@@ -95,34 +80,26 @@ async function fetchAllPostsFromApi() {
   for (let page = 1; page <= MAX_PAGES; page++) {
     const url = `${REST_URL}&per_page=${PER_PAGE}&page=${page}`;
     console.log(`[fetch] API page ${page}...`);
-    const { status, text } = await fetchWithTimeout(url);
-    console.log(`[diagnose] status=${status}`);
-
-    if (status !== 200) {
-      if (status === 400 && text.includes("rest_post_invalid_page_number")) break;
-      throw new Error(`API error: ${status}`);
+    let text = "";
+    try {
+      text = await fetchText(url, {
+        headers: { Accept: "application/json,text/html" },
+        checkErrorIndicators: false,
+      });
+    } catch (error) {
+      // WordPress REST API は最終ページ到達時に 400 を返すことがある。
+      // 旧実装の「invalid page で終了」を維持するため、ここだけ打ち切り扱いにする。
+      if (error?.type === ERROR_TYPES.NETWORK && error?.statusCode === 400) {
+        break;
+      }
+      throw error;
     }
+
     const data = JSON.parse(text);
     if (!data.length) break;
     allPosts.push(...data);
   }
   return allPosts;
-}
-
-/**
- * 並列実行制御関数
- */
-async function mapWithConcurrency(items, concurrency, fn) {
-  const results = [];
-  const batches = [];
-  for (let i = 0; i < items.length; i += concurrency) {
-    batches.push(items.slice(i, i + concurrency));
-  }
-  for (const batch of batches) {
-    const batchResults = await Promise.all(batch.map(fn));
-    results.push(...batchResults);
-  }
-  return results;
 }
 
 async function main() {
@@ -138,7 +115,7 @@ async function main() {
   console.log(`[fetch] API total posts: ${posts.length}`);
 
   // 2. 詳細補完を含めた並列処理
-  const events = await mapWithConcurrency(posts, CONCURRENCY, async (post) => {
+  const events = await mapWithConcurrencyLimit(posts, CONCURRENCY, async (post) => {
     const title = htmlToText(post?.title?.rendered || "");
     const sourceUrl = post?.link?.trim() || "";
     const startDateRaw = post?.acf?.start_date?.trim() || "";
@@ -164,7 +141,7 @@ async function main() {
 
     // 時刻が欠けている場合のみ詳細ページをスクレイピング
     if (!startTime || !openTime) {
-      const { text: html } = await fetchWithTimeout(sourceUrl).catch(() => ({ text: null }));
+      const html = await fetchText(sourceUrl).catch(() => null);
       if (html) {
         const refined = extractTimesFromDetailHtml(html);
         if (!openTime && refined.open) openTime = refined.open;
@@ -198,10 +175,6 @@ async function main() {
     venueId: VENUE_ID,
     outputPath: OUTPUT_PATH,
     events: validEvents,
-    lastSuccessAt: formatDate(new Date()),
-    beforeWrite(data) {
-      applyTagsToEventsData(data, { overwrite: false });
-    },
   });
 
   console.log(`\n[Summary]`);

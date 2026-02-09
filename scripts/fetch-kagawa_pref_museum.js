@@ -5,7 +5,6 @@
 const path = require("path");
 const { URL } = require("url");
 
-const { applyTagsToEventsData } = require("../tools/tagging/apply_tags");
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
 const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
@@ -222,10 +221,6 @@ async function main() {
       venueId: VENUE_ID,
       outputPath: OUTPUT_PATH,
       events: events.sort((a, b) => a.date_from.localeCompare(b.date_from)),
-      lastSuccessAt: formatDate(new Date()),
-      beforeWrite(data) {
-        applyTagsToEventsData(data, { overwrite: false });
-      },
     });
   } catch (error) {
     handleCliFatalError(error, { prefix: "失敗" });
