@@ -10,8 +10,16 @@ const { fetchText } = require("./lib/http");
 // JSON 保存処理を共通化する。
 const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { handleCliFatalError } = require("./lib/cli_error");
+const { sleep, mapWithConcurrencyLimit } = require("./lib/concurrency");
+const { getJstTodayUtcDate } = require("./lib/date");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks } = require("./lib/text");
+const {
+  normalizeFullWidthBasic,
+  extractTextLinesFromHtml,
+  extractLabeledValue,
+  toIsoDate,
+} = require("./lib/scraping");
 
 const VENUE_ID = "kenbun";
 const VENUE_NAME = "愛媛県県民文化会館";
@@ -36,20 +44,6 @@ const DETAIL_FETCH_RETRY_COUNT = 2;
 const DETAIL_FETCH_RETRY_BASE_DELAY_MS = 500;
 
 let lastListStats = { listPages: 0, listLinks: 0 };
-
-// JST 基準で "今日 00:00" を作る（Date.now + 9h 方式）。
-function buildTodayJst() {
-  const now = new Date();
-  const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000);
-  return new Date(Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()));
-}
-
-// 指定ミリ秒だけ待機する（アクセス間隔調整用）。
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
 
 // 月別一覧ページの URL から年・月を抽出する。
 function extractMonthFromUrl(url) {
@@ -96,54 +90,6 @@ function isMonthInRange(year, month, start, end) {
   const monthEnd = new Date(Date.UTC(year, month, 1));
   monthEnd.setUTCDate(monthEnd.getUTCDate() - 1);
   return monthStart <= end && monthEnd >= start;
-}
-
-// 全角数字とコロンを半角へ正規化する。
-function normalizeFullWidth(text) {
-  if (!text) return "";
-  return text
-    .replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0))
-    .replace(/：/g, ":")
-    .replace(/[‐‑‒–—―ー]/g, "-");
-}
-
-// YYYY年M月D日 形式を ISO に変換する。
-function toIsoDate(year, month, day) {
-  const yyyy = String(year);
-  const mm = String(month).padStart(2, "0");
-  const dd = String(day).padStart(2, "0");
-  return `${yyyy}-${mm}-${dd}`;
-}
-
-// HTML から行単位のテキストを作る（改行を保ったまま整形）。
-function extractTextLines(html) {
-  const withLineBreaks = stripTagsWithLineBreaks(html);
-  const decoded = decodeHtmlEntities(withLineBreaks);
-  return decoded
-    .split(/\r?\n/)
-    .map((line) => normalizeWhitespace(line))
-    .filter((line) => line.length > 0);
-}
-
-// ラベル行から値を抽出する（例: "開催日：2024年2月3日"）。
-function extractLabeledValue(lines, label) {
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (!line.includes(label)) {
-      continue;
-    }
-
-    const match = line.match(new RegExp(`${label}\\s*[:：]?\\s*(.+)`));
-    if (match && match[1]) {
-      return match[1].trim();
-    }
-
-    if (line === label && lines[i + 1]) {
-      return lines[i + 1].trim();
-    }
-  }
-
-  return "";
 }
 
 // 一覧 HTML から月別一覧ページのリンクを抽出する。
@@ -199,7 +145,7 @@ async function fetchAllDetailLinks(seedUrl) {
   const queue = [];
   const detailLinks = new Set();
   let listLinks = 0;
-  const todayJst = buildTodayJst();
+  const todayJst = getJstTodayUtcDate();
   const rangeStart = new Date(todayJst);
   rangeStart.setUTCDate(rangeStart.getUTCDate() - PAST_DAYS_LIMIT);
   const rangeEnd = new Date(todayJst);
@@ -301,7 +247,7 @@ async function fetchAllDetailLinks(seedUrl) {
 
 // 詳細ページからタイトルを抽出する。
 function extractTitleFromDetail(html) {
-  const lines = extractTextLines(html);
+  const lines = extractTextLinesFromHtml(html);
   const titleFromLabel = extractLabeledValue(lines, "イベント名");
   if (titleFromLabel) {
     return titleFromLabel;
@@ -329,10 +275,10 @@ function extractTitleFromDetail(html) {
 
 // 詳細ページから開催日を抽出する。
 function extractJapaneseDateFromDetail(html) {
-  const lines = extractTextLines(html);
+  const lines = extractTextLinesFromHtml(html);
   const dateText = extractLabeledValue(lines, "開催日");
   const candidateText = dateText || lines.join(" ");
-  const normalized = normalizeFullWidth(candidateText);
+  const normalized = normalizeFullWidthBasic(candidateText);
   const match = normalized.match(/([0-9]{4})年([0-9]{1,2})月([0-9]{1,2})日/);
   if (!match) return null;
   return toIsoDate(match[1], match[2], match[3]);
@@ -340,8 +286,8 @@ function extractJapaneseDateFromDetail(html) {
 
 // 詳細ページから開場・開演・終演時刻を抽出する。
 function extractTimeFields(html) {
-  const lines = extractTextLines(html);
-  const joined = normalizeFullWidth(lines.join(" "));
+  const lines = extractTextLinesFromHtml(html);
+  const joined = normalizeFullWidthBasic(lines.join(" "));
 
   const extractTime = (label) => {
     const regex = new RegExp(`${label}\\s*[:：]?\\s*([0-9]{1,2}:[0-9]{2})`);
@@ -358,18 +304,18 @@ function extractTimeFields(html) {
 
 // 詳細ページから入場料などの価格情報を抽出する。
 function extractPrice(html) {
-  const lines = extractTextLines(html);
+  const lines = extractTextLinesFromHtml(html);
   const value = extractLabeledValue(lines, "入場料など") || extractLabeledValue(lines, "入場料");
   return value || null;
 }
 
 // 詳細ページから連絡先 (TEL) を抽出する。
 function extractContact(html) {
-  const lines = extractTextLines(html);
+  const lines = extractTextLinesFromHtml(html);
   const phonePattern = /\d{2,4}-\d{2,4}-\d{3,4}/;
 
   for (const line of lines) {
-    const normalized = normalizeFullWidth(line);
+    const normalized = normalizeFullWidthBasic(line);
     if (!/TEL|電話/.test(normalized)) {
       continue;
     }
@@ -503,34 +449,18 @@ async function main() {
     console.log(`[fetch] detail_links_unique: ${detailLinks.size}`);
     console.log(`[fetch] detail_concurrency: ${DETAIL_CONCURRENCY}`);
 
-    const events = [];
-    let currentIndex = 0;
-    const totalLinks = detailLinksList.length;
-
-    // 共有インデックスから次の URL を取り出す。
-    const pickNextDetailUrl = () => {
-      if (currentIndex >= totalLinks) {
-        return null;
-      }
-      const url = detailLinksList[currentIndex];
-      currentIndex += 1;
-      return url;
-    };
-
     // 詳細ページ取得は同時数制限付きで並列処理する。
-    const worker = async (workerId) => {
-      for (;;) {
-        const detailUrl = pickNextDetailUrl();
-        if (!detailUrl) {
-          break;
-        }
-
+    // 共通 mapWithConcurrencyLimit を使い、ワーカーループ実装の重複を避ける。
+    const detailResults = await mapWithConcurrencyLimit(
+      detailLinksList,
+      DETAIL_CONCURRENCY,
+      async (detailUrl) => {
         let normalizedUrl = "";
         try {
           normalizedUrl = new URL(detailUrl).toString();
         } catch (error) {
           excludedInvalid += 1;
-          continue;
+          return null;
         }
 
         // 取得前に小さな待機を挟み、アクセス集中を避ける。
@@ -548,19 +478,18 @@ async function main() {
           const event = buildEventFromDetail(detailHtml, normalizedUrl);
           if (!event) {
             excludedInvalid += 1;
-            continue;
+            return null;
           }
-          events.push(event);
+          return event;
         } catch (error) {
           detailFetchFailed += 1;
           console.warn(`詳細取得に失敗: ${normalizedUrl} (${error.message})`);
+          return null;
         }
       }
-    };
+    );
 
-    // 指定された同時数だけワーカーを起動する。
-    const workers = Array.from({ length: DETAIL_CONCURRENCY }, (_, index) => worker(index));
-    await Promise.all(workers);
+    const events = detailResults.filter(Boolean);
 
     const dedupedEvents = dedupeEvents(events);
     const eventsBuilt = dedupedEvents.length;
