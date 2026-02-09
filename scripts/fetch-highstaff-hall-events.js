@@ -12,6 +12,7 @@ const { finalizeAndSaveEvents } = require("./lib/fetch_output");
 const { handleCliFatalError } = require("./lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
 const { decodeHtmlEntities, stripTags, normalizeWhitespace } = require("./lib/text");
+const { normalizeHeadingLikeTitle } = require("./lib/scraping");
 
 const ENTRY_URL = "https://www.kanon-kaikan.jp/event/";
 const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "highstaff_hall.json");
@@ -19,14 +20,6 @@ const VENUE_ID = "highstaff_hall";
 const SECTION_TITLE = "開催予定の自主事業";
 // セクション終端候補を配列化し、文言変更に追従しやすくする。
 const SECTION_END_MARKERS = ["お預かりチケット", "開催終了", "自主事業アーカイブ"];
-
-// タイトル用に文字列を整形する。
-function normalizeTitle(text) {
-  return text
-    .replace(/^[\s\-–—―~〜～:：・|｜]+/, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
 
 // 見出しテキストから対象セクションのHTML断片を抽出する。
 function extractSection(html, headingText) {
@@ -84,7 +77,7 @@ function extractDateMatch(text) {
 // 日付部分を除いてタイトル文字列を生成する。
 function removeDateFromTitle(originalText, dateMatch) {
   if (!dateMatch) {
-    return normalizeTitle(originalText);
+    return normalizeHeadingLikeTitle(originalText);
   }
 
   const before = originalText.slice(0, dateMatch.index);
@@ -92,7 +85,7 @@ function removeDateFromTitle(originalText, dateMatch) {
   // 日付の直後に曜日表記がある場合は取り除く。
   after = after.replace(/^\s*[（(][^）)]+[）)]/, "");
   const combined = `${before} ${after}`;
-  return normalizeTitle(combined);
+  return normalizeHeadingLikeTitle(combined);
 }
 
 // 対象セクション内のリンクからイベント情報を作る。
