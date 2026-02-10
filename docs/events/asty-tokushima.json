@@ -1,6 +1,6 @@
 {
   "venue_id": "asty-tokushima",
-  "last_success_at": "2026-02-09",
+  "last_success_at": "2026-02-10",
   "events": [
     {
       "title": "食の宝島とくしまフェス",
@@ -575,13 +575,35 @@
       }
     },
     {
-      "title": "マイナビ 就活直前フェア 徳島会場",
+      "title": "とくしま就活ナビ 企業・団体就職ガイダンス",
+      "date_from": "2026-03-01",
+      "date_to": "2026-03-01",
+      "open_time": null,
+      "start_time": "12:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n2027年春に徳島県内の企業・団体への就職を目指す学生を対象にしたイベントです。対象：大学生・大学院生・短期大学生・専門学校生・高専生・既卒者など。",
+      "image_url": null,
+      "price": "入場無料",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1678.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "マイナビ 就職セミナー",
       "date_from": "2026-03-05",
       "date_to": "2026-03-05",
       "open_time": null,
       "start_time": "13:00",
       "end_time": null,
-      "description": "会場: 多目的ホール\n様々な企業の情報を一気に比較検討ができる合同説明会です。選考に関わる貴重な情報を収集しましょう。",
+      "description": "会場: 多目的ホール\n徳島にゆかりのある約60社が集結！パーソナルカラー診断や面接・ES・時事問題対策コーナーも！",
       "image_url": null,
       "price": "入場無料（完全予約制）",
       "contact": null,

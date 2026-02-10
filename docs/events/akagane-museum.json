@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-02-09",
+  "last_success_at": "2026-02-10",
   "events": [
     {
       "title": "展覧会 BUTTON DESIGN ボタンにおける装飾の美たち",
@@ -14,6 +14,28 @@
       "price": "300（240）円 （ ）内は20名以上の団体料金 大学生以下 無料 身体障害者手帳、療育手帳、精神障害者保健福祉手帳のいずれかをお持ちの方は無料（介助者1名 無料） ＊一般料金以外でご利用の方は、学生証や年齢確認のできるものをご持参ください。 ＊小学生以下は保護者の同伴が必要です。",
       "contact": "あかがねミュージアム運営グループ 0897-31-0305",
       "source_url": "https://akaganemuseum.jp/event/event-14108",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "展覧会 令和7年度 第13回新居浜市小中学生ふるさと学習奨励賞作品展",
+      "date_from": "2026-02-10",
+      "date_to": "2026-02-23",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: アート工房・展示スペース",
+      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
+      "price": "無料",
+      "contact": "新居浜市教育委員会学校教育課 0897-65-3501",
+      "source_url": "https://akaganemuseum.jp/event/event-14104",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -58,28 +80,6 @@
       "price": "一般：2,000円（当日2,500円） 小学生から高校生：500円（当日1,000円） ※未就学児入場不可",
       "contact": "あかがねミュージアム 0897-31-0305",
       "source_url": "https://akaganemuseum.jp/event/event-14334",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "展覧会 令和7年度 第13回新居浜市小中学生ふるさと学習奨励賞作品展",
-      "date_from": "2026-02-10",
-      "date_to": "2026-02-23",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: アート工房・展示スペース",
-      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
-      "price": "無料",
-      "contact": "新居浜市教育委員会学校教育課 0897-65-3501",
-      "source_url": "https://akaganemuseum.jp/event/event-14104",
       "source_type": null,
       "venue_name": null,
       "status": null,

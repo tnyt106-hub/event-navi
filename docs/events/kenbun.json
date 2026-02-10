@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-02-09",
+  "last_success_at": "2026-02-10",
   "events": [
     {
       "title": "宮本浩次 tour2026 新しい旅",
@@ -1984,6 +1984,28 @@
       }
     },
     {
+      "title": "(株)おの展示会",
+      "date_from": "2026-04-14",
+      "date_to": "2026-04-14",
+      "open_time": "10:00",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3701/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "令和8年度 学校法人河原学園 未来高等学校",
       "date_from": "2026-04-14",
       "date_to": "2026-04-14",
@@ -1995,6 +2017,72 @@
       "price": null,
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/3428/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "(株)おの展示会",
+      "date_from": "2026-04-15",
+      "date_to": "2026-04-15",
+      "open_time": "9:30",
+      "start_time": "9:30",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3702/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "令和8年度 学校法人河原学園",
+      "date_from": "2026-04-16",
+      "date_to": "2026-04-16",
+      "open_time": "9:00",
+      "start_time": "9:50",
+      "end_time": "11:45",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3705/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "吹奏楽コンクール 課題曲 名曲コンサート",
+      "date_from": "2026-04-19",
+      "date_to": "2026-04-19",
+      "open_time": "13:00",
+      "start_time": "13:30",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": "一般1,000円、小・中・高生500円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3706/",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -2028,6 +2116,50 @@
       }
     },
     {
+      "title": "池田屋ランドセル展示会",
+      "date_from": "2026-04-25",
+      "date_to": "2026-04-25",
+      "open_time": "10:00",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3708/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "OFFICIAL HIGE DANDISM one-man tour 2026",
+      "date_from": "2026-04-27",
+      "date_to": "2026-04-27",
+      "open_time": "18:00",
+      "start_time": "19:00",
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": "指定席9,900円、指定親子席大人9,900円、指定親子席こども4,950円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3713/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "愛媛県人権対策協議会 第66回定期大会",
       "date_from": "2026-04-28",
       "date_to": "2026-04-28",
@@ -2039,6 +2171,28 @@
       "price": "無料",
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/3471/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第97回 愛媛中央メーデー大会",
+      "date_from": "2026-04-29",
+      "date_to": "2026-04-29",
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "11:45",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3720/",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -2677,6 +2831,28 @@
       "price": "無料",
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/3632/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "Nobelbright HALL&#038;ARENA TOUR 2026",
+      "date_from": "2026-05-15",
+      "date_to": "2026-05-15",
+      "open_time": "17:30",
+      "start_time": "18:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "指定席/着席指定席￥9,000-",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3699/",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -6835,28 +7011,6 @@
       "price": "無料（池田屋HPより来場予約制）",
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/1479/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "オペラえひめ 第16回定期公演",
-      "date_from": "2025-02-09",
-      "date_to": "2025-02-09",
-      "open_time": null,
-      "start_time": "14:30",
-      "end_time": "16:30",
-      "description": null,
-      "image_url": null,
-      "price": "有料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1389/",
       "source_type": null,
       "venue_name": null,
       "status": null,

@@ -1,29 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-02-09",
+  "last_success_at": "2026-02-10",
   "events": [
-    {
-      "title": "さぬき映画祭2025上映会「黒の牛」",
-      "date_from": "2025-02-09",
-      "date_to": "2025-02-09",
-      "open_time": "09:30",
-      "start_time": "10:00",
-      "end_time": "12:20",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8309",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "小ホール さぬき映画祭2025上映会「黒の牛」 開場 09:30/開演 10:00/終演 12:20 小ホール さぬき映画祭2025上映会「からかい上手の高木さん」 開場 13:30/開演 14:00/終演 16:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "第25回香川ジュニアコーラスフェスティヴァル2025",
       "date_from": "2025-02-11",
