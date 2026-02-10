@@ -1,6 +1,6 @@
 // 愛媛県美術館の展覧会一覧ページから
 // 開催中と直近過去の展覧会情報を抽出して JSON に保存するバッチ。
-// 使い方: node scripts/fetch-ehime_prefectural_museum_of_art.js
+// 使い方: node scripts/scraping/fetch-ehime_prefectural_museum_of_art.js
 
 "use strict";
 
@@ -9,22 +9,22 @@ const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { stripTagsCompact, normalizeDecodedText } = require("./lib/text");
-const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("./lib/date_window");
+const { stripTagsCompact, normalizeDecodedText } = require("../lib/text");
+const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("../lib/date_window");
 const {
   normalizeJapaneseDateText,
   extractDatePartsFromJapaneseText,
   buildUtcDate,
   formatIsoDateFromUtcDate,
-} = require("./lib/date");
+} = require("../lib/date");
 
 const ENTRY_URL = "https://www.ehime-art.jp/exhibition/";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
 const VENUE_ID = "ehime_prefectural_museum_of_art";
 const VENUE_NAME = "愛媛県美術館";
 

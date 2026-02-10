@@ -1,21 +1,21 @@
 // ハイスタッフホール（高松市文化芸術ホール）のイベント情報ページから
 // 「開催予定の自主事業」セクションだけを抽出して保存するバッチ。
-// 使い方: node scripts/fetch-highstaff-hall-events.js
+// 使い方: node scripts/scraping/fetch-highstaff-hall-events.js
 
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // 保存前検証と総件数ログを含む共通保存処理を使う。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, stripTags, normalizeWhitespace } = require("./lib/text");
-const { normalizeHeadingLikeTitle } = require("./lib/scraping");
+const { decodeHtmlEntities, stripTags, normalizeWhitespace } = require("../lib/text");
+const { normalizeHeadingLikeTitle } = require("../lib/scraping");
 
 const ENTRY_URL = "https://www.kanon-kaikan.jp/event/";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "highstaff_hall.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "highstaff_hall.json");
 const VENUE_ID = "highstaff_hall";
 const SECTION_TITLE = "開催予定の自主事業";
 // セクション終端候補を配列化し、文言変更に追従しやすくする。

@@ -5,7 +5,7 @@
 // - マージ競合マーカー(<<<<<<< など)の残存を機械的に検知し、
 //   競合未解消のままコミットされる事故を防ぐ。
 // 使い方:
-// - node scripts/check-conflict-markers.js [対象ファイル...]
+// - node scripts/common/check-conflict-markers.js [対象ファイル...]
 // - 引数なしの場合は scripts 配下の .js を対象にする。
 
 const fs = require("fs");

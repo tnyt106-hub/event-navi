@@ -1,14 +1,14 @@
 const path = require("path");
 const cheerio = require("cheerio");
-const { fetchHtml } = require("./lib/http");
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
-const { normalizeWhitespace } = require("./lib/text");
-const { createEvent, validateFinalData } = require("./lib/schema");
+const { fetchHtml } = require("../lib/http");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
+const { normalizeWhitespace } = require("../lib/text");
+const { createEvent, validateFinalData } = require("../lib/schema");
 
 const VENUE_ID = "asty-tokushima";
 const BASE_URL = "https://www.asty-tokushima.jp";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", `${VENUE_ID}.json`);
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", `${VENUE_ID}.json`);
 
 // 並列実行数（サーバーへの優しさと速さのバランス）
 const CONCURRENCY = 3;

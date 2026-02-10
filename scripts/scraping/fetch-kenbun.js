@@ -1,30 +1,30 @@
 // 愛媛県県民文化会館（kenbun.jp）のイベント一覧から
 // 一覧ページ→詳細ページの2段階でイベント情報を取得して保存するバッチ。
-// 使い方: node scripts/fetch-kenbun.js
+// 使い方: node scripts/scraping/fetch-kenbun.js
 
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
-const { sleep, mapWithConcurrencyLimit } = require("./lib/concurrency");
-const { getJstTodayUtcDate } = require("./lib/date");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
+const { sleep, mapWithConcurrencyLimit } = require("../lib/concurrency");
+const { getJstTodayUtcDate } = require("../lib/date");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks } = require("./lib/text");
+const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks } = require("../lib/text");
 const {
   normalizeFullWidthBasic,
   extractTextLinesFromHtml,
   extractLabeledValue,
   toIsoDate,
-} = require("./lib/scraping");
+} = require("../lib/scraping");
 
 const VENUE_ID = "kenbun";
 const VENUE_NAME = "愛媛県県民文化会館";
 const ENTRY_URL = "https://www.kenbun.jp/event/";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "kenbun.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "kenbun.json");
 // 月別一覧は3年分程度を上限にガードする。
 const MAX_LIST_PAGES = 36;
 // 過去・未来の対象日数は 1 年分に制限する。

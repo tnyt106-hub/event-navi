@@ -7,8 +7,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const REPO_ROOT = path.join(__dirname, "..");
-const TEMPLATE_README_PATH = path.join(__dirname, "templates", "README.md");
+const REPO_ROOT = path.join(__dirname, "..", "..");
+const TEMPLATE_README_PATH = path.join(__dirname, "..", "scraping", "templates", "README.md");
 
 // Markdown 文字列から、`scripts/...` 形式で書かれた参照パスを抽出する。
 function extractScriptPathReferences(markdownText) {

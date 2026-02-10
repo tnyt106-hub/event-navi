@@ -24,7 +24,7 @@ const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 const CURRENT_YEAR = new Date().getFullYear();
 
 // 入力ディレクトリは既定で docs/events を参照し、引数で上書きできるようにする
-// 例: node scripts/generate-date-pages.js dist/json
+// 例: node scripts/page-generation/generate-date-pages.js dist/json
 const INPUT_DIR = process.argv[2]
   ? path.join(process.cwd(), process.argv[2])
   : path.join(process.cwd(), "docs", "events");

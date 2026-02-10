@@ -1,27 +1,27 @@
 // あかがねミュージアムのイベント一覧（?method=list）と詳細ページを解析し、
 // docs/events/akagane-museum.json に保存するバッチ。
-// 使い方: node scripts/fetch-akagane-museum-events.js
+// 使い方: node scripts/scraping/fetch-akagane-museum-events.js
 
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティ。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存を共通化。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
 // テキスト整形の共通関数。
-const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks, stripTags } = require("./lib/text");
+const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks, stripTags } = require("../lib/text");
 // イベントの標準スキーマ生成。
-const { createEvent } = require("./lib/schema");
+const { createEvent } = require("../lib/schema");
 // 価格・問い合わせの正規化。
-const { normalizePrice, normalizeContact } = require("./lib/event_fields");
+const { normalizePrice, normalizeContact } = require("../lib/event_fields");
 // source_url 重複の除去。
-const { dedupeEventsBySourceUrl } = require("./lib/dedupe");
+const { dedupeEventsBySourceUrl } = require("../lib/dedupe");
 
 const VENUE_ID = "akagane-museum";
 const LIST_URL = "https://akaganemuseum.jp/event/?method=list";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "akagane-museum.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "akagane-museum.json");
 const DETAIL_CONCURRENCY = 3;
 
 // Date から YYYY-MM-DD を返す。

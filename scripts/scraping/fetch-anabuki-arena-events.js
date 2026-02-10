@@ -1,19 +1,19 @@
 // あなぶきアリーナ香川のイベント情報を WordPress REST API と 詳細ページHTML のハイブリッドで取得するバッチ。
-// 使い方: node scripts/fetch-anabuki-arena-events.js
+// 使い方: node scripts/scraping/fetch-anabuki-arena-events.js
 
 const path = require("path");
 // HTTP 取得は共通ユーティリティへ寄せて、リトライ/タイムアウト/エラー分類を統一する。
-const { fetchText } = require("./lib/http");
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
-const { mapWithConcurrencyLimit } = require("./lib/concurrency");
-const { decodeHtmlEntities, stripTagsCompact, normalizeDecodedText } = require("./lib/text");
-const { formatIsoDateFromLocalDate, parseIsoDateAsLocalStrict } = require("./lib/date");
-const { ERROR_TYPES } = require("./lib/error_types");
-const { parseJsonOrThrowTyped } = require("./lib/json");
+const { fetchText } = require("../lib/http");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
+const { mapWithConcurrencyLimit } = require("../lib/concurrency");
+const { decodeHtmlEntities, stripTagsCompact, normalizeDecodedText } = require("../lib/text");
+const { formatIsoDateFromLocalDate, parseIsoDateAsLocalStrict } = require("../lib/date");
+const { ERROR_TYPES } = require("../lib/error_types");
+const { parseJsonOrThrowTyped } = require("../lib/json");
 
 const REST_URL = "https://kagawa-arena.com/?rest_route=/wp/v2/event&_embed";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "anabuki_arena_kagawa.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "anabuki_arena_kagawa.json");
 const VENUE_ID = "anabuki_arena_kagawa";
 const MONTH_RANGE = 7;
 const PER_PAGE = 20; // 1ページあたりの件数を増やして効率化
