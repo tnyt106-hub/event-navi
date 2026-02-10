@@ -1,26 +1,26 @@
 // 香川県立ミュージアムのイベント一覧ページから
 // リスト形式のイベント情報を抽出して JSON に保存するバッチ。
-// 使い方: node scripts/fetch-kagawa_pref_museum.js
+// 使い方: node scripts/scraping/fetch-kagawa_pref_museum.js
 
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, stripTagsCompact } = require("./lib/text");
+const { decodeHtmlEntities, stripTagsCompact } = require("../lib/text");
 const {
   normalizeJapaneseDateText,
   extractDatePartsFromJapaneseText,
   buildLocalDate,
   formatIsoDateFromLocalDate,
-} = require("./lib/date");
+} = require("../lib/date");
 
 const ENTRY_URL = "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/07event.html";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "kagawa_pref_museum.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "kagawa_pref_museum.json");
 const VENUE_ID = "kagawa_pref_museum";
 const MONTH_RANGE = 7;
 

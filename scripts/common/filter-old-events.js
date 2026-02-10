@@ -1,12 +1,12 @@
 // 終了から一定日数を超えたイベントを削除するスクリプト。
-// 使い方: node scripts/filter-old-events.js
+// 使い方: node scripts/common/filter-old-events.js
 // 注意: docs/events/*.json の events 配列のみをフィルタする。
 
 const fs = require("fs");
 const path = require("path");
-const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("./lib/date_window");
-const { writeJsonPretty } = require("./lib/io");
-const { parseJsonOrThrowTyped } = require("./lib/json");
+const { buildPastCutoffDate, evaluateEventAgainstPastCutoff } = require("../lib/date_window");
+const { writeJsonPretty } = require("../lib/io");
+const { parseJsonOrThrowTyped } = require("../lib/json");
 
 // テンプレートは運用データではないため、自動更新対象から除外する。
 const EXCLUDED_FILE_NAMES = new Set(["template.json"]);
@@ -37,7 +37,7 @@ function filterEvents(data, cutoffDate) {
 
 function main() {
   // 実行場所ではなく、このスクリプト配置場所を起点に絶対パスを解決する
-  const eventsDir = path.join(__dirname, "..", "docs", "events");
+  const eventsDir = path.join(__dirname, "..", "..", "docs", "events");
   const files = fs
     .readdirSync(eventsDir)
     .filter((fileName) => path.extname(fileName) === ".json")

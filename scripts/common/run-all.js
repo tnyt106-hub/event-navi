@@ -11,9 +11,9 @@
  * {
  *   "sleepSecondsBetween": 7,
  *   "tasks": [
- *     { "id": "rexam_hall", "script": "scripts/fetch-rexam-hall-events.js", "enabled": true },
- *     { "id": "highstaff_hall", "script": "scripts/fetch-highstaff-hall-events.js", "enabled": true },
- *     { "id": "generate_date_pages", "script": "scripts/generate-date-pages.js", "enabled": true }
+ *     { "id": "rexam_hall", "script": "scripts/scraping/fetch-rexam-hall-events.js", "enabled": true },
+ *     { "id": "highstaff_hall", "script": "scripts/scraping/fetch-highstaff-hall-events.js", "enabled": true },
+ *     { "id": "generate_date_pages", "script": "scripts/page-generation/generate-date-pages.js", "enabled": true }
  *   ]
  * }
  */
@@ -21,8 +21,8 @@
 const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
-const { writeTextAtomic } = require("./lib/io");
-const { parseJsonOrThrowTyped, parseJsonOrFallback } = require("./lib/json");
+const { writeTextAtomic } = require("../lib/io");
+const { parseJsonOrThrowTyped, parseJsonOrFallback } = require("../lib/json");
 const {
   exitCodeToErrorType,
   normalizeErrorType,
@@ -30,9 +30,9 @@ const {
   formatErrorTypeLabel,
   detectErrorType,
   ERROR_TYPES,
-} = require("./lib/error_types");
+} = require("../lib/error_types");
 
-const REPO_ROOT = path.join(__dirname, "..");
+const REPO_ROOT = path.join(__dirname, "..", "..");
 
 // ------------- logging helpers -------------
 
@@ -153,9 +153,9 @@ function createLogger(logConfig) {
 
 function findConfigPath() {
   const candidates = [
-    path.join(REPO_ROOT, "scripts", "run-all.config.json"),
+    path.join(REPO_ROOT, "scripts", "common", "run-all.config.json"),
     path.join(REPO_ROOT, "run-all.config.json"),
-    path.join(REPO_ROOT, "scripts", "run_all.config.json"),
+    path.join(REPO_ROOT, "scripts", "common", "run_all.config.json"),
     path.join(REPO_ROOT, "run_all.config.json"),
   ];
   for (const p of candidates) {
@@ -343,7 +343,7 @@ function loadConfig() {
   const configPath = findConfigPath();
   if (!configPath) {
     throw new Error(
-      "run-all.config.json が見つかりません。候補: scripts/run-all.config.json または run-all.config.json"
+      "run-all.config.json が見つかりません。候補: scripts/common/run-all.config.json または run-all.config.json"
     );
   }
   const raw = fs.readFileSync(configPath, "utf8");

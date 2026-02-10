@@ -1,20 +1,20 @@
 // 丸亀市綾歌総合文化会館アイレックスのイベント一覧ページから
 // イベント情報を抽出して docs/events/marugame_ilex.json に保存するバッチ。
-// 使い方: node scripts/fetch-marugame-ilex-events.js
+// 使い方: node scripts/scraping/fetch-marugame-ilex-events.js
 
 const fs = require("fs");
 const path = require("path");
 
 // 共通 HTTP 取得ユーティリティで Shift_JIS を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, stripTagsCompact } = require("./lib/text");
+const { decodeHtmlEntities, stripTagsCompact } = require("../lib/text");
 
 const ENTRY_URL = "https://www.marugame-ilex.org/event/eve_1/index.html";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "marugame_ilex.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "marugame_ilex.json");
 const VENUE_ID = "marugame_ilex";
 const ALLOWED_VENUE_KEYWORDS = ["アイレックス", "丸亀市綾歌総合文化会館"];
 // 連続テキストの本文は最大文字数を設け、長すぎる場合は省略表記を付ける。

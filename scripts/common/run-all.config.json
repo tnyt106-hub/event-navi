@@ -20,15 +20,15 @@
     {
       "id": "check-template-links",
       "type": "validate",
-      "script": "scripts/check-template-links.js",
+      "script": "scripts/common/check-template-links.js",
       "enabled": true,
       "outputs": [
-        "scripts/templates/README.md"
+        "scripts/scraping/templates/README.md"
       ]
     },
     {
       "id": "rexam_hall",
-      "script": "scripts/fetch-rexam-hall-events.js",
+      "script": "scripts/scraping/fetch-rexam-hall-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/rexam_hall.json"
@@ -36,7 +36,7 @@
     },
     {
       "id": "highstaff_hall",
-      "script": "scripts/fetch-highstaff-hall-events.js",
+      "script": "scripts/scraping/fetch-highstaff-hall-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/highstaff_hall.json"
@@ -44,7 +44,7 @@
     },
     {
       "id": "sunport_hall_takamatsu",
-      "script": "scripts/fetch-sunport-hall-takamatsu-events.js",
+      "script": "scripts/scraping/fetch-sunport-hall-takamatsu-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/sunport_hall_takamatsu.json"
@@ -52,7 +52,7 @@
     },
     {
       "id": "anabuki_arena_kagawa",
-      "script": "scripts/fetch-anabuki-arena-events.js",
+      "script": "scripts/scraping/fetch-anabuki-arena-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/anabuki_arena_kagawa.json"
@@ -60,7 +60,7 @@
     },
     {
       "id": "kagawa_pref_museum",
-      "script": "scripts/fetch-kagawa_pref_museum.js",
+      "script": "scripts/scraping/fetch-kagawa_pref_museum.js",
       "enabled": true,
       "outputs": [
         "docs/events/kagawa_pref_museum.json"
@@ -68,7 +68,7 @@
     },
     {
       "id": "ehime_prefectural_museum_of_art",
-      "script": "scripts/fetch-ehime_prefectural_museum_of_art.js",
+      "script": "scripts/scraping/fetch-ehime_prefectural_museum_of_art.js",
       "enabled": true,
       "outputs": [
         "docs/events/ehime_prefectural_museum_of_art.json"
@@ -76,7 +76,7 @@
     },
     {
       "id": "ehime_prefectural_museum_of_art_events",
-      "script": "scripts/fetch-ehime_prefectural_museum_of_art_events.js",
+      "script": "scripts/scraping/fetch-ehime_prefectural_museum_of_art_events.js",
       "dependsOn": [
         "ehime_prefectural_museum_of_art"
       ],
@@ -87,7 +87,7 @@
     },
     {
       "id": "takamatsu_city_museum_of_art",
-      "script": "scripts/fetch-takamatsu_city_museum_of_art.js",
+      "script": "scripts/scraping/fetch-takamatsu_city_museum_of_art.js",
       "enabled": true,
       "outputs": [
         "docs/events/takamatsu_city_museum_of_art.json"
@@ -95,7 +95,7 @@
     },
     {
       "id": "marugame_ilex",
-      "script": "scripts/fetch-marugame-ilex-events.js",
+      "script": "scripts/scraping/fetch-marugame-ilex-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/marugame_ilex.json"
@@ -103,7 +103,7 @@
     },
     {
       "id": "mimoca",
-      "script": "scripts/fetch-mimoca.js",
+      "script": "scripts/scraping/fetch-mimoca.js",
       "enabled": true,
       "outputs": [
         "docs/events/mimoca.json"
@@ -111,7 +111,7 @@
     },
     {
       "id": "kenbun",
-      "script": "scripts/fetch-kenbun.js",
+      "script": "scripts/scraping/fetch-kenbun.js",
       "enabled": true,
       "outputs": [
         "docs/events/kenbun.json"
@@ -120,7 +120,7 @@
     {
       "id": "fetch-itemehime",
       "name": "fetch-itemehime",
-      "script": "scripts/fetch-itemehime.js",
+      "script": "scripts/scraping/fetch-itemehime.js",
       "enabled": true,
       "outputs": [
         "docs/events/itemehime.json"
@@ -129,7 +129,7 @@
     {
       "id": "fetch-asty-tokushima",
       "name": "fetch-asty-tokushima",
-      "script": "scripts/fetch-asty-tokushima-events.js",
+      "script": "scripts/scraping/fetch-asty-tokushima-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/asty-tokushima.json"
@@ -137,7 +137,7 @@
     },
     {
       "id": "akagane-museum",
-      "script": "scripts/fetch-akagane-museum-events.js",
+      "script": "scripts/scraping/fetch-akagane-museum-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/akagane-museum.json"
@@ -145,7 +145,7 @@
     },
     {
       "id": "ehime-budoukan",
-      "script": "scripts/fetch-ehime-budoukan-events.js",
+      "script": "scripts/scraping/fetch-ehime-budoukan-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/ehime-budoukan.json"
@@ -153,7 +153,7 @@
     },
     {
       "id": "filter-old-events",
-      "script": "scripts/filter-old-events.js",
+      "script": "scripts/common/filter-old-events.js",
       "enabled": true,
       "outputs": [
         "docs/events"
@@ -169,7 +169,7 @@
     },
     {
       "id": "generate-date-pages",
-      "script": "scripts/generate-date-pages.js",
+      "script": "scripts/page-generation/generate-date-pages.js",
       "enabled": true,
       "outputs": [
         "docs/date",
@@ -178,7 +178,7 @@
     },
     {
       "id": "generate-facility-pages",
-      "script": "scripts/generate-facility-pages.js",
+      "script": "scripts/page-generation/generate-facility-pages.js",
       "enabled": true,
       "outputs": [
         "docs/facility",
@@ -187,7 +187,7 @@
     },
     {
       "id": "generate-sitemap",
-      "script": "scripts/generate-sitemap.js",
+      "script": "scripts/page-generation/generate-sitemap.js",
       "enabled": true,
       "outputs": [
         "docs/sitemap.xml"

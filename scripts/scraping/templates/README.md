@@ -22,21 +22,21 @@
    - HTML から抽出するロジック（`extractListItems` / `extractDetailLinks` / `extractEventFromDetail`）
 3. **単体で node 実行**
    ```bash
-   node scripts/fetch-<venue_id>.js
+   node scripts/scraping/fetch-<venue_id>.js
    ```
 4. **run-all.config.json に task を追加**
    - `outputs` は必須（run-all が差分判定に使うため、省略不可）
    ```json
    {
      "id": "<venue_id>",
-     "script": "scripts/fetch-<venue_id>.js",
+     "script": "scripts/scraping/fetch-<venue_id>.js",
      "enabled": true,
      "outputs": ["docs/events/<venue_id>.json"]
    }
    ```
 5. **run-all 実行**
    ```bash
-   node scripts/run-all.js
+   node scripts/common/run-all.js
    ```
 
 ## body の扱い（条件付き）

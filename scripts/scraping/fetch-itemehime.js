@@ -1,28 +1,28 @@
 // itemehime のイベント一覧ページから詳細ページをたどって
 // イベント情報を JSON に保存するバッチ。
-// 使い方: node scripts/fetch-itemehime.js
+// 使い方: node scripts/scraping/fetch-itemehime.js
 
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, normalizeWhitespace, stripTags } = require("./lib/text");
+const { decodeHtmlEntities, normalizeWhitespace, stripTags } = require("../lib/text");
 // イベント詳細 URL 判定の共通ヘルパー。
-const { isEventDetailUrl } = require("./lib/event_url");
+const { isEventDetailUrl } = require("../lib/event_url");
 // source_url の重複を排除するヘルパー。
-const { dedupeEventsBySourceUrl } = require("./lib/dedupe");
-const { mapWithConcurrencyLimit, sleep } = require("./lib/concurrency");
+const { dedupeEventsBySourceUrl } = require("../lib/dedupe");
+const { mapWithConcurrencyLimit, sleep } = require("../lib/concurrency");
 
 const VENUE_ID = "itemehime";
 const DETAIL_CONCURRENCY = 3;
 const DETAIL_JITTER_MS = 250;
 const LIST_URL = "https://itemehime.com/event/";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "itemehime.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "itemehime.json");
 
 // 日本語の全角数字や記号を半角へ寄せて、解析しやすくする。
 function normalizeJapaneseText(text) {

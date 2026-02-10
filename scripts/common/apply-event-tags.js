@@ -1,18 +1,18 @@
 // イベントのタイトルや価格などからタグを付与するためのスクリプト。
 // ルールベースで説明可能にするため、判定ロジックは配列と正規表現で定義する。
-// 使い方: node scripts/apply-event-tags.js docs/events/mimoca.json
+// 使い方: node scripts/common/apply-event-tags.js docs/events/mimoca.json
 // オプション: --overwrite (既存タグを上書きする)
 
 const fs = require("fs");
 const path = require("path");
-const { validateFinalData } = require("./lib/schema");
-const { parseIsoDateStrict } = require("./lib/date");
-const { writeJsonPretty } = require("./lib/io");
-const { handleCliFatalError } = require("./lib/cli_error");
-const { parseJsonOrThrowTyped } = require("./lib/json");
+const { validateFinalData } = require("../lib/schema");
+const { parseIsoDateStrict } = require("../lib/date");
+const { writeJsonPretty } = require("../lib/io");
+const { handleCliFatalError } = require("../lib/cli_error");
+const { parseJsonOrThrowTyped } = require("../lib/json");
 
 // タグのラベル定義は JSON に集約して UI でも使えるようにしておく
-const TAG_LABELS_PATH = path.join(__dirname, "..", "docs", "data", "event-tags.json");
+const TAG_LABELS_PATH = path.join(__dirname, "..", "..", "docs", "data", "event-tags.json");
 
 const MAX_GENRES = 2;
 const MAX_FLAGS = 2;
@@ -413,7 +413,7 @@ function main() {
   const target = args.find((arg) => !arg.startsWith("--"));
 
   if (!target) {
-    console.log("Usage: node scripts/apply-event-tags.js <events.json> [--overwrite] [--dry-run]");
+    console.log("Usage: node scripts/common/apply-event-tags.js <events.json> [--overwrite] [--dry-run]");
     return handleCliFatalError(new Error("引数が不足しています。"), { prefix: "[ERROR]" });
   }
 

@@ -1,6 +1,6 @@
 // 愛媛県美術館のイベント一覧ページだけを使って、
 // 一覧内のタイトル・日付・詳細URLを抽出して既存の展覧会JSONへ統合するバッチ。
-// 使い方: node scripts/fetch-ehime_prefectural_museum_of_art_events.js
+// 使い方: node scripts/scraping/fetch-ehime_prefectural_museum_of_art_events.js
 
 "use strict";
 
@@ -9,19 +9,19 @@ const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { parseJsonOrThrowTyped } = require("./lib/json");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { parseJsonOrThrowTyped } = require("../lib/json");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { stripTagsCompact, normalizeDecodedText } = require("./lib/text");
+const { stripTagsCompact, normalizeDecodedText } = require("../lib/text");
 const {
   normalizeJapaneseDateText,
   buildUtcDate,
   formatIsoDateFromUtcDate,
   getJstTodayUtcDate,
-} = require("./lib/date");
+} = require("../lib/date");
 
 // 一覧ページURLは運用側で末尾スラッシュ有無が切り替わることがあるため
 // フォールバック候補を複数持つ。
@@ -29,7 +29,7 @@ const LIST_URL_CANDIDATES = [
   "https://www.ehime-art.jp/event",
   "https://www.ehime-art.jp/event/",
 ];
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "ehime_prefectural_museum_of_art.json");
 const VENUE_ID = "ehime_prefectural_museum_of_art";
 const VENUE_NAME = "愛媛県美術館";
 // 終了日が「今日から365日より前」のイベントを除外するための基準日数。

@@ -2,12 +2,12 @@
 "use strict";
 
 // run-all から呼ばれるタグ付与の入口スクリプト。
-// 実際のタグ判定ロジックは scripts/apply-event-tags.js に一本化し、
+// 実際のタグ判定ロジックは scripts/common/apply-event-tags.js に一本化し、
 // ルール二重管理による判定差異を防ぐ。
 
 const fs = require("fs");
 const path = require("path");
-const { processEventsFile } = require("../../scripts/apply-event-tags");
+const { processEventsFile } = require("../../scripts/common/apply-event-tags");
 const { handleCliFatalError } = require("../../scripts/lib/cli_error");
 
 const INPUT_DIR = path.join(__dirname, "..", "..", "docs", "events");

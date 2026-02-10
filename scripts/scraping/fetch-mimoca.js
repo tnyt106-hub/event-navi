@@ -1,32 +1,32 @@
 // 丸亀市猪熊弦一郎現代美術館 (MIMOCA) の展覧会/イベントを取得し、
 // docs/events/mimoca.json に統合保存するスクリプト。
-// 使い方: node scripts/fetch-mimoca.js
+// 使い方: node scripts/scraping/fetch-mimoca.js
 
 const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { parseJsonOrThrowTyped } = require("./lib/json");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { parseJsonOrThrowTyped } = require("../lib/json");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitespace } = require("./lib/text");
+const { decodeHtmlEntities, stripTags, stripTagsWithLineBreaks, normalizeWhitespace } = require("../lib/text");
 const {
   buildLocalDate,
   formatIsoDateFromLocalDate,
-} = require("./lib/date");
+} = require("../lib/date");
 const {
   buildPastCutoffDate,
   evaluateEventAgainstPastCutoff,
-} = require("./lib/date_window");
-const { mapWithConcurrencyLimit, sleep } = require("./lib/concurrency");
+} = require("../lib/date_window");
+const { mapWithConcurrencyLimit, sleep } = require("../lib/concurrency");
 
 const EXHIBITIONS_LIST_URL = "https://www.mimoca.jp/exhibitions/current/";
 const EVENTS_LIST_URL = "https://www.mimoca.jp/events/";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "mimoca.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "mimoca.json");
 const VENUE_ID = "mimoca";
 const DETAIL_CONCURRENCY = 3;
 const DETAIL_JITTER_MS = 300;

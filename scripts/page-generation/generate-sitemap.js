@@ -9,9 +9,9 @@
 
 const fs = require("fs");
 const path = require("path");
-const { formatIsoDateFromUtcDate } = require("./lib/date");
+const { formatIsoDateFromUtcDate } = require("../lib/date");
 
-const REPO_ROOT = path.join(__dirname, "..");
+const REPO_ROOT = path.join(__dirname, "..", "..");
 const DOCS_DIR = path.join(REPO_ROOT, "docs");
 const CNAME_PATH = path.join(DOCS_DIR, "CNAME");
 const OUTPUT_PATH = path.join(DOCS_DIR, "sitemap.xml");

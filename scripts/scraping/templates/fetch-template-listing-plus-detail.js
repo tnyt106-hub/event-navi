@@ -1,22 +1,22 @@
 // 一覧 → 詳細ページの2段構成施設向けスクレイピングテンプレート。
-// 使い方: node scripts/templates/fetch-template-listing-plus-detail.js
+// 使い方: node scripts/scraping/templates/fetch-template-listing-plus-detail.js
 
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("../lib/http");
+const { fetchText } = require("../../lib/http");
 // JSON 保存処理と検証を共通化する。
-const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { finalizeAndSaveEvents } = require("../../lib/fetch_output");
 // CLI エラー終了コードを共通化する。
-const { handleCliFatalError } = require("../lib/cli_error");
+const { handleCliFatalError } = require("../../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks } = require("../lib/text");
+const { decodeHtmlEntities, normalizeWhitespace, stripTagsWithLineBreaks } = require("../../lib/text");
 
 // TODO: 施設ID、一覧URL、出力先を施設ごとに埋める。
 const VENUE_ID = "your_venue_id";
 const LIST_URL = "https://example.com/events";
-const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", `${VENUE_ID}.json`);
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "..", "docs", "events", `${VENUE_ID}.json`);
 
 // TODO: 月別一覧を巡回したい施設は true にする（デフォルトは単一一覧ページ）。
 const USE_MONTHLY_LIST_PAGES = false;

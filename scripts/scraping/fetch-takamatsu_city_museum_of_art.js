@@ -1,26 +1,26 @@
 // 高松市美術館の「展覧会・イベント（会期型中心）」ページから、
 // 展覧会の会期情報のみを抽出して JSON に保存するバッチ。
-// 使い方: node scripts/fetch-takamatsu_city_museum_of_art.js
+// 使い方: node scripts/scraping/fetch-takamatsu_city_museum_of_art.js
 
 const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { stripTagsCompact, normalizeDecodedText } = require("./lib/text");
+const { stripTagsCompact, normalizeDecodedText } = require("../lib/text");
 const {
   normalizeJapaneseDateText,
   buildLocalDate,
   formatIsoDateFromLocalDate,
-} = require("./lib/date");
+} = require("../lib/date");
 
 const ENTRY_URL = "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/event/index.html";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "takamatsu_city_museum_of_art.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "takamatsu_city_museum_of_art.json");
 const VENUE_ID = "takamatsu_city_museum_of_art";
 const VENUE_NAME = "高松市美術館";
 const TITLE_KEYWORDS = ["特別展", "コレクション展", "その他展覧会", "日本伝統漆芸展", "企画展", "常設展"];

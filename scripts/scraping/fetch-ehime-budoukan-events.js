@@ -1,14 +1,14 @@
 const path = require("path");
-const { fetchHtml } = require("./lib/http");
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
-const { decodeHtmlEntities, stripTags } = require("./lib/text");
-const { createEvent } = require("./lib/schema");
-const { extractDateRange } = require("./lib/date");
+const { fetchHtml } = require("../lib/http");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
+const { decodeHtmlEntities, stripTags } = require("../lib/text");
+const { createEvent } = require("../lib/schema");
+const { extractDateRange } = require("../lib/date");
 
 const VENUE_ID = "ehime-budoukan";
 const TARGET_URL = "https://ehime-spa.jp/budoukan/martial-event/";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", `${VENUE_ID}.json`);
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", `${VENUE_ID}.json`);
 
 /**
  * 正規表現の定義（静的コンパイルで高速化）

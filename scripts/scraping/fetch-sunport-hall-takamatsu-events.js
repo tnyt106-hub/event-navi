@@ -1,22 +1,22 @@
 // サンポートホール高松のホールイベント一覧ページから
 // 直近Nか月分のイベントを抽出して保存するバッチ。
-// 使い方: node scripts/fetch-sunport-hall-takamatsu-events.js
+// 使い方: node scripts/scraping/fetch-sunport-hall-takamatsu-events.js
 
 const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 
 // 共通 HTTP 取得ユーティリティで HTML を取得する。
-const { fetchText } = require("./lib/http");
+const { fetchText } = require("../lib/http");
 // JSON 保存処理を共通化する。
-const { finalizeAndSaveEvents } = require("./lib/fetch_output");
-const { handleCliFatalError } = require("./lib/cli_error");
+const { finalizeAndSaveEvents } = require("../lib/fetch_output");
+const { handleCliFatalError } = require("../lib/cli_error");
 // HTML テキスト処理の共通関数を使う。
-const { decodeHtmlEntities, stripTagsCompact } = require("./lib/text");
-const { normalizeHeadingLikeTitle, extractLabeledValue: extractLabeledValueFromLines } = require("./lib/scraping");
+const { decodeHtmlEntities, stripTagsCompact } = require("../lib/text");
+const { normalizeHeadingLikeTitle, extractLabeledValue: extractLabeledValueFromLines } = require("../lib/scraping");
 
 const ENTRY_URL = "https://www.sunport-hall.jp/hall/";
-const OUTPUT_PATH = path.join(__dirname, "..", "docs", "events", "sunport_hall_takamatsu.json");
+const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", "sunport_hall_takamatsu.json");
 const VENUE_ID = "sunport_hall_takamatsu";
 const MONTH_LIMIT = 7;
 
