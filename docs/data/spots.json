@@ -182,7 +182,7 @@
   },
   {
   "name": "高知市文化プラザかるぽーと",
-  "venue_id": "kochi-culport",
+  "spot_id": "kochi-culport",
   "lat": 33.55839,
   "lng": 133.54733,
   "category": "文化ホール",
