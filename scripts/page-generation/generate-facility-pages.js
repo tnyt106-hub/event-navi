@@ -18,6 +18,8 @@ const PREF_SLUG_MAP = {
 const SPOTS_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 const EVENTS_DIR = path.join(process.cwd(), "docs", "events");
 const FACILITY_ROOT_DIR = path.join(process.cwd(), "docs", "facility");
+// 施設ページでも同じ広告テンプレートを使い、サイト全体の広告体験を統一する。
+const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-ad.html");
 
 // GitHub Pagesの公開URLを正規URL（canonical）に使う。
 // 将来ドメインが変わっても、この定数だけ直せば全ページへ反映できる。
@@ -105,6 +107,31 @@ ${preHeaderHtml}  <header>
 `;
 }
 
+// 広告partialを読み込み、見つからない場合は空文字で安全にフォールバックする。
+function loadAdHtml() {
+  if (!fs.existsSync(DATE_AD_PARTIAL_PATH)) {
+    console.warn("date-ad.html が見つからないため施設ページの広告枠は出力しません:", DATE_AD_PARTIAL_PATH);
+    return "";
+  }
+
+  try {
+    return fs.readFileSync(DATE_AD_PARTIAL_PATH, "utf8").trim();
+  } catch (error) {
+    console.warn("date-ad.html の読み込みに失敗したため施設ページの広告枠は出力しません:", error);
+    return "";
+  }
+}
+
+// ページ内の広告位置を属性で識別できるようセクション化して返す。
+function renderAdSection(adHtml, positionLabel) {
+  if (!adHtml) return "";
+  const safePositionLabel = escapeHtml(positionLabel);
+  return `    <section class="date-ad" data-ad-position="${safePositionLabel}">
+${adHtml}
+    </section>
+`;
+}
+
 function renderPageFooter() {
   return `  </main>
   <footer class="trial-footer">
@@ -137,7 +164,7 @@ ${listHtml}
 `;
 }
 
-function renderFacilityIndexPage(prefectureSummaries) {
+function renderFacilityIndexPage(prefectureSummaries, adHtml) {
   const cardsHtml = prefectureSummaries
     .map((summary) => {
       return `          <li class="date-index__item facility-pref-item">
@@ -165,7 +192,7 @@ function renderFacilityIndexPage(prefectureSummaries) {
     canonicalPath: "/facility/",
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
     preHeaderHtml: breadcrumbHtml
-  })}    <section class="spot-events" aria-labelledby="facility-pref-title">
+  })}${renderAdSection(adHtml, "facility-index")}    <section class="spot-events" aria-labelledby="facility-pref-title">
       <div class="spot-events__header">
         <h2 id="facility-pref-title" class="spot-events__title">県別一覧</h2>
       </div>
@@ -180,7 +207,7 @@ ${cardsHtml}
 ${renderPageFooter()}`;
 }
 
-function renderPrefecturePage(prefecture, spots, eventCountMap) {
+function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
   const sortedSpots = sortSpotsByKanaName(spots);
 
   const listHtml =
@@ -218,7 +245,7 @@ function renderPrefecturePage(prefecture, spots, eventCountMap) {
     canonicalPath: `/facility/${toPrefSlug(prefecture)}/`,
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
     preHeaderHtml: breadcrumbHtml
-  })}    <nav class="spot-actions" aria-label="施設ナビゲーション">
+  })}${renderAdSection(adHtml, `facility-${toPrefSlug(prefecture)}`)}    <nav class="spot-actions" aria-label="施設ナビゲーション">
       <a class="spot-action-btn" href="../">施設一覧へ戻る</a>
       <a class="spot-action-btn" href="../../index.html">トップへ戻る</a>
     </nav>
@@ -247,6 +274,7 @@ function main() {
 
   const spots = JSON.parse(fs.readFileSync(SPOTS_PATH, "utf8"));
   const eventCountMap = buildEventCountMap();
+  const adHtml = loadAdHtml();
 
   // 県ごとの配列を先に作っておくと、一覧ページと詳細ページ双方で使い回せる。
   const spotsByPref = new Map(PREFECTURES.map((prefecture) => [prefecture, []]));
@@ -273,7 +301,7 @@ function main() {
     };
   });
 
-  const indexHtml = renderFacilityIndexPage(summaries);
+  const indexHtml = renderFacilityIndexPage(summaries, adHtml);
   fs.writeFileSync(path.join(FACILITY_ROOT_DIR, "index.html"), indexHtml, "utf8");
 
   PREFECTURES.forEach((prefecture) => {
@@ -281,7 +309,7 @@ function main() {
     const prefDir = path.join(FACILITY_ROOT_DIR, slug);
     fs.mkdirSync(prefDir, { recursive: true });
 
-    const prefHtml = renderPrefecturePage(prefecture, spotsByPref.get(prefecture) ?? [], eventCountMap);
+    const prefHtml = renderPrefecturePage(prefecture, spotsByPref.get(prefecture) ?? [], eventCountMap, adHtml);
     fs.writeFileSync(path.join(prefDir, "index.html"), prefHtml, "utf8");
   });
 
