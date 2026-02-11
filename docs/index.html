@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body>
+<body class="home-page">
   <!-- Step1: トップページにもパンくずを配置し、全ページで導線仕様を統一する -->
   <nav class="breadcrumb" aria-label="パンくずリスト">
     <ol class="breadcrumb__list">
@@ -143,6 +143,13 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="js/map.js"></script>
+
+  <!-- スマホ共通の固定導線: ページ最下部から主要3導線へすぐ遷移できるようにする -->
+  <nav class="mobile-global-nav" aria-label="スマートフォン用固定ナビゲーション">
+    <a class="mobile-global-nav__link" href="/date/">日付から探す</a>
+    <a class="mobile-global-nav__link" href="/facility/">エリアから探す</a>
+    <a class="mobile-global-nav__link" href="/facility-name/">施設名から探す</a>
+  </nav>
 
   <footer class="trial-footer">
     © 2026 イベントガイド【四国版】 - 公共施設のイベント情報をお届けします
