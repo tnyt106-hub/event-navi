@@ -167,5 +167,18 @@
   "official_url": "https://www.kkb-hall.jp/",
   "description": "高知市本町にある多目的文化施設です。1,507席のオレンジホールと500席のグリーンホールを備え、コンサートや演劇、式典など幅広く利用されています。",
   "source": "https://www.kkb-hall.jp/event/event-pickup.html?view=autonomy"
+},
+  {
+  "name": "高知県立県民体育館",
+  "venue_id": "kochi-sporthall",
+  "lat": 33.55927,
+  "lng": 133.54045,
+  "category": "体育館",
+  "prefecture": "高知県",
+  "municipality": "高知市",
+  "official_url": "https://www.kochi-kc.jp/sports/",
+  "description": "高知市本町に位置する県立の総合体育施設です。メインアリーナ、サブアリーナ、武道場、トレーニング室などを備え、バスケットボールやバレーボール、各種大会、イベントなど幅広い用途で利用されています。",
+  "source": "https://www.kochi-kc.jp/sports/"
 }
+
 ]
