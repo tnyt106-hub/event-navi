@@ -13,15 +13,34 @@ const ENTRY_URL = "https://docs.google.com/spreadsheets/d/1F0iBntJPjSgT_QmOZ7n0Z
 const OFFICIAL_URL = "https://www.kochi-kenmin.org/events/";
 const OUTPUT_PATH = path.join(__dirname, "..", "..", "docs", "events", `${VENUE_ID}.json`);
 
+/**
+ * 実行時を基準に、CSV内の月情報から適切な「年」を判定する
+ */
+function getTargetYear(targetMonth) {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() + 1;
+
+  // 現在が年末（10-12月）で、CSVが1-3月の予定なら翌年とする
+  if (currentMonth >= 10 && targetMonth <= 3) {
+    return currentYear + 1;
+  }
+  // 現在が年始（1-3月）で、CSVが10-12月の予定なら前年とする
+  if (currentMonth <= 3 && targetMonth >= 10) {
+    return currentYear - 1;
+  }
+  return currentYear;
+}
+
 async function main() {
   try {
     const csvData = await fetchText(ENTRY_URL);
     const lines = csvData.split(/\r?\n/).map(line => 
-      line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, "").trim())
+      line.split(/,(?=(?:(?:[^\"]*\"){2})*[^\"]*$)/).map(c => c.replace(/^\"|\"$/g, "").trim())
     );
 
-    let currentYear = 2025; // 令和7年度の開始年
-    let currentMonth = 2;
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth() + 1;
     const events = [];
     
     let lastValidDay = null;
@@ -32,17 +51,13 @@ async function main() {
 
       const lineStr = cols.join(" ");
 
-      // --- 1. 月の更新ロジックを強化 ---
-      // "2月 行事予定表" や "3月 行事予定表" を検知
-      // 全体の文字列から "数字 + 月" を探し、後ろに "行事" が続くものを優先
+      // --- 1. 月の更新と年の自動計算 ---
       const monthUpdate = /(\d{1,2})\s*月\s*行\s*事/.exec(lineStr);
       if (monthUpdate) {
         currentMonth = parseInt(monthUpdate[1], 10);
-        // 1-3月は年度(令和7年=2025年)に対して翌年(2026年)にする
-        currentYear = (currentMonth >= 1 && currentMonth <= 3) ? 2026 : 2025;
+        currentYear = getTargetYear(currentMonth);
         lastValidDay = null; 
         lastValidTitle = "";
-        console.log(`[DEBUG] スイッチ: ${currentYear}年${currentMonth}月`);
         continue;
       }
 
@@ -52,18 +67,20 @@ async function main() {
         lastValidDay = dayStr.padStart(2, "0");
       }
 
-      // --- 3. タイトルの特定 (前行からの継続を考慮) ---
+      // --- 3. タイトルの特定 ---
       let title = normalizeWhitespace(cols[2] || "");
       if (title && !/^(行事名|曜|日|※)/.test(title)) {
         lastValidTitle = title;
       } else if (!title && lastValidDay) {
-        // タイトルが空だが、日付があるか、あるいは時間が入っている場合は継続とみなす
         title = lastValidTitle;
       }
 
       if (!lastValidDay || !title || title === "行事名") continue;
 
+      // 日付の妥当性チェック
       const dateStr = `${currentYear}-${String(currentMonth).padStart(2, "0")}-${lastValidDay}`;
+      const d = new Date(currentYear, currentMonth - 1, parseInt(lastValidDay, 10));
+      if (d.getMonth() !== currentMonth - 1) continue;
 
       // --- 4. 時間と会場の解析 ---
       const venueConfig = [
@@ -88,7 +105,6 @@ async function main() {
         }
       }
 
-      // 時間情報がない行（ただの注釈行など）は飛ばす
       if (!startTime) continue;
 
       const venueLabel = `高知県立県民体育館（${[...new Set(detectedVenues)].join("・")}）`;
@@ -105,13 +121,9 @@ async function main() {
       }));
     }
 
-    // 重複カット (日付、タイトル、開始時間でユニーク化)
     const uniqueEvents = Array.from(new Map(
       events.map(e => [`${e.date_from}_${e.title}_${e.start_time}`, e])
     ).values());
-
-    console.log(`[INFO] venue_id=${VENUE_ID}`);
-    console.log(`[INFO] events_built=${uniqueEvents.length}`);
 
     finalizeAndSaveEvents({
       venueId: VENUE_ID,
