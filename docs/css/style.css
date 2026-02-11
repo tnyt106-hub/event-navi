@@ -955,33 +955,16 @@ main {
   position: relative;        
 }
 
-/* 広告枠は panel と同トーンのカードとして目立ち過ぎないようにする */
-.ad-card {
-  margin: 16px 0;
-  padding: 14px;
-  border-radius: var(--radius-subcard);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-subcard);
+/* 広告枠はコンテンツを圧迫しないよう最小限の余白だけ確保する */
+.date-ad {
+  margin: 8px 0;
 }
 
-.ad-card__title {
-  margin: 0 0 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-sub);
-}
-
-.ad-card__body {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--text);
-}
-
-.ad-card__disclaimer {
-  margin: 10px 0 0;
-  font-size: 11px;
-  color: var(--text-sub);
+/* A8の468x60バナーを端末幅に収める（タグ自体はそのまま利用） */
+.date-ad > a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .spot-event-card__title {

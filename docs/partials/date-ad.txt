@@ -1,6 +1,6 @@
 date-ad.html 編集メモ
 
 - 広告枠の HTML は date-ad.html にそのまま書く。
-- generate-date-pages.js が読み込み、日付ページと日付一覧に埋め込む。
+- generate-date-pages.js / generate-facility-pages.js が読み込み、各静的ページへ埋め込む。
 - JS は使わず、完全な静的 HTML として掲載される。
-- クラスは ad-card / ad-card__title / ad-card__body / ad-card__disclaimer を使う。
+- 現在は A8 の配信タグを「カード化せずにそのまま」貼り付ける運用。
