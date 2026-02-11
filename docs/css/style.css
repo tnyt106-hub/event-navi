@@ -820,6 +820,18 @@ h2 {
   background: var(--bg-gradient); 
 }
 
+.spot-page > header {
+  /* 施設詳細の見出し行もカードと同じ幅に揃えて、余白の見え方を統一する */
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.spot-page > header h1 {
+  /* ブラウザ既定のh1マージンがカードとの間隔を広げるため、不要な余白をリセットする */
+  margin: 0;
+}
+
 .spot-header {
   /* ヘッダーは白背景でコンテンツと分離 */
   padding: 16px;
@@ -850,12 +862,13 @@ h2 {
   /* 画面幅の中心にカードを配置（モバイル最適化の最大幅） */
   max-width: 760px;
   margin: 0 auto;
-  padding: 24px 16px 32px;
+  /* h1直下のカード間隔を他ページと揃えるため、上余白は最小限の8pxにする */
+  padding: 8px 16px 32px;
 }
 
 .spot-content {
   /* スポット詳細+イベントを1つの大きなカードにまとめる */
-  margin-top: 24px; /* 上部の余白でカードを浮かせる */
+  margin-top: 0; /* 上余白はspot-container側で管理して、二重余白を防ぐ */
   background: var(--surface);
   border-radius: var(--radius-card);
   padding: 24px;
