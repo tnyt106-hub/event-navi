@@ -206,7 +206,7 @@
  },
   {
   "name": "高知ぢばさんセンター",
-  "venue_id": "kochi-dibasan",
+  "spot_id": "kochi-dibasan",
   "lat": 33.57283,
   "lng": 133.57739,
   "category": "展示場",
