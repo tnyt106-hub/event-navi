@@ -147,6 +147,8 @@ const map = L.map("map", {
 const SPOT_LABEL_MIN_ZOOM = 11;
 // 要件: ピン選択時はこのズーム値まで寄せて、施設位置を把握しやすくする
 const SPOT_FOCUS_ZOOM = 11;
+// 本日イベントJSONの同時取得数。通信輻輳で地図描画が遅くならないよう上限を設ける
+const EVENT_FETCH_CONCURRENCY = 4;
 const isWide = window.matchMedia("(min-width: 1024px)").matches;
 map.setView(HOME_CENTER, isWide ? HOME_ZOOM_PC : HOME_ZOOM_MOBILE);
 gaPageView("/map", document.title);// GA4 helper（最小）
@@ -183,7 +185,11 @@ const TODAY_EVENTS_VISIBLE_LIMIT = 5; // 要件: 初期表示は5件
 let todayEventsAll = []; // 「本日開催中イベント」の全件（もっと見るで切替に使う）
 let todayEventsExpanded = false; // もっと見るの開閉状態
 const markerEntryBySpotId = new Map(); // 一覧カードから地図ピンへ移動するための逆引き
+// 施設イベントJSONをセッション内で再利用し、同じ通信を繰り返さない
+const eventListCacheBySpotId = new Map();
 const INITIAL_SPOT_ID = getInitialSpotIdFromUrl(); // URL共有で復元する初期選択ID
+let isTodayEventsRenderScheduled = false; // 逐次読み込み中の再描画を1フレームにまとめるためのフラグ
+let isZoomInteractionRunning = false; // ズーム中はラベル描画を抑制して描画負荷を下げる
 
 // 一覧カード側で選択中の施設をハイライトし、地図と双方向に連動させる
 function setTodayEventActiveSpot(spotId) {
@@ -299,7 +305,65 @@ async function loadTodayEvents(spots) {
   const today = getCurrentLocalDay();
   const fetchTargets = spots.filter((spot) => spot?.spot_id);
 
-  const eventLists = await Promise.all(fetchTargets.map(async (spot) => {
+  // 進捗が見えるようにして、ユーザーが「固まった」と感じるのを防ぐ
+  if (status) {
+    status.textContent = `本日開催中イベントを読み込み中…（0/${fetchTargets.length}施設）`;
+  }
+
+  const eventsBuffer = [];
+  let loadedCount = 0;
+
+  // 部分完了を1フレームにまとめて一覧反映し、連続DOM更新のコストを抑える
+  const scheduleTodayEventsRender = () => {
+    if (isTodayEventsRenderScheduled) return;
+    isTodayEventsRenderScheduled = true;
+    requestAnimationFrame(() => {
+      isTodayEventsRenderScheduled = false;
+      todayEventsAll = eventsBuffer
+        .slice()
+        // 要件: イベント名50音順（日本語ロケールで比較）
+        .sort((a, b) => a.title.localeCompare(b.title, "ja"));
+      renderTodayEvents();
+    });
+  };
+
+  await runWithConcurrency(fetchTargets, EVENT_FETCH_CONCURRENCY, async (spot) => {
+    const events = await fetchSpotEventsForToday(spot, today);
+    eventsBuffer.push(...events);
+    loadedCount += 1;
+
+    // 取得進捗を更新し、読み込み中でも状態が分かるようにする
+    if (status) {
+      status.textContent = `本日開催中イベントを読み込み中…（${loadedCount}/${fetchTargets.length}施設）`;
+    }
+
+    // 施設ごとの読み込み完了時に段階表示する
+    scheduleTodayEventsRender();
+  });
+
+  // 最終結果で確定描画（最後のrequestAnimationFrame待ちが残るケースを防ぐ）
+  todayEventsAll = eventsBuffer
+    .slice()
+    .sort((a, b) => a.title.localeCompare(b.title, "ja"));
+
+  todayEventsExpanded = false;
+  renderTodayEvents();
+
+  if (status && todayEventsAll.length > 0) {
+    status.setAttribute("data-loaded", "true");
+  }
+}
+
+// 施設イベントJSONを取得し、本日開催分へ整形する（キャッシュ付き）
+async function fetchSpotEventsForToday(spot, today) {
+  if (!spot?.spot_id) return [];
+
+  // 既に取得済みならそのPromiseを再利用して二重通信を防ぐ
+  if (eventListCacheBySpotId.has(spot.spot_id)) {
+    return eventListCacheBySpotId.get(spot.spot_id);
+  }
+
+  const fetchPromise = (async () => {
     try {
       const response = await fetch(`./events/${encodeURIComponent(spot.spot_id)}.json`);
       if (!response.ok) return [];
@@ -318,19 +382,27 @@ async function loadTodayEvents(spots) {
       console.error(`イベントJSONの読み込みに失敗: ${spot.spot_id}`, error);
       return [];
     }
-  }));
+  })();
 
-  todayEventsAll = eventLists
-    .flat()
-    // 要件: イベント名50音順（日本語ロケールで比較）
-    .sort((a, b) => a.title.localeCompare(b.title, "ja"));
+  eventListCacheBySpotId.set(spot.spot_id, fetchPromise);
+  return fetchPromise;
+}
 
-  todayEventsExpanded = false;
-  renderTodayEvents();
+// 配列を上限付き並列で処理し、通信同時実行数をコントロールする
+async function runWithConcurrency(items, concurrency, worker) {
+  const safeConcurrency = Math.max(1, Math.min(concurrency, items.length || 1));
+  let currentIndex = 0;
 
-  if (status && todayEventsAll.length > 0) {
-    status.setAttribute("data-loaded", "true");
-  }
+  const runWorker = async () => {
+    while (currentIndex < items.length) {
+      const targetIndex = currentIndex;
+      currentIndex += 1;
+      await worker(items[targetIndex], targetIndex);
+    }
+  };
+
+  const runners = Array.from({ length: safeConcurrency }, () => runWorker());
+  await Promise.all(runners);
 }
 
 // 「もっと見る」ボタンを初期化する
@@ -370,15 +442,19 @@ function onSpotSelect(entry) {
   const markerLatLng = entry.marker.getLatLng();
   const nextZoom = Math.max(map.getZoom(), SPOT_FOCUS_ZOOM);
   map.flyTo(markerLatLng, nextZoom, { duration: 0.45 });
-  // 選択中のピンを視覚的に目立たせる
-  syncSelectedMarkerVisual();
-  // 要件対応: ピン直上のLeafletポップアップは表示しない（下部パネルのみを使う）
-  entry.marker.closePopup();
-  renderSpotPanel(entry.spot);
-  // 仕様: 一覧側にも選択状態を反映して、双方向連動を成立させる
-  setTodayEventActiveSpot(entry.spot?.spot_id || "");
-  // 仕様: 共有URLで同じ施設を再表示できるよう、spot_idをクエリへ保存する
-  syncSelectedSpotToUrl(entry.spot?.spot_id || "");
+
+  // 地図移動とDOM更新を分離し、操作入力直後の体感遅延を減らす
+  requestAnimationFrame(() => {
+    // 選択中のピンを視覚的に目立たせる
+    syncSelectedMarkerVisual();
+    // 要件対応: ピン直上のLeafletポップアップは表示しない（下部パネルのみを使う）
+    entry.marker.closePopup();
+    renderSpotPanel(entry.spot);
+    // 仕様: 一覧側にも選択状態を反映して、双方向連動を成立させる
+    setTodayEventActiveSpot(entry.spot?.spot_id || "");
+    // 仕様: 共有URLで同じ施設を再表示できるよう、spot_idをクエリへ保存する
+    syncSelectedSpotToUrl(entry.spot?.spot_id || "");
+  });
 }
 function createPopupContent(spot) {
   const container = document.createElement("div");
@@ -424,13 +500,21 @@ function createMarkerLabelText(spot) {
 function updateSpotLabelVisibility() {
   // 地図のズーム値に応じてラベルの表示/非表示を切り替える
   // zoom < 12 のときはラベルを非表示にして、縮小表示時の可読性を確保する
-  const shouldShowLabel = map.getZoom() >= SPOT_LABEL_MIN_ZOOM;
+  const shouldShowLabel = !isZoomInteractionRunning && map.getZoom() >= SPOT_LABEL_MIN_ZOOM;
   const mapElement = map.getContainer();
   if (!mapElement) return;
   mapElement.classList.toggle("hide-spot-labels", !shouldShowLabel);
 }
-// ズーム操作のたびにラベル表示状態を同期する
-map.on("zoomend", updateSpotLabelVisibility);
+// ズーム中はラベルを一時的に隠し、タイル描画を優先して体感速度を保つ
+map.on("zoomstart", () => {
+  isZoomInteractionRunning = true;
+  updateSpotLabelVisibility();
+});
+// ズーム完了後に最終ズーム値へ合わせてラベル表示を戻す
+map.on("zoomend", () => {
+  isZoomInteractionRunning = false;
+  updateSpotLabelVisibility();
+});
 // 要件変更: ピン以外（地図の余白）をクリックしても状態は変えない
 // 以前は clearSpotPanel() で初期表示へ戻していたが、ユーザー操作の意図とズレるため廃止
 setupTodayEventsMoreButton();
