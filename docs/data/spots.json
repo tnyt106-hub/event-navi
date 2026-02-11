@@ -170,7 +170,7 @@
 },
   {
   "name": "高知県立県民体育館",
-  "venue_id": "kochi-sporthall",
+  "spot_id": "kochi-sporthall",
   "lat": 33.54951,
   "lng": 133.54728,
   "category": "体育館",
