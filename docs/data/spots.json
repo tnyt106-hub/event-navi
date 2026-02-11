@@ -194,7 +194,7 @@
  },
   {
   "name": "須崎市立市民文化会館",
-  "venue_id": "susaki-bunka",
+  "spot_id": "susaki-bunka",
   "lat": 33.39005,
   "lng": 133.29340,
   "category": "文化ホール",
@@ -203,5 +203,17 @@
   "official_url": "https://www.susakibunka.com/",
   "description": "須崎市桐間南にある市民文化施設です。大ホールを中心に、講演会、コンサート、地域イベントなど幅広い用途で利用され、市民の文化活動の拠点となっています。",
   "source": "https://www.susakibunka.com/event"
+ },
+  {
+  "name": "高知ぢばさんセンター",
+  "venue_id": "kochi-dibasan",
+  "lat": 33.57283,
+  "lng": 133.57739,
+  "category": "展示場",
+  "prefecture": "高知県",
+  "municipality": "高知市",
+  "official_url": "https://diba3.com/",
+  "description": "高知市布師田にある産業振興・交流拠点施設です。大規模展示場、会議室、イベントスペースを備え、産業展、物産展、商談会、地域イベントなど多目的に利用されています。",
+  "source": "https://diba3.com/event/"
 }
 ]
