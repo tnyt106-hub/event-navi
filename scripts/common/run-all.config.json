@@ -80,7 +80,7 @@
       "dependsOn": [
         "ehime_prefectural_museum_of_art"
       ],
-      "enabled": true,
+      "enabled": false,
       "outputs": [
         "docs/events/ehime_prefectural_museum_of_art.json"
       ]
