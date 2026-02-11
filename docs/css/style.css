@@ -486,18 +486,29 @@ h2 {
 #locate-btn:hover {
   background: var(--surface-hover);
 }
-/* 地図ピンの通常状態。transformを明示しておくと選択時アニメーションが安定する */
+/* 地図ピンの通常状態。Leaflet の位置 transform と干渉しない形で見た目だけ制御する */
 .leaflet-marker-icon.spot-marker--default {
-  transform: translate3d(0, 0, 0) scale(1);
-  transition: transform 0.18s ease, filter 0.18s ease;
+  /*
+    Leaflet のピンは「先端（下中央）」が位置アンカー。
+    scale で拡大すると既定の transform-origin（中央）起点で見た目位置がズレるため、
+    通常状態は拡大しない。
+  */
+  scale: 1;
+  transition: filter 0.18s ease;
 }
 
 /* 選択中ピンを少し拡大し、影と色味で見つけやすくする */
 .leaflet-marker-icon.spot-marker--selected {
-  transform: translate3d(0, 0, 0) scale(1.3);
+  /*
+    根本原因対策:
+    選択時の scale 拡大は、ブラウザ差や transform-origin の影響で
+    ピン先端が右へズレて見える主因だったため廃止する。
+    代わりに色味と影だけで強調し、地理位置と視覚位置を常に一致させる。
+  */
+  scale: 1;
   filter: saturate(1.25) drop-shadow(0 0 8px rgba(213, 70, 132, 0.75));
   z-index: 750 !important;
-  transition: transform 0.18s ease, filter 0.18s ease;
+  transition: filter 0.18s ease;
 }
 
 /* 地図上のスポット名ラベル（Leaflet tooltip） */
@@ -509,10 +520,12 @@ h2 {
   color: var(--text);
   font-size: 12px;
   padding: 2px 8px;
-　white-space: nowrap;      /* 改行を禁止して幅を固定 */
+  white-space: nowrap;      /* 改行を禁止して幅を固定 */
   margin-left: 0;           /* デフォルトのマージンをリセット */
-  /* tooltipAnchorで中央合わせするため、追加の水平シフトはしない */
-  transform: translateX(0);
+  /*
+    tooltip も Leaflet が transform で位置決めするため、ここでは transform を触らない。
+    余計な transform 指定は、ブラウザ実装差でズーム時の見かけズレを起こしやすい。
+  */
   pointer-events: auto !important; /* クリックイベントを確実に拾う */
 }
 /* 地図が縮小表示の間は、スポット名ラベルを非表示にして視認性を確保する */
