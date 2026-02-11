@@ -136,6 +136,15 @@
       ]
     },
     {
+      "id": "fetch-awagin-hall",
+      "name": "fetch-awagin-hall",
+      "script": "scripts/scraping/fetch-asty-awagin-hall.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/awagin-hall.json"
+      ]
+    },
+    {
       "id": "akagane-museum",
       "script": "scripts/scraping/fetch-akagane-museum-events.js",
       "enabled": true,
