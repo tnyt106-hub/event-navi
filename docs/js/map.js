@@ -349,7 +349,8 @@ function onSpotSelect(entry) {
   // ピン/ラベルのどちらからでも同一の選択処理にする（挙動の統一）
   if (!entry) return;
   pinnedEntry = entry;
-  entry.marker.openPopup();
+  // 要件対応: ピン直上のLeafletポップアップは表示しない（下部パネルのみを使う）
+  entry.marker.closePopup();
   renderSpotPanel(entry.spot);
   // 仕様: 一覧側にも選択状態を反映して、双方向連動を成立させる
   setTodayEventActiveSpot(entry.spot?.spot_id || "");
@@ -426,9 +427,9 @@ fetch("./data/spots.json")
 
     spots.forEach(s => {
       if (!s.lat || !s.lng) return;
-      const popupContent = createPopupContent(s);
       // ラベル位置をピン中央に合わせるため、tooltipAnchor調整済みアイコンを使う
-      const marker = L.marker([s.lat, s.lng], { icon: centeredTooltipIcon }).bindPopup(popupContent);
+      // 要件対応: ピン選択時の情報表示は下部パネルに一本化するため、ポップアップ自体は生成しない
+      const marker = L.marker([s.lat, s.lng], { icon: centeredTooltipIcon });
       // マーカー上にスポット名を常時表示（絞り込み後も表示中のマーカーのみ出る）
       marker.bindTooltip(createMarkerLabelText(s), {
         permanent: true,
