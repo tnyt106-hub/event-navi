@@ -191,5 +191,17 @@
   "official_url": "https://www.bunkaplaza.or.jp/",
   "description": "高知市九反田にある複合文化施設です。1,085席の大ホールをはじめ、ギャラリー、スタジオ、図書館など多彩な機能を備え、コンサートや展示会、市民活動の拠点として幅広く利用されています。",
   "source": "https://www.bunkaplaza.or.jp/event/"
+ },
+  {
+  "name": "須崎市立市民文化会館",
+  "venue_id": "susaki-bunka",
+  "lat": 33.39005,
+  "lng": 133.29340,
+  "category": "文化ホール",
+  "prefecture": "高知県",
+  "municipality": "須崎市",
+  "official_url": "https://www.susakibunka.com/",
+  "description": "須崎市桐間南にある市民文化施設です。大ホールを中心に、講演会、コンサート、地域イベントなど幅広い用途で利用され、市民の文化活動の拠点となっています。",
+  "source": "https://www.susakibunka.com/event"
 }
 ]
