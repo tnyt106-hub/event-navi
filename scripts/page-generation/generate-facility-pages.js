@@ -159,7 +159,7 @@ function renderAdSection(adHtml, positionLabel) {
   if (!embedHtml) return "";
 
   return `    <section class="date-ad" data-ad-position="${safePositionLabel}">
-      <div class="date-ad__embed" role="complementary" aria-label="広告">
+      <div class="date-ad__embed" role="complementary" aria-label="スポンサーリンク">
 ${embedHtml}
       </div>
     </section>
@@ -216,6 +216,8 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
     { label: "ホーム", href: "../index.html" },
     { label: "エリアから探す" }
   ]);
+  // パンくず直下に広告を置く要件に合わせ、preHeaderへ連結して配置を固定する。
+  const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-index")}`;
 
   return `${renderPageHeader({
     title: `エリアから探す｜${SITE_NAME}`,
@@ -225,8 +227,8 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
     description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設詳細へ進めます。",
     canonicalPath: "/facility/",
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
-    preHeaderHtml: breadcrumbHtml
-  })}${renderAdSection(adHtml, "facility-index")}    <section class="spot-events" aria-labelledby="facility-pref-title">
+    preHeaderHtml
+  })}    <section class="spot-events" aria-labelledby="facility-pref-title">
       <div class="spot-events__header">
         <h2 id="facility-pref-title" class="spot-events__title">県別一覧</h2>
       </div>
@@ -270,6 +272,8 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
     { label: "エリアから探す", href: "../" },
     { label: prefecture }
   ]);
+  // 県別ページでもパンくずの直後に広告を配置して、導線の一貫性を保つ。
+  const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, `facility-${toPrefSlug(prefecture)}`)}`;
 
   const bodyHtml = `${renderPageHeader({
     title: `${prefecture}の施設一覧｜${SITE_NAME}`,
@@ -278,8 +282,8 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
     description: `${prefecture}の公共施設を一覧化したページです。市町村・カテゴリ・イベント件数の目安を確認しながら、各施設ページへ移動できます。`,
     canonicalPath: `/facility/${toPrefSlug(prefecture)}/`,
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
-    preHeaderHtml: breadcrumbHtml
-  })}${renderAdSection(adHtml, `facility-${toPrefSlug(prefecture)}`)}    <nav class="spot-actions" aria-label="施設ナビゲーション">
+    preHeaderHtml
+  })}    <nav class="spot-actions" aria-label="施設ナビゲーション">
       <a class="spot-action-btn" href="../">施設一覧へ戻る</a>
       <a class="spot-action-btn" href="../../index.html">トップへ戻る</a>
     </nav>
