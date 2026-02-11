@@ -143,8 +143,6 @@ const map = L.map("map", {
   maxBounds: shikokuBounds,
   maxBoundsViscosity: 0.7
 });
-// スポット名ラベルは「拡大時のみ表示」にするため、閾値を定数化しておく
-const SPOT_LABEL_MIN_ZOOM = 11;
 // 要件: ピン選択時はこのズーム値まで寄せて、施設位置を把握しやすくする
 const SPOT_FOCUS_ZOOM = 11;
 // 本日イベントJSONの同時取得数。通信輻輳で地図描画が遅くならないよう上限を設ける
@@ -170,10 +168,6 @@ baseMaps["標準1"].addTo(map);
 L.control.layers(baseMaps).addTo(map);
 // 仕様変更: クラスタリングは行わず、常に個別のピンを表示する
 const markers = L.layerGroup();
-// デフォルトのtooltipAnchorは右上寄りなので、ピンの真上にラベルが来るよう補正する
-const centeredTooltipIcon = new L.Icon.Default({
-  tooltipAnchor: [0, -28]
-});
 // =======================
 // 検索ボックス用
 // =======================
@@ -189,7 +183,6 @@ const markerEntryBySpotId = new Map(); // 一覧カードから地図ピンへ�
 const eventListCacheBySpotId = new Map();
 const INITIAL_SPOT_ID = getInitialSpotIdFromUrl(); // URL共有で復元する初期選択ID
 let isTodayEventsRenderScheduled = false; // 逐次読み込み中の再描画を1フレームにまとめるためのフラグ
-let isZoomInteractionRunning = false; // ズーム中はラベル描画を抑制して描画負荷を下げる
 
 // 一覧カード側で選択中の施設をハイライトし、地図と双方向に連動させる
 function setTodayEventActiveSpot(spotId) {
@@ -493,28 +486,6 @@ function createPopupContent(spot) {
   }
   return container;
 }
-function createMarkerLabelText(spot) {
-  // ラベル用の表示名は「不明」になる時も一貫して出す（初心者向けに分かりやすく）
-  return spot.name ?? "名称不明";
-}
-function updateSpotLabelVisibility() {
-  // 地図のズーム値に応じてラベルの表示/非表示を切り替える
-  // zoom < 12 のときはラベルを非表示にして、縮小表示時の可読性を確保する
-  const shouldShowLabel = !isZoomInteractionRunning && map.getZoom() >= SPOT_LABEL_MIN_ZOOM;
-  const mapElement = map.getContainer();
-  if (!mapElement) return;
-  mapElement.classList.toggle("hide-spot-labels", !shouldShowLabel);
-}
-// ズーム中はラベルを一時的に隠し、タイル描画を優先して体感速度を保つ
-map.on("zoomstart", () => {
-  isZoomInteractionRunning = true;
-  updateSpotLabelVisibility();
-});
-// ズーム完了後に最終ズーム値へ合わせてラベル表示を戻す
-map.on("zoomend", () => {
-  isZoomInteractionRunning = false;
-  updateSpotLabelVisibility();
-});
 // 要件変更: ピン以外（地図の余白）をクリックしても状態は変えない
 // 以前は clearSpotPanel() で初期表示へ戻していたが、ユーザー操作の意図とズレるため廃止
 setupTodayEventsMoreButton();
@@ -532,30 +503,11 @@ fetch("./data/spots.json")
 
     spots.forEach(s => {
       if (!s.lat || !s.lng) return;
-      // ラベル位置をピン中央に合わせるため、tooltipAnchor調整済みアイコンを使う
-      // 要件対応: ピン選択時の情報表示は下部パネルに一本化するため、ポップアップ自体は生成しない
-      const marker = L.marker([s.lat, s.lng], { icon: centeredTooltipIcon });
-      // マーカー上にスポット名を常時表示（絞り込み後も表示中のマーカーのみ出る）
-      marker.bindTooltip(createMarkerLabelText(s), {
-        permanent: true,
-        direction: "top",
-        className: "spot-label",
-        offset: [0, 0],
-        opacity: 0.9,
-        interactive: true
-      });
+      // 要件対応: 地図ピン上の吹き出し（スポット名ラベル）は表示しない
+      // 施設情報は下部のスポットパネルに一本化する
+      const marker = L.marker([s.lat, s.lng]);
       const entry = { marker, name: s.name ?? "", spot: s };
       marker.on("click", () => onSpotSelect(entry)); // 地図下表示用
-      marker.on("tooltipopen", (event) => {
-        // ラベルDOMが生成されたタイミングでクリック操作を紐付ける
-        const tooltipElement = event.tooltip?.getElement();
-        if (!tooltipElement) return;
-        if (tooltipElement.dataset.clickBound === "true") return;
-        tooltipElement.dataset.clickBound = "true";
-        tooltipElement.addEventListener("click", () => {
-          onSpotSelect(entry);
-        });
-      });
       markers.addLayer(marker);
 
      markerEntries.push(entry);//検索ボックス用
@@ -563,8 +515,6 @@ fetch("./data/spots.json")
     });
         map.addLayer(markers);
         setVisibleEntries(markerEntries);
-        // 初回描画時にもズーム値に応じたラベル表示へ合わせる
-        updateSpotLabelVisibility();
         // 地図ピンの準備ができた後に「本日開催中イベント」を読み込む
         loadTodayEvents(spots);
         // URL共有で指定されたスポットがあれば初期表示時に復元する
