@@ -1,0 +1,182 @@
+{
+  "venue_id": "kochi-culport",
+  "last_success_at": "2026-02-11",
+  "events": [
+    {
+      "title": "第78回高知市展工芸講習会 「羊毛フェルトでかわいいバッグを作ろう」",
+      "date_from": "2026-04-19",
+      "date_to": "2026-04-19",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "2,000円（材料費含む）",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/shiten78-kougei/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第78回高知市展絵画専門部講習会 「油絵マチエール講座」",
+      "date_from": "2026-03-29",
+      "date_to": "2026-03-29",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "5,000円（材料費込）",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/shiten78-aburae/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第78回高知市文化祭開幕行事 「風音 おどる 音が光が 誘う寄りそう そして 人 あなたがいる」",
+      "date_from": "2026-04-12",
+      "date_to": "2026-04-12",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "2,000円(中学生以上) ※小学生以下入場無料 ※小さなお子さんをお連れの方は上演中に声を出さない等、ご配慮をお願いします。",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/kaimaku26/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第78回高知市展書道講習会 「書の小作品を作ろう」",
+      "date_from": "2026-04-19",
+      "date_to": "2026-04-19",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "1,500円（材料費含む）",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/shiten78-syodou/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "令和８年度春夏 いきいきセカンド☆ライフ講座",
+      "date_from": "2026-04-07",
+      "date_to": "2026-04-07",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "1コース：1,500円 (2コースの場合は3,000円)",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/secondlife26-1/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第78回高知市展陶芸講習会 「作陶体験会」",
+      "date_from": "2026-03-22",
+      "date_to": "2026-03-22",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "6,000円(粘土代および3月22日の昼食代を含む) ※4kg以上の粘土を使用する場合は、別途実費精算",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/shiten78-tougei/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第78回高知市展「彫刻講習会」",
+      "date_from": "2026-03-03",
+      "date_to": "2026-03-03",
+      "open_time": null,
+      "start_time": "18:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "10,000円（材料費・モデル代含む） ※初回に集金します",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/shiten78-choukoku/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "かるぽーとこども音楽会",
+      "date_from": "2026-03-08",
+      "date_to": "2026-03-08",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席自由 前売り 500円 当日 700円 ※未就学児入場無料（小学生から有料） ※前売券完売の場合、当日券の販売はありません",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/kodomo-ongakukai2026/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }
+  ]
+}
