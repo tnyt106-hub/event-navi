@@ -176,6 +176,14 @@
       ]
     },
     {
+      "id": "susaki-bunka",
+      "script": "scripts/scraping/fetch-susaki-bunka.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/susaki-bunka.json"
+      ]
+    },
+    {
       "id": "filter-old-events",
       "script": "scripts/common/filter-old-events.js",
       "enabled": true,
