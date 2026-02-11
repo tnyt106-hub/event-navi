@@ -21,6 +21,7 @@
 const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
+const readline = require("readline");
 const { writeTextAtomic } = require("../lib/io");
 const { parseJsonOrThrowTyped, parseJsonOrFallback } = require("../lib/json");
 const {
@@ -460,6 +461,126 @@ function resolveScriptPath(taskScript) {
   return path.join(REPO_ROOT, s);
 }
 
+
+function buildInteractiveTaskChoiceLabel(task, index) {
+  // 対話一覧で分かりやすいよう、番号・ID・実行スクリプトをまとめて表示する。
+  const no = index + 1;
+  const id = task.id ? String(task.id) : "(no-id)";
+  const script = task.script ? String(task.script) : "(no-script)";
+  const name = task.name ? ` / ${String(task.name)}` : "";
+  return `${no}) ${id}${name} -> ${script}`;
+}
+
+function parseInteractiveSelectionInput(input, maxIndex) {
+  // 入力形式: "1,3,5" / "1-3" / それらの混在。
+  // 返り値は 0-based index の Set。
+  const selected = new Set();
+  const text = String(input || "").trim();
+  if (!text) return { selected, hasInput: false, error: null };
+
+  const tokens = text
+    .split(",")
+    .map((token) => token.trim())
+    .filter((token) => token.length > 0);
+
+  if (tokens.length === 0) {
+    return { selected, hasInput: false, error: null };
+  }
+
+  for (const token of tokens) {
+    // "1-3" のような範囲指定に対応する。
+    const rangeMatch = token.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (rangeMatch) {
+      const start = Number(rangeMatch[1]);
+      const end = Number(rangeMatch[2]);
+      if (start < 1 || end < 1 || start > end || end > maxIndex) {
+        return {
+          selected,
+          hasInput: true,
+          error: `範囲指定 "${token}" が不正です。1〜${maxIndex} の範囲で入力してください。`,
+        };
+      }
+      for (let no = start; no <= end; no += 1) {
+        selected.add(no - 1);
+      }
+      continue;
+    }
+
+    // 単体番号指定。
+    if (!/^\d+$/.test(token)) {
+      return {
+        selected,
+        hasInput: true,
+        error: `入力値 "${token}" が不正です。番号または範囲(例: 2-4)で指定してください。`,
+      };
+    }
+
+    const no = Number(token);
+    if (no < 1 || no > maxIndex) {
+      return {
+        selected,
+        hasInput: true,
+        error: `番号 "${token}" が範囲外です。1〜${maxIndex} の範囲で入力してください。`,
+      };
+    }
+    selected.add(no - 1);
+  }
+
+  return { selected, hasInput: true, error: null };
+}
+
+function askUserInput(promptText) {
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.question(promptText, (answer) => {
+      rl.close();
+      resolve(String(answer || ""));
+    });
+  });
+}
+
+async function selectTasksInteractively(enabledTasks, logger) {
+  // 毎回対話入力を求める仕様。非対話環境では待ち続ける事故を避けるため、
+  // 既存挙動（enabled=true 全件実行）へ安全側フォールバックする。
+  if (!process.stdin.isTTY) {
+    logger.warn(
+      "対話入力を開始できませんでした（stdin が TTY ではありません）。enabled=true の全タスクを実行します。"
+    );
+    return { selectedTasks: enabledTasks, selectedAll: true };
+  }
+
+  logger.run("実行対象タスクを選択してください（空Enterで enabled=true を全実行）。");
+  enabledTasks.forEach((task, index) => {
+    logger.task(buildInteractiveTaskChoiceLabel(task, index));
+  });
+
+  while (true) {
+    const answer = await askUserInput(
+      "番号を入力（例: 1,3,5 / 2-4）。空Enterで全件実行: "
+    );
+    const parsed = parseInteractiveSelectionInput(answer, enabledTasks.length);
+
+    if (parsed.error) {
+      logger.warn(parsed.error);
+      logger.warn("入力形式を確認して、もう一度入力してください。");
+      continue;
+    }
+
+    if (!parsed.hasInput) {
+      return { selectedTasks: enabledTasks, selectedAll: true };
+    }
+
+    const selectedTasks = enabledTasks.filter((_, idx) => parsed.selected.has(idx));
+    return {
+      selectedTasks,
+      selectedAll: false,
+    };
+  }
+}
 function formatTaskName(task) {
   const id = task.id ? String(task.id) : "(no-id)";
   const displayName = task.name ? String(task.name) : null;
@@ -833,22 +954,44 @@ async function main() {
   loggerWithConfig.run(
     `tasks: total=${config.config.tasks.length}, enabled=${enabledTasks.length}`
   );
+
+  const interactiveSelection = await selectTasksInteractively(
+    enabledTasks,
+    loggerWithConfig
+  );
+  const tasksToRun = interactiveSelection.selectedTasks;
+
+  if (interactiveSelection.selectedAll) {
+    loggerWithConfig.run(
+      `実行モード: 全件（enabled=true） selected=${tasksToRun.length}`
+    );
+  } else {
+    const selectedLabels = tasksToRun
+      .map((task) => (task.id ? String(task.id) : "(no-id)"))
+      .join(", ");
+    loggerWithConfig.run(
+      `実行モード: 選択実行 selected=${tasksToRun.length}/${enabledTasks.length}`
+    );
+    loggerWithConfig.run(`選択タスク: ${selectedLabels}`);
+  }
+
   if (config.config.sleepSecondsBetween > 0) {
     loggerWithConfig.run(`sleepSecondsBetween=${config.config.sleepSecondsBetween}s`);
   }
 
   const { orderedTasks, dependencyErrors } = orderTasksByDependencies(
-    enabledTasks,
+    tasksToRun,
     loggerWithConfig
   );
   if (dependencyErrors.length > 0) {
+    // 仕様: 依存不足がある場合は実行しない（部分実行による不整合を防ぐ）。
     dependencyErrors.forEach((err) => loggerWithConfig.error(err));
-    if (config.config.stopOnError) {
-      loggerWithConfig.close();
-      process.exitCode = 1;
-      return;
-    }
-    loggerWithConfig.warn("dependsOn の解決に失敗したため列挙順で実行します。");
+    loggerWithConfig.error(
+      "dependsOn の解決に失敗したため処理を中断します。選択対象に依存タスクを含めて再実行してください。"
+    );
+    loggerWithConfig.close();
+    process.exitCode = 1;
+    return;
   }
 
   // フェーズごとに集計したいので、実行しながらphase計測する
