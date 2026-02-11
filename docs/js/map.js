@@ -211,6 +211,22 @@ function getCurrentLocalDay() {
   return new Date(now.getFullYear(), now.getMonth(), now.getDate());
 }
 
+// トップ見出し用に「YYYY年MM月DD日」の固定フォーマット文字列を作る
+function formatCurrentDateForTodayTitle(now = new Date()) {
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}年${month}月${day}日`;
+}
+
+// 仕様変更: 「本日開催中のイベント」見出しを当日日付つき文言へ差し替える
+function updateTodayEventsTitleWithCurrentDate() {
+  const title = document.getElementById("today-events-title");
+  if (!title) return;
+  const todayLabel = formatCurrentDateForTodayTitle();
+  title.textContent = `本日(${todayLabel})のイベント`;
+}
+
 // 要件: 「現在時刻の日が開催日と一致」するイベントのみ抽出する
 function isEventHeldToday(eventItem, today) {
   const startDay = parseDateStringAsLocalDay(eventItem?.date_from);
@@ -488,6 +504,8 @@ function createPopupContent(spot) {
 }
 // 要件変更: ピン以外（地図の余白）をクリックしても状態は変えない
 // 以前は clearSpotPanel() で初期表示へ戻していたが、ユーザー操作の意図とズレるため廃止
+// トップ見出しはロード直後に現在日付へ更新し、表示と実データの日付認識を一致させる
+updateTodayEventsTitleWithCurrentDate();
 setupTodayEventsMoreButton();
 // =======================
 // スポット読み込み
