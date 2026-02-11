@@ -142,8 +142,7 @@
     "official_url": "https://akaganemuseum.jp/",
     "description": "愛媛県新居浜市の総合文化施設。新居浜市美術館、多目的ホール、銅（あかがね）をテーマにした展示など、アートと地域文化が融合した拠点です。",
     "source": "https://akaganemuseum.jp/about/"
-  }
-  ,
+  },
   {
   "name": "アスティとくしま",
   "spot_id": "asty-tokushima",
@@ -155,6 +154,18 @@
   "official_url": "https://www.asty-tokushima.jp/",
   "description": "徳島県立産業観光交流センター（アスティとくしま）は、最大5,000人収容の多目的ホールや会議室を備えた四国最大級のコンベンション施設です。コンサートや展示会、国際会議など幅広く利用されています。",
   "source": "https://www.asty-tokushima.jp/about/"
+},
+{
+  "name": "あわぎんホール",
+  "spot_id": "awagin-hall",
+  "lat": 34.07504,
+  "lng": 134.54626,
+  "category": "文化ホール",
+  "prefecture": "徳島県",
+  "municipality": "徳島市",
+  "official_url": "https://kyoubun.or.jp/",
+  "description": "徳島市藍場町にある県立の文化施設です。大ホール、小ホール、会議室、展示スペースなどを備え、コンサート、演劇、講演会、地域イベントなど多目的に利用されています。",
+  "source": "https://kyoubun.or.jp/moyoshi/1.html"
 },
   {
   "name": "高知県立県民文化ホール",
