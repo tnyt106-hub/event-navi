@@ -1,0 +1,50 @@
+{
+  "venue_id": "susaki-bunka",
+  "last_success_at": "2026-02-11",
+  "events": [
+    {
+      "title": "くぼたまさと工作ショー",
+      "date_from": "2026-03-01",
+      "date_to": "2026-03-01",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "前売り大人　1,000円",
+      "contact": null,
+      "source_url": "https://www.susakibunka.com/event",
+      "source_type": "web",
+      "venue_name": "須崎市立市民文化会館",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "「呪物と怪談会」",
+      "date_from": "2026-02-28",
+      "date_to": "2026-02-28",
+      "open_time": null,
+      "start_time": "17:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "前売り　一般　2,500円",
+      "contact": null,
+      "source_url": "https://www.susakibunka.com/event",
+      "source_type": "web",
+      "venue_name": "須崎市立市民文化会館",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }
+  ]
+}

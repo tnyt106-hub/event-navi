@@ -1,0 +1,138 @@
+{
+  "venue_id": "kochi-dibasan",
+  "last_success_at": "2026-02-11",
+  "events": [
+    {
+      "title": "食研博 高知",
+      "date_from": "2026-07-14",
+      "date_to": "2026-07-15",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://diba3.com/event/",
+      "source_type": "web",
+      "venue_name": "高知ぢばさんセンター",
+      "status": null,
+      "body": "対象: 一般\n会場: 大ホール",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "マイナビ進学ライブ 高知",
+      "date_from": "2026-06-17",
+      "date_to": "2026-06-17",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://diba3.com/event/",
+      "source_type": "web",
+      "venue_name": "高知ぢばさんセンター",
+      "status": null,
+      "body": "対象: 関係者\n会場: 大ホール",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "令和8年執行衆議院議院総選挙等 開票作業",
+      "date_from": "2026-02-08",
+      "date_to": "2026-02-09",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://diba3.com/event/",
+      "source_type": "web",
+      "venue_name": "高知ぢばさんセンター",
+      "status": null,
+      "body": "対象: 一般\n会場: 大ホール",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "「わたしと宇宙展」高知展",
+      "date_from": "2025-12-05",
+      "date_to": "2025-12-14",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://diba3.com/event/",
+      "source_type": "web",
+      "venue_name": "高知ぢばさんセンター",
+      "status": null,
+      "body": "対象: 一般\n会場: 大ホール",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第１２回 JU高知 中古車ジャンボカーニバル",
+      "date_from": "2026-02-06",
+      "date_to": "2026-02-08",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://diba3.com/event/",
+      "source_type": "web",
+      "venue_name": "高知ぢばさんセンター",
+      "status": null,
+      "body": "対象: 一般\n会場: ＜イベント会場＞Ｐ３駐車場 ＜お客様駐車場＞Ｐ１駐車場",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "規制研修",
+      "date_from": "2026-01-10",
+      "date_to": "2026-01-10",
+      "open_time": null,
+      "start_time": "08:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://diba3.com/event/",
+      "source_type": "web",
+      "venue_name": "高知ぢばさんセンター",
+      "status": null,
+      "body": "対象: 関係者\n会場: Ｐ３駐車場",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    }
+  ]
+}
