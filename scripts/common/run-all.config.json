@@ -231,7 +231,8 @@
       "enabled": true,
       "outputs": [
         "docs/facility",
-        "docs/facility/index.html"
+        "docs/facility/index.html",
+        "docs/facility-name/index.html"
       ]
     },
     {

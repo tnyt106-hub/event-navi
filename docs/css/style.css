@@ -161,6 +161,13 @@ h1, h2, h3, h4, h5, h6 {
 /* 下段CTAの並び（狭い幅でも自然に縦積みになるように調整） */
 .site-header .spot-actions {
   margin: 0;
+  justify-content: flex-start;
+}
+
+/* トップの3導線（PC）: ボタン幅をそろえて左寄せ表示にする */
+.site-header .spot-action-btn {
+  min-width: 150px;
+  text-align: center;
 }
 
 h2 {
@@ -1085,6 +1092,22 @@ main {
   font-size: 12px;
   font-weight: 600;
   transition: filter 0.2s ease;
+}
+
+/* スマホでは3ボタンを1行に収める要件に合わせ、幅と文字サイズを最適化する */
+@media (max-width: 560px) {
+  .site-header .spot-actions {
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+
+  .site-header .spot-action-btn {
+    min-width: 0;
+    width: calc((100% - 8px) / 3);
+    padding: 6px 4px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
 }
 
 .spot-action-btn:hover {

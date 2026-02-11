@@ -18,6 +18,8 @@ const PREF_SLUG_MAP = {
 const SPOTS_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 const EVENTS_DIR = path.join(process.cwd(), "docs", "events");
 const FACILITY_ROOT_DIR = path.join(process.cwd(), "docs", "facility");
+// 「施設名から探す」は別導線として独立URLで生成し、用途を検索エンジンにも明確化する。
+const FACILITY_NAME_ROOT_DIR = path.join(process.cwd(), "docs", "facility-name");
 // 施設ページでも同じ広告テンプレートを使い、サイト全体の広告体験を統一する。
 const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-ad.html");
 
@@ -305,6 +307,67 @@ ${renderPageFooter()}`;
   return bodyHtml;
 }
 
+// 施設名50音順ページを生成し、県横断で施設を探しやすくする。
+function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
+  const sortedSpots = sortSpotsByKanaName(spots);
+
+  const listHtml =
+    sortedSpots.length > 0
+      ? sortedSpots
+          .map((spot) => {
+            const eventCount = eventCountMap.get(spot.spot_id) ?? 0;
+            return `          <li class="date-index__item facility-spot-item">
+            <a href="../spot/index.html?spot_id=${encodeURIComponent(spot.spot_id)}">${escapeHtml(spot.name)}</a>
+            <ul class="date-index__summary">
+              <li>都道府県: ${escapeHtml(spot.prefecture ?? "未設定")}</li>
+              <li>市町村: ${escapeHtml(spot.municipality ?? "未設定")}</li>
+              <li>カテゴリ: ${escapeHtml(spot.category ?? "未設定")}</li>
+              <li>イベント件数（参考）: ${eventCount}件</li>
+            </ul>
+          </li>`;
+          })
+          .join("\n")
+      : `          <li class="date-index__item">
+            <ul class="date-index__summary">
+              <li>施設情報は現在準備中です。</li>
+            </ul>
+          </li>`;
+
+  const breadcrumbHtml = renderBreadcrumbs([
+    { label: "ホーム", href: "../index.html" },
+    { label: "施設名から探す" }
+  ]);
+  // 新規導線ページも他ページと同じレイアウトルール（パンくず→広告）で統一する。
+  const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-name-index")}`;
+
+  return `${renderPageHeader({
+    title: `施設名から探す｜${SITE_NAME}`,
+    heading: "施設名から探す",
+    cssPath: "../css/style.css",
+    // SEO向けに「地域・並び順・遷移先」の3点を短く明示する。
+    description: "四国4県の公共施設を施設名の50音順で一覧表示するページです。都道府県・市町村・カテゴリ・イベント件数を確認しながら各施設詳細へ進めます。",
+    canonicalPath: "/facility-name/",
+    preHeaderHtml
+  })}    <nav class="spot-actions" aria-label="施設名ページのナビゲーション">
+      <a class="spot-action-btn" href="../facility/">エリアから探すへ</a>
+      <a class="spot-action-btn" href="../index.html">トップへ戻る</a>
+    </nav>
+
+    <section class="spot-events" aria-labelledby="facility-name-list-title">
+      <div class="spot-events__header">
+        <h2 id="facility-name-list-title" class="spot-events__title">施設名一覧（50音順・${sortedSpots.length}施設）</h2>
+      </div>
+      <div class="spot-events__body">
+        <div class="spot-events__panel">
+          <ul class="date-index__list">
+${listHtml}
+          </ul>
+        </div>
+      </div>
+    </section>
+${renderPageFooter()}`;
+}
+
 function main() {
   if (!fs.existsSync(SPOTS_PATH)) {
     throw new Error(`spots.json が見つかりません: ${SPOTS_PATH}`);
@@ -327,6 +390,7 @@ function main() {
   });
 
   fs.mkdirSync(FACILITY_ROOT_DIR, { recursive: true });
+  fs.mkdirSync(FACILITY_NAME_ROOT_DIR, { recursive: true });
 
   const summaries = PREFECTURES.map((prefecture) => {
     const prefSpots = spotsByPref.get(prefecture) ?? [];
@@ -351,7 +415,12 @@ function main() {
     fs.writeFileSync(path.join(prefDir, "index.html"), prefHtml, "utf8");
   });
 
+  // 施設名導線ページは四国4県の全施設をまとめて掲載する。
+  const facilityNameIndexHtml = renderFacilityNameIndexPage(spots, eventCountMap, adHtml);
+  fs.writeFileSync(path.join(FACILITY_NAME_ROOT_DIR, "index.html"), facilityNameIndexHtml, "utf8");
+
   console.log("facility pages generated:", path.relative(process.cwd(), FACILITY_ROOT_DIR));
+  console.log("facility-name page generated:", path.relative(process.cwd(), FACILITY_NAME_ROOT_DIR));
 }
 
 main();
