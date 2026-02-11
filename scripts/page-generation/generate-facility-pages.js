@@ -18,7 +18,7 @@ const PREF_SLUG_MAP = {
 const SPOTS_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 const EVENTS_DIR = path.join(process.cwd(), "docs", "events");
 const FACILITY_ROOT_DIR = path.join(process.cwd(), "docs", "facility");
-// 「施設名から探す」は別導線として独立URLで生成し、用途を検索エンジンにも明確化する。
+// 「🔍施設名から探す」は別導線として独立URLで生成し、用途を検索エンジンにも明確化する。
 const FACILITY_NAME_ROOT_DIR = path.join(process.cwd(), "docs", "facility-name");
 // 施設ページでも同じ広告テンプレートを使い、サイト全体の広告体験を統一する。
 const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-ad.html");
@@ -172,9 +172,9 @@ function renderPageFooter() {
   return `  </main>
   <!-- スマホ共通の固定導線: ページを問わず主要3導線へ遷移しやすくする -->
   <nav class="mobile-global-nav" aria-label="スマートフォン用固定ナビゲーション">
-    <a class="mobile-global-nav__link" href="/date/">日付から探す</a>
-    <a class="mobile-global-nav__link" href="/facility/">エリアから探す</a>
-    <a class="mobile-global-nav__link" href="/facility-name/">施設名から探す</a>
+    <a class="mobile-global-nav__link" href="/date/">📆日付から探す</a>
+    <a class="mobile-global-nav__link" href="/facility/">🗾エリアから探す</a>
+    <a class="mobile-global-nav__link" href="/facility-name/">🔍施設名から探す</a>
   </nav>
   <footer class="trial-footer">
     © ${CURRENT_YEAR} ${SITE_NAME} - 公共施設イベント情報を正確に届けるアーカイブサイト
@@ -222,14 +222,14 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
 
   const breadcrumbHtml = renderBreadcrumbs([
     { label: "ホーム", href: "../index.html" },
-    { label: "エリアから探す" }
+    { label: "🗾エリアから探す" }
   ]);
   // パンくず直下に広告を置く要件に合わせ、preHeaderへ連結して配置を固定する。
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-index")}`;
 
   return `${renderPageHeader({
-    title: `エリアから探す｜${SITE_NAME}`,
-    heading: "エリアから探す",
+    title: `🗾エリアから探す｜${SITE_NAME}`,
+    heading: "🗾エリアから探す",
     cssPath: "../css/style.css",
     // Step1方針: 施設一覧の説明文を「対象・操作・遷移先」で簡潔に統一する
     description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設詳細へ進めます。",
@@ -277,7 +277,7 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
 
   const breadcrumbHtml = renderBreadcrumbs([
     { label: "ホーム", href: "../../index.html" },
-    { label: "エリアから探す", href: "../" },
+    { label: "🗾エリアから探す", href: "../" },
     { label: prefecture }
   ]);
   // 県別ページでもパンくずの直後に広告を配置して、導線の一貫性を保つ。
@@ -341,14 +341,14 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
 
   const breadcrumbHtml = renderBreadcrumbs([
     { label: "ホーム", href: "../index.html" },
-    { label: "施設名から探す" }
+    { label: "🔍施設名から探す" }
   ]);
   // 新規導線ページも他ページと同じレイアウトルール（パンくず→広告）で統一する。
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-name-index")}`;
 
   return `${renderPageHeader({
-    title: `施設名から探す｜${SITE_NAME}`,
-    heading: "施設名から探す",
+    title: `🔍施設名から探す｜${SITE_NAME}`,
+    heading: "🔍施設名から探す",
     cssPath: "../css/style.css",
     // SEO向けに「地域・並び順・遷移先」の3点を短く明示する。
     description: "四国4県の公共施設を施設名の50音順で一覧表示するページです。都道府県・市町村・カテゴリ・イベント件数を確認しながら各施設詳細へ進めます。",
