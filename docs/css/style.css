@@ -580,6 +580,11 @@ h2 {
   border-top: 1px solid var(--border);
 }
 
+/* スマホ共通の固定ナビ。PCでは非表示にして既存レイアウトを維持する。 */
+.mobile-global-nav {
+  display: none;
+}
+
 /* ポップアップ内のボタン共通スタイル */
 .popup-link-btn {
     display: inline-block;
@@ -1313,5 +1318,60 @@ h2 {
 
   .spot-title {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  /*
+    スマホ時の最下部固定ナビ。
+    コピーライト固定フッターより上に配置し、主要導線へすぐ移動できるようにする。
+  */
+  .mobile-global-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 22px;
+    z-index: 1200;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+    background: var(--surface-frosted);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .mobile-global-nav__link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 36px;
+    padding: 6px 4px;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--text_white);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .mobile-global-nav__link:active {
+    filter: brightness(0.96);
+  }
+
+  /* 固定ナビ + 固定コピーライトに本文が隠れないよう、全ページに下余白を確保する。 */
+  body {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+
+  /* トップページのみ、地図上部の3導線を非表示にして視認性を上げる。 */
+  body.home-page .site-header .spot-actions {
+    display: none;
   }
 }

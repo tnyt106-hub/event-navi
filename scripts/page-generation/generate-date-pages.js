@@ -295,6 +295,12 @@ ${breadcrumbItems}
 // HTML のフッター部分を生成する
 function renderFooter() {
   return `  </main>
+  <!-- スマホ共通の固定導線: ページを問わず主要3導線へ遷移しやすくする -->
+  <nav class="mobile-global-nav" aria-label="スマートフォン用固定ナビゲーション">
+    <a class="mobile-global-nav__link" href="/date/">日付から探す</a>
+    <a class="mobile-global-nav__link" href="/facility/">エリアから探す</a>
+    <a class="mobile-global-nav__link" href="/facility-name/">施設名から探す</a>
+  </nav>
   <footer class="trial-footer">
     © ${CURRENT_YEAR} ${SITE_NAME} - 公共施設イベント情報を正確に届けるアーカイブサイト
   </footer>
