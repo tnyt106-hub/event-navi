@@ -73,6 +73,9 @@ function renderSpotPanel(spot) {
 function clearSpotPanel() {
   const panel = document.getElementById("spot-panel");
   if (!panel) return;
+  // 選択を解除する時は、内部状態とピン見た目を必ず同時に初期化する
+  pinnedEntry = null;
+  syncSelectedMarkerVisual();
   panel.classList.add("is-empty");
   panel.classList.remove("is-expanded");
   const title = panel.querySelector(".spot-panel__title");
@@ -142,6 +145,8 @@ const map = L.map("map", {
 });
 // スポット名ラベルは「拡大時のみ表示」にするため、閾値を定数化しておく
 const SPOT_LABEL_MIN_ZOOM = 12;
+// 要件: ピン選択時はこのズーム値まで寄せて、施設位置を把握しやすくする
+const SPOT_FOCUS_ZOOM = 14;
 const isWide = window.matchMedia("(min-width: 1024px)").matches;
 map.setView(HOME_CENTER, isWide ? HOME_ZOOM_PC : HOME_ZOOM_MOBILE);
 gaPageView("/map", document.title);// GA4 helper（最小）
@@ -235,9 +240,7 @@ function focusSpotFromTodayEvent(spotId) {
   if (!spotId) return;
   const targetEntry = markerEntryBySpotId.get(spotId);
   if (!targetEntry) return;
-  const markerLatLng = targetEntry.marker.getLatLng();
-  // 地図を適度に寄せてから同じ選択処理を呼び、挙動を一本化する
-  map.setView(markerLatLng, Math.max(map.getZoom(), 12));
+  // 「本日開催中」カード経由でも、地図ピン選択と同じ処理を使って挙動を統一する
   onSpotSelect(targetEntry);
 }
 
@@ -344,11 +347,31 @@ function setVisibleEntries(entries) {
   visibleEntries = entries;
   markers.clearLayers();
   visibleEntries.forEach(e => markers.addLayer(e.marker));
+  // Leafletは再描画時にDOMを作り直すため、表示更新後に選択中スタイルを再適用する
+  syncSelectedMarkerVisual();
 }
+
+// 選択中ピンだけを強調して、ユーザーが現在位置を見失わないようにする
+function syncSelectedMarkerVisual() {
+  markerEntries.forEach((entry) => {
+    const markerElement = entry.marker.getElement();
+    if (!markerElement) return;
+    const isSelected = pinnedEntry === entry;
+    markerElement.classList.toggle("spot-marker--selected", isSelected);
+    markerElement.classList.toggle("spot-marker--default", !isSelected);
+  });
+}
+
 function onSpotSelect(entry) {
   // ピン/ラベルのどちらからでも同一の選択処理にする（挙動の統一）
   if (!entry) return;
   pinnedEntry = entry;
+  // 要件: ピン選択時に選択地点まで寄せる。既に拡大済みの場合はズームアウトしない
+  const markerLatLng = entry.marker.getLatLng();
+  const nextZoom = Math.max(map.getZoom(), SPOT_FOCUS_ZOOM);
+  map.flyTo(markerLatLng, nextZoom, { duration: 0.45 });
+  // 選択中のピンを視覚的に目立たせる
+  syncSelectedMarkerVisual();
   // 要件対応: ピン直上のLeafletポップアップは表示しない（下部パネルのみを使う）
   entry.marker.closePopup();
   renderSpotPanel(entry.spot);
