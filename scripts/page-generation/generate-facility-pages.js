@@ -354,10 +354,7 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
     description: "四国4県の公共施設を施設名の50音順で一覧表示するページです。都道府県・市町村・カテゴリ・イベント件数を確認しながら各施設詳細へ進めます。",
     canonicalPath: "/facility-name/",
     preHeaderHtml
-  })}    <nav class="spot-actions" aria-label="施設名ページのナビゲーション">
-      <a class="spot-action-btn" href="../facility/">エリアから探すへ</a>
-      <a class="spot-action-btn" href="../index.html">トップへ戻る</a>
-    </nav>
+  })}    <!-- 施設名ページでは重複導線になるため、上部ナビゲーションボタンは表示しない -->
 
     <section class="spot-events" aria-labelledby="facility-name-list-title">
       <div class="spot-events__header">
