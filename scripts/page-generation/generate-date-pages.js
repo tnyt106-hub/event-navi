@@ -445,7 +445,7 @@ function renderAdSection(adHtml, positionLabel) {
   if (!embedHtml) return "";
 
   return `  <section class="date-ad" data-ad-position="${safePositionLabel}">
-    <div class="date-ad__embed" role="complementary" aria-label="広告">
+    <div class="date-ad__embed" role="complementary" aria-label="スポンサーリンク">
 ${embedHtml}
     </div>
   </section>
@@ -515,8 +515,10 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
     { label: "日付一覧", href: "../" },
     { label: dateText }
   ]);
-  // 広告の挿入位置は関数化しておき、後で差し込みやすくする
+  // 広告は「パンくず直下」に固定し、静的ページ全体で配置ルールを統一する。
   const topAdHtml = renderAdSection(adHtml, "top");
+  // preHeaderHtml に連結することで、パンくずのすぐ下へ広告を差し込む。
+  const preHeaderHtml = `${breadcrumbHtml}${topAdHtml}`;
   // 下部広告は必要になった時だけ有効化できるようにトグルを用意する
   const includeBottomAd = false;
   const bottomAdHtml = includeBottomAd ? renderAdSection(adHtml, "bottom") : "";
@@ -524,9 +526,8 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   return (
     // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
     // ユーザビリティ向上のため、パンくずはヘッダーより先に配置する。
-    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex, "", "", breadcrumbHtml)
+    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex, "", "", preHeaderHtml)
     + navHtml
-    + topAdHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
       <h2 id="events-title" class="spot-events__title">イベント一覧</h2>
@@ -555,6 +556,8 @@ function renderDateIndexPage(dateEntries, adHtml) {
     { label: "ホーム", href: "../index.html" },
     { label: headingText }
   ]);
+  // 一覧ページも同様に、パンくずの直後へ広告を配置する。
+  const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "index")}`;
 
   const items = dateEntries.map((entry) => {
     const dateKey = formatDateKey(entry.date);
@@ -594,9 +597,8 @@ function renderDateIndexPage(dateEntries, adHtml) {
       false,
       "四国で開催されるイベントを日付別に一覧で確認できるページです。日程ごとの件数と代表イベントから詳細ページへ進めます。",
       "/date/",
-      breadcrumbHtml
+      preHeaderHtml
     )
-    + renderAdSection(adHtml, "index")
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
       <h2 id="events-title" class="spot-events__title">${escapeHtml(listSectionTitle)}</h2>
