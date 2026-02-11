@@ -1348,7 +1348,7 @@ h2 {
     justify-content: center;
     align-items: center;
     min-height: 36px;
-    padding: 6px 4px;
+    padding: 0px 4px;
     border-radius: 8px;
     border: 1px solid var(--accent);
     background: var(--accent);
