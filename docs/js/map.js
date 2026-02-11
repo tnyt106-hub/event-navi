@@ -144,7 +144,7 @@ const map = L.map("map", {
   maxBoundsViscosity: 0.7
 });
 // スポット名ラベルは「拡大時のみ表示」にするため、閾値を定数化しておく
-const SPOT_LABEL_MIN_ZOOM = 12;
+const SPOT_LABEL_MIN_ZOOM = 15;
 // 要件: ピン選択時はこのズーム値まで寄せて、施設位置を把握しやすくする
 const SPOT_FOCUS_ZOOM = 14;
 const isWide = window.matchMedia("(min-width: 1024px)").matches;
