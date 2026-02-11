@@ -15,7 +15,7 @@ function gaEvent(name, params = {}) {
   window.gtag("event", name, params);
 }
 // =======================
-// 地図下スポット表示欄
+// 地図内ピン選択パネル
 // =======================
 function renderSpotPanel(spot) {
   const panel = document.getElementById("spot-panel");
@@ -23,7 +23,6 @@ function renderSpotPanel(spot) {
   const title = panel.querySelector(".spot-panel__title");
   const cat = document.getElementById("spot-panel-category");
   const area = document.getElementById("spot-panel-area");
-  const desc = document.getElementById("spot-panel-desc");
   const google = document.getElementById("spot-panel-google");
   const detail = document.getElementById("spot-panel-detail");
   const official = document.getElementById("spot-panel-official");
@@ -42,7 +41,6 @@ function renderSpotPanel(spot) {
         ? `${spot.prefecture ?? ""}${spot.municipality ? " " + spot.municipality : ""}`
         : "";
   }
-  if (desc) desc.textContent = spot.description ?? "";
   // Google（ルート検索）
   if (google) {
     google.href = `https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lng}`;
@@ -70,7 +68,7 @@ function renderSpotPanel(spot) {
   gaEvent("select_content", { content_type: "spot", item_id: spot.spot_id ?? name });
 }
 // =======================
-// 地図下スポット閉じる
+// 地図内ピン選択パネルを閉じる
 // =======================
 function clearSpotPanel() {
   const panel = document.getElementById("spot-panel");
@@ -81,13 +79,21 @@ function clearSpotPanel() {
   if (title) title.textContent = "スポット未選択";
   const cat = document.getElementById("spot-panel-category");
   const area = document.getElementById("spot-panel-area");
-  const desc = document.getElementById("spot-panel-desc");
   if (cat) cat.textContent = "";
   if (area) area.textContent = "";
-  if (desc) desc.textContent = "";
   // 公式サイトボタンは未選択時に非表示にする
   const official = document.getElementById("spot-panel-official");
   if (official) official.style.display = "none";
+  // 詳細ボタンも未選択時は非表示にして、誤遷移を防止する
+  const detail = document.getElementById("spot-panel-detail");
+  if (detail) detail.style.display = "none";
+  // ルート検索ボタンは未選択時の遷移先がないため無効化する
+  const google = document.getElementById("spot-panel-google");
+  if (google) google.removeAttribute("href");
+  // 「ピン未選択」になったことをURLにも反映し、共有時の状態ズレを防ぐ
+  syncSelectedSpotToUrl("");
+  // 一覧カード側の選択強調も解除して、双方向連動の状態を正しく保つ
+  setTodayEventActiveSpot("");
   // 空状態に戻すときはトグルのARIAも初期化しておく
   const toggleBtn = document.getElementById("spot-panel-toggle");
   if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
@@ -98,6 +104,24 @@ function clearSpotPanel() {
   map.setView(HOME_CENTER, isWide ? HOME_ZOOM_PC : HOME_ZOOM_MOBILE);
   // 開いているポップアップも閉じる（任意だけど気持ちいい
   map.closePopup();
+}
+
+// URLクエリ「?spot=...」へ選択中スポットを保存する
+function syncSelectedSpotToUrl(spotId) {
+  const url = new URL(window.location.href);
+  if (spotId) {
+    url.searchParams.set("spot", spotId);
+  } else {
+    url.searchParams.delete("spot");
+  }
+  // pushStateだと履歴が増え続けるため、replaceStateで現在履歴のみ更新する
+  window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+}
+
+// URLにスポット指定がある場合の復元用IDを取り出す
+function getInitialSpotIdFromUrl() {
+  const url = new URL(window.location.href);
+  return url.searchParams.get("spot") || "";
 }
 // =======================
 // 地図初期化
@@ -154,6 +178,18 @@ const TODAY_EVENTS_VISIBLE_LIMIT = 5; // 要件: 初期表示は5件
 let todayEventsAll = []; // 「本日開催中イベント」の全件（もっと見るで切替に使う）
 let todayEventsExpanded = false; // もっと見るの開閉状態
 const markerEntryBySpotId = new Map(); // 一覧カードから地図ピンへ移動するための逆引き
+const INITIAL_SPOT_ID = getInitialSpotIdFromUrl(); // URL共有で復元する初期選択ID
+
+// 一覧カード側で選択中の施設をハイライトし、地図と双方向に連動させる
+function setTodayEventActiveSpot(spotId) {
+  const buttons = document.querySelectorAll(".today-events__button");
+  buttons.forEach((button) => {
+    const isActive = spotId && button.dataset.spotId === spotId;
+    button.classList.toggle("is-active", Boolean(isActive));
+    // スクリーンリーダーでも「選択中」を伝えるためにARIA属性を同期する
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+  });
+}
 
 // 日付文字列(YYYY-MM-DD)をローカル日付として扱えるDateに変換する
 function parseDateStringAsLocalDay(dateText) {
@@ -228,6 +264,8 @@ function renderTodayEvents() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "today-events__button";
+    button.dataset.spotId = item.spotId || "";
+    button.setAttribute("aria-pressed", "false");
     button.setAttribute("aria-label", `${item.title}（${item.prefecture || "県情報なし"} / ${item.venueName}）の地図ピンを表示`);
     button.addEventListener("click", () => {
       focusSpotFromTodayEvent(item.spotId);
@@ -248,6 +286,8 @@ function renderTodayEvents() {
   });
 
   updateTodayEventsMoreButton();
+  // 一覧描画後に現在の選択状態を再適用し、再描画時の強調消失を防ぐ
+  setTodayEventActiveSpot(pinnedEntry?.spot?.spot_id || "");
 }
 
 // 各施設のイベントJSONを読み込み、「本日開催中イベント」を組み立てる
@@ -311,6 +351,10 @@ function onSpotSelect(entry) {
   pinnedEntry = entry;
   entry.marker.openPopup();
   renderSpotPanel(entry.spot);
+  // 仕様: 一覧側にも選択状態を反映して、双方向連動を成立させる
+  setTodayEventActiveSpot(entry.spot?.spot_id || "");
+  // 仕様: 共有URLで同じ施設を再表示できるよう、spot_idをクエリへ保存する
+  syncSelectedSpotToUrl(entry.spot?.spot_id || "");
 }
 function createPopupContent(spot) {
   const container = document.createElement("div");
@@ -363,6 +407,10 @@ function updateSpotLabelVisibility() {
 }
 // ズーム操作のたびにラベル表示状態を同期する
 map.on("zoomend", updateSpotLabelVisibility);
+// 地図の余白タップで選択を解除し、未選択ガイド状態へ戻す
+map.on("click", () => {
+  clearSpotPanel();
+});
 setupTodayEventsMoreButton();
 // =======================
 // スポット読み込み
@@ -413,6 +461,14 @@ fetch("./data/spots.json")
         updateSpotLabelVisibility();
         // 地図ピンの準備ができた後に「本日開催中イベント」を読み込む
         loadTodayEvents(spots);
+        // URL共有で指定されたスポットがあれば初期表示時に復元する
+        if (INITIAL_SPOT_ID) {
+          const initialEntry = markerEntryBySpotId.get(INITIAL_SPOT_ID);
+          if (initialEntry) {
+            map.setView(initialEntry.marker.getLatLng(), Math.max(map.getZoom(), 12));
+            onSpotSelect(initialEntry);
+          }
+        }
     // ×閉じるボタン（ここで有効化：markerEntriesが埋まった後）
     const closeBtn = document.getElementById("spot-panel-close");
     if (closeBtn) {

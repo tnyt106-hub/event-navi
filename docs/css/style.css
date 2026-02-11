@@ -333,6 +333,13 @@ h2 {
   outline: none;
 }
 
+/* 地図で選択中の施設と一覧カードを視覚的に連動させる */
+.today-events__button.is-active {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding-left: 8px;
+}
+
 .today-events__name {
   margin: 0;
   font-size: 0.95rem;
@@ -607,24 +614,21 @@ h2 {
 }
 
 /* =======================
-   地図下スポット表示欄（Bottom Sheet）
+   地図内ピン選択パネル（Bottom Sheet）
    ======================= */
 
 .spot-panel {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 0 12px calc(12px + env(safe-area-inset-bottom));
-  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  width: auto;
   background: transparent;
   z-index: 1100;
   pointer-events: none; /* クリックできるのは中のカードのみ */
 }
 
-/* 未選択時は説明だけ表示 */
-.spot-panel.is-empty .spot-panel__desc,
+/* 未選択時は操作ボタンを隠し、ガイドのみを見せる */
 .spot-panel.is-empty .spot-panel__actions {
   display: none;
 }
@@ -633,10 +637,12 @@ h2 {
 .spot-panel__body {
   position: relative;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  border-radius: var(--radius-sheet);
   background: var(--surface);
   box-shadow: var(--shadow-sheet);
   padding: 12px 14px 14px 20px; /* 左のアクセントラインと重ならない余白を確保 */
+  max-height: min(40vh, 320px); /* 要件: パネルの高さ上限を設定して地図の視認性を残す */
+  overflow-y: auto; /* 要件: 内容が多い場合はパネル内だけスクロールさせる */
   pointer-events: auto; /* カードはクリック可能 */
 }
 
@@ -697,18 +703,6 @@ h2 {
   color: var(--accent);
   font-size: 11px;
   font-weight: 600;
-}
-
-/* 説明文 */
-.spot-panel__desc {
-  margin: 0 0 12px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text);
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* 3行まで表示して省略する */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* ボタンエリア */
@@ -782,21 +776,21 @@ h2 {
 /* スマホ最適化 */
 @media (max-width: 600px) {
   .spot-panel {
-    padding: 0 8px calc(8px + env(safe-area-inset-bottom));
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
   }
   .spot-panel__title {
     font-size: 17px;
+  }
+  .spot-panel__body {
+    max-height: min(46vh, 360px); /* スマホは縦長になりやすいため少し余裕を持たせる */
   }
 }
 
 /* 未選択時だけガイド文を表示（選択中は隠す） */
 .spot-panel:not(.is-empty) .spot-panel__kicker {
   display: none;
-}
-
-/*フッター被り対策 */
-main {
-  padding-bottom: 44px;
 }
 
 /* =======================
