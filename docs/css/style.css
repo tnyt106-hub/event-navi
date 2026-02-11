@@ -246,8 +246,8 @@ h2 {
 }
 .map-wrapper {
   position: relative;
-  width: calc(100% - 15px); 
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   box-sizing: border-box;
   /* カード化（ここを追加） */ 
   background: var(--surface); /* 白背景 */ 
@@ -257,6 +257,111 @@ h2 {
   /* 既存の高さ調整 */
   height: calc(100dvh - 210px);
   min-height: 58vh; 
+}
+
+/*
+  トップページ本体レイアウト:
+  - スマホ: 縦並び（地図→本日イベント）
+  - PC: 2カラム（左地図 / 右イベント）
+*/
+.home-layout {
+  width: min(1200px, calc(100% - 16px));
+  margin: 0 auto;
+  display: grid;
+  gap: 12px;
+  align-items: start;
+}
+
+/* 「本日開催中のイベント」カード全体 */
+.today-events {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 14px 14px 12px;
+  color: var(--text);
+}
+
+.today-events__header {
+  margin-bottom: 10px;
+}
+
+.today-events__title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.today-events__desc {
+  margin: 6px 0 0;
+  font-size: 0.83rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+.today-events__status {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+.today-events__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.today-events__item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-subcard);
+  overflow: hidden;
+}
+
+.today-events__button {
+  width: 100%;
+  border: none;
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+  padding: 10px 12px;
+}
+
+.today-events__button:hover,
+.today-events__button:focus-visible {
+  background: var(--accent-soft);
+  outline: none;
+}
+
+.today-events__name {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.today-events__meta {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+.today-events__more {
+  margin-top: 10px;
+  width: 100%;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  padding: 8px 10px;
+  background: var(--surface);
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.today-events__more:hover,
+.today-events__more:focus-visible {
+  background: var(--accent-soft);
+  outline: none;
 }
 
 
@@ -413,8 +518,24 @@ h2 {
     font-size: 0.8rem;
   }
 
-  /* スマホでも地図が下部カードに近づくよう調整 */
-  .map-wrapper {height: calc(100dvh - 190px); min-height: 58vh;}
+  /* スマホでは地図の縦幅を縮め、直下の「本日開催中」を見やすくする */
+  .map-wrapper {height: calc(100dvh - 320px); min-height: 42vh;}
+
+  .today-events {
+    padding: 12px;
+  }
+}
+
+/* PC表示: 地図の右側に本日開催中イベントを配置する */
+@media (min-width: 1024px) {
+  .home-layout {
+    grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+  }
+
+  .today-events {
+    max-height: calc(100dvh - 220px);
+    overflow: auto;
+  }
 }
 /* 試験公開用文言*/
 .site-notice {
