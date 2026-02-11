@@ -86,8 +86,42 @@ h1, h2, h3, h4, h5, h6 {
   /* 対応ブラウザでは背面を軽くぼかして、文字の可読性と上品さを両立 */
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  /* 右上ユーティリティ（問い合わせ導線）の配置基準をこの要素に固定 */
+  position: relative;
   padding: 16px 12px 14px;
   color: #ffffff;
+}
+
+/* ヘッダー右上のユーティリティ導線を重なりなく配置するためのラッパー */
+.site-header__utility {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+/* 問い合わせリンク: 背景上でも視認しやすく、ボタンとして認識しやすい見た目にする */
+.site-header__contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--text_white);
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--text_white);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.site-header__contact-link:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.site-header__contact-link:focus-visible {
+  outline: 2px solid var(--text_white);
+  outline-offset: 2px;
 }
 
 /* ページタイトル（上段） */
@@ -1113,6 +1147,16 @@ main {
 }
 
 @media (max-width: 600px) {
+  /* 根本対応: ボタンを絶対配置のまま微調整し、タイトル行と同じ高さに揃える */
+  .site-header__utility {
+    top: 14px;
+  }
+
+  /* 右上ボタンとタイトル文字が重ならないよう、タイトル右側に余白を確保する */
+  .site-header h1 {
+    padding-right: 132px;
+  }
+
   .spot-content {
     padding: 20px 16px;
   }
