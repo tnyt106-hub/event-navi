@@ -122,12 +122,46 @@ function loadAdHtml() {
   }
 }
 
+// 旧テンプレート（ad-card）を検出した場合は、配信タグ本体だけを抽出する。
+// 生成スクリプト側で整形しておくことで、既存partialを残したまま表示を移行できる。
+function extractAdEmbedHtml(adHtml) {
+  if (!adHtml) return "";
+
+  const normalized = String(adHtml).trim();
+  if (!normalized) return "";
+
+  if (normalized.includes('class="ad-card"')) {
+    const embedParts = [];
+    const bannerLinkMatch = normalized.match(/<a[^>]*class="ad-card__link"[\s\S]*?<\/a>/i);
+    const pixelMatch = normalized.match(/<img[^>]*class="ad-card__pixel"[^>]*>/i);
+
+    if (bannerLinkMatch) {
+      embedParts.push(bannerLinkMatch[0]);
+    }
+    if (pixelMatch) {
+      embedParts.push(pixelMatch[0]);
+    }
+
+    if (embedParts.length > 0) {
+      return embedParts.join("\n");
+    }
+  }
+
+  return normalized;
+}
+
 // ページ内の広告位置を属性で識別できるようセクション化して返す。
 function renderAdSection(adHtml, positionLabel) {
   if (!adHtml) return "";
   const safePositionLabel = escapeHtml(positionLabel);
+  const embedHtml = extractAdEmbedHtml(adHtml);
+
+  if (!embedHtml) return "";
+
   return `    <section class="date-ad" data-ad-position="${safePositionLabel}">
-${adHtml}
+      <div class="date-ad__embed" role="complementary" aria-label="広告">
+${embedHtml}
+      </div>
     </section>
 `;
 }
