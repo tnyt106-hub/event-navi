@@ -191,6 +191,28 @@ function buildOtherBodyText(bodyText) {
   return normalized;
 }
 
+// 構造化済みの詳細情報（時刻・料金・問い合わせ）を HTML の一覧に変換する。
+function renderStructuredDetails(eventItem) {
+  // 各項目を表示ラベルつきで定義し、並び順をここで固定する。
+  const detailRows = [
+    { label: "開場", value: eventItem?.open_time },
+    { label: "開始", value: eventItem?.start_time },
+    { label: "終了", value: eventItem?.end_time },
+    { label: "料金", value: eventItem?.price },
+    { label: "問い合わせ", value: eventItem?.contact }
+  ].filter((row) => !isBlank(row.value));
+
+  if (detailRows.length === 0) {
+    return "";
+  }
+
+  const detailItemsHtml = detailRows
+    .map((row) => `      <li>${escapeHtml(row.label)}: ${escapeHtml(row.value)}</li>`)
+    .join("\n");
+
+  return `    <ul class="spot-event-card__details">\n${detailItemsHtml}\n    </ul>\n`;
+}
+
 // date_from と date_to の差が大きすぎる場合は安全のため丸める
 function normalizeDateRange(dateFromObj, dateToObj, venueId, index) {
   const diffDays = Math.floor((dateToObj.getTime() - dateFromObj.getTime()) / ONE_DAY_MS);
@@ -406,6 +428,8 @@ function renderEventCard(eventItem, venueLabel) {
   const dateText = eventItem.date_from === eventItem.date_to
     ? dateFromText
     : `${dateFromText}〜${dateToText}`;
+  // 構造化済みの詳細情報（開始/終了時刻など）がある場合は優先表示する。
+  const structuredDetailsHtml = renderStructuredDetails(eventItem);
   // 構造化項目が取れない場合のみ、本文を「その他」として表示する。
   const otherBodyText = buildOtherBodyText(eventItem?.body);
   const showOther = otherBodyText && !hasStructuredDetails(eventItem);
@@ -425,6 +449,7 @@ function renderEventCard(eventItem, venueLabel) {
     <h2 class="spot-event-card__title">${escapeHtml(titleText)}</h2>
     <p class="spot-event-card__venue">会場: ${escapeHtml(safeVenueLabel)}</p>
 ${otherHtml}
+${structuredDetailsHtml}
 ${linkHtml}
   </li>
 `;
