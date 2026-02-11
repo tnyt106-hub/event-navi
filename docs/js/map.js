@@ -431,10 +431,8 @@ function updateSpotLabelVisibility() {
 }
 // ズーム操作のたびにラベル表示状態を同期する
 map.on("zoomend", updateSpotLabelVisibility);
-// 地図の余白タップで選択を解除し、未選択ガイド状態へ戻す
-map.on("click", () => {
-  clearSpotPanel();
-});
+// 要件変更: ピン以外（地図の余白）をクリックしても状態は変えない
+// 以前は clearSpotPanel() で初期表示へ戻していたが、ユーザー操作の意図とズレるため廃止
 setupTodayEventsMoreButton();
 // =======================
 // スポット読み込み
