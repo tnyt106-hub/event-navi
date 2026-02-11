@@ -171,13 +171,13 @@
   {
   "name": "高知県立県民体育館",
   "venue_id": "kochi-sporthall",
-  "lat": 33.55927,
-  "lng": 133.54045,
+  "lat": 33.54951,
+  "lng": 133.54728,
   "category": "体育館",
   "prefecture": "高知県",
   "municipality": "高知市",
   "official_url": "https://www.kochi-kenmin.org/",
   "description": "高知市本町に位置する県立の総合体育施設です。メインアリーナ、サブアリーナ、武道場、トレーニング室などを備え、バスケットボールやバレーボール、各種大会、イベントなど幅広い用途で利用されています。",
-  "source": "https://www.kochi-kc.jp/sports/"
+  "source": "https://docs.google.com/spreadsheets/d/1F0iBntJPjSgT_QmOZ7n0ZNXUZ2mvU-J9Jrsy72p843w/pub?gid=1515611641&single=true&output=csv"
 }
 ]
