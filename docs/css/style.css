@@ -1147,9 +1147,14 @@ main {
 }
 
 @media (max-width: 600px) {
-  /* 狭い画面ではタイトルと重なりやすいため、上余白を少し増やして干渉を防ぐ */
-  .site-header {
-    padding-top: 52px;
+  /* 根本対応: ボタンを絶対配置のまま微調整し、タイトル行と同じ高さに揃える */
+  .site-header__utility {
+    top: 14px;
+  }
+
+  /* 右上ボタンとタイトル文字が重ならないよう、タイトル右側に余白を確保する */
+  .site-header h1 {
+    padding-right: 132px;
   }
 
   .spot-content {
