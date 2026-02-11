@@ -183,14 +183,13 @@
   {
   "name": "高知市文化プラザかるぽーと",
   "venue_id": "kochi-culport",
-  "lat": 33.55903,
-  "lng": 133.54339,
+  "lat": 33.55839,
+  "lng": 133.54733,
   "category": "文化ホール",
   "prefecture": "高知県",
   "municipality": "高知市",
   "official_url": "https://www.bunkaplaza.or.jp/",
   "description": "高知市九反田にある複合文化施設です。1,085席の大ホールをはじめ、ギャラリー、スタジオ、図書館など多彩な機能を備え、コンサートや展示会、市民活動の拠点として幅広く利用されています。",
   "source": "https://www.bunkaplaza.or.jp/event/"
-}
 }
 ]
