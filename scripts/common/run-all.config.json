@@ -152,6 +152,14 @@
       ]
     },
     {
+      "id": "kochi-skbh",
+      "script": "scripts/scraping/fetch-kochi-skbh.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/kochi-skbh.json"
+      ]
+    },
+    {
       "id": "filter-old-events",
       "script": "scripts/common/filter-old-events.js",
       "enabled": true,
