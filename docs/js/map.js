@@ -150,6 +150,155 @@ let allSpots = [];
 let markerEntries = [];
 let visibleEntries = [];
 let pinnedEntry = null; // 直前に選択されたスポットを保持して、次のピン操作まで固定する
+const TODAY_EVENTS_VISIBLE_LIMIT = 5; // 要件: 初期表示は5件
+let todayEventsAll = []; // 「本日開催中イベント」の全件（もっと見るで切替に使う）
+let todayEventsExpanded = false; // もっと見るの開閉状態
+const markerEntryBySpotId = new Map(); // 一覧カードから地図ピンへ移動するための逆引き
+
+// 日付文字列(YYYY-MM-DD)をローカル日付として扱えるDateに変換する
+function parseDateStringAsLocalDay(dateText) {
+  if (!dateText) return null;
+  const value = String(dateText).trim();
+  if (!value) return null;
+  const parsed = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return parsed;
+}
+
+// 本日判定用に現在日付を00:00へ丸める
+function getCurrentLocalDay() {
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
+// 要件: 「現在時刻の日が開催日と一致」するイベントのみ抽出する
+function isEventHeldToday(eventItem, today) {
+  const startDay = parseDateStringAsLocalDay(eventItem?.date_from);
+  const endDay = parseDateStringAsLocalDay(eventItem?.date_to) || startDay;
+  if (!startDay || !endDay) return false;
+  return startDay <= today && today <= endDay;
+}
+
+// 一覧表示件数(5件 or 全件)に応じて表示対象を返す
+function getVisibleTodayEvents() {
+  if (todayEventsExpanded) return todayEventsAll;
+  return todayEventsAll.slice(0, TODAY_EVENTS_VISIBLE_LIMIT);
+}
+
+// 「もっと見る」ボタンの表示/文言を同期する
+function updateTodayEventsMoreButton() {
+  const moreButton = document.getElementById("today-events-more");
+  if (!moreButton) return;
+  const hasMore = todayEventsAll.length > TODAY_EVENTS_VISIBLE_LIMIT;
+  moreButton.hidden = !hasMore;
+  moreButton.textContent = todayEventsExpanded ? "表示を閉じる" : "もっと見る";
+}
+
+// 地図側のスポットを強調表示する（一覧カードタップ時）
+function focusSpotFromTodayEvent(spotId) {
+  if (!spotId) return;
+  const targetEntry = markerEntryBySpotId.get(spotId);
+  if (!targetEntry) return;
+  const markerLatLng = targetEntry.marker.getLatLng();
+  // 地図を適度に寄せてから同じ選択処理を呼び、挙動を一本化する
+  map.setView(markerLatLng, Math.max(map.getZoom(), 12));
+  onSpotSelect(targetEntry);
+}
+
+// 「本日開催中イベント」リストを描画する
+function renderTodayEvents() {
+  const list = document.getElementById("today-events-list");
+  const status = document.getElementById("today-events-status");
+  if (!list || !status) return;
+
+  list.innerHTML = "";
+
+  if (todayEventsAll.length === 0) {
+    status.textContent = "本日開催中のイベントは見つかりませんでした。";
+    updateTodayEventsMoreButton();
+    return;
+  }
+
+  status.textContent = `本日開催中 ${todayEventsAll.length}件（イベント名50音順）`;
+
+  getVisibleTodayEvents().forEach((item) => {
+    const li = document.createElement("li");
+    li.className = "today-events__item";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "today-events__button";
+    button.setAttribute("aria-label", `${item.title}（${item.prefecture || "県情報なし"} / ${item.venueName}）の地図ピンを表示`);
+    button.addEventListener("click", () => {
+      focusSpotFromTodayEvent(item.spotId);
+    });
+
+    const title = document.createElement("p");
+    title.className = "today-events__name";
+    title.textContent = item.title;
+
+    const meta = document.createElement("p");
+    meta.className = "today-events__meta";
+    meta.textContent = `${item.prefecture || "県情報なし"} / ${item.venueName}`;
+
+    button.appendChild(title);
+    button.appendChild(meta);
+    li.appendChild(button);
+    list.appendChild(li);
+  });
+
+  updateTodayEventsMoreButton();
+}
+
+// 各施設のイベントJSONを読み込み、「本日開催中イベント」を組み立てる
+async function loadTodayEvents(spots) {
+  const status = document.getElementById("today-events-status");
+  const today = getCurrentLocalDay();
+  const fetchTargets = spots.filter((spot) => spot?.spot_id);
+
+  const eventLists = await Promise.all(fetchTargets.map(async (spot) => {
+    try {
+      const response = await fetch(`./events/${encodeURIComponent(spot.spot_id)}.json`);
+      if (!response.ok) return [];
+      const json = await response.json();
+      const events = Array.isArray(json?.events) ? json.events : [];
+      return events
+        .filter((eventItem) => isEventHeldToday(eventItem, today))
+        .map((eventItem) => ({
+          title: eventItem?.title ? String(eventItem.title).trim() : "名称不明イベント",
+          prefecture: spot.prefecture ? String(spot.prefecture).trim() : "",
+          venueName: spot.name ? String(spot.name).trim() : "会場名不明",
+          spotId: spot.spot_id,
+        }));
+    } catch (error) {
+      // 1施設分の読み込み失敗で全体が止まらないようにし、他施設の表示を優先する
+      console.error(`イベントJSONの読み込みに失敗: ${spot.spot_id}`, error);
+      return [];
+    }
+  }));
+
+  todayEventsAll = eventLists
+    .flat()
+    // 要件: イベント名50音順（日本語ロケールで比較）
+    .sort((a, b) => a.title.localeCompare(b.title, "ja"));
+
+  todayEventsExpanded = false;
+  renderTodayEvents();
+
+  if (status && todayEventsAll.length > 0) {
+    status.setAttribute("data-loaded", "true");
+  }
+}
+
+// 「もっと見る」ボタンを初期化する
+function setupTodayEventsMoreButton() {
+  const moreButton = document.getElementById("today-events-more");
+  if (!moreButton) return;
+  moreButton.addEventListener("click", () => {
+    todayEventsExpanded = !todayEventsExpanded;
+    renderTodayEvents();
+  });
+}
 function setVisibleEntries(entries) {
   // 検索やリセットのたびに「いま表示しているマーカー群」を同期する
   visibleEntries = entries;
@@ -214,6 +363,7 @@ function updateSpotLabelVisibility() {
 }
 // ズーム操作のたびにラベル表示状態を同期する
 map.on("zoomend", updateSpotLabelVisibility);
+setupTodayEventsMoreButton();
 // =======================
 // スポット読み込み
 // =======================
@@ -255,11 +405,14 @@ fetch("./data/spots.json")
       markers.addLayer(marker);
 
      markerEntries.push(entry);//検索ボックス用
+      if (s.spot_id) markerEntryBySpotId.set(s.spot_id, entry); // 一覧カードから地図ピンを参照するために保持
     });
         map.addLayer(markers);
         setVisibleEntries(markerEntries);
         // 初回描画時にもズーム値に応じたラベル表示へ合わせる
         updateSpotLabelVisibility();
+        // 地図ピンの準備ができた後に「本日開催中イベント」を読み込む
+        loadTodayEvents(spots);
     // ×閉じるボタン（ここで有効化：markerEntriesが埋まった後）
     const closeBtn = document.getElementById("spot-panel-close");
     if (closeBtn) {

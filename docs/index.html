@@ -67,9 +67,13 @@
   </header>
 
   <main>
-    <section aria-labelledby="map-title">
+    <section class="home-layout" aria-labelledby="map-title">
       <h2 id="map-title" style="display:none;">四国エリア イベント施設マップ</h2>
-      
+
+      <!--
+        PCでは「地図 + 本日開催中イベント」を2カラムで表示し、
+        地図を見ながらイベント一覧を同時に確認できる導線にする。
+      -->
       <div class="map-wrapper">
         <!--
           施設名検索UIは将来の再利用を想定してDOM上には残しつつ、
@@ -120,6 +124,21 @@
           </div>
         </section>
       </div>
+
+      <!--
+        本日開催中イベント: SEO/ユーザビリティのため見出し + リスト構造で実装。
+        JSで「本日分のみ・50音順・5件まで」を表示し、超過時は「もっと見る」を出す。
+      -->
+      <section class="today-events" aria-labelledby="today-events-title">
+        <div class="today-events__header">
+          <h2 id="today-events-title" class="today-events__title">本日開催中のイベント</h2>
+          <p class="today-events__desc">イベント名・県・会場名を表示しています。カードをタップすると地図のピンを強調します。</p>
+        </div>
+
+        <p id="today-events-status" class="today-events__status" aria-live="polite">読み込み中です…</p>
+        <ul id="today-events-list" class="today-events__list" aria-label="本日開催中イベント一覧"></ul>
+        <button id="today-events-more" class="today-events__more" type="button" hidden>もっと見る</button>
+      </section>
     </section>
   </main>
 
