@@ -159,6 +159,14 @@
         "docs/events/kochi-skbh.json"
       ]
     },
+        {
+      "id": "kochi-sporthall",
+      "script": "scripts/scraping/fetch-kochi-sporthall.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/kochi-sporthall.json"
+      ]
+    },
     {
       "id": "filter-old-events",
       "script": "scripts/common/filter-old-events.js",
