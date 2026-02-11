@@ -176,6 +176,14 @@
       ]
     },
     {
+      "id": "kochi-dibasan.js",
+      "script": "scripts/scraping/fetch-kochi-dibasan.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/kochi-dibasan.json"
+      ]
+    },
+    {
       "id": "susaki-bunka",
       "script": "scripts/scraping/fetch-susaki-bunka.js",
       "enabled": true,
