@@ -155,5 +155,17 @@
   "official_url": "https://www.asty-tokushima.jp/",
   "description": "徳島県立産業観光交流センター（アスティとくしま）は、最大5,000人収容の多目的ホールや会議室を備えた四国最大級のコンベンション施設です。コンサートや展示会、国際会議など幅広く利用されています。",
   "source": "https://www.asty-tokushima.jp/about/"
+},
+  {
+  "name": "高知県立県民文化ホール",
+  "spot_id": "kkb-hall",
+  "lat": 33.55676,
+  "lng": 133.533141,
+  "category": "文化ホール",
+  "prefecture": "高知県",
+  "municipality": "高知市",
+  "official_url": "https://www.kkb-hall.jp/",
+  "description": "高知市本町にある多目的文化施設です。1,507席のオレンジホールと500席のグリーンホールを備え、コンサートや演劇、式典など幅広く利用されています。",
+  "source": "https://www.kkb-hall.jp/event/event-pickup.html?view=autonomy"
 }
 ]
