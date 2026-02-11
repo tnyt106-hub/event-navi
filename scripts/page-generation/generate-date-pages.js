@@ -407,13 +407,47 @@ function loadDateAdPartial() {
   }
 }
 
+// 旧テンプレート（ad-card）を検出した場合は、広告スニペット本体だけを取り出す。
+// 生成済みHTML側を直接触らず、生成スクリプト側で見た目移行を完結させるための互換処理。
+function extractAdEmbedHtml(adHtml) {
+  if (!adHtml) return "";
+
+  const normalized = String(adHtml).trim();
+  if (!normalized) return "";
+
+  // ad-card の場合はラベル等を除外し、配信タグ（a/img + 1px計測）だけを残す。
+  if (normalized.includes('class="ad-card"')) {
+    const embedParts = [];
+    const bannerLinkMatch = normalized.match(/<a[^>]*class="ad-card__link"[\s\S]*?<\/a>/i);
+    const pixelMatch = normalized.match(/<img[^>]*class="ad-card__pixel"[^>]*>/i);
+
+    if (bannerLinkMatch) {
+      embedParts.push(bannerLinkMatch[0]);
+    }
+    if (pixelMatch) {
+      embedParts.push(pixelMatch[0]);
+    }
+
+    if (embedParts.length > 0) {
+      return embedParts.join("\n");
+    }
+  }
+
+  return normalized;
+}
+
 // 広告枠の差し込み位置を一元管理し、HTMLの編集場所を明確にする
 function renderAdSection(adHtml, positionLabel) {
   if (!adHtml) return "";
   const safePositionLabel = escapeHtml(positionLabel);
+  const embedHtml = extractAdEmbedHtml(adHtml);
+
+  if (!embedHtml) return "";
 
   return `  <section class="date-ad" data-ad-position="${safePositionLabel}">
-${adHtml}
+    <div class="date-ad__embed" role="complementary" aria-label="広告">
+${embedHtml}
+    </div>
   </section>
 `;
 }

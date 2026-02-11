@@ -955,64 +955,31 @@ main {
   position: relative;        
 }
 
-/* 広告枠は panel と同トーンのカードとして目立ち過ぎないようにする */
-.ad-card {
-  margin: 16px 0;
-  padding: 14px;
-  border-radius: var(--radius-subcard);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-subcard);
+/* 広告枠はカード化せず、バナー原稿をそのまま掲載する。 */
+.date-ad {
+  margin: 8px 0;
 }
 
-/* 広告ラベルは小さく表示し、判別性を確保しながら主コンテンツの邪魔を防ぐ */
-.ad-card__label {
-  margin: 0 0 8px;
-  font-size: 11px;
-  line-height: 1.4;
-  color: var(--text-sub);
-}
-
-/* バナー画像のリンクは中央寄せにして、余白バランスを整える */
-.ad-card__link {
+/* 生成スクリプトで包む最小ラッパー。中央寄せだけを担い、装飾は付けない。 */
+.date-ad__embed {
   display: flex;
   justify-content: center;
 }
 
-/* 固定サイズ広告でも端末幅に収まるようにレスポンシブ化する */
-.ad-card__image {
+/* 固定サイズバナーでも画面幅に収まるようにし、圧迫感を軽減する。 */
+.date-ad__embed a,
+.date-ad__embed img {
   display: block;
-  width: min(100%, 468px);
   max-width: 100%;
   height: auto;
 }
 
-/* 計測用ピクセルはレイアウトに影響させない */
-.ad-card__pixel {
-  display: block;
+/* 計測用1px画像は表示上のノイズを抑える。 */
+.date-ad__embed img[width="1"][height="1"] {
   width: 1px;
   height: 1px;
   opacity: 0;
   overflow: hidden;
-}
-
-.ad-card__title {
-  margin: 0 0 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-sub);
-}
-
-.ad-card__body {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--text);
-}
-
-.ad-card__disclaimer {
-  margin: 10px 0 0;
-  font-size: 11px;
-  color: var(--text-sub);
 }
 
 .spot-event-card__title {
