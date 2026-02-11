@@ -35,6 +35,52 @@ function filterEvents(data, cutoffDate) {
   return { skipped: false, beforeCount, afterCount, removedCount, events };
 }
 
+// ファイルごとの集計結果を「列が揃ったログ文字列」に変換する。
+// 動的に幅を計算することで、ファイル名長や件数の桁数が混在しても読みやすさを維持する。
+function formatFilterSummaryLines(rows) {
+  if (!Array.isArray(rows) || rows.length === 0) {
+    return [];
+  }
+
+  // ファイル名列の幅は最長ファイル名に合わせる。
+  const fileNameWidth = rows.reduce((maxWidth, row) => {
+    const width = String(row.fileName || "").length;
+    return Math.max(maxWidth, width);
+  }, 0);
+
+  // 数値列は「見出しの長さ」と「実値の最大桁数」の大きい方を採用する。
+  // こうすることで、見出しを含めても列が崩れない。
+  const beforeValueWidth = rows.reduce((maxWidth, row) => {
+    const width = String(row.beforeCount).length;
+    return Math.max(maxWidth, width);
+  }, String("before").length);
+  const afterValueWidth = rows.reduce((maxWidth, row) => {
+    const width = String(row.afterCount).length;
+    return Math.max(maxWidth, width);
+  }, String("after").length);
+  const removedValueWidth = rows.reduce((maxWidth, row) => {
+    const width = String(row.removedCount).length;
+    return Math.max(maxWidth, width);
+  }, String("removed").length);
+
+  const headerLine = `${"file".padEnd(fileNameWidth)} | ${"before".padStart(
+    beforeValueWidth
+  )} | ${"after".padStart(afterValueWidth)} | ${"removed".padStart(removedValueWidth)}`;
+  const separatorLine = `${"-".repeat(fileNameWidth)}-+-${"-".repeat(
+    beforeValueWidth
+  )}-+-${"-".repeat(afterValueWidth)}-+-${"-".repeat(removedValueWidth)}`;
+
+  const dataLines = rows.map((row) => {
+    return `${String(row.fileName).padEnd(fileNameWidth)} | ${String(row.beforeCount).padStart(
+      beforeValueWidth
+    )} | ${String(row.afterCount).padStart(afterValueWidth)} | ${String(
+      row.removedCount
+    ).padStart(removedValueWidth)}`;
+  });
+
+  return [headerLine, separatorLine, ...dataLines];
+}
+
 function main() {
   // 実行場所ではなく、このスクリプト配置場所を起点に絶対パスを解決する
   const eventsDir = path.join(__dirname, "..", "..", "docs", "events");
@@ -51,6 +97,8 @@ function main() {
 
   let updatedFiles = 0;
   let removedTotal = 0;
+  // 1行ずつ生ログを出す代わりに、最後に整形表示するための中間結果。
+  const summaryRows = [];
 
   files.forEach((filePath) => {
     const fileName = path.basename(filePath);
@@ -71,7 +119,12 @@ function main() {
         return;
       }
 
-      console.log(`${fileName}: before=${result.beforeCount}, after=${result.afterCount}, removed=${result.removedCount}`);
+      summaryRows.push({
+        fileName,
+        beforeCount: result.beforeCount,
+        afterCount: result.afterCount,
+        removedCount: result.removedCount,
+      });
 
       removedTotal += result.removedCount;
 
@@ -85,6 +138,13 @@ function main() {
       const message = error instanceof Error ? error.message : String(error);
       console.error(`[ERROR] ${fileName}: ${message}`);
     }
+  });
+
+  // 施設ごとの件数サマリは、列を揃えてからまとめて表示する。
+  // これにより run-all.js 経由で実行した場合でも左右位置のズレを防止できる。
+  const summaryLines = formatFilterSummaryLines(summaryRows);
+  summaryLines.forEach((line) => {
+    console.log(line);
   });
 
   console.log(`更新ファイル数: ${updatedFiles}`);
