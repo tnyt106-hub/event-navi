@@ -965,6 +965,37 @@ main {
   box-shadow: var(--shadow-subcard);
 }
 
+/* 広告ラベルは小さく表示し、判別性を確保しながら主コンテンツの邪魔を防ぐ */
+.ad-card__label {
+  margin: 0 0 8px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-sub);
+}
+
+/* バナー画像のリンクは中央寄せにして、余白バランスを整える */
+.ad-card__link {
+  display: flex;
+  justify-content: center;
+}
+
+/* 固定サイズ広告でも端末幅に収まるようにレスポンシブ化する */
+.ad-card__image {
+  display: block;
+  width: min(100%, 468px);
+  max-width: 100%;
+  height: auto;
+}
+
+/* 計測用ピクセルはレイアウトに影響させない */
+.ad-card__pixel {
+  display: block;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
 .ad-card__title {
   margin: 0 0 8px;
   font-size: 12px;
