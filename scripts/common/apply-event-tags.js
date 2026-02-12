@@ -1,6 +1,6 @@
 // イベントのタイトルや価格などからタグを付与するためのスクリプト。
 // ルールベースで説明可能にするため、判定ロジックは配列と正規表現で定義する。
-// 使い方: node scripts/common/apply-event-tags.js docs/events/mimoca.json
+// 使い方: node scripts/common/apply-event-tags.js docs/events/<venue-id>.json
 // オプション: --overwrite (既存タグを上書きする)
 
 const fs = require("fs");
