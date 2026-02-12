@@ -344,8 +344,7 @@ h2 {
   background: var(--surface);
   text-align: left;
   cursor: pointer;
-  /* タイトル行の上下余白を絞って、カードの縦幅を抑える */
-  padding: 8px 12px 4px;
+  padding: 6px 10px/*8px 12px 4px*/;
 }
 
 .today-events__button:hover,
