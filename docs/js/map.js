@@ -453,8 +453,9 @@ async function fetchSpotEventsForToday(spot, today) {
           title: eventItem?.title ? String(eventItem.title).trim() : "名称不明イベント",
           venueName: spot.name ? String(spot.name).trim() : "会場名不明",
           spotId: spot.spot_id,
-          // 当日ページへ遷移するため、表示日とイベント名クエリを保持する
-          dateKey: eventItem?.date_from ? String(eventItem.date_from).trim() : formatDateKey(today),
+          // 本日開催中一覧の「詳細」は、開始日ではなく「今日」の日付ページへ遷移させる。
+          // こうすることで、長期開催イベントでもユーザーが見ている日付文脈と遷移先が一致する。
+          dateKey: formatDateKey(today),
           eventQuery: eventItem?.title ? String(eventItem.title).trim() : "",
         }));
     } catch (error) {

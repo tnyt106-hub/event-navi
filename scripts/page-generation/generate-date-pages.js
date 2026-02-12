@@ -16,7 +16,7 @@ const SITE_ORIGIN = "https://event-navi.jp";
 const OTHER_BODY_MAX_LENGTH = 300;
 // date_from/date_to の許容日数上限。
 // 安全対策の閾値を定数化し、条件式と警告文の整合性を保ちやすくする。
-const MAX_DATE_RANGE_DAYS = 31;
+const MAX_DATE_RANGE_DAYS = 365;
 // 日付加算・差分計算で使う「1日」のミリ秒。
 // 複数箇所で同じ式を再利用するため、マジックナンバーを排除する。
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
