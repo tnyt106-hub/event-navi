@@ -229,12 +229,37 @@ function formatCurrentDateForTodayTitle(now = new Date()) {
   return `${year}年${month}月${day}日`;
 }
 
-// 仕様変更: 「本日開催中のイベント」見出しを当日日付つき文言へ差し替える
-function updateTodayEventsTitleWithCurrentDate() {
+// 仕様変更: 見出しを「本日(YYYY年MM月DD日)のイベント (件数)」形式に更新する
+function updateTodayEventsTitleWithCurrentDate(eventCount = null) {
   const title = document.getElementById("today-events-title");
   if (!title) return;
   const todayLabel = formatCurrentDateForTodayTitle();
-  title.textContent = `本日(${todayLabel})のイベント`;
+
+  // 日付部分のみ青色にするため、見出し要素を都度組み立てる
+  title.textContent = "";
+
+  const prefix = document.createTextNode("本日(");
+  const date = document.createElement("span");
+  date.className = "today-events__accent";
+  date.textContent = todayLabel;
+  const suffix = document.createTextNode(")のイベント");
+
+  title.append(prefix, date, suffix);
+
+  // 件数が算出できたタイミングのみ、見出し右側へ「(18件)」形式で追記する
+  if (typeof eventCount === "number" && eventCount >= 0) {
+    const countWrap = document.createElement("span");
+    countWrap.className = "today-events__count";
+
+    const countOpen = document.createTextNode(" (");
+    const countValue = document.createElement("span");
+    countValue.className = "today-events__accent";
+    countValue.textContent = String(eventCount);
+    const countClose = document.createTextNode("件)");
+
+    countWrap.append(countOpen, countValue, countClose);
+    title.append(countWrap);
+  }
 }
 
 // 要件: 「現在時刻の日が開催日と一致」するイベントのみ抽出する
@@ -278,12 +303,16 @@ function renderTodayEvents() {
   list.innerHTML = "";
 
   if (todayEventsAll.length === 0) {
+    // 0件時も見出し右側の件数表示を最新化する
+    updateTodayEventsTitleWithCurrentDate(0);
     status.textContent = "本日開催中のイベントは見つかりませんでした。";
     updateTodayEventsMoreButton();
     return;
   }
 
-  status.textContent = `本日開催中 ${todayEventsAll.length}件（イベント名50音順）`;
+  // 要件変更: 件数は見出しに表示し、ステータス行の固定文言は削除する
+  updateTodayEventsTitleWithCurrentDate(todayEventsAll.length);
+  status.textContent = "";
 
   getVisibleTodayEvents().forEach((item) => {
     const li = document.createElement("li");
