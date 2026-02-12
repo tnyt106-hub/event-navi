@@ -278,7 +278,7 @@ h2 {
   background: var(--surface);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
-  padding: 14px 14px 9px;
+  padding: 14px 14px 6px;
   color: var(--text);
 }
 
@@ -642,7 +642,7 @@ h2 {
 
   .today-events__item {
     scroll-snap-align: start;
-    min-height: 110px;
+    min-height: 100px;
     display: grid;
     grid-template-rows: 1fr auto;
   }
