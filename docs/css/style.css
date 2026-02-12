@@ -745,7 +745,7 @@ h2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
+  padding: 4px 8px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   font-size: 13px;
