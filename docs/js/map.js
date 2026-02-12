@@ -185,9 +185,14 @@ let allSpots = [];
 let markerEntries = [];
 let visibleEntries = [];
 let pinnedEntry = null; // 直前に選択されたスポットを保持して、次のピン操作まで固定する
-const TODAY_EVENTS_VISIBLE_LIMIT = 5; // 要件: 初期表示は5件
+const TODAY_EVENTS_VISIBLE_LIMIT = 5; // 要件: PC初期表示は5件
 let todayEventsAll = []; // 「本日開催中イベント」の全件（もっと見るで切替に使う）
 let todayEventsExpanded = false; // もっと見るの開閉状態
+
+// スマホ判定はmatchMediaで1箇所に集約し、条件の書き間違いを防ぐ
+function isMobileViewport() {
+  return window.matchMedia("(max-width: 767px)").matches;
+}
 const markerEntryBySpotId = new Map(); // 一覧カードから地図ピンへ移動するための逆引き
 // 施設イベントJSONをセッション内で再利用し、同じ通信を繰り返さない
 const eventListCacheBySpotId = new Map();
@@ -222,6 +227,14 @@ function getCurrentLocalDay() {
 }
 
 // トップ見出し用に「YYYY年MM月DD日」の固定フォーマット文字列を作る
+// Dateオブジェクトを YYYY-MM-DD 形式へ変換する（ローカル日付ベース）
+function formatDateKey(dateObj) {
+  const year = dateObj.getFullYear();
+  const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+  const day = String(dateObj.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function formatCurrentDateForTodayTitle(now = new Date()) {
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
@@ -270,16 +283,21 @@ function isEventHeldToday(eventItem, today) {
   return startDay <= today && today <= endDay;
 }
 
-// 一覧表示件数(5件 or 全件)に応じて表示対象を返す
+// 一覧表示件数を返す（スマホは横スクロール運用のため常に全件表示）
 function getVisibleTodayEvents() {
+  if (isMobileViewport()) return todayEventsAll;
   if (todayEventsExpanded) return todayEventsAll;
   return todayEventsAll.slice(0, TODAY_EVENTS_VISIBLE_LIMIT);
 }
 
-// 「もっと見る」ボタンの表示/文言を同期する
+// 「もっと見る」ボタンの表示/文言を同期する（スマホは非表示）
 function updateTodayEventsMoreButton() {
   const moreButton = document.getElementById("today-events-more");
   if (!moreButton) return;
+  if (isMobileViewport()) {
+    moreButton.hidden = true;
+    return;
+  }
   const hasMore = todayEventsAll.length > TODAY_EVENTS_VISIBLE_LIMIT;
   moreButton.hidden = !hasMore;
   moreButton.textContent = todayEventsExpanded ? "表示を閉じる" : "もっと見る";
@@ -323,7 +341,7 @@ function renderTodayEvents() {
     button.className = "today-events__button";
     button.dataset.spotId = item.spotId || "";
     button.setAttribute("aria-pressed", "false");
-    button.setAttribute("aria-label", `${item.title}（${item.prefecture || "県情報なし"} / ${item.venueName}）の地図ピンを表示`);
+    button.setAttribute("aria-label", `${item.title}（${item.venueName}）の地図ピンを表示`);
     button.addEventListener("click", () => {
       focusSpotFromTodayEvent(item.spotId);
     });
@@ -334,15 +352,26 @@ function renderTodayEvents() {
 
     const meta = document.createElement("p");
     meta.className = "today-events__meta";
-    meta.textContent = `${item.prefecture || "県情報なし"} / ${item.venueName}`;
+    meta.textContent = `開催場所: ${item.venueName}`;
 
-    button.appendChild(title);
-    button.appendChild(meta);
-    li.appendChild(button);
+    // カード内で地図ピン選択ボタンと詳細遷移ボタンを分け、誤操作を減らす
+    const actions = document.createElement("div");
+    actions.className = "today-events__actions";
+
+    const detailLink = document.createElement("a");
+    detailLink.className = "today-events__detail";
+    detailLink.textContent = "詳細";
+    detailLink.href = `./date/${encodeURIComponent(item.dateKey)}/?event=${encodeURIComponent(item.eventQuery)}&venue=${encodeURIComponent(item.venueName)}`;
+    detailLink.setAttribute("aria-label", `${item.title}の詳細を日付ページで表示`);
+
+    button.append(title, meta);
+    actions.appendChild(detailLink);
+    li.append(button, actions);
     list.appendChild(li);
   });
 
   updateTodayEventsMoreButton();
+  syncTodayEventsCarouselControls();
   // 一覧描画後に現在の選択状態を再適用し、再描画時の強調消失を防ぐ
   setTodayEventActiveSpot(pinnedEntry?.spot?.spot_id || "");
 }
@@ -421,9 +450,11 @@ async function fetchSpotEventsForToday(spot, today) {
         .filter((eventItem) => isEventHeldToday(eventItem, today))
         .map((eventItem) => ({
           title: eventItem?.title ? String(eventItem.title).trim() : "名称不明イベント",
-          prefecture: spot.prefecture ? String(spot.prefecture).trim() : "",
           venueName: spot.name ? String(spot.name).trim() : "会場名不明",
           spotId: spot.spot_id,
+          // 当日ページへ遷移するため、表示日とイベント名クエリを保持する
+          dateKey: eventItem?.date_from ? String(eventItem.date_from).trim() : formatDateKey(today),
+          eventQuery: eventItem?.title ? String(eventItem.title).trim() : "",
         }));
     } catch (error) {
       // 1施設分の読み込み失敗で全体が止まらないようにし、他施設の表示を優先する
@@ -451,6 +482,41 @@ async function runWithConcurrency(items, concurrency, worker) {
 
   const runners = Array.from({ length: safeConcurrency }, () => runWorker());
   await Promise.all(runners);
+}
+
+// 横スクロール一覧の左右矢印を同期する
+function syncTodayEventsCarouselControls() {
+  const list = document.getElementById("today-events-list");
+  const prevButton = document.getElementById("today-events-prev");
+  const nextButton = document.getElementById("today-events-next");
+  if (!list || !prevButton || !nextButton) return;
+
+  const maxScrollLeft = Math.max(0, list.scrollWidth - list.clientWidth);
+  prevButton.disabled = list.scrollLeft <= 2;
+  nextButton.disabled = list.scrollLeft >= maxScrollLeft - 2;
+}
+
+// 左右矢印を押した時はカード1枚分だけスクロールする
+function setupTodayEventsCarouselControls() {
+  const list = document.getElementById("today-events-list");
+  const prevButton = document.getElementById("today-events-prev");
+  const nextButton = document.getElementById("today-events-next");
+  if (!list || !prevButton || !nextButton) return;
+
+  const scrollByOneCard = (direction) => {
+    const card = list.querySelector(".today-events__item");
+    const gapText = window.getComputedStyle(list).columnGap || "0";
+    const gap = Number.parseFloat(gapText) || 0;
+    const cardWidth = card ? card.getBoundingClientRect().width + gap : list.clientWidth * 0.84;
+    list.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+  };
+
+  prevButton.addEventListener("click", () => scrollByOneCard(-1));
+  nextButton.addEventListener("click", () => scrollByOneCard(1));
+
+  list.addEventListener("scroll", syncTodayEventsCarouselControls, { passive: true });
+  window.addEventListener("resize", syncTodayEventsCarouselControls);
+  syncTodayEventsCarouselControls();
 }
 
 // 「もっと見る」ボタンを初期化する
@@ -551,6 +617,7 @@ function createPopupContent(spot) {
 // トップ見出しはロード直後に現在日付へ更新し、表示と実データの日付認識を一致させる
 updateTodayEventsTitleWithCurrentDate();
 setupTodayEventsMoreButton();
+setupTodayEventsCarouselControls();
 // =======================
 // スポット読み込み
 // =======================
