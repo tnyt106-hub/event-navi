@@ -170,6 +170,11 @@ function escapeHtml(value) {
 }
 
 // 空文字・null・undefined をまとめて「空」と判定する。
+// URLクエリ比較用にテキストを正規化する（前後空白と連続空白を揃える）。
+function normalizeEventQueryText(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
 function isBlank(value) {
   if (value == null) return true;
   return String(value).trim().length === 0;
@@ -462,6 +467,8 @@ ${embedHtml}
 function renderEventCard(eventItem, venueLabel) {
   const titleText = eventItem.title || "イベント名未定";
   const safeVenueLabel = venueLabel || "会場未定";
+  const eventQueryText = normalizeEventQueryText(titleText);
+  const venueQueryText = normalizeEventQueryText(safeVenueLabel);
   // 日付表示は曜日付きにして、日取りを直感的に把握しやすくする
   const dateFromText = formatDateWithWeekday(eventItem.date_from);
   const dateToText = formatDateWithWeekday(eventItem.date_to);
@@ -484,7 +491,7 @@ function renderEventCard(eventItem, venueLabel) {
     ? `    <a class="spot-event-card__link" href="${escapeHtml(eventItem.source_url)}" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>`
     : "";
 
-  return `  <li class="spot-event-card">
+  return `  <li class="spot-event-card" data-event-name="${escapeHtml(eventQueryText)}" data-event-venue="${escapeHtml(venueQueryText)}">
     <p class="spot-event-card__date">${escapeHtml(dateText)}</p>
     <h2 class="spot-event-card__title">${escapeHtml(titleText)}</h2>
     <p class="spot-event-card__venue">会場: ${escapeHtml(safeVenueLabel)}</p>
@@ -546,6 +553,7 @@ ${eventCards}        </ul>
     </div>
   </section>
 ${bottomAdHtml}
+  <script src="../../js/date-page.js"></script>
 `
     + renderFooter()
   );
