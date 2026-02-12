@@ -168,6 +168,16 @@ baseMaps["標準1"].addTo(map);
 L.control.layers(baseMaps).addTo(map);
 // 仕様変更: クラスタリングは行わず、常に個別のピンを表示する
 const markers = L.layerGroup();
+// 仕様: 通常ピンはLeaflet標準、選択中のみ赤ピン画像へ差し替える
+// 色変換フィルタを廃止して画像を切り替えることで、黄色化や赤い発光残りを根本的に防ぐ
+const defaultMarkerIcon = new L.Icon.Default();
+const selectedMarkerIcon = L.icon({
+  iconUrl: "./assets/images/leaflet/marker-icon-red.svg",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28]
+});
 // =======================
 // 検索ボックス用
 // =======================
@@ -435,9 +445,14 @@ function setVisibleEntries(entries) {
 // 選択中ピンだけを強調して、ユーザーが現在位置を見失わないようにする
 function syncSelectedMarkerVisual() {
   markerEntries.forEach((entry) => {
+    const isSelected = pinnedEntry === entry;
+
+    // 選択状態ごとにアイコン画像を切り替え、色変換フィルタによる色ズレを防ぐ
+    entry.marker.setIcon(isSelected ? selectedMarkerIcon : defaultMarkerIcon);
+
+    // setIcon後はDOMが再生成されるため、クラス操作は必ず再取得した要素へ適用する
     const markerElement = entry.marker.getElement();
     if (!markerElement) return;
-    const isSelected = pinnedEntry === entry;
     markerElement.classList.toggle("spot-marker--selected", isSelected);
     markerElement.classList.toggle("spot-marker--default", !isSelected);
   });
