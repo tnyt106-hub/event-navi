@@ -297,8 +297,8 @@ function renderFooter() {
   return `  </main>
   <!-- スマホ共通の固定導線: ページを問わず主要3導線へ遷移しやすくする -->
   <nav class="mobile-global-nav" aria-label="スマートフォン用固定ナビゲーション">
-    <a class="mobile-global-nav__link" href="/date/">📆日付から探す</a>
-    <a class="mobile-global-nav__link" href="/facility/">🗾エリアから探す</a>
+    <a class="mobile-global-nav__link" href="/date/">📅日付から探す</a>
+    <a class="mobile-global-nav__link" href="/facility/">🗺️エリアから探す</a>
     <a class="mobile-global-nav__link" href="/facility-name/">🔍施設名から探す</a>
   </nav>
   <footer class="trial-footer">
@@ -314,7 +314,7 @@ function renderDateNavSection(primaryLinks, weekLinks) {
   const lines = [];
   lines.push("    <!-- 日付別ページへの静的導線（自動生成） -->");
   lines.push('    <p style="margin: 8px 12px 4px; font-size: 12px; font-weight: bold; color: var(--accent);">');
-  lines.push("      <strong>📆日付から探す</strong>");
+  lines.push("      <strong>📅日付から探す</strong>");
   lines.push("    </p>");
   lines.push('    <section class="spot-actions" aria-label="日付別イベントへのクイックリンク" style="margin: 0 12px 12px;">');
   primaryLinks.forEach((linkItem) => {
@@ -553,9 +553,9 @@ ${bottomAdHtml}
 
 // 日付一覧ページを生成する
 function renderDateIndexPage(dateEntries, adHtml) {
-  // Step1方針: 一覧ページ名は「📆日付から探す」に統一し、検索意図と一致させる
-  const titleText = `📆日付から探す｜${SITE_NAME}`;
-  const headingText = "📆日付から探す";
+  // Step1方針: 一覧ページ名は「📅日付から探す」に統一し、検索意図と一致させる
+  const titleText = `📅日付から探す｜${SITE_NAME}`;
+  const headingText = "📅日付から探す";
   // H1とH2を同名にすると読み上げ時の重複感が出るため、一覧セクションは別ラベルにする
   const listSectionTitle = "開催日一覧";
   const breadcrumbHtml = renderBreadcrumbs([

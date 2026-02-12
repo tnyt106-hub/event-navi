@@ -172,8 +172,8 @@ function renderPageFooter() {
   return `  </main>
   <!-- スマホ共通の固定導線: ページを問わず主要3導線へ遷移しやすくする -->
   <nav class="mobile-global-nav" aria-label="スマートフォン用固定ナビゲーション">
-    <a class="mobile-global-nav__link" href="/date/">📆日付から探す</a>
-    <a class="mobile-global-nav__link" href="/facility/">🗾エリアから探す</a>
+    <a class="mobile-global-nav__link" href="/date/">📅日付から探す</a>
+    <a class="mobile-global-nav__link" href="/facility/">🗺️エリアから探す</a>
     <a class="mobile-global-nav__link" href="/facility-name/">🔍施設名から探す</a>
   </nav>
   <footer class="trial-footer">
@@ -222,14 +222,14 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
 
   const breadcrumbHtml = renderBreadcrumbs([
     { label: "ホーム", href: "../index.html" },
-    { label: "🗾エリアから探す" }
+    { label: "🗺️エリアから探す" }
   ]);
   // パンくず直下に広告を置く要件に合わせ、preHeaderへ連結して配置を固定する。
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-index")}`;
 
   return `${renderPageHeader({
-    title: `🗾エリアから探す｜${SITE_NAME}`,
-    heading: "🗾エリアから探す",
+    title: `🗺️エリアから探す｜${SITE_NAME}`,
+    heading: "🗺️エリアから探す",
     cssPath: "../css/style.css",
     // Step1方針: 施設一覧の説明文を「対象・操作・遷移先」で簡潔に統一する
     description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設詳細へ進めます。",
@@ -277,7 +277,7 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
 
   const breadcrumbHtml = renderBreadcrumbs([
     { label: "ホーム", href: "../../index.html" },
-    { label: "🗾エリアから探す", href: "../" },
+    { label: "🗺️エリアから探す", href: "../" },
     { label: prefecture }
   ]);
   // 県別ページでもパンくずの直後に広告を配置して、導線の一貫性を保つ。
