@@ -127,17 +127,18 @@
       <section class="today-events" aria-labelledby="today-events-title">
         <div class="today-events__header">
           <h2 id="today-events-title" class="today-events__title">本日開催中のイベント</h2>
+          <!-- スマホ時の左右スクロール補助矢印を見出し右側へ寄せ、件数表示の近くに配置する -->
+          <div class="today-events__carousel-controls" aria-hidden="true">
+            <button id="today-events-prev" class="today-events__arrow" type="button" aria-label="本日開催イベントを左にスクロール">
+              ‹
+            </button>
+            <button id="today-events-next" class="today-events__arrow" type="button" aria-label="本日開催イベントを右にスクロール">
+              ›
+            </button>
+          </div>
         </div>
 
         <p id="today-events-status" class="today-events__status" aria-live="polite">読み込み中です…</p>
-        <div class="today-events__carousel-controls" aria-hidden="true">
-          <button id="today-events-prev" class="today-events__arrow" type="button" aria-label="本日開催イベントを左にスクロール">
-            ‹
-          </button>
-          <button id="today-events-next" class="today-events__arrow" type="button" aria-label="本日開催イベントを右にスクロール">
-            ›
-          </button>
-        </div>
         <ul id="today-events-list" class="today-events__list" aria-label="本日開催中イベント一覧"></ul>
         <button id="today-events-more" class="today-events__more" type="button" hidden>もっと見る</button>
       </section>
