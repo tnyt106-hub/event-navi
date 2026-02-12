@@ -532,7 +532,7 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   return (
     // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
     // ユーザビリティ向上のため、パンくずはヘッダーより先に配置する。
-    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}のイベント`, "../../css/style.css", isNoindex, "", "", preHeaderHtml)
+    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}`, "../../css/style.css", isNoindex, "", "", preHeaderHtml)
     + navHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
