@@ -102,14 +102,6 @@
       ]
     },
     {
-      "id": "mimoca",
-      "script": "scripts/scraping/fetch-mimoca.js",
-      "enabled": true,
-      "outputs": [
-        "docs/events/mimoca.json"
-      ]
-    },
-    {
       "id": "kenbun",
       "script": "scripts/scraping/fetch-kenbun.js",
       "enabled": true,

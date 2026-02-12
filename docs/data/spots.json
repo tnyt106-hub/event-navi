@@ -1,17 +1,5 @@
 [
   {
-    "name": "丸亀市猪熊弦一郎現代美術館",
-    "spot_id": "mimoca",
-    "lat": 34.2912146,
-    "lng": 133.7921947,
-    "category": "美術館",
-    "prefecture": "香川県",
-    "municipality": "丸亀市",
-    "official_url": "https://www.mimoca.jp/",
-    "description": "丸亀市にある現代美術館です。展示や関連イベントが開催されるため、来館前に公式情報の確認がおすすめです。",
-    "source": "https://www.kagawa-arts.or.jp/facility/"
-  },
-  {
     "name": "香川県立ミュージアム",
     "spot_id": "kagawa_pref_museum",
     "lat": 34.3494936,
