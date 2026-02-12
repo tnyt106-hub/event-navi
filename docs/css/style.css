@@ -291,6 +291,16 @@ h2 {
   color: var(--text);
 }
 
+/* 見出し内の「日付」「件数」だけ強調色(青)にする */
+.today-events__accent {
+  color: var(--accent);
+}
+
+/* 件数は見出し本文の直後に続けて表示し、視線移動を最小化する */
+.today-events__count {
+  margin-left: 2px;
+}
+
 .today-events__desc {
   margin: 6px 0 0;
   font-size: 0.83rem;
