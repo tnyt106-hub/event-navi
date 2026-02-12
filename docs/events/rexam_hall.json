@@ -1,29 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-02-11",
+  "last_success_at": "2026-02-12",
   "events": [
-    {
-      "title": "第25回香川ジュニアコーラスフェスティヴァル2025",
-      "date_from": "2025-02-11",
-      "date_to": "2025-02-11",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8313",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 第25回香川ジュニアコーラスフェスティヴァル2025 開場 13:00/開演 13:30/終演 15:30 小ホール 「建国記念の日」を祝う香川県民の集い 開場 13:00/開演 13:30/終演 16:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "JAバンク香川presentsプレミアムライブ2025",
       "date_from": "2025-02-15",

@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-02-11",
+  "last_success_at": "2026-02-12",
   "events": [
     {
       "title": "ビジネスDXフェア in 高松 ～ ビジネスDXが、企業を変える。AIで変える。～",
@@ -696,6 +696,28 @@
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
       "source_url": "https://kagawa-arena.com/event/1146/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "サンポート高松トライアスロン2026～瀬戸内国際体育祭～",
+      "date_from": "2026-07-05",
+      "date_to": "2026-07-05",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "050-8882-5252",
+      "source_url": "https://kagawa-arena.com/event/1154/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,
