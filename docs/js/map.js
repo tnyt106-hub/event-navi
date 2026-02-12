@@ -350,11 +350,12 @@ function renderTodayEvents() {
     title.className = "today-events__name";
     title.textContent = item.title;
 
+    // 表記を短くしてカード縦幅を抑えるため、「開催場所」→「場所」に統一する
     const meta = document.createElement("p");
     meta.className = "today-events__meta";
-    meta.textContent = `開催場所: ${item.venueName}`;
+    meta.textContent = `場所: ${item.venueName}`;
 
-    // カード内で地図ピン選択ボタンと詳細遷移ボタンを分け、誤操作を減らす
+    // 開催場所テキストの右に詳細ボタンを横並び配置するためのコンテナ
     const actions = document.createElement("div");
     actions.className = "today-events__actions";
 
@@ -364,8 +365,8 @@ function renderTodayEvents() {
     detailLink.href = `./date/${encodeURIComponent(item.dateKey)}/?event=${encodeURIComponent(item.eventQuery)}&venue=${encodeURIComponent(item.venueName)}`;
     detailLink.setAttribute("aria-label", `${item.title}の詳細を日付ページで表示`);
 
-    button.append(title, meta);
-    actions.appendChild(detailLink);
+    button.appendChild(title);
+    actions.append(meta, detailLink);
     li.append(button, actions);
     list.appendChild(li);
   });

@@ -344,7 +344,8 @@ h2 {
   background: var(--surface);
   text-align: left;
   cursor: pointer;
-  padding: 10px 12px;
+  /* タイトル行の上下余白を絞って、カードの縦幅を抑える */
+  padding: 8px 12px 4px;
 }
 
 .today-events__button:hover,
@@ -363,28 +364,33 @@ h2 {
 .today-events__name {
   margin: 0;
   font-size: 0.95rem;
-  line-height: 1.45;
+  line-height: 1.35;
   color: var(--text);
 }
 
 .today-events__meta {
-  margin: 6px 0 0;
+  margin: 0;
   font-size: 0.8rem;
   color: var(--text-sub);
 }
 
-/* カードのフッターに「詳細」ボタンを分離し、カード全体タップと役割を分ける */
+/* 開催場所と詳細ボタンを1行に並べ、縦幅を増やさず操作できるようにする */
 .today-events__actions {
-  padding: 0 12px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 12px 8px;
 }
 
 .today-events__detail {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--accent);
   border-radius: var(--radius-pill);
-  padding: 6px 12px;
+  padding: 4px 10px;
   font-size: 0.8rem;
   font-weight: 600;
   text-decoration: none;
