@@ -278,7 +278,7 @@ h2 {
   background: var(--surface);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
-  padding: 14px 14px 12px;
+  padding: 14px 14px 9px;
   color: var(--text);
 }
 
@@ -344,7 +344,7 @@ h2 {
   background: var(--surface);
   text-align: left;
   cursor: pointer;
-  padding: 6px 10px/*8px 12px 4px*/;
+  padding: 8px 12px 4px;
 }
 
 .today-events__button:hover,
@@ -642,7 +642,7 @@ h2 {
 
   .today-events__item {
     scroll-snap-align: start;
-    min-height: 132px;
+    min-height: 110px;
     display: grid;
     grid-template-rows: 1fr auto;
   }
