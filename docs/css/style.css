@@ -283,6 +283,11 @@ h2 {
 }
 
 .today-events__header {
+  /* 見出し（左）とスクロール矢印（右）を同じ行に並べる */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   margin-bottom: 10px;
 }
 
@@ -290,6 +295,9 @@ h2 {
   margin: 0;
   font-size: 1.05rem;
   color: var(--text);
+  /* 件数が長くなっても右側の矢印領域をつぶさないようにする */
+  flex: 1;
+  min-width: 0;
 }
 
 /* 見出し内の「日付」「件数」だけ強調色(青)にする */
@@ -610,8 +618,9 @@ h2 {
   .today-events__carousel-controls {
     display: flex;
     justify-content: flex-end;
+    flex-shrink: 0;
     gap: 6px;
-    margin: 0 0 8px;
+    margin: 0;
   }
 
   .today-events__list {
@@ -651,6 +660,14 @@ h2 {
   /* スマホは横スクロール運用に合わせ、件数展開ボタンを使わない */
   .today-events__more {
     display: none;
+  }
+
+  /*
+    下部固定ナビとカード一覧が視覚的に重ならないよう、
+    トップページのイベントカードに余白を追加する。
+  */
+  body.home-page .today-events {
+    margin-bottom: calc(72px + env(safe-area-inset-bottom));
   }
 }
 
