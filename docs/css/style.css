@@ -486,22 +486,17 @@ h2 {
 #locate-btn:hover {
   background: var(--surface-hover);
 }
-/* 地図ピンの通常状態。transformを明示しておくと選択時アニメーションが安定する */
+/* 地図ピンの通常状態。非選択時は拡大・発光を行わない */
 .leaflet-marker-icon.spot-marker--default {
   transform: translate3d(0, 0, 0) scale(1);
-  filter: none;
-  transition: transform 0.18s ease, filter 0.18s ease;
+  transition: transform 0.18s ease;
 }
 
-/*
- * 選択中ピンは「背景色を塗る」のではなく、ピン本体の色味だけを赤トーンへ変換する。
- * これにより既存のマーカー形状・陰影を保ちつつ、選択状態を直感的に判別できる。
- */
+/* 選択中ピンは赤アイコン画像へ差し替えたうえで、拡大のみ適用する */
 .leaflet-marker-icon.spot-marker--selected {
   transform: translate3d(0, 0, 0) scale(1.3);
-  filter: hue-rotate(-130deg) saturate(1.45) brightness(1.03) drop-shadow(0 0 8px rgba(196, 40, 49, 0.72));
   z-index: 750 !important;
-  transition: transform 0.18s ease, filter 0.18s ease;
+  transition: transform 0.18s ease;
 }
 
 /* 地図上のスポット名ラベル（Leaflet tooltip） */
