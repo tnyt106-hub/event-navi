@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RS12737WLG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RS12737WLG', { send_page_view: false });
+    gtag('event', 'page_view', {
+      page_path: '/spot/kochi-sporthall/',
+      page_title: '高知県立県民体育館｜イベントガイド【四国版】'
+    });
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>高知県立県民体育館｜イベントガイド【四国版】</title>
@@ -12,7 +23,9 @@
   <meta property="og:title" content="高知県立県民体育館｜イベントガイド【四国版】" />
   <meta property="og:description" content="高知市本町に位置する県立の総合体育施設です。メインアリーナ、サブアリーナ、武道場、トレーニング室などを備え、バスケットボールやバレーボール、各種大会、イベントなど幅広い用途で利用されています。" />
   <meta property="og:url" content="https://event-guide.jp/spot/kochi-sporthall/" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <script type="application/ld+json">
 [
   {
@@ -115,7 +128,13 @@
   </main>
 
   <noscript>
-    <p class="spot-error__text">このページはJavaScriptを有効にすると表示できます。</p>
+    <!-- SEOとユーザビリティのため、JS無効時でも施設名と説明を読める最低限情報を出す -->
+    <section class="spot-events" aria-label="JavaScript無効時の施設概要">
+      <h2 class="spot-events__title">高知県立県民体育館の概要</h2>
+      <p class="spot-error__text">高知市本町に位置する県立の総合体育施設です。メインアリーナ、サブアリーナ、武道場、トレーニング室などを備え、バスケットボールやバレーボール、各種大会、イベントなど幅広い用途で利用されています。</p>
+      <p class="spot-error__text">詳細なイベント一覧はJavaScriptを有効にすると表示できます。</p>
+      <p><a href="https://www.kochi-kenmin.org/" target="_blank" rel="noopener noreferrer">公式サイトを見る</a></p>
+    </section>
   </noscript>
 
   <nav class="mobile-global-nav" aria-label="スマートフォン用固定ナビゲーション">

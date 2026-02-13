@@ -9,6 +9,11 @@
     gtag('js', new Date());
     // SPA ではないため、明示的に page_view の送信制御を維持
     gtag('config', 'G-RS12737WLG', { send_page_view: false });
+    // トップページの閲覧を明示送信し、ページ別の計測漏れを防ぐ
+    gtag('event', 'page_view', {
+      page_path: '/',
+      page_title: '四国のイベント情報マップ｜イベントガイド【四国版】'
+    });
   </script>
   
   <meta charset="UTF-8" />
@@ -24,7 +29,10 @@
   <meta property="og:title" content="四国のイベント情報マップ｜イベントガイド【四国版】" />
   <meta property="og:description" content="四国全域（香川・愛媛・徳島・高知）の公共施設イベントを地図で探せるページです。開催場所・日程・公式サイト情報をまとめて確認できます。" />
   <meta property="og:url" content="https://event-guide.jp/" />
-  <meta name="twitter:card" content="summary" />
+  <!-- SNS共有時の見た目を安定させるため、共通OGP画像を指定する -->
+  <meta property="og:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <script type="application/ld+json">
   {
