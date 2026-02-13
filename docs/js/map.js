@@ -49,7 +49,7 @@ function renderSpotPanel(spot) {
   if (detail) {
     if (spot.spot_id) {
       // 動的詳細ページ（b方式）へ遷移させる
-      detail.href = `./spot/index.html?spot_id=${encodeURIComponent(spot.spot_id)}`;
+      detail.href = `/spot/${encodeURIComponent(spot.spot_id)}/`;
       detail.style.display = "inline-block";
     } else {
       detail.style.display = "none";
@@ -606,7 +606,7 @@ function createPopupContent(spot) {
   if (spot.spot_id) {
     const detailLink = document.createElement("a");
     // 内部詳細ページへ誘導（下部カードとの導線を統一）
-    detailLink.href = `./spot/index.html?spot_id=${encodeURIComponent(spot.spot_id)}`;
+    detailLink.href = `/spot/${encodeURIComponent(spot.spot_id)}/`;
     detailLink.className = "popup-link-btn popup-link-btn--compact";
     detailLink.textContent = "詳細を見る ▶";
     container.appendChild(document.createElement("br"));

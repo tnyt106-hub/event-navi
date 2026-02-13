@@ -25,7 +25,7 @@ const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-
 
 // GitHub Pagesの公開URLを正規URL（canonical）に使う。
 // 将来ドメインが変わっても、この定数だけ直せば全ページへ反映できる。
-const SITE_ORIGIN = "https://event-navi.jp";
+const SITE_ORIGIN = "https://event-guide.jp";
 // フッター年は実行年を使い、年更新漏れを防ぐ。
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -260,7 +260,7 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
           .map((spot) => {
             const eventCount = eventCountMap.get(spot.spot_id) ?? 0;
             return `          <li class="date-index__item facility-spot-item">
-            <a href="../../spot/index.html?spot_id=${encodeURIComponent(spot.spot_id)}">${escapeHtml(spot.name)}</a>
+            <a href="../../spot/${encodeURIComponent(spot.spot_id)}/">${escapeHtml(spot.name)}</a>
             <ul class="date-index__summary">
               <li>市町村: ${escapeHtml(spot.municipality ?? "未設定")}</li>
               <li>カテゴリ: ${escapeHtml(spot.category ?? "未設定")}</li>
@@ -323,7 +323,7 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
           .map((spot) => {
             const eventCount = eventCountMap.get(spot.spot_id) ?? 0;
             return `          <li class="date-index__item facility-spot-item">
-            <a href="../spot/index.html?spot_id=${encodeURIComponent(spot.spot_id)}">${escapeHtml(spot.name)}</a>
+            <a href="../spot/${encodeURIComponent(spot.spot_id)}/">${escapeHtml(spot.name)}</a>
             <ul class="date-index__summary">
               <li>都道府県: ${escapeHtml(spot.prefecture ?? "未設定")}</li>
               <li>市町村: ${escapeHtml(spot.municipality ?? "未設定")}</li>

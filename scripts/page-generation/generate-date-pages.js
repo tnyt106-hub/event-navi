@@ -10,7 +10,7 @@ const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // 年が省略された日付の補完は、実行日の月から数ヶ月先までに限定する
 const YEARLESS_LOOKAHEAD_MONTHS = 6;
 // canonical/OGで使う公開URLの基点。ドメイン変更時はここだけ直せばよい。
-const SITE_ORIGIN = "https://event-navi.jp";
+const SITE_ORIGIN = "https://event-guide.jp";
 // 長文本文を「その他」表示で省略する際の最大文字数。
 // 数値を1か所に集約しておくと、将来調整時に置換漏れを防げる。
 const OTHER_BODY_MAX_LENGTH = 300;
