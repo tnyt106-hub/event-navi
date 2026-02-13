@@ -7,6 +7,10 @@ const path = require("path");
 const SITE_NAME = "イベントガイド【四国版】";
 // canonical / OGP の正規ドメインは event-guide.jp に統一する。
 const SITE_ORIGIN = "https://event-guide.jp";
+// OGP/Twitterで使う共通画像。ページ個別画像が無い場合の既定値として使う。
+const DEFAULT_OG_IMAGE_PATH = "/assets/images/ogp-default.svg";
+// スポット詳細ページでも計測条件を揃えるため、GA4測定IDを定数化する。
+const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // スポット一覧データの入力元。
 const SPOTS_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 // スポット詳細ページの出力先ルート。
@@ -97,10 +101,15 @@ function renderSpotPage(spot) {
   const titleText = `${spotName}｜${SITE_NAME}`;
   const descriptionText = buildDescription(spot);
   const canonicalUrl = `${SITE_ORIGIN}/spot/${encodeURIComponent(spot.spot_id)}/`;
+  // canonicalと同じドメイン配下の既定OG画像を使い、SNSシェア表示を安定させる。
+  const ogImageUrl = `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
+  // send_page_view:false を維持し、ページごとに明示送信して二重計測を防ぐ。
+  const ga4Snippet = `  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n    gtag('event', 'page_view', {\n      page_path: '/spot/${encodeURIComponent(spot.spot_id)}/',\n      page_title: '${escapeHtml(titleText)}'\n    });\n  </script>`;
 
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
+${ga4Snippet}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>${escapeHtml(titleText)}</title>
@@ -112,7 +121,9 @@ function renderSpotPage(spot) {
   <meta property="og:title" content="${escapeHtml(titleText)}" />
   <meta property="og:description" content="${escapeHtml(descriptionText)}" />
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />
 ${renderStructuredData(spot, canonicalUrl, descriptionText)}
   <link rel="stylesheet" href="../../css/style.css" />
 </head>
@@ -170,7 +181,13 @@ ${renderStructuredData(spot, canonicalUrl, descriptionText)}
   </main>
 
   <noscript>
-    <p class="spot-error__text">このページはJavaScriptを有効にすると表示できます。</p>
+    <!-- SEOとユーザビリティのため、JS無効時でも施設名と説明を読める最低限情報を出す -->
+    <section class="spot-events" aria-label="JavaScript無効時の施設概要">
+      <h2 class="spot-events__title">${escapeHtml(spotName)}の概要</h2>
+      <p class="spot-error__text">${escapeHtml(descriptionText)}</p>
+      <p class="spot-error__text">詳細なイベント一覧はJavaScriptを有効にすると表示できます。</p>
+      ${spot.official_url ? `<p><a href="${escapeHtml(spot.official_url)}" target="_blank" rel="noopener noreferrer">公式サイトを見る</a></p>` : ""}
+    </section>
   </noscript>
 
   <nav class="mobile-global-nav" aria-label="スマートフォン用固定ナビゲーション">

@@ -26,6 +26,10 @@ const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-
 // GitHub Pagesの公開URLを正規URL（canonical）に使う。
 // 将来ドメインが変わっても、この定数だけ直せば全ページへ反映できる。
 const SITE_ORIGIN = "https://event-guide.jp";
+// OGP/Twitterで使う共通画像。差し替え時の修正箇所を1か所にする。
+const DEFAULT_OG_IMAGE_PATH = "/assets/images/ogp-default.svg";
+// 施設ページでもアクセス計測を揃えるため、GA4の測定IDを定数化する。
+const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // フッター年は実行年を使い、年更新漏れを防ぐ。
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -83,9 +87,14 @@ function buildEventCountMap() {
 // preHeaderHtml を使うと、パンくずなどを <header> より前へ安全に配置できる。
 function renderPageHeader({ title, heading, cssPath, description, canonicalPath, preHeaderHtml = "" }) {
   const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
+  // canonicalをもとに OGP画像URLも一意に決め、URL不整合を防ぐ。
+  const ogImageUrl = `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
+  // send_page_view:false を維持しつつ、ページ単位で明示送信して重複計測を防ぐ。
+  const ga4Snippet = `  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n    gtag('event', 'page_view', {\n      page_path: '${canonicalPath}',\n      page_title: '${escapeHtml(title)}'\n    });\n  </script>`;
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
+${ga4Snippet}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="description" content="${escapeHtml(description)}" />
@@ -96,7 +105,9 @@ function renderPageHeader({ title, heading, cssPath, description, canonicalPath,
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />
   <title>${escapeHtml(title)}</title>
   <link rel="stylesheet" href="${escapeHtml(cssPath)}" />
 </head>
@@ -228,7 +239,8 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-index")}`;
 
   return `${renderPageHeader({
-    title: `🗺️エリアから探す｜${SITE_NAME}`,
+    // SEOでは検索結果の安定表示を優先し、titleから絵文字を外す。
+    title: `エリアから探す｜${SITE_NAME}`,
     heading: "🗺️エリアから探す",
     cssPath: "../css/style.css",
     // Step1方針: 施設一覧の説明文を「対象・操作・遷移先」で簡潔に統一する
@@ -347,7 +359,8 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-name-index")}`;
 
   return `${renderPageHeader({
-    title: `🔍施設名から探す｜${SITE_NAME}`,
+    // SEOでは検索結果の安定表示を優先し、titleから絵文字を外す。
+    title: `施設名から探す｜${SITE_NAME}`,
     heading: "🔍施設名から探す",
     cssPath: "../css/style.css",
     // SEO向けに「地域・並び順・遷移先」の3点を短く明示する。
