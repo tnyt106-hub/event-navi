@@ -103,6 +103,15 @@ function formatLastmod(filePath) {
   return formatIsoDateFromUtcDate(new Date(stat.mtimeMs));
 }
 
+
+/**
+ * noindex 指定ページは sitemap から除外し、クロール優先度を重要ページへ寄せる
+ */
+function hasNoindexDirective(filePath) {
+  const html = fs.readFileSync(filePath, "utf8");
+  return /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html);
+}
+
 function buildSitemapXml(urlItems) {
   const lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -138,6 +147,11 @@ function main() {
       const rel = path.relative(DOCS_DIR, filePath).replace(/\\/g, "/");
       // spot/index.html はクエリ互換用のテンプレートページなのでインデックス対象から除外する。
       if (rel === "spot/index.html") {
+        return;
+      }
+
+      // noindex 付きページをサイトマップから除外し、低優先ページの送信を防ぐ。
+      if (hasNoindexDirective(filePath)) {
         return;
       }
 

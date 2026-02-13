@@ -11,6 +11,9 @@ const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 const YEARLESS_LOOKAHEAD_MONTHS = 6;
 // canonical/OGで使う公開URLの基点。ドメイン変更時はここだけ直せばよい。
 const SITE_ORIGIN = "https://event-guide.jp";
+// OGP/Twitter で共通利用するサムネイル画像。
+// 画像差し替え時はこのパスのみ更新すれば、生成ページへ一括反映できる。
+const DEFAULT_OG_IMAGE_PATH = "/assets/images/ogp-default.svg";
 // 長文本文を「その他」表示で省略する際の最大文字数。
 // 数値を1か所に集約しておくと、将来調整時に置換漏れを防げる。
 const OTHER_BODY_MAX_LENGTH = 300;
@@ -248,10 +251,12 @@ function renderHeader(titleText, headingText, cssPath, isNoindex, descriptionTex
   const noindexMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />\n' : "";
   const safeDescription = descriptionText ? escapeHtml(descriptionText) : "";
   const canonicalUrl = canonicalPath ? `${SITE_ORIGIN}${canonicalPath}` : "";
+  // canonical URL がある時だけ OGP 画像URLも生成し、URL不整合を防ぐ。
+  const ogImageUrl = canonicalUrl ? `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}` : "";
   const canonicalHtml = canonicalUrl ? `  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />\n` : "";
   const descriptionHtml = safeDescription ? `  <meta name="description" content="${safeDescription}" />\n` : "";
   const ogHtml = (safeDescription && canonicalUrl)
-    ? `  <meta property="og:type" content="website" />\n  <meta property="og:locale" content="ja_JP" />\n  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />\n  <meta property="og:title" content="${safeTitle}" />\n  <meta property="og:description" content="${safeDescription}" />\n  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />\n  <meta name="twitter:card" content="summary" />\n`
+    ? `  <meta property="og:type" content="website" />\n  <meta property="og:locale" content="ja_JP" />\n  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />\n  <meta property="og:title" content="${safeTitle}" />\n  <meta property="og:description" content="${safeDescription}" />\n  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n`
     : "";
   // 日付ページでもアクセス計測できるよう、GA4タグをヘッダーに埋め込む。
   // なお page_view は手動制御を維持するため send_page_view を false にしておく。
@@ -491,9 +496,10 @@ function renderEventCard(eventItem, venueLabel) {
     ? `    <a class="spot-event-card__link" href="${escapeHtml(eventItem.source_url)}" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>`
     : "";
 
+  // セクション見出し(h2)配下のカード見出しは h3 にして、見出し階層を正しく保つ。
   return `  <li class="spot-event-card" data-event-name="${escapeHtml(eventQueryText)}" data-event-venue="${escapeHtml(venueQueryText)}">
     <p class="spot-event-card__date">${escapeHtml(dateText)}</p>
-    <h2 class="spot-event-card__title">${escapeHtml(titleText)}</h2>
+    <h3 class="spot-event-card__title">${escapeHtml(titleText)}</h3>
     <p class="spot-event-card__venue">会場: ${escapeHtml(safeVenueLabel)}</p>
 ${otherHtml}
 ${structuredDetailsHtml}
@@ -532,6 +538,10 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   const topAdHtml = renderAdSection(adHtml, "top");
   // preHeaderHtml に連結することで、パンくずのすぐ下へ広告を差し込む。
   const preHeaderHtml = `${breadcrumbHtml}${topAdHtml}`;
+  // 日付詳細ページの説明は「対象日 + 対象地域 + 掲載内容」を明示し、検索意図との一致を高める。
+  const descriptionText = `${dateText}に四国（香川・愛媛・徳島・高知）で開催されるイベント一覧ページです。会場・開催時間・公式情報へのリンクをまとめて確認できます。`;
+  // 日付詳細ページにも canonical を付けて重複評価を抑制する。
+  const canonicalPath = `/date/${formatDateKey(dateObj)}/`;
   // 下部広告は必要になった時だけ有効化できるようにトグルを用意する
   const includeBottomAd = false;
   const bottomAdHtml = includeBottomAd ? renderAdSection(adHtml, "bottom") : "";
@@ -539,7 +549,7 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   return (
     // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
     // ユーザビリティ向上のため、パンくずはヘッダーより先に配置する。
-    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}`, "../../css/style.css", isNoindex, "", "", preHeaderHtml)
+    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}`, "../../css/style.css", isNoindex, descriptionText, canonicalPath, preHeaderHtml)
     + navHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
