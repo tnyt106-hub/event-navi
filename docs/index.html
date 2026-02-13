@@ -170,6 +170,25 @@
     </section>
   </main>
 
+  <noscript>
+    <!-- JavaScript が無効でも主要ページへ遷移できるよう、静的リンク導線を表示する。 -->
+    <!-- SEO ではクローラが安定して巡回できるテキストリンクが増え、ページ関係の理解に役立つ。 -->
+    <section class="spot-events" aria-label="JavaScript無効時の主要リンク">
+      <div class="spot-events__header">
+        <h2 class="spot-events__title">主要ページへのリンク</h2>
+      </div>
+      <div class="spot-events__body">
+        <div class="spot-events__panel">
+          <ul class="date-index__list">
+            <li class="date-index__item"><a href="/date/">日付から探す</a></li>
+            <li class="date-index__item"><a href="/facility/">エリアから探す</a></li>
+            <li class="date-index__item"><a href="/facility-name/">施設名から探す</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </noscript>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="js/map.js"></script>

@@ -149,6 +149,11 @@ function main() {
       if (rel === "spot/index.html") {
         return;
       }
+      // Search Console の所有権確認ファイル（google*.html）は検索流入ページではないため除外する。
+      // サイトマップ品質を保ち、重要ページのクロールシグナルを優先させる。
+      if (/^google[\w-]*\.html$/i.test(rel)) {
+        return;
+      }
 
       // noindex 付きページをサイトマップから除外し、低優先ページの送信を防ぐ。
       if (hasNoindexDirective(filePath)) {

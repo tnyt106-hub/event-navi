@@ -172,6 +172,24 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+// JSON-LD を <script> 内へ安全に埋め込めるようにシリアライズする。
+// </script> が本文に含まれるとタグが途中で閉じるため、`<` を Unicode エスケープして事故を防ぐ。
+function serializeJsonLd(value) {
+  return JSON.stringify(value, null, 2).replace(/</g, "\\u003c");
+}
+
+// 構造化データオブジェクト配列を JSON-LD スクリプト群へ変換する。
+// head 内にまとめて出力することで、検索エンジンがページ種別を解釈しやすくする。
+function renderStructuredDataScripts(structuredDataObjects) {
+  if (!Array.isArray(structuredDataObjects) || structuredDataObjects.length === 0) {
+    return "";
+  }
+
+  return structuredDataObjects
+    .map((item) => `  <script type="application/ld+json">\n${serializeJsonLd(item)}\n  </script>\n`)
+    .join("");
+}
+
 // 空文字・null・undefined をまとめて「空」と判定する。
 // URLクエリ比較用にテキストを正規化する（前後空白と連続空白を揃える）。
 function normalizeEventQueryText(value) {
@@ -243,7 +261,16 @@ function normalizeDateRange(dateFromObj, dateToObj, venueId, index) {
 }
 
 // HTML の先頭部分を生成する（パンくずをヘッダーより前に置けるように分離）。
-function renderHeader(titleText, headingText, cssPath, isNoindex, descriptionText = "", canonicalPath = "", preHeaderHtml = "") {
+function renderHeader(
+  titleText,
+  headingText,
+  cssPath,
+  isNoindex,
+  descriptionText = "",
+  canonicalPath = "",
+  preHeaderHtml = "",
+  structuredDataObjects = []
+) {
   const safeTitle = escapeHtml(titleText);
   const safeHeading = escapeHtml(headingText);
   // noindex 指定が必要なページだけ robots メタタグを挿入する
@@ -261,13 +288,14 @@ function renderHeader(titleText, headingText, cssPath, isNoindex, descriptionTex
   // 日付ページでもアクセス計測できるよう、GA4タグをヘッダーに埋め込む。
   // なお page_view は手動制御を維持するため send_page_view を false にしておく。
   const ga4Snippet = `  <!-- Google Analytics 4 の計測タグ（日付ページ向け） -->\n  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n  </script>\n`;
+  const structuredDataScripts = renderStructuredDataScripts(structuredDataObjects);
 
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
 ${ga4Snippet}  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-${noindexMeta}${descriptionHtml}${canonicalHtml}${ogHtml}  <title>${safeTitle}</title>
+${noindexMeta}${descriptionHtml}${canonicalHtml}${ogHtml}${structuredDataScripts}  <title>${safeTitle}</title>
   <link rel="stylesheet" href="${cssPath}" />
 </head>
 <body>
@@ -541,7 +569,61 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   // 日付詳細ページの説明は「対象日 + 対象地域 + 掲載内容」を明示し、検索意図との一致を高める。
   const descriptionText = `${dateText}に四国（香川・愛媛・徳島・高知）で開催されるイベント一覧ページです。会場・開催時間・公式情報へのリンクをまとめて確認できます。`;
   // 日付詳細ページにも canonical を付けて重複評価を抑制する。
-  const canonicalPath = `/date/${formatDateKey(dateObj)}/`;
+  const dayKey = formatDateKey(dateObj);
+  const canonicalPath = `/date/${dayKey}/`;
+  const dayPageUrl = `${SITE_ORIGIN}${canonicalPath}`;
+  // Event 一覧を ItemList として表現し、日付ページの意味（イベント集約）を検索エンジンへ明示する。
+  const dayEventStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${dateText}のイベント一覧`,
+    url: dayPageUrl,
+    itemListElement: events.map((eventItem, index) => {
+      const startDate = eventItem?.date_from || dayKey;
+      const endDate = eventItem?.date_to || startDate;
+      const venueName = eventItem?.venue_label || eventItem?.venue_id || "会場未定";
+
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Event",
+          name: eventItem?.title || "イベント名未定",
+          startDate,
+          endDate,
+          location: {
+            "@type": "Place",
+            name: venueName
+          },
+          url: eventItem?.source_url || dayPageUrl
+        }
+      };
+    })
+  };
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "ホーム",
+        item: `${SITE_ORIGIN}/`
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "日付一覧",
+        item: `${SITE_ORIGIN}/date/`
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: dateText,
+        item: dayPageUrl
+      }
+    ]
+  };
   // 下部広告は必要になった時だけ有効化できるようにトグルを用意する
   const includeBottomAd = false;
   const bottomAdHtml = includeBottomAd ? renderAdSection(adHtml, "bottom") : "";
@@ -549,7 +631,16 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   return (
     // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
     // ユーザビリティ向上のため、パンくずはヘッダーより先に配置する。
-    renderHeader(`${dateText}のイベント一覧｜${SITE_NAME}`, `${dateText}`, "../../css/style.css", isNoindex, descriptionText, canonicalPath, preHeaderHtml)
+    renderHeader(
+      `${dateText}のイベント一覧｜${SITE_NAME}`,
+      `${dateText}`,
+      "../../css/style.css",
+      isNoindex,
+      descriptionText,
+      canonicalPath,
+      preHeaderHtml,
+      [breadcrumbStructuredData, dayEventStructuredData]
+    )
     + navHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
@@ -571,9 +662,9 @@ ${bottomAdHtml}
 
 // 日付一覧ページを生成する
 function renderDateIndexPage(dateEntries, adHtml) {
-  // Step1方針: 一覧ページ名は「📅日付から探す」に統一し、検索意図と一致させる
-  const titleText = `📅日付から探す｜${SITE_NAME}`;
-  const headingText = "📅日付から探す";
+  // 一覧ページ名は絵文字を外して統一し、検索結果での表記ゆれを減らす。
+  const titleText = `日付から探す｜${SITE_NAME}`;
+  const headingText = "日付から探す";
   // H1とH2を同名にすると読み上げ時の重複感が出るため、一覧セクションは別ラベルにする
   const listSectionTitle = "開催日一覧";
   const breadcrumbHtml = renderBreadcrumbs([
@@ -582,6 +673,40 @@ function renderDateIndexPage(dateEntries, adHtml) {
   ]);
   // 一覧ページも同様に、パンくずの直後へ広告を配置する。
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "index")}`;
+  // 一覧ページの主要リンクを ItemList で宣言し、内部リンク集合の意味を明示する。
+  const indexStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "日付から探す",
+    url: `${SITE_ORIGIN}/date/`,
+    itemListElement: dateEntries.map((entry, index) => {
+      const dateKey = formatDateKey(entry.date);
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        name: formatJapaneseDate(entry.date),
+        url: `${SITE_ORIGIN}/date/${dateKey}/`
+      };
+    })
+  };
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "ホーム",
+        item: `${SITE_ORIGIN}/`
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "日付から探す",
+        item: `${SITE_ORIGIN}/date/`
+      }
+    ]
+  };
 
   const items = dateEntries.map((entry) => {
     const dateKey = formatDateKey(entry.date);
@@ -621,7 +746,8 @@ function renderDateIndexPage(dateEntries, adHtml) {
       false,
       "四国で開催されるイベントを日付別に一覧で確認できるページです。日程ごとの件数と代表イベントから詳細ページへ進めます。",
       "/date/",
-      preHeaderHtml
+      preHeaderHtml,
+      [breadcrumbStructuredData, indexStructuredData]
     )
     + `  <section class="spot-events" aria-labelledby="events-title">
     <div class="spot-events__header">
