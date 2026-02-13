@@ -20,6 +20,11 @@ const OTHER_BODY_MAX_LENGTH = 300;
 // date_from/date_to の許容日数上限。
 // 安全対策の閾値を定数化し、条件式と警告文の整合性を保ちやすくする。
 const MAX_DATE_RANGE_DAYS = 365;
+// 検索流入最適化: sitemap/一覧で優先する未来日数。
+// 120日にすると、季節イベントを拾いつつ薄いページの増加を抑えやすい。
+const SEO_FUTURE_DAYS = 120;
+// 過去ページはアーカイブとして残しつつ、検索評価を直近〜未来へ寄せるため noindex にする。
+const SEO_PAST_INDEXABLE_DAYS = 0;
 // 日付加算・差分計算で使う「1日」のミリ秒。
 // 複数箇所で同じ式を再利用するため、マジックナンバーを排除する。
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
@@ -288,12 +293,16 @@ function renderHeader(
   // 日付ページでもアクセス計測できるよう、GA4タグをヘッダーに埋め込む。
   // なお page_view は手動制御を維持するため send_page_view を false にしておく。
   const ga4Snippet = `  <!-- Google Analytics 4 の計測タグ（日付ページ向け） -->\n  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n  </script>\n`;
+  // canonical があるページは page_view を明示送信し、ページ別流入計測の欠落を防ぐ。
+  const pageViewSnippet = canonicalUrl
+    ? `  <script>\n    gtag('event', 'page_view', {\n      page_path: ${JSON.stringify(canonicalPath)},\n      page_title: ${JSON.stringify(titleText)}\n    });\n  </script>\n`
+    : "";
   const structuredDataScripts = renderStructuredDataScripts(structuredDataObjects);
 
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
-${ga4Snippet}  <meta charset="UTF-8" />
+${ga4Snippet}${pageViewSnippet}  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 ${noindexMeta}${descriptionHtml}${canonicalHtml}${ogHtml}${structuredDataScripts}  <title>${safeTitle}</title>
   <link rel="stylesheet" href="${cssPath}" />
@@ -305,6 +314,38 @@ ${preHeaderHtml}
   </header>
   <main>
 `;
+}
+
+// date ディレクトリ直下の YYYY-MM-DD フォルダを列挙する。
+// 生成対象外の日付フォルダを削除するために利用する。
+function listDateDirectoryNames() {
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    return [];
+  }
+
+  return fs.readdirSync(OUTPUT_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .filter((name) => /^\d{4}-\d{2}-\d{2}$/.test(name));
+}
+
+// 生成対象に含まれない古い日付ディレクトリを削除する。
+// 旧テンプレートの残骸が sitemap に再出現しないよう、根本原因（残存HTML）を除去する。
+function removeStaleDateDirectories(activeDateKeys) {
+  const existingDateDirs = listDateDirectoryNames();
+  let removedCount = 0;
+
+  existingDateDirs.forEach((dateKey) => {
+    if (activeDateKeys.has(dateKey)) {
+      return;
+    }
+
+    const targetDir = path.join(OUTPUT_DIR, dateKey);
+    fs.rmSync(targetDir, { recursive: true, force: true });
+    removedCount += 1;
+  });
+
+  return removedCount;
 }
 
 // パンくずリストのHTMLを生成する。
@@ -905,12 +946,14 @@ function generatePages() {
   const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   const publishStart = new Date(todayUtc.getTime() - 365 * ONE_DAY_MS);
   const publishEnd = new Date(todayUtc.getTime() + 365 * ONE_DAY_MS);
-  const indexStart = new Date(todayUtc.getTime() - 180 * ONE_DAY_MS);
+  const indexStart = new Date(todayUtc.getTime() - SEO_PAST_INDEXABLE_DAYS * ONE_DAY_MS);
+  const indexEnd = new Date(todayUtc.getTime() + SEO_FUTURE_DAYS * ONE_DAY_MS);
 
   // publish window 外の日付は生成対象から除外する
   const publishDates = dates.filter((entry) => entry.date >= publishStart && entry.date <= publishEnd);
   // トップページではイベント0件日を表示しないため、存在する日付だけを集合化する
-  const availableDateKeys = new Set(publishDates.map((entry) => formatDateKey(entry.date)));
+  const publishDateKeys = new Set(publishDates.map((entry) => formatDateKey(entry.date)));
+  const removedStaleCount = removeStaleDateDirectories(publishDateKeys);
 
   let writtenCount = 0;
 
@@ -928,8 +971,8 @@ function generatePages() {
     const dateKey = formatDateKey(entry.date);
     const prevKey = prevEntry ? formatDateKey(prevEntry.date) : null;
     const nextKey = nextEntry ? formatDateKey(nextEntry.date) : null;
-    // publishEnd と indexEnd は同値のため、noindex 判定は indexStart のみで行う
-    const isNoindex = entry.date < indexStart;
+    // noindex は「今日より前」または「120日先より先」を対象にして、検索評価を直近〜未来へ集中させる。
+    const isNoindex = entry.date < indexStart || entry.date > indexEnd;
 
     const html = renderDayPage(entry.date, entry.events, prevKey, nextKey, isNoindex, dateAdHtml);
     const outputPath = path.join(OUTPUT_DIR, dateKey, "index.html");
@@ -939,11 +982,11 @@ function generatePages() {
     }
   });
 
-// 日付一覧ページは今日以降の直近60日分を対象にする
+  // 日付一覧ページは「今日〜SEO_FUTURE_DAYS日先」に絞って、重要LPへの内部リンク密度を上げる。
   const todayKey = formatDateKey(todayUtc);
   const recentDates = publishDates
-    .filter(entry => formatDateKey(entry.date) >= todayKey)
-    .slice(0, 90);
+    .filter((entry) => formatDateKey(entry.date) >= todayKey)
+    .slice(0, SEO_FUTURE_DAYS + 1);
 
   if (recentDates.length > 0) {
     const indexHtml = renderDateIndexPage(recentDates, dateAdHtml);
@@ -954,8 +997,12 @@ function generatePages() {
   }
 
   // トップページの日付導線を publish window に合わせて更新する
-  if (updateIndexDateNav(todayUtc, availableDateKeys)) {
+  if (updateIndexDateNav(todayUtc, publishDateKeys)) {
     writtenCount += 1;
+  }
+
+  if (removedStaleCount > 0) {
+    console.log("古い日付ディレクトリを削除:", removedStaleCount, "件");
   }
 
   console.log("日付ページ生成完了:", writtenCount, "件更新");
