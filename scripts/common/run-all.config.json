@@ -160,7 +160,7 @@
         "docs/events/kochi-skbh.json"
       ]
     },
-        {
+    {
       "id": "kochi-sporthall",
       "script": "scripts/scraping/fetch-kochi-sporthall.js",
       "enabled": true,
@@ -225,6 +225,14 @@
         "docs/facility",
         "docs/facility/index.html",
         "docs/facility-name/index.html"
+      ]
+    },
+    {
+      "id": "generate-spot-pages",
+      "script": "scripts/page-generation/generate-spot-pages.js",
+      "enabled": true,
+      "outputs": [
+        "docs/spot"
       ]
     },
     {

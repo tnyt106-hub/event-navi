@@ -2,8 +2,13 @@
 // 依存を最小限にして、GitHub Pages でも動作するようにしている
 
 // URL から spot_id を取得する
+// 旧URL（?spot_id=...）と新URL（/spot/{spot_id}/）の両方を解釈できるようにする。
 const params = new URLSearchParams(window.location.search);
-const spotId = params.get("spot_id");
+const pathSegments = window.location.pathname.split("/").filter(Boolean);
+const spotIdFromPath = pathSegments.length >= 2 && pathSegments[0] === "spot"
+  ? pathSegments[1]
+  : "";
+const spotId = params.get("spot_id") || spotIdFromPath;
 
 // 描画に使うDOMをまとめて取得する
 const errorSection = document.getElementById("spot-error");
@@ -443,7 +448,7 @@ function renderEvents(eventsData) {
 // イベントJSONを取得して表示する（取得失敗時は準備中メッセージに留める）
 function loadEventsForSpot(spotIdValue) {
   if (!spotIdValue || !eventsStatusElement) return;
-  fetch(`../events/${encodeURIComponent(spotIdValue)}.json`)
+  fetch(`/events/${encodeURIComponent(spotIdValue)}.json`)
     .then((response) => {
       if (!response.ok) {
         // 404などは「準備中」表示に切り替えるため、ここで分岐する
@@ -499,7 +504,7 @@ if (!spotId) {
   showError("スポットIDが指定されていません。トップページから再度お試しください。");
 } else {
   // データを取得して、該当するスポットを描画する
-  fetch("../data/spots.json")
+  fetch("/data/spots.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error("spots.json not found");
@@ -557,7 +562,7 @@ if (!spotId) {
       }
 
       // タイトルと meta description をスポットに合わせて更新する
-      document.title = `${spotName}｜四国イベントスポットマップ`;
+      document.title = `${spotName}｜イベントガイド【四国版】`;
       if (metaDescription) {
         const descriptionText = introText
           ? introText.replace(/\n/g, " ")

@@ -59,6 +59,10 @@ function collectHtmlFiles(dirPath) {
     if (entry.name.startsWith(".")) continue;
 
     if (entry.isDirectory()) {
+      // partials は部品ファイルなのでサイトマップ対象から除外する。
+      if (entry.name === "partials") {
+        continue;
+      }
       found.push(...collectHtmlFiles(absPath));
       continue;
     }
@@ -131,6 +135,12 @@ function main() {
   htmlFiles
     .sort((a, b) => a.localeCompare(b, "en"))
     .forEach((filePath) => {
+      const rel = path.relative(DOCS_DIR, filePath).replace(/\\/g, "/");
+      // spot/index.html はクエリ互換用のテンプレートページなのでインデックス対象から除外する。
+      if (rel === "spot/index.html") {
+        return;
+      }
+
       const loc = toPublicUrl(baseUrl, filePath);
       deduped.set(loc, {
         loc,
