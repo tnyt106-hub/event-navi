@@ -45,6 +45,23 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+// JSON-LDを script タグへ安全に埋め込むため、`<` をエスケープしてタグ破壊を防ぐ。
+function serializeJsonLd(value) {
+  return JSON.stringify(value, null, 2).replace(/</g, "\\u003c");
+}
+
+// 複数の構造化データを head 内へ並べて出力する。
+// 一覧ページでは BreadcrumbList + ItemList をセットで渡す想定。
+function renderStructuredDataScripts(structuredDataObjects = []) {
+  if (!Array.isArray(structuredDataObjects) || structuredDataObjects.length === 0) {
+    return "";
+  }
+
+  return structuredDataObjects
+    .map((item) => `  <script type="application/ld+json">\n${serializeJsonLd(item)}\n  </script>`)
+    .join("\n");
+}
+
 // 県名からURLパスを安定して作る。未定義県はothersへフォールバックする。
 function toPrefSlug(prefecture) {
   return PREF_SLUG_MAP[prefecture] ?? "others";
@@ -87,12 +104,22 @@ function buildEventCountMap() {
 // ヘッダーにSEO用メタ情報をまとめて出力する。
 // description/canonicalPathはページごとに変わるため引数で受け取る。
 // preHeaderHtml を使うと、パンくずなどを <header> より前へ安全に配置できる。
-function renderPageHeader({ title, heading, cssPath, description, canonicalPath, preHeaderHtml = "" }) {
+function renderPageHeader({
+  title,
+  heading,
+  cssPath,
+  description,
+  canonicalPath,
+  preHeaderHtml = "",
+  structuredDataObjects = []
+}) {
   const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
   // canonicalをもとに OGP画像URLも一意に決め、URL不整合を防ぐ。
   const ogImageUrl = `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
   // send_page_view:false を維持しつつ、ページ単位で明示送信して重複計測を防ぐ。
   const ga4Snippet = `  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n    gtag('event', 'page_view', {\n      page_path: '${canonicalPath}',\n      page_title: '${escapeHtml(title)}'\n    });\n  </script>`;
+  // head へまとめて埋め込むことで、クローラがページの意味を取りやすくする。
+  const structuredDataScripts = renderStructuredDataScripts(structuredDataObjects);
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -113,7 +140,7 @@ ${ga4Snippet}
   <meta name="twitter:title" content="${escapeHtml(title)}" />
   <meta name="twitter:description" content="${escapeHtml(description)}" />
   <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />
-  <title>${escapeHtml(title)}</title>
+${structuredDataScripts ? `${structuredDataScripts}\n` : ""}  <title>${escapeHtml(title)}</title>
   <link rel="stylesheet" href="${escapeHtml(cssPath)}" />
 </head>
 <body>
@@ -123,6 +150,38 @@ ${preHeaderHtml}  <header>
   </header>
   <main id="main-content">
 `;
+}
+
+// パンくず構造化データを共通生成し、ページ階層を検索エンジンへ明示する。
+function buildBreadcrumbStructuredData(items) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${SITE_ORIGIN}${item.path}`
+    }))
+  };
+}
+
+// 一覧ページ向けの ItemList を作る。
+// ページURLを itemListOrder と合わせて持たせ、一覧性を明確化する。
+function buildItemListStructuredData(items, listTitle) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: listTitle,
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: `${SITE_ORIGIN}${item.path}`
+    }))
+  };
 }
 
 // 広告partialを読み込み、見つからない場合は空文字で安全にフォールバックする。
@@ -243,6 +302,20 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
   // パンくず直下に広告を置く要件に合わせ、preHeaderへ連結して配置を固定する。
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-index")}`;
 
+  const structuredDataObjects = [
+    buildBreadcrumbStructuredData([
+      { name: "ホーム", path: "/" },
+      { name: "エリアから探す", path: "/facility/" }
+    ]),
+    buildItemListStructuredData(
+      prefectureSummaries.map((summary) => ({
+        name: summary.prefecture,
+        path: `/facility/${summary.slug}/`
+      })),
+      "四国4県の施設一覧"
+    )
+  ];
+
   return `${renderPageHeader({
     // SEOでは検索結果の安定表示を優先し、titleから絵文字を外す。
     title: `エリアから探す｜${SITE_NAME}`,
@@ -252,7 +325,8 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
     description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設詳細へ進めます。",
     canonicalPath: "/facility/",
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
-    preHeaderHtml
+    preHeaderHtml,
+    structuredDataObjects
   })}    <section class="spot-events" aria-labelledby="facility-pref-title">
       <div class="spot-events__header">
         <h2 id="facility-pref-title" class="spot-events__title">県別一覧</h2>
@@ -300,6 +374,21 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
   // 県別ページでもパンくずの直後に広告を配置して、導線の一貫性を保つ。
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, `facility-${toPrefSlug(prefecture)}`)}`;
 
+  const structuredDataObjects = [
+    buildBreadcrumbStructuredData([
+      { name: "ホーム", path: "/" },
+      { name: "エリアから探す", path: "/facility/" },
+      { name: prefecture, path: `/facility/${toPrefSlug(prefecture)}/` }
+    ]),
+    buildItemListStructuredData(
+      sortedSpots.map((spot) => ({
+        name: spot.name,
+        path: `/spot/${encodeURIComponent(spot.spot_id)}/`
+      })),
+      `${prefecture}の施設一覧`
+    )
+  ];
+
   const bodyHtml = `${renderPageHeader({
     title: `${prefecture}の施設一覧｜${SITE_NAME}`,
     heading: `${prefecture}の施設一覧`,
@@ -307,7 +396,8 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
     description: `${prefecture}の公共施設を一覧化したページです。市町村・カテゴリ・イベント件数の目安を確認しながら、各施設ページへ移動できます。`,
     canonicalPath: `/facility/${toPrefSlug(prefecture)}/`,
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
-    preHeaderHtml
+    preHeaderHtml,
+    structuredDataObjects
   })}    <nav class="spot-actions" aria-label="施設ナビゲーション">
       <a class="spot-action-btn" href="../">施設一覧へ戻る</a>
       <a class="spot-action-btn" href="../../index.html">トップへ戻る</a>
@@ -363,6 +453,20 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
   // 新規導線ページも他ページと同じレイアウトルール（パンくず→広告）で統一する。
   const preHeaderHtml = `${breadcrumbHtml}${renderAdSection(adHtml, "facility-name-index")}`;
 
+  const structuredDataObjects = [
+    buildBreadcrumbStructuredData([
+      { name: "ホーム", path: "/" },
+      { name: "施設名から探す", path: "/facility-name/" }
+    ]),
+    buildItemListStructuredData(
+      sortedSpots.map((spot) => ({
+        name: spot.name,
+        path: `/spot/${encodeURIComponent(spot.spot_id)}/`
+      })),
+      "四国4県の施設名一覧（50音順）"
+    )
+  ];
+
   return `${renderPageHeader({
     // SEOでは検索結果の安定表示を優先し、titleから絵文字を外す。
     title: `施設名から探す｜${SITE_NAME}`,
@@ -371,7 +475,8 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
     // SEO向けに「地域・並び順・遷移先」の3点を短く明示する。
     description: "四国4県の公共施設を施設名の50音順で一覧表示するページです。都道府県・市町村・カテゴリ・イベント件数を確認しながら各施設詳細へ進めます。",
     canonicalPath: "/facility-name/",
-    preHeaderHtml
+    preHeaderHtml,
+    structuredDataObjects
   })}    <!-- 施設名ページでは重複導線になるため、上部ナビゲーションボタンは表示しない -->
 
     <section class="spot-events" aria-labelledby="facility-name-list-title">

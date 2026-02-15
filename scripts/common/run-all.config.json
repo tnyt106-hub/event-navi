@@ -236,6 +236,20 @@
       ]
     },
     {
+      "id": "check-seo-required",
+      "type": "validate",
+      "script": "scripts/common/check-seo-required.js",
+      "enabled": true,
+      "dependsOn": [
+        "generate-date-pages",
+        "generate-facility-pages",
+        "generate-spot-pages"
+      ],
+      "outputs": [
+        "docs"
+      ]
+    },
+    {
       "id": "generate-sitemap",
       "script": "scripts/page-generation/generate-sitemap.js",
       "enabled": true,
