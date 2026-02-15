@@ -28,6 +28,8 @@ const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-
 const SITE_ORIGIN = "https://event-guide.jp";
 // OGP/Twitterで使う共通画像。差し替え時の修正箇所を1か所にする。
 const DEFAULT_OG_IMAGE_PATH = "/assets/images/ogp-default.svg";
+// OGP画像の代替テキストを共通管理し、SNSカードの意味を補う。
+const DEFAULT_OG_IMAGE_ALT = "イベントガイド【四国版】のサイト共通OGP画像";
 // 施設ページでもアクセス計測を揃えるため、GA4の測定IDを定数化する。
 const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // フッター年は実行年を使い、年更新漏れを防ぐ。
@@ -106,7 +108,10 @@ ${ga4Snippet}
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
   <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />
+  <meta property="og:image:alt" content="${escapeHtml(DEFAULT_OG_IMAGE_ALT)}" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeHtml(title)}" />
+  <meta name="twitter:description" content="${escapeHtml(description)}" />
   <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />
   <title>${escapeHtml(title)}</title>
   <link rel="stylesheet" href="${escapeHtml(cssPath)}" />

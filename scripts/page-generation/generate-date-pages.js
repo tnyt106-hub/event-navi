@@ -14,6 +14,8 @@ const SITE_ORIGIN = "https://event-guide.jp";
 // OGP/Twitter で共通利用するサムネイル画像。
 // 画像差し替え時はこのパスのみ更新すれば、生成ページへ一括反映できる。
 const DEFAULT_OG_IMAGE_PATH = "/assets/images/ogp-default.svg";
+// OGP画像の代替テキストを共通化し、SNSカードの意味を一貫させる。
+const DEFAULT_OG_IMAGE_ALT = "イベントガイド【四国版】のサイト共通OGP画像";
 // 長文本文を「その他」表示で省略する際の最大文字数。
 // 数値を1か所に集約しておくと、将来調整時に置換漏れを防げる。
 const OTHER_BODY_MAX_LENGTH = 300;
@@ -288,7 +290,7 @@ function renderHeader(
   const canonicalHtml = canonicalUrl ? `  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />\n` : "";
   const descriptionHtml = safeDescription ? `  <meta name="description" content="${safeDescription}" />\n` : "";
   const ogHtml = (safeDescription && canonicalUrl)
-    ? `  <meta property="og:type" content="website" />\n  <meta property="og:locale" content="ja_JP" />\n  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />\n  <meta property="og:title" content="${safeTitle}" />\n  <meta property="og:description" content="${safeDescription}" />\n  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n`
+    ? `  <meta property="og:type" content="website" />\n  <meta property="og:locale" content="ja_JP" />\n  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />\n  <meta property="og:title" content="${safeTitle}" />\n  <meta property="og:description" content="${safeDescription}" />\n  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta property="og:image:alt" content="${escapeHtml(DEFAULT_OG_IMAGE_ALT)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${safeTitle}" />\n  <meta name="twitter:description" content="${safeDescription}" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n`
     : "";
   // 日付ページでもアクセス計測できるよう、GA4タグをヘッダーに埋め込む。
   // なお page_view は手動制御を維持するため send_page_view を false にしておく。
@@ -972,7 +974,11 @@ function generatePages() {
     const prevKey = prevEntry ? formatDateKey(prevEntry.date) : null;
     const nextKey = nextEntry ? formatDateKey(nextEntry.date) : null;
     // noindex は「今日より前」または「120日先より先」を対象にして、検索評価を直近〜未来へ集中させる。
-    const isNoindex = entry.date < indexStart || entry.date > indexEnd;
+    const isNoindexByDateWindow = entry.date < indexStart || entry.date > indexEnd;
+    // 0件ページが生成された場合は、薄いコンテンツのインデックスを防ぐため noindex を強制する。
+    // 通常運用では dateMap の性質上ほぼ0件にならないが、将来のデータ加工変更に備えた保険として入れておく。
+    const isNoindexByZeroEvents = entry.events.length === 0;
+    const isNoindex = isNoindexByDateWindow || isNoindexByZeroEvents;
 
     const html = renderDayPage(entry.date, entry.events, prevKey, nextKey, isNoindex, dateAdHtml);
     const outputPath = path.join(OUTPUT_DIR, dateKey, "index.html");

@@ -9,6 +9,8 @@ const SITE_NAME = "イベントガイド【四国版】";
 const SITE_ORIGIN = "https://event-guide.jp";
 // OGP/Twitterで使う共通画像。ページ個別画像が無い場合の既定値として使う。
 const DEFAULT_OG_IMAGE_PATH = "/assets/images/ogp-default.svg";
+// OGP画像の代替テキストを共通管理し、SNSカードの文脈を補う。
+const DEFAULT_OG_IMAGE_ALT = "イベントガイド【四国版】のサイト共通OGP画像";
 // スポット詳細ページでも計測条件を揃えるため、GA4測定IDを定数化する。
 const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // スポット一覧データの入力元。
@@ -122,7 +124,10 @@ ${ga4Snippet}
   <meta property="og:description" content="${escapeHtml(descriptionText)}" />
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
   <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />
+  <meta property="og:image:alt" content="${escapeHtml(DEFAULT_OG_IMAGE_ALT)}" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeHtml(titleText)}" />
+  <meta name="twitter:description" content="${escapeHtml(descriptionText)}" />
   <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />
 ${renderStructuredData(spot, canonicalUrl, descriptionText)}
   <link rel="stylesheet" href="../../css/style.css" />
