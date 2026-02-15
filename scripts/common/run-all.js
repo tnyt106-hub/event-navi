@@ -719,6 +719,13 @@ function saveOutputCache(cachePath, cacheData) {
   writeTextAtomic(cachePath, `${JSON.stringify(cacheData, null, 2)}\n`, "utf8");
 }
 
+function saveQualitySummary(summaryPath, summaryData) {
+  const dir = path.dirname(summaryPath);
+  ensureDirExists(dir);
+  // 品質サマリーは運用判断の根拠になるため、原子的に保存して破損を防ぐ。
+  writeTextAtomic(summaryPath, `${JSON.stringify(summaryData, null, 2)}\n`, "utf8");
+}
+
 function getOutputStats(outputPaths) {
   return outputPaths.map((outputPath) => {
     if (!outputPath) {
@@ -918,6 +925,20 @@ function evaluateQualityForTaskOutputs(task, outputPaths, qualityGate, logger) {
   return {
     status: combinedStatus,
     detail,
+    checkedOutputs,
+    totalEvents,
+    missingTitleCount,
+    missingDateCount,
+    titleMissingRate,
+    dateMissingRate,
+    titleThresholds: {
+      warn: qualityGate.titleMissingWarnThreshold,
+      fail: qualityGate.titleMissingFailThreshold,
+    },
+    dateThresholds: {
+      warn: qualityGate.dateMissingWarnThreshold,
+      fail: qualityGate.dateMissingFailThreshold,
+    },
   };
 }
 
@@ -1006,7 +1027,9 @@ async function main() {
   const failByType = {};
 
   const outputCachePath = path.join(REPO_ROOT, "logs", "run-all-output-cache.json");
+  const qualitySummaryPath = path.join(REPO_ROOT, "logs", "run-all-quality-summary.json");
   const outputCache = loadOutputCache(outputCachePath);
+  const qualitySummaries = [];
 
   for (let i = 0; i < orderedTasks.length; i += 1) {
     const task = orderedTasks[i];
@@ -1128,6 +1151,23 @@ async function main() {
           loggerWithConfig
         );
 
+        if (qualityResult?.status) {
+          // 施設ごとの品質サマリーを蓄積し、最後に JSON として保存する。
+          qualitySummaries.push({
+            taskId: displayId,
+            status: qualityResult.status,
+            detail: qualityResult.detail,
+            checkedOutputs: qualityResult.checkedOutputs || outputPaths,
+            totalEvents: qualityResult.totalEvents ?? null,
+            missingTitleCount: qualityResult.missingTitleCount ?? null,
+            missingDateCount: qualityResult.missingDateCount ?? null,
+            titleMissingRate: qualityResult.titleMissingRate ?? null,
+            dateMissingRate: qualityResult.dateMissingRate ?? null,
+            titleThresholds: qualityResult.titleThresholds || null,
+            dateThresholds: qualityResult.dateThresholds || null,
+          });
+        }
+
         if (qualityResult?.status === "fail") {
           failCount += 1;
           loggerWithConfig.warn(
@@ -1240,6 +1280,25 @@ async function main() {
       `summary: ${name || "(no-id)"} status=${result.status} time=${result.elapsedSeconds}s${detail}`
     );
   });
+
+  // 実行ごとに品質判定の根拠を JSON で保存し、CI 失敗時の調査時間を短縮する。
+  const qualitySummary = {
+    generatedAt: nowIso(),
+    qualityGate: config.config.qualityGate,
+    totals: {
+      checkedTasks: qualitySummaries.length,
+      ok: qualitySummaries.filter((item) => item.status === "ok").length,
+      warn: qualitySummaries.filter((item) => item.status === "warn").length,
+      fail: qualitySummaries.filter((item) => item.status === "fail").length,
+    },
+    tasks: qualitySummaries,
+  };
+  saveQualitySummary(qualitySummaryPath, qualitySummary);
+  loggerWithConfig.run(
+    `quality summary: checked=${qualitySummary.totals.checkedTasks} ` +
+    `ok=${qualitySummary.totals.ok} warn=${qualitySummary.totals.warn} fail=${qualitySummary.totals.fail} ` +
+    `file=${path.relative(REPO_ROOT, qualitySummaryPath)}`
+  );
 
   if (failed.length > 0) {
     const failTypeSummary = Object.entries(failByType)
