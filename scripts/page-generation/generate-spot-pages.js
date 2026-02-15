@@ -17,8 +17,12 @@ const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 const SPOTS_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 // スポット詳細ページの出力先ルート。
 const SPOT_ROOT_DIR = path.join(process.cwd(), "docs", "spot");
+// 施設ごとのイベントJSON。静的HTMLへ要約を埋め込むために参照する。
+const EVENTS_DIR = path.join(process.cwd(), "docs", "events");
 // フッター年は実行年を使い、年更新漏れを防ぐ。
 const CURRENT_YEAR = new Date().getFullYear();
+// 施設詳細ページの初期表示に埋め込むイベント件数（多すぎると可読性が落ちるため上限を持たせる）。
+const STATIC_EVENT_PREVIEW_LIMIT = 10;
 
 // HTML 文字列として安全に埋め込むための最小限エスケープ。
 function escapeHtml(value) {
@@ -42,8 +46,74 @@ function buildDescription(spot) {
   return `${prefix}${category}${spot.name}の施設詳細ページです。開催予定のイベントやアクセス情報を確認できます。`;
 }
 
+// YYYY-MM-DD を人間が読みやすい形式へ整える（失敗時は入力値をそのまま表示）。
+function formatDateWithWeekday(dateText) {
+  const normalized = String(dateText || "").trim();
+  const match = normalized.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return normalized;
+
+  const dateObj = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+  const isValid =
+    dateObj.getUTCFullYear() === Number(match[1]) &&
+    dateObj.getUTCMonth() === Number(match[2]) - 1 &&
+    dateObj.getUTCDate() === Number(match[3]);
+  if (!isValid) return normalized;
+
+  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  return `${normalized}（${weekdays[dateObj.getUTCDay()]}）`;
+}
+
+// 施設イベントを date_from 昇順で並べ、静的プレビュー用に整形する。
+function getSortedEventsForSpot(spotId, eventsBySpotId) {
+  const events = eventsBySpotId.get(String(spotId)) || [];
+  return events
+    .slice()
+    .sort((a, b) => String(a?.date_from || "").localeCompare(String(b?.date_from || ""), "ja"));
+}
+
+// 静的HTMLへ埋め込むイベントカード群を生成する。
+function renderStaticEventPreview(spot, eventsBySpotId) {
+  const sortedEvents = getSortedEventsForSpot(spot.spot_id, eventsBySpotId);
+  const previewEvents = sortedEvents.slice(0, STATIC_EVENT_PREVIEW_LIMIT);
+
+  if (previewEvents.length === 0) {
+    return {
+      html: '<p id="spot-events-status" class="spot-events__status">現在公開中のイベント情報はありません。</p>',
+      count: 0,
+      events: []
+    };
+  }
+
+  const itemsHtml = previewEvents
+    .map((eventItem) => {
+      const titleText = eventItem?.title || "イベント名未定";
+      const fromText = formatDateWithWeekday(eventItem?.date_from);
+      const toText = formatDateWithWeekday(eventItem?.date_to);
+      const dateText = fromText && toText && fromText !== toText ? `${fromText}〜${toText}` : (fromText || toText || "日程未定");
+      const linkHtml = eventItem?.source_url
+        ? `<a class="spot-event-card__link" href="${escapeHtml(eventItem.source_url)}" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>`
+        : "";
+
+      return `            <li class="spot-event-card">
+              <p class="spot-event-card__date">${escapeHtml(dateText)}</p>
+              <h4 class="spot-event-card__title">${escapeHtml(titleText)}</h4>
+              ${linkHtml}
+            </li>`;
+    })
+    .join("\n");
+
+  return {
+    html: `            <p id="spot-events-status" class="spot-events__status">開催予定のイベントを表示しています（初期表示は${STATIC_EVENT_PREVIEW_LIMIT}件まで）。</p>
+            <ul id="spot-events-list" class="spot-events__list">
+${itemsHtml}
+            </ul>`,
+    count: previewEvents.length,
+    events: previewEvents
+  };
+}
+
 // 構造化データ（Breadcrumb + Place）を1ブロックで生成する。
-function renderStructuredData(spot, canonicalUrl, descriptionText) {
+function renderStructuredData(spot, canonicalUrl, descriptionText, staticEvents) {
   const areaText = [spot.prefecture, spot.municipality].filter(Boolean).join(" ");
   const structuredData = [
     {
@@ -94,15 +164,40 @@ function renderStructuredData(spot, canonicalUrl, descriptionText) {
     }
   ];
 
+  // 施設ページでもイベント情報をJSON-LD化し、ページ主題（施設＋開催情報）を検索エンジンへ明示する。
+  staticEvents.forEach((eventItem) => {
+    if (!eventItem?.date_from || !eventItem?.title) return;
+    structuredData.push({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      name: eventItem.title,
+      startDate: eventItem.date_from,
+      endDate: eventItem.date_to || eventItem.date_from,
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: {
+        "@type": "Place",
+        name: spot.name,
+        address: {
+          "@type": "PostalAddress",
+          addressRegion: spot.prefecture || "",
+          addressLocality: spot.municipality || ""
+        }
+      },
+      url: eventItem.source_url || canonicalUrl
+    });
+  });
+
   return `  <script type="application/ld+json">\n${JSON.stringify(structuredData, null, 2)}\n  </script>`;
 }
 
 // 1スポット分の静的HTMLを生成する。
-function renderSpotPage(spot) {
+function renderSpotPage(spot, eventsBySpotId) {
   const spotName = spot.name ? String(spot.name).trim() : "施設詳細";
   const titleText = `${spotName}｜${SITE_NAME}`;
   const descriptionText = buildDescription(spot);
   const canonicalUrl = `${SITE_ORIGIN}/spot/${encodeURIComponent(spot.spot_id)}/`;
+  // 初期HTMLにもイベントを埋め込み、JS実行前でも本文情報を読める状態にする。
+  const staticPreview = renderStaticEventPreview(spot, eventsBySpotId);
   // canonicalと同じドメイン配下の既定OG画像を使い、SNSシェア表示を安定させる。
   const ogImageUrl = `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
   // send_page_view:false を維持し、ページごとに明示送信して二重計測を防ぐ。
@@ -129,7 +224,7 @@ ${ga4Snippet}
   <meta name="twitter:title" content="${escapeHtml(titleText)}" />
   <meta name="twitter:description" content="${escapeHtml(descriptionText)}" />
   <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />
-${renderStructuredData(spot, canonicalUrl, descriptionText)}
+${renderStructuredData(spot, canonicalUrl, descriptionText, staticPreview.events)}
   <link rel="stylesheet" href="../../css/style.css" />
 </head>
 <body class="spot-page" data-spot-id="${escapeHtml(spot.spot_id)}">
@@ -153,15 +248,15 @@ ${renderStructuredData(spot, canonicalUrl, descriptionText)}
       <a class="spot-error__link" href="/">トップへ戻る</a>
     </section>
 
-    <article id="spot-content" class="spot-content" hidden>
+    <article id="spot-content" class="spot-content">
       <div class="spot-content__meta">
-        <p id="spot-category" class="spot-category"></p>
-        <p id="spot-area" class="spot-area"></p>
+        <p id="spot-category" class="spot-category">${spot.category ? `#${escapeHtml(spot.category)}` : ""}</p>
+        <p id="spot-area" class="spot-area">${escapeHtml([spot.prefecture, spot.municipality].filter(Boolean).join(" "))}</p>
       </div>
-      <h2 id="spot-title" class="spot-title"></h2>
+      <h2 id="spot-title" class="spot-title">${escapeHtml(spotName)}</h2>
       <section class="spot-intro">
         <h3 class="spot-intro__title">このスポットについて</h3>
-        <p id="spot-intro" class="spot-intro__text"></p>
+        <p id="spot-intro" class="spot-intro__text">${escapeHtml(descriptionText)}</p>
       </section>
 
       <section class="spot-events">
@@ -172,15 +267,14 @@ ${renderStructuredData(spot, canonicalUrl, descriptionText)}
         <div id="spot-events-body" class="spot-events__body">
           <div class="spot-events__panel">
             <div id="spot-events-tabs" class="spot-events__tabs" hidden></div>
-            <p id="spot-events-status" class="spot-events__status">イベント情報を読み込んでいます。</p>
-            <ul id="spot-events-list" class="spot-events__list" hidden></ul>
+${staticPreview.html}
             <button id="spot-events-more" class="spot-events__more" type="button" hidden>もっと見る</button>
           </div>
         </div>
       </section>
 
       <div class="spot-actions">
-        <a id="spot-google-link" class="spot-action-btn spot-action-btn--primary" href="#" target="_blank" rel="noopener noreferrer">Googleマップで開く</a>
+        <a id="spot-google-link" class="spot-action-btn spot-action-btn--primary" href="${escapeHtml(spot.google_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.name || "")}`)}" target="_blank" rel="noopener noreferrer">Googleマップで開く</a>
       </div>
     </article>
   </main>
@@ -211,6 +305,25 @@ ${renderStructuredData(spot, canonicalUrl, descriptionText)}
 `;
 }
 
+// docs/events/*.json を読み込み、venue_id単位でイベント配列を保持する。
+function loadEventsBySpotId() {
+  const eventMap = new Map();
+  if (!fs.existsSync(EVENTS_DIR)) {
+    return eventMap;
+  }
+
+  const files = fs.readdirSync(EVENTS_DIR).filter((name) => name.endsWith(".json"));
+  files.forEach((fileName) => {
+    const filePath = path.join(EVENTS_DIR, fileName);
+    const raw = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const venueId = String(raw?.venue_id || fileName.replace(/\.json$/, ""));
+    const events = Array.isArray(raw?.events) ? raw.events : [];
+    eventMap.set(venueId, events);
+  });
+
+  return eventMap;
+}
+
 function main() {
   if (!fs.existsSync(SPOTS_PATH)) {
     throw new Error(`spots.json が見つかりません: ${SPOTS_PATH}`);
@@ -220,6 +333,9 @@ function main() {
   if (!Array.isArray(spots)) {
     throw new Error("spots.json の形式が不正です（配列ではありません）");
   }
+
+  // 施設ページへ静的イベント要約を埋め込むため、先にイベントJSONを読み込む。
+  const eventsBySpotId = loadEventsBySpotId();
 
   // 既存のスポット詳細ディレクトリを一旦削除して、削除済みスポットの残骸を防ぐ。
   const existingEntries = fs.readdirSync(SPOT_ROOT_DIR, { withFileTypes: true });
@@ -237,7 +353,7 @@ function main() {
 
     const spotDir = path.join(SPOT_ROOT_DIR, String(spot.spot_id));
     fs.mkdirSync(spotDir, { recursive: true });
-    fs.writeFileSync(path.join(spotDir, "index.html"), renderSpotPage(spot), "utf8");
+    fs.writeFileSync(path.join(spotDir, "index.html"), renderSpotPage(spot, eventsBySpotId), "utf8");
   });
 
   console.log(`[generate-spot-pages] spots=${spots.length}`);
