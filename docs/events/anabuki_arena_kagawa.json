@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-02-12",
+  "last_success_at": "2026-02-15",
   "events": [
     {
       "title": "ビジネスDXフェア in 高松 ～ ビジネスDXが、企業を変える。AIで変える。～",
@@ -534,13 +534,13 @@
       "title": "【FRUITS ZIPPER】FRUITS ZIPPER ARENA TOUR 2026",
       "date_from": "2026-05-30",
       "date_to": "2026-05-31",
-      "open_time": null,
-      "start_time": null,
+      "open_time": "16:00",
+      "start_time": "18:00",
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": null,
-      "contact": null,
+      "price": "一般指定席¥10,600",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
       "source_url": "https://kagawa-arena.com/event/1069/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,

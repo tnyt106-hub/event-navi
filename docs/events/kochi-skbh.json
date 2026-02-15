@@ -1,6 +1,6 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-02-12",
+  "last_success_at": "2026-02-15",
   "events": [
     {
       "title": "ヨーロッパ企画第44回公演 「インターネ島エクスプローラー」",
@@ -214,6 +214,28 @@
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2660",
       "source_type": "web",
       "venue_name": "高知県立県民文化ホール オレンジホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "県文シネマ日和Vol.82 ゲキ×シネ「バサラオ」",
+      "date_from": "2026-04-11",
+      "date_to": "2026-04-11",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席自由 2,600円 ※時間指定制 ※未就学児入場不可 ※チケット１枚につき、お一人様１回限り有効",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2749",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール",
       "status": null,
       "body": null,
       "tags": {

@@ -1,29 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-02-12",
+  "last_success_at": "2026-02-15",
   "events": [
-    {
-      "title": "JAバンク香川presentsプレミアムライブ2025",
-      "date_from": "2025-02-15",
-      "date_to": "2025-02-15",
-      "open_time": "12:00",
-      "start_time": "12:40",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8320",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール JAバンク香川presentsプレミアムライブ2025 開場 12:00/開演 12:40/終演 15:00 大ホール JAバンク香川presentsプレミアムライブ2025 開場 16:20/開演 17:00/終演 19:20 小ホール ハンバート ハンバート ツアー2025「寝ても覚めても」 開場 16:30/開演 17:30/終演 19:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "スキマスイッチTOUR2024-2025“A museMentally”",
       "date_from": "2025-02-16",
@@ -3977,7 +3955,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール マカロニえんぴつ マカロックツアーvol.21～心を覗いてシラけるより、ことばのシワだけ増やしてゆけ篇～ 開場 16:00/開演 17:00/終演 19:00 小ホール 東京藝術大学早期教育プロジェクト2025in香川 金管部門 開場 10:30/開演 11:00/終演 15:40",
+      "body": "大ホール マカロニえんぴつ マカロックツアーvol.21～心を覗いてシラけるより、ことばのシワだけ増やしてゆけ篇～ 開場 16:00/開演 17:00/終演 19:00 小ホール 東京藝術大学早期教育プロジェクト2025in香川 金管部門 開場 10:30/開演 10:45/終演 16:00",
       "tags": {
         "type": "other",
         "genres": [],

@@ -1,29 +1,7 @@
 {
   "venue_id": "highstaff_hall",
-  "last_success_at": "2026-02-12",
+  "last_success_at": "2026-02-15",
   "events": [
-    {
-      "title": "宝くじふるさとワクワク劇場 in 観音寺",
-      "date_from": "2026-02-15",
-      "date_to": "2026-02-15",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kanon-kaikan.jp/event/2026/872.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "古澤巖 ～ラ・カンパネラ～巖組曲",
       "date_from": "2026-02-22",

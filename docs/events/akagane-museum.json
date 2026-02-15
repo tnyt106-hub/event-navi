@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-02-12",
+  "last_success_at": "2026-02-15",
   "events": [
     {
       "title": "展覧会 BUTTON DESIGN ボタンにおける装飾の美たち",
@@ -69,28 +69,6 @@
       }
     },
     {
-      "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
-      "date_from": "2025-11-22",
-      "date_to": "2026-03-29",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: にいはまギャラリー",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/11/IMG_3768s-1024x768.jpg",
-      "price": "無料",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-13815",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "イベント 阿部一成の篠笛スタジオ〜心呼吸で奏でる笛の音〜 第14回 篠笛発表会",
       "date_from": "2026-02-15",
       "date_to": "2026-02-15",
@@ -124,6 +102,28 @@
       "price": "無料（要申込・抽選）［対象］ 小学生",
       "contact": "あかがねミュージアム 0897-31-0305",
       "source_url": "https://akaganemuseum.jp/event/event-14077",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
+      "date_from": "2025-11-22",
+      "date_to": "2026-03-29",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: にいはまギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/11/IMG_3768s-1024x768.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-13815",
       "source_type": null,
       "venue_name": null,
       "status": null,
