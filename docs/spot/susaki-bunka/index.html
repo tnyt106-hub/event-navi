@@ -72,6 +72,42 @@
       "addressLocality": "須崎市"
     },
     "sameAs": "https://www.susakibunka.com/"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "「呪物と怪談会」",
+    "startDate": "2026-02-28",
+    "endDate": "2026-02-28",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "須崎市立市民文化会館",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "高知県",
+        "addressLocality": "須崎市"
+      }
+    },
+    "url": "https://www.susakibunka.com/event"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "くぼたまさと工作ショー",
+    "startDate": "2026-03-01",
+    "endDate": "2026-03-01",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "須崎市立市民文化会館",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "高知県",
+        "addressLocality": "須崎市"
+      }
+    },
+    "url": "https://www.susakibunka.com/event"
   }
 ]
   </script>
@@ -98,15 +134,15 @@
       <a class="spot-error__link" href="/">トップへ戻る</a>
     </section>
 
-    <article id="spot-content" class="spot-content" hidden>
+    <article id="spot-content" class="spot-content">
       <div class="spot-content__meta">
-        <p id="spot-category" class="spot-category"></p>
-        <p id="spot-area" class="spot-area"></p>
+        <p id="spot-category" class="spot-category">#文化ホール</p>
+        <p id="spot-area" class="spot-area">高知県 須崎市</p>
       </div>
-      <h2 id="spot-title" class="spot-title"></h2>
+      <h2 id="spot-title" class="spot-title">須崎市立市民文化会館</h2>
       <section class="spot-intro">
         <h3 class="spot-intro__title">このスポットについて</h3>
-        <p id="spot-intro" class="spot-intro__text"></p>
+        <p id="spot-intro" class="spot-intro__text">須崎市桐間南にある市民文化施設です。大ホールを中心に、講演会、コンサート、地域イベントなど幅広い用途で利用され、市民の文化活動の拠点となっています。</p>
       </section>
 
       <section class="spot-events">
@@ -117,15 +153,26 @@
         <div id="spot-events-body" class="spot-events__body">
           <div class="spot-events__panel">
             <div id="spot-events-tabs" class="spot-events__tabs" hidden></div>
-            <p id="spot-events-status" class="spot-events__status">イベント情報を読み込んでいます。</p>
-            <ul id="spot-events-list" class="spot-events__list" hidden></ul>
+            <p id="spot-events-status" class="spot-events__status">開催予定のイベントを表示しています（初期表示は10件まで）。</p>
+            <ul id="spot-events-list" class="spot-events__list">
+            <li class="spot-event-card">
+              <p class="spot-event-card__date">2026-02-28（土）</p>
+              <h4 class="spot-event-card__title">「呪物と怪談会」</h4>
+              <a class="spot-event-card__link" href="https://www.susakibunka.com/event" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>
+            </li>
+            <li class="spot-event-card">
+              <p class="spot-event-card__date">2026-03-01（日）</p>
+              <h4 class="spot-event-card__title">くぼたまさと工作ショー</h4>
+              <a class="spot-event-card__link" href="https://www.susakibunka.com/event" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>
+            </li>
+            </ul>
             <button id="spot-events-more" class="spot-events__more" type="button" hidden>もっと見る</button>
           </div>
         </div>
       </section>
 
       <div class="spot-actions">
-        <a id="spot-google-link" class="spot-action-btn spot-action-btn--primary" href="#" target="_blank" rel="noopener noreferrer">Googleマップで開く</a>
+        <a id="spot-google-link" class="spot-action-btn spot-action-btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%A0%88%E5%B4%8E%E5%B8%82%E7%AB%8B%E5%B8%82%E6%B0%91%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8" target="_blank" rel="noopener noreferrer">Googleマップで開く</a>
       </div>
     </article>
   </main>

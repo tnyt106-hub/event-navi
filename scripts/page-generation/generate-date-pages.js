@@ -567,11 +567,20 @@ function renderEventCard(eventItem, venueLabel) {
     ? `    <a class="spot-event-card__link" href="${escapeHtml(eventItem.source_url)}" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>`
     : "";
 
+  // 会場名がスポットIDに紐づく場合は内部リンク化し、日付ページ→施設ページの文脈を強化する。
+  // SEO上は関連ページのクラスタ形成、UX上は会場詳細への遷移性向上が狙い。
+  const venueSpotPath = eventItem?.venue_id
+    ? `/spot/${encodeURIComponent(String(eventItem.venue_id))}/`
+    : "";
+  const venueHtml = venueSpotPath
+    ? `<a href="${escapeHtml(venueSpotPath)}">${escapeHtml(safeVenueLabel)}</a>`
+    : escapeHtml(safeVenueLabel);
+
   // セクション見出し(h2)配下のカード見出しは h3 にして、見出し階層を正しく保つ。
   return `  <li class="spot-event-card" data-event-name="${escapeHtml(eventQueryText)}" data-event-venue="${escapeHtml(venueQueryText)}">
     <p class="spot-event-card__date">${escapeHtml(dateText)}</p>
     <h3 class="spot-event-card__title">${escapeHtml(titleText)}</h3>
-    <p class="spot-event-card__venue">会場: ${escapeHtml(safeVenueLabel)}</p>
+    <p class="spot-event-card__venue">会場: ${venueHtml}</p>
 ${otherHtml}
 ${structuredDetailsHtml}
 ${linkHtml}
