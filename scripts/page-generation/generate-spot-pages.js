@@ -90,8 +90,9 @@ function renderStaticEventPreview(spot, eventsBySpotId) {
       const fromText = formatDateWithWeekday(eventItem?.date_from);
       const toText = formatDateWithWeekday(eventItem?.date_to);
       const dateText = fromText && toText && fromText !== toText ? `${fromText}〜${toText}` : (fromText || toText || "日程未定");
+      // リンク文言をイベント名ベースにして、文脈が伝わるアンカーテキストへ改善する。
       const linkHtml = eventItem?.source_url
-        ? `<a class="spot-event-card__link" href="${escapeHtml(eventItem.source_url)}" target="_blank" rel="noopener noreferrer">公式・参考リンク</a>`
+        ? `<a class="spot-event-card__link" href="${escapeHtml(eventItem.source_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(titleText)}の公式・参考情報を見る</a>`
         : "";
 
       return `            <li class="spot-event-card">
@@ -164,6 +165,23 @@ function renderStructuredData(spot, canonicalUrl, descriptionText, staticEvents)
     }
   ];
 
+  // 施設ページ内で表示しているイベント一覧を ItemList としても表現し、一覧性を補強する。
+  if (staticEvents.length > 0) {
+    structuredData.push({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `${spot.name}の開催予定イベント`,
+      itemListOrder: "https://schema.org/ItemListOrderAscending",
+      numberOfItems: staticEvents.length,
+      itemListElement: staticEvents.map((eventItem, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: eventItem.title || "イベント",
+        url: eventItem.source_url || canonicalUrl
+      }))
+    });
+  }
+
   // 施設ページでもイベント情報をJSON-LD化し、ページ主題（施設＋開催情報）を検索エンジンへ明示する。
   staticEvents.forEach((eventItem) => {
     if (!eventItem?.date_from || !eventItem?.title) return;
@@ -183,7 +201,8 @@ function renderStructuredData(spot, canonicalUrl, descriptionText, staticEvents)
           addressLocality: spot.municipality || ""
         }
       },
-      url: eventItem.source_url || canonicalUrl
+      url: eventItem.source_url || canonicalUrl,
+      eventStatus: "https://schema.org/EventScheduled"
     });
   });
 

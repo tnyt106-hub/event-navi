@@ -2,3 +2,8 @@ User-agent: *
 Allow: /
 
 Sitemap: https://event-guide.jp/sitemap.xml
+
+Sitemap: https://event-guide.jp/sitemap-date.xml
+Sitemap: https://event-guide.jp/sitemap-spot.xml
+Sitemap: https://event-guide.jp/sitemap-facility.xml
+Sitemap: https://event-guide.jp/sitemap-other.xml

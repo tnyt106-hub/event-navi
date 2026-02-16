@@ -254,7 +254,11 @@
       "script": "scripts/page-generation/generate-sitemap.js",
       "enabled": true,
       "outputs": [
-        "docs/sitemap.xml"
+        "docs/sitemap.xml",
+        "docs/sitemap-date.xml",
+        "docs/sitemap-spot.xml",
+        "docs/sitemap-facility.xml",
+        "docs/sitemap-other.xml"
       ]
     }
   ],
