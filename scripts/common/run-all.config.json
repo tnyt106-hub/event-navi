@@ -177,7 +177,7 @@
       ]
     },
     {
-      "id": "kochi-dibasan.js",
+      "id": "kochi-dibasan",
       "script": "scripts/scraping/fetch-kochi-dibasan.js",
       "enabled": true,
       "outputs": [
