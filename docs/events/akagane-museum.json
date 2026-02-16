@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-02-15",
+  "last_success_at": "2026-02-16",
   "events": [
     {
       "title": "展覧会 BUTTON DESIGN ボタンにおける装飾の美たち",
@@ -69,50 +69,6 @@
       }
     },
     {
-      "title": "イベント 阿部一成の篠笛スタジオ〜心呼吸で奏でる笛の音〜 第14回 篠笛発表会",
-      "date_from": "2026-02-15",
-      "date_to": "2026-02-15",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール（あかがね座）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/12/%E7%AF%A0%E7%AC%9B%E7%99%BA%E8%A1%A8%E4%BC%9A14%E3%83%81%E3%83%A9%E3%82%B7-724x1024.jpg",
-      "price": "無料（入場券が必要です） ※あかがねミュージアムにて入場券配布中！ （定員に達しましたら配布を終了いたします）",
-      "contact": "篠笛スタジオ 090-6622-6331 shinobuestudio@cg7.so-net.ne.jp",
-      "source_url": "https://akaganemuseum.jp/event/event-13964",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "ワークショップ・教室 あかがね遊んでサイエンスショー 「化学のふしぎ」でものづくり",
-      "date_from": "2026-02-15",
-      "date_to": "2026-02-15",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 創作スペース",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%B7%E3%83%A7%E3%83%BC_202602-724x1024.jpg",
-      "price": "無料（要申込・抽選）［対象］ 小学生",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14077",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
       "date_from": "2025-11-22",
       "date_to": "2026-03-29",
@@ -124,6 +80,28 @@
       "price": "無料",
       "contact": "あかがねミュージアム 0897-31-0305",
       "source_url": "https://akaganemuseum.jp/event/event-13815",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "イベント 職業体験ミュージアム",
+      "date_from": "2026-02-22",
+      "date_to": "2026-02-22",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座) ・創作スペース・屋内ステージ・芝生広場",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E5%BD%A9%E7%BF%94-1024x683.jpeg",
+      "price": "体験無料 ／ 参加対象（小学生〜高校生）",
+      "contact": null,
+      "source_url": "https://akaganemuseum.jp/event/event-14437",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -190,6 +168,28 @@
       "price": "プレス機使用料 300円 版画体験 無料（申込不要・予約可）",
       "contact": "あかがねミュージアム 0897-31-0305",
       "source_url": "https://akaganemuseum.jp/event/event-13968",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "展覧会 第51回 墨華展",
+      "date_from": "2026-03-06",
+      "date_to": "2026-03-08",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: 市民ギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E9%BB%92%E3%81%AF%E3%81%AA-819x1024.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14407",
       "source_type": null,
       "venue_name": null,
       "status": null,
