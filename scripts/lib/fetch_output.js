@@ -49,7 +49,13 @@ function buildEventOutputData(params) {
 // 共通形式で保存完了ログを出す。
 function logSaveResult(params) {
   const { venueId, outputPath, events } = params;
-  console.log(`[RESULT] venue_id=${venueId} total_events=${events.length} output=${outputPath}`);
+  // run-all のログ整形に合わせ、保存完了ログも最小限かつ同じ形式へ揃える。
+  // 目的: 成否判断に必要な情報（施設ID・件数・出力先）を短く残し、
+  // 追跡時は時刻とレベルで横断検索しやすくする。
+  const timestamp = new Date().toISOString();
+  console.log(
+    `${timestamp} [INFO] [RESULT] 保存完了 venue_id=${venueId} total_events=${events.length} output=${outputPath}`
+  );
 }
 
 // fetch スクリプトで使う保存処理の共通入口。
