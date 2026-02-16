@@ -98,6 +98,14 @@ function createLogger(logConfig) {
     }
   }
 
+  // すべてのログを同じ体裁に揃える。
+  // 目的:
+  // - 目視で「いつ・どのレベル・どの区分」のログかすぐ判別できる
+  // - run-all 本体ログと子スクリプトのログを同じファイルへ追記しても見分けやすい
+  function formatUnifiedLine(level, scope, msg) {
+    return `${nowIso()} [${level.toUpperCase()}] [${scope}] ${msg}`;
+  }
+
   function shouldLog(level) {
     const rank = levelRanks[level] ?? levelRanks.info;
     return rank <= minLevel;
@@ -130,22 +138,22 @@ function createLogger(logConfig) {
       }
     },
     run(msg) {
-      emit("info", `[RUN] ${msg}`, console.log);
+      emit("info", formatUnifiedLine("info", "RUN", msg), console.log);
     },
     phase(msg) {
-      emit("info", `[PHASE] ${msg}`, console.log);
+      emit("info", formatUnifiedLine("info", "PHASE", msg), console.log);
     },
     task(msg) {
-      emit("info", `  [TASK] ${msg}`, console.log);
+      emit("info", formatUnifiedLine("info", "TASK", msg), console.log);
     },
     warn(msg) {
-      emit("warn", `  [WARN] ${msg}`, console.warn);
+      emit("warn", formatUnifiedLine("warn", "WARN", msg), console.warn);
     },
     error(msg) {
-      emit("error", `  [ERROR] ${msg}`, console.error);
+      emit("error", formatUnifiedLine("error", "ERROR", msg), console.error);
     },
     debug(msg) {
-      emit("debug", `  [DEBUG] ${msg}`, console.log);
+      emit("debug", formatUnifiedLine("debug", "DEBUG", msg), console.log);
     },
   };
 }
@@ -399,6 +407,18 @@ function sleep(ms) {
 
 function runNodeScript(scriptPathAbs, options) {
   return new Promise((resolve) => {
+    const MAX_CAPTURE_CHARS = 100_000;
+
+    // 子プロセスのログ全文を常時保持すると、長時間実行でメモリ使用量が増える。
+    // エラー判定に必要な末尾情報だけ保持して、解析精度を保ちつつ軽量化する。
+    function appendCappedText(baseText, chunkText) {
+      const next = `${baseText}${chunkText}`;
+      if (next.length <= MAX_CAPTURE_CHARS) {
+        return next;
+      }
+      return next.slice(next.length - MAX_CAPTURE_CHARS);
+    }
+
     // 失敗原因を判定するため、常に stdout/stderr を受け取りつつコンソールへ転送する。
     // これにより、ERROR_TYPE=... の機械可読ログや例外メッセージを run-all 側で解析できる。
     const child = spawn(process.execPath, [scriptPathAbs], {
@@ -416,7 +436,7 @@ function runNodeScript(scriptPathAbs, options) {
     if (child.stdout) {
       child.stdout.on("data", (chunk) => {
         const text = String(chunk);
-        stdoutText += text;
+        stdoutText = appendCappedText(stdoutText, text);
         process.stdout.write(chunk);
         if (options.captureStdoutStderr) {
           options.logger?.writeStdout(chunk);
@@ -426,7 +446,7 @@ function runNodeScript(scriptPathAbs, options) {
     if (child.stderr) {
       child.stderr.on("data", (chunk) => {
         const text = String(chunk);
-        stderrText += text;
+        stderrText = appendCappedText(stderrText, text);
         process.stderr.write(chunk);
         if (options.captureStdoutStderr) {
           options.logger?.writeStdout(chunk);
@@ -672,20 +692,37 @@ function orderTasksByDependencies(tasks, logger) {
     return { orderedTasks: tasks, dependencyErrors };
   }
 
-  const queue = tasks
-    .filter((task) => indegree.get(task) === 0)
-    .sort((a, b) => (taskIndices.get(a) || 0) - (taskIndices.get(b) || 0));
+  // 元の列挙順を維持しつつ、毎回 sort しない線形走査キュー。
+  // 既存実装はノード追加のたびに sort を行っていたため、タスク数が増えると
+  // 不要な比較処理が増える。ここでは index 昇順の優先キューを簡易実装して、
+  // 挙動（安定順序）を保ったまま CPU コストを削減する。
+  const readyByIndex = new Map();
+  let nextReadyIndex = 0;
+
+  tasks.forEach((task, index) => {
+    if (indegree.get(task) === 0) {
+      readyByIndex.set(index, task);
+    }
+  });
 
   const orderedTasks = [];
 
-  while (queue.length > 0) {
-    const current = queue.shift();
+  while (readyByIndex.size > 0) {
+    while (!readyByIndex.has(nextReadyIndex) && nextReadyIndex < tasks.length) {
+      nextReadyIndex += 1;
+    }
+    const current = readyByIndex.get(nextReadyIndex);
+    readyByIndex.delete(nextReadyIndex);
     orderedTasks.push(current);
+
     graph.get(current).forEach((neighbor) => {
       indegree.set(neighbor, (indegree.get(neighbor) || 0) - 1);
       if (indegree.get(neighbor) === 0) {
-        queue.push(neighbor);
-        queue.sort((a, b) => (taskIndices.get(a) || 0) - (taskIndices.get(b) || 0));
+        const neighborIndex = taskIndices.get(neighbor) || 0;
+        readyByIndex.set(neighborIndex, neighbor);
+        if (neighborIndex < nextReadyIndex) {
+          nextReadyIndex = neighborIndex;
+        }
       }
     });
   }
@@ -739,10 +776,17 @@ function getOutputStats(outputPaths) {
     const resolvedPath = path.isAbsolute(outputPath)
       ? outputPath
       : path.join(REPO_ROOT, outputPath);
-    if (!fs.existsSync(resolvedPath)) {
-      return { path: outputPath, exists: false, mtimeMs: null, size: null };
+    // existsSync + statSync の2回I/Oを避けるため、statSync 1回で判定する。
+    // ファイルが無い場合は ENOENT 例外になるので、そこだけ存在なし扱いへ変換する。
+    let stat = null;
+    try {
+      stat = fs.statSync(resolvedPath);
+    } catch (error) {
+      if (error && error.code === "ENOENT") {
+        return { path: outputPath, exists: false, mtimeMs: null, size: null };
+      }
+      throw error;
     }
-    const stat = fs.statSync(resolvedPath);
     return {
       path: outputPath,
       exists: true,
