@@ -43,7 +43,12 @@
     "@type": "WebSite",
     "name": "イベントガイド【四国版】",
     "url": "https://event-guide.jp/",
-    "inLanguage": "ja"
+    "inLanguage": "ja",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://event-guide.jp/facility-name/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
   
@@ -139,7 +144,7 @@
 
             <div id="spot-panel-content" class="spot-panel__content">
               <div class="spot-panel__actions">
-                <a id="spot-panel-detail" class="btn btn-primary" href="#" target="_self">イベント詳細を見る</a>
+                <a id="spot-panel-detail" class="btn btn-primary" href="#" target="_self">この施設のイベント詳細ページを見る</a>
                 <a id="spot-panel-google" class="btn btn-secondary" href="#" target="_blank" rel="noopener noreferrer">ルート検索</a>
                 <a id="spot-panel-official" class="btn btn-tertiary" href="#" target="_blank" rel="noopener noreferrer">公式サイト</a>
               </div>

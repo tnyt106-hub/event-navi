@@ -3,8 +3,8 @@
 
 /**
  * generate-sitemap.js
- * - docs 配下の HTML を走査し、検索エンジン向け sitemap.xml を自動生成する
- * - run-all.js から毎日実行されることを想定し、毎回最新状態へ上書きする
+ * - docs 配下の HTML を走査し、検索エンジン向け sitemap を自動生成する
+ * - URL種別ごとに sitemap を分割して、クロール対象を理解しやすくする
  */
 
 const fs = require("fs");
@@ -14,11 +14,12 @@ const { formatIsoDateFromUtcDate } = require("../lib/date");
 const REPO_ROOT = path.join(__dirname, "..", "..");
 const DOCS_DIR = path.join(REPO_ROOT, "docs");
 const CNAME_PATH = path.join(DOCS_DIR, "CNAME");
-const OUTPUT_PATH = path.join(DOCS_DIR, "sitemap.xml");
+const SITEMAP_INDEX_PATH = path.join(DOCS_DIR, "sitemap.xml");
+const SITEMAP_DATE_PATH = path.join(DOCS_DIR, "sitemap-date.xml");
+const SITEMAP_SPOT_PATH = path.join(DOCS_DIR, "sitemap-spot.xml");
+const SITEMAP_FACILITY_PATH = path.join(DOCS_DIR, "sitemap-facility.xml");
+const SITEMAP_OTHER_PATH = path.join(DOCS_DIR, "sitemap-other.xml");
 
-/**
- * XML で予約される記号をエスケープして、壊れた XML になる事故を防ぐ
- */
 function escapeXml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -28,10 +29,6 @@ function escapeXml(value) {
     .replace(/'/g, "&apos;");
 }
 
-/**
- * CNAME があればそれを優先し、なければ環境変数、最後に localhost を使う
- * - スキーム付き URL に正規化することで sitemap の仕様に合わせる
- */
 function resolveBaseUrl() {
   const envBase = process.env.SITEMAP_BASE_URL ? process.env.SITEMAP_BASE_URL.trim() : "";
   const cname = fs.existsSync(CNAME_PATH)
@@ -45,9 +42,6 @@ function resolveBaseUrl() {
   return `https://${candidate.replace(/^\/+|\/+$/g, "")}`;
 }
 
-/**
- * docs 配下を再帰走査して、sitemap に載せる HTML ファイルを集める
- */
 function collectHtmlFiles(dirPath) {
   const found = [];
   const entries = fs.readdirSync(dirPath, { withFileTypes: true });
@@ -55,14 +49,10 @@ function collectHtmlFiles(dirPath) {
   for (const entry of entries) {
     const absPath = path.join(dirPath, entry.name);
 
-    // 隠しファイルやログ類を誤って拾わないように除外する
     if (entry.name.startsWith(".")) continue;
 
     if (entry.isDirectory()) {
-      // partials は部品ファイルなのでサイトマップ対象から除外する。
-      if (entry.name === "partials") {
-        continue;
-      }
+      if (entry.name === "partials") continue;
       found.push(...collectHtmlFiles(absPath));
       continue;
     }
@@ -70,18 +60,12 @@ function collectHtmlFiles(dirPath) {
     if (!entry.isFile()) continue;
     if (!entry.name.toLowerCase().endsWith(".html")) continue;
 
-    // date 配下の index などを URL 化するため、絶対パスで保持する
     found.push(absPath);
   }
 
   return found;
 }
 
-/**
- * ファイルパスから公開 URL を組み立てる
- * - ".../index.html" はディレクトリ URL (末尾スラッシュ付き) に変換
- * - それ以外の html はそのまま "/file.html" 形式で公開
- */
 function toPublicUrl(baseUrl, absoluteHtmlPath) {
   const rel = path.relative(DOCS_DIR, absoluteHtmlPath).replace(/\\/g, "/");
   if (rel === "index.html") {
@@ -93,26 +77,17 @@ function toPublicUrl(baseUrl, absoluteHtmlPath) {
   return `${baseUrl}/${rel}`;
 }
 
-/**
- * lastmod は検索エンジンが更新タイミングを判断するためのヒント
- * - 日次バッチ想定なので、日付（YYYY-MM-DD）までを出力する
- */
 function formatLastmod(filePath) {
-  // ファイル更新日時は UTC 日付へ丸め、サイトマップ全体で形式を揃える。
   const stat = fs.statSync(filePath);
   return formatIsoDateFromUtcDate(new Date(stat.mtimeMs));
 }
 
-
-/**
- * noindex 指定ページは sitemap から除外し、クロール優先度を重要ページへ寄せる
- */
 function hasNoindexDirective(filePath) {
   const html = fs.readFileSync(filePath, "utf8");
   return /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html);
 }
 
-function buildSitemapXml(urlItems) {
+function buildUrlsetXml(urlItems) {
   const lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -127,8 +102,33 @@ function buildSitemapXml(urlItems) {
 
   lines.push("</urlset>");
   lines.push("");
-
   return lines.join("\n");
+}
+
+function buildSitemapIndexXml(indexItems) {
+  const lines = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ];
+
+  for (const item of indexItems) {
+    lines.push("  <sitemap>");
+    lines.push(`    <loc>${escapeXml(item.loc)}</loc>`);
+    lines.push(`    <lastmod>${escapeXml(item.lastmod)}</lastmod>`);
+    lines.push("  </sitemap>");
+  }
+
+  lines.push("</sitemapindex>");
+  lines.push("");
+  return lines.join("\n");
+}
+
+// URLパスでカテゴリを判定し、sitemap分割先を決める。
+function resolveSitemapCategory(relativePath) {
+  if (relativePath.startsWith("date/")) return "date";
+  if (relativePath.startsWith("spot/")) return "spot";
+  if (relativePath.startsWith("facility/") || relativePath.startsWith("facility-name/")) return "facility";
+  return "other";
 }
 
 function main() {
@@ -139,40 +139,57 @@ function main() {
   const baseUrl = resolveBaseUrl();
   const htmlFiles = collectHtmlFiles(DOCS_DIR);
 
-  // URL の重複を防ぎつつ、安定した並び順で生成して差分を見やすくする
-  const deduped = new Map();
+  const buckets = {
+    date: new Map(),
+    spot: new Map(),
+    facility: new Map(),
+    other: new Map()
+  };
+
   htmlFiles
     .sort((a, b) => a.localeCompare(b, "en"))
     .forEach((filePath) => {
       const rel = path.relative(DOCS_DIR, filePath).replace(/\\/g, "/");
-      // spot/index.html はクエリ互換用のテンプレートページなのでインデックス対象から除外する。
-      if (rel === "spot/index.html") {
-        return;
-      }
-      // Search Console の所有権確認ファイル（google*.html）は検索流入ページではないため除外する。
-      // サイトマップ品質を保ち、重要ページのクロールシグナルを優先させる。
-      if (/^google[\w-]*\.html$/i.test(rel)) {
-        return;
-      }
-
-      // noindex 付きページをサイトマップから除外し、低優先ページの送信を防ぐ。
-      if (hasNoindexDirective(filePath)) {
-        return;
-      }
+      if (rel === "spot/index.html") return;
+      if (/^google[\w-]*\.html$/i.test(rel)) return;
+      if (hasNoindexDirective(filePath)) return;
 
       const loc = toPublicUrl(baseUrl, filePath);
-      deduped.set(loc, {
+      const category = resolveSitemapCategory(rel);
+      buckets[category].set(loc, {
         loc,
-        lastmod: formatLastmod(filePath),
+        lastmod: formatLastmod(filePath)
       });
     });
 
-  const xml = buildSitemapXml([...deduped.values()]);
-  fs.writeFileSync(OUTPUT_PATH, xml, "utf8");
+  // 各カテゴリの sitemap を先に書き出して、最後に sitemap-index から参照する。
+  const outputs = [
+    { key: "date", path: SITEMAP_DATE_PATH, publicPath: "/sitemap-date.xml" },
+    { key: "spot", path: SITEMAP_SPOT_PATH, publicPath: "/sitemap-spot.xml" },
+    { key: "facility", path: SITEMAP_FACILITY_PATH, publicPath: "/sitemap-facility.xml" },
+    { key: "other", path: SITEMAP_OTHER_PATH, publicPath: "/sitemap-other.xml" }
+  ];
+
+  const now = formatIsoDateFromUtcDate(new Date());
+  outputs.forEach((output) => {
+    const items = [...buckets[output.key].values()];
+    const xml = buildUrlsetXml(items);
+    fs.writeFileSync(output.path, xml, "utf8");
+    console.log(`[generate-sitemap] ${path.basename(output.path)} pages=${items.length}`);
+  });
+
+  const sitemapIndexItems = outputs
+    .filter((output) => fs.existsSync(output.path))
+    .map((output) => ({
+      loc: `${baseUrl}${output.publicPath}`,
+      lastmod: now
+    }));
+
+  const indexXml = buildSitemapIndexXml(sitemapIndexItems);
+  fs.writeFileSync(SITEMAP_INDEX_PATH, indexXml, "utf8");
 
   console.log(`[generate-sitemap] baseUrl=${baseUrl}`);
-  console.log(`[generate-sitemap] pages=${deduped.size}`);
-  console.log(`[generate-sitemap] wrote ${path.relative(REPO_ROOT, OUTPUT_PATH)}`);
+  console.log(`[generate-sitemap] wrote ${path.relative(REPO_ROOT, SITEMAP_INDEX_PATH)}`);
 }
 
 main();
