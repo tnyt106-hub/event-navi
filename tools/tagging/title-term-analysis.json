@@ -1,0 +1,448 @@
+{
+  "generated_at": "2026-02-16T13:09:39.577Z",
+  "total_events": 873,
+  "type_counts": {
+    "other": 258,
+    "performance": 230,
+    "sports": 128,
+    "lecture": 101,
+    "festival": 59,
+    "workshop": 32,
+    "exhibition": 30,
+    "business": 16,
+    "event": 12,
+    "screening": 7
+  },
+  "top_tokens_by_type": {
+    "exhibition": [
+      {
+        "term": "展覧会",
+        "count": 6
+      },
+      {
+        "term": "2025年度",
+        "count": 4
+      },
+      {
+        "term": "展示会",
+        "count": 3
+      },
+      {
+        "term": "令和７年度香川県立高松東高等学校",
+        "count": 3
+      },
+      {
+        "term": "芸術コース作品展",
+        "count": 3
+      }
+    ],
+    "workshop": [],
+    "business": [
+      {
+        "term": "in",
+        "count": 6
+      },
+      {
+        "term": "振袖expo",
+        "count": 5
+      },
+      {
+        "term": "マイナビ転職フェア",
+        "count": 3
+      }
+    ],
+    "sports": [
+      {
+        "term": "プラセール",
+        "count": 16
+      },
+      {
+        "term": "フットサルスクール",
+        "count": 16
+      },
+      {
+        "term": "主道場",
+        "count": 10
+      },
+      {
+        "term": "柔道場",
+        "count": 9
+      },
+      {
+        "term": "剣道場",
+        "count": 7
+      },
+      {
+        "term": "一財",
+        "count": 5
+      },
+      {
+        "term": "愛媛県柔道協会",
+        "count": 5
+      },
+      {
+        "term": "一社",
+        "count": 5
+      },
+      {
+        "term": "愛媛県剣道連盟",
+        "count": 5
+      },
+      {
+        "term": "令和7年度県民総合文化祭",
+        "count": 5
+      },
+      {
+        "term": "第49回全国高等学校総合文化祭",
+        "count": 5
+      },
+      {
+        "term": "かがわ総文祭2025",
+        "count": 5
+      },
+      {
+        "term": "令和7年度",
+        "count": 4
+      },
+      {
+        "term": "公財",
+        "count": 4
+      },
+      {
+        "term": "愛媛県スポーツ振興事業団",
+        "count": 4
+      },
+      {
+        "term": "四国4県対抗柔道大会練習会",
+        "count": 4
+      },
+      {
+        "term": "副道場",
+        "count": 3
+      },
+      {
+        "term": "第76回",
+        "count": 3
+      }
+    ],
+    "performance": [
+      {
+        "term": "tour",
+        "count": 47
+      },
+      {
+        "term": "live",
+        "count": 17
+      },
+      {
+        "term": "the",
+        "count": 13
+      },
+      {
+        "term": "concert",
+        "count": 10
+      },
+      {
+        "term": "dance",
+        "count": 9
+      },
+      {
+        "term": "hall",
+        "count": 8
+      },
+      {
+        "term": "リサイタル",
+        "count": 7
+      },
+      {
+        "term": "anniversary",
+        "count": 5
+      },
+      {
+        "term": "one",
+        "count": 5
+      },
+      {
+        "term": "studio",
+        "count": 5
+      },
+      {
+        "term": "劇団四季ミュージカル",
+        "count": 5
+      },
+      {
+        "term": "on",
+        "count": 4
+      },
+      {
+        "term": "blue",
+        "count": 4
+      },
+      {
+        "term": "moga",
+        "count": 4
+      },
+      {
+        "term": "令和7年度県民総合文化祭",
+        "count": 4
+      },
+      {
+        "term": "香川公演",
+        "count": 4
+      },
+      {
+        "term": "presents",
+        "count": 3
+      },
+      {
+        "term": "bros.",
+        "count": 3
+      },
+      {
+        "term": "re",
+        "count": 3
+      },
+      {
+        "term": "ピアノ",
+        "count": 3
+      },
+      {
+        "term": "shogo",
+        "count": 3
+      },
+      {
+        "term": "hamada",
+        "count": 3
+      },
+      {
+        "term": "road",
+        "count": 3
+      },
+      {
+        "term": "under",
+        "count": 3
+      },
+      {
+        "term": "first",
+        "count": 3
+      },
+      {
+        "term": "演奏会",
+        "count": 3
+      },
+      {
+        "term": "松山公演",
+        "count": 3
+      },
+      {
+        "term": "高松公演",
+        "count": 3
+      },
+      {
+        "term": "man",
+        "count": 3
+      },
+      {
+        "term": "of",
+        "count": 3
+      }
+    ],
+    "lecture": [
+      {
+        "term": "香川県民文化大学",
+        "count": 9
+      },
+      {
+        "term": "2025年",
+        "count": 8
+      },
+      {
+        "term": "第18期",
+        "count": 8
+      },
+      {
+        "term": "徳島新聞女性クラブ",
+        "count": 4
+      },
+      {
+        "term": "マイナビ",
+        "count": 4
+      },
+      {
+        "term": "四国地方会",
+        "count": 4
+      },
+      {
+        "term": "in",
+        "count": 3
+      },
+      {
+        "term": "全世代対象",
+        "count": 3
+      },
+      {
+        "term": "合同説明会",
+        "count": 3
+      },
+      {
+        "term": "キャリタス就活フォーラム",
+        "count": 3
+      },
+      {
+        "term": "文化講座neo",
+        "count": 3
+      }
+    ],
+    "other": [
+      {
+        "term": "令和7年度",
+        "count": 23
+      },
+      {
+        "term": "学校法人河原学園",
+        "count": 11
+      },
+      {
+        "term": "kenbun",
+        "count": 9
+      },
+      {
+        "term": "market",
+        "count": 9
+      },
+      {
+        "term": "morning",
+        "count": 8
+      },
+      {
+        "term": "令和6年度",
+        "count": 8
+      },
+      {
+        "term": "令和8年度",
+        "count": 7
+      },
+      {
+        "term": "29th",
+        "count": 6
+      },
+      {
+        "term": "international",
+        "count": 6
+      },
+      {
+        "term": "conference",
+        "count": 6
+      },
+      {
+        "term": "四国新聞女性クラブ",
+        "count": 6
+      },
+      {
+        "term": "コレクション",
+        "count": 5
+      },
+      {
+        "term": "ハイライト",
+        "count": 5
+      },
+      {
+        "term": "入学式",
+        "count": 5
+      },
+      {
+        "term": "2025年度",
+        "count": 4
+      },
+      {
+        "term": "松山大学",
+        "count": 4
+      },
+      {
+        "term": "in",
+        "count": 3
+      },
+      {
+        "term": "presents",
+        "count": 3
+      },
+      {
+        "term": "未来高等学校",
+        "count": 3
+      },
+      {
+        "term": "愛媛大学",
+        "count": 3
+      },
+      {
+        "term": "学位記授与式",
+        "count": 3
+      },
+      {
+        "term": "ethics",
+        "count": 3
+      },
+      {
+        "term": "fan",
+        "count": 3
+      },
+      {
+        "term": "meeting",
+        "count": 3
+      },
+      {
+        "term": "第92回nhk全国学校音楽コンクール",
+        "count": 3
+      },
+      {
+        "term": "rubykaigi",
+        "count": 3
+      },
+      {
+        "term": "卒業証書授与式",
+        "count": 3
+      },
+      {
+        "term": "学校法人穴吹学園",
+        "count": 3
+      }
+    ],
+    "festival": [
+      {
+        "term": "令和7年度県民総合文化祭",
+        "count": 5
+      },
+      {
+        "term": "みんなの創造フェスタ",
+        "count": 4
+      },
+      {
+        "term": "ケンブンマーケット",
+        "count": 4
+      },
+      {
+        "term": "－2026とくしま障がい者芸術",
+        "count": 3
+      },
+      {
+        "term": "文化祭－",
+        "count": 3
+      },
+      {
+        "term": "文具フェスタ2025inえひめ",
+        "count": 3
+      },
+      {
+        "term": "松山市民劇場",
+        "count": 3
+      }
+    ],
+    "screening": [],
+    "event": [
+      {
+        "term": "サンポートホール高松共催事業第6回高松国際ピアノコンクール第1次審査",
+        "count": 3
+      }
+    ]
+  }
+}

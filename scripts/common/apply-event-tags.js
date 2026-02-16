@@ -63,6 +63,9 @@ const PERFORMANCE_KEYWORDS = [
   "公演",
   "ライブ",
   "コンサート",
+  "concert",
+  "live",
+  "tour",
   "演奏会",
   "舞台",
   "ミュージカル",
@@ -70,6 +73,11 @@ const PERFORMANCE_KEYWORDS = [
   "リサイタル",
   "吹奏楽",
   "オーケストラ",
+  "orchestra",
+  "オンザロード",
+  "ontheroad",
+  "楽団",
+  "交響楽団",
   "歌謡祭",
   "dance",
   "演芸",
@@ -79,6 +87,8 @@ const WORKSHOP_KEYWORDS = [
   "ワークショップ",
   "体験",
   "教室",
+  "レッスン",
+  "講習会",
   "つくろう",
   "作り",
   "づくり",
@@ -94,6 +104,12 @@ const LECTURE_KEYWORDS = [
   "トークショー",
   "シンポジウム",
   "説明会",
+  "報告会",
+  "研究会",
+  "会議",
+  "フォーラム",
+  "検定",
+  "学会",
   "カンファレンス",
   "商談会",
   "就職",
@@ -131,7 +147,18 @@ const TYPE_RULES = [
   },
   {
     key: "business",
-    patterns: ["フェア", "expo", "ショウ", "合同企業説明会", "キャリア", "ビジネス", "展示商談会"],
+    patterns: [
+      "フェア",
+      "expo",
+      "ショウ",
+      "合同企業説明会",
+      "合同説明会",
+      "転職フェア",
+      "就活",
+      "キャリア",
+      "ビジネス",
+      "展示商談会",
+    ],
   },
   {
     key: "festival",
@@ -153,7 +180,10 @@ const GENRE_RULES = [
   { key: "history", patterns: ["歴史", "史跡", "文化財", "遺跡"] },
   { key: "culture", patterns: ["文化", "伝統", "工芸", "民芸"] },
   { key: "science", patterns: ["科学", "サイエンス", "技術", "プラネタリウム"] },
-  { key: "music", patterns: ["音楽", "コンサート", "ライブ", "演奏"] },
+  {
+    key: "music",
+    patterns: ["音楽", "コンサート", "ライブ", "演奏", "tour", "concert", "orchestra", "リサイタル", "ピアノ"],
+  },
   { key: "theater", patterns: ["演劇", "舞台", "ミュージカル", "映画", "上映"] },
   { key: "kids", patterns: ["子ども", "こども", "キッズ", "親子"] },
   { key: "local", patterns: ["地域", "地元", "まち", "商店街"] },
@@ -200,7 +230,10 @@ const FLAG_RULES = [
 // 文字列を検索対象にしやすい形式に整える
 function normalizeText(value) {
   if (!value) return "";
-  return String(value).replace(/\s+/g, "").toLowerCase();
+  return String(value)
+    .replace(/&#\d+;/g, "")
+    .replace(/\s+/g, "")
+    .toLowerCase();
 }
 
 // パターン配列のうち、ひとつでも一致するかを判定する
