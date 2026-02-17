@@ -145,6 +145,15 @@
         "docs/events/clementplaza.json"
       ]
     },
+             {
+      "id": "fetch-aizumi-bunka",
+      "name": "fetch-aizumi-bunka",
+      "script": "scripts/scraping/fetch-aizumi-bunka-events.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/aizumi-bunka.json"
+      ]
+    },
     {
       "id": "fetch-awagin-hall",
       "name": "fetch-awagin-hall",
