@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google Analytics 4 の計測タグ（測定IDは運用値を使用） -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RS12737WLG"></script>
+  <!-- Google Analytics 4 の共通初期化スクリプト（測定IDは /js/ga4.js で一元管理） -->
+  <script src="./js/ga4.js"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    // SPA ではないため、明示的に page_view の送信制御を維持
-    gtag('config', 'G-RS12737WLG', { send_page_view: false });
     // トップページの閲覧を明示送信し、ページ別の計測漏れを防ぐ
-    gtag('event', 'page_view', {
-      page_path: '/',
-      page_title: '四国のイベント情報マップ｜イベントガイド【四国版】'
-    });
+    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView('/', '四国のイベント情報マップ｜イベントガイド【四国版】');
   </script>
   
   <meta charset="UTF-8" />

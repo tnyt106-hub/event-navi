@@ -30,8 +30,6 @@ const SITE_ORIGIN = "https://event-guide.jp";
 const DEFAULT_OG_IMAGE_PATH = "/assets/images/ogp-default.svg";
 // OGP画像の代替テキストを共通管理し、SNSカードの意味を補う。
 const DEFAULT_OG_IMAGE_ALT = "イベントガイド【四国版】のサイト共通OGP画像";
-// 施設ページでもアクセス計測を揃えるため、GA4の測定IDを定数化する。
-const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // フッター年は実行年を使い、年更新漏れを防ぐ。
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -117,8 +115,9 @@ function renderPageHeader({
   const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
   // canonicalをもとに OGP画像URLも一意に決め、URL不整合を防ぐ。
   const ogImageUrl = `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
-  // send_page_view:false を維持しつつ、ページ単位で明示送信して重複計測を防ぐ。
-  const ga4Snippet = `  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n    gtag('event', 'page_view', {\n      page_path: '${canonicalPath}',\n      page_title: '${escapeHtml(title)}'\n    });\n  </script>`;
+  // 測定IDは /js/ga4.js 側で一元管理し、このテンプレートはページ情報だけ渡す。
+  const ga4ScriptPath = cssPath.replace("/css/", "/js/").replace("style.css", "ga4.js");
+  const ga4Snippet = `  <script src="${escapeHtml(ga4ScriptPath)}"></script>\n  <script>\n    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。\n    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(canonicalPath)}, ${JSON.stringify(title)});\n  </script>`;
   // head へまとめて埋め込むことで、クローラがページの意味を取りやすくする。
   const structuredDataScripts = renderStructuredDataScripts(structuredDataObjects);
   // 施設0件ページは内容が薄くなりやすいため、検索結果への露出は抑えつつ導線は残す。

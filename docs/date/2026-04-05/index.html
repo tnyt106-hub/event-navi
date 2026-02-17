@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google Analytics 4 の計測タグ（日付ページ向け） -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RS12737WLG"></script>
+  <!-- Google Analytics 4 の共通初期化スクリプト -->
+  <script src="../../js/ga4.js"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RS12737WLG', { send_page_view: false });
-  </script>
-  <script>
-    gtag('event', 'page_view', {
-      page_path: "/date/2026-04-05/",
-      page_title: "2026年04月05日（日）のイベント一覧｜イベントガイド【四国版】"
-    });
+    // JS文字列として安全に埋め込むため、JSON.stringifyの値をそのまま使う。
+    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/date/2026-04-05/", "2026年04月05日（日）のイベント一覧｜イベントガイド【四国版】");
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
