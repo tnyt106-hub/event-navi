@@ -23,11 +23,11 @@ async function scrapeDetail(url) {
     const html = await fetchText(url);
     const cleanHtml = decodeHtmlEntities(html);
 
-    // 1. 本文 (p-news-detail__content クラスを狙う)
+    // 本文の抽出
     const contentMatch = cleanHtml.match(/<div class="p-news-detail__content">([\s\S]*?)<\/div>/i);
     const description = contentMatch ? stripTagsCompact(contentMatch[1]) : "";
 
-    // 2. 詳細ページ内のメイン画像
+    // メイン画像の抽出
     const imgMatch = cleanHtml.match(/<div class="p-news-detail__thumb">[\s\S]*?<img[^>]+src=['"]([^'"]+)['"]/i);
     let imageUrl = null;
     if (imgMatch) {
@@ -44,10 +44,10 @@ async function scrapeDetail(url) {
 }
 
 /**
- * 開催日テキストのパース (例: "02月22日", "02月23日" のペア)
+ * 日付文字列のパース
  */
-function parseDates(dateStarts) {
-  if (!dateStarts || dateStarts.length === 0) return { from: null, to: null };
+function parseDates(dateStrings) {
+  if (!dateStrings || dateStrings.length === 0) return { from: null, to: null };
   
   const currentYear = new Date().getFullYear();
   const format = (str) => {
@@ -56,14 +56,13 @@ function parseDates(dateStarts) {
     return `${currentYear}-${m[1].padStart(2, '0')}-${m[2].padStart(2, '0')}`;
   };
 
-  const from = format(dateStarts[0]);
-  const to = dateStarts[1] ? format(dateStarts[1]) : from;
+  const from = format(dateStrings[0]);
+  // 終了日がない場合は開始日と同じにする
+  const to = dateStrings[1] ? format(dateStrings[1]) : from;
+  
   return { from, to };
 }
 
-/**
- * 並列実行ヘルパー
- */
 async function pooledMap(tasks, limit, fn) {
   const results = new Map();
   const queue = [...tasks];
@@ -85,40 +84,40 @@ async function main() {
     const html = await fetchText(LIST_URL);
     const cleanHtml = decodeHtmlEntities(html);
 
-    // <li class="card_list"> 単位でイベントを分割して抽出
     const itemRegex = /<li class="card_list">([\s\S]*?)<\/li>/gi;
-    const items = [];
+    const rawItems = [];
     let match;
 
     while ((match = itemRegex.exec(cleanHtml)) !== null) {
       const content = match[1];
       
-      // URL取得
+      // 日付の有無をチェック（仕様：日付が取れないものはこの時点でスキップ対象候補）
+      const dateMatches = [...content.matchAll(/<span class="date_start">([\s\S]*?)<\/span>/gi)];
+      const dateStrings = dateMatches.map(m => stripTagsCompact(m[1]));
+
+      // 日付が1つも見つからない場合はリストに入れない
+      if (dateStrings.length === 0) continue;
+
       const urlMatch = content.match(/href="([^"]+)"/);
       if (!urlMatch) continue;
       const url = urlMatch[1].startsWith('http') ? urlMatch[1] : BASE_URL + urlMatch[1];
 
-      // タイトル取得
       const titleMatch = content.match(/<div class="detail_name">([\s\S]*?)<\/div>/);
       const title = titleMatch ? stripTagsCompact(titleMatch[1]) : "無題のイベント";
 
-      // 日付取得 (複数ある場合は開始と終了)
-      const dateMatches = [...content.matchAll(/<span class="date_start">([\s\S]*?)<\/span>/gi)];
-      const dateStrings = dateMatches.map(m => stripTagsCompact(m[1]));
-
-      items.push({ url, title, dateStrings });
+      rawItems.push({ url, title, dateStrings });
     }
 
-    console.log(`[INFO] Found ${items.length} events. Analyzing details (parallel)...`);
+    console.log(`[INFO] Found ${rawItems.length} events with valid dates. Analyzing details...`);
 
-    if (items.length === 0) {
-      throw new Error("EMPTY_RESULT: No events found with the current regex.");
+    if (rawItems.length === 0) {
+      throw new Error("EMPTY_RESULT: No events with valid dates found.");
     }
 
-    const detailMap = await pooledMap(items, CONCURRENCY_LIMIT, scrapeDetail);
+    const detailMap = await pooledMap(rawItems, CONCURRENCY_LIMIT, scrapeDetail);
     console.log("\n[INFO] Analysis complete.");
 
-    const finalEvents = items.map(item => {
+    const finalEvents = rawItems.map(item => {
       const d = detailMap.get(item.url) || {};
       const { from, to } = parseDates(item.dateStrings);
       
@@ -131,17 +130,17 @@ async function main() {
         image_url: d.imageUrl || null,
         source_url: item.url,
         source_type: "web",
-        body: item.dateStrings.length > 0 ? `開催期間: ${item.dateStrings.join('〜')}` : "",
+        body: `開催期間: ${item.dateStrings.join('〜')}`,
         tags: { type: "other", genres: [], flags: [] }
       };
-    });
+    }).filter(e => e.date_from !== null); // 念のための最終フィルタ
 
     finalizeAndSaveEvents({
       venueId: VENUE_ID,
       venueName: VENUE_NAME,
       outputPath: OUTPUT_PATH,
       events: finalEvents,
-      requireDateFrom: false // 日付がないニュース記事も拾う場合はfalse
+      requireDateFrom: true // 出力時も必須チェックを有効化
     });
 
   } catch (error) {
