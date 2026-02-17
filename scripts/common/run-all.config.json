@@ -128,12 +128,21 @@
       ]
     },
      {
-      "id": "fetch-asutamuland-events.js",
+      "id": "fetch-asutamuland",
       "name": "fetch-astamuland",
       "script": "scripts/scraping/fetch-asutamuland-events.js",
       "enabled": true,
       "outputs": [
         "docs/events/asutamuland.json"
+      ]
+    },
+         {
+      "id": "fetch-clementplaza",
+      "name": "fetch-clementplaza",
+      "script": "scripts/scraping/fetch-clementplaza-events.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/clementplaza.json"
       ]
     },
     {
