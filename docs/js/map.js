@@ -103,8 +103,7 @@ function clearSpotPanel() {
   // 検索で絞り込み中でも、全件表示に戻す
   setVisibleEntries(markerEntries);
   // 地図を“ホーム表示”に戻す（見栄えが毎回安定）
-  const isWide = window.matchMedia("(min-width: 1024px)").matches;
-  map.setView(HOME_CENTER, isWide ? HOME_ZOOM_PC : HOME_ZOOM_MOBILE);
+  resetMapToHomeView();
   // 開いているポップアップも閉じる（任意だけど気持ちいい
   map.closePopup();
 }
@@ -137,7 +136,7 @@ const shikokuBounds = L.latLngBounds(
 // 2) 初期表示・戻る用（見栄えを固定）
 const HOME_CENTER = [33.75, 133.65]; // 四国の中心付近
 const HOME_ZOOM_PC = 8;              // PCは少し寄せる
-const HOME_ZOOM_MOBILE = 8;          // 必要なら 8 に
+const HOME_ZOOM_MOBILE = 8;          // 念のためのフォールバック値（通常はfitBoundsを優先）
 const map = L.map("map", {
   zoomControl: false,
   maxBounds: shikokuBounds,
@@ -147,8 +146,23 @@ const map = L.map("map", {
 const SPOT_FOCUS_ZOOM = 11;
 // 本日イベントJSONの同時取得数。通信輻輳で地図描画が遅くならないよう上限を設ける
 const EVENT_FETCH_CONCURRENCY = 4;
-const isWide = window.matchMedia("(min-width: 1024px)").matches;
-map.setView(HOME_CENTER, isWide ? HOME_ZOOM_PC : HOME_ZOOM_MOBILE);
+// 画面幅ごとに「ホーム表示」を統一して再利用する。
+// 根本原因: モバイルで固定ズーム＋固定中心にすると、画面比率次第で四国の一部が見切れる。
+// 対策: モバイルのみ fitBounds で四国全域を必ず画面内に収める。
+function resetMapToHomeView() {
+  const isWideViewport = window.matchMedia("(min-width: 1024px)").matches;
+  if (isWideViewport) {
+    map.setView(HOME_CENTER, HOME_ZOOM_PC);
+    return;
+  }
+  map.fitBounds(shikokuBounds, {
+    paddingTopLeft: [8, 8],
+    paddingBottomRight: [8, 8],
+    maxZoom: HOME_ZOOM_MOBILE
+  });
+}
+
+resetMapToHomeView();
 gaPageView("/map", document.title);// GA4 helper（最小）
 setTimeout(() => {
   map.invalidateSize();
