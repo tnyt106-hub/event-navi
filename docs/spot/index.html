@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <!-- /spot/ 直アクセスの到達も把握できるよう、リダイレクトページにもGA4を配置する -->
+  <script src="../js/ga4.js"></script>
+  <script>
+    // リダイレクト専用ページの到達状況を確認するため、page_viewを明示送信する。
+    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView('/spot/', '施設名から探すへ移動｜イベントガイド【四国版】');
+  </script>
   <meta charset="UTF-8" />
   <!-- Step1: 詳細ページも「ページ名｜サイト名」の形式に揃える -->
   <title>施設名から探すへ移動｜イベントガイド【四国版】</title>

@@ -11,8 +11,6 @@ const SITE_ORIGIN = "https://event-guide.jp";
 const DEFAULT_OG_IMAGE_PATH = "/assets/images/ogp-default.svg";
 // OGP画像の代替テキストを共通管理し、SNSカードの文脈を補う。
 const DEFAULT_OG_IMAGE_ALT = "イベントガイド【四国版】のサイト共通OGP画像";
-// スポット詳細ページでも計測条件を揃えるため、GA4測定IDを定数化する。
-const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // スポット一覧データの入力元。
 const SPOTS_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
 // スポット詳細ページの出力先ルート。
@@ -244,8 +242,8 @@ function renderSpotPage(spot, eventsBySpotId) {
   const staticPreview = renderStaticEventPreview(spot, eventsBySpotId);
   // canonicalと同じドメイン配下の既定OG画像を使い、SNSシェア表示を安定させる。
   const ogImageUrl = `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
-  // send_page_view:false を維持し、ページごとに明示送信して二重計測を防ぐ。
-  const ga4Snippet = `  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n    gtag('event', 'page_view', {\n      page_path: '/spot/${encodeURIComponent(spot.spot_id)}/',\n      page_title: '${escapeHtml(titleText)}'\n    });\n  </script>`;
+  // 測定IDは /js/ga4.js 側で一元管理し、このページはpage_view情報のみ渡す。
+  const ga4Snippet = `  <script src="../../js/ga4.js"></script>\n  <script>\n    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。\n    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(`/spot/${encodeURIComponent(spot.spot_id)}/`)}, ${JSON.stringify(titleText)});\n  </script>`;
 
   return `<!DOCTYPE html>
 <html lang="ja">

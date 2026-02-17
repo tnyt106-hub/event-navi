@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RS12737WLG"></script>
+  <script src="../js/ga4.js"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RS12737WLG', { send_page_view: false });
-    gtag('event', 'page_view', {
-      page_path: '/facility-name/',
-      page_title: '施設名から探す｜イベントガイド【四国版】'
-    });
+    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。
+    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/facility-name/", "施設名から探す｜イベントガイド【四国版】");
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

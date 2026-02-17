@@ -5,8 +5,6 @@ const path = require("path");
 
 // 出力対象のサイト名（title と h1 に使用）
 const SITE_NAME = "イベントガイド【四国版】";
-// Google Analytics 4 の測定ID（トップページと同じIDを日付ページにも適用する）
-const GA4_MEASUREMENT_ID = "G-RS12737WLG";
 // 年が省略された日付の補完は、実行日の月から数ヶ月先までに限定する
 const YEARLESS_LOOKAHEAD_MONTHS = 6;
 // canonical/OGで使う公開URLの基点。ドメイン変更時はここだけ直せばよい。
@@ -272,6 +270,7 @@ function renderHeader(
   titleText,
   headingText,
   cssPath,
+  ga4ScriptPath,
   isNoindex,
   descriptionText = "",
   canonicalPath = "",
@@ -306,12 +305,11 @@ function renderHeader(
   const ogHtml = (safeDescription && canonicalUrl)
     ? `  <meta property="og:type" content="website" />\n  <meta property="og:locale" content="ja_JP" />\n  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />\n  <meta property="og:title" content="${safeTitle}" />\n  <meta property="og:description" content="${safeDescription}" />\n  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta property="og:image:alt" content="${escapeHtml(DEFAULT_OG_IMAGE_ALT)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${safeTitle}" />\n  <meta name="twitter:description" content="${safeDescription}" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n`
     : "";
-  // 日付ページでもアクセス計測できるよう、GA4タグをヘッダーに埋め込む。
-  // なお page_view は手動制御を維持するため send_page_view を false にしておく。
-  const ga4Snippet = `  <!-- Google Analytics 4 の計測タグ（日付ページ向け） -->\n  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n  </script>\n`;
+  // 測定IDは /js/ga4.js 側で一元管理し、ページごとの差分はpage_view情報だけ渡す。
+  const ga4Snippet = `  <!-- Google Analytics 4 の共通初期化スクリプト -->\n  <script src="${ga4ScriptPath}"></script>\n`;
   // canonical があるページは page_view を明示送信し、ページ別流入計測の欠落を防ぐ。
   const pageViewSnippet = canonicalUrl
-    ? `  <script>\n    gtag('event', 'page_view', {\n      page_path: ${JSON.stringify(canonicalPath)},\n      page_title: ${JSON.stringify(titleText)}\n    });\n  </script>\n`
+    ? `  <script>\n    // JS文字列として安全に埋め込むため、JSON.stringifyの値をそのまま使う。\n    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(canonicalPath)}, ${JSON.stringify(titleText)});\n  </script>\n`
     : "";
   const structuredDataScripts = renderStructuredDataScripts(structuredDataObjects);
 
@@ -702,6 +700,7 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
       `${dateText}のイベント一覧｜${SITE_NAME}`,
       `${dateText}`,
       "../../css/style.css",
+      "../../js/ga4.js",
       isNoindex,
       descriptionText,
       canonicalPath,
@@ -815,6 +814,7 @@ function renderDateIndexPage(dateEntries, adHtml) {
       titleText,
       headingText,
       "../css/style.css",
+      "../js/ga4.js",
       false,
       "四国で開催されるイベントを日付別に一覧で確認できるページです。日程ごとの件数と代表イベントから詳細ページへ進めます。",
       "/date/",
