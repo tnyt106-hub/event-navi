@@ -276,7 +276,8 @@ function renderHeader(
   descriptionText = "",
   canonicalPath = "",
   preHeaderHtml = "",
-  structuredDataObjects = []
+  structuredDataObjects = [],
+  adjacentLinkPaths = {}
 ) {
   const safeTitle = escapeHtml(titleText);
   const safeHeading = escapeHtml(headingText);
@@ -288,6 +289,19 @@ function renderHeader(
   // canonical URL がある時だけ OGP 画像URLも生成し、URL不整合を防ぐ。
   const ogImageUrl = canonicalUrl ? `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}` : "";
   const canonicalHtml = canonicalUrl ? `  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />\n` : "";
+  // 日付詳細ページの前後関係をクローラへ伝えるため、存在する場合のみ prev/next を出力する。
+  // 連続する日付ページ間の文脈を明示し、クロール導線を補強する。
+  const prevPath = adjacentLinkPaths.prev || "";
+  const nextPath = adjacentLinkPaths.next || "";
+  const adjacentLinksHtml = [prevPath, nextPath]
+    .map((linkPath, index) => {
+      if (!linkPath) return "";
+      const relName = index === 0 ? "prev" : "next";
+      return `  <link rel="${relName}" href="${escapeHtml(`${SITE_ORIGIN}${linkPath}`)}" />`;
+    })
+    .filter(Boolean)
+    .join("\n");
+  const adjacentLinksBlock = adjacentLinksHtml ? `${adjacentLinksHtml}\n` : "";
   const descriptionHtml = safeDescription ? `  <meta name="description" content="${safeDescription}" />\n` : "";
   const ogHtml = (safeDescription && canonicalUrl)
     ? `  <meta property="og:type" content="website" />\n  <meta property="og:locale" content="ja_JP" />\n  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />\n  <meta property="og:title" content="${safeTitle}" />\n  <meta property="og:description" content="${safeDescription}" />\n  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta property="og:image:alt" content="${escapeHtml(DEFAULT_OG_IMAGE_ALT)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${safeTitle}" />\n  <meta name="twitter:description" content="${safeDescription}" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n`
@@ -306,7 +320,7 @@ function renderHeader(
 <head>
 ${ga4Snippet}${pageViewSnippet}  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-${noindexMeta}${descriptionHtml}${canonicalHtml}${ogHtml}${structuredDataScripts}  <title>${safeTitle}</title>
+${noindexMeta}${descriptionHtml}${canonicalHtml}${adjacentLinksBlock}${ogHtml}${structuredDataScripts}  <title>${safeTitle}</title>
   <link rel="stylesheet" href="${cssPath}" />
 </head>
 <body>
@@ -592,12 +606,12 @@ ${linkHtml}
 function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adHtml) {
   const navLinks = [];
   if (prevDateKey) {
-    // docs 配信前提で docs/date/YYYY-MM-DD/ から相対リンクにする
-    navLinks.push(`<a class="spot-action-btn" href="../${prevDateKey}/">前日</a>`);
+    // URL正規化のため、日付ナビゲーションは常にルート相対URLを使う。
+    navLinks.push(`<a class="spot-action-btn" href="/date/${prevDateKey}/">前日</a>`);
   }
   if (nextDateKey) {
-    // docs 配信前提で docs/date/YYYY-MM-DD/ から相対リンクにする
-    navLinks.push(`<a class="spot-action-btn" href="../${nextDateKey}/">翌日</a>`);
+    // URL正規化のため、日付ナビゲーションは常にルート相対URLを使う。
+    navLinks.push(`<a class="spot-action-btn" href="/date/${nextDateKey}/">翌日</a>`);
   }
 
   const navHtml = navLinks.length
@@ -610,8 +624,8 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   const eventCards = events.map((eventItem) => renderEventCard(eventItem, eventItem.venue_label)).join("");
   const dateText = formatJapaneseDate(dateObj);
   const breadcrumbHtml = renderBreadcrumbs([
-    { label: "ホーム", href: "../../index.html" },
-    { label: "日付一覧", href: "../" },
+    { label: "ホーム", href: "/" },
+    { label: "日付一覧", href: "/date/" },
     { label: dateText }
   ]);
   // 広告は「パンくず直下」に固定し、静的ページ全体で配置ルールを統一する。
@@ -692,7 +706,12 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
       descriptionText,
       canonicalPath,
       preHeaderHtml,
-      [breadcrumbStructuredData, dayEventStructuredData]
+      [breadcrumbStructuredData, dayEventStructuredData],
+      {
+        // 日付ページは連番構造を持つため、headにも前後リンクを埋め込んで巡回性を高める。
+        prev: prevDateKey ? `/date/${prevDateKey}/` : "",
+        next: nextDateKey ? `/date/${nextDateKey}/` : ""
+      }
     )
     + navHtml
     + `  <section class="spot-events" aria-labelledby="events-title">
@@ -721,7 +740,7 @@ function renderDateIndexPage(dateEntries, adHtml) {
   // H1とH2を同名にすると読み上げ時の重複感が出るため、一覧セクションは別ラベルにする
   const listSectionTitle = "開催日一覧";
   const breadcrumbHtml = renderBreadcrumbs([
-    { label: "ホーム", href: "../index.html" },
+    { label: "ホーム", href: "/" },
     { label: headingText }
   ]);
   // 一覧ページも同様に、パンくずの直後へ広告を配置する。
