@@ -299,7 +299,8 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
     .join("\n");
 
   const breadcrumbHtml = renderBreadcrumbs([
-    { label: "ホーム", href: "../index.html" },
+    // トップURLを / に統一し、/index.html との重複導線を減らす。
+    { label: "ホーム", href: "/" },
     { label: "🗺️エリアから探す" }
   ]);
   // パンくず直下に広告を置く要件に合わせ、preHeaderへ連結して配置を固定する。
@@ -374,8 +375,9 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
           </li>`;
 
   const breadcrumbHtml = renderBreadcrumbs([
-    { label: "ホーム", href: "../../index.html" },
-    { label: "🗺️エリアから探す", href: "../" },
+    // 県別ページでもルート相対URLを使い、URL正規化を徹底する。
+    { label: "ホーム", href: "/" },
+    { label: "🗺️エリアから探す", href: "/facility/" },
     { label: prefecture }
   ]);
   // 県別ページでもパンくずの直後に広告を配置して、導線の一貫性を保つ。
@@ -408,8 +410,8 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
     preHeaderHtml,
     structuredDataObjects
   })}    <nav class="spot-actions" aria-label="施設ナビゲーション">
-      <a class="spot-action-btn" href="../">施設一覧へ戻る</a>
-      <a class="spot-action-btn" href="../../index.html">トップへ戻る</a>
+      <a class="spot-action-btn" href="/facility/">施設一覧へ戻る</a>
+      <a class="spot-action-btn" href="/">トップへ戻る</a>
     </nav>
 
     <section class="spot-events" aria-labelledby="facility-list-title">
@@ -456,7 +458,8 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
           </li>`;
 
   const breadcrumbHtml = renderBreadcrumbs([
-    { label: "ホーム", href: "../index.html" },
+    // 施設名一覧でも /index.html ではなく / を正規リンクとして使う。
+    { label: "ホーム", href: "/" },
     { label: "🔍施設名から探す" }
   ]);
   // 新規導線ページも他ページと同じレイアウトルール（パンくず→広告）で統一する。
