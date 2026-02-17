@@ -280,6 +280,51 @@ function setEventsStatus(message, shouldShowList) {
   }
 }
 
+// 詳細テキスト中のURLを検出して、可読性の高いリンクとして差し込む
+// 例: "料金: ... https://example.com ..." -> テキスト + <a> + テキスト
+function appendTextWithAutoLinks(parentElement, text) {
+  if (!parentElement || !text) return;
+
+  // http / https のURLだけを対象にし、末尾の句読点はリンクに含めない
+  const urlPattern = /https?:\/\/[^\s]+/g;
+  let currentIndex = 0;
+  let match = urlPattern.exec(text);
+
+  while (match) {
+    const url = match[0];
+    const start = match.index;
+
+    // URLより前の通常テキストをそのまま追加
+    if (start > currentIndex) {
+      parentElement.appendChild(document.createTextNode(text.slice(currentIndex, start)));
+    }
+
+    // URL末尾に付く句読点や括弧を外してリンク切れを防ぐ
+    const trimmedUrl = url.replace(/[).,、。]+$/u, "");
+    const trailingText = url.slice(trimmedUrl.length);
+
+    const link = document.createElement("a");
+    link.href = trimmedUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "関連リンクを見る";
+    parentElement.appendChild(link);
+
+    // 句読点などは通常テキストとして戻す
+    if (trailingText) {
+      parentElement.appendChild(document.createTextNode(trailingText));
+    }
+
+    currentIndex = start + url.length;
+    match = urlPattern.exec(text);
+  }
+
+  // 最後に残った通常テキストを追加
+  if (currentIndex < text.length) {
+    parentElement.appendChild(document.createTextNode(text.slice(currentIndex)));
+  }
+}
+
 // イベントカード1件分のDOMを作成する
 function createEventCard(eventItem) {
   // 必須情報が不足している場合でも、存在する要素だけ表示する
@@ -312,7 +357,8 @@ function createEventCard(eventItem) {
 
   detailItems.forEach((detailText) => {
     const detailItem = document.createElement("li");
-    detailItem.textContent = detailText;
+    // 長いURLをそのまま1語として表示すると横はみ出しの原因になるため、自動リンク化する
+    appendTextWithAutoLinks(detailItem, detailText);
     detailList.appendChild(detailItem);
   });
 

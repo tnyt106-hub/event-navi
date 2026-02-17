@@ -1229,6 +1229,7 @@ h2 {
   display: flex;            
   flex-direction: column;    
   align-items: flex-start;   
+  min-width: 0; /* 狭い画面で子要素の長文に引っ張られてカード幅が広がるのを防ぐ */
   padding: 14px;
   border-radius: var(--radius-subcard);
   background: var(--surface);
@@ -1301,6 +1302,8 @@ h2 {
 
 .spot-event-card__details li {
   margin-bottom: 4px; /* 箇条書きの上下余白を詰める */
+  overflow-wrap: anywhere; /* URLのような長い連続文字列でもスマホ幅で折り返す */
+  word-break: break-word; /* 互換性のため、古い実装向けにも改行機会を確保する */
 }
 
 .spot-event-card__details li::marker {
