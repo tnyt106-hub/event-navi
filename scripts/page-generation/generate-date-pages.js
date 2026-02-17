@@ -619,7 +619,8 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   // preHeaderHtml に連結することで、パンくずのすぐ下へ広告を差し込む。
   const preHeaderHtml = `${breadcrumbHtml}${topAdHtml}`;
   // 日付詳細ページの説明は「対象日 + 対象地域 + 掲載内容」を明示し、検索意図との一致を高める。
-  const descriptionText = `${dateText}に四国（香川・愛媛・徳島・高知）で開催されるイベント一覧ページです。会場・開催時間・公式情報へのリンクをまとめて確認できます。`;
+  // 日付LPの説明文は「対象地域・確認できる情報・遷移先価値」を明示して検索意図に合わせる。
+  const descriptionText = `${dateText}に四国4県（香川・愛媛・徳島・高知）で開催されるイベント一覧ページです。会場・開催時間・公式情報へのリンクをまとめて確認でき、気になる施設詳細ページへも移動できます。`;
   // 日付詳細ページにも canonical を付けて重複評価を抑制する。
   const dayKey = formatDateKey(dateObj);
   const canonicalPath = `/date/${dayKey}/`;

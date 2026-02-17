@@ -23,6 +23,8 @@ const EVENTS_DIR = path.join(process.cwd(), "docs", "events");
 const CURRENT_YEAR = new Date().getFullYear();
 // 施設詳細ページの初期表示に埋め込むイベント件数（多すぎると可読性が落ちるため上限を持たせる）。
 const STATIC_EVENT_PREVIEW_LIMIT = 10;
+// description が短すぎると検索結果の文脈が伝わりにくいため、最低文字数の目安を設ける。
+const MIN_DESCRIPTION_LENGTH = 60;
 
 // HTML 文字列として安全に埋め込むための最小限エスケープ。
 function escapeHtml(value) {
@@ -36,14 +38,26 @@ function escapeHtml(value) {
 
 // 概要文が未設定でも検索結果に意味が伝わる説明を生成する。
 function buildDescription(spot) {
-  if (spot.description && String(spot.description).trim()) {
-    return String(spot.description).trim();
-  }
-
+  // 元データの説明文を優先しつつ、短文・途切れ文は補足して品質を底上げする。
+  const rawDescription = spot.description && String(spot.description).trim()
+    ? String(spot.description).trim()
+    : "";
   const area = [spot.prefecture, spot.municipality].filter(Boolean).join(" ");
   const category = spot.category ? `${spot.category}の` : "";
   const prefix = area ? `${area}にある` : "四国にある";
-  return `${prefix}${category}${spot.name}の施設詳細ページです。開催予定のイベントやアクセス情報を確認できます。`;
+  const fallbackDescription = `${prefix}${category}${spot.name}の施設詳細ページです。開催予定のイベントやアクセス情報を確認できます。`;
+  const baseDescription = rawDescription || fallbackDescription;
+
+  // 説明文が「、」や「。」で終わるだけだと未完文になりやすいため、補足文を追加して意味を完結させる。
+  const needsSentenceFix = /[、。]$/.test(baseDescription);
+  const needsLengthFix = baseDescription.length < MIN_DESCRIPTION_LENGTH;
+
+  if (!needsSentenceFix && !needsLengthFix) {
+    return baseDescription;
+  }
+
+  // 末尾に空白が残らないよう trim したうえで、SEOとユーザビリティの両方に効く補足を付ける。
+  return `${baseDescription.trim()} 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。`;
 }
 
 // YYYY-MM-DD を人間が読みやすい形式へ整える（失敗時は入力値をそのまま表示）。
@@ -78,7 +92,18 @@ function renderStaticEventPreview(spot, eventsBySpotId) {
 
   if (previewEvents.length === 0) {
     return {
-      html: '<p id="spot-events-status" class="spot-events__status">現在公開中のイベント情報はありません。</p>',
+      // 0件時でも次の行動が取れるリンクを出し、薄いページ体験を避ける。
+      html: `            <p id="spot-events-status" class="spot-events__status">現在公開中のイベント情報はありません。</p>
+            <ul id="spot-events-list" class="spot-events__list">
+              <li class="spot-event-card">
+                <h4 class="spot-event-card__title">最新情報の確認方法</h4>
+                <p class="spot-event-card__date">施設公式サイト・日付別ページ・施設一覧をご活用ください。</p>
+                <div class="spot-events__fallback-links">
+                  <a class="spot-event-card__link" href="/date/">日付からイベントを探す</a>
+                  <a class="spot-event-card__link" href="/facility-name/">施設名から探す</a>
+                </div>
+              </li>
+            </ul>`,
       count: 0,
       events: []
     };
