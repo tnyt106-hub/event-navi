@@ -218,7 +218,8 @@ function setTodayEventActiveSpot(spotId) {
   const buttons = document.querySelectorAll(".today-events__button");
   buttons.forEach((button) => {
     const isActive = spotId && button.dataset.spotId === spotId;
-    button.classList.toggle("is-active", Boolean(isActive));
+    // 背景ハイライトをイベント名行と施設名行で揃えるため、親カード側にも状態クラスを付与する
+    button.closest(".today-events__item")?.classList.toggle("is-active", Boolean(isActive));
     // スクリーンリーダーでも「選択中」を伝えるためにARIA属性を同期する
     button.setAttribute("aria-pressed", isActive ? "true" : "false");
   });
@@ -372,6 +373,30 @@ function renderTodayEvents() {
     // 開催場所テキストの右に詳細ボタンを横並び配置するためのコンテナ
     const actions = document.createElement("div");
     actions.className = "today-events__actions";
+    // 施設名テキスト領域もカード選択の操作対象にし、イベント名との体験差を無くす
+    actions.dataset.spotId = item.spotId || "";
+    // 「詳細」リンクがあるためbutton要素にはせず、キーボード操作可能な疑似ボタンとして扱う
+    actions.setAttribute("role", "button");
+    actions.setAttribute("tabindex", "0");
+    actions.setAttribute("aria-label", `${item.title}（${item.venueName}）の地図ピンを表示`);
+
+    const focusSpot = () => {
+      focusSpotFromTodayEvent(item.spotId);
+    };
+    actions.addEventListener("click", (event) => {
+      // 施設名以外にある「詳細」リンクの通常遷移は妨げない
+      if (event.target instanceof Element && event.target.closest(".today-events__detail")) {
+        return;
+      }
+      focusSpot();
+    });
+    actions.addEventListener("keydown", (event) => {
+      // Enter/Space で施設名領域からも同じ選択操作ができるようにする
+      if (event.key !== "Enter" && event.key !== " ") return;
+      // Spaceキーの既定スクロールを抑止して、button相当の挙動に揃える
+      event.preventDefault();
+      focusSpot();
+    });
 
     const detailLink = document.createElement("a");
     detailLink.className = "today-events__detail";

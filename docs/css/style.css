@@ -347,17 +347,27 @@ h2 {
   padding: 8px 12px 4px;
 }
 
-.today-events__button:hover,
-.today-events__button:focus-visible {
+/*
+  イベント名と施設名が別要素でも、カード主領域は1つの選択対象として見えるようにする。
+  hover / focus / 選択中（is-active）を item 基準でまとめて適用する。
+*/
+.today-events__item:hover .today-events__button,
+.today-events__item:focus-within .today-events__button,
+.today-events__item.is-active .today-events__button,
+.today-events__item:hover .today-events__actions,
+.today-events__item:focus-within .today-events__actions,
+.today-events__item.is-active .today-events__actions {
   background: var(--accent-soft);
-  outline: none;
 }
 
 /* 地図で選択中の施設と一覧カードを視覚的に連動させる */
-.today-events__button.is-active {
-  background: var(--accent-soft);
+.today-events__item.is-active {
   border-left: 4px solid var(--accent);
-  padding-left: 8px;
+}
+
+.today-events__button:focus-visible,
+.today-events__actions:focus-visible {
+  outline: none;
 }
 
 .today-events__name {
@@ -380,6 +390,7 @@ h2 {
   justify-content: space-between;
   gap: 8px;
   padding: 0 12px 8px;
+  cursor: pointer;
 }
 
 .today-events__detail {
