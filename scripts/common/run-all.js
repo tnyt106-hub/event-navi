@@ -219,6 +219,10 @@ function normalizeQualityGateConfig(rawQualityGate) {
     rawQualityGate?.dateMissingFailThreshold,
     0.03
   );
+  const enforcement =
+    rawQualityGate?.enforcement === "fail" ? "fail" : "warn";
+  // enforcement のデフォルトは warn。品質判定で fail 相当が出ても
+  // パイプラインを止めず、警告として継続実行するための既定値。
 
   return {
     enabled: parseBoolean(rawQualityGate?.enabled, true),
@@ -226,6 +230,7 @@ function normalizeQualityGateConfig(rawQualityGate) {
     titleMissingFailThreshold,
     dateMissingWarnThreshold,
     dateMissingFailThreshold,
+    enforcement,
   };
 }
 
@@ -986,6 +991,15 @@ function evaluateQualityForTaskOutputs(task, outputPaths, qualityGate, logger) {
   };
 }
 
+function applyQualityEnforcement(status, qualityGate) {
+  // fail 判定でも enforcement=warn の場合は警告に降格する。
+  // これにより、品質の異常は可視化しつつ処理全体は継続できる。
+  if (status === "fail" && qualityGate?.enforcement === "warn") {
+    return "warn";
+  }
+  return status;
+}
+
 // ------------- main -------------
 
 async function main() {
@@ -1196,10 +1210,14 @@ async function main() {
         );
 
         if (qualityResult?.status) {
+          const effectiveQualityStatus = applyQualityEnforcement(
+            qualityResult.status,
+            config.config.qualityGate
+          );
           // 施設ごとの品質サマリーを蓄積し、最後に JSON として保存する。
           qualitySummaries.push({
             taskId: displayId,
-            status: qualityResult.status,
+            status: effectiveQualityStatus,
             detail: qualityResult.detail,
             checkedOutputs: qualityResult.checkedOutputs || outputPaths,
             totalEvents: qualityResult.totalEvents ?? null,
@@ -1210,31 +1228,53 @@ async function main() {
             titleThresholds: qualityResult.titleThresholds || null,
             dateThresholds: qualityResult.dateThresholds || null,
           });
-        }
 
-        if (qualityResult?.status === "fail") {
-          failCount += 1;
-          loggerWithConfig.warn(
-            `${displayId}: fail (${msToSec(elapsed)}s) exit=0 ${qualityResult.detail}`
-          );
-          taskResults.push(
-            createTaskResult(
-              task,
-              "fail",
-              msToSecNumber(elapsed),
-              qualityResult.detail
-            )
-          );
-          failed.push(displayId);
-          if (config.config.stopOnError && !taskSettings.continueOnError) {
-            break;
-          }
-        } else {
-          if (qualityResult?.status === "warn") {
+          if (effectiveQualityStatus === "fail") {
+            failCount += 1;
             loggerWithConfig.warn(
-              `${displayId}: warning ${qualityResult.detail}`
+              `${displayId}: fail (${msToSec(elapsed)}s) exit=0 ${qualityResult.detail}`
+            );
+            taskResults.push(
+              createTaskResult(
+                task,
+                "fail",
+                msToSecNumber(elapsed),
+                qualityResult.detail
+              )
+            );
+            failed.push(displayId);
+            if (config.config.stopOnError && !taskSettings.continueOnError) {
+              break;
+            }
+          } else {
+            if (effectiveQualityStatus === "warn") {
+              const enforcementNote =
+                qualityResult.status === "fail" &&
+                config.config.qualityGate?.enforcement === "warn"
+                  ? " (enforced as warning)"
+                  : "";
+              // fail 判定を warn 扱いにした場合も、ログで明示して追跡しやすくする。
+              loggerWithConfig.warn(
+                `${displayId}: warning${enforcementNote} ${qualityResult.detail}`
+              );
+            }
+            okCount += 1;
+            loggerWithConfig.task(
+              `${displayId}: done (${msToSec(elapsed)}s) exit=0`
+            );
+            logHook(task.onSuccess, loggerWithConfig, `${displayId} onSuccess`);
+            taskResults.push(
+              createTaskResult(
+                task,
+                "success",
+                msToSecNumber(elapsed),
+                qualityResult?.detail
+              )
             );
           }
+        } else {
+          // qualityResult が無い場合（対象 output が無いなど）は従来どおり成功扱い。
+          // 既存挙動との互換性を保つため、追加の判定は入れない。
           okCount += 1;
           loggerWithConfig.task(
             `${displayId}: done (${msToSec(elapsed)}s) exit=0`

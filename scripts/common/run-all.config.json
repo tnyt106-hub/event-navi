@@ -294,6 +294,7 @@
     "titleMissingWarnThreshold": 0.01,
     "titleMissingFailThreshold": 0.03,
     "dateMissingWarnThreshold": 0.01,
-    "dateMissingFailThreshold": 0.03
+    "dateMissingFailThreshold": 0.03,
+    "enforcement": "warn"
   }
 }
