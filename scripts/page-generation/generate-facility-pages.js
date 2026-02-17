@@ -321,8 +321,9 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
     title: `エリアから探す｜${SITE_NAME}`,
     heading: "🗺️エリアから探す",
     cssPath: "../css/style.css",
-    // Step1方針: 施設一覧の説明文を「対象・操作・遷移先」で簡潔に統一する
-    description: "四国4県の公共施設を県別に一覧で確認できるページです。施設数とイベント件数の目安から、目的の施設詳細へ進めます。",
+    // Step1方針: 施設一覧の説明文を「対象・操作・遷移先」で簡潔に統一する。
+    // 検索結果でも用途が伝わるよう、県別比較→詳細遷移までを1文で明記する。
+    description: "四国4県の公共施設を県別に比較しながら一覧で確認できるページです。登録施設数とイベント件数の目安を見て、目的の県ページや各施設詳細へスムーズに進めます。",
     canonicalPath: "/facility/",
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
     preHeaderHtml,
@@ -393,7 +394,8 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
     title: `${prefecture}の施設一覧｜${SITE_NAME}`,
     heading: `${prefecture}の施設一覧`,
     cssPath: "../../css/style.css",
-    description: `${prefecture}の公共施設を一覧化したページです。市町村・カテゴリ・イベント件数の目安を確認しながら、各施設ページへ移動できます。`,
+    // 県別ページでは「地域内の絞り込み意図」が伝わるよう、確認できる属性を具体化する。
+    description: `${prefecture}の公共施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。`,
     canonicalPath: `/facility/${toPrefSlug(prefecture)}/`,
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
     preHeaderHtml,
@@ -473,7 +475,8 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
     heading: "🔍施設名から探す",
     cssPath: "../css/style.css",
     // SEO向けに「地域・並び順・遷移先」の3点を短く明示する。
-    description: "四国4県の公共施設を施設名の50音順で一覧表示するページです。都道府県・市町村・カテゴリ・イベント件数を確認しながら各施設詳細へ進めます。",
+    // 初回訪問者が迷わないよう、50音順で横断検索できる価値を説明文へ含める。
+    description: "四国4県の公共施設を施設名の50音順で横断的に一覧表示するページです。都道府県・市町村・カテゴリ・イベント件数を確認しながら、気になる施設詳細へ進めます。",
     canonicalPath: "/facility-name/",
     preHeaderHtml,
     structuredDataObjects
