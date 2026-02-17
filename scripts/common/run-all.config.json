@@ -127,6 +127,15 @@
         "docs/events/asty-tokushima.json"
       ]
     },
+     {
+      "id": "fetch-asutamuland-events.js",
+      "name": "fetch-astamuland",
+      "script": "scripts/scraping/fetch-asutamuland-events.js",
+      "enabled": true,
+      "outputs": [
+        "docs/events/asutamuland.json"
+      ]
+    },
     {
       "id": "fetch-awagin-hall",
       "name": "fetch-awagin-hall",
