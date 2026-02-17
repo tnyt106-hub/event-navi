@@ -110,6 +110,7 @@ function renderPageHeader({
   cssPath,
   description,
   canonicalPath,
+  isNoindex = false,
   preHeaderHtml = "",
   structuredDataObjects = []
 }) {
@@ -120,13 +121,15 @@ function renderPageHeader({
   const ga4Snippet = `  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });\n    gtag('event', 'page_view', {\n      page_path: '${canonicalPath}',\n      page_title: '${escapeHtml(title)}'\n    });\n  </script>`;
   // head へまとめて埋め込むことで、クローラがページの意味を取りやすくする。
   const structuredDataScripts = renderStructuredDataScripts(structuredDataObjects);
+  // 施設0件ページは内容が薄くなりやすいため、検索結果への露出は抑えつつ導線は残す。
+  const robotsMeta = isNoindex ? '  <meta name="robots" content="noindex,follow" />\n' : "";
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
 ${ga4Snippet}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="${escapeHtml(description)}" />
+${robotsMeta}  <meta name="description" content="${escapeHtml(description)}" />
   <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
@@ -345,6 +348,9 @@ ${renderPageFooter()}`;
 
 function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
   const sortedSpots = sortSpotsByKanaName(spots);
+  // 施設が0件の県ページは薄いコンテンツ化しやすいため noindex を付与する。
+  // follow を維持することで、県ページ経由の内部リンク評価は受け渡せる。
+  const isNoindex = sortedSpots.length === 0;
 
   const listHtml =
     sortedSpots.length > 0
@@ -397,6 +403,7 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
     // 県別ページでは「地域内の絞り込み意図」が伝わるよう、確認できる属性を具体化する。
     description: `${prefecture}の公共施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。`,
     canonicalPath: `/facility/${toPrefSlug(prefecture)}/`,
+    isNoindex,
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
     preHeaderHtml,
     structuredDataObjects
