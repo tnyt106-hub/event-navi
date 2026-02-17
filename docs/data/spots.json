@@ -168,6 +168,18 @@
   "source": "https://asutamuland.jp/event/"
 },
   {
+  "name": "徳島駅クレメントプラザ",
+  "spot_id": "tokushima_clement_plaza",
+  "lat": 34.07445,
+  "lng": 134.55119,
+  "category": "ショッピングモール",
+  "prefecture": "徳島県",
+  "municipality": "徳島市",
+  "official_url": "https://clementplaza.com/",
+  "description": "JR徳島駅に直結した駅ビル型の商業施設です。徳島のお土産が揃うフロアや飲食街「徳島駅バル」、ファッション、雑貨などのショップが充実しており、観光客から地元住民まで幅広く利用されています。",
+  "source": "https://clementplaza.com/event/"
+  },
+  {
     "name": "あわぎんホール",
     "spot_id": "awagin-hall",
     "lat": 34.07504,
