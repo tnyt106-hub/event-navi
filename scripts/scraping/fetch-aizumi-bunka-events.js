@@ -16,28 +16,23 @@ const VENUE_NAME = "藍住町総合文化ホール";
 const CONCURRENCY_LIMIT = 5;
 
 /**
- * 詳細ページから情報を抽出（時間・詳細テキスト取得版）
+ * 詳細ページから情報を抽出（時間・詳細テキスト取得）
  */
 async function scrapeDetail(url) {
   try {
     const html = await fetchText(url);
     const cleanHtml = decodeHtmlEntities(html);
 
-    // 1. 本文エリアの抽出
     const bodyMatch = cleanHtml.match(/<div class="text-beginning">([\s\S]*?)<\/div>/i);
     const content = bodyMatch ? bodyMatch[1] : "";
     const description = stripTagsCompact(content);
 
-    // 2. 時間の抽出 (開演と開場)
     let startTime = null;
     let openTime = null;
 
-    // 「日時」の見出し以降のテキストを取得
     const dateSection = content.match(/日時<\/strong><\/h3>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/i);
     if (dateSection) {
       const timeStr = dateSection[1];
-
-      // 時間をパースする補助関数 (例: 午後3時30分 -> 15:30)
       const parseJapaneseTime = (str) => {
         const m = str.match(/(午前|午後)(\d{1,2})時(?:(\d{1,2})分)?/);
         if (!m) return null;
@@ -48,42 +43,31 @@ async function scrapeDetail(url) {
         return `${hour.toString().padStart(2, '0')}:${min}`;
       };
 
-      // 「開演／午後○時」を抽出
       const startMatch = timeStr.match(/開演／([^（）\s]+)/);
       if (startMatch) startTime = parseJapaneseTime(startMatch[1]);
 
-      // 「開場／午後○時」を抽出
       const openMatch = timeStr.match(/開場／([^（）\s]+)/);
       if (openMatch) openTime = parseJapaneseTime(openMatch[1]);
     }
 
-    return {
-      description: description.slice(0, 500),
-      startTime,
-      openTime
-    };
+    return { description: description.slice(0, 500), startTime, openTime };
   } catch (e) {
     return null;
   }
 }
 
 /**
- * 日付文字列のパース (YYYY年MM月DD日)
+ * テキストから日付範囲を特定する
  */
-function parseDates(content) {
+function parseDates(text) {
   const dates = [];
-  const matches = content.matchAll(/(\d{4})年(\d{2})月(\d{2})日/g);
+  const matches = text.matchAll(/(\d{4})年(\d{2})月(\d{2})日/g);
   for (const m of matches) {
     dates.push(`${m[1]}-${m[2]}-${m[3]}`);
   }
-  
-  if (dates.length === 0) return { from: null, to: null };
-  
+  if (dates.length === 0) return null;
   const sorted = dates.sort();
-  return {
-    from: sorted[0],
-    to: sorted[sorted.length - 1]
-  };
+  return { from: sorted[0], to: sorted[sorted.length - 1] };
 }
 
 async function pooledMap(tasks, limit, fn) {
@@ -107,7 +91,6 @@ async function main() {
     const html = await fetchText(LIST_URL);
     const cleanHtml = decodeHtmlEntities(html);
 
-    // テーブル解析
     const tbodyMatch = cleanHtml.match(/<tbody>([\s\S]*?)<\/tbody>/i);
     if (!tbodyMatch) throw new Error("EMPTY_RESULT: No table body found.");
 
@@ -118,47 +101,60 @@ async function main() {
     while ((match = rowRegex.exec(tbodyMatch[1])) !== null) {
       const rowContent = match[1];
 
-      // チラシ画像の抽出
       const imgMatch = rowContent.match(/<img[^>]+src="([^"]+)"/i);
       const imageUrl = imgMatch ? (imgMatch[1].startsWith('http') ? imgMatch[1] : BASE_URL + imgMatch[1]) : null;
 
-      // タイトルとURLの抽出
       const titleLinkMatch = rowContent.match(/<td class="title_link">[\s\S]*?<a href="([^"]+)">([\s\S]*?)<\/a>/i);
       if (!titleLinkMatch) continue;
 
       const url = titleLinkMatch[1].startsWith('http') ? titleLinkMatch[1] : BASE_URL + titleLinkMatch[1];
       const title = stripTagsCompact(titleLinkMatch[2]);
 
-      // 日付の抽出
       const dateTdMatch = rowContent.match(/<td class="date">([\s\S]*?)<\/td>/i);
-      const { from, to } = dateTdMatch ? parseDates(dateTdMatch[1]) : { from: null, to: null };
+      if (!dateTdMatch) continue;
 
-      // 日付必須チェック
-      if (!from) continue;
+      // 日付セクションをタグ（pやspan）で分割して、個別の塊にする
+      const dateParts = dateTdMatch[1].split(/<\/p>|<\/span>|<br\s*\/?>/i);
 
-      rawItems.push({ url, title, from, to, imageUrl, originalDateText: stripTagsCompact(dateTdMatch[1]) });
+      for (const part of dateParts) {
+        const cleanPart = stripTagsCompact(part).trim();
+        if (!cleanPart) continue;
+
+        const dates = parseDates(cleanPart);
+        if (dates) {
+          rawItems.push({
+            url,
+            title,
+            from: dates.from,
+            to: dates.to,
+            imageUrl,
+            originalDateText: cleanPart
+          });
+        }
+      }
     }
 
-    console.log(`[INFO] Found ${rawItems.length} events with valid dates. Analyzing details...`);
+    console.log(`[INFO] Found ${rawItems.length} date entries. Analyzing details...`);
 
-    const detailMap = await pooledMap(rawItems, CONCURRENCY_LIMIT, scrapeDetail);
+    // 重複したURLの詳細取得を避けるためユニークなURLリストで詳細を取得
+    const uniqueUrls = [...new Set(rawItems.map(item => item.url))];
+    const detailMap = await pooledMap(uniqueUrls.map(url => ({url})), CONCURRENCY_LIMIT, scrapeDetail);
     console.log("\n[INFO] Analysis complete.");
 
     const finalEvents = rawItems.map(item => {
       const d = detailMap.get(item.url) || {};
-      
       return {
         title: item.title,
         date_from: item.from,
         date_to: item.to,
-        open_time: d.openTime,   // 追加：開場時間
-        start_time: d.startTime, // 追加：開演時間
+        open_time: d.openTime,
+        start_time: d.startTime,
         venue_name: VENUE_NAME,
         description: d.description || null,
         image_url: item.imageUrl,
         source_url: item.url,
         source_type: "web",
-        body: `開催期間: ${item.originalDateText}`,
+        body: `開催分: ${item.originalDateText}`,
         tags: { type: "other", genres: [], flags: [] }
       };
     });
