@@ -192,6 +192,18 @@
     "source": "https://kyoubun.or.jp/moyoshi/1.html"
   },
   {
+  "name": "藍住町総合文化ホール",
+  "spot_id": "aizumi_bunka",
+  "lat": 34.116631,
+  "lng": 134.508552,
+  "category": "文化施設",
+  "prefecture": "徳島県",
+  "municipality": "板野郡藍住町",
+  "official_url": "https://www.town.aizumi.lg.jp/bunka-h/",
+  "description": "2019年に開館した多目的ホールです。優れた音響性能を誇る大ホール（604席）を備え、コンサート、演劇、講演会など、地域の芸術文化の拠点として幅広く活用されています。",
+  "source": "https://www.town.aizumi.lg.jp/bunka-h/event_list/"
+},
+  {
     "name": "高知県立県民文化ホール",
     "spot_id": "kochi-skbh",
     "lat": 33.55676,
