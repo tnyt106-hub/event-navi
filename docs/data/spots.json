@@ -156,6 +156,18 @@
     "source": "https://www.asty-tokushima.jp/about/"
   },
   {
+  "name": "あすたむらんど徳島",
+  "spot_id": "asutamuland",
+  "lat": 34.15047,
+  "lng": 134.442906,
+  "category": "科学館・公園",
+  "prefecture": "徳島県",
+  "municipality": "板野郡板野町",
+  "official_url": "https://asutamuland.jp/",
+  "description": "「科学・人間・自然」をテーマにした大型児童公園です。世界最大級のプラネタリウムや子ども科学館、木のおもちゃ美術館などを備え、遊びながら学べる体験型施設が充実しています。",
+  "source": "https://asutamuland.jp/event/"
+},
+  {
     "name": "あわぎんホール",
     "spot_id": "awagin-hall",
     "lat": 34.07504,
