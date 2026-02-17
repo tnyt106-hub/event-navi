@@ -1,29 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-02-16",
+  "last_success_at": "2026-02-17",
   "events": [
-    {
-      "title": "スキマスイッチTOUR2024-2025“A museMentally”",
-      "date_from": "2025-02-16",
-      "date_to": "2025-02-16",
-      "open_time": "15:30",
-      "start_time": "16:30",
-      "end_time": "18:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8327",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール スキマスイッチTOUR2024-2025“A museMentally” 開場 15:30/開演 16:30/終演 18:30 小ホール 非公開",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "天童よしみコンサートツアー2025～音楽の旅・心の贈り物～",
       "date_from": "2025-02-18",

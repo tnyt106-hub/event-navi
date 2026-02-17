@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-02-16",
+  "last_success_at": "2026-02-17",
   "events": [
     {
       "title": "宮本浩次 tour2026 新しい旅",
@@ -1401,6 +1401,28 @@
       "price": "無料",
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/2807/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "フジ✕eat春のイチオシ。おためしフェア2026",
+      "date_from": "2026-03-26",
+      "date_to": "2026-03-26",
+      "open_time": "9:55",
+      "start_time": "10:00",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料（抽選500名のみ入場可）",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3514/",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -5548,6 +5570,28 @@
       }
     },
     {
+      "title": "愛媛県県民文化会館開館40周年記念",
+      "date_from": "2026-10-10",
+      "date_to": "2026-10-10",
+      "open_time": "16:45",
+      "start_time": "17:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "SS席￥8,000-、S席￥6,500-、A席￥5,500-（全席指定・税込）",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3643/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "愛媛県人権対策協議会 第65回定期大会",
       "date_from": "2025-05-01",
       "date_to": "2025-05-01",
@@ -7011,28 +7055,6 @@
       "price": "無料（池田屋HPより来場予約制）",
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/1479/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "第77回済生会学会",
-      "date_from": "2025-02-16",
-      "date_to": "2025-02-16",
-      "open_time": "7:30",
-      "start_time": "8:30",
-      "end_time": "16:40",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1861/",
       "source_type": null,
       "venue_name": null,
       "status": null,

@@ -1,7 +1,29 @@
 {
   "venue_id": "kochi-culport",
-  "last_success_at": "2026-02-16",
+  "last_success_at": "2026-02-17",
   "events": [
+    {
+      "title": "第78回高知市展絵画専門部講習会 「透視図講習会」",
+      "date_from": "2026-05-10",
+      "date_to": "2026-05-10",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/shiten78-toushizu/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
     {
       "title": "第78回高知市展工芸講習会 「羊毛フェルトでかわいいバッグを作ろう」",
       "date_from": "2026-04-19",
