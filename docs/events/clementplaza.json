@@ -1,7 +1,7 @@
 {
   "venue_id": "clementplaza",
   "venue_name": "徳島駅クレメントプラザ",
-  "last_success_at": "2026-02-17",
+  "last_success_at": "2026-02-19",
   "events": [
     {
       "title": "【POP UP SHOP】2/22・23★ゆうび苑振袖プレミアム展示会",
@@ -41,28 +41,6 @@
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
       "body": "開催期間: 02月19日〜02月23日",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "【POP UP SHOP】2 ／10～17★亀屋新左衛門★和菓子販売",
-      "date_from": "2026-02-10",
-      "date_to": "2026-02-17",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/229",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 02月10日〜02月17日",
       "tags": {
         "type": "other",
         "genres": [],
@@ -129,6 +107,28 @@
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
       "body": "開催期間: 01月20日〜02月28日",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "12／11（木）2Fにサイゼリヤがオープン！",
+      "date_from": "2026-12-11",
+      "date_to": "2026-12-11",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://clementplaza.com/event/detail/208",
+      "source_type": "web",
+      "venue_name": "徳島駅クレメントプラザ",
+      "status": null,
+      "body": "開催期間: 12月11日",
       "tags": {
         "type": "other",
         "genres": [],
