@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-02-19",
+  "last_success_at": "2026-02-20",
   "events": [
     {
       "title": "宮本浩次 tour2026 新しい旅",
@@ -7055,28 +7055,6 @@
       "price": "無料（池田屋HPより来場予約制）",
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/1479/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "第44回愛媛看護研究学会",
-      "date_from": "2025-02-19",
-      "date_to": "2025-02-19",
-      "open_time": "9:00",
-      "start_time": "9:30",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1199/",
       "source_type": null,
       "venue_name": null,
       "status": null,

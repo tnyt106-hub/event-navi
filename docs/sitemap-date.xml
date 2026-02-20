@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://event-guide.jp/date/2026-02-19/</loc>
-    <lastmod>2026-02-19</lastmod>
-  </url>
-  <url>
     <loc>https://event-guide.jp/date/2026-02-20/</loc>
     <lastmod>2026-02-19</lastmod>
   </url>
@@ -22,27 +18,27 @@
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-02-24/</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-02-25/</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-02-26/</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-02-27/</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-02-28/</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-03-01/</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-03-02/</loc>
@@ -70,7 +66,7 @@
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-03-08/</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-03-09/</loc>
@@ -298,11 +294,15 @@
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-05-22/</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
+  </url>
+  <url>
+    <loc>https://event-guide.jp/date/2026-05-23/</loc>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-05-24/</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
   <url>
     <loc>https://event-guide.jp/date/2026-05-27/</loc>
@@ -361,7 +361,11 @@
     <lastmod>2026-02-19</lastmod>
   </url>
   <url>
+    <loc>https://event-guide.jp/date/2026-06-20/</loc>
+    <lastmod>2026-02-20</lastmod>
+  </url>
+  <url>
     <loc>https://event-guide.jp/date/</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
   </url>
 </urlset>

@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-02-19",
+  "last_success_at": "2026-02-20",
   "events": [
     {
       "title": "ビジネスDXフェア in 高松 ～ ビジネスDXが、企業を変える。AIで変える。～",
@@ -146,6 +146,28 @@
       "price": null,
       "contact": "香川県ソフトバレー連盟\r\n大川原　090-1176-2239",
       "source_url": "https://kagawa-arena.com/event/953/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "【開館1周年記念イベント】ARENA OPEN DAY～アリーナの裏側まで開放の6日間～",
+      "date_from": "2026-02-24",
+      "date_to": "2026-03-01",
+      "open_time": "13:00",
+      "start_time": null,
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "参加費無料",
+      "contact": "あなぶきアリーナ香川　管理事務室　087-825-1313（9：00～21：00）",
+      "source_url": "https://kagawa-arena.com/event/1172/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,
@@ -498,6 +520,28 @@
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
       "source_url": "https://kagawa-arena.com/event/990/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "【＆TEAM】『2026 &#038;TEAM CONCERT TOUR &#8216;BLAZE THE WAY&#8217;』",
+      "date_from": "2026-05-23",
+      "date_to": "2026-05-24",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://kagawa-arena.com/event/1174/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,
