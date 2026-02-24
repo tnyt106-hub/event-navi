@@ -19,9 +19,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "business",
+        "genres": [
+          "business"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -41,9 +45,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -63,9 +71,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -85,9 +97,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -107,8 +124,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -129,9 +148,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -151,9 +174,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -173,9 +200,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "event",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -195,9 +225,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -217,8 +251,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
         "flags": []
       }
     },
@@ -239,9 +275,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -263,7 +303,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -283,9 +326,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -305,9 +352,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -327,9 +379,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -349,9 +405,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -371,9 +431,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -393,9 +457,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -415,9 +483,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -437,9 +509,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -459,9 +535,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -481,9 +562,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -503,9 +588,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -525,8 +612,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -547,9 +636,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -569,9 +662,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -591,9 +688,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -613,9 +714,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -635,9 +740,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -657,9 +767,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -679,9 +793,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -701,9 +819,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -723,9 +846,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -745,9 +872,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -767,9 +898,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music",
+          "nature"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -789,9 +926,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -811,9 +952,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -833,9 +979,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -855,9 +1005,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -877,9 +1031,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     }
   ]

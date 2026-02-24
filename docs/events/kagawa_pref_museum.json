@@ -21,7 +21,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -43,7 +45,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -63,7 +67,7 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
         "flags": []
       }
@@ -85,8 +89,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "workshop",
+        "genres": [
+          "culture",
+          "food"
+        ],
         "flags": []
       }
     },
@@ -107,9 +114,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -153,7 +162,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -173,9 +185,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {

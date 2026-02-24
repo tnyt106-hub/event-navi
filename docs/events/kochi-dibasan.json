@@ -20,7 +20,9 @@
       "body": "対象: 一般\n会場: 大ホール",
       "tags": {
         "type": "other",
-        "genres": [],
+        "genres": [
+          "food"
+        ],
         "flags": []
       }
     },
@@ -41,8 +43,10 @@
       "status": null,
       "body": "対象: 関係者\n会場: 大ホール",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
         "flags": []
       }
     },
@@ -65,7 +69,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -87,7 +93,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -109,7 +117,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -131,7 +141,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     }
   ]

@@ -19,9 +19,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -41,9 +46,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -63,9 +73,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -85,9 +98,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -107,9 +125,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -129,9 +150,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -151,9 +177,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "event",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -173,9 +202,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -195,9 +229,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     }
   ]

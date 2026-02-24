@@ -19,9 +19,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -41,9 +43,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -63,9 +69,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -85,9 +95,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -107,8 +122,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
         "flags": []
       }
     },
@@ -129,8 +147,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -151,8 +171,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -173,9 +195,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -195,9 +221,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "kids"
+        ],
+        "flags": [
+          "weekend",
+          "family"
+        ]
       }
     },
     {
@@ -217,9 +249,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -239,9 +276,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -261,9 +302,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -283,9 +328,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -307,7 +356,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -327,8 +378,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -349,9 +402,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -371,9 +428,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -393,8 +454,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
         "flags": []
       }
     },
@@ -415,9 +479,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -437,9 +505,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -459,9 +532,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "kids"
+        ],
+        "flags": [
+          "family"
+        ]
       }
     },
     {
@@ -481,8 +559,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -503,8 +583,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -525,8 +607,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -547,8 +631,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -569,9 +655,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -591,9 +681,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -613,9 +707,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -635,9 +733,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -657,9 +757,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -679,9 +783,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -701,9 +807,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -723,8 +834,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -745,8 +858,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -767,8 +882,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -789,9 +906,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -811,9 +930,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "kids"
+        ],
+        "flags": [
+          "weekend",
+          "family"
+        ]
       }
     },
     {
@@ -833,9 +958,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -855,9 +985,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -879,7 +1013,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -899,9 +1035,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -943,9 +1081,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -965,9 +1107,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -987,8 +1133,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
         "flags": []
       }
     },
@@ -1009,9 +1158,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -1031,9 +1184,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -1053,9 +1211,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "kids"
+        ],
+        "flags": [
+          "family"
+        ]
       }
     },
     {
@@ -1075,7 +1238,7 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
         "flags": []
       }
@@ -1097,8 +1260,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -1119,8 +1284,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": []
       }
     },
@@ -1141,7 +1308,7 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
         "flags": []
       }
@@ -1163,9 +1330,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -1185,9 +1354,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -1207,9 +1380,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     }
   ]

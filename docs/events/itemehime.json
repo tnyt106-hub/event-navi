@@ -19,9 +19,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -41,9 +44,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "food"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -63,9 +71,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -85,9 +98,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -107,9 +123,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature",
+          "business"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -129,9 +150,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -151,9 +175,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -175,7 +202,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -195,9 +225,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -217,9 +250,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     }
   ]

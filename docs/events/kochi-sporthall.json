@@ -19,9 +19,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -41,9 +45,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -63,9 +72,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -85,9 +98,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -109,7 +124,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -129,9 +146,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -151,9 +172,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -175,7 +198,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -195,9 +220,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -219,7 +246,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -239,7 +269,7 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
         "flags": []
       }
@@ -261,9 +291,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -283,8 +318,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
         "flags": []
       }
     },
@@ -305,9 +342,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -327,9 +369,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -349,7 +395,7 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
         "flags": []
       }
@@ -371,9 +417,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -393,9 +443,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -415,9 +469,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     }
   ]

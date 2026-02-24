@@ -21,7 +21,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -42,8 +45,13 @@
       "body": "会場: ホール（1階）\nお問合せ先: (株)夢グループ 0570-666-443",
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -65,7 +73,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -85,9 +96,15 @@
       "status": null,
       "body": "会場: ホール（1階）\nお問合せ先: ハンガリー音楽を楽しむ会 088-687-2863／090-7582-2863／ ymmttkk2009@yahoo.co.jp（山本）",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music",
+          "nature"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -109,7 +126,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -131,7 +150,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -151,9 +173,14 @@
       "status": null,
       "body": "会場: ホール（1階）\nお問合せ先: (株)デューク 087-822-2520",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -175,7 +202,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -197,7 +227,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -217,9 +249,14 @@
       "status": null,
       "body": "会場: ホール（1階）\nお問合せ先: 徳島県立城北高等学校 088-631-8105（城北高校 石川）",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -239,9 +276,11 @@
       "status": null,
       "body": "会場: ホール（1階）\nお問合せ先: TAOKA メディカル・ウェルフェア システム 088-612-8701（医療法人 倚山会 田岡病院 管理課）",
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -261,9 +300,11 @@
       "status": null,
       "body": "会場: ホール（1階）\nお問合せ先: 徳島市民劇場 088-653-1752",
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -283,7 +324,7 @@
       "status": null,
       "body": "会場: ホール（1階）\nお問合せ先: 鳴門市民劇場 088-684-1777",
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
         "flags": []
       }
@@ -307,7 +348,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -329,7 +373,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -349,9 +395,12 @@
       "status": null,
       "body": "会場: 展示室（2・3階）\nお問合せ先: 徳島電友会 088-621-4137",
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -371,9 +420,15 @@
       "status": null,
       "body": "会場: 展示室（2・3階）\nお問合せ先: 徳島県美術家協会 美術工芸部 090-4334-1481（松下（美術工芸部会長））",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "art",
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -395,7 +450,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -415,9 +472,14 @@
       "status": null,
       "body": "会場: 大会議室（4階）\nお問合せ先: 歴史文化俱楽部 090-7626-4479（鈴木）",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "history",
+          "culture"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -439,7 +501,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -459,9 +523,14 @@
       "status": null,
       "body": "会場: 大会議室（4階）\nお問合せ先: 鳴門アカデミー合唱団 090-2824-5006（（事務局）大井）",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -481,9 +550,14 @@
       "status": null,
       "body": "会場: 大会議室（4階）\nお問合せ先: (公社)徳島県理学療法士会 ①チラシをFAXする場合 FAX:088-626-0298 ②メールで問い合わせする場合 hashiclinic@mb3.tcn.ne.jp （橋本リハビリテーションクリニック 担当:東田（ヒガシダ））",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "local"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -505,7 +579,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     }
   ]

@@ -22,7 +22,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -44,7 +46,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -64,9 +68,12 @@
       "status": null,
       "body": "開催期間: 02月01日〜03月06日",
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "limited",
+          "weekend"
+        ]
       }
     },
     {
@@ -86,9 +93,11 @@
       "status": null,
       "body": "開催期間: 01月20日〜02月28日",
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {

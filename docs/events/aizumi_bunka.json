@@ -44,7 +44,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -66,7 +68,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -88,7 +92,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -108,9 +114,13 @@
       "status": null,
       "body": "開催分: 2026年02月22日（日）",
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -130,8 +140,10 @@
       "status": null,
       "body": "開催分: 2026年02月23日（月）",
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
         "flags": []
       }
     },
@@ -153,8 +165,12 @@
       "body": "開催分: 2026年02月28日（土）",
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     }
   ]

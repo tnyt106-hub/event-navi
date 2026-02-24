@@ -19,9 +19,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -41,9 +43,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -63,9 +67,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "workshop",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -85,9 +93,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -107,9 +117,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -129,9 +144,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -151,7 +168,7 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
         "flags": []
       }
@@ -173,9 +190,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -196,8 +215,14 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "music",
+          "kids"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     }
   ]

@@ -19,9 +19,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "screening",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -41,9 +44,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "screening",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -63,9 +69,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -85,9 +95,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -107,9 +120,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -129,9 +147,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -151,9 +171,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "screening",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -175,7 +198,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -195,9 +221,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "screening",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -217,9 +246,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -239,9 +273,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -261,9 +299,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     }
   ]

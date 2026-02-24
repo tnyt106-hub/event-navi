@@ -20,9 +20,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -42,9 +44,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -64,9 +68,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -86,9 +92,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -108,9 +116,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     }
   ]

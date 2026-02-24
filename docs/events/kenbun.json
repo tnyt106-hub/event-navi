@@ -20,9 +20,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -44,7 +49,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -64,9 +72,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -88,7 +101,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -108,9 +124,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -130,9 +150,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -152,9 +176,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -176,7 +204,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -198,7 +229,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -218,9 +251,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -242,7 +277,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -262,9 +299,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -284,9 +323,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -306,9 +347,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "event",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -328,9 +372,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -350,9 +397,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -372,9 +423,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -394,9 +447,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -416,9 +474,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -440,7 +501,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -461,8 +524,14 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "art",
+          "kids"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -482,9 +551,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -504,9 +576,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -527,8 +602,12 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "kids"
+        ],
+        "flags": [
+          "family"
+        ]
       }
     },
     {
@@ -548,8 +627,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
         "flags": []
       }
     },
@@ -570,9 +651,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -592,9 +676,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "business",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -614,9 +703,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -636,9 +728,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -658,9 +753,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -702,9 +800,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "food"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -726,7 +828,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -746,9 +850,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -769,8 +878,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -792,7 +906,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -812,9 +929,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -834,9 +953,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "theater",
+          "nature"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -856,9 +981,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -878,9 +1005,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "theater"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -900,9 +1032,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -924,7 +1061,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -944,9 +1083,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -968,7 +1109,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -988,9 +1131,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1010,9 +1158,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1032,9 +1183,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1076,9 +1230,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1100,7 +1258,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1142,9 +1302,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music",
+          "nature"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -1164,9 +1330,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -1188,7 +1359,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -1210,7 +1384,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1232,7 +1408,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1253,7 +1431,9 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
+        "genres": [
+          "nature"
+        ],
         "flags": []
       }
     },
@@ -1276,7 +1456,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1296,9 +1478,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature",
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1318,9 +1506,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -1340,9 +1531,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -1364,7 +1558,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1408,7 +1604,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1428,9 +1626,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1450,9 +1650,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1472,9 +1676,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "art",
+          "culture"
+        ],
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -1494,9 +1703,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -1518,7 +1732,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -1538,9 +1755,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1560,9 +1782,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -1584,7 +1811,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1604,9 +1833,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1626,9 +1857,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1650,7 +1883,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1672,7 +1908,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1693,8 +1932,12 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "local"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -1714,9 +1957,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -1738,7 +1985,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -1760,7 +2010,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1780,9 +2033,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "theater"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -1802,9 +2060,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -1824,9 +2087,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "theater"
+        ],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -1846,9 +2115,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "theater"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1868,9 +2143,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -1892,7 +2170,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -1913,7 +2193,9 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
+        "genres": [
+          "nature"
+        ],
         "flags": []
       }
     },
@@ -1936,7 +2218,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -1958,7 +2242,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -2022,9 +2308,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -2044,9 +2332,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -2066,9 +2357,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -2088,9 +2382,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -2132,9 +2429,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2176,9 +2475,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -2200,7 +2504,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2220,9 +2526,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2242,9 +2551,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -2264,9 +2578,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2286,9 +2604,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2308,9 +2630,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -2330,9 +2654,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -2352,9 +2682,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2374,9 +2708,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -2396,8 +2735,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
         "flags": []
       }
     },
@@ -2418,9 +2760,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2440,9 +2786,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2462,9 +2814,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "culture"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -2484,9 +2842,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2506,9 +2870,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2528,9 +2897,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2550,9 +2924,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2574,7 +2950,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -2594,9 +2973,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2616,9 +2999,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2638,9 +3023,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2660,9 +3050,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -2682,9 +3077,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -2704,9 +3103,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -2726,9 +3129,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -2748,9 +3156,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -2772,7 +3185,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2792,9 +3208,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2814,9 +3236,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -2838,7 +3264,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2860,7 +3288,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2882,7 +3313,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2902,9 +3336,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -2924,9 +3363,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -2946,9 +3389,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -2968,9 +3415,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -2990,9 +3440,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "science"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -3012,9 +3467,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "science"
+        ],
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -3035,8 +3494,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -3056,9 +3520,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3101,8 +3567,12 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -3124,7 +3594,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -3146,7 +3619,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -3168,7 +3644,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -3190,7 +3668,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3210,9 +3691,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -3234,7 +3718,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3254,9 +3740,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -3276,9 +3765,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -3298,9 +3790,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -3320,9 +3815,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3342,9 +3840,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3366,7 +3866,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3388,7 +3890,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3410,7 +3914,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3430,9 +3936,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -3454,7 +3962,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -3474,9 +3984,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -3498,7 +4011,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3520,7 +4036,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -3540,9 +4059,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -3562,9 +4084,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3584,9 +4108,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3606,9 +4135,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3628,9 +4162,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3650,9 +4189,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3672,9 +4216,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -3694,9 +4242,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -3760,9 +4310,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3782,9 +4336,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3804,9 +4363,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -3828,7 +4392,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -3849,8 +4416,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -3872,7 +4444,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3892,9 +4466,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -3914,9 +4491,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -3938,7 +4518,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3958,9 +4540,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -3980,9 +4566,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "business",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4002,9 +4593,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4024,9 +4618,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4048,7 +4647,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4068,9 +4669,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4090,9 +4693,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4113,8 +4720,12 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -4135,8 +4746,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4157,8 +4773,12 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -4179,8 +4799,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4201,8 +4826,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4224,7 +4854,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -4246,7 +4879,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4266,9 +4901,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -4288,9 +4927,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -4310,9 +4952,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -4333,8 +4979,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -4356,7 +5007,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -4376,9 +5030,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "science"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4400,7 +5059,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -4422,7 +5084,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -4444,7 +5109,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -4466,7 +5134,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -4486,9 +5157,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4508,9 +5181,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature",
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4532,7 +5211,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -4552,9 +5234,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4576,7 +5262,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4598,7 +5286,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4618,9 +5308,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -4640,9 +5333,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -4664,7 +5360,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4686,7 +5384,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4752,7 +5453,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4772,9 +5475,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music",
+          "nature"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4794,9 +5502,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -4817,8 +5530,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "food"
+        ],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -4840,7 +5558,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4860,9 +5581,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4882,9 +5608,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -4904,9 +5635,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -4928,7 +5663,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -4949,8 +5687,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -4970,9 +5713,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -4992,9 +5737,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "theater"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -5016,7 +5766,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5038,7 +5790,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5059,8 +5813,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -5080,9 +5839,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music",
+          "nature"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -5103,8 +5868,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -5124,9 +5894,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -5146,9 +5918,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -5170,7 +5945,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -5192,7 +5970,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -5212,9 +5993,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -5234,9 +6020,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -5256,9 +6045,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid"
+        ]
       }
     },
     {
@@ -5280,7 +6071,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -5300,9 +6093,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -5323,8 +6119,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -5345,8 +6146,14 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "music",
+          "kids"
+        ],
+        "flags": [
+          "weekend",
+          "family"
+        ]
       }
     },
     {
@@ -5366,9 +6173,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -5390,7 +6202,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5412,7 +6226,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5434,7 +6250,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5454,9 +6272,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -5478,7 +6301,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -5543,8 +6369,12 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "food"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5566,7 +6396,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5586,9 +6418,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5610,7 +6446,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5632,7 +6470,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -5652,9 +6493,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -5675,8 +6519,12 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -5696,9 +6544,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5718,9 +6570,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -5740,9 +6597,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5762,9 +6621,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5784,9 +6645,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -5806,9 +6672,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature",
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -5830,7 +6702,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -5850,9 +6724,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "festival",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -5873,8 +6751,12 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5896,7 +6778,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5916,9 +6800,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "business",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -5940,7 +6829,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -5962,7 +6854,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -5982,9 +6876,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6005,8 +6901,13 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": []
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -6028,7 +6929,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6050,7 +6953,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night"
+        ]
       }
     },
     {
@@ -6070,9 +6975,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6092,9 +7000,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6116,7 +7029,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6136,9 +7051,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6158,9 +7078,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6180,9 +7102,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -6204,7 +7131,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6224,9 +7153,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6246,9 +7179,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6270,7 +7206,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6291,7 +7229,9 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
+        "genres": [
+          "nature"
+        ],
         "flags": []
       }
     },
@@ -6378,9 +7318,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature",
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6400,9 +7346,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -6446,7 +7395,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -6468,7 +7420,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -6490,7 +7445,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     },
     {
@@ -6512,7 +7470,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6534,7 +7495,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6556,7 +7519,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6576,9 +7541,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6600,7 +7569,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -6620,9 +7592,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6642,9 +7617,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6666,7 +7644,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "paid"
+        ]
       }
     },
     {
@@ -6686,9 +7667,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6710,7 +7694,10 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6730,8 +7717,10 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
         "flags": []
       }
     },
@@ -6774,9 +7763,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "festival",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6796,9 +7788,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6820,7 +7815,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6840,9 +7837,13 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6862,9 +7863,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6928,9 +7931,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -6950,9 +7955,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -6972,9 +7980,15 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "lecture",
+        "genres": [
+          "nature",
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -6994,9 +8008,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -7017,7 +8034,9 @@
       "body": null,
       "tags": {
         "type": "other",
-        "genres": [],
+        "genres": [
+          "nature"
+        ],
         "flags": []
       }
     },
@@ -7082,9 +8101,14 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "performance",
+        "genres": [
+          "music",
+          "nature"
+        ],
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -7106,7 +8130,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -7126,9 +8152,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "weekend"
+        ]
       }
     },
     {
@@ -7148,9 +8177,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "exhibition",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     },
     {
@@ -7172,7 +8204,9 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -7192,9 +8226,11 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "lecture",
         "genres": [],
-        "flags": []
+        "flags": [
+          "free"
+        ]
       }
     },
     {
@@ -7214,9 +8250,12 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
-        "flags": []
+        "flags": [
+          "paid",
+          "night"
+        ]
       }
     }
   ]
