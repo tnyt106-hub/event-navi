@@ -13,6 +13,8 @@ const { formatIsoDateFromUtcDate } = require("../lib/date");
 
 const REPO_ROOT = path.join(__dirname, "..", "..");
 const DOCS_DIR = path.join(REPO_ROOT, "docs");
+const EVENTS_DIR = path.join(DOCS_DIR, "events");
+const SPOTS_DATA_PATH = path.join(DOCS_DIR, "data", "spots.json");
 const CNAME_PATH = path.join(DOCS_DIR, "CNAME");
 const SITEMAP_INDEX_PATH = path.join(DOCS_DIR, "sitemap.xml");
 const SITEMAP_DATE_PATH = path.join(DOCS_DIR, "sitemap-date.xml");
@@ -77,9 +79,55 @@ function toPublicUrl(baseUrl, absoluteHtmlPath) {
   return `${baseUrl}/${rel}`;
 }
 
-function formatLastmod(filePath) {
-  const stat = fs.statSync(filePath);
-  return formatIsoDateFromUtcDate(new Date(stat.mtimeMs));
+function readMtimeMs(filePath) {
+  if (!filePath || !fs.existsSync(filePath)) return 0;
+  return fs.statSync(filePath).mtimeMs;
+}
+
+function listEventJsonPaths() {
+  if (!fs.existsSync(EVENTS_DIR)) return [];
+  return fs.readdirSync(EVENTS_DIR)
+    .filter((name) => name.endsWith(".json"))
+    .map((name) => path.join(EVENTS_DIR, name));
+}
+
+function buildEventMtimeMap() {
+  const eventMtimeMap = new Map();
+  listEventJsonPaths().forEach((eventPath) => {
+    eventMtimeMap.set(path.basename(eventPath, ".json"), readMtimeMs(eventPath));
+  });
+  return eventMtimeMap;
+}
+
+// 根本対策: HTML mtime だけでは再生成時に lastmod が不必要に更新される。
+// 依存データの更新時刻と比較して最大値を使うことで、より実データ更新に近い lastmod を作る。
+function resolveLastmod(filePath, relativePath, eventMtimeMap, sharedDataMtimeMs, allEventsMaxMtimeMs) {
+  const candidateTimes = [readMtimeMs(filePath)];
+
+  if (sharedDataMtimeMs > 0) {
+    candidateTimes.push(sharedDataMtimeMs);
+  }
+
+  if (relativePath.startsWith("spot/") && relativePath.endsWith("/index.html")) {
+    const spotId = relativePath.split("/")[1];
+    if (spotId && eventMtimeMap.has(spotId)) {
+      candidateTimes.push(eventMtimeMap.get(spotId));
+    }
+  }
+
+  if (
+    relativePath === "date/index.html" ||
+    relativePath.startsWith("date/") ||
+    relativePath.startsWith("facility/") ||
+    relativePath.startsWith("facility-name/")
+  ) {
+    if (allEventsMaxMtimeMs > 0) {
+      candidateTimes.push(allEventsMaxMtimeMs);
+    }
+  }
+
+  const resolvedMtimeMs = Math.max(...candidateTimes);
+  return formatIsoDateFromUtcDate(new Date(resolvedMtimeMs));
 }
 
 function hasNoindexDirective(filePath) {
@@ -138,6 +186,9 @@ function main() {
 
   const baseUrl = resolveBaseUrl();
   const htmlFiles = collectHtmlFiles(DOCS_DIR);
+  const eventMtimeMap = buildEventMtimeMap();
+  const allEventsMaxMtimeMs = Math.max(0, ...eventMtimeMap.values());
+  const sharedDataMtimeMs = readMtimeMs(SPOTS_DATA_PATH);
 
   const buckets = {
     date: new Map(),
@@ -158,7 +209,7 @@ function main() {
       const category = resolveSitemapCategory(rel);
       buckets[category].set(loc, {
         loc,
-        lastmod: formatLastmod(filePath)
+        lastmod: resolveLastmod(filePath, rel, eventMtimeMap, sharedDataMtimeMs, allEventsMaxMtimeMs)
       });
     });
 

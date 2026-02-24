@@ -34,6 +34,11 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+// JSON-LDを script タグへ安全に埋め込むため、`<` をエスケープしてタグ破壊を防ぐ。
+function serializeJsonLd(value) {
+  return JSON.stringify(value, null, 2).replace(/</g, "\\u003c");
+}
+
 // 概要文が未設定でも検索結果に意味が伝わる説明を生成する。
 function buildDescription(spot) {
   // 元データの説明文を優先しつつ、短文・途切れ文は補足して品質を底上げする。
@@ -229,21 +234,22 @@ function renderStructuredData(spot, canonicalUrl, descriptionText, staticEvents)
     });
   });
 
-  return `  <script type="application/ld+json">\n${JSON.stringify(structuredData, null, 2)}\n  </script>`;
+  return `  <script type="application/ld+json">\n${serializeJsonLd(structuredData)}\n  </script>`;
 }
 
 // 1スポット分の静的HTMLを生成する。
 function renderSpotPage(spot, eventsBySpotId) {
   const spotName = spot.name ? String(spot.name).trim() : "施設詳細";
-  const titleText = `${spotName}｜${SITE_NAME}`;
   const descriptionText = buildDescription(spot);
   const canonicalUrl = `${SITE_ORIGIN}/spot/${encodeURIComponent(spot.spot_id)}/`;
   // 初期HTMLにもイベントを埋め込み、JS実行前でも本文情報を読める状態にする。
   const staticPreview = renderStaticEventPreview(spot, eventsBySpotId);
+  // SEO強化: 「施設名 + 四国 イベント」を含め、施設名検索と地域イベント検索の両方に寄せる。
+  const titleText = `${spotName}のイベント情報（${staticPreview.count}件）｜四国イベントガイド`;
   // canonicalと同じドメイン配下の既定OG画像を使い、SNSシェア表示を安定させる。
   const ogImageUrl = `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
   // 測定IDは /js/ga4.js 側で一元管理し、このページはpage_view情報のみ渡す。
-  const ga4Snippet = `  <script src="../../js/ga4.js"></script>\n  <script>\n    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。\n    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(`/spot/${encodeURIComponent(spot.spot_id)}/`)}, ${JSON.stringify(titleText)});\n  </script>`;
+  const ga4Snippet = `  <script src="../../js/ga4.js" defer></script>\n  <script>\n    // パフォーマンスと計測の両立: 初期描画を妨げないよう遅延しつつ、load時点でpage_viewを送る。\n    window.addEventListener(\"load\", function () {\n      window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(`/spot/${encodeURIComponent(spot.spot_id)}/`)}, ${JSON.stringify(titleText)});\n    });\n  </script>`;
 
   return `<!DOCTYPE html>
 <html lang="ja">

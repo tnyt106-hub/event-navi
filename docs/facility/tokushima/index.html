@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script src="../../js/ga4.js"></script>
+  <script src="../../js/ga4.js" defer></script>
   <script>
-    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。
-    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/facility/tokushima/", "徳島県の施設一覧｜イベントガイド【四国版】");
+    // パフォーマンスと計測の両立: load後にpage_viewを送信し、初期描画の阻害を避ける。
+    window.addEventListener("load", function () {
+      window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/facility/tokushima/", "徳島県のイベント施設一覧（5施設）｜四国イベントガイド");
+    });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="徳島県の公共施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。" />
+  <meta name="description" content="徳島県のイベント施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。" />
   <link rel="canonical" href="https://event-guide.jp/facility/tokushima/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="イベントガイド【四国版】" />
-  <meta property="og:title" content="徳島県の施設一覧｜イベントガイド【四国版】" />
-  <meta property="og:description" content="徳島県の公共施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。" />
+  <meta property="og:title" content="徳島県のイベント施設一覧（5施設）｜四国イベントガイド" />
+  <meta property="og:description" content="徳島県のイベント施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。" />
   <meta property="og:url" content="https://event-guide.jp/facility/tokushima/" />
   <meta property="og:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <meta property="og:image:alt" content="イベントガイド【四国版】のサイト共通OGP画像" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="徳島県の施設一覧｜イベントガイド【四国版】" />
-  <meta name="twitter:description" content="徳島県の公共施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。" />
+  <meta name="twitter:title" content="徳島県のイベント施設一覧（5施設）｜四国イベントガイド" />
+  <meta name="twitter:description" content="徳島県のイベント施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。" />
   <meta name="twitter:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <script type="application/ld+json">
 {
@@ -89,7 +91,7 @@
   ]
 }
   </script>
-  <title>徳島県の施設一覧｜イベントガイド【四国版】</title>
+  <title>徳島県のイベント施設一覧（5施設）｜四国イベントガイド</title>
   <link rel="stylesheet" href="../../css/style.css" />
 </head>
 <body>

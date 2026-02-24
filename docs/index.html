@@ -2,15 +2,17 @@
 <html lang="ja">
 <head>
   <!-- Google Analytics 4 の共通初期化スクリプト（測定IDは /js/ga4.js で一元管理） -->
-  <script src="./js/ga4.js"></script>
+  <script src="./js/ga4.js" defer></script>
   <script>
     // トップページの閲覧を明示送信し、ページ別の計測漏れを防ぐ
-    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView('/', '四国のイベント情報マップ｜イベントガイド【四国版】');
+    window.addEventListener('load', function () {
+      window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView('/', '四国のイベント情報マップ｜イベントガイド【四国版】');
+    });
   </script>
   
   <meta charset="UTF-8" />
   <!-- Step1: title は「ページ名｜サイト名」で統一し、検索結果で役割を明確にする -->
-  <title>四国のイベント情報マップ｜イベントガイド【四国版】</title>
+  <title>四国のイベント情報マップ・イベント一覧｜四国イベントガイド</title>
 
   <!-- Step1: description は「対象地域・できること・情報源」を1文で示す -->
   <meta name="description" content="四国全域（香川・愛媛・徳島・高知）の公共施設イベントを地図で探せるページです。開催場所・日程・公式サイト情報をまとめて確認できます。"/>
@@ -18,14 +20,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="イベントガイド【四国版】" />
-  <meta property="og:title" content="四国のイベント情報マップ｜イベントガイド【四国版】" />
+  <meta property="og:title" content="四国のイベント情報マップ・イベント一覧｜四国イベントガイド" />
   <meta property="og:description" content="四国全域（香川・愛媛・徳島・高知）の公共施設イベントを地図で探せるページです。開催場所・日程・公式サイト情報をまとめて確認できます。" />
   <meta property="og:url" content="https://event-guide.jp/" />
   <!-- SNS共有時の見た目を安定させるため、共通OGP画像を指定する -->
   <meta property="og:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <meta property="og:image:alt" content="イベントガイド【四国版】のサイト共通OGP画像" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="四国のイベント情報マップ｜イベントガイド【四国版】" />
+  <meta name="twitter:title" content="四国のイベント情報マップ・イベント一覧｜四国イベントガイド" />
   <meta name="twitter:description" content="四国全域（香川・愛媛・徳島・高知）の公共施設イベントを地図で探せるページです。開催場所・日程・公式サイト情報をまとめて確認できます。" />
   <meta name="twitter:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

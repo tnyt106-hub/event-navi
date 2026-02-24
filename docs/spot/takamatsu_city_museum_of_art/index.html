@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script src="../../js/ga4.js"></script>
+  <script src="../../js/ga4.js" defer></script>
   <script>
-    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。
-    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/spot/takamatsu_city_museum_of_art/", "高松市美術館｜イベントガイド【四国版】");
+    // パフォーマンスと計測の両立: 初期描画を妨げないよう遅延しつつ、load時点でpage_viewを送る。
+    window.addEventListener("load", function () {
+      window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/spot/takamatsu_city_museum_of_art/", "高松市美術館のイベント情報（5件）｜四国イベントガイド");
+    });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>高松市美術館｜イベントガイド【四国版】</title>
+  <title>高松市美術館のイベント情報（5件）｜四国イベントガイド</title>
   <meta name="description" content="高松市中心部にある市立美術館です。特別展・常設展・ワークショップなど多様な催しを開催しており、来館前に公式イベント情報を確認できます。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <link rel="canonical" href="https://event-guide.jp/spot/takamatsu_city_museum_of_art/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="イベントガイド【四国版】" />
-  <meta property="og:title" content="高松市美術館｜イベントガイド【四国版】" />
+  <meta property="og:title" content="高松市美術館のイベント情報（5件）｜四国イベントガイド" />
   <meta property="og:description" content="高松市中心部にある市立美術館です。特別展・常設展・ワークショップなど多様な催しを開催しており、来館前に公式イベント情報を確認できます。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <meta property="og:url" content="https://event-guide.jp/spot/takamatsu_city_museum_of_art/" />
   <meta property="og:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <meta property="og:image:alt" content="イベントガイド【四国版】のサイト共通OGP画像" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="高松市美術館｜イベントガイド【四国版】" />
+  <meta name="twitter:title" content="高松市美術館のイベント情報（5件）｜四国イベントガイド" />
   <meta name="twitter:description" content="高松市中心部にある市立美術館です。特別展・常設展・ワークショップなど多様な催しを開催しており、来館前に公式イベント情報を確認できます。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <meta name="twitter:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <script type="application/ld+json">

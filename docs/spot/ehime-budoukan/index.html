@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script src="../../js/ga4.js"></script>
+  <script src="../../js/ga4.js" defer></script>
   <script>
-    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。
-    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/spot/ehime-budoukan/", "愛媛県武道館｜イベントガイド【四国版】");
+    // パフォーマンスと計測の両立: 初期描画を妨げないよう遅延しつつ、load時点でpage_viewを送る。
+    window.addEventListener("load", function () {
+      window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/spot/ehime-budoukan/", "愛媛県武道館のイベント情報（10件）｜四国イベントガイド");
+    });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>愛媛県武道館｜イベントガイド【四国版】</title>
+  <title>愛媛県武道館のイベント情報（10件）｜四国イベントガイド</title>
   <meta name="description" content="松山市の松山総合公園（市坪）内にある日本最大級の武道館。武道だけでなくコンサートや式典など多目的に利用されます。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <link rel="canonical" href="https://event-guide.jp/spot/ehime-budoukan/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="イベントガイド【四国版】" />
-  <meta property="og:title" content="愛媛県武道館｜イベントガイド【四国版】" />
+  <meta property="og:title" content="愛媛県武道館のイベント情報（10件）｜四国イベントガイド" />
   <meta property="og:description" content="松山市の松山総合公園（市坪）内にある日本最大級の武道館。武道だけでなくコンサートや式典など多目的に利用されます。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <meta property="og:url" content="https://event-guide.jp/spot/ehime-budoukan/" />
   <meta property="og:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <meta property="og:image:alt" content="イベントガイド【四国版】のサイト共通OGP画像" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="愛媛県武道館｜イベントガイド【四国版】" />
+  <meta name="twitter:title" content="愛媛県武道館のイベント情報（10件）｜四国イベントガイド" />
   <meta name="twitter:description" content="松山市の松山総合公園（市坪）内にある日本最大級の武道館。武道だけでなくコンサートや式典など多目的に利用されます。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <meta name="twitter:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <script type="application/ld+json">

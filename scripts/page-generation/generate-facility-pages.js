@@ -117,7 +117,7 @@ function renderPageHeader({
   const ogImageUrl = `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
   // 測定IDは /js/ga4.js 側で一元管理し、このテンプレートはページ情報だけ渡す。
   const ga4ScriptPath = cssPath.replace("/css/", "/js/").replace("style.css", "ga4.js");
-  const ga4Snippet = `  <script src="${escapeHtml(ga4ScriptPath)}"></script>\n  <script>\n    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。\n    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(canonicalPath)}, ${JSON.stringify(title)});\n  </script>`;
+  const ga4Snippet = `  <script src="${escapeHtml(ga4ScriptPath)}" defer></script>\n  <script>\n    // パフォーマンスと計測の両立: load後にpage_viewを送信し、初期描画の阻害を避ける。\n    window.addEventListener("load", function () {\n      window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(canonicalPath)}, ${JSON.stringify(title)});\n    });\n  </script>`;
   // head へまとめて埋め込むことで、クローラがページの意味を取りやすくする。
   const structuredDataScripts = renderStructuredDataScripts(structuredDataObjects);
   // 施設0件ページは内容が薄くなりやすいため、検索結果への露出は抑えつつ導線は残す。
@@ -321,12 +321,12 @@ function renderFacilityIndexPage(prefectureSummaries, adHtml) {
 
   return `${renderPageHeader({
     // SEOでは検索結果の安定表示を優先し、titleから絵文字を外す。
-    title: `エリアから探す｜${SITE_NAME}`,
+    title: `四国のエリア別イベント施設一覧（${prefectureSummaries.reduce((sum, summary) => sum + summary.spotCount, 0)}施設）｜四国イベントガイド`,
     heading: "🗺️エリアから探す",
     cssPath: "../css/style.css",
     // Step1方針: 施設一覧の説明文を「対象・操作・遷移先」で簡潔に統一する。
     // 検索結果でも用途が伝わるよう、県別比較→詳細遷移までを1文で明記する。
-    description: "四国4県の公共施設を県別に比較しながら一覧で確認できるページです。登録施設数とイベント件数の目安を見て、目的の県ページや各施設詳細へスムーズに進めます。",
+    description: "四国4県のイベント施設を県別に比較しながら一覧で確認できるページです。登録施設数とイベント件数の目安を見て、目的の県ページや各施設詳細へスムーズに進めます。",
     canonicalPath: "/facility/",
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
     preHeaderHtml,
@@ -398,11 +398,11 @@ function renderPrefecturePage(prefecture, spots, eventCountMap, adHtml) {
   ];
 
   const bodyHtml = `${renderPageHeader({
-    title: `${prefecture}の施設一覧｜${SITE_NAME}`,
+    title: `${prefecture}のイベント施設一覧（${sortedSpots.length}施設）｜四国イベントガイド`,
     heading: `${prefecture}の施設一覧`,
     cssPath: "../../css/style.css",
     // 県別ページでは「地域内の絞り込み意図」が伝わるよう、確認できる属性を具体化する。
-    description: `${prefecture}の公共施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。`,
+    description: `${prefecture}のイベント施設を地域内で比較しやすい一覧ページです。市町村・カテゴリ・イベント件数の目安を確認しながら、目的に合う施設詳細ページへ移動できます。`,
     canonicalPath: `/facility/${toPrefSlug(prefecture)}/`,
     isNoindex,
     // ユーザビリティ向上のため、パンくずをヘッダーより前に配置する。
@@ -480,12 +480,12 @@ function renderFacilityNameIndexPage(spots, eventCountMap, adHtml) {
 
   return `${renderPageHeader({
     // SEOでは検索結果の安定表示を優先し、titleから絵文字を外す。
-    title: `施設名から探す｜${SITE_NAME}`,
+    title: `四国の施設名からイベントを探す（${sortedSpots.length}施設）｜四国イベントガイド`,
     heading: "🔍施設名から探す",
     cssPath: "../css/style.css",
     // SEO向けに「地域・並び順・遷移先」の3点を短く明示する。
     // 初回訪問者が迷わないよう、50音順で横断検索できる価値を説明文へ含める。
-    description: "四国4県の公共施設を施設名の50音順で横断的に一覧表示するページです。都道府県・市町村・カテゴリ・イベント件数を確認しながら、気になる施設詳細へ進めます。",
+    description: "四国4県のイベント施設を施設名の50音順で横断的に一覧表示するページです。都道府県・市町村・カテゴリ・イベント件数を確認しながら、気になる施設詳細へ進めます。",
     canonicalPath: "/facility-name/",
     preHeaderHtml,
     structuredDataObjects
