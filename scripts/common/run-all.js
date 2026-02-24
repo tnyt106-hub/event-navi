@@ -248,9 +248,34 @@ function normalizeConfig(raw) {
     defaultRetryDelaySeconds: parseNumber(raw.defaultRetryDelaySeconds, 0),
     stopOnError: parseBoolean(raw.stopOnError, false),
     log: normalizeLogConfig(raw.log),
+    parallel: normalizeParallelConfig(raw.parallel),
     qualityGate: normalizeQualityGateConfig(raw.qualityGate),
     allowSharedOutputs,
     tasks,
+  };
+}
+
+function normalizeParallelConfig(rawParallel) {
+  // 並列実行は既存挙動を壊さないため、デフォルトは無効。
+  // 有効化した場合も「対象スクリプトだけ」を慎重に並列化する。
+  const includeScriptPrefixes = Array.isArray(rawParallel?.includeScriptPrefixes)
+    ? rawParallel.includeScriptPrefixes.filter((item) => typeof item === "string")
+    : ["scripts/scraping/"];
+  const includeTaskIds = Array.isArray(rawParallel?.includeTaskIds)
+    ? rawParallel.includeTaskIds
+        .map((item) => normalizeTaskId(item))
+        .filter((item) => item.length > 0)
+    : [];
+
+  // 安全側の上限: 1〜8 の範囲に丸める。
+  const rawMaxWorkers = parseNumber(rawParallel?.maxWorkers, 1);
+  const maxWorkers = Math.max(1, Math.min(8, Math.trunc(rawMaxWorkers)));
+
+  return {
+    enabled: parseBoolean(rawParallel?.enabled, false),
+    maxWorkers,
+    includeScriptPrefixes,
+    includeTaskIds,
   };
 }
 
@@ -650,6 +675,29 @@ function normalizeDependsOn(dependsOn) {
   return dependsOn.map((item) => String(item));
 }
 
+function isTaskParallelEligible(task, parallelConfig) {
+  if (!parallelConfig?.enabled) return false;
+  const taskId = normalizeTaskId(task?.id);
+  if (taskId && parallelConfig.includeTaskIds.includes(taskId)) {
+    return true;
+  }
+
+  const script = typeof task?.script === "string" ? task.script : "";
+  return parallelConfig.includeScriptPrefixes.some((prefix) => script.startsWith(prefix));
+}
+
+function hasOutputConflict(taskA, taskB) {
+  const outputsA = new Set(Array.isArray(taskA?.outputs) ? taskA.outputs : []);
+  const outputsB = Array.isArray(taskB?.outputs) ? taskB.outputs : [];
+  return outputsB.some((out) => outputsA.has(out));
+}
+
+function hasDependencyOnTask(task, targetTask) {
+  const deps = normalizeDependsOn(task?.dependsOn);
+  const targetId = normalizeTaskId(targetTask?.id);
+  return targetId.length > 0 && deps.includes(targetId);
+}
+
 function orderTasksByDependencies(tasks, logger) {
   // dependsOn が指定されていない場合は、従来通りの列挙順で返す
   const hasDependsOn = tasks.some((task) => normalizeDependsOn(task.dependsOn).length > 0);
@@ -1000,6 +1048,205 @@ function applyQualityEnforcement(status, qualityGate) {
   return status;
 }
 
+async function executeSingleTask(task, context) {
+  const {
+    config,
+    logger,
+    outputCache,
+    qualitySummaries,
+    taskResults,
+    failed,
+    failByType,
+    counters,
+  } = context;
+
+  const taskSettings = resolveTaskSettings(task, config.config);
+  const label = formatTaskName(task);
+  const scriptPathAbs = resolveScriptPath(task.script);
+  const displayId = task.id || "(no-id)";
+
+  if (!scriptPathAbs) {
+    logger.warn(`${label}: script が未指定のため失敗`);
+    counters.failCount += 1;
+    taskResults.push(createTaskResult(task, "fail", 0, "script 未指定"));
+    failed.push(displayId);
+    return {
+      status: "fail",
+      shouldStop: config.config.stopOnError && !taskSettings.continueOnError,
+      sleepSecondsAfter: taskSettings.sleepSecondsAfter,
+    };
+  }
+
+  if (!fs.existsSync(scriptPathAbs)) {
+    logger.warn(`${label}: script が存在しないため失敗 -> ${scriptPathAbs}`);
+    counters.failCount += 1;
+    taskResults.push(createTaskResult(task, "fail", 0, "script 不存在"));
+    failed.push(displayId);
+    return {
+      status: "fail",
+      shouldStop: config.config.stopOnError && !taskSettings.continueOnError,
+      sleepSecondsAfter: taskSettings.sleepSecondsAfter,
+    };
+  }
+
+  logger.task(`${displayId}: queued`);
+  const taskStart = Date.now();
+  logger.task(`${displayId}: start`);
+
+  const outputPaths = Array.isArray(task.outputs) ? task.outputs : [];
+  const hasOutputs = outputPaths.length > 0;
+  const beforeStats = hasOutputs ? getOutputStats(outputPaths) : [];
+  let skipped = false;
+
+  if (taskSettings.skipIfOutputsUnchanged && hasOutputs) {
+    if (!task.id) {
+      logger.warn(`${label}: skipIfOutputsUnchanged は id が必要なためスキップ判定できません`);
+    } else {
+      const cacheEntry = outputCache[String(task.id)];
+      const cachedStats = cacheEntry?.outputs || [];
+      const unchanged = !outputsChanged(cachedStats, beforeStats);
+      if (unchanged) {
+        skipped = true;
+        counters.skipCount += 1;
+        taskResults.push(createTaskResult(task, "skip", 0, "outputs unchanged"));
+        logger.task(`${displayId}: skip (outputs unchanged)`);
+        logHook(task.onSuccess, logger, `${displayId} onSuccess`);
+      }
+    }
+  }
+
+  let result = null;
+  let elapsed = 0;
+  let attempt = 0;
+
+  while (!skipped) {
+    attempt += 1;
+    result = await runNodeScript(scriptPathAbs, {
+      timeoutSeconds: taskSettings.timeoutSeconds,
+      captureStdoutStderr: config.config.log.captureStdoutStderr,
+      logger,
+      env: {
+        ...process.env,
+        ...(task.env && typeof task.env === "object" ? task.env : {}),
+      },
+    });
+    elapsed = Date.now() - taskStart;
+
+    if (result.code === 0) {
+      break;
+    }
+
+    const errorType = detectErrorTypeFromTaskResult(result);
+    const retryable = isRetryableErrorType(errorType);
+    const retriesExhausted = attempt > taskSettings.retries;
+    if (!retryable || retriesExhausted) {
+      break;
+    }
+
+    if (taskSettings.retryDelaySeconds > 0) {
+      logger.warn(
+        `${displayId}: retry ${attempt}/${taskSettings.retries} wait ${taskSettings.retryDelaySeconds}s type=${formatErrorTypeLabel(errorType)}`
+      );
+      await sleep(taskSettings.retryDelaySeconds * 1000);
+    }
+  }
+
+  let status = "success";
+  let shouldStop = false;
+
+  if (!skipped && result) {
+    if (result.code === 0) {
+      const qualityResult = evaluateQualityForTaskOutputs(
+        task,
+        outputPaths,
+        config.config.qualityGate,
+        logger
+      );
+
+      if (qualityResult?.status) {
+        const effectiveQualityStatus = applyQualityEnforcement(
+          qualityResult.status,
+          config.config.qualityGate
+        );
+        qualitySummaries.push({
+          taskId: displayId,
+          status: effectiveQualityStatus,
+          detail: qualityResult.detail,
+          checkedOutputs: qualityResult.checkedOutputs || outputPaths,
+          totalEvents: qualityResult.totalEvents ?? null,
+          missingTitleCount: qualityResult.missingTitleCount ?? null,
+          missingDateCount: qualityResult.missingDateCount ?? null,
+          titleMissingRate: qualityResult.titleMissingRate ?? null,
+          dateMissingRate: qualityResult.dateMissingRate ?? null,
+          titleThresholds: qualityResult.titleThresholds || null,
+          dateThresholds: qualityResult.dateThresholds || null,
+        });
+
+        if (effectiveQualityStatus === "fail") {
+          status = "fail";
+          counters.failCount += 1;
+          logger.warn(`${displayId}: fail (${msToSec(elapsed)}s) exit=0 ${qualityResult.detail}`);
+          taskResults.push(createTaskResult(task, "fail", msToSecNumber(elapsed), qualityResult.detail));
+          failed.push(displayId);
+          shouldStop = config.config.stopOnError && !taskSettings.continueOnError;
+        } else {
+          if (effectiveQualityStatus === "warn") {
+            const enforcementNote =
+              qualityResult.status === "fail" && config.config.qualityGate?.enforcement === "warn"
+                ? " (enforced as warning)"
+                : "";
+            logger.warn(`${displayId}: warning${enforcementNote} ${qualityResult.detail}`);
+          }
+          counters.okCount += 1;
+          logger.task(`${displayId}: done (${msToSec(elapsed)}s) exit=0`);
+          logHook(task.onSuccess, logger, `${displayId} onSuccess`);
+          taskResults.push(createTaskResult(task, "success", msToSecNumber(elapsed), qualityResult?.detail));
+        }
+      } else {
+        counters.okCount += 1;
+        logger.task(`${displayId}: done (${msToSec(elapsed)}s) exit=0`);
+        logHook(task.onSuccess, logger, `${displayId} onSuccess`);
+        taskResults.push(createTaskResult(task, "success", msToSecNumber(elapsed), qualityResult?.detail));
+      }
+    } else {
+      status = "fail";
+      counters.failCount += 1;
+      const errorType = detectErrorTypeFromTaskResult(result);
+      const retryable = isRetryableErrorType(errorType);
+      const errText = result.error ? ` error=${String(result.error.message || result.error)}` : "";
+      const timeoutText = result.timedOut ? " timeout=true" : "";
+      logger.warn(
+        `${displayId}: fail (${msToSec(elapsed)}s) exit=${result.code} type=${formatErrorTypeLabel(errorType)} retryable=${retryable}${timeoutText}${errText}`
+      );
+      if (errorType === ERROR_TYPES.PARSE) {
+        logger.error(`${displayId}: PARSE failure detected / 解析失敗を検出`);
+      }
+      failByType[errorType] = (failByType[errorType] || 0) + 1;
+      logHook(task.onFailure, logger, `${displayId} onFailure`);
+      taskResults.push(
+        createTaskResult(task, "fail", msToSecNumber(elapsed), `type=${formatErrorTypeLabel(errorType)} retryable=${retryable}`)
+      );
+      failed.push(displayId);
+      shouldStop = config.config.stopOnError && !taskSettings.continueOnError;
+    }
+  }
+
+  if (!skipped && hasOutputs) {
+    const afterStats = getOutputStats(outputPaths);
+    const changed = outputsChanged(beforeStats, afterStats);
+    logger.task(`${displayId}: outputs ${changed ? "更新あり" : "更新なし"}`);
+    if (task.id) {
+      outputCache[String(task.id)] = { outputs: afterStats };
+    }
+  }
+
+  return {
+    status,
+    shouldStop,
+    sleepSecondsAfter: taskSettings.sleepSecondsAfter,
+  };
+}
+
 // ------------- main -------------
 
 async function main() {
@@ -1078,9 +1325,6 @@ async function main() {
   let phaseStart = 0;
 
   const failed = [];
-  let okCount = 0;
-  let failCount = 0;
-  let skipCount = 0;
   const taskResults = [];
   const failByType = {};
 
@@ -1089,258 +1333,115 @@ async function main() {
   const outputCache = loadOutputCache(outputCachePath);
   const qualitySummaries = [];
 
+  const counters = {
+    okCount: 0,
+    failCount: 0,
+    skipCount: 0,
+  };
+
+  // 並列実行の安全ルール:
+  // - dependsOn は orderTasksByDependencies で解決済み順序を利用する
+  // - 同一 output を書くタスクは同時実行しない（競合回避）
+  // - stopOnError=true では「起動済みのバッチ完了後に停止」する
   for (let i = 0; i < orderedTasks.length; i += 1) {
     const task = orderedTasks[i];
     const phase = classifyPhase(task);
-    const taskSettings = resolveTaskSettings(task, config.config);
 
     if (phase !== currentPhase) {
-      // 前フェーズの終了ログ
       if (currentPhase) {
         const phaseElapsed = Date.now() - phaseStart;
-        loggerWithConfig.phase(
-          `${phaseLabel(currentPhase)}: done (${msToSec(phaseElapsed)}s)`
-        );
+        loggerWithConfig.phase(`${phaseLabel(currentPhase)}: done (${msToSec(phaseElapsed)}s)`);
       }
-      // 新フェーズ開始
       currentPhase = phase;
       phaseStart = Date.now();
       loggerWithConfig.phase(`${phaseLabel(currentPhase)}: start`);
     }
 
-    const label = formatTaskName(task);
-    const scriptPathAbs = resolveScriptPath(task.script);
-
-    if (!scriptPathAbs) {
-      loggerWithConfig.warn(`${label}: script が未指定のため失敗`);
-      failCount += 1;
-      taskResults.push(createTaskResult(task, "fail", 0, "script 未指定"));
-      failed.push(task.id || "(no-id)");
-      if (config.config.stopOnError && !taskSettings.continueOnError) {
-        break;
-      }
-      continue;
-    }
-
-    if (!fs.existsSync(scriptPathAbs)) {
-      loggerWithConfig.warn(
-        `${label}: script が存在しないため失敗 -> ${scriptPathAbs}`
-      );
-      failCount += 1;
-      taskResults.push(createTaskResult(task, "fail", 0, "script 不存在"));
-      failed.push(task.id || "(no-id)");
-      if (config.config.stopOnError && !taskSettings.continueOnError) {
-        break;
-      }
-      continue;
-    }
-
-    const taskStart = Date.now();
-    const displayId = task.id || "(no-id)";
-    loggerWithConfig.task(`${displayId}: start`);
-
-    const outputPaths = Array.isArray(task.outputs) ? task.outputs : [];
-    const hasOutputs = outputPaths.length > 0;
-    const beforeStats = hasOutputs ? getOutputStats(outputPaths) : [];
-    let skipped = false;
-
-    if (taskSettings.skipIfOutputsUnchanged && hasOutputs) {
-      if (!task.id) {
-        loggerWithConfig.warn(
-          `${label}: skipIfOutputsUnchanged は id が必要なためスキップ判定できません`
-        );
-      } else {
-        const cacheEntry = outputCache[String(task.id)];
-        // キャッシュ欠落・破損時は空扱いにして安全側（スキップしない）
-        const cachedStats = cacheEntry?.outputs || [];
-        const unchanged = !outputsChanged(cachedStats, beforeStats);
-        if (unchanged) {
-          skipped = true;
-          skipCount += 1;
-          taskResults.push(createTaskResult(task, "skip", 0, "outputs unchanged"));
-          loggerWithConfig.task(`${displayId}: skip (outputs unchanged)`);
-          logHook(task.onSuccess, loggerWithConfig, `${displayId} onSuccess`);
-        }
-      }
-    }
-
-    let result = null;
-    let elapsed = 0;
-    let attempt = 0;
-
-    while (!skipped) {
-      attempt += 1;
-      result = await runNodeScript(scriptPathAbs, {
-        timeoutSeconds: taskSettings.timeoutSeconds,
-        captureStdoutStderr: config.config.log.captureStdoutStderr,
+    const parallelEligible = isTaskParallelEligible(task, config.config.parallel);
+    if (!parallelEligible || config.config.parallel.maxWorkers <= 1) {
+      const singleResult = await executeSingleTask(task, {
+        config,
         logger: loggerWithConfig,
-        env: {
-          ...process.env,
-          ...(task.env && typeof task.env === "object" ? task.env : {}),
-        },
+        outputCache,
+        qualitySummaries,
+        taskResults,
+        failed,
+        failByType,
+        counters,
       });
-      elapsed = Date.now() - taskStart;
-
-      if (result.code === 0) {
+      const isLast = i === orderedTasks.length - 1;
+      const sleepSeconds =
+        typeof singleResult.sleepSecondsAfter === "number"
+          ? singleResult.sleepSecondsAfter
+          : config.config.sleepSecondsBetween;
+      if (!isLast && sleepSeconds > 0) {
+        await sleep(sleepSeconds * 1000);
+      }
+      if (singleResult.shouldStop) {
         break;
       }
-
-      const errorType = detectErrorTypeFromTaskResult(result);
-      const retryable = isRetryableErrorType(errorType);
-      const retriesExhausted = attempt > taskSettings.retries;
-      if (!retryable || retriesExhausted) {
-        break;
-      }
-
-      if (taskSettings.retryDelaySeconds > 0) {
-        loggerWithConfig.warn(
-          `${displayId}: retry ${attempt}/${taskSettings.retries} wait ${taskSettings.retryDelaySeconds}s type=${formatErrorTypeLabel(errorType)}`
-        );
-        await sleep(taskSettings.retryDelaySeconds * 1000);
-      }
+      continue;
     }
 
-    if (!skipped && result) {
-      if (result.code === 0) {
-        const qualityResult = evaluateQualityForTaskOutputs(
-          task,
-          outputPaths,
-          config.config.qualityGate,
-          loggerWithConfig
-        );
+    const batch = [task];
+    const batchMax = Math.max(1, config.config.parallel.maxWorkers);
 
-        if (qualityResult?.status) {
-          const effectiveQualityStatus = applyQualityEnforcement(
-            qualityResult.status,
-            config.config.qualityGate
-          );
-          // 施設ごとの品質サマリーを蓄積し、最後に JSON として保存する。
-          qualitySummaries.push({
-            taskId: displayId,
-            status: effectiveQualityStatus,
-            detail: qualityResult.detail,
-            checkedOutputs: qualityResult.checkedOutputs || outputPaths,
-            totalEvents: qualityResult.totalEvents ?? null,
-            missingTitleCount: qualityResult.missingTitleCount ?? null,
-            missingDateCount: qualityResult.missingDateCount ?? null,
-            titleMissingRate: qualityResult.titleMissingRate ?? null,
-            dateMissingRate: qualityResult.dateMissingRate ?? null,
-            titleThresholds: qualityResult.titleThresholds || null,
-            dateThresholds: qualityResult.dateThresholds || null,
-          });
+    // 次のタスク群から、安全条件を満たすものだけ同一バッチへ積む。
+    // 条件: 同一phase / 並列対象 / 依存なし / 出力競合なし。
+    for (let j = i + 1; j < orderedTasks.length && batch.length < batchMax; j += 1) {
+      const candidate = orderedTasks[j];
+      if (classifyPhase(candidate) !== phase) break;
+      if (!isTaskParallelEligible(candidate, config.config.parallel)) break;
 
-          if (effectiveQualityStatus === "fail") {
-            failCount += 1;
-            loggerWithConfig.warn(
-              `${displayId}: fail (${msToSec(elapsed)}s) exit=0 ${qualityResult.detail}`
-            );
-            taskResults.push(
-              createTaskResult(
-                task,
-                "fail",
-                msToSecNumber(elapsed),
-                qualityResult.detail
-              )
-            );
-            failed.push(displayId);
-            if (config.config.stopOnError && !taskSettings.continueOnError) {
-              break;
-            }
-          } else {
-            if (effectiveQualityStatus === "warn") {
-              const enforcementNote =
-                qualityResult.status === "fail" &&
-                config.config.qualityGate?.enforcement === "warn"
-                  ? " (enforced as warning)"
-                  : "";
-              // fail 判定を warn 扱いにした場合も、ログで明示して追跡しやすくする。
-              loggerWithConfig.warn(
-                `${displayId}: warning${enforcementNote} ${qualityResult.detail}`
-              );
-            }
-            okCount += 1;
-            loggerWithConfig.task(
-              `${displayId}: done (${msToSec(elapsed)}s) exit=0`
-            );
-            logHook(task.onSuccess, loggerWithConfig, `${displayId} onSuccess`);
-            taskResults.push(
-              createTaskResult(
-                task,
-                "success",
-                msToSecNumber(elapsed),
-                qualityResult?.detail
-              )
-            );
-          }
-        } else {
-          // qualityResult が無い場合（対象 output が無いなど）は従来どおり成功扱い。
-          // 既存挙動との互換性を保つため、追加の判定は入れない。
-          okCount += 1;
-          loggerWithConfig.task(
-            `${displayId}: done (${msToSec(elapsed)}s) exit=0`
-          );
-          logHook(task.onSuccess, loggerWithConfig, `${displayId} onSuccess`);
-          taskResults.push(
-            createTaskResult(
-              task,
-              "success",
-              msToSecNumber(elapsed),
-              qualityResult?.detail
-            )
-          );
-        }
-      } else {
-        failCount += 1;
-        const errorType = detectErrorTypeFromTaskResult(result);
-        const retryable = isRetryableErrorType(errorType);
-        const errText = result.error
-          ? ` error=${String(result.error.message || result.error)}`
-          : "";
-        const timeoutText = result.timedOut ? " timeout=true" : "";
-        loggerWithConfig.warn(
-          `${displayId}: fail (${msToSec(elapsed)}s) exit=${result.code} type=${formatErrorTypeLabel(errorType)} retryable=${retryable}${timeoutText}${errText}`
-        );
-        if (errorType === ERROR_TYPES.PARSE) {
-          // 解析失敗は恒久的な変更の可能性が高いため、目立つログで通知を強める。
-          loggerWithConfig.error(`${displayId}: PARSE failure detected / 解析失敗を検出`);
-        }
-        failByType[errorType] = (failByType[errorType] || 0) + 1;
-        logHook(task.onFailure, loggerWithConfig, `${displayId} onFailure`);
-        taskResults.push(
-          createTaskResult(
-            task,
-            "fail",
-            msToSecNumber(elapsed),
-            `type=${formatErrorTypeLabel(errorType)} retryable=${retryable}`
-          )
-        );
-        failed.push(displayId);
-        if (config.config.stopOnError && !taskSettings.continueOnError) {
-          break;
-        }
-      }
-    }
-
-    if (!skipped && hasOutputs) {
-      const afterStats = getOutputStats(outputPaths);
-      const changed = outputsChanged(beforeStats, afterStats);
-      // outputs がある場合のみ差分を判定し、結果をログに出す
-      loggerWithConfig.task(
-        `${displayId}: outputs ${changed ? "更新あり" : "更新なし"}`
+      const hasDependencyConflict = batch.some(
+        (queuedTask) => hasDependencyOnTask(candidate, queuedTask) || hasDependencyOnTask(queuedTask, candidate)
       );
-      if (task.id) {
-        outputCache[String(task.id)] = { outputs: afterStats };
+      if (hasDependencyConflict) {
+        break;
       }
+
+      const hasOutputPathConflict = batch.some((queuedTask) => hasOutputConflict(candidate, queuedTask));
+      if (hasOutputPathConflict) {
+        break;
+      }
+
+      batch.push(candidate);
     }
 
-    // 次のtaskまでsleep（最後は不要）
+    loggerWithConfig.phase(`parallel batch: phase=${phaseLabel(phase)} size=${batch.length}`);
+
+    const batchResults = await Promise.all(
+      batch.map((batchedTask) =>
+        executeSingleTask(batchedTask, {
+          config,
+          logger: loggerWithConfig,
+          outputCache,
+          qualitySummaries,
+          taskResults,
+          failed,
+          failByType,
+          counters,
+        })
+      )
+    );
+
+    // バッチ内で task ごとに sleepSecondsAfter が異なる可能性があるため、
+    // 最も長い待機時間を1回だけ適用して次バッチの過負荷を抑える。
+    const requestedSleeps = batchResults
+      .map((item) =>
+        typeof item.sleepSecondsAfter === "number" ? item.sleepSecondsAfter : config.config.sleepSecondsBetween
+      )
+      .filter((value) => value > 0);
+    const batchSleepSeconds = requestedSleeps.length > 0 ? Math.max(...requestedSleeps) : 0;
+
+    i += batch.length - 1;
     const isLast = i === orderedTasks.length - 1;
-    const sleepSeconds =
-      typeof taskSettings.sleepSecondsAfter === "number"
-        ? taskSettings.sleepSecondsAfter
-        : config.config.sleepSecondsBetween;
-    if (!isLast && sleepSeconds > 0) {
-      await sleep(sleepSeconds * 1000);
+    if (!isLast && batchSleepSeconds > 0) {
+      await sleep(batchSleepSeconds * 1000);
+    }
+
+    if (batchResults.some((item) => item.shouldStop)) {
+      break;
     }
   }
 
@@ -1354,7 +1455,7 @@ async function main() {
 
   const totalElapsed = Date.now() - runStart;
   loggerWithConfig.run(
-    `done (${msToSec(totalElapsed)}s) ok=${okCount} fail=${failCount} skip=${skipCount}`
+    `done (${msToSec(totalElapsed)}s) ok=${counters.okCount} fail=${counters.failCount} skip=${counters.skipCount}`
   );
 
   taskResults.forEach((result) => {

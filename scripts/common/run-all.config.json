@@ -127,7 +127,7 @@
         "docs/events/asty-tokushima.json"
       ]
     },
-     {
+    {
       "id": "fetch-asutamuland",
       "name": "fetch-astamuland",
       "script": "scripts/scraping/fetch-asutamuland-events.js",
@@ -136,7 +136,7 @@
         "docs/events/asutamuland.json"
       ]
     },
-         {
+    {
       "id": "fetch-clementplaza",
       "name": "fetch-clementplaza",
       "script": "scripts/scraping/fetch-clementplaza-events.js",
@@ -145,7 +145,7 @@
         "docs/events/clementplaza.json"
       ]
     },
-             {
+    {
       "id": "fetch-aizumi-bunka",
       "name": "fetch-aizumi-bunka",
       "script": "scripts/scraping/fetch-aizumi-bunka-events.js",
@@ -296,5 +296,15 @@
     "dateMissingWarnThreshold": 0.01,
     "dateMissingFailThreshold": 0.03,
     "enforcement": "warn"
+  },
+  "parallel": {
+    "enabled": true,
+    "maxWorkers": 3,
+    "includeScriptPrefixes": [
+      "scripts/scraping/"
+    ],
+    "includeTaskIds": [
+      "check-template-links"
+    ]
   }
 }
