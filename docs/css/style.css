@@ -3,6 +3,16 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+/*
+  横幅の計算を「要素の幅 = コンテンツ + padding + border」ではなく、
+  「指定した幅の内側に padding / border を含める」方式へ統一する。
+  これにより、width: 100% の要素に左右 padding がある場合でも
+  画面幅をはみ出しにくくなり、スマホの意図しない横スクロールを防げる。
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 :root {
   /* 指定トークン: ページ全体のベース背景 */
   --bg: #FAFAFA;
