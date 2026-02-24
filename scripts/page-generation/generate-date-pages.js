@@ -39,6 +39,10 @@ const INPUT_DIR = process.argv[2]
 // GitHub Pages は docs/ 配下を公開する前提のため、出力先も docs/date にする
 const OUTPUT_DIR = path.join(process.cwd(), "docs", "date");
 const SPOTS_DATA_PATH = path.join(process.cwd(), "docs", "data", "spots.json");
+// venue_id から住所が引けない時の最低限フォールバック値。
+// location.address を常に含めることで、Search Console の警告を減らしやすくする。
+const DEFAULT_ADDRESS_REGION = "四国";
+const DEFAULT_ADDRESS_COUNTRY = "JP";
 // 広告枠の HTML は partial を差し込む方式で管理し、後から編集しやすくする
 const DATE_AD_PARTIAL_PATH = path.join(process.cwd(), "docs", "partials", "date-ad.html");
 // トップページの更新対象は docs/index.html に固定する
@@ -193,6 +197,85 @@ function renderStructuredDataScripts(structuredDataObjects) {
   return structuredDataObjects
     .map((item) => `  <script type="application/ld+json">\n${serializeJsonLd(item)}\n  </script>\n`)
     .join("");
+}
+
+// 改行・空白を正規化し、自由文から構造化項目を抽出しやすくする。
+function normalizeForStructuredExtraction(value) {
+  return String(value || "")
+    .replace(/\r\n?/g, "\n")
+    .replace(/[\t\u3000]+/g, " ")
+    .replace(/\u00a0/g, " ");
+}
+
+// 説明文から主催者名を抽出する。曖昧な値は null にして誤情報を避ける。
+function extractOrganizerName(eventItem) {
+  const sourceText = normalizeForStructuredExtraction(`${eventItem?.description || ""}\n${eventItem?.body || ""}`);
+  if (!sourceText.trim()) return null;
+
+  const patterns = [
+    /(?:^|\n)\s*(?:企画・主催|主催者|主催)\s*[：:]\s*([^\n]+)/,
+    /(?:^|\n)\s*(?:企画・主催|主催者|主催)\s*\n\s*([^\n]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = sourceText.match(pattern);
+    if (!match || !match[1]) continue;
+
+    const candidate = match[1]
+      .split(/\s*(?:お問合せ先|お問い合わせ先|問い合わせ先|連絡先|出演者|出演|場所|日時)\s*[：:]/)[0]
+      .replace(/[\s　]+$/g, "")
+      .trim();
+
+    if (!candidate) continue;
+    if (/^(https?:\/\/|www\.)/i.test(candidate)) continue;
+    if (/^\S+@\S+\.\S+$/.test(candidate)) continue;
+    if (/^[\d\-()＋+\s]+$/.test(candidate)) continue;
+
+    return candidate;
+  }
+
+  return null;
+}
+
+// 説明文から出演者名を抽出する。抽出できる場合のみ performer を出力する。
+function extractPerformerName(eventItem) {
+  const sourceText = normalizeForStructuredExtraction(`${eventItem?.description || ""}\n${eventItem?.body || ""}`);
+  if (!sourceText.trim()) return null;
+
+  const patterns = [
+    /(?:^|\n)\s*(?:出演者|出演)\s*[：:]\s*([^\n]+)/,
+    /(?:^|\n)\s*(?:出演者|出演)\s*\n\s*([^\n]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = sourceText.match(pattern);
+    if (!match || !match[1]) continue;
+
+    const candidate = match[1]
+      .split(/\s*(?:主催|お問合せ先|お問い合わせ先|問い合わせ先|連絡先|場所|日時)\s*[：:]/)[0]
+      .replace(/[\s　]+$/g, "")
+      .trim();
+
+    if (!candidate) continue;
+    if (/^(https?:\/\/|www\.)/i.test(candidate)) continue;
+
+    return candidate;
+  }
+
+  return null;
+}
+
+// status 値を schema.org EventStatus へ変換する。
+// 既存データは scheduled/finished/null が中心なため、既定は EventScheduled とする。
+function mapEventStatusToSchema(statusText) {
+  const normalized = String(statusText || "").trim().toLowerCase();
+  if (normalized === "cancelled" || normalized === "canceled") {
+    return "https://schema.org/EventCancelled";
+  }
+  if (normalized === "postponed") {
+    return "https://schema.org/EventPostponed";
+  }
+  return "https://schema.org/EventScheduled";
 }
 
 // 空文字・null・undefined をまとめて「空」と判定する。
@@ -658,20 +741,57 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
       const endDate = eventItem?.date_to || startDate;
       const venueName = eventItem?.venue_label || eventItem?.venue_id || "会場未定";
 
+      const organizerName = extractOrganizerName(eventItem) || eventItem?.venue_label || "イベントガイド【四国版】";
+      const performerName = extractPerformerName(eventItem);
+      const imageUrl = eventItem?.image_url || `${SITE_ORIGIN}${DEFAULT_OG_IMAGE_PATH}`;
+      const locationAddress = {
+        "@type": "PostalAddress",
+        addressRegion: eventItem?.prefecture || DEFAULT_ADDRESS_REGION,
+        addressLocality: eventItem?.municipality || "",
+        addressCountry: DEFAULT_ADDRESS_COUNTRY
+      };
+
+      // 空の市区町村を出力しないことで、JSON-LD のノイズを減らす。
+      if (!locationAddress.addressLocality) {
+        delete locationAddress.addressLocality;
+      }
+
+      const eventStructuredData = {
+        "@type": "Event",
+        name: eventItem?.title || "イベント名未定",
+        startDate,
+        endDate,
+        eventStatus: mapEventStatusToSchema(eventItem?.status),
+        image: [imageUrl],
+        organizer: {
+          "@type": "Organization",
+          name: organizerName,
+          url: eventItem?.venue_official_url || undefined
+        },
+        location: {
+          "@type": "Place",
+          name: venueName,
+          address: locationAddress
+        },
+        url: eventItem?.source_url || dayPageUrl
+      };
+
+      // performer は抽出できるイベントだけに限定し、固定ダミー値を入れない。
+      if (performerName) {
+        eventStructuredData.performer = {
+          "@type": "PerformingGroup",
+          name: performerName
+        };
+      }
+
+      if (!eventStructuredData.organizer.url) {
+        delete eventStructuredData.organizer.url;
+      }
+
       return {
         "@type": "ListItem",
         position: index + 1,
-        item: {
-          "@type": "Event",
-          name: eventItem?.title || "イベント名未定",
-          startDate,
-          endDate,
-          location: {
-            "@type": "Place",
-            name: venueName
-          },
-          url: eventItem?.source_url || dayPageUrl
-        }
+        item: eventStructuredData
       };
     })
   };
@@ -863,9 +983,9 @@ function writeFileIfChanged(filePath, content) {
   return true;
 }
 
-// スポットIDから会場名を引けるように辞書化する
-function loadSpotNameMap() {
-  const spotNameMap = new Map();
+// スポットIDから会場名・住所・公式URLを引けるように辞書化する
+function loadSpotMetaMap() {
+  const spotMetaMap = new Map();
 
   try {
     const raw = fs.readFileSync(SPOTS_DATA_PATH, "utf8");
@@ -876,7 +996,12 @@ function loadSpotNameMap() {
         const spotId = spot?.spot_id ? String(spot.spot_id) : "";
         const spotName = spot?.name ? String(spot.name) : "";
         if (spotId && spotName) {
-          spotNameMap.set(spotId, spotName);
+          spotMetaMap.set(spotId, {
+            name: spotName,
+            prefecture: spot?.prefecture ? String(spot.prefecture) : "",
+            municipality: spot?.municipality ? String(spot.municipality) : "",
+            official_url: spot?.official_url ? String(spot.official_url) : "",
+          });
         }
       });
     }
@@ -884,11 +1009,11 @@ function loadSpotNameMap() {
     console.warn("spots.json の読み込みに失敗したため、会場名はIDで代替します:", error);
   }
 
-  return spotNameMap;
+  return spotMetaMap;
 }
 
 // JSON を読み込み、イベントを日付ごとに集約する
-function collectEventsByDate(spotNameMap) {
+function collectEventsByDate(spotMetaMap) {
   const now = new Date();
   const dateMap = new Map();
 
@@ -913,8 +1038,9 @@ function collectEventsByDate(spotNameMap) {
     }
 
     const venueId = jsonData.venue_id || fileName.replace(/\.json$/, "");
+    const spotMeta = spotMetaMap.get(venueId) || null;
     // 会場名が見つからない場合は venue_id をそのまま使う
-    const venueLabel = spotNameMap.get(venueId) || venueId;
+    const venueLabel = spotMeta?.name || venueId;
     const events = Array.isArray(jsonData.events) ? jsonData.events : [];
 
     events.forEach((eventItem, index) => {
@@ -951,12 +1077,18 @@ function collectEventsByDate(spotNameMap) {
         date_from: formatDateKey(dateFromObj),
         date_to: formatDateKey(safeDateToObj),
         source_url: eventItem?.source_url ? String(eventItem.source_url) : "",
+        image_url: eventItem?.image_url ? String(eventItem.image_url) : "",
+        status: eventItem?.status ? String(eventItem.status) : "",
+        description: typeof eventItem?.description === "string" ? eventItem.description : null,
         open_time: eventItem?.open_time ?? null,
         start_time: eventItem?.start_time ?? null,
         end_time: eventItem?.end_time ?? null,
         price: eventItem?.price ?? null,
         contact: eventItem?.contact ?? null,
         body: typeof eventItem?.body === "string" ? eventItem.body : null,
+        prefecture: spotMeta?.prefecture || "",
+        municipality: spotMeta?.municipality || "",
+        venue_official_url: spotMeta?.official_url || "",
         date_from_obj: dateFromObj,
       };
 
@@ -977,8 +1109,8 @@ function collectEventsByDate(spotNameMap) {
 
 // 日付ごとのページを生成して保存する
 function generatePages() {
-  const spotNameMap = loadSpotNameMap();
-  const dateMap = collectEventsByDate(spotNameMap);
+  const spotMetaMap = loadSpotMetaMap();
+  const dateMap = collectEventsByDate(spotMetaMap);
   const dateAdHtml = loadDateAdPartial();
   const dates = Array.from(dateMap.values())
     .sort((a, b) => a.date.getTime() - b.date.getTime());
