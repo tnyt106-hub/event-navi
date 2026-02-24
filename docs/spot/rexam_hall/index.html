@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script src="../../js/ga4.js"></script>
+  <script src="../../js/ga4.js" defer></script>
   <script>
-    // JS文字列として安全に扱うため、JSON.stringifyの結果をそのまま渡す。
-    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/spot/rexam_hall/", "香川県県民ホール レグザムホール｜イベントガイド【四国版】");
+    // パフォーマンスと計測の両立: 初期描画を妨げないよう遅延しつつ、load時点でpage_viewを送る。
+    window.addEventListener("load", function () {
+      window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView("/spot/rexam_hall/", "香川県県民ホール レグザムホールのイベント情報（10件）｜四国イベントガイド");
+    });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>香川県県民ホール レグザムホール｜イベントガイド【四国版】</title>
+  <title>香川県県民ホール レグザムホールのイベント情報（10件）｜四国イベントガイド</title>
   <meta name="description" content="香川県高松市にある県立の大規模多目的ホールです。大ホール、小ホール、多目的大会議室などを備え、コンサートや演劇、式典など幅広く利用されています。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <link rel="canonical" href="https://event-guide.jp/spot/rexam_hall/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="イベントガイド【四国版】" />
-  <meta property="og:title" content="香川県県民ホール レグザムホール｜イベントガイド【四国版】" />
+  <meta property="og:title" content="香川県県民ホール レグザムホールのイベント情報（10件）｜四国イベントガイド" />
   <meta property="og:description" content="香川県高松市にある県立の大規模多目的ホールです。大ホール、小ホール、多目的大会議室などを備え、コンサートや演劇、式典など幅広く利用されています。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <meta property="og:url" content="https://event-guide.jp/spot/rexam_hall/" />
   <meta property="og:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <meta property="og:image:alt" content="イベントガイド【四国版】のサイト共通OGP画像" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="香川県県民ホール レグザムホール｜イベントガイド【四国版】" />
+  <meta name="twitter:title" content="香川県県民ホール レグザムホールのイベント情報（10件）｜四国イベントガイド" />
   <meta name="twitter:description" content="香川県高松市にある県立の大規模多目的ホールです。大ホール、小ホール、多目的大会議室などを備え、コンサートや演劇、式典など幅広く利用されています。 公式サイトや開催予定イベント、アクセス情報への導線をこのページでまとめて確認できます。" />
   <meta name="twitter:image" content="https://event-guide.jp/assets/images/ogp-default.svg" />
   <script type="application/ld+json">

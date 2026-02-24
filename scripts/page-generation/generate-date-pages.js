@@ -306,10 +306,18 @@ function renderHeader(
     ? `  <meta property="og:type" content="website" />\n  <meta property="og:locale" content="ja_JP" />\n  <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />\n  <meta property="og:title" content="${safeTitle}" />\n  <meta property="og:description" content="${safeDescription}" />\n  <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta property="og:image:alt" content="${escapeHtml(DEFAULT_OG_IMAGE_ALT)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${safeTitle}" />\n  <meta name="twitter:description" content="${safeDescription}" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n`
     : "";
   // 測定IDは /js/ga4.js 側で一元管理し、ページごとの差分はpage_view情報だけ渡す。
-  const ga4Snippet = `  <!-- Google Analytics 4 の共通初期化スクリプト -->\n  <script src="${ga4ScriptPath}"></script>\n`;
+  const ga4Snippet = `  <!-- Google Analytics 4 の共通初期化スクリプト（deferで初期描画のブロッキングを回避） -->
+  <script src="${ga4ScriptPath}" defer></script>
+`;
   // canonical があるページは page_view を明示送信し、ページ別流入計測の欠落を防ぐ。
   const pageViewSnippet = canonicalUrl
-    ? `  <script>\n    // JS文字列として安全に埋め込むため、JSON.stringifyの値をそのまま使う。\n    window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(canonicalPath)}, ${JSON.stringify(titleText)});\n  </script>\n`
+    ? `  <script>
+    // パフォーマンスと計測の両立: load後にpage_viewを送信する。
+    window.addEventListener("load", function () {
+      window.EventNaviAnalytics && window.EventNaviAnalytics.trackPageView(${JSON.stringify(canonicalPath)}, ${JSON.stringify(titleText)});
+    });
+  </script>
+`
     : "";
   const structuredDataScripts = renderStructuredDataScripts(structuredDataObjects);
 
@@ -632,7 +640,9 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
   const preHeaderHtml = `${breadcrumbHtml}${topAdHtml}`;
   // 日付詳細ページの説明は「対象日 + 対象地域 + 掲載内容」を明示し、検索意図との一致を高める。
   // 日付LPの説明文は「対象地域・確認できる情報・遷移先価値」を明示して検索意図に合わせる。
-  const descriptionText = `${dateText}に四国4県（香川・愛媛・徳島・高知）で開催されるイベント一覧ページです。会場・開催時間・公式情報へのリンクをまとめて確認でき、気になる施設詳細ページへも移動できます。`;
+  // 件数をtitle/descriptionに含め、検索結果で情報量を明示する。
+  const eventCountText = `${events.length}件`;
+  const descriptionText = `${dateText}に四国4県（香川・愛媛・徳島・高知）で開催されるイベント${eventCountText}の一覧ページです。会場・開催時間・公式情報へのリンクをまとめて確認でき、気になる施設詳細ページへも移動できます。`;
   // 日付詳細ページにも canonical を付けて重複評価を抑制する。
   const dayKey = formatDateKey(dateObj);
   const canonicalPath = `/date/${dayKey}/`;
@@ -697,7 +707,7 @@ function renderDayPage(dateObj, events, prevDateKey, nextDateKey, isNoindex, adH
     // docs 配信前提で docs/date/YYYY-MM-DD/index.html は ../../css/style.css を参照する
     // ユーザビリティ向上のため、パンくずはヘッダーより先に配置する。
     renderHeader(
-      `${dateText}のイベント一覧｜${SITE_NAME}`,
+      `${dateText}のイベント一覧（${eventCountText}）｜四国イベントガイド`,
       `${dateText}`,
       "../../css/style.css",
       "../../js/ga4.js",
@@ -734,7 +744,8 @@ ${bottomAdHtml}
 // 日付一覧ページを生成する
 function renderDateIndexPage(dateEntries, adHtml) {
   // 一覧ページ名は絵文字を外して統一し、検索結果での表記ゆれを減らす。
-  const titleText = `日付から探す｜${SITE_NAME}`;
+  // 検索結果で一覧のボリューム感を伝えるため、掲載日数をtitleに含める。
+  const titleText = `日付から探す（${dateEntries.length}日分）｜四国イベントガイド`;
   const headingText = "日付から探す";
   // H1とH2を同名にすると読み上げ時の重複感が出るため、一覧セクションは別ラベルにする
   const listSectionTitle = "開催日一覧";
@@ -816,7 +827,7 @@ function renderDateIndexPage(dateEntries, adHtml) {
       "../css/style.css",
       "../js/ga4.js",
       false,
-      "四国で開催されるイベントを日付別に一覧で確認できるページです。日程ごとの件数と代表イベントから詳細ページへ進めます。",
+      `四国で開催されるイベントを日付別に一覧で確認できるページです。現在は${dateEntries.length}日分を掲載し、日程ごとの件数と代表イベントから詳細ページへ進めます。`,
       "/date/",
       preHeaderHtml,
       [breadcrumbStructuredData, indexStructuredData]
