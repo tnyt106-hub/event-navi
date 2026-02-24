@@ -14,6 +14,12 @@ const INPUT_DIR = path.join(__dirname, "..", "..", "docs", "events");
 const EXCLUDED_FILE_NAMES = new Set(["template.json"]);
 
 function main() {
+  // run-all では毎回スクレイピング結果を再評価し、
+  // 最新のタグ判定ルールに合わせて tags を更新する。
+  // 既存タグを温存すると type が1つでも入っているイベントは
+  // genres / flags を含めて再計算されず、タグ定義更新が反映されないため。
+  const overwriteExistingTags = true;
+
   const files = fs
     .readdirSync(INPUT_DIR)
     .filter((filename) => filename.endsWith(".json"))
@@ -23,9 +29,9 @@ function main() {
 
   for (const filename of files) {
     const filePath = path.join(INPUT_DIR, filename);
-    // 既存タグは上書きせず、不足分のみ埋める従来運用を維持する。
+    // 既存タグを上書きして、ルール変更後も一括で再付与できるようにする。
     const updated = processEventsFile(filePath, {
-      overwrite: false,
+      overwrite: overwriteExistingTags,
       dryRun: false,
       log: false,
     });
