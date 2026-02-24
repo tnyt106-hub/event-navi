@@ -254,7 +254,7 @@ function renderPageFooter() {
     <a class="mobile-global-nav__link" href="/facility-name/">🔍施設名から探す</a>
   </nav>
   <footer class="trial-footer">
-    © ${CURRENT_YEAR} ${SITE_NAME} - 公共施設イベント情報を正確に届けるアーカイブサイト
+    © ${CURRENT_YEAR} ${SITE_NAME} - 公共施設のイベント情報をお届けします
   </footer>
 </body>
 </html>
