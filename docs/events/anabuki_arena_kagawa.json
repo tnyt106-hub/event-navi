@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-02-20",
+  "last_success_at": "2026-02-24",
   "events": [
     {
       "title": "ビジネスDXフェア in 高松 ～ ビジネスDXが、企業を変える。AIで変える。～",
@@ -510,6 +510,28 @@
     },
     {
       "title": "プラセール フットサルスクール",
+      "date_from": "2026-04-29",
+      "date_to": "2026-04-29",
+      "open_time": "09:00",
+      "start_time": null,
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1175/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
       "date_from": "2026-05-13",
       "date_to": "2026-05-13",
       "open_time": "17:00",
@@ -520,6 +542,28 @@
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
       "source_url": "https://kagawa-arena.com/event/990/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-05-20",
+      "date_to": "2026-05-20",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1176/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,

@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-02-20",
+  "last_success_at": "2026-02-24",
   "events": [
     {
       "title": "展覧会 BUTTON DESIGN ボタンにおける装飾の美たち",
@@ -25,50 +25,6 @@
       }
     },
     {
-      "title": "展覧会 令和7年度 第13回新居浜市小中学生ふるさと学習奨励賞作品展",
-      "date_from": "2026-02-10",
-      "date_to": "2026-02-23",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: アート工房・展示スペース",
-      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
-      "price": "無料",
-      "contact": "新居浜市教育委員会学校教育課 0897-65-3501",
-      "source_url": "https://akaganemuseum.jp/event/event-14104",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "展覧会 第45回にいはまこども美術展",
-      "date_from": "2026-02-11",
-      "date_to": "2026-02-23",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: 市民ギャラリー・展示室1",
-      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
-      "price": "無料",
-      "contact": "新居浜市教育委員会学校教育課 0897-65-1301",
-      "source_url": "https://akaganemuseum.jp/event/event-14158",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
       "date_from": "2025-11-22",
       "date_to": "2026-03-29",
@@ -80,28 +36,6 @@
       "price": "無料",
       "contact": "あかがねミュージアム 0897-31-0305",
       "source_url": "https://akaganemuseum.jp/event/event-13815",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "イベント 職業体験ミュージアム",
-      "date_from": "2026-02-22",
-      "date_to": "2026-02-22",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 多目的ホール(あかがね座) ・創作スペース・屋内ステージ・芝生広場",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E5%BD%A9%E7%BF%94-1024x683.jpeg",
-      "price": "体験無料 ／ 参加対象（小学生〜高校生）",
-      "contact": null,
-      "source_url": "https://akaganemuseum.jp/event/event-14437",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -190,6 +124,72 @@
       "price": "無料",
       "contact": "あかがねミュージアム 0897-31-0305",
       "source_url": "https://akaganemuseum.jp/event/event-14407",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "イベント 劇団あかがね座「ロミオとロザライン」",
+      "date_from": "2026-03-14",
+      "date_to": "2026-03-14",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/12/%E3%81%82%E3%81%8B%E3%81%8C%E3%81%AD%E8%A1%A8-727x1024.jpg",
+      "price": "一般：2,000円（当日2,500円） 小学生から高校生：500円（当日1,000円） ※未就学児入場不可",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14334",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "イベント ソプラノ 長野由記子 チャリティーリサイタル 〜平和の祈り〜",
+      "date_from": "2026-03-15",
+      "date_to": "2026-03-15",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/260315%E9%95%B7%E9%87%8E%E5%85%88%E7%94%9F_page-0001-724x1024.jpg",
+      "price": "一般：3,000円 高校生以下：2,000円",
+      "contact": "長野由記子 090-9778-7456",
+      "source_url": "https://akaganemuseum.jp/event/event-14101",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "展覧会 あかがね水彩画教室 成果発表会",
+      "date_from": "2026-03-18",
+      "date_to": "2026-03-25",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: アート工房 展示スペース",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E6%B0%B4%E5%BD%A9%E7%94%BBDM-731x1024.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム",
+      "source_url": "https://akaganemuseum.jp/event/event-14481",
       "source_type": null,
       "venue_name": null,
       "status": null,

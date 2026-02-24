@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-02-20",
+  "last_success_at": "2026-02-24",
   "events": [
     {
       "title": "宮本浩次 tour2026 新しい旅",
@@ -2006,6 +2006,72 @@
       }
     },
     {
+      "title": "ホールdeレッスン",
+      "date_from": "2026-04-10",
+      "date_to": "2026-04-10",
+      "open_time": "13:00",
+      "start_time": "13:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "○舞台のみ使用：1枠（50分）3,000円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3801/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "ホールdeレッスン",
+      "date_from": "2026-04-11",
+      "date_to": "2026-04-11",
+      "open_time": "10:00",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "○舞台のみ使用：1枠（50分）3,000円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3804/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "ホールdeレッスン",
+      "date_from": "2026-04-12",
+      "date_to": "2026-04-12",
+      "open_time": "10:00",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "○舞台のみ使用：1枠（50分）3,000円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3805/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "(株)おの展示会",
       "date_from": "2026-04-14",
       "date_to": "2026-04-14",
@@ -2941,6 +3007,28 @@
       "price": "有料（資料代）",
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/3691/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "愛媛県県民文化会館開館40周年記念 おとぎと魔法の劇場",
+      "date_from": "2026-05-24",
+      "date_to": "2026-05-24",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "子ども：無料 大人（中学年以上）：1,500円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3806/",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -7055,94 +7143,6 @@
       "price": "無料（池田屋HPより来場予約制）",
       "contact": null,
       "source_url": "https://www.kenbun.jp/event/1479/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "えひめ障がい者雇用マッチングフェスタ",
-      "date_from": "2025-02-20",
-      "date_to": "2025-02-20",
-      "open_time": "9:30",
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1330/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "愛媛経営研究会 2月特別例会",
-      "date_from": "2025-02-21",
-      "date_to": "2025-02-21",
-      "open_time": "17:30",
-      "start_time": "18:00",
-      "end_time": "21:35",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1766/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "愛顔感動ものがたり表彰式イベント",
-      "date_from": "2025-02-23",
-      "date_to": "2025-02-23",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": "16:10",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1850/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "KENBUN MORNING MARKET Vol.3",
-      "date_from": "2025-02-23",
-      "date_to": "2025-02-23",
-      "open_time": null,
-      "start_time": "9:00",
-      "end_time": "13:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1872/",
       "source_type": null,
       "venue_name": null,
       "status": null,
