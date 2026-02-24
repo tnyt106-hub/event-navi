@@ -1,5 +1,5 @@
 {
-  "sleepSecondsBetween": 7,
+  "sleepSecondsBetween": 2,
   "allowSharedOutputs": [
     {
       "output": "docs/events",
