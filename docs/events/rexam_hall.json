@@ -1,6 +1,6 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-02-24",
+  "last_success_at": "2026-02-25",
   "events": [
     {
       "title": "舞劇DanceDrama「朱鷺」",
@@ -5037,6 +5037,253 @@
         "flags": [
           "night"
         ]
+      }
+    },
+    {
+      "title": "宮川彬良×Osaka Shion Wind Orchestra「宇宙戦艦ヤマト」コンサート in 高松",
+      "date_from": "2026-04-05",
+      "date_to": "2026-04-05",
+      "open_time": "16:00",
+      "start_time": "17:00",
+      "end_time": "19:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10583",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 宮川彬良×Osaka Shion Wind Orchestra「宇宙戦艦ヤマト」コンサート in 高松 開場 16:00/開演 17:00/終演 19:00 小ホール コレギウム・ムジクム高松 第30回演奏会 開場 13:20/開演 14:00/終演 16:10",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "令和8年度 学校法人穴吹学園 入学式",
+      "date_from": "2026-04-09",
+      "date_to": "2026-04-09",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "14:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10587",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 令和8年度 学校法人穴吹学園 入学式 開場 12:00/開演 13:00/終演 14:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "ポルノグラフィティ 20thライヴサーキット&#8221;水”",
+      "date_from": "2026-04-10",
+      "date_to": "2026-04-10",
+      "open_time": "17:30",
+      "start_time": "18:30",
+      "end_time": "20:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10588",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール ポルノグラフィティ 20thライヴサーキット&#8221;水” 開場 17:30/開演 18:30/終演 20:30 小ホール 非公開",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "四国新聞女性クラブ",
+      "date_from": "2026-04-11",
+      "date_to": "2026-04-11",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10590",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 四国新聞女性クラブ 開場 12:30/開演 13:30/終演 16:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "HIGHCOMMUNICATIONS TOUR 2026 &#8220;GLAY-complete BEST&#8221;",
+      "date_from": "2026-04-12",
+      "date_to": "2026-04-12",
+      "open_time": "16:30",
+      "start_time": "17:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10591",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール HIGHCOMMUNICATIONS TOUR 2026 &#8220;GLAY-complete BEST&#8221; 開場 16:30/開演 17:00 小ホール 非公開",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ハンバート ハンバート ツアー2026「歌ったり喋ったり」",
+      "date_from": "2026-04-18",
+      "date_to": "2026-04-18",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10594",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール ハンバート ハンバート ツアー2026「歌ったり喋ったり」 開場 17:00/開演 18:00/終演 20:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "“Ｓ★ダンススタジオ／Ｓ★バレエスクール vol.23”",
+      "date_from": "2026-04-19",
+      "date_to": "2026-04-19",
+      "open_time": "12:45",
+      "start_time": "13:30",
+      "end_time": "17:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10595",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール “Ｓ★ダンススタジオ／Ｓ★バレエスクール vol.23” 開場 12:45/開演 13:30/終演 17:30 小ホール 川原霊宗 作舞発表会「心の舞」 開場 12:00/開演 12:45/終演 16:15",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "2026年 第19期 香川県民文化大学 4月講座",
+      "date_from": "2026-04-25",
+      "date_to": "2026-04-25",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10598",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 2026年 第19期 香川県民文化大学 4月講座 開場 12:00/開演 13:00/終演 15:00",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "HANA 1st TOUR 2026 &#8220;Born to Bloom&#8221;",
+      "date_from": "2026-04-26",
+      "date_to": "2026-04-26",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10599",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール HANA 1st TOUR 2026 &#8220;Born to Bloom&#8221; 開場 17:00/開演 18:00/終演 20:00 小ホール monosso concert2026 女声合唱の深遠を探し求めて。 開場 13:30/開演 14:00/終演 16:00（予定）",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "Japan Ballet Competition 香川 2026",
+      "date_from": "2026-04-29",
+      "date_to": "2026-04-29",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10602",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール Japan Ballet Competition 香川 2026",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     }
   ]
