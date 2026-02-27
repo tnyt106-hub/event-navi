@@ -1,31 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-02-25",
+  "last_success_at": "2026-02-27",
   "events": [
-    {
-      "title": "舞劇DanceDrama「朱鷺」",
-      "date_from": "2025-02-26",
-      "date_to": "2025-02-26",
-      "open_time": "18:00",
-      "start_time": "18:30",
-      "end_time": "20:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8343",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 舞劇DanceDrama「朱鷺」 開場 18:00/開演 18:30/終演 20:30",
-      "tags": {
-        "type": "performance",
-        "genres": [],
-        "flags": [
-          "night"
-        ]
-      }
-    },
     {
       "title": "令和6年度 第14旅団 音楽まつり",
       "date_from": "2025-03-01",

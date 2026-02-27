@@ -1,7 +1,7 @@
 {
   "venue_id": "ehime_prefectural_museum_of_art",
   "venue_name": "愛媛県美術館",
-  "last_success_at": "2026-02-25",
+  "last_success_at": "2026-02-27",
   "events": [
     {
       "title": "みる冒険 オノマトペで楽しむ",
@@ -516,28 +516,6 @@
       }
     },
     {
-      "title": "ふぇるとマフラー",
-      "date_from": "2026-02-26",
-      "date_to": "2026-02-26",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/7c76ad66-0630-4503-b956-2a54518caf2a",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年2月26日（木）13:00～16:00 2026年2月26日（木）14:00～17:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "シルクスクリーン",
       "date_from": "2026-03-05",
       "date_to": "2026-03-05",
@@ -581,6 +559,28 @@
         "flags": [
           "weekend"
         ]
+      }
+    },
+    {
+      "title": "インド藍染め",
+      "date_from": "2026-03-12",
+      "date_to": "2026-03-12",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/b73eab36-1283-4291-b673-187ee50e7158",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年3月12日（木）10:30～12:00 2026年3月12日（木）13:30～15:00 2026年3月12日（木）15:00～16:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -634,9 +634,9 @@
       }
     },
     {
-      "title": "簡易機による織り体験",
-      "date_from": "2026-03-21",
-      "date_to": "2026-03-21",
+      "title": "銅版画（エッチング）",
+      "date_from": "2026-03-19",
+      "date_to": "2026-03-19",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -644,17 +644,15 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/bfe92eb8-3323-4cfc-aa70-7fd35674d3fc",
+      "source_url": "https://www.ehime-art.jp/event/info/954d457e-bca2-4e7b-8a8d-790548626738",
       "source_type": "web",
       "venue_name": "愛媛県美術館",
       "status": null,
-      "body": "期間原文: 2026年3月21日（土）15:30～16:45",
+      "body": "期間原文: 2026年3月19日（木）10:00～15:00",
       "tags": {
-        "type": "workshop",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {

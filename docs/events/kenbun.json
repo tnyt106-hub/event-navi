@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-02-25",
+  "last_success_at": "2026-02-27",
   "events": [
     {
       "title": "宮本浩次 tour2026 新しい旅",
@@ -3416,6 +3416,31 @@
       "body": null,
       "tags": {
         "type": "festival",
+        "genres": [],
+        "flags": [
+          "paid",
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "SHOGO HAMADA ON THE ROAD 2025-2026 Under The BLUE SKY＜The First Period＞",
+      "date_from": "2026-05-19",
+      "date_to": "2026-05-19",
+      "open_time": "17:15",
+      "start_time": "18:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "前売：SS席13,200円、S席11,000円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3820/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
         "genres": [],
         "flags": [
           "paid",
@@ -8182,54 +8207,6 @@
         "flags": [
           "free",
           "weekend"
-        ]
-      }
-    },
-    {
-      "title": "レサン・コントール(Les Cinq Conteurs)",
-      "date_from": "2025-02-26",
-      "date_to": "2025-02-26",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": "無料（学校単位の招待公演）",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1853/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "全世代対象 合同説明会",
-      "date_from": "2025-02-27",
-      "date_to": "2025-02-27",
-      "open_time": "12:30",
-      "start_time": "13:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1854/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free"
         ]
       }
     },

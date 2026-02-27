@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-02-25",
+  "last_success_at": "2026-02-27",
   "events": [
     {
       "title": "ビジネスDXフェア in 高松 ～ ビジネスDXが、企業を変える。AIで変える。～",
@@ -959,6 +959,33 @@
         "flags": [
           "free",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "【桑田佳祐】『桑田佳祐 LIVE TOUR 2026』",
+      "date_from": "2026-07-14",
+      "date_to": "2026-07-15",
+      "open_time": "17:30",
+      "start_time": "18:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席指定 11,000 円（税込）",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_url": "https://kagawa-arena.com/event/1182/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "night"
         ]
       }
     },
