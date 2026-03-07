@@ -1,32 +1,7 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-02-27",
+  "last_success_at": "2026-03-07",
   "events": [
-    {
-      "title": "県文シネマ日和 Vol.79 シネマ歌舞伎『歌舞伎NEXT 阿弖流為〈アテルイ〉』",
-      "date_from": "2026-03-01",
-      "date_to": "2026-03-01",
-      "open_time": "12:30",
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "全席自由 一般 2,200円 学生 1,500円 ※未就学児入場不可",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2692",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "screening",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "県文シネマ日和Vol.80 Cinema as Light -平岡香純シネマコレクション-",
       "date_from": "2026-03-07",
@@ -87,7 +62,7 @@
       "end_time": "13:00",
       "description": null,
       "image_url": null,
-      "price": "全席指定 ①11:00開演 6,000円 ②14:30開演 6,000円 ※5歳以上または身長110ｃｍ以上のお子様はお席が必要。 ※当日は500円UP",
+      "price": "全席指定 ①11:00開演 6,000円 ②14:30開演 6,000円 ※5歳以上または身長110ｃｍ以上のお子様はお席が必要。 ※当日は500円UP ＜当館取り扱い分は完売しました＞",
       "contact": null,
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2696",
       "source_type": "web",
@@ -257,6 +232,32 @@
       }
     },
     {
+      "title": "県文シネマ日和Vol.83 NTLive ナショナル・シアター・ライブ「欲望という名の電車」",
+      "date_from": "2026-05-11",
+      "date_to": "2026-05-11",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": "16:52",
+      "description": null,
+      "image_url": null,
+      "price": "一般 3,000円 学生・障がい者手帳をお持ちの方 2,500円 ※未就学児入場不可 ※チケット1枚につき、お一人様1回限り有効",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2777",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
       "title": "第50回高知県新人演奏会デビューリサイタル 出演者募集中（3/10まで）",
       "date_from": "2026-05-30",
       "date_to": "2026-05-30",
@@ -306,6 +307,54 @@
         "flags": [
           "paid",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "6月8日(月)開催 ①【能meets謡十徳「大仏供養（だいぶつくよう）」】 ②【能meets高知「景清（かげきよ）」】",
+      "date_from": "2026-06-08",
+      "date_to": "2026-06-08",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "参加料 各講座2,000円 ※料金は当日精算",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2778",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "11月9日(月)開催 ①【能meets謡十徳「紅葉狩り（もみじがり）」】 ②【能meets高知「安宅（あたか）」】",
+      "date_from": "2026-11-09",
+      "date_to": "2026-11-09",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "参加料 各講座2,000円 ※料金は当日精算",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2779",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
         ]
       }
     }

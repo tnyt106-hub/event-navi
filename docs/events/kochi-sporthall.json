@@ -1,279 +1,7 @@
 {
   "venue_id": "kochi-sporthall",
-  "last_success_at": "2026-02-27",
+  "last_success_at": "2026-03-07",
   "events": [
-    {
-      "title": "第28回高知県スカッシュバレー連盟冬季大会",
-      "date_from": "2026-02-01",
-      "date_to": "2026-02-01",
-      "open_time": null,
-      "start_time": "08:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "2025年度四国バスケットボール黒潮新人交流大会",
-      "date_from": "2026-02-07",
-      "date_to": "2026-02-07",
-      "open_time": null,
-      "start_time": "08:30",
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "2025年度四国バスケットボール黒潮新人交流大会",
-      "date_from": "2026-02-08",
-      "date_to": "2026-02-08",
-      "open_time": null,
-      "start_time": "08:30",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "フォークダンス全国講習会伝達",
-      "date_from": "2026-02-08",
-      "date_to": "2026-02-08",
-      "open_time": null,
-      "start_time": "09:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和７年度准看護師試験",
-      "date_from": "2026-02-10",
-      "date_to": "2026-02-10",
-      "open_time": null,
-      "start_time": "08:30",
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "高知市くろしおカップ（中学生バレーボール）",
-      "date_from": "2026-02-11",
-      "date_to": "2026-02-11",
-      "open_time": null,
-      "start_time": "08:00",
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "マイナビ転職フェア",
-      "date_from": "2026-02-14",
-      "date_to": "2026-02-14",
-      "open_time": null,
-      "start_time": "07:30",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "business",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "高知県中体連卓球専門部 合同練習会",
-      "date_from": "2026-02-14",
-      "date_to": "2026-02-14",
-      "open_time": null,
-      "start_time": "08:30",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ハンドボール講習会（高知県ハンドボール協会）",
-      "date_from": "2026-02-21",
-      "date_to": "2026-02-21",
-      "open_time": null,
-      "start_time": "08:30",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "中学あすなろカップ（バドミントン）",
-      "date_from": "2026-02-22",
-      "date_to": "2026-02-22",
-      "open_time": null,
-      "start_time": "07:30",
-      "end_time": "19:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ハンドボール講習会（高知県ハンドボール協会）",
-      "date_from": "2026-02-23",
-      "date_to": "2026-02-23",
-      "open_time": null,
-      "start_time": "08:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "高知新聞企業 就職説明会",
       "date_from": "2026-03-01",
@@ -307,14 +35,14 @@
       "date_to": "2026-03-02",
       "open_time": null,
       "start_time": "08:30",
-      "end_time": "17:00",
+      "end_time": "21:00",
       "description": null,
       "image_url": null,
       "price": null,
       "contact": null,
       "source_url": "https://www.kochi-kenmin.org/events/",
       "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場）",
+      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
       "status": null,
       "body": null,
       "tags": {
@@ -322,7 +50,35 @@
         "genres": [
           "business"
         ],
-        "flags": []
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "2025-2026 リーグHレギュラーシーズン",
+      "date_from": "2026-03-07",
+      "date_to": "2026-03-07",
+      "open_time": null,
+      "start_time": "08:30",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     },
     {
@@ -358,54 +114,6 @@
       "date_to": "2026-03-14",
       "open_time": null,
       "start_time": "08:30",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "機能改善エクササイズ教室無料体験会",
-      "date_from": "2026-03-19",
-      "date_to": "2026-03-19",
-      "open_time": null,
-      "start_time": "14:50",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kochi-kenmin.org/events/",
-      "source_type": "web",
-      "venue_name": "高知県立県民体育館（補助競技場）",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "スポーツ教室1日無料体験会",
-      "date_from": "2026-03-20",
-      "date_to": "2026-03-20",
-      "open_time": null,
-      "start_time": "08:30",
       "end_time": "21:00",
       "description": null,
       "image_url": null,
@@ -422,8 +130,57 @@
           "sports"
         ],
         "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "機能改善エクササイズ教室無料体験会",
+      "date_from": "2026-03-19",
+      "date_to": "2026-03-19",
+      "open_time": null,
+      "start_time": "08:00",
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（補助競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
           "night"
         ]
+      }
+    },
+    {
+      "title": "スポーツ教室1日無料体験会",
+      "date_from": "2026-03-20",
+      "date_to": "2026-03-20",
+      "open_time": null,
+      "start_time": "07:30",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
       }
     },
     {
@@ -474,6 +231,236 @@
         "flags": [
           "weekend"
         ]
+      }
+    },
+    {
+      "title": "四国レディースバドミントン選手権大会",
+      "date_from": "2026-04-05",
+      "date_to": "2026-04-05",
+      "open_time": null,
+      "start_time": "08:00",
+      "end_time": "18:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "高知アニクリ祭2026",
+      "date_from": "2026-04-11",
+      "date_to": "2026-04-11",
+      "open_time": null,
+      "start_time": "08:30",
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "festival",
+        "genres": [],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "7:30～21:00",
+      "date_from": "2026-04-19",
+      "date_to": "2026-04-19",
+      "open_time": null,
+      "start_time": "07:30",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第46回中四国学生バドミントンリーグ戦",
+      "date_from": "2026-04-20",
+      "date_to": "2026-04-20",
+      "open_time": null,
+      "start_time": "08:30",
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "第46回中四国学生バドミントンリーグ戦",
+      "date_from": "2026-04-21",
+      "date_to": "2026-04-21",
+      "open_time": null,
+      "start_time": "08:30",
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "第46回中四国学生バドミントンリーグ戦",
+      "date_from": "2026-04-22",
+      "date_to": "2026-04-22",
+      "open_time": null,
+      "start_time": "08:30",
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "第46回中四国学生バドミントンリーグ戦",
+      "date_from": "2026-04-23",
+      "date_to": "2026-04-23",
+      "open_time": null,
+      "start_time": "08:30",
+      "end_time": "18:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "第46回中四国学生バドミントンリーグ戦",
+      "date_from": "2026-04-26",
+      "date_to": "2026-04-26",
+      "open_time": null,
+      "start_time": "08:30",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "中学学年別春季卓球大会",
+      "date_from": "2026-04-29",
+      "date_to": "2026-04-29",
+      "open_time": null,
+      "start_time": "07:30",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kochi-kenmin.org/events/",
+      "source_type": "web",
+      "venue_name": "高知県立県民体育館（主競技場・補助競技場）",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
       }
     }
   ]

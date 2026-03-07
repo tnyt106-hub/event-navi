@@ -1,81 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-02-27",
+  "last_success_at": "2026-03-07",
   "events": [
-    {
-      "title": "令和6年度 第14旅団 音楽まつり",
-      "date_from": "2025-03-01",
-      "date_to": "2025-03-01",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8405",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 令和6年度 第14旅団 音楽まつり 開場 12:30/開演 13:30/終演 15:30",
-      "tags": {
-        "type": "other",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "NHK交響楽団演奏会 高松公演",
-      "date_from": "2025-03-02",
-      "date_to": "2025-03-02",
-      "open_time": "14:45",
-      "start_time": "15:30",
-      "end_time": "17:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8408",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール NHK交響楽団演奏会 高松公演 開場 14:45/開演 15:30/終演 17:30 小ホール オラトリオ「メサイア」演奏会 naomi SATAKE memorial 開場 13:30/開演 14:00/終演 17:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和6年度 トライ式高等学院 卒業証書授与式",
-      "date_from": "2025-03-04",
-      "date_to": "2025-03-04",
-      "open_time": "11:30",
-      "start_time": "13:00",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8415",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "小ホール 令和6年度 トライ式高等学院 卒業証書授与式 開場 11:30/開演 13:00/終演 15:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "令和6年度 学校法人穴吹学園 卒業証書授与式",
       "date_from": "2025-03-07",
@@ -4574,7 +4500,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール HYDE Orchestra Tour 2026 JEKYLL 開場 18:00/開演 19:00/終演 21:00 小ホール エンゼル会創立70周年ピアノコンサート～特別ゲスト：アンドレ・シプコー～ 開場 12:30/開演 13:00/終演 16:30",
+      "body": "大ホール HYDE Orchestra Tour 2026 JEKYLL 開場 18:00/開演 19:00/終演 21:00（予定） 小ホール エンゼル会創立70周年ピアノコンサート～特別ゲスト：アンドレ・シプコー～ 開場 12:00/開演 12:15/終演 17:00",
       "tags": {
         "type": "performance",
         "genres": [
@@ -4587,7 +4513,7 @@
       }
     },
     {
-      "title": "牛田 智大 ピアノ・リサイタル",
+      "title": "レクザムホール リサイタルシリーズ 牛田 智大 ピアノ・リサイタル",
       "date_from": "2026-03-04",
       "date_to": "2026-03-04",
       "open_time": "18:00",
@@ -4601,7 +4527,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "小ホール 牛田 智大 ピアノ・リサイタル 開場 18:00/開演 18:30/終演 20:30",
+      "body": "小ホール レクザムホール リサイタルシリーズ 牛田 智大 ピアノ・リサイタル 開場 18:00/開演 18:30/終演 20:30",
       "tags": {
         "type": "performance",
         "genres": [
@@ -4610,6 +4536,28 @@
         "flags": [
           "night"
         ]
+      }
+    },
+    {
+      "title": "令和７年度 松陰高等学校 卒業証書授与式",
+      "date_from": "2026-03-05",
+      "date_to": "2026-03-05",
+      "open_time": "13:00",
+      "start_time": "13:30",
+      "end_time": "15:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10444",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 令和７年度 松陰高等学校 卒業証書授与式 開場 13:00/開演 13:30/終演 15:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {

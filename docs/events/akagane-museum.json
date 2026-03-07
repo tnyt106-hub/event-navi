@@ -1,46 +1,19 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-02-27",
+  "last_success_at": "2026-03-07",
   "events": [
     {
-      "title": "展覧会 BUTTON DESIGN ボタンにおける装飾の美たち",
-      "date_from": "2026-01-17",
-      "date_to": "2026-03-01",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: 新居浜市美術館 展示室２（あかがねミュージアム２階）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/%E3%83%81%E3%83%A9%E3%82%B7%E7%94%BB%E5%83%8FA%E9%9D%A2-730x1024.jpg",
-      "price": "300（240）円 （ ）内は20名以上の団体料金 大学生以下 無料 身体障害者手帳、療育手帳、精神障害者保健福祉手帳のいずれかをお持ちの方は無料（介助者1名 無料） ＊一般料金以外でご利用の方は、学生証や年齢確認のできるものをご持参ください。 ＊小学生以下は保護者の同伴が必要です。",
-      "contact": "あかがねミュージアム運営グループ 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14108",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "展覧会 令和７年度 高齢者趣味の作品展",
-      "date_from": "2026-02-26",
-      "date_to": "2026-03-01",
+      "title": "展覧会 第51回 墨華展",
+      "date_from": "2026-03-06",
+      "date_to": "2026-03-08",
       "open_time": null,
       "start_time": "09:30",
       "end_time": null,
       "description": "会場: 市民ギャラリー",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/%E9%AB%98%E9%BD%A2%E8%80%85%E8%B6%A3%E5%91%B3%E3%81%AE%E4%BD%9C%E5%93%81%E5%B1%95_page-0001-724x1024.jpg",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E9%BB%92%E3%81%AF%E3%81%AA-819x1024.jpg",
       "price": "無料",
-      "contact": null,
-      "source_url": "https://akaganemuseum.jp/event/event-14229",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14407",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -84,58 +57,6 @@
       }
     },
     {
-      "title": "ワークショップ・教室 版画プレス機開放日（2/28 ・3/28）",
-      "date_from": "2026-02-28",
-      "date_to": "2026-02-28",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 創作スペース",
-      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
-      "price": "プレス機使用料 300円 版画体験 無料（申込不要・予約可）",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-13968",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "展覧会 第51回 墨華展",
-      "date_from": "2026-03-06",
-      "date_to": "2026-03-08",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: 市民ギャラリー",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E9%BB%92%E3%81%AF%E3%81%AA-819x1024.jpg",
-      "price": "無料",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14407",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "イベント 劇団あかがね座「ロミオとロザライン」",
       "date_from": "2026-03-14",
       "date_to": "2026-03-14",
@@ -156,6 +77,33 @@
         "genres": [],
         "flags": [
           "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "展覧会 あかがね教室 成果発表展",
+      "date_from": "2026-03-14",
+      "date_to": "2026-03-25",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: アート工房展示スペース",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/%E6%88%90%E6%9E%9C%E5%B1%95.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14577",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
           "weekend"
         ]
       }
@@ -237,6 +185,56 @@
         ],
         "flags": [
           "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "イベント あかがね新春寄席",
+      "date_from": "2026-03-21",
+      "date_to": "2026-03-21",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": null,
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/2026032121.jpg",
+      "price": "全席自由 昼の部 前売り1,000円/当日1,500円/高校生以下無料（要整理券） 夜の部 前売り2,000円/当日2,500円",
+      "contact": "あかがねミュージアム：0897-31-0305 新居浜で落語を聴く会：niihama.rakugo@gmail.com",
+      "source_url": "https://akaganemuseum.jp/event/event-14445",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "event",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "ワークショップ・教室 俳優・齋藤 定彦のアクション体験『殺陣（たて）教室』",
+      "date_from": "2026-03-22",
+      "date_to": "2026-03-22",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/260322_%E6%AE%BA%E9%99%A3%E6%95%99%E5%AE%A4.jpg",
+      "price": "１名につき1,000 円",
+      "contact": "あかがねミュージアム TEL 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14194",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "paid",
           "weekend"
         ]
       }

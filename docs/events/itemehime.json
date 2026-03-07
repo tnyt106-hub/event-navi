@@ -1,6 +1,6 @@
 {
   "venue_id": "itemehime",
-  "last_success_at": "2026-02-27",
+  "last_success_at": "2026-03-07",
   "events": [
     {
       "title": "天使のはねランドセル展示会",
@@ -229,33 +229,6 @@
         "genres": [],
         "flags": [
           "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "おでかけライブin愛媛174",
-      "date_from": "2026-01-18",
-      "date_to": "2026-01-18",
-      "open_time": null,
-      "start_time": "11:30",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": "有料 料金詳細：パンフレット代 900円",
-      "contact": "お問合せフォーム→https://www.youyou.co.jp/contact/ メールアドレス→abvert@youmedia.net",
-      "source_url": "https://itemehime.com/event/sale/2026/01/6341/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "paid",
           "weekend"
         ]
       }

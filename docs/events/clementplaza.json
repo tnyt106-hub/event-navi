@@ -1,7 +1,7 @@
 {
   "venue_id": "clementplaza",
   "venue_name": "徳島駅クレメントプラザ",
-  "last_success_at": "2026-02-27",
+  "last_success_at": "2026-03-07",
   "events": [
     {
       "title": "【POP UP SHOP】3 ／4～3／15★卵丸（らんまる）ベビーカステラ登場！",
@@ -25,101 +25,6 @@
         "flags": [
           "weekend"
         ]
-      }
-    },
-    {
-      "title": "【POP UP SHOP】2／28・3／1★ENN オフプライスストア登場！",
-      "date_from": "2026-02-28",
-      "date_to": "2026-03-01",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/233",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 02月28日〜03月01日",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "はるいろフェア～春限定・いちご・さくらがテーマのアイテムやメニューをご紹介♡",
-      "date_from": "2026-02-01",
-      "date_to": "2026-03-06",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/227",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 02月01日〜03月06日",
-      "tags": {
-        "type": "business",
-        "genres": [],
-        "flags": [
-          "limited",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "JA全農とくしま×徳島駅バル～冬野菜フェア～",
-      "date_from": "2026-01-20",
-      "date_to": "2026-02-28",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/222",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 01月20日〜02月28日",
-      "tags": {
-        "type": "business",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "12／11（木）2Fにサイゼリヤがオープン！",
-      "date_from": "2026-12-11",
-      "date_to": "2026-12-11",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/208",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 12月11日",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
       }
     },
     {
