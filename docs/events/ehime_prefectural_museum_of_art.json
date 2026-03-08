@@ -1,7 +1,7 @@
 {
   "venue_id": "ehime_prefectural_museum_of_art",
   "venue_name": "愛媛県美術館",
-  "last_success_at": "2026-03-07",
+  "last_success_at": "2026-03-08",
   "events": [
     {
       "title": "みる冒険 オノマトペで楽しむ",
@@ -462,30 +462,6 @@
         "genres": [
           "art"
         ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "杉浦非水の教育者としての姿",
-      "date_from": "2026-03-07",
-      "date_to": "2026-03-07",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/7ba37bbe-49bc-46b8-9ad8-0744a1c70833",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年3月7日（土）14:00～15:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": [
           "weekend"
         ]

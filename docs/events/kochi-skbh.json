@@ -1,32 +1,7 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-03-07",
+  "last_success_at": "2026-03-08",
   "events": [
-    {
-      "title": "県文シネマ日和Vol.80 Cinema as Light -平岡香純シネマコレクション-",
-      "date_from": "2026-03-07",
-      "date_to": "2026-03-07",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "全席自由 500円 ※2歳以下膝上無料 ※チケット1枚につき、お一人様1回限り有効 ※当日は300円UP ※上映①・②とも同一プログラムです。1枚のチケットで6作品すべてをご覧いただけます。 ★平岡香純監督のトークイベントは、上映会のチケットをお持ちの方ならどなたでも参加できます。 【トークイベント・スペシャルゲスト】 e x-チャットモンチ ー ／ OLUYO社長 accobin(アッコビン)",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2674",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "screening",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
     {
       "title": "避難訓練コンサート",
       "date_from": "2026-03-09",

@@ -1,7 +1,7 @@
 {
   "venue_id": "asutamuland",
   "venue_name": "あすたむらんど徳島",
-  "last_success_at": "2026-03-07",
+  "last_success_at": "2026-03-08",
   "events": [
     {
       "title": "あすたむワクワクたからさがし！",
@@ -51,6 +51,33 @@
         "flags": [
           "weekend",
           "family"
+        ]
+      }
+    },
+    {
+      "title": "「科学作品展～ふしぎとアートがつながる世界～」作品展",
+      "date_from": "2026-01-17",
+      "date_to": "2026-03-15",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "\r\n        身の回りにある科学のふしぎを見つけて、自由に表現しよう！皆さまから募集した作品を展示中♪\n科学技術広報財団による第8回サイエンスフォトコンテスト入賞作品も併せて展示するよ！📸\nこの作品展に、審査や順位付けはありません。自分の興味のあること、科学について不思議に感じることなどを、小さなお子様から大人の方まで、自由に形にしてもらいました。\n\n【展示期間】1月17日(土)～3月15日(日)\nご提出いただいた作品は、あすたむらんど徳島子ども科学館 常設展示場展示ロビー、水鏡通路にて展示中です。\n【返却期間】3月16日(月)～3月23日(日)\n作品の返却をご希望される方は、以下の方法でご返却いたします。\n■返却方法：現地受け取り／郵送（着払い）\n【作品テーマ】「これって、科学！？」\n \n \nお問い合わせ用メールアドレス\n■問い合わせ先：kagaku-sakuhin@asutamu.jp\n \n応募する際の注意事項",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/科学作品展-～ふしぎとアートがつながる世界～.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/15636/",
+      "source_type": "web",
+      "venue_name": "子ども科学館 常設展示ロビー・水鏡廊下",
+      "status": null,
+      "body": "時間: 9：30～16：30\n備考: 観覧料／常設展示観覧券が必要",
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art",
+          "science"
+        ],
+        "flags": [
+          "weekend"
         ]
       }
     },
@@ -105,57 +132,6 @@
       }
     },
     {
-      "title": "「科学作品展～ふしぎとアートがつながる世界～」作品展",
-      "date_from": "2026-01-17",
-      "date_to": "2026-03-15",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "\r\n        身の回りにある科学のふしぎを見つけて、自由に表現しよう！皆さまから募集した作品を展示中♪\n科学技術広報財団による第8回サイエンスフォトコンテスト入賞作品も併せて展示するよ！📸\nこの作品展に、審査や順位付けはありません。自分の興味のあること、科学について不思議に感じることなどを、小さなお子様から大人の方まで、自由に形にしてもらいました。\n\n【展示期間】1月17日(土)～3月15日(日)\nご提出いただいた作品は、あすたむらんど徳島子ども科学館 常設展示場展示ロビー、水鏡通路にて展示中です。\n【返却期間】3月16日(月)～3月23日(日)\n作品の返却をご希望される方は、以下の方法でご返却いたします。\n■返却方法：現地受け取り／郵送（着払い）\n【作品テーマ】「これって、科学！？」\n \n \nお問い合わせ用メールアドレス\n■問い合わせ先：kagaku-sakuhin@asutamu.jp\n \n応募する際の注意事項",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/科学作品展-～ふしぎとアートがつながる世界～.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/15636/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 常設展示ロビー・水鏡廊下",
-      "status": null,
-      "body": "時間: 9：30～16：30\n備考: 観覧料／常設展示観覧券が必要",
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art",
-          "science"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "動物ふれあい体験会",
-      "date_from": "2026-03-20",
-      "date_to": "2026-03-22",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "description": "\r\n        あすたむらんどに、アルパカやかわいい動物たちが大集合！\nウサギやモルモットとのふれあい、\nアルパカとの記念撮影など、\n癒しのひとときを楽しもう！📸\nみんなで遊びに来てね🐰♡\n \n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16746/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 屋外展示場",
-      "status": null,
-      "body": "時間: 10:00 ～16:00\n備考: 参加費：常設展示の観覧券が必要 ※動物の体調管理および安全確保のため、ふれあい時間・内容には制限があります。 ※動物は予告なく変更となる場合があります。 ※小さなお子様は必ず保護者同伴でご参加ください。 ■業者名：大山トム・ソーヤ牧場 ■動物取扱責任者：大谷 誠 ■展 示：鳥取県指令第202100331027号 ■登録年月日：平成19年4月27日 ■有効期間：令和9年4月26日",
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "第54回企画展「発見！体験！カラフルワンダフル！」～はじめての色をみつけよう～",
       "date_from": "2026-03-20",
       "date_to": "2026-04-07",
@@ -182,21 +158,21 @@
       }
     },
     {
-      "title": "手づくり工房「プラ板ストラップ」",
-      "date_from": "2026-03-01",
-      "date_to": "2026-03-31",
+      "title": "動物ふれあい体験会",
+      "date_from": "2026-03-20",
+      "date_to": "2026-03-22",
       "open_time": null,
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": "\r\n        プラ板に絵を描いてオリジナルのキーホルダーを作ろう！\n\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/プラ板ストラップ.jpg",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "description": "\r\n        あすたむらんどに、アルパカやかわいい動物たちが大集合！\nウサギやモルモットとのふれあい、\nアルパカとの記念撮影など、\n癒しのひとときを楽しもう！📸\nみんなで遊びに来てね🐰♡\n \n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16751/",
+      "source_url": "https://asutamuland.jp/events/event/16746/",
       "source_type": "web",
-      "venue_name": "体験工房",
+      "venue_name": "子ども科学館 屋外展示場",
       "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。 ※写真はすべてイメージです。\n備考: 100円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。",
+      "body": "時間: 10:00 ～16:00\n備考: 参加費：常設展示の観覧券が必要 ※動物の体調管理および安全確保のため、ふれあい時間・内容には制限があります。 ※動物は予告なく変更となる場合があります。 ※小さなお子様は必ず保護者同伴でご参加ください。 ■業者名：大山トム・ソーヤ牧場 ■動物取扱責任者：大谷 誠 ■展 示：鳥取県指令第202100331027号 ■登録年月日：平成19年4月27日 ■有効期間：令和9年4月26日",
       "tags": {
         "type": "workshop",
         "genres": [],
@@ -233,6 +209,30 @@
       }
     },
     {
+      "title": "手づくり工房「プラ板ストラップ」",
+      "date_from": "2026-03-01",
+      "date_to": "2026-03-31",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": "\r\n        プラ板に絵を描いてオリジナルのキーホルダーを作ろう！\n\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/プラ板ストラップ.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16751/",
+      "source_type": "web",
+      "venue_name": "体験工房",
+      "status": null,
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。 ※写真はすべてイメージです。\n備考: 100円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "手づくり工房「スプリングアクセサリー」",
       "date_from": "2026-03-01",
       "date_to": "2026-04-05",
@@ -257,30 +257,6 @@
       }
     },
     {
-      "title": "趣味工房「七宝焼き」",
-      "date_from": "2026-03-07",
-      "date_to": "2026-03-07",
-      "open_time": null,
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "description": "\r\n        電気釜で熱して、光沢の美しい七宝焼きを作ろう！\n 申込期間：申込みを締め切りいたしました。 \n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/七宝焼き-rotated.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16748/",
-      "source_type": "web",
-      "venue_name": "あすたむらんど徳島",
-      "status": null,
-      "body": "時間: 13:30～15:30\n備考: 【申込期間：申込みを締め切りいたしました。】 参加費：1,000円 定 員：16名 ※小学生以下のお子様は保護者同伴でご参加ください。",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "手づくり工房「缶バッジ」",
       "date_from": "2026-03-01",
       "date_to": "2026-04-05",
@@ -296,6 +272,30 @@
       "venue_name": "体験工房",
       "status": null,
       "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 100円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "あすたむ天文教室「宇宙のフシギ」",
+      "date_from": "2026-03-22",
+      "date_to": "2026-03-22",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": "13:50",
+      "description": "\r\n        ブラックホールやダークマター。今もまだ分からない宇宙の不思議を大紹介！\n\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2025/10/あすたむ天文教室_宇宙のふしぎ.png",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16065/",
+      "source_type": "web",
+      "venue_name": "プラネタリウム",
+      "status": null,
+      "body": "時間: 13:00～13:50\n備考: 無料 ■対 象：小学生～一般",
       "tags": {
         "type": "workshop",
         "genres": [],
@@ -329,23 +329,23 @@
       }
     },
     {
-      "title": "あすたむ天文教室「宇宙のフシギ」",
-      "date_from": "2026-03-22",
-      "date_to": "2026-03-22",
+      "title": "趣味工房「七宝焼き」",
+      "date_from": "2026-03-07",
+      "date_to": "2026-03-07",
       "open_time": null,
-      "start_time": "13:00",
-      "end_time": "13:50",
-      "description": "\r\n        ブラックホールやダークマター。今もまだ分からない宇宙の不思議を大紹介！\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2025/10/あすたむ天文教室_宇宙のふしぎ.png",
+      "start_time": "13:30",
+      "end_time": "15:30",
+      "description": "\r\n        電気釜で熱して、光沢の美しい七宝焼きを作ろう！\n 申込期間：申込みを締め切りいたしました。 \n\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/七宝焼き-rotated.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16065/",
+      "source_url": "https://asutamuland.jp/events/event/16748/",
       "source_type": "web",
-      "venue_name": "プラネタリウム",
+      "venue_name": "あすたむらんど徳島",
       "status": null,
-      "body": "時間: 13:00～13:50\n備考: 無料 ■対 象：小学生～一般",
+      "body": "時間: 13:30～15:30\n備考: 【申込期間：申込みを締め切りいたしました。】 参加費：1,000円 定 員：16名 ※小学生以下のお子様は保護者同伴でご参加ください。",
       "tags": {
-        "type": "workshop",
+        "type": "other",
         "genres": [],
         "flags": [
           "weekend"
@@ -379,6 +379,30 @@
       }
     },
     {
+      "title": "たっぷりプラネ☆「宇宙の謎物体★ダークマター」",
+      "date_from": "2026-02-01",
+      "date_to": "2026-03-31",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": "13:50",
+      "description": "\r\n        宇宙の“謎物体”の魅力を紹介します！\n \n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16059/",
+      "source_type": "web",
+      "venue_name": "プラネタリウム",
+      "status": null,
+      "body": "時間: 13:00～13:50・15:40～16:30\n備考: プラネタリウム観覧券が必要",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "明日多夢子ども会社 活動(社員の募集は締切いたしました。)",
       "date_from": "2025-09-14",
       "date_to": "2026-03-08",
@@ -402,30 +426,6 @@
         "flags": [
           "weekend",
           "family"
-        ]
-      }
-    },
-    {
-      "title": "たっぷりプラネ☆「宇宙の謎物体★ダークマター」",
-      "date_from": "2026-02-01",
-      "date_to": "2026-03-31",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": "13:50",
-      "description": "\r\n        宇宙の“謎物体”の魅力を紹介します！\n \n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16059/",
-      "source_type": "web",
-      "venue_name": "プラネタリウム",
-      "status": null,
-      "body": "時間: 13:00～13:50・15:40～16:30\n備考: プラネタリウム観覧券が必要",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
         ]
       }
     }

@@ -1,29 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-03-07",
+  "last_success_at": "2026-03-08",
   "events": [
-    {
-      "title": "令和6年度 学校法人穴吹学園 卒業証書授与式",
-      "date_from": "2025-03-07",
-      "date_to": "2025-03-07",
-      "open_time": "09:00",
-      "start_time": "10:00",
-      "end_time": "12:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8418",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 令和6年度 学校法人穴吹学園 卒業証書授与式 開場 09:00/開演 10:00/終演 12:00 小ホール 香川市民劇場 3月例会 「グレイクリスマス」（劇団民藝公演） 開場 18:00/開演 18:30/終演 21:05",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "高橋 優 LIVE TOUR 2025「ARE YOU HAPPY？」",
       "date_from": "2025-03-08",
