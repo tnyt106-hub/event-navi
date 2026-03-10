@@ -1,6 +1,6 @@
 {
   "venue_id": "sunport_hall_takamatsu",
-  "last_success_at": "2026-03-08",
+  "last_success_at": "2026-03-10",
   "events": [
     {
       "title": "SATOの会研究発表会",
@@ -1300,6 +1300,31 @@
       "source_url": "https://www.sunport-hall.jp/hall/next.html",
       "source_type": null,
       "venue_name": "市民ギャラリー",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "The Setouchi テーブルコーディネートコンテスト 授賞式",
+      "date_from": "2026-04-18",
+      "date_to": "2026-04-18",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": "12:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料お問合せ食空間コーディネート協会四国支部, se ra sezon 090-7830-0510",
+      "contact": "食空間コーディネート協会四国支部, se ra sezon 090-7830-0510",
+      "source_url": "https://www.sunport-hall.jp/hall/next.html",
+      "source_type": null,
+      "venue_name": "コミュニケーションプラザ",
       "status": null,
       "body": null,
       "tags": {

@@ -1,33 +1,7 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-03-08",
+  "last_success_at": "2026-03-10",
   "events": [
-    {
-      "title": "避難訓練コンサート",
-      "date_from": "2026-03-09",
-      "date_to": "2026-03-09",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": "全席自由 入場無料 ※事前申込制",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2746",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
     {
       "title": "テレビ高知開局55周年記念興行 辻本茂雄還暦特別公演記念ツアー高知公演",
       "date_from": "2026-03-14",

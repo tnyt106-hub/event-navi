@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-03-08",
+  "last_success_at": "2026-03-10",
   "events": [
     {
       "title": "2026 BEST OF MISS 愛媛大会",
@@ -5956,6 +5956,78 @@
       }
     },
     {
+      "title": "第47回日本作業環境測定協会学術大会",
+      "date_from": "2026-10-21",
+      "date_to": "2026-10-21",
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "資料代￥4,400-、￥9,900-",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3849/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第47回日本作業環境測定協会学術大会",
+      "date_from": "2026-10-22",
+      "date_to": "2026-10-22",
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "資料代￥4,400-、￥9,900-",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3850/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第47回日本作業環境測定協会学術大会",
+      "date_from": "2026-10-23",
+      "date_to": "2026-10-23",
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": null,
+      "price": "資料代￥4,400-、￥9,900-",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3851/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
+      }
+    },
+    {
       "title": "えひめ食・観光・農林漁業プラットフォーム",
       "date_from": "2025-07-04",
       "date_to": "2025-07-04",
@@ -7961,106 +8033,6 @@
         "type": "performance",
         "genres": [
           "music"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "創立54周年「えひめバレエ祭」",
-      "date_from": "2025-03-09",
-      "date_to": "2025-03-09",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1770/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第36回建設業経理士検定試験（1級・2級）",
-      "date_from": "2025-03-09",
-      "date_to": "2025-03-09",
-      "open_time": "9:00",
-      "start_time": "9:30",
-      "end_time": "16:40",
-      "description": null,
-      "image_url": null,
-      "price": "無料（受験票）",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1876/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "トライアングルエヒメ",
-      "date_from": "2025-03-10",
-      "date_to": "2025-03-10",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1867/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "令和6年度愛媛県戦没者遺族大会",
-      "date_from": "2025-03-10",
-      "date_to": "2025-03-10",
-      "open_time": "9:00",
-      "start_time": "10:00",
-      "end_time": "11:40",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1877/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
         ],
         "flags": [
           "free"

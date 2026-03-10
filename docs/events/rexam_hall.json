@@ -1,34 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-03-08",
+  "last_success_at": "2026-03-10",
   "events": [
-    {
-      "title": "高橋 優 LIVE TOUR 2025「ARE YOU HAPPY？」",
-      "date_from": "2025-03-08",
-      "date_to": "2025-03-08",
-      "open_time": "16:30",
-      "start_time": "17:30",
-      "end_time": "20:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8625",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 高橋 優 LIVE TOUR 2025「ARE YOU HAPPY？」 開場 16:30/開演 17:30 小ホール 香川県立高松工芸高等学校吹奏楽部 第19回定期演奏会 開場 17:30/開演 18:00/終演 20:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "SAKANAQUARIUM2025 “怪獣”",
       "date_from": "2025-03-14",
@@ -4616,6 +4589,28 @@
       }
     },
     {
+      "title": "令和7年度香川県新任民生委員児童委員研修会",
+      "date_from": "2026-03-09",
+      "date_to": "2026-03-09",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10450",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 令和7年度香川県新任民生委員児童委員研修会 開場 12:30/開演 13:30/終演 16:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "明治大学マンドリン倶楽部演奏会",
       "date_from": "2026-03-11",
       "date_to": "2026-03-11",
@@ -4642,12 +4637,12 @@
       }
     },
     {
-      "title": "五嶋みどり＆ルツェルン・フェスティバル室内管弦楽団",
+      "title": "五嶋みどり with ルツェルン・フェスティバル室内管弦楽団",
       "date_from": "2026-03-13",
       "date_to": "2026-03-13",
       "open_time": "17:30",
       "start_time": "18:30",
-      "end_time": "20:30",
+      "end_time": "20:15",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4656,7 +4651,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 五嶋みどり＆ルツェルン・フェスティバル室内管弦楽団 開場 17:30/開演 18:30/終演 20:30",
+      "body": "大ホール 五嶋みどり with ルツェルン・フェスティバル室内管弦楽団 開場 17:30/開演 18:30/終演 20:15（予定）",
       "tags": {
         "type": "performance",
         "genres": [],
