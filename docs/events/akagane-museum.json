@@ -1,59 +1,7 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-03-10",
+  "last_success_at": "2026-03-16",
   "events": [
-    {
-      "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
-      "date_from": "2025-11-22",
-      "date_to": "2026-03-29",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: にいはまギャラリー",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/11/IMG_3768s-1024x768.jpg",
-      "price": "無料",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-13815",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "イベント 劇団あかがね座「ロミオとロザライン」",
-      "date_from": "2026-03-14",
-      "date_to": "2026-03-14",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール（あかがね座）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/12/%E3%81%82%E3%81%8B%E3%81%8C%E3%81%AD%E8%A1%A8-727x1024.jpg",
-      "price": "一般：2,000円（当日2,500円） 小学生から高校生：500円（当日1,000円） ※未就学児入場不可",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14334",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "event",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "展覧会 あかがね教室 成果発表展",
       "date_from": "2026-03-14",
@@ -82,28 +30,28 @@
       }
     },
     {
-      "title": "イベント ソプラノ 長野由記子 チャリティーリサイタル 〜平和の祈り〜",
-      "date_from": "2026-03-15",
-      "date_to": "2026-03-15",
+      "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
+      "date_from": "2025-11-22",
+      "date_to": "2026-03-29",
       "open_time": null,
-      "start_time": "14:00",
+      "start_time": "09:30",
       "end_time": null,
-      "description": "会場: 多目的ホール（あかがね座）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/260315%E9%95%B7%E9%87%8E%E5%85%88%E7%94%9F_page-0001-724x1024.jpg",
-      "price": "一般：3,000円 高校生以下：2,000円",
-      "contact": "長野由記子 090-9778-7456",
-      "source_url": "https://akaganemuseum.jp/event/event-14101",
+      "description": "会場: にいはまギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/11/IMG_3768s-1024x768.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-13815",
       "source_type": null,
       "venue_name": null,
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
+        "type": "exhibition",
         "genres": [
-          "music"
+          "art"
         ],
         "flags": [
-          "paid",
+          "free",
           "weekend"
         ]
       }
@@ -224,6 +172,60 @@
       "price": "無料",
       "contact": "あかがねミュージアム 0897-31-0305",
       "source_url": "https://akaganemuseum.jp/event/event-14512",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "展覧会 第17回 ステンドグラス工房太田生徒作品展",
+      "date_from": "2026-03-27",
+      "date_to": "2026-03-29",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: 市民ギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/%E3%82%B9%E3%83%86%E3%83%B3%E3%83%89%E3%82%B0%E3%83%A9%E3%82%B9%E5%A4%AA%E7%94%B0_page-0001.jpeg",
+      "price": "無料",
+      "contact": "ステンドグラス工房太田 090-6286-3499",
+      "source_url": "https://akaganemuseum.jp/event/event-14572",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "展覧会 内界",
+      "date_from": "2026-03-21",
+      "date_to": "2026-03-22",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: 市民ギャラリー(半面)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E3%81%AA%E3%81%84%E3%81%8B%E3%81%84%EF%BC%91-819x1024.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14534",
       "source_type": null,
       "venue_name": null,
       "status": null,

@@ -1,32 +1,7 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-03-10",
+  "last_success_at": "2026-03-16",
   "events": [
-    {
-      "title": "テレビ高知開局55周年記念興行 辻本茂雄還暦特別公演記念ツアー高知公演",
-      "date_from": "2026-03-14",
-      "date_to": "2026-03-14",
-      "open_time": "10:30",
-      "start_time": "11:00",
-      "end_time": "13:00",
-      "description": null,
-      "image_url": null,
-      "price": "全席指定 ①11:00開演 6,000円 ②14:30開演 6,000円 ※5歳以上または身長110ｃｍ以上のお子様はお席が必要。 ※当日は500円UP ＜当館取り扱い分は完売しました＞",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2696",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール オレンジホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "第22回スーパーハイスクールブラス演奏会",
       "date_from": "2026-03-24",
@@ -132,9 +107,9 @@
       "title": "県文シネマ日和Vol.82 ゲキ×シネ「バサラオ」",
       "date_from": "2026-04-11",
       "date_to": "2026-04-11",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
+      "open_time": "13:00",
+      "start_time": "13:30",
+      "end_time": "16:47",
       "description": null,
       "image_url": null,
       "price": "全席自由 2,600円 ※時間指定制 ※未就学児入場不可 ※チケット１枚につき、お一人様１回限り有効",
@@ -158,8 +133,8 @@
       "date_from": "2026-04-26",
       "date_to": "2026-04-26",
       "open_time": "13:30",
-      "start_time": null,
-      "end_time": null,
+      "start_time": "14:00",
+      "end_time": "16:00",
       "description": null,
       "image_url": null,
       "price": "全席自由 無料",

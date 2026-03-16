@@ -1,56 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-03-10",
+  "last_success_at": "2026-03-16",
   "events": [
-    {
-      "title": "SAKANAQUARIUM2025 “怪獣”",
-      "date_from": "2025-03-14",
-      "date_to": "2025-03-14",
-      "open_time": "17:30",
-      "start_time": "18:30",
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8439",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール SAKANAQUARIUM2025 “怪獣” 開場 17:30/開演 18:30 小ホール 「春よ、来い」～香川県出身在学生による東京藝術大学同期の卒業文集～ 開場 18:30/開演 19:00/終演 21:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "SAKANAQUARIUM2025 “怪獣”",
-      "date_from": "2025-03-15",
-      "date_to": "2025-03-15",
-      "open_time": "17:00",
-      "start_time": "18:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8496",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール SAKANAQUARIUM2025 “怪獣” 開場 17:00/開演 18:00 小ホール TSUKEMEN CONCERT キャンドルのぬくもり Supported by アイダ設計 開場 13:30/開演 14:00/終演 16:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "2025年 第18期 香川県民文化大学 3月講座",
       "date_from": "2025-03-16",
@@ -4714,7 +4665,7 @@
       "date_to": "2026-03-18",
       "open_time": "09:00",
       "start_time": "10:00",
-      "end_time": "12:00",
+      "end_time": "11:15",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4723,7 +4674,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "小ホール 令和7年度 高松大学・高松短期大学 学位記授与式 開場 09:00/開演 10:00/終演 12:00",
+      "body": "小ホール 令和7年度 高松大学・高松短期大学 学位記授与式 開場 09:00/開演 10:00/終演 11:15",
       "tags": {
         "type": "other",
         "genres": [],
@@ -4794,7 +4745,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 香川県立高松高等学校吹奏楽委員会 創部70周年記念 第51回定期演奏会 開場 17:30/開演 18:00/終演 20:30 小ホール 宮田大＆LEO DUOリサイタル 開場 13:30/開演 14:00/終演 16:00",
+      "body": "大ホール 香川県立高松高等学校吹奏楽委員会 創部70周年記念 第51回定期演奏会 開場 17:30/開演 18:00/終演 20:30 小ホール 総合開発Presents 宮田大＆LEO DUOリサイタル 開場 13:15/開演 14:00/終演 16:00",
       "tags": {
         "type": "performance",
         "genres": [

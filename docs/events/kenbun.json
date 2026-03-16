@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-03-10",
+  "last_success_at": "2026-03-16",
   "events": [
     {
       "title": "2026 BEST OF MISS 愛媛大会",
@@ -1356,6 +1356,31 @@
         "type": "other",
         "genres": [],
         "flags": []
+      }
+    },
+    {
+      "title": "白石ゆうじ大決起集会",
+      "date_from": "2026-04-17",
+      "date_to": "2026-04-17",
+      "open_time": "18:00",
+      "start_time": "19:00",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3855/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
+        ]
       }
     },
     {
@@ -8036,123 +8061,6 @@
         ],
         "flags": [
           "free"
-        ]
-      }
-    },
-    {
-      "title": "今治市合同企業説明会",
-      "date_from": "2025-03-11",
-      "date_to": "2025-03-11",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "16:30",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1878/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "令和6年度 学校法人河原学園",
-      "date_from": "2025-03-12",
-      "date_to": "2025-03-12",
-      "open_time": "9:10",
-      "start_time": "10:00",
-      "end_time": "12:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1767/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "令和6年度 学校法人河原学園",
-      "date_from": "2025-03-12",
-      "date_to": "2025-03-12",
-      "open_time": "12:30",
-      "start_time": "13:00",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1768/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "新居浜・西条・四国中央 合同企業説明会",
-      "date_from": "2025-03-14",
-      "date_to": "2025-03-14",
-      "open_time": "11:30",
-      "start_time": "11:30",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1683/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "DANCE STUDIO MOGA",
-      "date_from": "2025-03-15",
-      "date_to": "2025-03-15",
-      "open_time": "14:30",
-      "start_time": "15:00",
-      "end_time": "17:30",
-      "description": null,
-      "image_url": null,
-      "price": "有料（前売2,200円，当日2,500円，電子チケット2,500円）",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1879/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
         ]
       }
     },

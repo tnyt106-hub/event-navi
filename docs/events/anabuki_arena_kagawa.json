@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-03-10",
+  "last_success_at": "2026-03-16",
   "events": [
     {
       "title": "マイナビ就職セミナー 高松会場",
@@ -385,6 +385,30 @@
         "genres": [],
         "flags": [
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "【香川ファイブアローズ】B3 PLAYOFFS QUARTERFINALS 2025-26",
+      "date_from": "2026-04-28",
+      "date_to": "2026-04-30",
+      "open_time": null,
+      "start_time": "19:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "株式会社ファイブアローズ\r\nメール：t.fivearrows@gmail.com\r\n電話：087-813-7120（平日 10:00～18:00）",
+      "source_url": "https://kagawa-arena.com/event/1210/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night"
         ]
       }
     },

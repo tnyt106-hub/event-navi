@@ -1,85 +1,8 @@
 {
   "venue_id": "asutamuland",
   "venue_name": "あすたむらんど徳島",
-  "last_success_at": "2026-03-10",
+  "last_success_at": "2026-03-16",
   "events": [
-    {
-      "title": "桜幻想 あすたむらんど DE マルシェ",
-      "date_from": "2026-03-28",
-      "date_to": "2026-03-28",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "\r\n        桜色の夜に、願いを灯す。\n\n桜咲くあすたむらんど徳島で、キッチンカーや雑貨、ワークショップなどが並ぶマルシェを開催。\n18時からは桜色ランタンの打ち上げが開始。桜並木の一部もライトアップされ、桜とランタンの幻想的なコントラストをお楽しみいただけます。\n※桜色ランタンの購入は事前予約購入のみです。\nチラシに記載されているQRコードまたは下記リンクよりご予約下さい。\n≪ランタンの事前予約購入はこちらから≫\n※マルシェはどなたでもご参加いただけます。\n \n【チラシ】桜幻想表\n【チラシ】桜幻想裏\n \n主催：アオアクア\n共催：あすたむらんど徳島\nお問い合わせTel：070-8420-2628\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/02/桜幻想640×360.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16967/",
-      "source_type": "web",
-      "venue_name": "芝生広場",
-      "status": null,
-      "body": "時間: 10:00 ～19：00(開園時間を19時まで特別延長) ※駐車場は19：30まで ※子ども科学館、体験工房、木のおもちゃ美術館、くつろぎ館は通常通りの時間で閉館いたします。延長開館はございません。 🌸ランタンの打ち上げは18：00からを予定しております。\n備考: 🌸入場無料(商品購入には別途料金が必要です) 🌸バルーンランタンは事前予約での購入となります。 🌸小雨決行・荒天時中止 🌸会場の芝生広場には、ペットを連れて立ち入ることができません。 🌸お問い合わせTel：070-8420-2628",
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "food"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "「科学作品展～ふしぎとアートがつながる世界～」作品展",
-      "date_from": "2026-01-17",
-      "date_to": "2026-03-15",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "\r\n        身の回りにある科学のふしぎを見つけて、自由に表現しよう！皆さまから募集した作品を展示中♪\n科学技術広報財団による第8回サイエンスフォトコンテスト入賞作品も併せて展示するよ！📸\nこの作品展に、審査や順位付けはありません。自分の興味のあること、科学について不思議に感じることなどを、小さなお子様から大人の方まで、自由に形にしてもらいました。\n\n【展示期間】1月17日(土)～3月15日(日)\nご提出いただいた作品は、あすたむらんど徳島子ども科学館 常設展示場展示ロビー、水鏡通路にて展示中です。\n【返却期間】3月16日(月)～3月23日(日)\n作品の返却をご希望される方は、以下の方法でご返却いたします。\n■返却方法：現地受け取り／郵送（着払い）\n【作品テーマ】「これって、科学！？」\n \n \nお問い合わせ用メールアドレス\n■問い合わせ先：kagaku-sakuhin@asutamu.jp\n \n応募する際の注意事項",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/科学作品展-～ふしぎとアートがつながる世界～.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/15636/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 常設展示ロビー・水鏡廊下",
-      "status": null,
-      "body": "時間: 9：30～16：30\n備考: 観覧料／常設展示観覧券が必要",
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art",
-          "science"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "動物ふれあい体験会",
-      "date_from": "2026-03-20",
-      "date_to": "2026-03-22",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "description": "\r\n        あすたむらんどに、アルパカやかわいい動物たちが大集合！\nウサギやモルモットとのふれあい、\nアルパカとの記念撮影など、\n癒しのひとときを楽しもう！📸\nみんなで遊びに来てね🐰♡\n \n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16746/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 屋外展示場",
-      "status": null,
-      "body": "時間: 10:00 ～16:00\n備考: 参加費：常設展示の観覧券が必要 ※動物の体調管理および安全確保のため、ふれあい時間・内容には制限があります。 ※動物は予告なく変更となる場合があります。 ※小さなお子様は必ず保護者同伴でご参加ください。 ■業者名：大山トム・ソーヤ牧場 ■動物取扱責任者：大谷 誠 ■展 示：鳥取県指令第202100331027号 ■登録年月日：平成19年4月27日 ■有効期間：令和9年4月26日",
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "あすたむワクワクたからさがし！",
       "date_from": "2026-01-22",
@@ -99,32 +22,6 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第54回企画展「発見！体験！カラフルワンダフル！」～はじめての色をみつけよう～",
-      "date_from": "2026-03-20",
-      "date_to": "2026-04-07",
-      "open_time": null,
-      "start_time": "9:30",
-      "end_time": "16:30",
-      "description": "\r\n        春休み期間限定！ここでしかできない色があふれる世界にとびこもう！\n色があふれる！ひらひらトンネル\n色とりどりの和紙を使ったトンネルが出現！写真を撮りたくなること間違いなし！\n \n魔法の色さがし ～色の魔法使いからの挑戦状～\n色が隠れちゃった！？\n魔法のライトを使って、きみはいくつの色を探し出せるかな？たくさんの色がきみを待っているよ！\n虹ってどうなっているの？\n \nカードゲームやボールプールで色と遊ぼう！\n \nいろんな色の生き物の標本が見られる！\n \n企画展にまつわる趣味工房を開催！\n趣味工房「カラーメーカー」自分だけの色をつくろう！\n 申込期間：3月20日(金)～3月30日(月) \n📅4月4日(土)\n⏰14:00～15:00\n👥定員：20名\n≪詳しくはこちらから！≫\n \n■共催：徳島県\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16736/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 特別展示室",
-      "status": null,
-      "body": "時間: 9:30～16:30 【最終入場は16:00】\n備考: 常設展示の観覧券が必要 共催：徳島県",
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
         "flags": [
           "weekend"
         ]
@@ -158,24 +55,76 @@
       }
     },
     {
-      "title": "手づくり工房「スプリングアクセサリー」",
-      "date_from": "2026-03-01",
-      "date_to": "2026-04-05",
+      "title": "動物ふれあい体験会",
+      "date_from": "2026-03-20",
+      "date_to": "2026-03-22",
       "open_time": null,
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": "\r\n        花やウサギのビーズを使って春らしいアクセサリーを作ろう！\n\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/スプリングアクセサリー.jpg",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "description": "\r\n        あすたむらんどに、アルパカやかわいい動物たちが大集合！\nウサギやモルモットとのふれあい、\nアルパカとの記念撮影など、\n癒しのひとときを楽しもう！📸\nみんなで遊びに来てね🐰♡\n \n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16752/",
+      "source_url": "https://asutamuland.jp/events/event/16746/",
       "source_type": "web",
-      "venue_name": "体験工房",
+      "venue_name": "子ども科学館 屋外展示場",
       "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 200円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。",
+      "body": "時間: 10:00 ～16:00\n備考: 参加費：常設展示の観覧券が必要 ※動物の体調管理および安全確保のため、ふれあい時間・内容には制限があります。 ※動物は予告なく変更となる場合があります。 ※小さなお子様は必ず保護者同伴でご参加ください。 ■業者名：大山トム・ソーヤ牧場 ■動物取扱責任者：大谷 誠 ■展 示：鳥取県指令第202100331027号 ■登録年月日：平成19年4月27日 ■有効期間：令和9年4月26日",
       "tags": {
         "type": "workshop",
         "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第54回企画展「発見！体験！カラフルワンダフル！」～はじめての色をみつけよう～",
+      "date_from": "2026-03-20",
+      "date_to": "2026-04-07",
+      "open_time": null,
+      "start_time": "9:30",
+      "end_time": "16:30",
+      "description": "\r\n        春休み期間限定！ここでしかできない色があふれる世界にとびこもう！\n色があふれる！ひらひらトンネル\n色とりどりの和紙を使ったトンネルが出現！写真を撮りたくなること間違いなし！\n \n魔法の色さがし ～色の魔法使いからの挑戦状～\n色が隠れちゃった！？\n魔法のライトを使って、きみはいくつの色を探し出せるかな？たくさんの色がきみを待っているよ！\n虹ってどうなっているの？\n \nカードゲームやボールプールで色と遊ぼう！\n \nいろんな色の生き物の標本が見られる！\n \n企画展にまつわる趣味工房を開催！\n趣味工房「カラーメーカー」自分だけの色をつくろう！\n 申込期間：3月20日(金)～3月30日(月) \n📅4月4日(土)\n⏰14:00～15:00\n👥定員：20名\n≪詳しくはこちらから！≫\n \n■共催：徳島県\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16736/",
+      "source_type": "web",
+      "venue_name": "子ども科学館 特別展示室",
+      "status": null,
+      "body": "時間: 9:30～16:30 【最終入場は16:00】\n備考: 常設展示の観覧券が必要 共催：徳島県",
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "桜幻想 あすたむらんど DE マルシェ",
+      "date_from": "2026-03-28",
+      "date_to": "2026-03-28",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": "\r\n        桜色の夜に、願いを灯す。\n\n桜咲くあすたむらんど徳島で、キッチンカーや雑貨、ワークショップなどが並ぶマルシェを開催。\n18時からは桜色ランタンの打ち上げが開始。桜並木の一部もライトアップされ、桜とランタンの幻想的なコントラストをお楽しみいただけます。\n※桜色ランタンの購入は事前予約購入のみです。\nチラシに記載されているQRコードまたは下記リンクよりご予約下さい。\n≪ランタンの事前予約購入はこちらから≫\n※マルシェはどなたでもご参加いただけます。\n \n【チラシ】桜幻想表\n【チラシ】桜幻想裏\n \n主催：アオアクア\n共催：あすたむらんど徳島\nお問い合わせTel：070-8420-2628\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/02/桜幻想640×360.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16967/",
+      "source_type": "web",
+      "venue_name": "芝生広場",
+      "status": null,
+      "body": "時間: 10:00 ～19：00(開園時間を19時まで特別延長) ※駐車場は19：30まで ※子ども科学館、体験工房、木のおもちゃ美術館、くつろぎ館は通常通りの時間で閉館いたします。延長開館はございません。 🌸ランタンの打ち上げは18：00からを予定しております。\n備考: 🌸入場無料(商品購入には別途料金が必要です) 🌸バルーンランタンは事前予約での購入となります。 🌸小雨決行・荒天時中止 🌸会場の芝生広場には、ペットを連れて立ち入ることができません。 🌸お問い合わせTel：070-8420-2628",
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "food"
+        ],
         "flags": [
           "weekend"
         ]
@@ -197,6 +146,30 @@
       "venue_name": "体験工房",
       "status": null,
       "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。 ※写真はすべてイメージです。\n備考: 100円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "手づくり工房「スプリングアクセサリー」",
+      "date_from": "2026-03-01",
+      "date_to": "2026-04-05",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": "\r\n        花やウサギのビーズを使って春らしいアクセサリーを作ろう！\n\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/01/スプリングアクセサリー.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16752/",
+      "source_type": "web",
+      "venue_name": "体験工房",
+      "status": null,
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 200円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。",
       "tags": {
         "type": "workshop",
         "genres": [],
@@ -254,24 +227,26 @@
       }
     },
     {
-      "title": "（3月）あそびのワンダーランド「あすたむうんどうかい」（屋外）",
-      "date_from": "2026-03-15",
-      "date_to": "2026-03-15",
+      "title": "3月 屋内サイエンスショー(毎日開催)",
+      "date_from": "2026-03-01",
+      "date_to": "2026-03-31",
       "open_time": null,
       "start_time": "11:00",
-      "end_time": "14:00",
-      "description": "\r\n        幼児のお子様を対象に月１回開催！あすたむで思いっきり遊ぼう！\n3月は「あすたむうんどうかい」（屋外）\n \n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
+      "end_time": "11:20",
+      "description": "\r\n        午前と午後で異なる科学実験が楽しめるよ！🧪\nその場で一緒に体験しながら、科学の驚きを発見しよう！\n（AM）11:00～11:20／おもしろ静電気",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2025/10/屋内サイエンスショー「おもしろ静電気」-rotated.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16742/",
+      "source_url": "https://asutamuland.jp/events/event/15999/",
       "source_type": "web",
-      "venue_name": "子ども科学館前 芝生広場 （雨天時はジャンボパラソル）",
+      "venue_name": "子ども科学館 常設展示場 「科学技術と人間」サイエンスキッチン",
       "status": null,
-      "body": "時間: 11:00～14:00\n備考: ■参加費：無料 ■対 象：幼児とその保護者 ※場所や内容が変更・および中止になる場合がございます。",
+      "body": "時間: AM 11:00～11:20（おもしろ静電気） PM 14:00～14:20（サイエンスキッチン）\n備考: 常設展示観覧券が必要 ※実演内容・実演タイトルは変更になる場合がございます。",
       "tags": {
         "type": "other",
-        "genres": [],
+        "genres": [
+          "science"
+        ],
         "flags": [
           "weekend"
         ]
@@ -296,32 +271,6 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "3月 屋内サイエンスショー(毎日開催)",
-      "date_from": "2026-03-01",
-      "date_to": "2026-03-31",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": "11:20",
-      "description": "\r\n        午前と午後で異なる科学実験が楽しめるよ！🧪\nその場で一緒に体験しながら、科学の驚きを発見しよう！\n（AM）11:00～11:20／おもしろ静電気",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2025/10/屋内サイエンスショー「おもしろ静電気」-rotated.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/15999/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 常設展示場 「科学技術と人間」サイエンスキッチン",
-      "status": null,
-      "body": "時間: AM 11:00～11:20（おもしろ静電気） PM 14:00～14:20（サイエンスキッチン）\n備考: 常設展示観覧券が必要 ※実演内容・実演タイトルは変更になる場合がございます。",
-      "tags": {
-        "type": "other",
-        "genres": [
-          "science"
-        ],
         "flags": [
           "weekend"
         ]

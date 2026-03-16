@@ -1,7 +1,7 @@
 {
   "venue_id": "ehime_prefectural_museum_of_art",
   "venue_name": "愛媛県美術館",
-  "last_success_at": "2026-03-10",
+  "last_success_at": "2026-03-16",
   "events": [
     {
       "title": "みる冒険 オノマトペで楽しむ",
@@ -457,54 +457,6 @@
       "venue_name": "愛媛県美術館",
       "status": null,
       "body": "期間原文: 2026年1月28日（水） ～ 2026年4月19日（日）",
-      "tags": {
-        "type": "other",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "インド藍染め",
-      "date_from": "2026-03-12",
-      "date_to": "2026-03-12",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/b73eab36-1283-4291-b673-187ee50e7158",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年3月12日（木）10:30～12:00 2026年3月12日（木）13:30～15:00 2026年3月12日（木）15:00～16:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "17音で美術鑑賞",
-      "date_from": "2026-03-14",
-      "date_to": "2026-03-15",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/ed1df735-faa4-4b81-a9ae-deb95dd5221e",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年3月14日（土）11:00～12:00 2026年3月15日（日）11:00～12:00",
       "tags": {
         "type": "other",
         "genres": [
