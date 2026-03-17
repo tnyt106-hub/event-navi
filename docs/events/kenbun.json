@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-03-16",
+  "last_success_at": "2026-03-17",
   "events": [
     {
       "title": "2026 BEST OF MISS 愛媛大会",
@@ -8061,59 +8061,6 @@
         ],
         "flags": [
           "free"
-        ]
-      }
-    },
-    {
-      "title": "マイナビ 看護学生就職セミナー松山会場",
-      "date_from": "2025-03-16",
-      "date_to": "2025-03-16",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1568/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "nature",
-          "business"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "DANCE STUDIO MOGA",
-      "date_from": "2025-03-16",
-      "date_to": "2025-03-16",
-      "open_time": "12:30",
-      "start_time": "13:00",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": "有料（前売2,200円，当日2,500円，電子チケット2,500円）",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1880/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
         ]
       }
     },

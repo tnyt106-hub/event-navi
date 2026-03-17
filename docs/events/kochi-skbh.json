@@ -1,6 +1,6 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-03-16",
+  "last_success_at": "2026-03-17",
   "events": [
     {
       "title": "第22回スーパーハイスクールブラス演奏会",
@@ -255,6 +255,33 @@
         "genres": [],
         "flags": [
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "[TSUBURAYA IMAGINATIONプレミアムプラン会員限定(先着先行）] 3月26日(木)10:00〜3月27日(金) 23:59 高知県立県民文化ホール開館50周年 ウルトラヒーローズ THE LIVE～紡ぎ続ける物語～ in 高知",
+      "date_from": "2026-07-25",
+      "date_to": "2026-07-25",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席指定 前売 4000円 ※当日は500円UP ＜チケット購入時の注意事項＞ ※２歳以下は保護者膝上鑑賞無料（お席が必要な場合は有料） ※小学生以下は保護者同伴でご入場・ご鑑賞下さい ※前売で売り切れの際は当日券の販売はありません ※公演中の動画撮影及び写真撮影、録音は禁止です ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください ※出演者及び登場ヒーロー、時間は変更となる可能性があります ※チケットの取替・変更・キャンセル(払い戻し)はお受けできません",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2784",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール オレンジホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "limited",
+          "free"
         ]
       }
     },

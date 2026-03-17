@@ -1,33 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-03-16",
+  "last_success_at": "2026-03-17",
   "events": [
-    {
-      "title": "2025年 第18期 香川県民文化大学 3月講座",
-      "date_from": "2025-03-16",
-      "date_to": "2025-03-16",
-      "open_time": "12:00",
-      "start_time": "12:40",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8446",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 2025年 第18期 香川県民文化大学 3月講座 開場 12:00/開演 12:40/終演 15:00",
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "culture"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "令和6年度 高松大学・高松短期大学 学位記授与式",
       "date_from": "2025-03-19",
