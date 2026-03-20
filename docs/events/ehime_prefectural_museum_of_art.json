@@ -1,7 +1,7 @@
 {
   "venue_id": "ehime_prefectural_museum_of_art",
   "venue_name": "愛媛県美術館",
-  "last_success_at": "2026-03-17",
+  "last_success_at": "2026-03-20",
   "events": [
     {
       "title": "みる冒険 オノマトペで楽しむ",
@@ -366,33 +366,6 @@
       }
     },
     {
-      "title": "山川コレクション収蔵記念 PHOTOGRAPHY 写真のこれまで／これから",
-      "date_from": "2025-01-31",
-      "date_to": "2025-03-20",
-      "open_time": null,
-      "start_time": "09:40",
-      "end_time": "18:00",
-      "description": null,
-      "image_url": null,
-      "price": "600円",
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/exhibition/detail/395e0c7c-7574-44a7-a595-495174e3127b",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館 本館2階 常設展示室１・２",
-      "status": null,
-      "body": "期間原文: 2025年1月31日（金）～2025年3月20日（木）\n開館時間: 9:40～18:00（入場時間：17:30まで）\n料金詳細: 観覧料 当日料金 団体料金（20名以上） 一般 600円 400円 65歳以上の方 500円 ― ※大学生以下、障がい者手帳をお持ちの方とその介護者1名は無料です。 ※65歳以上の方、学生はそれぞれ年齢が分かるもの、学生証をご提示ください。",
-      "tags": {
-        "type": "other",
-        "genres": [
-          "nature"
-        ],
-        "flags": [
-          "paid",
-          "night"
-        ]
-      }
-    },
-    {
       "title": "コレクション・ハイライト/生誕200年 天野方壺 ―画と詩と旅と/みる冒険 かたちのカタチ",
       "date_from": "2025-01-11",
       "date_to": "2025-04-06",
@@ -414,30 +387,6 @@
         "flags": [
           "paid",
           "night"
-        ]
-      }
-    },
-    {
-      "title": "コレクショントーク",
-      "date_from": "2025-10-15",
-      "date_to": "2026-03-18",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/f0a5a9e9-8f33-4081-a179-42efd46b9b1b",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2025年10月15日（水）14:00～15:00 2025年10月19日（日）14:00～15:00 2025年11月16日（日）14:00～15:00 2025年11月19日（水）14:00～15:00 2025年12月17日（水）14:00～15:00 2025年12月21日（日）14:00～15:00 2026年2月15日（日）14:00～15:00 2026年2月18日（水）14:00～15:00 2026年3月15日（日）14:00～15:00 2026年3月18日（水）14:00～15:00",
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "weekend"
         ]
       }
     },
@@ -465,28 +414,6 @@
         "flags": [
           "weekend"
         ]
-      }
-    },
-    {
-      "title": "銅版画（エッチング）",
-      "date_from": "2026-03-19",
-      "date_to": "2026-03-19",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/954d457e-bca2-4e7b-8a8d-790548626738",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年3月19日（木）10:00～15:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
       }
     },
     {

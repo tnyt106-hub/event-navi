@@ -1,7 +1,34 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-03-17",
+  "last_success_at": "2026-03-20",
   "events": [
+    {
+      "title": "展覧会 あかがね水彩画教室 成果発表会",
+      "date_from": "2026-03-18",
+      "date_to": "2026-03-25",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: アート工房 展示スペース",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E6%B0%B4%E5%BD%A9%E7%94%BBDM-731x1024.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム",
+      "source_url": "https://akaganemuseum.jp/event/event-14481",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
     {
       "title": "展覧会 あかがね教室 成果発表展",
       "date_from": "2026-03-14",
@@ -84,33 +111,6 @@
       }
     },
     {
-      "title": "展覧会 あかがね水彩画教室 成果発表会",
-      "date_from": "2026-03-18",
-      "date_to": "2026-03-25",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: アート工房 展示スペース",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E6%B0%B4%E5%BD%A9%E7%94%BBDM-731x1024.jpg",
-      "price": "無料",
-      "contact": "あかがねミュージアム",
-      "source_url": "https://akaganemuseum.jp/event/event-14481",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "イベント あかがね新春寄席",
       "date_from": "2026-03-21",
       "date_to": "2026-03-21",
@@ -119,7 +119,7 @@
       "end_time": null,
       "description": "会場: 多目的ホール（あかがね座）",
       "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/2026032121.jpg",
-      "price": "全席自由 昼の部 前売り1,000円/当日1,500円/高校生以下無料（要整理券） 夜の部 前売り2,000円/当日2,500円",
+      "price": "全席自由 昼の部 前売り1,000円/当日1,500円/高校生以下無料（整理券不要） 夜の部 前売り2,000円/当日2,500円",
       "contact": "あかがねミュージアム：0897-31-0305 新居浜で落語を聴く会：niihama.rakugo@gmail.com",
       "source_url": "https://akaganemuseum.jp/event/event-14445",
       "source_type": null,
