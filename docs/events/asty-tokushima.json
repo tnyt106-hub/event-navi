@@ -1,216 +1,7 @@
 {
   "venue_id": "asty-tokushima",
-  "last_success_at": "2026-02-27",
+  "last_success_at": "2026-03-20",
   "events": [
-    {
-      "title": "食の宝島とくしまフェス",
-      "date_from": "2025-10-26",
-      "date_to": "2025-10-26",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n徳島食材のマルシェやキッチンカーの出店、料理実演とトークショー、阿波踊りなどのステージイベント、農漁業体験ツアー、農林水産業の機械展示、フードテック展示、就業相談ブース、農林漁業者向けセミナー＆商談会など。盛沢山のイベントです。",
-      "image_url": null,
-      "price": "入場無料",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2369.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "food"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "徳島新聞女性クラブ 小田井涼平トークショー",
-      "date_from": "2025-11-09",
-      "date_to": "2025-11-09",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n年間4回、文化、芸能、スポーツ、経済など多方面で活躍中の著名人をお招きし、会員限定の講演会、トークショーを開催します。",
-      "image_url": null,
-      "price": "会員限定（無料）",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1649.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "AIMYON TOUR 2025+\"ヘブンズ・ベーカリー\"",
-      "date_from": "2025-11-13",
-      "date_to": "2025-11-13",
-      "open_time": null,
-      "start_time": "18:30",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n過去にあいみょんがワンマンライブを開催したことが無い地域を巡るツアーです。詳細はオフィシャル・サイトにてご確認ください。https://www.aimyong.net/feature/HeavensBakery",
-      "image_url": null,
-      "price": "全席指定 9,000円（税込） ※未入学児童入場不可",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2370.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "paid",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "徳島フィッシングフェスティバル2025",
-      "date_from": "2025-11-15",
-      "date_to": "2025-11-15",
-      "open_time": null,
-      "start_time": "09:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n釣りとアウトドアの祭典です。出展ブースの他、キッチンカーやマルシェも多数出店予定。家族で楽しめる体験型イベントです。",
-      "image_url": null,
-      "price": "入場料：前売1,000円 当日1,500円（中学生以下は無料）",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1867.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "徳島フィッシングフェスティバル2025",
-      "date_from": "2025-11-16",
-      "date_to": "2025-11-16",
-      "open_time": null,
-      "start_time": "09:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n釣りとアウトドアの祭典です。出展ブースの他、キッチンカーやマルシェも多数出店予定。家族で楽しめる体験型イベントです。",
-      "image_url": null,
-      "price": "入場料：前売1,000円 当日1,500円（中学生以下は無料）",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1867.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "徳島ヴォルティス パブリックビューイング 2025 in アスティとくしま",
-      "date_from": "2025-11-23",
-      "date_to": "2025-11-23",
-      "open_time": null,
-      "start_time": "12:30",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n【 J2第37節大宮戦 】RB大宮アルディージャ戦（アウェイ）の徳島ヴォルティス パブリックビューイングです。親子サッカー教室、ヴォルティスコンディショニングプログラミング体験、見どころ解説、グッズ販売、ハーフタイム抽選会などもあります。",
-      "image_url": null,
-      "price": "入場無料、全席自由席※入場は無料ですが、チケットが必要です。",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1650.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "四国モノづくり合同商談会2025 in TOKUSHIMA",
-      "date_from": "2025-11-27",
-      "date_to": "2025-11-27",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n四国4県が合同で主催する、中小企業の広域的な取引促進を図るための商談会です。",
-      "image_url": null,
-      "price": "参加費無料※募集は終了しております。",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2357.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "business"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "マイナビ インターンシップ＆キャリア発見フェア",
-      "date_from": "2025-11-29",
-      "date_to": "2025-11-29",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n約60社が徳島に集結！夏には出会えなかった新たな企業に出会える！徳島駅からの無料バスもあります。",
-      "image_url": null,
-      "price": "入場無料",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1619.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "business"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "おしごと体験隊 キャリアチャレンジ 未来の種を育てよう！",
       "date_from": "2025-11-30",
@@ -228,14 +19,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "workshop",
-        "genres": [
-          "business"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -257,10 +43,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -282,10 +65,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -305,12 +85,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -330,12 +107,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -355,13 +129,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -381,12 +151,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -406,12 +173,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "festival",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -431,12 +195,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "festival",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -456,12 +217,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "business",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -483,10 +241,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -506,11 +261,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "business",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free"
-        ]
+        "flags": []
       }
     },
     {
@@ -532,9 +285,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free"
-        ]
+        "flags": []
       }
     },
     {
@@ -554,14 +305,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -581,14 +327,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -608,14 +349,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -637,9 +373,7 @@
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "free"
-        ]
+        "flags": []
       }
     },
     {
@@ -659,12 +393,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "festival",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -684,14 +415,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "business"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -711,13 +437,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
-        "genres": [
-          "business"
-        ],
-        "flags": [
-          "free"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -737,12 +459,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -762,12 +481,97 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "festival",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "flags": []
+      }
+    },
+    {
+      "title": "第146回 中部日本整形外科災害外科学会・学術集会",
+      "date_from": "2026-04-03",
+      "date_to": "2026-04-03",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 多目的ホール\n中部日本整形外科災害外科学会の学術集会です。",
+      "image_url": null,
+      "price": "関係者（無料）",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1690.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第146回 中部日本整形外科災害外科学会・学術集会",
+      "date_from": "2026-04-04",
+      "date_to": "2026-04-04",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 多目的ホール\n中部日本整形外科災害外科学会の学術集会です。",
+      "image_url": null,
+      "price": "関係者（無料）",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1690.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "B3リーグ2025-26シーズン徳島ガンバロウズホームゲーム",
+      "date_from": "2026-04-18",
+      "date_to": "2026-04-18",
+      "open_time": null,
+      "start_time": "15:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n対戦相手は「トライフープ岡山」です。",
+      "image_url": null,
+      "price": "有料：詳しくは公式サイトをご覧ください。",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2012.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "B3リーグ2025-26シーズン徳島ガンバロウズホームゲーム",
+      "date_from": "2026-04-19",
+      "date_to": "2026-04-19",
+      "open_time": null,
+      "start_time": "15:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n対戦相手は「トライフープ岡山」です。",
+      "image_url": null,
+      "price": "有料：詳しくは公式サイトをご覧ください。",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2012.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -787,12 +591,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -812,13 +613,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -838,13 +635,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -864,12 +657,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -889,12 +679,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
+        "flags": []
       }
     }
   ]
