@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-03-20",
+  "last_success_at": "2026-03-24",
   "events": [
     {
       "title": "2026 BEST OF MISS 愛媛大会",
@@ -3269,6 +3269,31 @@
           "culture"
         ],
         "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "オペラえひめ第17回定期公演",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
+      "open_time": "13:15",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": "S席5000円、A席4000円、学生2500円、当日は各席プラス500円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/3904/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "paid",
           "weekend"
         ]
       }

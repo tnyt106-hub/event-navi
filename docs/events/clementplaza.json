@@ -1,7 +1,7 @@
 {
   "venue_id": "clementplaza",
   "venue_name": "徳島駅クレメントプラザ",
-  "last_success_at": "2026-03-20",
+  "last_success_at": "2026-03-24",
   "events": [
     {
       "title": "33周年感謝祭★４月４日★阿波とくしま都市伝説スペシャルトークライブ開催決定！",
@@ -78,55 +78,6 @@
       }
     },
     {
-      "title": "【POP UP SHOP】3 ／20～3／21★小豆島三木製麺POP UP SHOP",
-      "date_from": "2026-03-20",
-      "date_to": "2026-03-21",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/239",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 03月20日〜03月21日",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "プレミアム付商品券応募抽選フォームはこちら",
-      "date_from": "2026-03-20",
-      "date_to": "2026-03-22",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/238",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 03月20日〜03月22日",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "limited",
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "3月27日(金)～29日(日)は全館ポイント5倍プレゼント！",
       "date_from": "2026-03-27",
       "date_to": "2026-03-29",
@@ -151,9 +102,9 @@
       }
     },
     {
-      "title": "3月21日・22日開催！ガチャ王国★ガチャ詰め放題！",
-      "date_from": "2026-03-21",
-      "date_to": "2026-03-22",
+      "title": "TAX FREE SHOP",
+      "date_from": "2026-04-29",
+      "date_to": "2026-04-29",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -161,17 +112,15 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/235",
+      "source_url": "https://clementplaza.com/event/detail/131",
       "source_type": "web",
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
-      "body": "開催期間: 03月21日〜03月22日",
+      "body": "開催期間: 04月29日",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "weekend"
-        ]
+        "flags": []
       }
     }
   ]

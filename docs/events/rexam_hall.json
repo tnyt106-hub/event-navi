@@ -1,61 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-03-20",
+  "last_success_at": "2026-03-24",
   "events": [
-    {
-      "title": "香川県立高松桜井高等学校吹奏楽部 第28回定期演奏会",
-      "date_from": "2025-03-22",
-      "date_to": "2025-03-22",
-      "open_time": "17:30",
-      "start_time": "18:00",
-      "end_time": "20:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8460",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 香川県立高松桜井高等学校吹奏楽部 第28回定期演奏会 開場 17:30/開演 18:00/終演 20:30",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "高松高等学校吹奏楽委員会 第50回記念定期演奏会",
-      "date_from": "2025-03-23",
-      "date_to": "2025-03-23",
-      "open_time": "17:00",
-      "start_time": "17:30",
-      "end_time": "20:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8462",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 高松高等学校吹奏楽委員会 第50回記念定期演奏会 開場 17:00/開演 17:30/終演 20:30 小ホール 第14回 香川誠陵中学校・高等学校吹奏楽部 定期演奏会 開場 14:30/開演 15:00/終演 17:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "THE YELLOW MONKEY TOUR 2024/25 ～Sparkleの惑星X～",
       "date_from": "2025-03-27",
