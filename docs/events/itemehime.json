@@ -1,26 +1,83 @@
 {
   "venue_id": "itemehime",
-  "last_success_at": "2026-03-24",
+  "last_success_at": "2026-04-11",
   "events": [
     {
-      "title": "天使のはねランドセル展示会",
-      "date_from": "2026-04-04",
-      "date_to": "2026-04-05",
+      "title": "マイナビ インターンシップ＆キャリア発見フェア 松山会場",
+      "date_from": "2026-06-06",
+      "date_to": "2026-06-06",
       "open_time": null,
-      "start_time": "10:00",
-      "end_time": "15:30",
+      "start_time": "13:00",
+      "end_time": "17:00",
       "description": null,
       "image_url": null,
       "price": "無料",
-      "contact": "セイバン カスタマーセンター 0120-749-440 (月～金曜日 9：00～17：00 ※祝日および年末年始、GW期間、夏季休暇期間を除く) https://www.seiban.co.jp/inquiry/ (セイバンお問い合わせフォーム)",
-      "source_url": "https://itemehime.com/event/exhibition/2026/04/6511/",
+      "contact": "csk-event3@mynavi.jp",
+      "source_url": "https://itemehime.com/event/event-other/2026/06/6754/",
       "source_type": null,
       "venue_name": null,
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [],
+        "type": "lecture",
+        "genres": [
+          "nature",
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "マイナビ進学フェア 松山会場",
+      "date_from": "2026-06-04",
+      "date_to": "2026-06-04",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "k-cyushikoku.event@mynavi.jp",
+      "source_url": "https://itemehime.com/event/event-other/2026/06/6744/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "business",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "マイナビ インターンシップ＆キャリア発見フェア 松山会場",
+      "date_from": "2026-05-09",
+      "date_to": "2026-05-09",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "csk-event3@mynavi.jp",
+      "source_url": "https://itemehime.com/event/event-other/2026/05/6696/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "nature",
+          "business"
+        ],
         "flags": [
           "free",
           "weekend"
@@ -180,56 +237,6 @@
         "flags": [
           "free",
           "paid"
-        ]
-      }
-    },
-    {
-      "title": "お宝なんでも鑑定会",
-      "date_from": "2026-02-14",
-      "date_to": "2026-02-15",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": "【電話】０１２０ー５１８－１００ 【メール】info@hongou.jp",
-      "source_url": "https://itemehime.com/event/event-other/2026/02/6478/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第33回 愛媛輸入車ショウ2026",
-      "date_from": "2026-02-14",
-      "date_to": "2026-02-14",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": "愛媛輸入車ショウ事務局（スタッグ内）TEL:089-915-2113（月曜～金曜 10時～18時 ※祝日を除く） Email: info@stag-ehime.jp",
-      "source_url": "https://itemehime.com/event/exhibition/2026/02/6466/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "business",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
         ]
       }
     }

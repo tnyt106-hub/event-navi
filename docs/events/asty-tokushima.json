@@ -1,160 +1,7 @@
 {
   "venue_id": "asty-tokushima",
-  "last_success_at": "2026-03-24",
+  "last_success_at": "2026-04-11",
   "events": [
-    {
-      "title": "おしごと体験隊 キャリアチャレンジ 未来の種を育てよう！",
-      "date_from": "2025-11-30",
-      "date_to": "2025-11-30",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n子どもたちに協力企業・団体ブースでお仕事を体験してもらうイベントです。",
-      "image_url": null,
-      "price": "事前申込制・小中学生（無料）",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2358.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "business"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "2025-26 大同生命 SV.LEAGUE MEN 第7節 ジェイテクトSTINGS愛知 vs. ウルフドッグス名古屋",
-      "date_from": "2025-12-06",
-      "date_to": "2025-12-06",
-      "open_time": null,
-      "start_time": "12:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\nバレーボール男子国内トップリーグの「ジェイテクトSTINGS愛知」と「ウルフドッグス名古屋」による試合です。",
-      "image_url": null,
-      "price": "有料 「チケットV」にて販売中",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1652.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "2025-26 大同生命 SV.LEAGUE MEN 第7節 ジェイテクトSTINGS愛知 vs. ウルフドッグス名古屋",
-      "date_from": "2025-12-07",
-      "date_to": "2025-12-07",
-      "open_time": null,
-      "start_time": "12:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\nバレーボール男子国内トップリーグの「ジェイテクトSTINGS愛知」と「ウルフドッグス名古屋」による試合です。",
-      "image_url": null,
-      "price": "有料 「チケットV」にて販売中",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1652.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "Gulliver 中古車展示即売会",
-      "date_from": "2025-12-13",
-      "date_to": "2025-12-13",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n中古車の展示販売",
-      "image_url": null,
-      "price": "入場無料",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1653.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "Gulliver 中古車展示即売会",
-      "date_from": "2025-12-14",
-      "date_to": "2025-12-14",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n中古車の展示販売",
-      "image_url": null,
-      "price": "入場無料",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1653.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "東京スカパラダイスオーケストラ 47都道府県 HALL TOUR 「47」",
-      "date_from": "2025-12-27",
-      "date_to": "2025-12-27",
-      "open_time": null,
-      "start_time": "17:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n東京スカパラダイスオーケストラ コンサート詳細はオフィシャル・サイトにてご確認ください。https://tokyoska.net/",
-      "image_url": null,
-      "price": "指定席¥8,800、指定席学生チケット¥5,500",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2287.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "とくしま就活ナビ 新年企業・団体研究セミナー",
       "date_from": "2026-01-04",
@@ -746,6 +593,31 @@
       }
     },
     {
+      "title": "STUDIO ONE EXTERA 発表会 1M•ME vol.1",
+      "date_from": "2026-05-16",
+      "date_to": "2026-05-16",
+      "open_time": null,
+      "start_time": "17:30",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n徳島のダンススクール「スタジオワン」の8年ぶりとなる過去最大規模の発表会",
+      "image_url": null,
+      "price": "前売 2,900円",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2290.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "徳島新聞女性クラブ 野々村友紀子トークショー",
       "date_from": "2026-05-24",
       "date_to": "2026-05-24",
@@ -766,6 +638,31 @@
         "genres": [],
         "flags": [
           "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "マイナビ転職フェア",
+      "date_from": "2026-05-31",
+      "date_to": "2026-05-31",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n転職希望者を対象とした、人気企業が多数参加する合同企業説明会です。",
+      "image_url": null,
+      "price": "入場無料事前登録とアプリインストールが必要です。",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2551.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "business",
+        "genres": [],
+        "flags": [
+          "free",
           "weekend"
         ]
       }

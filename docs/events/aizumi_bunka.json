@@ -1,24 +1,24 @@
 {
   "venue_id": "aizumi_bunka",
   "venue_name": "藍住町総合文化ホール",
-  "last_success_at": "2026-03-24",
+  "last_success_at": "2026-04-11",
   "events": [
     {
-      "title": "ホルンコンサート",
-      "date_from": "2026-03-01",
-      "date_to": "2026-03-01",
+      "title": "第26回　大阪音楽大学同窓会《幸楽会》徳島県支部　幸楽コンサート",
+      "date_from": "2026-04-19",
+      "date_to": "2026-04-19",
       "open_time": "13:30",
       "start_time": "14:00",
       "end_time": null,
-      "description": "ホルンコンサート\r\n\r\n　ホルンのソロやアンサンブル等、ホルンの魅力をたっぷりとお楽しみいただけるコンサートです。\r\n　ゲスト出演として元東京フィルハーモニー交響楽団首席ホルン奏者の磯部保彦氏のステージもお楽しみいただけます。\r\n　どうぞお気軽にお越しください。\r\n\r\n\r\n\r\n日時\r\n\r\n　令和8年3月1日(日曜日) 　開演／午後2時(開場／午後1時30分) 　\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　ホルンを愛する仲間たち\r\n\r\n入場料\r\n\r\n　無料\r\n\r\nチラシ\r\n\r\nチラシ[PDF：133KB]\r\n\r\n主催・お問合せ先\r\n\r\n　主催：洗足学園音楽大学同窓会徳島県支部\r\n　お問合先：090-3181-9053　（宮井）\r\n　\r\n",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026021400016/file_contents/20260210135702.jpg",
+      "description": "第26回　大阪音楽大学同窓会《幸楽会》徳島県支部　幸楽コンサート\r\n\r\n　大阪音楽大学幸楽会会員による、ピアノソロ、ピアノ連弾、声楽、ミニオペラによる演奏と、推薦演奏会金賞受賞者によるピアノ、フルート、声楽のフレッシュな演奏をお楽しみください。\r\n\r\n\r\n\r\n日時\r\n\r\n　令和8年4月19日(日曜日) 　開演／午後2時(開場／午後1時30分) 　\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　湯浅茉子（Pf.）\r\n　阿部杏祇（Vo.）\r\n　中川桃花（Pf.）\r\n　吉岡歩音（Vo.）\r\n　武田結衣（Fl.）\r\n　上原慎太郎（Pf.）\r\n　伊藤奈々（Pf.）\r\n　RiNa（川添衣利・増成春奈）（Pf.）\r\n　石川真子（Vo.）\r\n　張彩夏（Vo.）\r\n　臼井大樹（Vo.）\r\n　大田黒照幸（Vo.）\r\n\r\n入場料\r\n\r\n　一般:1500円\r\n　高校生以下:1000円\r\n　(当日500円増し)\r\n　※3歳以下のホール内への入場はご遠慮ください。\r\n\r\nチケット取扱い\r\n\r\n　藍住町総合文化ホール、黒崎楽器本店\r\n\r\n主催・お問合せ先\r\n\r\n　主催：大阪音楽大学《幸楽",
+      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026021800021/file_contents/kougaku2026.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026021400016/",
+      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026021800021/",
       "source_type": "web",
       "venue_name": "藍住町総合文化ホール",
       "status": null,
-      "body": "開催分: 2026年03月01日（日）",
+      "body": "開催分: 2026年04月19日（日）",
       "tags": {
         "type": "performance",
         "genres": [
@@ -30,127 +30,27 @@
       }
     },
     {
-      "title": "徳島県太極拳協会設立４０周年記念・第３０回交流大会",
-      "date_from": "2026-03-08",
-      "date_to": "2026-03-08",
-      "open_time": "10:30",
-      "start_time": "11:00",
+      "title": "笑福亭たま・旭堂南湖二人会 in 藍住町5",
+      "date_from": "2026-04-26",
+      "date_to": "2026-04-26",
+      "open_time": "14:00",
+      "start_time": "14:30",
       "end_time": null,
-      "description": "徳島県太極拳協会設立４０周年記念・第３０回交流大会\r\n\r\n　徳島県太極拳協会は設立40周年を迎えました。毎年開催している交流大会も30回を数えます。\r\n　記念になる今年は華やかに開催します。\r\n　協会所属公認の演武に加え、スペシャルゲストも登場します。\r\n\r\n\r\n\r\n日時\r\n\r\n　令和8年3月8日(日曜日) 　開演／午前11時(開場／午前10時30分) 　終演／午後4時　\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　徳島県太極拳協会所属公認教室、スペシャルゲスト　家門俊平・由美（太極拳）　別當　響（長拳）\r\n\r\n入場料\r\n\r\n　無料\r\n\r\nチラシ\r\n\r\n　チラシ [PDF：248KB]\r\n\r\n主催・お問合せ先\r\n\r\n　主催：徳島県太極拳協会\r\n　お問合先：TEL・FAX088-624-4730\r\n　\r\n",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026021400023/file_contents/taikyoku.jpg",
+      "description": "笑福亭たま・旭堂南湖二人会 in 藍住町5\r\n\r\n上方講談ニューウェーヴ 旭堂南湖と高学歴落語家 笑福亭たまが、今年も藍住町に降臨！\r\n天に竹林寺、地に少林寺、落語界に笑福亭たま、講談界に旭堂南湖あり！\r\n\r\n\r\n\r\n日時\r\n\r\n令和8年4月26日(日曜日)　開演／午後2時30分（開場／午後2時）\r\n\r\n場所\r\n\r\n藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n笑福亭たま、旭堂南湖\r\n\r\n落語＆講談\r\n\r\n落語　憧れの人間国宝\r\n　　　ほか一席（お楽しみ）\r\n\r\n講談　東玉（とうぎょく）と伯円（はくえん）\r\n　　　ほか一席（お楽しみ）\r\n\r\n入場料【全席自由】\r\n\r\n大学生・一般　　2,000円（当日2,500円）\r\n小・中・高校生　1,000円（当日1,500円）\r\n\r\nチケット取扱い\r\n\r\n藍住町総合文化ホール\r\n電話予約は主催者へご連絡ください（小西・080-6386-2946）。\r\n\r\n出演者紹介\r\n\r\n\r\n\r\n \r\n\r\n\r\n",
+      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026010800025/file_contents/202626.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026021400023/",
+      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026010800025/",
       "source_type": "web",
       "venue_name": "藍住町総合文化ホール",
       "status": null,
-      "body": "開催分: 2026年03月08日（日）",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "【終了】はねる Babies マレット",
-      "date_from": "2026-03-15",
-      "date_to": "2026-03-15",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "この公演は終演しました。\r\n\r\nはねる Babies マレット\r\n\r\n　3月15日開催の「はねるマレット うたうマリンバ」の特別企画として、ミニコンサートを開催します。3歳までのお子様がご入場になれます。\r\n\r\n　\r\n\r\n日時\r\n\r\n　令和8年3月15日（日曜日）　開演／午前11時（開場／午前10時30分）\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n入場料【先着30組】\r\n\r\n　全席自由　　親子ペア　1,000円\r\n\r\n　※3人目からは1人500円追加\r\n　※4歳以上の兄姉も参加可能です。\r\n\r\nチケット取扱い\r\n\r\n　・徳島子ども劇場\r\n　・藍住町総合文化ホール\r\n\r\n主催・共催\r\n\r\n　主催：徳島子ども劇場\r\n　共催：藍住町総合文化ホール\r\n\r\nお問合せ\r\n\r\n　徳島子ども劇場　080-3164-8613\r\n　藍住町総合文化ホール　088-637-3344\r\n",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2025121100024/file_contents/IMG_7936.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2025121100024/",
-      "source_type": "web",
-      "venue_name": "藍住町総合文化ホール",
-      "status": null,
-      "body": "開催分: 2026年03月15日（日）",
+      "body": "開催分: 2026年04月26日（日）",
       "tags": {
         "type": "other",
         "genres": [],
         "flags": [
           "weekend"
         ]
-      }
-    },
-    {
-      "title": "【終了】はねるマレット うたうマリンバ（マリンバカンパニー）",
-      "date_from": "2026-03-15",
-      "date_to": "2026-03-15",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": null,
-      "description": "この公演は終演しました。\r\n\r\nはねるマレット うたうマリンバ（マリンバカンパニー）\r\n\r\n　音楽会の日、ちょっとおめかしして出かけよう\r\n\r\n　鮮やかなパフォーマンスと木のあたたかい音色に包まれる、至福のひとときをお楽しみください。\r\n\r\n　\r\n\r\n日時\r\n\r\n令和8年3月15日(日曜日)　開演／午後2時（開場／午後1時30分）\r\n\r\n場所\r\n\r\n藍住町総合文化ホール　大ホール\r\n\r\n入場料【全席自由席】\r\n\r\n4歳以上　1,500円\r\n※3歳以下膝上鑑賞無料。\r\n\r\nチケット取扱い\r\n\r\n・徳島子ども劇場\r\n・藍住町総合文化ホール\r\n\r\n特別企画\r\n\r\n　特別企画として「はねる Babies マレット」を開催します。\r\n　3歳までのお子様が対象です。\r\n　※詳しくは「はねる Babies マレット」のページをご覧ください。\r\n\r\n主催・共催\r\n\r\n主催：徳島子ども劇場\r\n共催：藍住町総合文化ホール\r\n\r\nお問合せ\r\n\r\n　徳島子ども劇場　080-3164-8613\r\n　藍住町総合文化ホール　088-637-3344\r\n",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2025120100032/file_contents/IMG_7937.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2025120100032/",
-      "source_type": "web",
-      "venue_name": "藍住町総合文化ホール",
-      "status": null,
-      "body": "開催分: 2026年03月15日（日）",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "徳島北高校　定期演奏会・書道展・美術部展",
-      "date_from": "2026-03-25",
-      "date_to": "2026-03-25",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "徳島北高校 定期演奏会・書道展・美術部展\r\n\r\n　徳島北高校の吹奏楽部・合唱部による定期演奏会、書道部による書道展、美術部による美術部展を同日開催します。\r\n　日頃の部活動の成果を是非ご体感ください。一筆一筆に思いを込めた書作や、彩り豊かな美術作品、そして心に響く旋律など、生徒たちの努力の結晶を皆様にお届けします。\r\n\r\n  \r\n\r\n日時\r\n\r\n　定期演奏会：令和８年３月２５日（水曜日）開演／午後２時　（開演／午後１時３０分）\r\n　書道部展・美術部展：令和８年３月２５日（水曜日）　正午～午後５時　\r\n\r\n　　　　　　　　　　　令和８年３月２６日（木曜日）　午前９時～午後４時\r\n\r\n場所\r\n\r\n　定期演奏会：藍住町総合文化ホール　大ホール\r\n　書道部展：藍住町総合文化ホール　交流室２A\r\n　美術部展：藍住町総合文化ホール　交流室２B\r\n\r\n出演者\r\n\r\n　徳島北高校吹奏楽部・合唱部・書道部・美術部\r\n\r\n入場料\r\n\r\n　定期演奏会：500円（当日600円）\r\n　書道部展・美術部展：無料\r\n\r\nチケット取扱い\r\n\r\n　徳島県立徳島北高等学校\r\n\r\n主催・お問合せ先\r\n\r\n　主催：徳島県立徳",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026022400015/file_contents/midashi.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026022400015/",
-      "source_type": "web",
-      "venue_name": "藍住町総合文化ホール",
-      "status": null,
-      "body": "開催分: 2026年03月25日（水）",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "art",
-          "music"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "徳島北高校　定期演奏会・書道展・美術部展",
-      "date_from": "2026-03-26",
-      "date_to": "2026-03-26",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "徳島北高校 定期演奏会・書道展・美術部展\r\n\r\n　徳島北高校の吹奏楽部・合唱部による定期演奏会、書道部による書道展、美術部による美術部展を同日開催します。\r\n　日頃の部活動の成果を是非ご体感ください。一筆一筆に思いを込めた書作や、彩り豊かな美術作品、そして心に響く旋律など、生徒たちの努力の結晶を皆様にお届けします。\r\n\r\n  \r\n\r\n日時\r\n\r\n　定期演奏会：令和８年３月２５日（水曜日）開演／午後２時　（開演／午後１時３０分）\r\n　書道部展・美術部展：令和８年３月２５日（水曜日）　正午～午後５時　\r\n\r\n　　　　　　　　　　　令和８年３月２６日（木曜日）　午前９時～午後４時\r\n\r\n場所\r\n\r\n　定期演奏会：藍住町総合文化ホール　大ホール\r\n　書道部展：藍住町総合文化ホール　交流室２A\r\n　美術部展：藍住町総合文化ホール　交流室２B\r\n\r\n出演者\r\n\r\n　徳島北高校吹奏楽部・合唱部・書道部・美術部\r\n\r\n入場料\r\n\r\n　定期演奏会：500円（当日600円）\r\n　書道部展・美術部展：無料\r\n\r\nチケット取扱い\r\n\r\n　徳島県立徳島北高等学校\r\n\r\n主催・お問合せ先\r\n\r\n　主催：徳島県立徳",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026022400015/file_contents/midashi.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026022400015/",
-      "source_type": "web",
-      "venue_name": "藍住町総合文化ホール",
-      "status": null,
-      "body": "開催分: 2026年03月26日（木）",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "art",
-          "music"
-        ],
-        "flags": []
       }
     }
   ]

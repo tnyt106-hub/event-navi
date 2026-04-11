@@ -1,157 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-03-24",
+  "last_success_at": "2026-04-11",
   "events": [
-    {
-      "title": "THE YELLOW MONKEY TOUR 2024/25 ～Sparkleの惑星X～",
-      "date_from": "2025-03-27",
-      "date_to": "2025-03-27",
-      "open_time": "17:30",
-      "start_time": "18:30",
-      "end_time": "20:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8466",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール THE YELLOW MONKEY TOUR 2024/25 ～Sparkleの惑星X～ 開場 17:30/開演 18:30/終演 20:30 小ホール 高松西高等学校吹奏楽部 第36回 定期演奏会 開場 17:30/開演 18:00/終演 20:30（予定）",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "第13回全国選抜中学校テニス大会",
-      "date_from": "2025-03-28",
-      "date_to": "2025-03-28",
-      "open_time": "13:00",
-      "start_time": "14:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8470",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 第13回全国選抜中学校テニス大会 開場 13:00/開演 14:00/終演 16:00",
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "高松第一高等学校吹奏楽部第53回定期演奏会",
-      "date_from": "2025-03-30",
-      "date_to": "2025-03-30",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "16:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8472",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 高松第一高等学校吹奏楽部第53回定期演奏会 開場 13:00/開演 13:30/終演 16:30 小ホール かがわジュニア・フィルハーモニック・オーケストラ合奏コース公開レッスン＆基礎コース成果発表会 開場 12:30/開演 13:00/終演 16:00（予定）",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "小原孝 ピアノリサイタル 2025",
-      "date_from": "2025-04-05",
-      "date_to": "2025-04-05",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8560",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "小ホール 小原孝 ピアノリサイタル 2025 開場 13:30/開演 14:00/終演 16:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "2025年 第18期 香川県民文化大学 4月講座",
-      "date_from": "2025-04-06",
-      "date_to": "2025-04-06",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8562",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 2025年 第18期 香川県民文化大学 4月講座 開場 12:00/開演 13:00/終演 15:00 小ホール コレギウム・ムジクム高松 第29回演奏会 開場 13:20/開演 14:00/終演 16:00",
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "culture"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和7年度 学校法人穴吹学園 入学式",
-      "date_from": "2025-04-11",
-      "date_to": "2025-04-11",
-      "open_time": "09:00",
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8567",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 令和7年度 学校法人穴吹学園 入学式 開場 09:00/開演 10:30/終演 12:00 小ホール 非公開",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
     {
       "title": "Japan Ballet Competition 香川 2025",
       "date_from": "2025-04-12",
@@ -4639,7 +4489,7 @@
       "date_to": "2026-03-26",
       "open_time": "17:30",
       "start_time": "18:00",
-      "end_time": "20:30",
+      "end_time": "20:00",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4648,7 +4498,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 香川県立高松北中学校・高等学校吹奏楽部 第38回定期演奏会 開場 17:30/開演 18:00/終演 20:30 小ホール 第2回「讃岐葵会」京都能楽養成会研究発表会 開場 12:00/開演 13:00/終演 16:50",
+      "body": "大ホール 香川県立高松北中学校・高等学校吹奏楽部 第38回定期演奏会 開場 17:30/開演 18:00/終演 20:00 小ホール 第2回「讃岐葵会」京都能楽養成会研究発表会 開場 12:00/開演 13:00/終演 16:50",
       "tags": {
         "type": "performance",
         "genres": [
@@ -4689,7 +4539,7 @@
       "date_to": "2026-03-28",
       "open_time": "17:00",
       "start_time": "17:30",
-      "end_time": "20:00",
+      "end_time": "20:10",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4698,7 +4548,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 高松第一高等学校吹奏楽部第54回定期演奏会 開場 17:00/開演 17:30/終演 20:00（予定）",
+      "body": "大ホール 高松第一高等学校吹奏楽部第54回定期演奏会 開場 17:00/開演 17:30/終演 20:10",
       "tags": {
         "type": "performance",
         "genres": [
@@ -4778,7 +4628,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 宮川彬良×Osaka Shion Wind Orchestra「宇宙戦艦ヤマト」コンサート in 高松 開場 16:00/開演 17:00/終演 19:00 小ホール コレギウム・ムジクム高松 第30回演奏会 開場 13:20/開演 14:00/終演 16:10",
+      "body": "大ホール 宮川彬良×Osaka Shion Wind Orchestra「宇宙戦艦ヤマト」コンサート in 高松 開場 16:00/開演 17:00/終演 19:00 小ホール コレギウム・ムジクム高松 第30回演奏会 開場 13:20/開演 14:00/終演 16:00",
       "tags": {
         "type": "performance",
         "genres": [
@@ -4796,7 +4646,7 @@
       "date_to": "2026-04-09",
       "open_time": "12:00",
       "start_time": "13:00",
-      "end_time": "14:00",
+      "end_time": "14:30",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4805,7 +4655,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 令和8年度 学校法人穴吹学園 入学式 開場 12:00/開演 13:00/終演 14:00",
+      "body": "大ホール 令和8年度 学校法人穴吹学園 入学式 開場 12:00/開演 13:00/終演 14:30",
       "tags": {
         "type": "other",
         "genres": [],
@@ -4818,7 +4668,7 @@
       "date_to": "2026-04-10",
       "open_time": "17:30",
       "start_time": "18:30",
-      "end_time": "20:30",
+      "end_time": "21:00",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4827,7 +4677,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール ポルノグラフィティ 20thライヴサーキット&#8221;水” 開場 17:30/開演 18:30/終演 20:30 小ホール 非公開",
+      "body": "大ホール ポルノグラフィティ 20thライヴサーキット&#8221;水” 開場 17:30/開演 18:30/終演 21:00 小ホール 非公開",
       "tags": {
         "type": "other",
         "genres": [],
@@ -4884,6 +4734,28 @@
         "flags": [
           "weekend"
         ]
+      }
+    },
+    {
+      "title": "高松高等予備校 入学式",
+      "date_from": "2026-04-13",
+      "date_to": "2026-04-13",
+      "open_time": "10:30",
+      "start_time": "11:00",
+      "end_time": "12:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10593",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 高松高等予備校 入学式 開場 10:30/開演 11:00/終演 12:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -5008,6 +4880,334 @@
         "type": "other",
         "genres": [],
         "flags": []
+      }
+    },
+    {
+      "title": "0歳からのコンサート＆オープンハウス",
+      "date_from": "2026-05-02",
+      "date_to": "2026-05-02",
+      "open_time": "10:30",
+      "start_time": "11:00",
+      "end_time": "12:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10712",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 0歳からのコンサート＆オープンハウス 開場 10:30/開演 11:00/終演 12:00",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ピティナピアノステップ",
+      "date_from": "2026-05-05",
+      "date_to": "2026-05-05",
+      "open_time": "09:00",
+      "start_time": "09:30",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10713",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール ピティナピアノステップ 開場 09:00/開演 09:30/終演 20:00",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "香川県人権・同和教育研究協議会総会 部会別総会・研修会",
+      "date_from": "2026-05-08",
+      "date_to": "2026-05-08",
+      "open_time": "09:30",
+      "start_time": "10:00",
+      "end_time": "12:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10714",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 香川県人権・同和教育研究協議会総会 部会別総会・研修会 開場 09:30/開演 10:00/終演 12:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "東京藝術大学音楽学部早期教育プロジェクト2026 in 香川 ピアノ部門",
+      "date_from": "2026-05-09",
+      "date_to": "2026-05-09",
+      "open_time": "10:15",
+      "start_time": "10:30",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10715",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 東京藝術大学音楽学部早期教育プロジェクト2026 in 香川 ピアノ部門 開場 10:15/開演 10:30/終演 17:00",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ミヒャエル・バルケ指揮×阪田知樹（ピアノ）×児玉隼人（トランペット）withミュンヘン・ゲルトナープラッツ州立劇場管弦楽団",
+      "date_from": "2026-05-10",
+      "date_to": "2026-05-10",
+      "open_time": "13:15",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10716",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール ミヒャエル・バルケ指揮×阪田知樹（ピアノ）×児玉隼人（トランペット）withミュンヘン・ゲルトナープラッツ州立劇場管弦楽団 開場 13:15/開演 14:00/終演 16:00",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "聖飢魔II GREAT BLACK MASS TOUR「SEASON II」",
+      "date_from": "2026-05-16",
+      "date_to": "2026-05-16",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10718",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 聖飢魔II GREAT BLACK MASS TOUR「SEASON II」 開場 17:00/開演 18:00/終演 20:00 小ホール PEOPLE 1 2026 SS TOUR 開場 17:30/開演 18:00/終演 20:00",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "モーニング娘。&#8217;26 コンサートツアー春 &#8211; Rays Of Light &#8211;",
+      "date_from": "2026-05-17",
+      "date_to": "2026-05-17",
+      "open_time": "13:30",
+      "start_time": "14:30",
+      "end_time": "16:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10720",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール モーニング娘。&#8217;26 コンサートツアー春 &#8211; Rays Of Light &#8211; 開場 13:30/開演 14:30/終演 16:30",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "2026年 第19期 香川県民文化大学 5月講座",
+      "date_from": "2026-05-20",
+      "date_to": "2026-05-20",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10722",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 2026年 第19期 香川県民文化大学 5月講座 開場 12:00/開演 13:00/終演 15:00",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "culture"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "さとうみつろうトークショー＆ピアノライブ",
+      "date_from": "2026-05-22",
+      "date_to": "2026-05-22",
+      "open_time": "14:00",
+      "start_time": "15:00",
+      "end_time": "18:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10723",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール さとうみつろうトークショー＆ピアノライブ 開場 14:00/開演 15:00/終演 18:00",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "四国新聞女性クラブ",
+      "date_from": "2026-05-24",
+      "date_to": "2026-05-24",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10724",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 四国新聞女性クラブ 開場 12:30/開演 13:30/終演 16:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "香川市民劇場5月例会｢おんやりょう｣(東京芸術座公演)",
+      "date_from": "2026-05-25",
+      "date_to": "2026-05-25",
+      "open_time": "18:00",
+      "start_time": "18:30",
+      "end_time": "20:05",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10725",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 香川市民劇場5月例会｢おんやりょう｣(東京芸術座公演) 開場 18:00/開演 18:30/終演 20:05",
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "STARTS presents MISIA 星空のライヴXIII GRAND HORIZON",
+      "date_from": "2026-05-29",
+      "date_to": "2026-05-29",
+      "open_time": "17:30",
+      "start_time": "18:30",
+      "end_time": "20:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10726",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール STARTS presents MISIA 星空のライヴXIII GRAND HORIZON 開場 17:30/開演 18:30/終演 20:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "新韓楽（SHIN KAN GAKU） 韓国伝統音楽の新たなる挑戦",
+      "date_from": "2026-05-31",
+      "date_to": "2026-05-31",
+      "open_time": "13:30",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=10730",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 新韓楽（SHIN KAN GAKU） 韓国伝統音楽の新たなる挑戦 開場 13:30/開演 14:00/終演 16:00 小ホール ベリーグッドマン “Party Monster” TOUR 2026 ～応援歌もやるよ～ 開場 16:15/開演 17:00/終演 19:00",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "culture",
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
       }
     }
   ]

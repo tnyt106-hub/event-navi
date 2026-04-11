@@ -1,7 +1,7 @@
 {
   "venue_id": "ehime_prefectural_museum_of_art",
   "venue_name": "愛媛県美術館",
-  "last_success_at": "2026-03-24",
+  "last_success_at": "2026-04-11",
   "events": [
     {
       "title": "みる冒険 オノマトペで楽しむ",
@@ -366,31 +366,6 @@
       }
     },
     {
-      "title": "コレクション・ハイライト/生誕200年 天野方壺 ―画と詩と旅と/みる冒険 かたちのカタチ",
-      "date_from": "2025-01-11",
-      "date_to": "2025-04-06",
-      "open_time": null,
-      "start_time": "09:40",
-      "end_time": "18:00",
-      "description": null,
-      "image_url": null,
-      "price": "340円",
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/exhibition/detail/356d2d98-9628-49d9-8871-264148f733f1",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館 愛媛県美術館 本館１階 企画展示室",
-      "status": null,
-      "body": "期間原文: 2025年1月11日（土）～2025年4月6日（日）\n開館時間: 9:40～18:00（入場時間：17:30まで）\n料金詳細: 観覧料 当日料金 団体料金（20名以上） 一般 340円 270円 高大生 230円 180円 Ａ：中学生以下の方 Ｂ：満65歳以上の方 Ｃ：療育手帳をお持ちの方 Ｄ：身体障害者手帳をお持ちの方 Ｅ：精神障害者保健福祉手帳をお持ちの方 Ｆ：企画展チケットをお持ちの方 ※B～Eの方は証明書及び手帳をご提示ください。 ※C・D・Eの方で介護が必要な場合は、介護者も免除されます。 ※手帳に代えて、障害者手帳アプリ「ミライロＩＤ」画面の提示でも、障がい者減免を受けられます。 ※詳しくは美術館へお問い合わせください。",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid",
-          "night"
-        ]
-      }
-    },
-    {
       "title": "ワークシート＜17音で美術鑑賞＞言葉をつなげて俳句を作ろう！",
       "date_from": "2026-01-28",
       "date_to": "2026-04-19",
@@ -411,30 +386,6 @@
         "genres": [
           "art"
         ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "みるキンWORK SHOP",
-      "date_from": "2026-03-29",
-      "date_to": "2026-03-29",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/ec474337-661f-432a-bef9-c6f00402b3e9",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年3月29日（日）10:30～12:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": [
           "weekend"
         ]
@@ -465,6 +416,100 @@
       }
     },
     {
+      "title": "シルクスクリーン",
+      "date_from": "2026-04-16",
+      "date_to": "2026-04-16",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/1dd211a6-63c7-4052-9d11-9a61d75247b1",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年4月16日（木）13:00～17:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "インド藍染め",
+      "date_from": "2026-04-25",
+      "date_to": "2026-04-25",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/dae3e27a-a062-4198-8844-55774937911d",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年4月25日（土）10:30～12:00 2026年4月25日（土）13:30～15:00 2026年4月25日（土）15:00～16:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "シルクスクリーン",
+      "date_from": "2026-05-04",
+      "date_to": "2026-05-04",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/5cbe5e71-19ab-4be5-b44a-b07193419a09",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年5月4日（月）13:00～17:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "木から森へ",
+      "date_from": "2026-05-17",
+      "date_to": "2026-05-24",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/881e7220-70d1-4e65-b53a-1d3765bf6064",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年5月17日（日）10:30～11:30 2026年5月17日（日）14:00～15:00 2026年5月24日（日）10:30～11:30 2026年5月24日（日）14:00～15:00",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "コレクショントーク",
       "date_from": "2026-05-17",
       "date_to": "2026-09-20",
@@ -482,6 +527,102 @@
       "body": "期間原文: 2026年5月17日（日）14:00～15:00 2026年5月20日（水）14:00～15:00 2026年6月17日（水）14:00～15:00 2026年6月21日（日）14:00～15:00 2026年7月15日（水）14:00～15:00 2026年8月16日（日）14:00～15:00 2026年8月19日（水）14:00～15:00 2026年9月16日（水）14:00～15:00 2026年9月20日（日）14:00～15:00",
       "tags": {
         "type": "lecture",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "森林の日 フロアレクチャー",
+      "date_from": "2026-05-20",
+      "date_to": "2026-05-20",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/19a0d207-e517-43d5-b0e0-71968a603be6",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年5月20日（水）14:00～15:30",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "読書会／絵本『木のうた』のせかい。",
+      "date_from": "2026-05-24",
+      "date_to": "2026-05-24",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/cf70bfb5-ffef-4744-85e8-30a020657735",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年5月24日（日）14:00～16:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "美術館で俳句を詠もう",
+      "date_from": "2026-05-29",
+      "date_to": "2026-05-29",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/8f652667-942b-42fc-9534-e375b6cefeab",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年5月29日（金）19:00～19:15",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "art"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "木のゆらゆらモビール",
+      "date_from": "2026-05-30",
+      "date_to": "2026-05-30",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/180af961-bcb8-4f9b-a6e4-c895cc16b511",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年5月30日（土）10:30～12:00 2026年5月30日（土）14:00～15:30",
+      "tags": {
+        "type": "other",
         "genres": [],
         "flags": [
           "weekend"

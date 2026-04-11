@@ -1,6 +1,6 @@
 {
   "venue_id": "kochi-dibasan",
-  "last_success_at": "2026-03-24",
+  "last_success_at": "2026-04-11",
   "events": [
     {
       "title": "食研博 高知",
@@ -51,6 +51,28 @@
       }
     },
     {
+      "title": "ジオスペーシャルフェア２０２６ in 高知",
+      "date_from": "2026-05-20",
+      "date_to": "2026-05-20",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://diba3.com/event/",
+      "source_type": "web",
+      "venue_name": "高知ぢばさんセンター",
+      "status": null,
+      "body": "対象: 一般\n会場: 大ホール",
+      "tags": {
+        "type": "business",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
       "title": "令和8年執行衆議院議院総選挙等 開票作業",
       "date_from": "2026-02-08",
       "date_to": "2026-02-09",
@@ -76,8 +98,8 @@
     },
     {
       "title": "「わたしと宇宙展」高知展",
-      "date_from": "2025-12-05",
-      "date_to": "2025-12-14",
+      "date_from": "2026-12-05",
+      "date_to": "2026-12-14",
       "open_time": null,
       "start_time": "13:00",
       "end_time": null,

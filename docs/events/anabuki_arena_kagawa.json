@@ -1,212 +1,7 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-03-24",
+  "last_success_at": "2026-04-11",
   "events": [
-    {
-      "title": "マイナビ就職セミナー 高松会場",
-      "date_from": "2026-03-03",
-      "date_to": "2026-03-04",
-      "open_time": "11:00",
-      "start_time": "13:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "無し",
-      "contact": "s.c3s3-event@mynavi.jp",
-      "source_url": "https://kagawa-arena.com/event/1130/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "business"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-03-04",
-      "date_to": "2026-03-04",
-      "open_time": "17:00",
-      "start_time": null,
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "公式サイトにお問い合わせください。",
-      "source_url": "https://kagawa-arena.com/event/948/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "Hello Arena 2026",
-      "date_from": "2026-03-07",
-      "date_to": "2026-03-08",
-      "open_time": "11:00",
-      "start_time": "12:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "1日券　　　　\r\n￥9,900（税込）\r\n小中学生/￥5,500（税込）\r\n2日通し券　\r\n￥17,600（税込）\r\n小中学生/￥11,000（税込）\r\n〈メインアリーナ〉席種\r\n1Ｆ：スタンディング\r\n2Ｆ：指定席・着席指定席\r\n〈サブアリーナ〉席種\r\n全自由\r\n\r\n【スタンディング(メイン·サブ共通)】\r\n未就学児入場禁止。※整理番号なし\r\n【指定席·着席指定席】\r\n未就学児は膝上観覧1名まで可。\r\n座席が必要な場合は有料。\r\n▼今回はメインアリーナ・サブアリーナ2ステージでの開催です。出演日・出演ステージは後日発表です。\r\n　チケットの券種はメインアリーナでの券種となります。\r\nメインアリーナは購入した券種の場所で観覧、サブアリーナは自由に行き来でき、全自由です。\r\n(サブアリーナ1Fはスタンディング、2Fは席あり)\r\n▼2日通し券：来場者は2日間同一が条件です。\r\n※再入場可",
-      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
-      "source_url": "https://kagawa-arena.com/event/995/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "【King Gnu】『 King Gnu CEN+RAL Tour 2026』",
-      "date_from": "2026-03-11",
-      "date_to": "2026-03-12",
-      "open_time": "17:30",
-      "start_time": "18:30",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "アリーナスタンディング ¥16,000 (入場整理番号付き/税込)\r\nスタンド指定席 ¥14,000 (全席指定/税込)\r\n※本ツアーはセンターステージでの公演を予定しています。\r\nステージセットの構造上、一部演出・及び出演者が見えづらい可能性がございます。あらかじめご了承ください。\r\n※未就学児入場不可。小学生以上はチケットが必要。\r\n※＜アリーナスタンディング＞は整理番号付きとなります。\r\n※会場によっては＜アリーナスタンディング＞は「ブロック指定」となります。",
-      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
-      "source_url": "https://kagawa-arena.com/event/923/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "かがわマラソン 2026",
-      "date_from": "2026-03-15",
-      "date_to": "2026-03-15",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "入場料無料",
-      "contact": "かがわマラソン実行委員会事務局（香川県交流推進課マラソン準備室内）\r\nTEL: 087-832-3867\r\nE-mail：marathon@pref.kagawa.lg.jp",
-      "source_url": "https://kagawa-arena.com/event/1058/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-03-18",
-      "date_to": "2026-03-18",
-      "open_time": "17:00",
-      "start_time": null,
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "公式サイトにお問い合わせください。",
-      "source_url": "https://kagawa-arena.com/event/949/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "FURISODE LUXE",
-      "date_from": "2026-03-27",
-      "date_to": "2026-03-28",
-      "open_time": "09:00",
-      "start_time": null,
-      "end_time": "19:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "桂・貴迎館　0120-35-5298",
-      "source_url": "https://kagawa-arena.com/event/1189/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第5回四国テコンドー親善大会",
-      "date_from": "2026-03-29",
-      "date_to": "2026-03-29",
-      "open_time": "09:00",
-      "start_time": "10:30",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "オリーブテコンドークラブ（TEL：090-6002-3402）",
-      "source_url": "https://kagawa-arena.com/event/1068/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "【ケツメイシ】ケツメイシ25th Anniversary TOUR ケツメンCAMP 2026",
       "date_from": "2026-04-04",
@@ -595,6 +390,32 @@
       }
     },
     {
+      "title": "2026年前期日本卓球リーグホームマッチ",
+      "date_from": "2026-06-05",
+      "date_to": "2026-06-05",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://kagawa-arena.com/event/1232/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "プラセール フットサルスクール",
       "date_from": "2026-06-10",
       "date_to": "2026-06-10",
@@ -670,6 +491,31 @@
         ],
         "flags": [
           "night"
+        ]
+      }
+    },
+    {
+      "title": "国際ヨガデー２０２６",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
+      "open_time": "10:00",
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "日本ヨーガ道友協会\r\n上記公式サイトURLをご参照ください",
+      "source_url": "https://kagawa-arena.com/event/1223/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
         ]
       }
     },
@@ -781,7 +627,60 @@
       }
     },
     {
-      "title": "【桑田佳祐】『桑田佳祐 LIVE TOUR 2026』",
+      "title": "卓球 国民スポーツ大会(少年の部)香川県1次予選会",
+      "date_from": "2026-07-11",
+      "date_to": "2026-07-11",
+      "open_time": "07:45",
+      "start_time": "08:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "担当：岡田\r\nＴＥＬ　090-9452-4707",
+      "source_url": "https://kagawa-arena.com/event/1237/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "高松地区中学校総合体育大会 柔道競技",
+      "date_from": "2026-07-11",
+      "date_to": "2026-07-11",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "入場料金　無料",
+      "contact": "高松地区中学校体育連盟",
+      "source_url": "https://kagawa-arena.com/event/1230/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "【桑田佳祐】『桑田佳祐 夏祭りツアー 2026 supported by カンロ』",
       "date_from": "2026-07-14",
       "date_to": "2026-07-15",
       "open_time": "17:30",
@@ -797,10 +696,8 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "type": "festival",
+        "genres": [],
         "flags": [
           "paid",
           "night"
@@ -808,7 +705,7 @@
       }
     },
     {
-      "title": "【DREAMS COME TRUE】DREAMS COME TRUE CONCERT TOUR 2026",
+      "title": "【DREAMS COME TRUE】『DREAMS COME TRUE CONCERT TOUR 2026 THE BLACK ○ ALBUM』",
       "date_from": "2026-07-18",
       "date_to": "2026-07-19",
       "open_time": "15:30",
