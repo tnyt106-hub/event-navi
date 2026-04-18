@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
     {
       "title": "令和8年度 松山大学 入学宣誓式",
@@ -1215,7 +1215,7 @@
       }
     },
     {
-      "title": "株式会社セブンスター50周年パーティー",
+      "title": "株式会社セブンスター50周年記念パーティー",
       "date_from": "2026-05-12",
       "date_to": "2026-05-12",
       "open_time": "11:30",
@@ -1423,7 +1423,7 @@
       "date_to": "2026-05-21",
       "open_time": "8:00",
       "start_time": "8:30",
-      "end_time": "18:00",
+      "end_time": "18:40",
       "description": null,
       "image_url": null,
       "price": "有料（資料代）",
@@ -1450,7 +1450,7 @@
       "date_to": "2026-05-22",
       "open_time": "8:00",
       "start_time": "8:30",
-      "end_time": "17:00",
+      "end_time": "17:30",
       "description": null,
       "image_url": null,
       "price": "有料（資料代）",
@@ -1521,6 +1521,33 @@
         "flags": [
           "free",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "松山市民劇場 第369回例会 東京芸術座公演「おんやりょう」",
+      "date_from": "2026-05-26",
+      "date_to": "2026-05-26",
+      "open_time": "18:00",
+      "start_time": "18:30",
+      "end_time": "20:05",
+      "description": null,
+      "image_url": null,
+      "price": "会員制/一般初回5,500円",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4003/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "paid",
+          "night"
         ]
       }
     },
@@ -8189,156 +8216,6 @@
         "flags": [
           "free",
           "weekend"
-        ]
-      }
-    },
-    {
-      "title": "マイナビ就職セミナー松山会場",
-      "date_from": "2025-04-12",
-      "date_to": "2025-04-12",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1776/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "nature",
-          "business"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "荒牧陽子×Mr.シャチホコ Special LIVE",
-      "date_from": "2025-04-13",
-      "date_to": "2025-04-13",
-      "open_time": "14:30",
-      "start_time": "15:00",
-      "end_time": "16:40",
-      "description": null,
-      "image_url": null,
-      "price": "有料5,000円 ※全席同金額",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1774/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和7年度学校法人河原学園",
-      "date_from": "2025-04-14",
-      "date_to": "2025-04-14",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2051/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "RubyKaigi 2025",
-      "date_from": "2025-04-16",
-      "date_to": "2025-04-16",
-      "open_time": "9:00",
-      "start_time": "10:00",
-      "end_time": "18:20",
-      "description": null,
-      "image_url": null,
-      "price": "有料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2043/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "RubyKaigi 2025",
-      "date_from": "2025-04-17",
-      "date_to": "2025-04-17",
-      "open_time": "9:00",
-      "start_time": "10:00",
-      "end_time": "18:20",
-      "description": null,
-      "image_url": null,
-      "price": "有料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2044/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "RubyKaigi 2025",
-      "date_from": "2025-04-18",
-      "date_to": "2025-04-18",
-      "open_time": "9:00",
-      "start_time": "9:50",
-      "end_time": "18:20",
-      "description": null,
-      "image_url": null,
-      "price": "有料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2045/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid",
-          "night"
         ]
       }
     },

@@ -1,34 +1,7 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
-    {
-      "title": "イベント 映画『鬼ベラシ』舞台挨拶付 特別上映",
-      "date_from": "2026-04-11",
-      "date_to": "2026-04-11",
-      "open_time": null,
-      "start_time": "15:30",
-      "end_time": null,
-      "description": "会場: 多目的ホール（あかがね座）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/%E9%AC%BC%E3%81%B9%E3%82%89%E3%81%97%E8%A1%A8-739x1024.jpg",
-      "price": "一般：1,500円 高校生以下：1,000円 いずれも税込",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14614",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "theater"
-        ],
-        "flags": [
-          "paid",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "イベント 令和８年度 第59回にいはま春の市民文化祭・美術の部",
       "date_from": "2026-04-10",
@@ -58,17 +31,17 @@
       }
     },
     {
-      "title": "イベント 令和８年度 第59回 にいはま春の市民文化祭 ・あかがね茶会",
-      "date_from": "2026-04-11",
-      "date_to": "2026-04-11",
+      "title": "イベント 令和８年度 第59回 にいはま春の市民文化祭 ・華道の部",
+      "date_from": "2026-04-16",
+      "date_to": "2026-04-19",
       "open_time": null,
-      "start_time": "10:30",
+      "start_time": "09:30",
       "end_time": null,
-      "description": "会場: アート工房",
+      "description": "会場: アート工房・展示スペース",
       "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/2026%E3%81%AB%E3%81%84%E3%81%AF%E3%81%BE%E6%98%A5%E3%81%AE%E5%B8%82%E6%B0%91%E6%96%87%E5%8C%96%E7%A5%ADs-729x1024.jpeg",
-      "price": "呈茶料 600円",
+      "price": "無料",
       "contact": "新居浜市文化振興課 0897-64-1554",
-      "source_url": "https://akaganemuseum.jp/event/event-14598",
+      "source_url": "https://akaganemuseum.jp/event/event-14599",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -79,31 +52,31 @@
           "culture"
         ],
         "flags": [
-          "paid",
+          "free",
           "weekend"
         ]
       }
     },
     {
-      "title": "ワークショップ・教室 春の市民文化祭関連イベント 「オリジナル缶バッジをつくろう！」",
-      "date_from": "2026-04-11",
-      "date_to": "2026-04-12",
+      "title": "イベント リードオルガンコンサート",
+      "date_from": "2026-04-18",
+      "date_to": "2026-04-18",
       "open_time": null,
-      "start_time": "10:00",
+      "start_time": "11:00",
       "end_time": null,
-      "description": "会場: 新居浜市美術館 ロビー",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/02/%E6%98%A5%E5%B8%82%E6%B0%91%E7%BC%B6%E3%83%90%E3%83%83%E3%82%B8%E3%82%B5%E3%82%A4%E3%83%B32026-724x1024.jpg",
-      "price": "無料・申込不要 ※先着順、定員に達し次第終了 ※缶バッジの作成はお1人様1個まで",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14539",
+      "description": "会場: 屋内ステージ",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/%E3%83%AA%E3%83%BC%E3%83%89%E3%82%AA%E3%83%AB%E3%82%AC%E3%83%B3%E3%83%81%E3%83%A9%E3%82%B7-729x1024.jpg",
+      "price": "無料",
+      "contact": "田中依子 090-7149-2786",
+      "source_url": "https://akaganemuseum.jp/event/event-14704",
       "source_type": null,
       "venue_name": null,
       "status": null,
       "body": null,
       "tags": {
-        "type": "workshop",
+        "type": "performance",
         "genres": [
-          "culture"
+          "music"
         ],
         "flags": [
           "free",
@@ -166,60 +139,6 @@
       }
     },
     {
-      "title": "イベント 令和８年度 第59回 にいはま春の市民文化祭 ・華道の部",
-      "date_from": "2026-04-16",
-      "date_to": "2026-04-19",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: アート工房・展示スペース",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/2026%E3%81%AB%E3%81%84%E3%81%AF%E3%81%BE%E6%98%A5%E3%81%AE%E5%B8%82%E6%B0%91%E6%96%87%E5%8C%96%E7%A5%ADs-729x1024.jpeg",
-      "price": "無料",
-      "contact": "新居浜市文化振興課 0897-64-1554",
-      "source_url": "https://akaganemuseum.jp/event/event-14599",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "culture"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "イベント リードオルガンコンサート",
-      "date_from": "2026-04-18",
-      "date_to": "2026-04-18",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": null,
-      "description": "会場: 屋内ステージ",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/%E3%83%AA%E3%83%BC%E3%83%89%E3%82%AA%E3%83%AB%E3%82%AC%E3%83%B3%E3%83%81%E3%83%A9%E3%82%B7-729x1024.jpg",
-      "price": "無料",
-      "contact": "田中依子 090-7149-2786",
-      "source_url": "https://akaganemuseum.jp/event/event-14704",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "展覧会 アトリエぱふ展",
       "date_from": "2026-04-22",
       "date_to": "2026-04-26",
@@ -243,6 +162,84 @@
         "flags": [
           "free",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ワークショップ・教室 笑いヨガ講座 4/28",
+      "date_from": "2026-04-28",
+      "date_to": "2026-04-28",
+      "open_time": null,
+      "start_time": "18:30",
+      "end_time": null,
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-55-724x1024.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14664",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "イベント 『篠笛 × 和太鼓 × ピアノ』公演 〜和洋融合の響〜 WORLD PEACE",
+      "date_from": "2026-05-10",
+      "date_to": "2026-05-10",
+      "open_time": null,
+      "start_time": "14:30",
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/line_oa_chat_260410_102811-820x1024.jpg",
+      "price": "前売り 大人 5,000円（当日券 5,500円） 大人ペアチケット 8,000円（当日券 9,000円） 大学生、高校生 2,000円（当日券 2,500円） 保護者に同伴の中学生以下 無料 ※現金のみ ※全席自由 ※保護者同伴の中学生以下は入場可、チケットお渡し（未就学児含む）",
+      "contact": "矢野 友美子 090-7627-0845",
+      "source_url": "https://akaganemuseum.jp/event/event-14749",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "イベント 作・演出 鴻上尚史 舞台『トランス』愛媛公演",
+      "date_from": "2026-05-20",
+      "date_to": "2026-05-20",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": null,
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/trans_main01_fix_small-729x1024.jpg",
+      "price": "【一 般】前売：8,800円／当日：9,900円 【学 生】前売：3,300円／当日：4,400円 （全席指定／税込） ＊学生・高校生以下 ＊未就学児入場不可",
+      "contact": "あかがねミュージアム運営グループ TEL 0897-31-0305 (9:30〜17:00 休館日を除く)",
+      "source_url": "https://akaganemuseum.jp/event/event-14051",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "theater"
+        ],
+        "flags": [
+          "paid"
         ]
       }
     }

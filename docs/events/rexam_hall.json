@@ -1,31 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
-    {
-      "title": "Japan Ballet Competition 香川 2025",
-      "date_from": "2025-04-12",
-      "date_to": "2025-04-12",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8571",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "小ホール Japan Ballet Competition 香川 2025",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "“Ｓ★ダンススタジオ／Ｓ★バレエスクール vol.22”",
       "date_from": "2025-04-20",
@@ -4812,7 +4788,7 @@
       "date_from": "2026-04-25",
       "date_to": "2026-04-25",
       "open_time": "12:00",
-      "start_time": "13:00",
+      "start_time": "12:55",
       "end_time": "15:00",
       "description": null,
       "image_url": null,
@@ -4822,7 +4798,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 2026年 第19期 香川県民文化大学 4月講座 開場 12:00/開演 13:00/終演 15:00",
+      "body": "大ホール 2026年 第19期 香川県民文化大学 4月講座 開場 12:00/開演 12:55/終演 15:00",
       "tags": {
         "type": "lecture",
         "genres": [
@@ -4864,9 +4840,9 @@
       "title": "Japan Ballet Competition 香川 2026",
       "date_from": "2026-04-29",
       "date_to": "2026-04-29",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
+      "open_time": "12:00",
+      "start_time": "12:30",
+      "end_time": "20:10",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4875,11 +4851,13 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "小ホール Japan Ballet Competition 香川 2026",
+      "body": "小ホール Japan Ballet Competition 香川 2026 開場 12:00/開演 12:30/終演 20:10",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": []
+        "flags": [
+          "night"
+        ]
       }
     },
     {

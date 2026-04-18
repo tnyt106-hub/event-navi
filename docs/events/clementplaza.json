@@ -1,8 +1,32 @@
 {
   "venue_id": "clementplaza",
   "venue_name": "徳島駅クレメントプラザ",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
+    {
+      "title": "【POP UP SHOP】4／17～26★菓匠雲雀登場！",
+      "date_from": "2026-04-17",
+      "date_to": "2026-04-26",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://clementplaza.com/event/detail/248",
+      "source_type": "web",
+      "venue_name": "徳島駅クレメントプラザ",
+      "status": null,
+      "body": "開催期間: 04月17日〜04月26日",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
     {
       "title": "【POP UP SHOP】4／17～19★春のおでかけ「あんこ市」",
       "date_from": "2026-04-17",
@@ -43,30 +67,6 @@
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
       "body": "開催期間: 04月10日〜04月19日",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "【POP UP SHOP】4 ／9～4／15★パール洋菓子店レモンケーキ販売",
-      "date_from": "2026-04-09",
-      "date_to": "2026-04-15",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/245",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 04月09日〜04月15日",
       "tags": {
         "type": "other",
         "genres": [],

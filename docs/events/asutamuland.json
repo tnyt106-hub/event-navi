@@ -1,8 +1,32 @@
 {
   "venue_id": "asutamuland",
   "venue_name": "あすたむらんど徳島",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
+    {
+      "title": "手づくり工房「よくとぶひこうき」",
+      "date_from": "2026-04-01",
+      "date_to": "2026-04-30",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": "\r\n        目指せ30m！ひこうきを作って芝生広場で飛ばしちゃおう♪\n \n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16754/",
+      "source_type": "web",
+      "venue_name": "体験工房",
+      "status": null,
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 150円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
     {
       "title": "GW企画展「あつまれおもちゃ！TOY・TOY・TOY！」",
       "date_from": "2026-04-25",
@@ -10,8 +34,8 @@
       "open_time": null,
       "start_time": "9:30",
       "end_time": "16:30",
-      "description": "\r\n        ～あそんで学べる知育おもちゃ展～\n知育おもちゃが大集合！小さなお子様から大人までふれて・動かして・組み立ててみよう！\n\nちえのわとけるかな\n投げると大きくなる！？ふしぎなおもちゃでキャッチボール\nぐるぐる回るはぐるまのカベ\nそのほかにもたのしいおもちゃがたくさん！\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/GW企画展.png",
+      "description": "\r\n        ～あそんで学べる知育おもちゃ展～\n知育おもちゃが大集合！小さなお子様から大人までふれて・動かして・組み立ててみよう！\n\n他にも家族みんなで楽しめるイベントが盛り沢山- ̗̀📣\n\n▶詳細はこちらから\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/GW企画展-1.png",
       "price": null,
       "contact": null,
       "source_url": "https://asutamuland.jp/events/event/17185/",
@@ -26,59 +50,6 @@
         ],
         "flags": [
           "weekend"
-        ]
-      }
-    },
-    {
-      "title": "スペシャルサイエンス教室「よくとぶひこうき飛ばし教室」",
-      "date_from": "2026-04-18",
-      "date_to": "2026-04-18",
-      "open_time": null,
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "description": "\r\n        「飛距離」と「コントロール」でよくとぶひこうきを飛ばす腕前を試そう！参加者全員に参加賞、上位入賞者に景品をプレゼントするよ♪\n 申込期間：4月11日(土)～4月13日(月) \n\n \n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/スペシャルサイエンス教室「よくとぶひこうき飛ばし教室」.png",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17238/",
-      "source_type": "web",
-      "venue_name": "あすたむらんど徳島",
-      "status": null,
-      "body": "時間: 13:30～15:30\n備考: 参加費：150円 申込期間：4月11日(土)～4月13日(月) 定員：20名 ※電話またはあすたむらんど公式HP内WEBフォームよりお申込みください。 ※小学校低学年以下のお子様は保護者同伴でご参加ください。",
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "science"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ファミリーサイエンス教室「UVレジンでフラワーチャームをつくろう」",
-      "date_from": "2026-04-19",
-      "date_to": "2026-04-19",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": "15:00",
-      "description": "\r\n        あすたむに咲いている植物を観察して、オリジナルチャームを作ろう！\n 申込期間：3月15日(日)～4月12日(日) \n \n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16738/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 特別展示室",
-      "status": null,
-      "body": "時間: 13:00～15:00\n備考: 参加費：無料 対 象：小・中学生を含むご家族 定 員：10組 【申込期間：3月15日（日）～4月12日（日）】",
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "science"
-        ],
-        "flags": [
-          "weekend",
-          "family"
         ]
       }
     },
@@ -107,6 +78,107 @@
       }
     },
     {
+      "title": "春のあすたむ祭り「作ってあそぼう！こいのぼりワークショップ」",
+      "date_from": "2026-04-29",
+      "date_to": "2026-05-06",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": "12:00",
+      "description": "\r\n        被って楽しい！飾ってかわいい！飛ばして遊べる！自分だけの色んなこいのぼりグッズを作ってみよう！🎏\n\n🎏4月29日(水・祝)／新聞紙で作ろう！ジャンボこいのぼりぼうし\n🎏5月2日(土)　　／折り紙で作ろう！カラフルこいのぼり\n🎏5月6日(水・振)／袋で作ろう！飛ばせるこいのぼりロケット\n \n他にも家族みんなで楽しめるイベントが盛り沢山- ̗̀📣\n\n▶詳細はこちらから\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/こいのぼりワークッショップ.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17183/",
+      "source_type": "web",
+      "venue_name": "ジャンボパラソル",
+      "status": null,
+      "body": "時間: ①11:00～12:00（受付 10:30～） ②14:00～15:00（受付 13:30～）\n備考: 対象：幼児～小学生のお子様と保護者 定員：各回30組（先着順）",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ファミリーサイエンス教室「UVレジンでフラワーチャームをつくろう」",
+      "date_from": "2026-04-19",
+      "date_to": "2026-04-19",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": "15:00",
+      "description": "\r\n        あすたむに咲いている植物を観察して、オリジナルチャームを作ろう！\n 申込期間：申込を締め切りいたしました \n \n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16738/",
+      "source_type": "web",
+      "venue_name": "子ども科学館 特別展示室",
+      "status": null,
+      "body": "時間: 13:00～15:00\n備考: 参加費：無料 対 象：小・中学生を含むご家族 定 員：10組 【申込期間：申込を締め切りいたしました】",
+      "tags": {
+        "type": "workshop",
+        "genres": [
+          "science"
+        ],
+        "flags": [
+          "weekend",
+          "family"
+        ]
+      }
+    },
+    {
+      "title": "春のあすたむ祭り「鯉のぼりフォトスポット」",
+      "date_from": "2026-04-25",
+      "date_to": "2026-05-06",
+      "open_time": null,
+      "start_time": "9:00",
+      "end_time": "18:00",
+      "description": "\r\n        全長10mの巨大鯉のぼりが登場！🎏\n迫力満点の鯉のぼりと一緒に、家族や友人、大切な人と記念撮影を楽しもう📸\n\n \n他にも家族みんなで楽しめるイベントが盛り沢山- ̗̀📣\n\n▶詳細はこちらから\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/鯉のぼりフォトスポット.jpeg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17182/",
+      "source_type": "web",
+      "venue_name": "子ども科学館 入口前",
+      "status": null,
+      "body": "時間: GW期間は開園時間延長！4/29(水・祝)～5/6(水・振)9:00～18:00 水曜日は臨時開園！\n備考:",
+      "tags": {
+        "type": "festival",
+        "genres": [],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "春のあすたむ祭り「あすたむ鯉のぼりまつり」",
+      "date_from": "2026-04-25",
+      "date_to": "2026-05-06",
+      "open_time": null,
+      "start_time": "9:00",
+      "end_time": "18:00",
+      "description": "\r\n        あすたむらんどに大きな鯉のぼりが大集合！迫力満点の鯉のぼりを見に来てね！\n\n \n他にも家族みんなで楽しめるイベントが盛り沢山- ̗̀📣\n\n▶詳細はこちらから\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/鯉のぼりまつり-1.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17181/",
+      "source_type": "web",
+      "venue_name": "サイエンスアベニュー",
+      "status": null,
+      "body": "時間: GW期間は開園時間延長！4/29(水・祝)～5/6(水・振)9:00～18:00 水曜日は臨時開園！\n備考:",
+      "tags": {
+        "type": "festival",
+        "genres": [],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "たっぷりプラネ☆『大解明！太陽のすがた』",
       "date_from": "2026-04-01",
       "date_to": "2026-05-31",
@@ -126,55 +198,6 @@
         "type": "other",
         "genres": [],
         "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "手づくり工房「よくとぶひこうき」",
-      "date_from": "2026-04-01",
-      "date_to": "2026-04-30",
-      "open_time": null,
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": "\r\n        目指せ30m！ひこうきを作って芝生広場で飛ばしちゃおう♪\n \n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16754/",
-      "source_type": "web",
-      "venue_name": "体験工房",
-      "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 150円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。",
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "春のあすたむ祭り「あすたむ鯉のぼりまつり」",
-      "date_from": "2026-04-25",
-      "date_to": "2026-05-06",
-      "open_time": null,
-      "start_time": "9:00",
-      "end_time": "18:00",
-      "description": "\r\n        あすたむらんどに大きな鯉のぼりが大集合！迫力満点の鯉のぼりを見に来てね！\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/鯉のぼりまつり-1.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17181/",
-      "source_type": "web",
-      "venue_name": "サイエンスアベニュー",
-      "status": null,
-      "body": "時間: GW期間は開園時間延長！4/29(水・祝)～5/6(水・振)9:00～18:00 水曜日は臨時開園！\n備考:",
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "night",
           "weekend"
         ]
       }
@@ -206,30 +229,6 @@
       }
     },
     {
-      "title": "春のあすたむ祭り「作ってあそぼう！こいのぼりワークショップ」",
-      "date_from": "2026-04-29",
-      "date_to": "2026-05-06",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": "12:00",
-      "description": "\r\n        被って楽しい！飾ってかわいい！飛ばして遊べる！自分だけの色んなこいのぼりグッズを作ってみよう！🎏\n\n🎏4月29日(水・祝)／新聞紙で作ろう！ジャンボこいのぼりぼうし\n🎏5月2日(土)　　／折り紙で作ろう！カラフルこいのぼり\n🎏5月6日(水・振)／袋で作ろう！飛ばせるこいのぼりロケット\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/こいのぼりワークッショップ.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17183/",
-      "source_type": "web",
-      "venue_name": "ジャンボパラソル",
-      "status": null,
-      "body": "時間: ①11:00～12:00（受付 10:30～） ②14:00～15:00（受付 13:30～）\n備考: 対象：幼児～小学生のお子様と保護者 定員：各回30組（先着順）",
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "手づくり工房「マリンスライム」",
       "date_from": "2026-04-25",
       "date_to": "2026-05-06",
@@ -249,31 +248,6 @@
         "type": "workshop",
         "genres": [],
         "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "春のあすたむ祭り「鯉のぼりフォトスポット」",
-      "date_from": "2026-04-25",
-      "date_to": "2026-05-06",
-      "open_time": null,
-      "start_time": "9:00",
-      "end_time": "18:00",
-      "description": "\r\n        全長10mの巨大鯉のぼりが登場！🎏\n迫力満点の鯉のぼりと一緒に、家族や友人、大切な人と記念撮影を楽しもう📸\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/鯉のぼりフォトスポット.jpeg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17182/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 入口前",
-      "status": null,
-      "body": "時間: GW期間は開園時間延長！4/29(水・祝)～5/6(水・振)9:00～18:00 水曜日は臨時開園！\n備考:",
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "night",
           "weekend"
         ]
       }

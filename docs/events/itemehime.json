@@ -1,6 +1,6 @@
 {
   "venue_id": "itemehime",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
     {
       "title": "マイナビ インターンシップ＆キャリア発見フェア 松山会場",
@@ -35,8 +35,8 @@
       "date_from": "2026-06-04",
       "date_to": "2026-06-04",
       "open_time": null,
-      "start_time": "13:00",
-      "end_time": "17:00",
+      "start_time": "10:00",
+      "end_time": "16:00",
       "description": null,
       "image_url": null,
       "price": "無料",

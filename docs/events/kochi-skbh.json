@@ -1,6 +1,6 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
     {
       "title": "高知ジュニアオーケストラ 第14回定期演奏会",
@@ -56,17 +56,17 @@
       }
     },
     {
-      "title": "第50回高知県新人演奏会デビューリサイタル 出演者募集中（3/10まで）",
+      "title": "高知県立県民文化ホール開館50周年 第50回高知県新人演奏会デビューリサイタル",
       "date_from": "2026-05-30",
       "date_to": "2026-05-30",
-      "open_time": "18:00",
+      "open_time": "16:30",
       "start_time": null,
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "",
+      "price": "全席自由 1,000円 ※当日200円UP ※未就学児無料",
       "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2664",
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2833",
       "source_type": "web",
       "venue_name": "高知県立県民文化ホール",
       "status": null,
@@ -74,10 +74,12 @@
       "tags": {
         "type": "performance",
         "genres": [
+          "culture",
           "music"
         ],
         "flags": [
-          "weekend"
+          "free",
+          "paid"
         ]
       }
     },
@@ -86,8 +88,8 @@
       "date_from": "2026-05-30",
       "date_to": "2026-05-30",
       "open_time": "17:00",
-      "start_time": null,
-      "end_time": null,
+      "start_time": "17:30",
+      "end_time": "20:00",
       "description": null,
       "image_url": null,
       "price": "全席指定 7,500円 ※未就学児入場不可",
@@ -104,7 +106,7 @@
         ],
         "flags": [
           "paid",
-          "weekend"
+          "night"
         ]
       }
     },
@@ -133,7 +135,32 @@
       }
     },
     {
-      "title": "先行【ウルトラマンショップ高知アベニュー店(店頭)／ ローソンチケット】3月30日(月)～4月12日(日) 高知県立県民文化ホール開館50周年 ウルトラヒーローズ THE LIVE～紡ぎ続ける物語～ in 高知",
+      "title": "歌彦・萬都の高知落語会2026 -笑中お見舞い申し上げます-",
+      "date_from": "2026-07-18",
+      "date_to": "2026-07-18",
+      "open_time": "13:30",
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席指定 前売 3,800円 ※未就学児入場不可 ※当日は500円UP",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2805",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "高知県立県民文化ホール開館50周年 ウルトラヒーローズ THE LIVE～紡ぎ続ける物語～ in 高知",
       "date_from": "2026-07-25",
       "date_to": "2026-07-25",
       "open_time": null,

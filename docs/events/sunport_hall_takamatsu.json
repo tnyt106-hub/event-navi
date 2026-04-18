@@ -1,6 +1,6 @@
 {
   "venue_id": "sunport_hall_takamatsu",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
     {
       "title": "倪 瑞良「切り絵・ミュシャの世界」展",
@@ -1097,7 +1097,7 @@
       "title": "第40回 高松ウインドシンフォニー 定期演奏会",
       "date_from": "2026-05-10",
       "date_to": "2026-05-10",
-      "open_time": "13:30",
+      "open_time": "13:00",
       "start_time": "14:00",
       "end_time": "16:00",
       "description": null,

@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-04-11",
+  "last_success_at": "2026-04-18",
   "events": [
     {
       "title": "【ケツメイシ】ケツメイシ25th Anniversary TOUR ケツメンCAMP 2026",
@@ -213,7 +213,7 @@
       "date_to": "2026-04-29",
       "open_time": "09:00",
       "start_time": null,
-      "end_time": "17:00",
+      "end_time": "21:00",
       "description": null,
       "image_url": null,
       "price": null,
@@ -228,7 +228,34 @@
         "genres": [
           "sports"
         ],
-        "flags": []
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "FURISODE LUXE",
+      "date_from": "2026-05-02",
+      "date_to": "2026-05-04",
+      "open_time": "09:00",
+      "start_time": null,
+      "end_time": "19:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "桂・貴迎館　0120-35-5298",
+      "source_url": "https://kagawa-arena.com/event/1209/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night",
+          "weekend"
+        ]
       }
     },
     {
@@ -495,6 +522,30 @@
       }
     },
     {
+      "title": "JAPAN RISING STAR PROJECT 基礎測定会",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "12:45",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公益財団法人日本パラスポーツ協会　J-STARプロジェクト事務局\r\nTEL：03-5939-7021　E-mail：info@para-jstar.com",
+      "source_url": "https://kagawa-arena.com/event/1252/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "国際ヨガデー２０２６",
       "date_from": "2026-06-21",
       "date_to": "2026-06-21",
@@ -680,6 +731,33 @@
       }
     },
     {
+      "title": "第65回香川県なぎなた選手権大会",
+      "date_from": "2026-07-12",
+      "date_to": "2026-07-12",
+      "open_time": "08:00",
+      "start_time": "09:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "入場無料",
+      "contact": "香川県なぎなた連盟\r\n電話番号　090-2895-3626",
+      "source_url": "https://kagawa-arena.com/event/1248/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "【桑田佳祐】『桑田佳祐 夏祭りツアー 2026 supported by カンロ』",
       "date_from": "2026-07-14",
       "date_to": "2026-07-15",
@@ -783,6 +861,31 @@
       }
     },
     {
+      "title": "【櫻坂46】櫻坂46 全国アリーナツアー2026",
+      "date_from": "2026-08-29",
+      "date_to": "2026-08-30",
+      "open_time": "16:00",
+      "start_time": "17:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "Leminoスペシャルシート：17,000円（税込）\r\n全席指定：11,000円（税込）\r\n親子・女性エリア：11,000円（税込）",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_url": "https://kagawa-arena.com/event/1247/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "プラセール フットサルスクール",
       "date_from": "2026-09-02",
       "date_to": "2026-09-02",
@@ -820,6 +923,84 @@
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
       "source_url": "https://kagawa-arena.com/event/1188/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "【なにわ男子】なにわ男子 LIVE TOUR 2026 「ND⁵」",
+      "date_from": "2026-09-19",
+      "date_to": "2026-09-21",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "ファミリークラブ　\r\nhttps://www.familyclub.jp/",
+      "source_url": "https://kagawa-arena.com/event/1250/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-10-07",
+      "date_to": "2026-10-07",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1255/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-10-28",
+      "date_to": "2026-10-28",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1256/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,
