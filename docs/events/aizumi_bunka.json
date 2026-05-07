@@ -1,24 +1,52 @@
 {
   "venue_id": "aizumi_bunka",
   "venue_name": "藍住町総合文化ホール",
-  "last_success_at": "2026-04-18",
+  "last_success_at": "2026-05-07",
   "events": [
     {
-      "title": "第26回　大阪音楽大学同窓会《幸楽会》徳島県支部　幸楽コンサート",
-      "date_from": "2026-04-19",
-      "date_to": "2026-04-19",
-      "open_time": "13:30",
-      "start_time": "14:00",
+      "title": "親子で楽しむクラシックコンサートVol.２",
+      "date_from": "2026-05-17",
+      "date_to": "2026-05-17",
+      "open_time": null,
+      "start_time": null,
       "end_time": null,
-      "description": "第26回　大阪音楽大学同窓会《幸楽会》徳島県支部　幸楽コンサート\r\n\r\n　大阪音楽大学幸楽会会員による、ピアノソロ、ピアノ連弾、声楽、ミニオペラによる演奏と、推薦演奏会金賞受賞者によるピアノ、フルート、声楽のフレッシュな演奏をお楽しみください。\r\n\r\n\r\n\r\n日時\r\n\r\n　令和8年4月19日(日曜日) 　開演／午後2時(開場／午後1時30分) 　\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　湯浅茉子（Pf.）\r\n　阿部杏祇（Vo.）\r\n　中川桃花（Pf.）\r\n　吉岡歩音（Vo.）\r\n　武田結衣（Fl.）\r\n　上原慎太郎（Pf.）\r\n　伊藤奈々（Pf.）\r\n　RiNa（川添衣利・増成春奈）（Pf.）\r\n　石川真子（Vo.）\r\n　張彩夏（Vo.）\r\n　臼井大樹（Vo.）\r\n　大田黒照幸（Vo.）\r\n\r\n入場料\r\n\r\n　一般:1500円\r\n　高校生以下:1000円\r\n　(当日500円増し)\r\n　※3歳以下のホール内への入場はご遠慮ください。\r\n\r\nチケット取扱い\r\n\r\n　藍住町総合文化ホール、黒崎楽器本店\r\n\r\n主催・お問合せ先\r\n\r\n　主催：大阪音楽大学《幸楽",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026021800021/file_contents/kougaku2026.jpg",
+      "description": "親子で楽しむクラシックコンサートVol.2\r\n\r\nお楽しみコーナーや演奏に合わせた絵本の読み聞かせなど、子どもが飽きない工夫がたくさん！\r\n小さなお子さまから大人まで、家族みんなで気軽に楽しめるクラシックコンサートです♬\r\n\r\n​​​\r\n\r\n日時\r\n\r\n　令和８年５月17日（日曜日）　開演／午後２時（開場／午後１時30分）\r\n\r\n場所\r\n\r\n    藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n管弦楽　徳島交響楽団\r\n指揮　大山　晃\r\n司会・読み手　安倍　久恵\r\n\r\nプログラム　※プログラムは変更になる場合があります。予めご了承ください。\r\n\r\n【第１部】\r\nフチーク／剣士の入場\r\nハイドン／交響曲94番「驚愕」第2楽章\r\nお楽しみコーナー（楽器紹介クイズ・指揮者体験）\r\nビゼー／カルメン前奏曲\r\nチャイコフスキー／花のワルツ\r\n\r\n【第２部】\r\nアンダーソン／トランペット吹きの休日\r\n　　　　　  ／ワルツィングキャット\r\n　　　　　 ／シンコペーテッド・クロック\r\nロバート・ロペスとアンダーソン＝ロペス／アナと雪の女王\r\n絵本読み聞かせ&演奏\r\n・絵本　「あんぱんまん」　作／",
+      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026010800056/file_contents/omoteA4.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026021800021/",
+      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026010800056/",
       "source_type": "web",
       "venue_name": "藍住町総合文化ホール",
       "status": null,
-      "body": "開催分: 2026年04月19日（日）",
+      "body": "開催分: 2026年05月17日（日）",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music",
+          "kids"
+        ],
+        "flags": [
+          "weekend",
+          "family"
+        ]
+      }
+    },
+    {
+      "title": "第18回 吹奏楽団アババイ定期演奏会",
+      "date_from": "2026-05-23",
+      "date_to": "2026-05-23",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "第18回 吹奏楽団アババイ定期演奏会\r\n\r\n　吹奏楽団アババイの定期演奏会。子供から大人までみんなが楽しめる曲が盛りだくさん！\r\nぜひ生演奏の楽しさを味わってください。\r\n\r\n\r\n\r\n日時\r\n\r\n　令和８年５月２３日(土曜日) 　開演／午後６時(開場／午後５時３０分) 　\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　吹奏楽団アババイ\r\n\r\n入場料\r\n\r\n　無料（入場には整理券が必要ですが、当日券もあります）\r\n　未就学児入場可\r\n\r\nチラシ\r\n\r\n　第18回定期演奏会[PDF：613KB]\r\n\r\n主催・お問合せ先\r\n\r\n　主催：吹奏楽団アババイ\r\n　お問合せ：090-8283-9279（秋月）\r\n",
+      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026031200026/file_contents/teienn.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026031200026/",
+      "source_type": "web",
+      "venue_name": "藍住町総合文化ホール",
+      "status": null,
+      "body": "開催分: 2026年05月23日（土）",
       "tags": {
         "type": "performance",
         "genres": [
@@ -30,25 +58,26 @@
       }
     },
     {
-      "title": "笑福亭たま・旭堂南湖二人会 in 藍住町5",
-      "date_from": "2026-04-26",
-      "date_to": "2026-04-26",
-      "open_time": "14:00",
-      "start_time": "14:30",
+      "title": "おんやりょう（公演：東京芸術座）",
+      "date_from": "2026-05-24",
+      "date_to": "2026-05-24",
+      "open_time": "18:00",
+      "start_time": "18:30",
       "end_time": null,
-      "description": "笑福亭たま・旭堂南湖二人会 in 藍住町5\r\n\r\n上方講談ニューウェーヴ 旭堂南湖と高学歴落語家 笑福亭たまが、今年も藍住町に降臨！\r\n天に竹林寺、地に少林寺、落語界に笑福亭たま、講談界に旭堂南湖あり！\r\n\r\n\r\n\r\n日時\r\n\r\n令和8年4月26日(日曜日)　開演／午後2時30分（開場／午後2時）\r\n\r\n場所\r\n\r\n藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n笑福亭たま、旭堂南湖\r\n\r\n落語＆講談\r\n\r\n落語　憧れの人間国宝\r\n　　　ほか一席（お楽しみ）\r\n\r\n講談　東玉（とうぎょく）と伯円（はくえん）\r\n　　　ほか一席（お楽しみ）\r\n\r\n入場料【全席自由】\r\n\r\n大学生・一般　　2,000円（当日2,500円）\r\n小・中・高校生　1,000円（当日1,500円）\r\n\r\nチケット取扱い\r\n\r\n藍住町総合文化ホール\r\n電話予約は主催者へご連絡ください（小西・080-6386-2946）。\r\n\r\n出演者紹介\r\n\r\n\r\n\r\n \r\n\r\n\r\n",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026010800025/file_contents/202626.jpg",
+      "description": "おんやりょう（公演：東京芸術座）\r\n\r\n消防署のとある1日。消防士と救急救命士の軋轢や、つまずきながらも理想に向かって働く人たちの姿が、温かい目線で描かれる。\r\n\r\n\r\n\r\n日時\r\n\r\n令和8年5月24日（日曜日）開演／午後6時30分（開場／午後6時）\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　出演：梁瀬龍洋　神谷信弘　他　\r\n    作・演出：内藤裕子\r\n\r\n入場料(入場には鳴門市民劇場の会員登録が必要です)\r\n\r\n　入会金　　一般　　　　　　　　　2,500円　　\r\n　　　　　　小・中・高生及び学生　1,000円\r\n　月会費　　一般　　　　　　　　　2,500円　　\r\n　　　　　　小・中・高生及び学生　   500円\r\n\r\nチラシ\r\n\r\n　\r\n\r\n\r\n\r\n\t\r\n\t \r\n\r\n\r\n\r\n\t\r\n\r\n",
+      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026030900040/file_contents/1.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026010800025/",
+      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026030900040/",
       "source_type": "web",
       "venue_name": "藍住町総合文化ホール",
       "status": null,
-      "body": "開催分: 2026年04月26日（日）",
+      "body": "開催分: 2026年05月24日（日）",
       "tags": {
-        "type": "other",
+        "type": "performance",
         "genres": [],
         "flags": [
+          "night",
           "weekend"
         ]
       }

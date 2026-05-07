@@ -1,7 +1,57 @@
 {
   "venue_id": "itemehime",
-  "last_success_at": "2026-04-18",
+  "last_success_at": "2026-05-07",
   "events": [
+    {
+      "title": "ガリバー中古車展示即売会",
+      "date_from": "2026-06-13",
+      "date_to": "2026-06-13",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "ガリバーお客さま相談センター 【電話】０１２０－２２－１６１６",
+      "source_url": "https://itemehime.com/event/sale/2026/06/6853/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "2027ふわりぃランドセル新作展示会",
+      "date_from": "2026-06-06",
+      "date_to": "2026-06-06",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "0120-415-991 ( 平日9:30～17:00 )",
+      "source_url": "https://itemehime.com/event/exhibition/2026/06/6777/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
     {
       "title": "マイナビ インターンシップ＆キャリア発見フェア 松山会場",
       "date_from": "2026-06-06",
@@ -187,56 +237,6 @@
         ],
         "flags": [
           "free"
-        ]
-      }
-    },
-    {
-      "title": "全国くらしの器フェア in 愛媛 2026",
-      "date_from": "2026-02-20",
-      "date_to": "2026-02-23",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "当日券500円・アソビューの前売り購入で400円（11月１日よりアソビュー前売券発売） ※招待ハガキ持参者・中学生以下は無料 ※アソビューチケットはこちら→https://www.asoview.com/channel/tickets/lmYwosU79h",
-      "contact": "089-953-0130",
-      "source_url": "https://itemehime.com/event/sale/2026/02/6223/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "business",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "えひめハンドメイド雑貨フェア 2026",
-      "date_from": "2026-02-21",
-      "date_to": "2026-02-23",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": "当日券500円・アソビューの前売り購入で400円（11月１日よりアソビュー前売券発売） ※招待ハガキ持参者・中学生以下は無料 ※アソビューチケットはこちら→https://www.asoview.com/channel/tickets/lmYwosU79h",
-      "contact": "089-953-0130",
-      "source_url": "https://itemehime.com/event/sale/2026/02/6233/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "business",
-        "genres": [],
-        "flags": [
-          "free",
-          "paid"
         ]
       }
     }

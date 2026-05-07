@@ -1,12 +1,12 @@
 {
   "venue_id": "clementplaza",
   "venue_name": "徳島駅クレメントプラザ",
-  "last_success_at": "2026-04-18",
+  "last_success_at": "2026-05-07",
   "events": [
     {
-      "title": "【POP UP SHOP】4／17～26★菓匠雲雀登場！",
-      "date_from": "2026-04-17",
-      "date_to": "2026-04-26",
+      "title": "★ブレッツェリア登場♪",
+      "date_from": "2026-05-04",
+      "date_to": "2026-05-09",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -14,11 +14,11 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/248",
+      "source_url": "https://clementplaza.com/event/detail/257",
       "source_type": "web",
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
-      "body": "開催期間: 04月17日〜04月26日",
+      "body": "開催期間: 05月04日〜05月09日",
       "tags": {
         "type": "other",
         "genres": [],
@@ -28,9 +28,9 @@
       }
     },
     {
-      "title": "【POP UP SHOP】4／17～19★春のおでかけ「あんこ市」",
-      "date_from": "2026-04-17",
-      "date_to": "2026-04-19",
+      "title": "★DOTS（ドッツ）ドーナツ登場♪",
+      "date_from": "2026-04-28",
+      "date_to": "2026-05-09",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -38,35 +38,11 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/247",
+      "source_url": "https://clementplaza.com/event/detail/255",
       "source_type": "web",
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
-      "body": "開催期間: 04月17日〜04月19日",
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "【POP UP SHOP】4 ／10～4／19★1分で着脱可能！ハイブリット着物受注・即売会",
-      "date_from": "2026-04-10",
-      "date_to": "2026-04-19",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/246",
-      "source_type": "web",
-      "venue_name": "徳島駅クレメントプラザ",
-      "status": null,
-      "body": "開催期間: 04月10日〜04月19日",
+      "body": "開催期間: 04月28日〜05月09日",
       "tags": {
         "type": "other",
         "genres": [],
@@ -76,9 +52,9 @@
       }
     },
     {
-      "title": "3月28日～auPAY春のラッキー抽選会開催！",
-      "date_from": "2026-03-28",
-      "date_to": "2026-04-30",
+      "title": "Early summer Fair ☀ アーリーサマーフェア～夏を先取り！おすすめ商品のご紹介～",
+      "date_from": "2026-04-27",
+      "date_to": "2026-05-31",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -86,16 +62,15 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/243",
+      "source_url": "https://clementplaza.com/event/detail/250",
       "source_type": "web",
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
-      "body": "開催期間: 03月28日〜04月30日",
+      "body": "開催期間: 04月27日〜05月31日",
       "tags": {
-        "type": "other",
+        "type": "business",
         "genres": [],
         "flags": [
-          "limited",
           "weekend"
         ]
       }

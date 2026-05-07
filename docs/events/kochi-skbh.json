@@ -1,34 +1,7 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-04-18",
+  "last_success_at": "2026-05-07",
   "events": [
-    {
-      "title": "高知ジュニアオーケストラ 第14回定期演奏会",
-      "date_from": "2026-04-26",
-      "date_to": "2026-04-26",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": "全席自由 無料",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2772",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "県文シネマ日和Vol.83 NTLive ナショナル・シアター・ライブ「欲望という名の電車」",
       "date_from": "2026-05-11",

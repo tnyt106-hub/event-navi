@@ -1,107 +1,7 @@
 {
   "venue_id": "asty-tokushima",
-  "last_success_at": "2026-04-18",
+  "last_success_at": "2026-05-07",
   "events": [
-    {
-      "title": "とくしま就活ナビ 新年企業・団体研究セミナー",
-      "date_from": "2026-01-04",
-      "date_to": "2026-01-04",
-      "open_time": null,
-      "start_time": "12:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n2027年春に徳島県内の企業・団体への就職を目指す学生を対象にしたイベントです。※服装自由、途中入退場OK、当日参加OK",
-      "image_url": null,
-      "price": "入場無料",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1659.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和8年 徳島市消防出初式",
-      "date_from": "2026-01-11",
-      "date_to": "2026-01-11",
-      "open_time": null,
-      "start_time": "09:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n【屋内】式典、消防演技、消防体験コーナーなど【屋外】ミニ消防車乗車体験、消防車両展示、観閲行進、祝賀放水、祝賀飛行など",
-      "image_url": null,
-      "price": "入場無料",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1662.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ほんものたべものフェスタ～ナチュラル＆オーガニックぞくぞく～",
-      "date_from": "2026-01-25",
-      "date_to": "2026-01-25",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール\nコープ自然派のこだわり生産者が大集合！ナチュラル・オーガニック商品の展示即売会です。ステージイベントなど楽しい催しもあります。",
-      "image_url": null,
-      "price": "入場無料",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2180.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "マイナビ転職フェア 徳島",
-      "date_from": "2026-01-31",
-      "date_to": "2026-01-31",
-      "open_time": null,
-      "start_time": "10:30",
-      "end_time": null,
-      "description": "会場: 多目的ホール\n人気企業が多数参加する合同企業説明会です。キャリア相談コーナー、資料コーナー、適職診断コーナーもあります。",
-      "image_url": null,
-      "price": "入場無料（事前登録制）",
-      "contact": null,
-      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2222.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "business",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "2026 徳島ヴォルティス キックオフファンミーティング",
       "date_from": "2026-02-01",
@@ -541,13 +441,87 @@
       }
     },
     {
+      "title": "ガリバー中古車展示即売会",
+      "date_from": "2026-05-02",
+      "date_to": "2026-05-02",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n全国から厳選された中古車約100台を３日間限定、アスティとくしまで展示即売いたします！",
+      "image_url": null,
+      "price": "入場無料",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2884.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ガリバー中古車展示即売会",
+      "date_from": "2026-05-03",
+      "date_to": "2026-05-03",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n全国から厳選された中古車約100台を３日間限定、アスティとくしまで展示即売いたします！",
+      "image_url": null,
+      "price": "入場無料",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2884.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ガリバー中古車展示即売会",
+      "date_from": "2026-05-04",
+      "date_to": "2026-05-04",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n全国から厳選された中古車約100台を３日間限定、アスティとくしまで展示即売いたします！",
+      "image_url": null,
+      "price": "入場無料",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2884.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
       "title": "WE'RE BROS. TOUR 2026",
       "date_from": "2026-05-09",
       "date_to": "2026-05-09",
       "open_time": null,
       "start_time": "15:00",
       "end_time": null,
-      "description": "会場: 多目的ホール\n福山雅治コンサートオフィシャル先行情報の詳細はオフィシャル・サイトにてご確認ください。http://www.fukuyamamasaharu.com/",
+      "description": "会場: 多目的ホール\n福山雅治コンサートhttp://www.fukuyamamasaharu.com/",
       "image_url": null,
       "price": "全席指定￥12,500‐",
       "contact": null,
@@ -573,7 +547,7 @@
       "open_time": null,
       "start_time": "15:00",
       "end_time": null,
-      "description": "会場: 多目的ホール\n福山雅治コンサートオフィシャル先行情報の詳細はオフィシャル・サイトにてご確認ください。http://www.fukuyamamasaharu.com/",
+      "description": "会場: 多目的ホール\n福山雅治コンサートhttp://www.fukuyamamasaharu.com/",
       "image_url": null,
       "price": "全席指定￥12,500‐",
       "contact": null,
@@ -660,6 +634,85 @@
       "body": null,
       "tags": {
         "type": "business",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "こどもシゴト博 2026 in 徳島",
+      "date_from": "2026-06-07",
+      "date_to": "2026-06-07",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n地元企業・団体・自治体が約20社ブースを出展。小学生は仕事体験、ワークショップ、企業紹介プレゼンに参加することができます。",
+      "image_url": null,
+      "price": "入場無料（要事前申し込み）",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2701.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [
+          "kids"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "マイナビ インターンシップ＆キャリア発見フェア",
+      "date_from": "2026-06-13",
+      "date_to": "2026-06-13",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n徳島県にゆかりのある約65社が出展！パーソナルカラー診断や証明写真コーナーなど就活準備に役立つコーナーも満載です。",
+      "image_url": null,
+      "price": "入場無料（完全予約制のイベントです）",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/1699.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "business"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ＪＡ共済 防災フェスタ",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール\n親子で楽しむ防災イベント",
+      "image_url": null,
+      "price": "入場無料",
+      "contact": null,
+      "source_url": "https://www.asty-tokushima.jp/organizer/reserve/availability/2430.html",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "festival",
         "genres": [],
         "flags": [
           "free",

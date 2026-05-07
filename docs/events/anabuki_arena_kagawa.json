@@ -1,238 +1,7 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-04-18",
+  "last_success_at": "2026-05-07",
   "events": [
-    {
-      "title": "【ケツメイシ】ケツメイシ25th Anniversary TOUR ケツメンCAMP 2026",
-      "date_from": "2026-04-04",
-      "date_to": "2026-04-04",
-      "open_time": "15:00",
-      "start_time": "16:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "・アリーナ席　￥12,000（税込）\r\n・スタンド席　￥12,000（税込）\r\n＊4歳以上チケット必要/3歳以下入場不可",
-      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
-      "source_url": "https://kagawa-arena.com/event/978/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-04-08",
-      "date_to": "2026-04-08",
-      "open_time": "17:00",
-      "start_time": null,
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "公式サイトにお問い合わせください。",
-      "source_url": "https://kagawa-arena.com/event/950/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "【SixTONES】SixTONES LIVE TOUR 2026「MILESixTONES」",
-      "date_from": "2026-04-11",
-      "date_to": "2026-04-12",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "お問い合わせ先：\r\nファミリークラブ（0570-033-366）\r\nFAMILY CLUB Official Site：https://www.familyclub.jp",
-      "source_url": "https://kagawa-arena.com/event/987/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-04-15",
-      "date_to": "2026-04-15",
-      "open_time": "17:00",
-      "start_time": null,
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "公式サイトにお問い合わせください。",
-      "source_url": "https://kagawa-arena.com/event/951/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "B3リーグ レギュラーシーズン 2025-26 第29節 香川ファイブアローズ vs 山口パッツファイブ",
-      "date_from": "2026-04-18",
-      "date_to": "2026-04-19",
-      "open_time": null,
-      "start_time": "15:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "株式会社ファイブアローズ\r\nメール：t.fivearrows@gmail.com\r\n電話：087-813-7120（平日 10:00～18:00）",
-      "source_url": "https://kagawa-arena.com/event/865/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports",
-          "nature"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-04-22",
-      "date_to": "2026-04-22",
-      "open_time": "17:00",
-      "start_time": null,
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "公式サイトにお問い合わせください。",
-      "source_url": "https://kagawa-arena.com/event/952/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "【B’z】B’z LIVE-GYM 2026 -FYOP＋-",
-      "date_from": "2026-04-25",
-      "date_to": "2026-04-26",
-      "open_time": "15:30",
-      "start_time": "17:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "Premium席 ¥35,000 /B’z PARTYのみ　※Premium席専用オリジナルグッズ付\r\nSS席 ¥18,000 / B’z PARTYのみ　　\r\nS席（VC席） ¥13,000 / B’z PARTYのみ\r\nS席 ¥13,000\r\nステージサイドバック席 ￥13,000\r\n立見指定 ￥13,000\r\n\r\n※4歳未満入場不可、4歳以上からチケットが必要となります。",
-      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
-      "source_url": "https://kagawa-arena.com/event/1031/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "【香川ファイブアローズ】B3 PLAYOFFS QUARTERFINALS 2025-26",
-      "date_from": "2026-04-28",
-      "date_to": "2026-04-30",
-      "open_time": null,
-      "start_time": "19:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "株式会社ファイブアローズ\r\nメール：t.fivearrows@gmail.com\r\n電話：087-813-7120（平日 10:00～18:00）",
-      "source_url": "https://kagawa-arena.com/event/1210/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "プラセール フットサルスクール",
-      "date_from": "2026-04-29",
-      "date_to": "2026-04-29",
-      "open_time": "09:00",
-      "start_time": null,
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": "公式サイトにお問い合わせください。",
-      "source_url": "https://kagawa-arena.com/event/1175/",
-      "source_type": "hybrid_api_scraping",
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
     {
       "title": "FURISODE LUXE",
       "date_from": "2026-05-02",
@@ -254,6 +23,54 @@
         "genres": [],
         "flags": [
           "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "グリンシャーモ香川 公開練習",
+      "date_from": "2026-05-05",
+      "date_to": "2026-05-06",
+      "open_time": "11:00",
+      "start_time": "11:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "グリンシャーモ香川\r\ninfo@allgrin.net",
+      "source_url": "https://kagawa-arena.com/event/1291/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "【香川ファイブアローズ】B3 PLAYOFFS SEMIFINALS 2025-26",
+      "date_from": "2026-05-09",
+      "date_to": "2026-05-11",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "株式会社ファイブアローズ\r\nメール：t.fivearrows@gmail.com\r\n電話：087-813-7120（平日 10:00～18:00）",
+      "source_url": "https://kagawa-arena.com/event/1285/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
           "weekend"
         ]
       }
@@ -443,6 +260,33 @@
       }
     },
     {
+      "title": "令和８年度 香川県高等学校総合体育大会 体操競技",
+      "date_from": "2026-06-06",
+      "date_to": "2026-06-06",
+      "open_time": "11:00",
+      "start_time": "13:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "香川県立高松北中学校・高等学校　造田　考一郎\r\n090-8978-2155",
+      "source_url": "https://kagawa-arena.com/event/1268/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "プラセール フットサルスクール",
       "date_from": "2026-06-10",
       "date_to": "2026-06-10",
@@ -469,7 +313,7 @@
       }
     },
     {
-      "title": "【Mr.Children】Mr.Children Tour 2026",
+      "title": "【Mr.Children】Mr.Children Tour 2026 “Saturday in the park”",
       "date_from": "2026-06-13",
       "date_to": "2026-06-14",
       "open_time": "16:00",
@@ -541,6 +385,33 @@
         "type": "other",
         "genres": [],
         "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "香川県綱引連盟会長杯綱引大会",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
+      "open_time": "09:00",
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "入場無料",
+      "contact": "090-1325-9585（香川県綱引連盟　事務局:橋本）",
+      "source_url": "https://kagawa-arena.com/event/1271/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
           "weekend"
         ]
       }
@@ -836,6 +707,32 @@
     },
     {
       "title": "プラセール フットサルスクール",
+      "date_from": "2026-08-05",
+      "date_to": "2026-08-05",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1302/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
       "date_from": "2026-08-19",
       "date_to": "2026-08-19",
       "open_time": "17:00",
@@ -846,6 +743,32 @@
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
       "source_url": "https://kagawa-arena.com/event/1148/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-08-26",
+      "date_to": "2026-08-26",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1303/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,
@@ -964,6 +887,33 @@
       }
     },
     {
+      "title": "第69回読売旗争奪柔道大会",
+      "date_from": "2026-10-04",
+      "date_to": "2026-10-04",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "高松柔道協会　前田\r\n090-9456ｰ1525",
+      "source_url": "https://kagawa-arena.com/event/1295/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "プラセール フットサルスクール",
       "date_from": "2026-10-07",
       "date_to": "2026-10-07",
@@ -991,6 +941,32 @@
     },
     {
       "title": "プラセール フットサルスクール",
+      "date_from": "2026-10-21",
+      "date_to": "2026-10-21",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1304/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
       "date_from": "2026-10-28",
       "date_to": "2026-10-28",
       "open_time": "17:00",
@@ -1001,6 +977,84 @@
       "price": null,
       "contact": "公式サイトにお問い合わせください。",
       "source_url": "https://kagawa-arena.com/event/1256/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-11-04",
+      "date_to": "2026-11-04",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1299/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-11-18",
+      "date_to": "2026-11-18",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1300/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-11-25",
+      "date_to": "2026-11-25",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1301/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,

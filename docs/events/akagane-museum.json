@@ -1,82 +1,54 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-04-18",
+  "last_success_at": "2026-05-07",
   "events": [
     {
-      "title": "イベント 令和８年度 第59回にいはま春の市民文化祭・美術の部",
-      "date_from": "2026-04-10",
-      "date_to": "2026-04-19",
+      "title": "展覧会 新居浜市美術館 令和８年度春季特別展 木村伊兵衛 写真に生きる",
+      "date_from": "2026-04-25",
+      "date_to": "2026-06-21",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: 展示室1・2 （あかがねミュージアム２階）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/0326_%E3%83%81%E3%83%A9%E3%82%B7_s_%E3%83%9A%E3%83%BC%E3%82%B8_1-724x1024.jpg",
+      "price": "一般1,000（800）円／65歳以上800（600）円/大学生以下無料 ＊ただし小学生以下は保護者の同伴が必要です。 ※（ ）内は、前売り及び20名以上の団体料金です。 ※身体障害者手帳、療育手帳、精神障害者保健福祉手帳、をお持ちの方(介助者1名を含む)は無料です。 ＊一般料金以外でご利用の方は、学生証や年齢確認のできるものをご持参ください。",
+      "contact": "新居浜市美術館 0897-65-3580",
+      "source_url": "https://akaganemuseum.jp/event/event-14718",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "展覧会 写真展（前期）",
+      "date_from": "2026-04-28",
+      "date_to": "2026-05-24",
       "open_time": null,
       "start_time": "09:30",
       "end_time": null,
       "description": "会場: 市民ギャラリー",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/2026%E3%81%AB%E3%81%84%E3%81%AF%E3%81%BE%E6%98%A5%E3%81%AE%E5%B8%82%E6%B0%91%E6%96%87%E5%8C%96%E7%A5%ADs-729x1024.jpeg",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/%E5%86%99%E7%9C%9F%E5%B1%95_%E5%89%8D%E6%9C%9F_%E3%83%81%E3%83%A9%E3%82%B7%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B81-724x1024.jpg",
       "price": "無料",
-      "contact": "新居浜市文化振興課 0897-64-1554",
-      "source_url": "https://akaganemuseum.jp/event/event-14596",
+      "contact": "新居浜市美術館 0897-65-3580",
+      "source_url": "https://akaganemuseum.jp/event/event-14867",
       "source_type": null,
       "venue_name": null,
       "status": null,
       "body": null,
       "tags": {
-        "type": "festival",
+        "type": "exhibition",
         "genres": [
-          "art",
-          "culture"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "イベント 令和８年度 第59回 にいはま春の市民文化祭 ・華道の部",
-      "date_from": "2026-04-16",
-      "date_to": "2026-04-19",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: アート工房・展示スペース",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/2026%E3%81%AB%E3%81%84%E3%81%AF%E3%81%BE%E6%98%A5%E3%81%AE%E5%B8%82%E6%B0%91%E6%96%87%E5%8C%96%E7%A5%ADs-729x1024.jpeg",
-      "price": "無料",
-      "contact": "新居浜市文化振興課 0897-64-1554",
-      "source_url": "https://akaganemuseum.jp/event/event-14599",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "culture"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "イベント リードオルガンコンサート",
-      "date_from": "2026-04-18",
-      "date_to": "2026-04-18",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": null,
-      "description": "会場: 屋内ステージ",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/%E3%83%AA%E3%83%BC%E3%83%89%E3%82%AA%E3%83%AB%E3%82%AC%E3%83%B3%E3%83%81%E3%83%A9%E3%82%B7-729x1024.jpg",
-      "price": "無料",
-      "contact": "田中依子 090-7149-2786",
-      "source_url": "https://akaganemuseum.jp/event/event-14704",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
+          "art"
         ],
         "flags": [
           "free",
@@ -108,85 +80,6 @@
         "flags": [
           "free",
           "weekend"
-        ]
-      }
-    },
-    {
-      "title": "展覧会 新居浜市美術館 令和８年度春季特別展 木村伊兵衛 写真に生きる",
-      "date_from": "2026-04-25",
-      "date_to": "2026-06-21",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: 展示室1・2 （あかがねミュージアム２階）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/0326_%E3%83%81%E3%83%A9%E3%82%B7_s_%E3%83%9A%E3%83%BC%E3%82%B8_1-724x1024.jpg",
-      "price": "一般1,000（800）円／65歳以上800（600）円/大学生以下無料 ＊ただし小学生以下は保護者の同伴が必要です。 ※（ ）内は、前売り及び20名以上の団体料金です。 ※身体障害者手帳、療育手帳、精神障害者保健福祉手帳、をお持ちの方(介助者1名を含む)は無料です。 ＊一般料金以外でご利用の方は、学生証や年齢確認のできるものをご持参ください。",
-      "contact": "新居浜市美術館 0897-65-3580",
-      "source_url": "https://akaganemuseum.jp/event/event-14718",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "展覧会 アトリエぱふ展",
-      "date_from": "2026-04-22",
-      "date_to": "2026-04-26",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: 市民ギャラリー西",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/%E3%82%A2%E3%83%88%E3%83%AA%E3%82%A8%E3%83%91%E3%83%95-724x1024.jpg",
-      "price": "観覧無料",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14695",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ワークショップ・教室 笑いヨガ講座 4/28",
-      "date_from": "2026-04-28",
-      "date_to": "2026-04-28",
-      "open_time": null,
-      "start_time": "18:30",
-      "end_time": null,
-      "description": "会場: 多目的ホール（あかがね座）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-55-724x1024.jpg",
-      "price": "無料",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14664",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "free",
-          "night"
         ]
       }
     },
@@ -240,6 +133,107 @@
         ],
         "flags": [
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "ワークショップ・教室 笑いヨガ講座 5/26",
+      "date_from": "2026-05-26",
+      "date_to": "2026-05-26",
+      "open_time": null,
+      "start_time": "18:30",
+      "end_time": null,
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-55-724x1024.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14664",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "イベント あかがねシネマ 『雨に唄えば』",
+      "date_from": "2026-06-13",
+      "date_to": "2026-06-13",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E9%9B%A8%E3%81%AB%E5%94%84%E3%81%88%E3%81%B0%EF%BC%BF%E3%83%81%E3%83%A9%E3%82%B7.jpg",
+      "price": null,
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14910",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "screening",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "イベント あかがねシネマ 「GEMNIBUS Vol.1」×新居浜市出身 ゴジラ vs メガロ 上西琢也監督 トークショー",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E4%B8%8A%E8%A5%BF%E7%9B%A3%E7%9D%A3%E6%98%A0%E7%94%BB%E3%83%81%E3%83%A9%E3%82%B72_omote_CMYK_0424-725x1024.jpg",
+      "price": "一般 1,500円 高校生以下 1,000円 膝上 未就学児 無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14905",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "screening",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "イベント 映画「笑天 -しょうてん-」",
+      "date_from": "2026-08-01",
+      "date_to": "2026-08-02",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/%E3%83%81%E3%83%A9%E3%82%B7%E8%A1%A8-733x1024.jpeg",
+      "price": "大人：前売券1,500円／当日券1,800円 18歳未満：前売券1,000円／当日券1,300円 ※全席自由・先着順",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14691",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "screening",
+        "genres": [
+          "theater"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
         ]
       }
     }
