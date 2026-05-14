@@ -1,7 +1,32 @@
 {
   "venue_id": "itemehime",
-  "last_success_at": "2026-05-07",
+  "last_success_at": "2026-05-14",
   "events": [
+    {
+      "title": "SURIFT with 古着卸倉庫 CLASS1 in 愛媛",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": "19:00",
+      "description": null,
+      "image_url": null,
+      "price": "５００円",
+      "contact": "SURIFT実行委員会 【電話】090-8404-1984 【メール】surift.info@gmail.com",
+      "source_url": "https://itemehime.com/event/sale/2026/06/6885/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid",
+          "night"
+        ]
+      }
+    },
     {
       "title": "ガリバー中古車展示即売会",
       "date_from": "2026-06-13",
@@ -24,6 +49,31 @@
         "flags": [
           "free",
           "night"
+        ]
+      }
+    },
+    {
+      "title": "愛媛プロレス夏のビッグマッチ ライジングHAYATO卒業興行",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": "ウルトラシート9000円、スーパーシート7000円、プレミアムシート6000円、 スタンダードシート1000～5000円、自由席500～4000円",
+      "contact": "090-6417-7139",
+      "source_url": "https://itemehime.com/event/festival/2026/06/6890/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid",
+          "weekend"
         ]
       }
     },
@@ -185,58 +235,6 @@
         "flags": [
           "free",
           "weekend"
-        ]
-      }
-    },
-    {
-      "title": "お仕事フェスタ2026",
-      "date_from": "2026-03-07",
-      "date_to": "2026-03-08",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": "一般社団法人愛媛県専修学校各種学校連合会 お仕事フェスタ2026予約係 （学校法人河原学園 本部内）電話番号089-935-4510 メールアドレスoshifes@kawahara.ac.jp",
-      "source_url": "https://itemehime.com/event/event-other/2026/03/6412/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "マイナビ 就職セミナー 松山会場",
-      "date_from": "2026-03-03",
-      "date_to": "2026-03-04",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": "【メール】csk-event3@mynavi.jp",
-      "source_url": "https://itemehime.com/event/event-other/2026/03/6366/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "nature",
-          "business"
-        ],
-        "flags": [
-          "free"
         ]
       }
     }

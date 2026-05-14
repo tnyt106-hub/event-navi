@@ -1,85 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-05-07",
+  "last_success_at": "2026-05-14",
   "events": [
-    {
-      "title": "Creepy Nuts ONE MAN TOUR 「LEGION」",
-      "date_from": "2025-05-09",
-      "date_to": "2025-05-09",
-      "open_time": "18:00",
-      "start_time": "19:00",
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8728",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール Creepy Nuts ONE MAN TOUR 「LEGION」 開場 18:00/開演 19:00/終演 21:00 小ホール 香川県人権・同和教育研究協議会総会 部会別総会・研修会 開場 09:30/開演 10:00/終演 12:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "第9回マンドリンアンサンブルソナチネコンサート",
-      "date_from": "2025-05-10",
-      "date_to": "2025-05-10",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8731",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "小ホール 第9回マンドリンアンサンブルソナチネコンサート 開場 13:30/開演 14:00/終演 16:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "高松ウインドシンフォニー第39回定期演奏会",
-      "date_from": "2025-05-11",
-      "date_to": "2025-05-11",
-      "open_time": "13:00",
-      "start_time": "14:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8733",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 高松ウインドシンフォニー第39回定期演奏会 開場 13:00/開演 14:00/終演 16:00 小ホール 香川市民劇場5月例会「オペラ あん」（オペラシアターこんにゃく座公演） 開場 12:30/開演 13:00/終演 14:40",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "2025年 第18期 香川県民文化大学 5月講座",
       "date_from": "2025-05-17",
@@ -4640,7 +4562,7 @@
       "date_to": "2026-05-09",
       "open_time": "10:15",
       "start_time": "10:30",
-      "end_time": "17:00",
+      "end_time": "16:45",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4649,7 +4571,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "小ホール 東京藝術大学音楽学部早期教育プロジェクト2026 in 香川 ピアノ部門 開場 10:15/開演 10:30/終演 17:00",
+      "body": "小ホール 東京藝術大学音楽学部早期教育プロジェクト2026 in 香川 ピアノ部門 開場 10:15/開演 10:30/終演 16:45",
       "tags": {
         "type": "other",
         "genres": [

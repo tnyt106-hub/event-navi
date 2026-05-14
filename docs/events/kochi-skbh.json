@@ -1,33 +1,7 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-05-07",
+  "last_success_at": "2026-05-14",
   "events": [
-    {
-      "title": "県文シネマ日和Vol.83 NTLive ナショナル・シアター・ライブ「欲望という名の電車」",
-      "date_from": "2026-05-11",
-      "date_to": "2026-05-11",
-      "open_time": null,
-      "start_time": "13:30",
-      "end_time": "16:52",
-      "description": null,
-      "image_url": null,
-      "price": "一般 3,000円 学生・障がい者手帳をお持ちの方 2,500円 ※未就学児入場不可 ※チケット1枚につき、お一人様1回限り有効",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2777",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "paid"
-        ]
-      }
-    },
     {
       "title": "高知県立県民文化ホール開館50周年 第50回高知県新人演奏会デビューリサイタル",
       "date_from": "2026-05-30",
@@ -141,7 +115,7 @@
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "全席指定 前売 4000円 ※当日は500円UP ※ 下記「チケット購入時の注意事項」をご確認ください。 ＜4/18（土）10:00 一般販売開始＞",
+      "price": "全席指定 前売 4,000円 ※当日は500円UP ※ 下記「チケット購入時の注意事項」をご確認ください。",
       "contact": null,
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2784",
       "source_type": "web",
@@ -156,6 +130,33 @@
         "flags": [
           "paid",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "【ローソンチケット、チケットぴあ、FANYチケットにて先行（抽選）のお知らせ 5/13（水）11:00～5/16（土）23:59】 山里亮太の140 高知公演～不思議だと思いませんか？～",
+      "date_from": "2026-08-22",
+      "date_to": "2026-08-22",
+      "open_time": "16:15",
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席指定 4,000円 ※未就学児入場不可 ※当日は500円UP",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2841",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール オレンジホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "limited",
+          "paid"
         ]
       }
     },

@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-05-07",
+  "last_success_at": "2026-05-14",
   "events": [
     {
       "title": "FURISODE LUXE",
@@ -96,6 +96,30 @@
         "genres": [
           "sports"
         ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "【香川ファイブアローズ】B3 PLAYOFFS FINALS 2025-26",
+      "date_from": "2026-05-18",
+      "date_to": "2026-05-20",
+      "open_time": null,
+      "start_time": "19:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "株式会社ファイブアローズ\r\nメール：t.fivearrows@gmail.com\r\n電話：087-813-7120（平日 10:00～18:00）",
+      "source_url": "https://kagawa-arena.com/event/1319/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
         "flags": [
           "night"
         ]
@@ -554,7 +578,7 @@
       "date_to": "2026-07-11",
       "open_time": "07:45",
       "start_time": "08:00",
-      "end_time": "17:00",
+      "end_time": "16:00",
       "description": null,
       "image_url": null,
       "price": null,
@@ -680,6 +704,33 @@
       }
     },
     {
+      "title": "明治安田Presents 広島サンダーズ ママさんバレーボール教室",
+      "date_from": "2026-07-26",
+      "date_to": "2026-07-26",
+      "open_time": "09:30",
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "香川県ママさんバレーボール連盟事務局\r\n漆原 090-9772-7973",
+      "source_url": "https://kagawa-arena.com/event/1308/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "プラセール フットサルスクール",
       "date_from": "2026-07-29",
       "date_to": "2026-07-29",
@@ -728,6 +779,32 @@
         ],
         "flags": [
           "night"
+        ]
+      }
+    },
+    {
+      "title": "2026ファイテン ジャパンクラブカップ JVA第45回全日本クラブバレーボール選手権大会",
+      "date_from": "2026-08-07",
+      "date_to": "2026-08-09",
+      "open_time": "08:00",
+      "start_time": "09:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "香川県バレーボール協会　 競技委員長　　徳永　智仁\r\n携帯電話 : 090-4505-7087　E-mail : kagawa.volleyball.as@gmail.com",
+      "source_url": "https://kagawa-arena.com/event/1245/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
         ]
       }
     },
@@ -883,6 +960,32 @@
         ],
         "flags": [
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "プラセール フットサルスクール",
+      "date_from": "2026-09-23",
+      "date_to": "2026-09-23",
+      "open_time": "17:00",
+      "start_time": null,
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": "公式サイトにお問い合わせください。",
+      "source_url": "https://kagawa-arena.com/event/1307/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "night"
         ]
       }
     },

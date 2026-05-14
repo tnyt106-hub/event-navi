@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-05-07",
+  "last_success_at": "2026-05-14",
   "events": [
     {
       "title": "展覧会 新居浜市美術館 令和８年度春季特別展 木村伊兵衛 写真に生きる",
@@ -84,33 +84,6 @@
       }
     },
     {
-      "title": "イベント 『篠笛 × 和太鼓 × ピアノ』公演 〜和洋融合の響〜 WORLD PEACE",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
-      "open_time": null,
-      "start_time": "14:30",
-      "end_time": null,
-      "description": "会場: 多目的ホール(あかがね座)",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/line_oa_chat_260410_102811-820x1024.jpg",
-      "price": "前売り 大人 5,000円（当日券 5,500円） 大人ペアチケット 8,000円（当日券 9,000円） 大学生、高校生 2,000円（当日券 2,500円） 保護者に同伴の中学生以下 無料 ※現金のみ ※全席自由 ※保護者同伴の中学生以下は入場可、チケットお渡し（未就学児含む）",
-      "contact": "矢野 友美子 090-7627-0845",
-      "source_url": "https://akaganemuseum.jp/event/event-14749",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
       "title": "イベント 作・演出 鴻上尚史 舞台『トランス』愛媛公演",
       "date_from": "2026-05-20",
       "date_to": "2026-05-20",
@@ -182,6 +155,30 @@
         "genres": [],
         "flags": [
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "イベント 泰峰堂寄席 第36回 桂吉弥独演会",
+      "date_from": "2026-06-24",
+      "date_to": "2026-06-24",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E5%90%89%E5%BC%A5%E3%81%95%E3%82%93%E7%8B%AC%E6%BC%94%E4%BC%9A-724x1024.jpg",
+      "price": "自由席 前売り 2,000円/当日 2,500円 良席指定席 前売り 2,500円/当日 3,000円",
+      "contact": "表装工房 泰峰堂 0897-41-6752",
+      "source_url": "https://akaganemuseum.jp/event/event-14929",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "event",
+        "genres": [],
+        "flags": [
+          "paid"
         ]
       }
     },

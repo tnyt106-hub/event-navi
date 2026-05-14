@@ -1,6 +1,6 @@
 {
   "venue_id": "sunport_hall_takamatsu",
-  "last_success_at": "2026-05-07",
+  "last_success_at": "2026-05-14",
   "events": [
     {
       "title": "GOTAMA Trumpet Quintet 1st Concert",
@@ -666,9 +666,9 @@
       "title": "第27回 高校生のための歌曲コンクール予選（昭和音楽大学）",
       "date_from": "2026-05-23",
       "date_to": "2026-05-23",
-      "open_time": "13:30",
-      "start_time": "14:00",
-      "end_time": "17:00",
+      "open_time": "13:15",
+      "start_time": "13:45",
+      "end_time": "17:15",
       "description": null,
       "image_url": null,
       "price": "無料お問合せ昭和音楽大学 044-953-9849",
