@@ -1,6 +1,6 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-05-14",
+  "last_success_at": "2026-05-17",
   "events": [
     {
       "title": "高知県立県民文化ホール開館50周年 第50回高知県新人演奏会デビューリサイタル",
@@ -172,6 +172,30 @@
       "price": "参加料 各講座2,000円 ※料金は当日精算",
       "contact": null,
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2779",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "「歌彦・萬都のやってみよう！落語発表会」 ＼参加者募集／",
+      "date_from": "2026-11-23",
+      "date_to": "2026-11-23",
+      "open_time": "12:30",
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席自由 1,500円 ※未就学児入場不可 上記は11月23日（月・祝）開催の発表会を観覧される方向けのチケット情報です。",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2842",
       "source_type": "web",
       "venue_name": "高知県立県民文化ホール",
       "status": null,

@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-05-14",
+  "last_success_at": "2026-05-17",
   "events": [
     {
       "title": "愛と希望の祭典・四国 西日本 ウィルグラハム セレブレーション",
@@ -2848,6 +2848,33 @@
         "flags": [
           "free",
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "丸美屋食品ミュージカルアニー 愛媛公演",
+      "date_from": "2026-08-02",
+      "date_to": "2026-08-02",
+      "open_time": "9:45",
+      "start_time": "10:30",
+      "end_time": "13:10",
+      "description": null,
+      "image_url": null,
+      "price": "S席￥9,500-、A席￥8,000-",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4106/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "theater",
+          "food"
+        ],
+        "flags": [
+          "weekend"
         ]
       }
     },
@@ -7763,30 +7790,6 @@
         "flags": [
           "paid",
           "night"
-        ]
-      }
-    },
-    {
-      "title": "令和7年度福祉・介護関係事業所合同入職式",
-      "date_from": "2025-05-14",
-      "date_to": "2025-05-14",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2203/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
         ]
       }
     },
