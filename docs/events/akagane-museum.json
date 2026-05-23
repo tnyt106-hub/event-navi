@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-05-17",
+  "last_success_at": "2026-05-23",
   "events": [
     {
       "title": "展覧会 新居浜市美術館 令和８年度春季特別展 木村伊兵衛 写真に生きる",
@@ -84,28 +84,51 @@
       }
     },
     {
-      "title": "イベント 作・演出 鴻上尚史 舞台『トランス』愛媛公演",
-      "date_from": "2026-05-20",
-      "date_to": "2026-05-20",
+      "title": "ワークショップ・教室 写真を使ったワークショップ",
+      "date_from": "2026-05-23",
+      "date_to": "2026-05-23",
       "open_time": null,
-      "start_time": "13:30",
+      "start_time": "10:00",
       "end_time": null,
-      "description": "会場: 多目的ホール（あかがね座）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/01/trans_main01_fix_small-729x1024.jpg",
-      "price": "【一 般】前売：8,800円／当日：9,900円 【学 生】前売：3,300円／当日：4,400円 （全席指定／税込） ＊学生・高校生以下 ＊未就学児入場不可",
-      "contact": "あかがねミュージアム運営グループ TEL 0897-31-0305 (9:30〜17:00 休館日を除く)",
-      "source_url": "https://akaganemuseum.jp/event/event-14051",
+      "description": "会場: 創作スペース",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/5%E6%9C%8823%E6%97%A5%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97_A3-724x1024.jpg",
+      "price": "本文記載",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14985",
       "source_type": null,
       "venue_name": null,
       "status": null,
       "body": null,
       "tags": {
-        "type": "performance",
-        "genres": [
-          "theater"
-        ],
+        "type": "workshop",
+        "genres": [],
         "flags": [
-          "paid"
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "イベント 写真評論家 飯沢耕太郎氏による講演会",
+      "date_from": "2026-05-24",
+      "date_to": "2026-05-24",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": "会場: 記念講演会：多目的ホール ギャラリートーク：展示室1・2",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E8%A8%98%E5%BF%B5%E8%AC%9B%E6%BC%94%E4%BC%9A0524%E3%83%81%E3%83%A9%E3%82%B7-724x1024.jpg",
+      "price": "記念講演会：聴講無料 ギャラリートーク：展覧会入場券要",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14983",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
         ]
       }
     },
@@ -159,6 +182,33 @@
       }
     },
     {
+      "title": "イベント 明和電機★UMEツアー2026 全国 47都道府県ひとりコンサート",
+      "date_from": "2026-06-23",
+      "date_to": "2026-06-23",
+      "open_time": null,
+      "start_time": "19:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E6%98%8E%E5%92%8C%E9%9B%BB%E6%A9%9F%E3%83%81%E3%83%A9%E3%82%B7-723x1024.jpg",
+      "price": "前売り/当日 2,000円 小学生以下 1,000円 ※3歳以下は無料、但し座席が必要な場合は小学生以下のチケットの対象となります。",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14997",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
       "title": "イベント 泰峰堂寄席 第36回 桂吉弥独演会",
       "date_from": "2026-06-24",
       "date_to": "2026-06-24",
@@ -204,33 +254,6 @@
         "flags": [
           "free",
           "paid"
-        ]
-      }
-    },
-    {
-      "title": "イベント 映画「笑天 -しょうてん-」",
-      "date_from": "2026-08-01",
-      "date_to": "2026-08-02",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール(あかがね座)",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/%E3%83%81%E3%83%A9%E3%82%B7%E8%A1%A8-733x1024.jpeg",
-      "price": "大人：前売券1,500円／当日券1,800円 18歳未満：前売券1,000円／当日券1,300円 ※全席自由・先着順",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14691",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "screening",
-        "genres": [
-          "theater"
-        ],
-        "flags": [
-          "paid",
-          "weekend"
         ]
       }
     }

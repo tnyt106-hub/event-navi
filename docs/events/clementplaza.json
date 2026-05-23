@@ -1,7 +1,7 @@
 {
   "venue_id": "clementplaza",
   "venue_name": "徳島駅クレメントプラザ",
-  "last_success_at": "2026-05-17",
+  "last_success_at": "2026-05-23",
   "events": [
     {
       "title": "宝あじ★ミニたい焼き登場♪",
@@ -28,9 +28,9 @@
       }
     },
     {
-      "title": "佐川急便★手荷物預かり",
-      "date_from": "2026-05-16",
-      "date_to": "2026-05-17",
+      "title": "５月のポイント３倍デー♪",
+      "date_from": "2026-05-29",
+      "date_to": "2026-05-31",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -38,11 +38,11 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/260",
+      "source_url": "https://clementplaza.com/event/detail/261",
       "source_type": "web",
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
-      "body": "開催期間: 05月16日〜05月17日",
+      "body": "開催期間: 05月29日〜05月31日",
       "tags": {
         "type": "other",
         "genres": [],
@@ -52,9 +52,9 @@
       }
     },
     {
-      "title": "★菓子工房かりまん★登場♪",
-      "date_from": "2026-05-16",
-      "date_to": "2026-05-17",
+      "title": "6月17日（水）はクレメントプラザ休館日です",
+      "date_from": "2026-06-17",
+      "date_to": "2026-06-17",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -62,17 +62,15 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://clementplaza.com/event/detail/259",
+      "source_url": "https://clementplaza.com/event/detail/258",
       "source_type": "web",
       "venue_name": "徳島駅クレメントプラザ",
       "status": null,
-      "body": "開催期間: 05月16日〜05月17日",
+      "body": "開催期間: 06月17日",
       "tags": {
         "type": "other",
         "genres": [],
-        "flags": [
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {

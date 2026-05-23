@@ -1,14 +1,14 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-05-17",
+  "last_success_at": "2026-05-23",
   "events": [
     {
       "title": "高知県立県民文化ホール開館50周年 第50回高知県新人演奏会デビューリサイタル",
       "date_from": "2026-05-30",
       "date_to": "2026-05-30",
       "open_time": "16:30",
-      "start_time": null,
-      "end_time": null,
+      "start_time": "17:00",
+      "end_time": "20:00",
       "description": null,
       "image_url": null,
       "price": "全席自由 1,000円 ※当日200円UP ※未就学児無料",
@@ -82,6 +82,58 @@
       }
     },
     {
+      "title": "FORUM8 presents 松任谷由実 THE WORMHOLE TOUR 2025-26",
+      "date_from": "2026-06-13",
+      "date_to": "2026-06-13",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": "完売",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2852",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール オレンジホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "NHK公開収録「新・BS日本のうた」",
+      "date_from": "2026-06-18",
+      "date_to": "2026-06-18",
+      "open_time": "17:50",
+      "start_time": "18:30",
+      "end_time": "20:30",
+      "description": null,
+      "image_url": null,
+      "price": "事前申込（入場無料） ★観覧のお申し込みはこちらから&darr;&darr; NHKオンライン イベント・インフォメーション 観覧申し込み締切： 2026年5月24日（日）午後11時59分まで",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2853",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール オレンジホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
+        ]
+      }
+    },
+    {
       "title": "歌彦・萬都の高知落語会2026 -笑中お見舞い申し上げます-",
       "date_from": "2026-07-18",
       "date_to": "2026-07-18",
@@ -134,7 +186,7 @@
       }
     },
     {
-      "title": "【ローソンチケット、チケットぴあ、FANYチケットにて先行（抽選）のお知らせ 5/13（水）11:00～5/16（土）23:59】 山里亮太の140 高知公演～不思議だと思いませんか？～",
+      "title": "山里亮太の140 高知公演 ～不思議だと思いませんか？～",
       "date_from": "2026-08-22",
       "date_to": "2026-08-22",
       "open_time": "16:15",
@@ -142,7 +194,7 @@
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "全席指定 4,000円 ※未就学児入場不可 ※当日は500円UP",
+      "price": "全席指定 4,000円 ※未就学児入場不可 ※当日は500円UP ＜5/24（日）10:00～一般発売開始＞",
       "contact": null,
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2841",
       "source_type": "web",
@@ -155,8 +207,8 @@
           "nature"
         ],
         "flags": [
-          "limited",
-          "paid"
+          "paid",
+          "weekend"
         ]
       }
     },

@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-05-17",
+  "last_success_at": "2026-05-23",
   "events": [
     {
       "title": "FURISODE LUXE",
@@ -704,6 +704,31 @@
       }
     },
     {
+      "title": "大東流合気柔術 高松 合同稽古",
+      "date_from": "2026-07-26",
+      "date_to": "2026-07-26",
+      "open_time": "13:00",
+      "start_time": "13:15",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料\r\n(当会員のみの参加を想定しています。ビジターの見学については自由にしていただいて構いませんが、体験については当日お問い合わせください）",
+      "contact": "090-4472-1729",
+      "source_url": "https://kagawa-arena.com/event/1323/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "明治安田Presents 広島サンダーズ ママさんバレーボール教室",
       "date_from": "2026-07-26",
       "date_to": "2026-07-26",
@@ -908,6 +933,81 @@
         ],
         "flags": [
           "night"
+        ]
+      }
+    },
+    {
+      "title": "【ディズニー・オン・アイス】日本公演40周年記念 ディズニー・オン・アイス “Let’s Party!”",
+      "date_from": "2026-09-11",
+      "date_to": "2026-09-11",
+      "open_time": "09:45",
+      "start_time": "10:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "プレミアム席￥13,500\r\nSS席￥8,900\r\nS席￥7,900\r\nA席￥5,900\r\n入場条件\r\n※2歳以下のお子様は保護者（大人）1名につき、1名まで膝上鑑賞無料。但しお席が必要な場合は有料。",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_url": "https://kagawa-arena.com/event/1330/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "【ディズニー・オン・アイス】日本公演40周年記念 ディズニー・オン・アイス “Let’s Party!”",
+      "date_from": "2026-09-12",
+      "date_to": "2026-09-12",
+      "open_time": "09:15",
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "プレミアム席￥13,500\r\nSS席￥8,900\r\nS席￥7,900\r\nA席￥5,900\r\n入場条件\r\n※2歳以下のお子様は保護者（大人）1名につき、1名まで膝上鑑賞無料。但しお席が必要な場合は有料。",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_url": "https://kagawa-arena.com/event/1333/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "【ディズニー・オン・アイス】日本公演40周年記念 ディズニー・オン・アイス “Let’s Party!”",
+      "date_from": "2026-09-13",
+      "date_to": "2026-09-13",
+      "open_time": "09:15",
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "プレミアム席￥13,500\r\nSS席￥8,900\r\nS席￥7,900\r\nA席￥5,900\r\n入場条件\r\n※2歳以下のお子様は保護者（大人）1名につき、1名まで膝上鑑賞無料。但しお席が必要な場合は有料。",
+      "contact": "デューク高松 087-822-2520（平日11:00～17:00）",
+      "source_url": "https://kagawa-arena.com/event/1334/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
         ]
       }
     },

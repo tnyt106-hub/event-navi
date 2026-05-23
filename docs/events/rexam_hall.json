@@ -1,112 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-05-17",
+  "last_success_at": "2026-05-23",
   "events": [
-    {
-      "title": "2025年 第18期 香川県民文化大学 5月講座",
-      "date_from": "2025-05-17",
-      "date_to": "2025-05-17",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8737",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 2025年 第18期 香川県民文化大学 5月講座 開場 12:00/開演 13:00/終演 15:00 小ホール ベストボディ・ジャパン2025香川・高松大会 開場 12:00/開演 12:30/終演 17:00",
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "culture"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "sumika Live Tour 2025『Vermillion&#8217;s』",
-      "date_from": "2025-05-18",
-      "date_to": "2025-05-18",
-      "open_time": "16:00",
-      "start_time": "17:00",
-      "end_time": "19:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8741",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール sumika Live Tour 2025『Vermillion&#8217;s』 開場 16:00/開演 17:00/終演 19:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "Saucy Dog HALL TOUR 2025",
-      "date_from": "2025-05-21",
-      "date_to": "2025-05-21",
-      "open_time": "18:00",
-      "start_time": "19:00",
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8745",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール Saucy Dog HALL TOUR 2025 開場 18:00/開演 19:00/終演 21:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "Saucy Dog HALL TOUR 2025",
-      "date_from": "2025-05-22",
-      "date_to": "2025-05-22",
-      "open_time": "18:00",
-      "start_time": "19:00",
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8747",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール Saucy Dog HALL TOUR 2025 開場 18:00/開演 19:00/終演 21:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
     {
       "title": "billboard classics 玉置浩二 LEGENDARY SYMPHONIC CONCERT 2025”ODE TO JOY”",
       "date_from": "2025-05-24",
@@ -4666,7 +4561,7 @@
       "date_from": "2026-05-20",
       "date_to": "2026-05-20",
       "open_time": "12:00",
-      "start_time": "13:00",
+      "start_time": "12:55",
       "end_time": "15:00",
       "description": null,
       "image_url": null,
@@ -4676,7 +4571,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 2026年 第19期 香川県民文化大学 5月講座 開場 12:00/開演 13:00/終演 15:00",
+      "body": "大ホール 2026年 第19期 香川県民文化大学 5月講座 開場 12:00/開演 12:55/終演 15:00",
       "tags": {
         "type": "lecture",
         "genres": [
@@ -4689,9 +4584,9 @@
       "title": "さとうみつろうトークショー＆ピアノライブ",
       "date_from": "2026-05-22",
       "date_to": "2026-05-22",
-      "open_time": "14:00",
+      "open_time": "13:30",
       "start_time": "15:00",
-      "end_time": "18:00",
+      "end_time": "18:30",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4700,7 +4595,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール さとうみつろうトークショー＆ピアノライブ 開場 14:00/開演 15:00/終演 18:00",
+      "body": "大ホール さとうみつろうトークショー＆ピアノライブ 開場 13:30/開演 15:00/終演 18:30",
       "tags": {
         "type": "performance",
         "genres": [
@@ -4708,6 +4603,31 @@
         ],
         "flags": [
           "night"
+        ]
+      }
+    },
+    {
+      "title": "KAMACHO PRESENTS 第10回 高松響命 Mother Earth －いのちの源へ還るー",
+      "date_from": "2026-05-23",
+      "date_to": "2026-05-23",
+      "open_time": "18:00",
+      "start_time": "19:00",
+      "end_time": "20:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11153",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール KAMACHO PRESENTS 第10回 高松響命 Mother Earth －いのちの源へ還るー 開場 18:00/開演 19:00/終演 20:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "night",
+          "weekend"
         ]
       }
     },

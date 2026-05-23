@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-05-17",
+  "last_success_at": "2026-05-23",
   "events": [
     {
       "title": "愛と希望の祭典・四国 西日本 ウィルグラハム セレブレーション",
@@ -311,7 +311,7 @@
       }
     },
     {
-      "title": "SHOGO HAMADA ON THE ROAD 2025-2026 Under The BLUE SKY＜The First Period＞",
+      "title": "SHOGO HAMADA ON THE ROAD 2025-2026 Under The BLUE SKY＜The Second Period＞",
       "date_from": "2026-05-19",
       "date_to": "2026-05-19",
       "open_time": "17:15",
@@ -1285,6 +1285,30 @@
         "flags": [
           "paid",
           "night"
+        ]
+      }
+    },
+    {
+      "title": "令和8年度 愛媛県教育・保育施設",
+      "date_from": "2026-06-12",
+      "date_to": "2026-06-12",
+      "open_time": "9:30",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4111/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
         ]
       }
     },
@@ -3109,6 +3133,31 @@
       }
     },
     {
+      "title": "第16回 中四国糖尿病療養指導スキルアップセミナー",
+      "date_from": "2026-08-30",
+      "date_to": "2026-08-30",
+      "open_time": "9:00",
+      "start_time": "9:10",
+      "end_time": "16:30",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4113/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "愛媛県県民文化会館開館40周年記念・",
       "date_from": "2026-08-30",
       "date_to": "2026-08-30",
@@ -3767,6 +3816,56 @@
       }
     },
     {
+      "title": "第66回全国国保地域医療学会",
+      "date_from": "2026-09-18",
+      "date_to": "2026-09-18",
+      "open_time": "8:30",
+      "start_time": "9:30",
+      "end_time": "17:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4102/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "local"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第66回全国国保地域医療学会",
+      "date_from": "2026-09-19",
+      "date_to": "2026-09-19",
+      "open_time": "8:30",
+      "start_time": "9:00",
+      "end_time": "12:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4104/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "local"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "Music Concert in2026 (ピアノ発表会）",
       "date_from": "2026-09-20",
       "date_to": "2026-09-20",
@@ -4330,6 +4429,32 @@
       "tags": {
         "type": "other",
         "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "2026年度 電話応対コンクール愛媛県大会",
+      "date_from": "2026-10-09",
+      "date_to": "2026-10-09",
+      "open_time": "11:30",
+      "start_time": "12:30",
+      "end_time": "17:30",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4118/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
         "flags": [
           "free"
         ]
@@ -5163,6 +5288,31 @@
         "flags": [
           "free",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "愛媛経済同友会 創立60周年記念式典",
+      "date_from": "2026-11-04",
+      "date_to": "2026-11-04",
+      "open_time": "15:00",
+      "start_time": "15:30",
+      "end_time": "18:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4114/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
         ]
       }
     },
@@ -7789,181 +7939,6 @@
         "genres": [],
         "flags": [
           "paid",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "マイナビ転職フェア松山",
-      "date_from": "2025-05-17",
-      "date_to": "2025-05-17",
-      "open_time": "10:00",
-      "start_time": "11:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2214/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "business",
-        "genres": [
-          "nature"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "KENBUN MORNING MARKET Vol.5",
-      "date_from": "2025-05-18",
-      "date_to": "2025-05-18",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "13:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2236/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和8年3月新規学校卒業予定者対象",
-      "date_from": "2025-05-20",
-      "date_to": "2025-05-20",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "14:30",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1778/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "行政相談委員全体会議",
-      "date_from": "2025-05-21",
-      "date_to": "2025-05-21",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2218/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "令和7年度 温山会総会・松山支部総会",
-      "date_from": "2025-05-22",
-      "date_to": "2025-05-22",
-      "open_time": "17:30",
-      "start_time": "18:00",
-      "end_time": "21:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2229/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [
-          "nature"
-        ],
-        "flags": [
-          "free",
-          "night"
-        ]
-      }
-    },
-    {
-      "title": "学校法人聖カタリナ学園・聖カタリナ学園高等学校",
-      "date_from": "2025-05-23",
-      "date_to": "2025-05-23",
-      "open_time": "9:15",
-      "start_time": "9:45",
-      "end_time": "12:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/1779/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "学校法人聖カタリナ学園・創立100周年記念事業",
-      "date_from": "2025-05-23",
-      "date_to": "2025-05-23",
-      "open_time": "17:30",
-      "start_time": "18:00",
-      "end_time": "20:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2151/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
           "night"
         ]
       }

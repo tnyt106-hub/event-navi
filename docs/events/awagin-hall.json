@@ -1,23 +1,23 @@
 {
   "venue_id": "awagin-hall",
-  "last_success_at": "2026-05-17",
+  "last_success_at": "2026-05-23",
   "events": [
     {
-      "title": "第97回徳島中央メーデー",
-      "date_from": "2026-05-01",
-      "date_to": "2026-05-01",
+      "title": "第45期徳島県シルバー大学校入学式",
+      "date_from": "2026-06-03",
+      "date_to": "2026-06-03",
       "open_time": null,
       "start_time": "10:00",
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "関係者 無料",
+      "price": "関係者・無料",
       "contact": null,
       "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
       "source_type": "web",
       "venue_name": "あわぎんホール",
       "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 連合徳島 088-655-4105",
+      "body": "会場: ホール（1階）\nお問合せ先: 徳島県社会福祉協議会アクティブシニア活躍推進センター 088-655-5080",
       "tags": {
         "type": "other",
         "genres": [],
@@ -27,151 +27,74 @@
       }
     },
     {
-      "title": "徳島大学交響楽団 第62回定期演奏会",
-      "date_from": "2026-05-06",
-      "date_to": "2026-05-06",
-      "open_time": null,
-      "start_time": "14:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "前売自由席 600円 当日自由席 700円",
-      "contact": null,
-      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
-      "source_type": "web",
-      "venue_name": "あわぎんホール",
-      "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 徳島大学交響楽団 tokushima.orchestra@gmail.com",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "四国ハーモニカ連盟 ハーモニカコンサート",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
-      "source_type": "web",
-      "venue_name": "あわぎんホール",
-      "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 四国ハーモニカ連盟 090-1327-1368（莖田）",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第20回徳島チャリティー芸能祭",
-      "date_from": "2026-05-14",
-      "date_to": "2026-05-14",
-      "open_time": null,
-      "start_time": "12:30",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
-      "source_type": "web",
-      "venue_name": "あわぎんホール",
-      "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 徳島チャリティー 088-689-0083",
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "マチ★アソビVol.30",
-      "date_from": "2026-05-16",
-      "date_to": "2026-05-16",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "未定",
-      "contact": null,
-      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
-      "source_type": "web",
-      "venue_name": "あわぎんホール",
-      "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: NPO法人マチ★アソビ",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "歌踊演舞一座 響ファミリー公演",
-      "date_from": "2026-05-19",
-      "date_to": "2026-05-19",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "指定席 5,000円 自由席 4,000円",
-      "contact": null,
-      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
-      "source_type": "web",
-      "venue_name": "あわぎんホール",
-      "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 響ファミリー徳島公演実行委員会 090-3989-9190",
-      "tags": {
-        "type": "performance",
-        "genres": [],
-        "flags": [
-          "paid",
-          "family"
-        ]
-      }
-    },
-    {
-      "title": "四国大学吹奏楽部スプリングコンサート",
-      "date_from": "2026-05-21",
-      "date_to": "2026-05-21",
+      "title": "野村萬斎狂言公演",
+      "date_from": "2026-06-04",
+      "date_to": "2026-06-04",
       "open_time": null,
       "start_time": "19:00",
       "end_time": null,
       "description": null,
       "image_url": null,
+      "price": "完売",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: ホール（1階）\nお問合せ先: (公財)徳島県文化振興財団 088-622-8121（あわぎんホール）",
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "阿波ぞめき「渦の會」設立25周年記念公演",
+      "date_from": "2026-06-07",
+      "date_to": "2026-06-07",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "一般 2,000円 学生（高校生以下）1,500円",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: ホール（1階）\nお問合せ先: 阿波ぞめき「渦の會」 088-669-0620（福島）",
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "公開リハーサル～プロの舞台演出を体感～",
+      "date_from": "2026-06-12",
+      "date_to": "2026-06-12",
+      "open_time": null,
+      "start_time": "18:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
       "price": "無料",
       "contact": null,
       "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
       "source_type": "web",
       "venue_name": "あわぎんホール",
       "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 四国大学吹奏楽部 088-665-9912（四国大学学生支援課）",
+      "body": "会場: ホール（1階）\nお問合せ先: 徳島県学校邦楽育成会 090-5141-1217（事務局）",
       "tags": {
         "type": "performance",
         "genres": [
-          "music"
+          "theater"
         ],
         "flags": [
           "free",
@@ -180,59 +103,11 @@
       }
     },
     {
-      "title": "令和8年度 徳島校OB会 定期総会",
-      "date_from": "2026-05-22",
-      "date_to": "2026-05-22",
+      "title": "第35回こども邦楽記念演奏会＆スペシャルコンサート",
+      "date_from": "2026-06-13",
+      "date_to": "2026-06-13",
       "open_time": null,
-      "start_time": "13:30",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "会員 無料",
-      "contact": null,
-      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
-      "source_type": "web",
-      "venue_name": "あわぎんホール",
-      "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 徳島県シルバー大学校徳島校OB会 090-7141-4343（小川）",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "徳島市民劇場5月例会 東京芸術座公演「おんやりょう」",
-      "date_from": "2026-05-23",
-      "date_to": "2026-05-23",
-      "open_time": null,
-      "start_time": "15:00",
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "会員制",
-      "contact": null,
-      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
-      "source_type": "web",
-      "venue_name": "あわぎんホール",
-      "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 徳島市民劇場 088-653-1752",
-      "tags": {
-        "type": "performance",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第23回グリューン・コールコンサート",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": "14:00",
+      "start_time": "11:00",
       "end_time": null,
       "description": null,
       "image_url": null,
@@ -242,11 +117,12 @@
       "source_type": "web",
       "venue_name": "あわぎんホール",
       "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: グリューン・コール 080-5668-5625（橋本）",
+      "body": "会場: ホール（1階）\nお問合せ先: 徳島県学校邦楽育成会 090-5141-1217（事務局）",
       "tags": {
         "type": "performance",
         "genres": [
-          "music"
+          "music",
+          "kids"
         ],
         "flags": [
           "free",
@@ -255,48 +131,95 @@
       }
     },
     {
-      "title": "徳島吹奏楽団 第38回コンサート",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
+      "title": "NHK交響楽団メンバーによる金管五重奏団 N-crafts",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
       "open_time": null,
       "start_time": "14:00",
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "前売 400円 当日 500円 ※未就学児無料",
+      "price": "一般指定席 1,500円 学生指定席（高校生以下）500円 当日 500円増 ※未就学児の入場不可",
       "contact": null,
       "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
       "source_type": "web",
       "venue_name": "あわぎんホール",
       "status": null,
-      "body": "会場: ホール（1階）\nお問合せ先: 徳島吹奏楽団 090-2784-7328（三枝（さいぐさ））",
+      "body": "会場: ホール（1階）\nお問合せ先: (公財)徳島県文化振興財団 088-622-8121（あわぎんホール）",
       "tags": {
         "type": "performance",
-        "genres": [
-          "music"
-        ],
+        "genres": [],
         "flags": [
-          "free",
-          "paid"
+          "paid",
+          "weekend"
         ]
       }
     },
     {
-      "title": "第32回放美展",
-      "date_from": "2026-05-03",
-      "date_to": "2026-05-06",
+      "title": "社会保険制度説明会",
+      "date_from": "2026-06-18",
+      "date_to": "2026-06-18",
       "open_time": null,
       "start_time": "10:00",
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "大展示室・A展示室・B展示室 一般前売 600円 当日 700円 高校生前売 200円 当日 300円 中学生以下無料",
+      "price": "無料",
       "contact": null,
-      "source_url": "https://kyoubun.or.jp/moyoshi/2.html",
+      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
       "source_type": "web",
       "venue_name": "あわぎんホール",
       "status": null,
-      "body": "会場: 展示室（2・3階）\nお問合せ先: 四国放送(株) 088-655-7685（四国放送(株) 営業開発部 放美展係 平日10:00～18:00）",
+      "body": "会場: ホール（1階）\nお問合せ先: 日本年金機構 徳島北年金事務所 088-652-1511",
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "令和8年度 松竹大歌舞伎公演 事前勉強会「歌舞伎ナビ」",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料 ※事前申し込み及び、 「令和8年度 松竹大歌舞伎公演」のチケット購入者に限る（入場時にチケット提示が必要）",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: ホール（1階）\nお問合せ先: (公財)徳島県文化振興財団 088-622-8121（あわぎんホール）",
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "清元節×附け打ちによる WORKSHOP LABO“Tsuwamono”feat.阿波おどり",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "15:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "一般 1,500円 高校生以下無料 ※「令和8年度 松竹大歌舞伎公演」のチケット購入者は無料（入場時にチケット提示が必要）",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: ホール（1階）\nお問合せ先: (公財)徳島県文化振興財団 088-622-8121（あわぎんホール）",
       "tags": {
         "type": "other",
         "genres": [],
@@ -307,9 +230,162 @@
       }
     },
     {
-      "title": "歴史文化倶楽部月例講座 「羽柴秀長と蜂須賀正勝-秀吉を支えた両翼の実像-」",
-      "date_from": "2026-05-08",
-      "date_to": "2026-05-08",
+      "title": "FJネクスト Presents～結成20周年記念～ 高嶋ちさ子 12人のヴァイオリニスト コンサートツアー 2026～2027",
+      "date_from": "2026-06-25",
+      "date_to": "2026-06-25",
+      "open_time": null,
+      "start_time": "15:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "指定席 8,000円",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: ホール（1階）\nお問合せ先: (株)デューク 087-822-2520",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第49回全日本おかあさんコーラス四国支部徳島大会",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "500円（小学生以上） ※未就学児の入場不可",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: ホール（1階）\nお問合せ先: 徳島県合唱連盟 090-2824-5006（事務局 大井）",
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第67回徳島県合唱祭",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "500円（小学生以上） ※未就学児の入場不可",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/1.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: ホール（1階）\nお問合せ先: 徳島県合唱連盟 090-2824-5006（事務局 大井）",
+      "tags": {
+        "type": "festival",
+        "genres": [],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第79回示現会展〈全国巡回徳島展〉",
+      "date_from": "2026-06-12",
+      "date_to": "2026-06-16",
+      "open_time": null,
+      "start_time": "09:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "大展示室 A展示室 展示室6・7 一般・会員・関係者 大学生以上 150円 高校生以下 無料",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/2.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: 展示室（2・3階）\nお問合せ先: (一社)示現会徳島支部 090-1002-4278（徳島支部長 中本森八）",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "第47回東光会徳島支部展",
+      "date_from": "2026-06-18",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "09:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "A展示室 一般 無料",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/2.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: 展示室（2・3階）\nお問合せ先: 東光会徳島支部 090-2896-7690",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第38回徳島県書道展",
+      "date_from": "2026-06-24",
+      "date_to": "2026-06-28",
+      "open_time": null,
+      "start_time": "09:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "大展示室 A展示室 B展示室 一般 無料",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/2.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: 展示室（2・3階）\nお問合せ先: 徳島県書道展運営委員会 090-7784-2483（杉）",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "歴史文化倶楽部月例講座「江戸の心に響く三味線の音色」",
+      "date_from": "2026-06-05",
+      "date_to": "2026-06-05",
       "open_time": null,
       "start_time": "13:30",
       "end_time": null,
@@ -334,9 +410,57 @@
       }
     },
     {
-      "title": "第41回徳島県高年吟士権者決定吟詠大会",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
+      "title": "ハンセン病問題を正しく理解するフォーラム",
+      "date_from": "2026-06-08",
+      "date_to": "2026-06-08",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "一般・申込者 無料",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/3.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: 大会議室（4階）\nお問合せ先: 徳島県ハンセン病支援協会 088-621-2223",
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "第45期徳島県シルバー大学校",
+      "date_from": "2026-06-12",
+      "date_to": "2026-06-12",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "受講生 無料",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/3.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: 大会議室（4階）\nお問合せ先: 徳島県社会福祉協議会 アクティブシニア活躍推進センター 088-655-5080",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "令和8年度 四国・愛連出場者決定吟詠大会",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
       "open_time": null,
       "start_time": "10:00",
       "end_time": null,
@@ -361,28 +485,52 @@
       }
     },
     {
-      "title": "第66回徳島県母親大会",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
+      "title": "大学・短期大学・専門学校進学ガイダンス",
+      "date_from": "2026-06-15",
+      "date_to": "2026-06-15",
       "open_time": null,
-      "start_time": "10:00",
+      "start_time": "16:00",
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "一般・会員・関係者 資料代 700円",
+      "price": "一般 無料",
       "contact": null,
       "source_url": "https://kyoubun.or.jp/moyoshi/3.html",
       "source_type": "web",
       "venue_name": "あわぎんホール",
       "status": null,
-      "body": "会場: 大会議室（4階）\nお問合せ先: 第66回徳島県母親大会実行委員会 090-4331-7459",
+      "body": "会場: 大会議室（4階）\nお問合せ先: (株)日本ドリコム 06-6399-0888",
       "tags": {
-        "type": "sports",
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free"
+        ]
+      }
+    },
+    {
+      "title": "第50回 ピティナ・ピアノコンペティション 徳島1地区予選",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "一般・会員・関係者・申込者 無料",
+      "contact": null,
+      "source_url": "https://kyoubun.or.jp/moyoshi/4.html",
+      "source_type": "web",
+      "venue_name": "あわぎんホール",
+      "status": null,
+      "body": "会場: 小ホール（5階）\nお問合せ先: 一社)全日本ピアノ指導者協会 徳島支部 090-9774-2522",
+      "tags": {
+        "type": "other",
         "genres": [
-          "sports"
+          "music"
         ],
         "flags": [
-          "paid",
+          "free",
           "weekend"
         ]
       }

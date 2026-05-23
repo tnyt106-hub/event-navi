@@ -1,7 +1,7 @@
 {
   "venue_id": "ehime_prefectural_museum_of_art",
   "venue_name": "愛媛県美術館",
-  "last_success_at": "2026-05-17",
+  "last_success_at": "2026-05-23",
   "events": [
     {
       "title": "金曜ロードショーとジブリ展愛媛展",
@@ -443,9 +443,9 @@
       }
     },
     {
-      "title": "愛媛県警察音楽隊 春のプロムナードコンサート",
-      "date_from": "2026-04-17",
-      "date_to": "2026-05-22",
+      "title": "ワークシート＜17音で美術鑑賞＞言葉をつなげて俳句を作ろう！",
+      "date_from": "2026-05-16",
+      "date_to": "2026-07-17",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -453,15 +453,15 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/7ed60f33-1be2-4048-8903-fb6393f50d3c",
+      "source_url": "https://www.ehime-art.jp/event/info/de18784d-5f26-4f6e-8777-9a24e0dd1720",
       "source_type": "web",
       "venue_name": "愛媛県美術館",
       "status": null,
-      "body": "期間原文: 2026年4月17日（金）12:20～12:50 2026年5月1日（金）12:20～12:50 2026年5月22日（金）12:20～12:50",
+      "body": "期間原文: 2026年5月16日（土） ～ 2026年7月17日（金）",
       "tags": {
-        "type": "performance",
+        "type": "other",
         "genres": [
-          "music"
+          "art"
         ],
         "flags": [
           "weekend"
@@ -495,30 +495,6 @@
       }
     },
     {
-      "title": "2026年国際博物館の日／5月17日コレクション展無料開放",
-      "date_from": "2026-05-17",
-      "date_to": "2026-05-17",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/dc07e8bf-f253-4639-a453-43ce63176b62",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年5月17日（日） ～ 2026年5月17日（日）",
-      "tags": {
-        "type": "exhibition",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "コレクショントーク",
       "date_from": "2026-05-17",
       "date_to": "2026-09-20",
@@ -540,30 +516,6 @@
         "flags": [
           "weekend"
         ]
-      }
-    },
-    {
-      "title": "森林の日 フロアレクチャー",
-      "date_from": "2026-05-20",
-      "date_to": "2026-05-20",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/19a0d207-e517-43d5-b0e0-71968a603be6",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年5月20日（水）14:00～15:00",
-      "tags": {
-        "type": "other",
-        "genres": [
-          "nature"
-        ],
-        "flags": []
       }
     },
     {
@@ -704,6 +656,52 @@
         "flags": [
           "weekend"
         ]
+      }
+    },
+    {
+      "title": "鑑賞プログラム「木曜トーク」",
+      "date_from": "2026-06-04",
+      "date_to": "2026-06-25",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/694f66d5-d8a5-4d58-95c5-d0a6232eee3c",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年6月4日（木）11:00～11:30 2026年6月11日（木）11:00～11:30 2026年6月18日（木）11:00～11:30 2026年6月25日（木）11:00～11:30",
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "原毛洗い",
+      "date_from": "2026-06-11",
+      "date_to": "2026-06-11",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/3315c48e-7a01-4963-ad62-e4cc8ac1fdaa",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年6月11日（木）10:00～15:00",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     }
   ]
