@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-05-23",
+  "last_success_at": "2026-05-24",
   "events": [
     {
       "title": "展覧会 新居浜市美術館 令和８年度春季特別展 木村伊兵衛 写真に生きる",
@@ -26,6 +26,31 @@
         "flags": [
           "free",
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "イベント 写真評論家 飯沢耕太郎氏による講演会",
+      "date_from": "2026-05-24",
+      "date_to": "2026-05-24",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": null,
+      "description": "会場: 記念講演会：多目的ホール ギャラリートーク：展示室1・2",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E8%A8%98%E5%BF%B5%E8%AC%9B%E6%BC%94%E4%BC%9A0524%E3%83%81%E3%83%A9%E3%82%B7-724x1024.jpg",
+      "price": "記念講演会：聴講無料 ギャラリートーク：展覧会入場券要",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-14983",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
         ]
       }
     },
@@ -77,55 +102,6 @@
         "genres": [
           "art"
         ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ワークショップ・教室 写真を使ったワークショップ",
-      "date_from": "2026-05-23",
-      "date_to": "2026-05-23",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 創作スペース",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/5%E6%9C%8823%E6%97%A5%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97_A3-724x1024.jpg",
-      "price": "本文記載",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14985",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "イベント 写真評論家 飯沢耕太郎氏による講演会",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 記念講演会：多目的ホール ギャラリートーク：展示室1・2",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E8%A8%98%E5%BF%B5%E8%AC%9B%E6%BC%94%E4%BC%9A0524%E3%83%81%E3%83%A9%E3%82%B7-724x1024.jpg",
-      "price": "記念講演会：聴講無料 ギャラリートーク：展覧会入場券要",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14983",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
         "flags": [
           "free",
           "weekend"

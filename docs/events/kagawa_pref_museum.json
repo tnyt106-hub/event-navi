@@ -1,191 +1,187 @@
 {
   "venue_id": "kagawa_pref_museum",
-  "last_success_at": "2026-02-27",
+  "last_success_at": "2026-05-24",
   "events": [
     {
-      "title": "ミュージアム・プレゼンテーション2026",
-      "date_from": "2026-02-28",
-      "date_to": "2026-02-28",
+      "title": "常設展「アート・コレクション 香川ゆかりの作家たち」 ミュージアム・トーク",
+      "date_from": "2026-05-24",
+      "date_to": "2026-05-24",
       "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
+      "start_time": "14:00",
+      "end_time": "14:30",
+      "description": "担当学芸員が展示内容についてわかりやすく解説します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
+      "price": "無料（要観覧券）",
       "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/museum_presentation2026.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "宸翰の世界",
-      "date_from": "2026-03-21",
-      "date_to": "2026-03-21",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/kouza_shinkan.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "屋島の立体模型をつくろう",
-      "date_from": "2026-08-10",
-      "date_to": "2026-08-10",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/rittaimokei.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "食文化体験講座「戦争中は何を食べていたの？―すいとん作り―」",
-      "date_from": "2026-08-11",
-      "date_to": "2026-08-11",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/suiton.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "culture",
-          "food"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "ミュージアム☆バックヤードツアー",
-      "date_from": "2026-08-16",
-      "date_to": "2026-08-16",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/bakkuya-do.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ミュージアムからの挑戦状～旅をしながらミッションをクリアせよ！",
-      "date_from": "2026-08-17",
-      "date_to": "2026-08-17",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/chousennjyou.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "プレミアムナイトツアー「小沢剛とめぐる讃岐七不思議」",
-      "date_from": "2026-08-22",
-      "date_to": "2026-08-22",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/07night_ozawatsuyoshi.html",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "特別展「小沢剛の讃岐七不思議」関連",
-      "date_from": "2026-08-23",
-      "date_to": "2026-08-23",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/nanahushigi.html",
-      "source_type": null,
-      "venue_name": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13647/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
       "status": null,
       "body": null,
       "tags": {
         "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "常設展「アート・コレクション 香川ゆかりの作家たち」 ミュージアム・トーク",
+      "date_from": "2026-06-07",
+      "date_to": "2026-06-07",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "14:30",
+      "description": "担当学芸員が展示内容についてわかりやすく解説します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
+      "price": "無料（要観覧券）",
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13648/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "常設展「アート・コレクション 20世紀の美術 Ⅱ 西欧美術」 ミュージアム・トーク",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "14:30",
+      "description": "担当学芸員が展示内容についてわかりやすく解説します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
+      "price": "無料（要観覧券）",
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13640/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "常設展「アート・コレクション 香川ゆかりの作家たち」 ボランティアによるトーク",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": "11:30",
+      "description": "当館ボランティアが展示内容について紹介します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
+      "price": "無料（要観覧券）",
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13651/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "常設展「アート・コレクション 香川ゆかりの作家たち」 ボランティアによるトーク",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": "11:30",
+      "description": "当館ボランティアが展示内容について紹介します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
+      "price": "無料（要観覧券）",
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13650/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "常設展「アート・コレクション 香川ゆかりの作家たち」 ミュージアム・トーク",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "14:30",
+      "description": "担当学芸員が展示内容についてわかりやすく解説します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
+      "price": "無料（要観覧券）",
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13649/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "学芸講座「高松藩の参勤交代」",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/04/%E7%94%BB%E5%83%8F2.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13497/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
         "genres": [],
         "flags": [
           "weekend"
@@ -193,25 +189,57 @@
       }
     },
     {
-      "title": "行ってみたいな宇宙旅行",
-      "date_from": "2026-08-24",
-      "date_to": "2026-08-24",
+      "title": "常設展「アート・コレクション 香川ゆかりの作家たち」 ボランティアによるトーク",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
       "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
+      "start_time": "11:00",
+      "end_time": "11:30",
+      "description": "当館ボランティアが展示内容について紹介します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
+      "price": "無料（要観覧券）",
       "contact": null,
-      "source_url": "https://www.pref.kagawa.lg.jp/kmuseum/kmuseum/event/07event/uchuu.html",
-      "source_type": null,
-      "venue_name": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13653/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
       "status": null,
       "body": null,
       "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "常設展「アート・コレクション 20世紀の美術 Ⅱ 西欧美術」 ミュージアム・トーク",
+      "date_from": "2026-07-04",
+      "date_to": "2026-07-04",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "14:30",
+      "description": "担当学芸員が展示内容についてわかりやすく解説します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
+      "price": "無料（要観覧券）",
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13641/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
       }
     }
   ]

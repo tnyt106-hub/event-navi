@@ -1,32 +1,8 @@
 {
   "venue_id": "asutamuland",
   "venue_name": "あすたむらんど徳島",
-  "last_success_at": "2026-05-23",
+  "last_success_at": "2026-05-24",
   "events": [
-    {
-      "title": "手づくり工房「宇宙レジン」",
-      "date_from": "2026-05-08",
-      "date_to": "2026-06-30",
-      "open_time": null,
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": "\r\n        レジンを使って宇宙のようなアクセサリーを作ろう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/宇宙レジン-1.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17234/",
-      "source_type": "web",
-      "venue_name": "体験工房",
-      "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "手づくり工房「ヨーヨー」",
       "date_from": "2026-05-01",
@@ -43,6 +19,78 @@
       "venue_name": "体験工房",
       "status": null,
       "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※4/25～5/6の間、午後の最終受付を16:30まで延長します。 ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "たっぷりプラネ☆『大解明！太陽のすがた』",
+      "date_from": "2026-04-01",
+      "date_to": "2026-05-31",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "\r\n        太陽のヒミツを紹介します！\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16750/",
+      "source_type": "web",
+      "venue_name": "プラネタリウム",
+      "status": null,
+      "body": "時間: 時間は変更になる場合があります。\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "四国放送まつり2026",
+      "date_from": "2026-05-30",
+      "date_to": "2026-05-31",
+      "open_time": null,
+      "start_time": "9:30",
+      "end_time": "17:00",
+      "description": "\r\n        \nステージプログラム、出演者情報、臨時駐車場、無料シャトルバス、よくあるご質問など詳しい情報・最新情報は以下の「四国放送まつり2026特設サイト」をご確認ください。\n▶四国放送まつり2026 特設サイトはこちらから\n \nお問い合わせ\n■四国放送 営業開発部　TEL.088-655-7681\n共催：四国放送株式会社\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/05/flyer_hp2.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17184/",
+      "source_type": "web",
+      "venue_name": "芝生広場",
+      "status": null,
+      "body": "時間: 9:30～17:00\n備考:",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "手づくり工房「宇宙レジン」",
+      "date_from": "2026-05-08",
+      "date_to": "2026-06-30",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": "\r\n        レジンを使って宇宙のようなアクセサリーを作ろう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/宇宙レジン-1.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17234/",
+      "source_type": "web",
+      "venue_name": "体験工房",
+      "status": null,
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
       "tags": {
         "type": "workshop",
         "genres": [],
@@ -76,80 +124,6 @@
         "flags": [
           "weekend",
           "family"
-        ]
-      }
-    },
-    {
-      "title": "四国放送まつり2026",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-31",
-      "open_time": null,
-      "start_time": "9:30",
-      "end_time": "17:00",
-      "description": "\r\n        \nステージプログラム、出演者情報、臨時駐車場、無料シャトルバス、よくあるご質問など詳しい情報・最新情報は以下の「四国放送まつり2026特設サイト」をご確認ください。\n▶四国放送まつり2026 特設サイトはこちらから\n \nお問い合わせ\n■四国放送 営業開発部　TEL.088-655-7681\n共催：四国放送株式会社\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/05/flyer_hp2.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17184/",
-      "source_type": "web",
-      "venue_name": "芝生広場",
-      "status": null,
-      "body": "時間: 9:30～17:00\n備考:",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "参加型プラネタリウム「スマホで流れ星」",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "\r\n        スマホで流れ星を飛ばそう！大気データを集め、みんなで夜空を作り上げるALEの参加型プラネタリウムイベントを開催いたします。\n\n協　　力　　株式会社ALE\n日　　時　　令和８年５月２４日（日）\n①１回目：午前１１時から正午まで\n②２回目：午後１時から午後２時まで\n③３回目：午後３時から午後４時まで\n会　　場　　子ども科学館　特別展示室\n参 加 費　　   無料\n定　　員　　各回２０名程度\n対　　象　　未就学児（５～６歳）から小学校中学年程度（保護者同伴歓迎）\n参加方法　　当日先着順にて受付\n※ご参加には通信機能が使用できるスマートフォンまたはタブレットが必要です。必ずお持ちください。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/掲載用画像.png",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17505/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 特別展示室",
-      "status": null,
-      "body": "時間: 令和８年５月２４日（日） ①１回目：午前１１時から正午まで ②２回目：午後１時から午後２時まで ③３回目：午後３時から午後４時まで\n備考: ※ご参加には通信機能が使用できるスマートフォンまたはタブレットが必要です。必ずお持ちください。",
-      "tags": {
-        "type": "other",
-        "genres": [
-          "science"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "たっぷりプラネ☆『大解明！太陽のすがた』",
-      "date_from": "2026-04-01",
-      "date_to": "2026-05-31",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "\r\n        太陽のヒミツを紹介します！\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16750/",
-      "source_type": "web",
-      "venue_name": "プラネタリウム",
-      "status": null,
-      "body": "時間: 時間は変更になる場合があります。\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
         ]
       }
     },
