@@ -19,14 +19,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -46,14 +41,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -73,14 +63,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -100,14 +85,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -127,14 +107,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -154,14 +129,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -181,11 +151,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "lecture",
+        "type": "other",
         "genres": [],
-        "flags": [
-          "weekend"
-        ]
+        "flags": []
       }
     },
     {
@@ -205,14 +173,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     },
     {
@@ -232,14 +195,9 @@
       "status": null,
       "body": null,
       "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
+        "type": "other",
+        "genres": [],
+        "flags": []
       }
     }
   ]
