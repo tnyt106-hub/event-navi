@@ -57,58 +57,6 @@
       }
     },
     {
-      "title": "イベント 写真評論家 飯沢耕太郎氏による講演会",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": null,
-      "description": "会場: 記念講演会：多目的ホール ギャラリートーク：展示室1・2",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E8%A8%98%E5%BF%B5%E8%AC%9B%E6%BC%94%E4%BC%9A0524%E3%83%81%E3%83%A9%E3%82%B7-724x1024.jpg",
-      "price": "記念講演会：聴講無料 ギャラリートーク：展覧会入場券要",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14983",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "展覧会 写真展（前期）",
-      "date_from": "2026-04-28",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: 市民ギャラリー",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/04/%E5%86%99%E7%9C%9F%E5%B1%95_%E5%89%8D%E6%9C%9F_%E3%83%81%E3%83%A9%E3%82%B7%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B81-724x1024.jpg",
-      "price": "無料",
-      "contact": "新居浜市美術館 0897-65-3580",
-      "source_url": "https://akaganemuseum.jp/event/event-14867",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "ワークショップ・教室 笑いヨガ講座 5/26",
       "date_from": "2026-05-26",
       "date_to": "2026-05-26",
@@ -229,6 +177,57 @@
         "genres": [],
         "flags": [
           "free",
+          "paid"
+        ]
+      }
+    },
+    {
+      "title": "展覧会 第26回 書楽会小品展",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-28",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: 市民ギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-15004",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ワークショップ・教室 殺陣教室",
+      "date_from": "2026-07-20",
+      "date_to": "2026-07-20",
+      "open_time": null,
+      "start_time": "13:00",
+      "end_time": null,
+      "description": "会場: 多目的ホール(あかがね座)",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E6%AE%BA%E9%99%A3%E6%95%99%E5%AE%A4-724x1024.jpg",
+      "price": "1名につき1,000 円 [対象] 小学生から一般 ※参加料は教室当日総合案内にてお支払い",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-15006",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
           "paid"
         ]
       }
