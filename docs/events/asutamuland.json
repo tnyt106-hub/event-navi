@@ -1,56 +1,8 @@
 {
   "venue_id": "asutamuland",
   "venue_name": "あすたむらんど徳島",
-  "last_success_at": "2026-05-24",
+  "last_success_at": "2026-05-25",
   "events": [
-    {
-      "title": "手づくり工房「ヨーヨー」",
-      "date_from": "2026-05-01",
-      "date_to": "2026-06-30",
-      "open_time": null,
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": "\r\n        なんでヨーヨーはもどってくるの？作って学んでみよう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/ヨーヨー.png",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17232/",
-      "source_type": "web",
-      "venue_name": "体験工房",
-      "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※4/25～5/6の間、午後の最終受付を16:30まで延長します。 ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "四国放送まつり2026",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-31",
-      "open_time": null,
-      "start_time": "9:30",
-      "end_time": "17:00",
-      "description": "\r\n        \nステージプログラム、出演者情報、臨時駐車場、無料シャトルバス、よくあるご質問など詳しい情報・最新情報は以下の「四国放送まつり2026特設サイト」をご確認ください。\n▶四国放送まつり2026 特設サイトはこちらから\n \nお問い合わせ\n■四国放送 営業開発部　TEL.088-655-7681\n共催：四国放送株式会社\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/05/flyer_hp2.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17184/",
-      "source_type": "web",
-      "venue_name": "芝生広場",
-      "status": null,
-      "body": "時間: 9:30～17:00\n備考:",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "たっぷりプラネ☆『大解明！太陽のすがた』",
       "date_from": "2026-04-01",
@@ -69,30 +21,6 @@
       "body": "時間: 時間は変更になる場合があります。\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "手づくり工房「宇宙レジン」",
-      "date_from": "2026-05-08",
-      "date_to": "2026-06-30",
-      "open_time": null,
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": "\r\n        レジンを使って宇宙のようなアクセサリーを作ろう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/宇宙レジン-1.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17234/",
-      "source_type": "web",
-      "venue_name": "体験工房",
-      "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
-      "tags": {
-        "type": "workshop",
         "genres": [],
         "flags": [
           "weekend"
@@ -124,6 +52,78 @@
         "flags": [
           "weekend",
           "family"
+        ]
+      }
+    },
+    {
+      "title": "四国放送まつり2026",
+      "date_from": "2026-05-30",
+      "date_to": "2026-05-31",
+      "open_time": null,
+      "start_time": "9:30",
+      "end_time": "17:00",
+      "description": "\r\n        \nステージプログラム、出演者情報、臨時駐車場、無料シャトルバス、よくあるご質問など詳しい情報・最新情報は以下の「四国放送まつり2026特設サイト」をご確認ください。\n▶四国放送まつり2026 特設サイトはこちらから\n \nお問い合わせ\n■四国放送 営業開発部　TEL.088-655-7681\n共催：四国放送株式会社\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/05/flyer_hp2.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17184/",
+      "source_type": "web",
+      "venue_name": "芝生広場",
+      "status": null,
+      "body": "時間: 9:30～17:00\n備考:",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "手づくり工房「ヨーヨー」",
+      "date_from": "2026-05-01",
+      "date_to": "2026-06-30",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": "\r\n        なんでヨーヨーはもどってくるの？作って学んでみよう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/ヨーヨー.png",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17232/",
+      "source_type": "web",
+      "venue_name": "体験工房",
+      "status": null,
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※4/25～5/6の間、午後の最終受付を16:30まで延長します。 ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "手づくり工房「宇宙レジン」",
+      "date_from": "2026-05-08",
+      "date_to": "2026-06-30",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": "\r\n        レジンを使って宇宙のようなアクセサリーを作ろう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/宇宙レジン-1.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17234/",
+      "source_type": "web",
+      "venue_name": "体験工房",
+      "status": null,
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
         ]
       }
     },

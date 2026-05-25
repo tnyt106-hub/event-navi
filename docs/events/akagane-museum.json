@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-05-24",
+  "last_success_at": "2026-05-25",
   "events": [
     {
       "title": "展覧会 新居浜市美術館 令和８年度春季特別展 木村伊兵衛 写真に生きる",
@@ -26,6 +26,33 @@
         "flags": [
           "free",
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
+      "date_from": "2025-11-22",
+      "date_to": "2026-06-30",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: にいはまギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/11/IMG_3768s-1024x768.jpg",
+      "price": "無料",
+      "contact": "あかがねミュージアム 0897-31-0305",
+      "source_url": "https://akaganemuseum.jp/event/event-13815",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
         ]
       }
     },
@@ -66,33 +93,6 @@
       "price": "無料",
       "contact": "新居浜市美術館 0897-65-3580",
       "source_url": "https://akaganemuseum.jp/event/event-14867",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "展覧会 「FAN! FUN! にいはま」 知ってほしい！新居浜のこと、Akaganeのこと",
-      "date_from": "2025-11-22",
-      "date_to": "2026-06-30",
-      "open_time": null,
-      "start_time": "09:30",
-      "end_time": null,
-      "description": "会場: にいはまギャラリー",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2025/11/IMG_3768s-1024x768.jpg",
-      "price": "無料",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-13815",
       "source_type": null,
       "venue_name": null,
       "status": null,
