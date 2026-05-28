@@ -1,6 +1,6 @@
 {
   "venue_id": "akagane-museum",
-  "last_success_at": "2026-05-25",
+  "last_success_at": "2026-05-28",
   "events": [
     {
       "title": "展覧会 新居浜市美術館 令和８年度春季特別展 木村伊兵衛 写真に生きる",
@@ -26,6 +26,33 @@
         "flags": [
           "free",
           "paid"
+        ]
+      }
+    },
+    {
+      "title": "展覧会 にいはまの写真家展",
+      "date_from": "2026-05-26",
+      "date_to": "2026-06-21",
+      "open_time": null,
+      "start_time": "09:30",
+      "end_time": null,
+      "description": "会場: 市民ギャラリー",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E5%BE%8C%E6%9C%9F_%E5%86%99%E7%9C%9F%E5%B1%95_A4%E3%83%81%E3%83%A9%E3%82%B7_%E3%83%9A%E3%83%BC%E3%82%B8_1-724x1024.jpg",
+      "price": "無料",
+      "contact": "新居浜市美術館 0897-65-3580",
+      "source_url": "https://akaganemuseum.jp/event/event-15021",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
+        "flags": [
+          "free",
+          "weekend"
         ]
       }
     },
@@ -57,27 +84,28 @@
       }
     },
     {
-      "title": "ワークショップ・教室 笑いヨガ講座 5/26",
-      "date_from": "2026-05-26",
-      "date_to": "2026-05-26",
+      "title": "イベント 展覧会 関連事業 作品鑑賞ツアー",
+      "date_from": "2026-06-06",
+      "date_to": "2026-06-06",
       "open_time": null,
-      "start_time": "18:30",
+      "start_time": "14:00",
       "end_time": null,
-      "description": "会場: 多目的ホール（あかがね座）",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-55-724x1024.jpg",
-      "price": "無料",
+      "description": "会場: 展示室1、2（あかがねミュージアム2階） ＊展示ロビー（展示室２ 入口前）にお集まりください。",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E9%96%A2%E9%80%A3%E4%BA%8B%E6%A5%AD%E3%83%81%E3%83%A9%E3%82%B7%E5%BE%8C%E5%8D%8A_A4_0522-724x1024.jpg",
+      "price": "要観覧券 ＊展覧会への入場が必要です ＊事前申し込みは不要です",
       "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-14664",
+      "source_url": "https://akaganemuseum.jp/event/event-15027",
       "source_type": null,
       "venue_name": null,
       "status": null,
       "body": null,
       "tags": {
-        "type": "workshop",
-        "genres": [],
+        "type": "exhibition",
+        "genres": [
+          "art"
+        ],
         "flags": [
-          "free",
-          "night"
+          "weekend"
         ]
       }
     },
@@ -182,44 +210,17 @@
       }
     },
     {
-      "title": "展覧会 第26回 書楽会小品展",
-      "date_from": "2026-06-27",
-      "date_to": "2026-06-28",
+      "title": "ワークショップ・教室 笑いヨガ講座 6/30",
+      "date_from": "2026-06-30",
+      "date_to": "2026-06-30",
       "open_time": null,
-      "start_time": "09:30",
+      "start_time": "18:30",
       "end_time": null,
-      "description": "会場: 市民ギャラリー",
-      "image_url": "https://akaganemuseum.jp/wp-content/themes/akagane/img/event_in/hd_sec02.png",
+      "description": "会場: 多目的ホール（あかがね座）",
+      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/03/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-55-724x1024.jpg",
       "price": "無料",
       "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-15004",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ワークショップ・教室 殺陣教室",
-      "date_from": "2026-07-20",
-      "date_to": "2026-07-20",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": null,
-      "description": "会場: 多目的ホール(あかがね座)",
-      "image_url": "https://akaganemuseum.jp/wp-content/uploads/2026/05/%E6%AE%BA%E9%99%A3%E6%95%99%E5%AE%A4-724x1024.jpg",
-      "price": "1名につき1,000 円 [対象] 小学生から一般 ※参加料は教室当日総合案内にてお支払い",
-      "contact": "あかがねミュージアム 0897-31-0305",
-      "source_url": "https://akaganemuseum.jp/event/event-15006",
+      "source_url": "https://akaganemuseum.jp/event/event-14664",
       "source_type": null,
       "venue_name": null,
       "status": null,
@@ -228,7 +229,8 @@
         "type": "workshop",
         "genres": [],
         "flags": [
-          "paid"
+          "free",
+          "night"
         ]
       }
     }

@@ -1,7 +1,34 @@
 {
   "venue_id": "kochi-culport",
-  "last_success_at": "2026-05-25",
+  "last_success_at": "2026-05-28",
   "events": [
+    {
+      "title": "タレガ・ギターカルテット コンサート",
+      "date_from": "2026-08-22",
+      "date_to": "2026-08-22",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席自由 前売り 一般2,000円 高校生以下1,000円 当 日 一般2,500円 高校生以下1,500円 ※未就学児の入場はご遠慮ください ※前売券完売の場合、当日券の販売はありません ※公演中止の場合を除き、ご購入されたチケットのキャンセル・変更は承れません",
+      "contact": null,
+      "source_url": "https://www.kfca.jp/kikaku/tarrega/",
+      "source_type": "web",
+      "venue_name": "高知市文化プラザ かるぽーと",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
+      }
+    },
     {
       "title": "第78回高知市展こどもアートまつり あなたダビンチぼくピカソ",
       "date_from": "2026-05-31",

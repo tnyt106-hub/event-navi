@@ -1,7 +1,7 @@
 {
   "venue_id": "kenbun",
   "venue_name": "愛媛県県民文化会館",
-  "last_success_at": "2026-05-25",
+  "last_success_at": "2026-05-28",
   "events": [
     {
       "title": "愛と希望の祭典・四国 西日本 ウィルグラハム セレブレーション",
@@ -3866,6 +3866,31 @@
       }
     },
     {
+      "title": "Dance party10",
+      "date_from": "2026-09-20",
+      "date_to": "2026-09-20",
+      "open_time": "12:00",
+      "start_time": "12:00",
+      "end_time": "18:00",
+      "description": null,
+      "image_url": null,
+      "price": "有料￥12,000-",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4129/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "paid",
+          "night"
+        ]
+      }
+    },
+    {
       "title": "Music Concert in2026 (ピアノ発表会）",
       "date_from": "2026-09-20",
       "date_to": "2026-09-20",
@@ -3889,6 +3914,106 @@
         "flags": [
           "free",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "愛媛県立北条高等学校・北条清新高等学校吹奏楽部",
+      "date_from": "2026-09-22",
+      "date_to": "2026-09-22",
+      "open_time": "16:30",
+      "start_time": "17:30",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4122/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "第6回日本不整脈心電学会 中国・四国支部地方会",
+      "date_from": "2026-09-26",
+      "date_to": "2026-09-26",
+      "open_time": "8:30",
+      "start_time": "8:55",
+      "end_time": "17:45",
+      "description": null,
+      "image_url": null,
+      "price": "有料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4124/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": [
+          "paid",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "えひめ県立学校進学フェア 県文会場",
+      "date_from": "2026-09-27",
+      "date_to": "2026-09-27",
+      "open_time": "10:00",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4121/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "business",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "愛媛県立伊予高等学校",
+      "date_from": "2026-09-27",
+      "date_to": "2026-09-27",
+      "open_time": "16:15",
+      "start_time": "17:00",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4123/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "free",
+          "night"
         ]
       }
     },
@@ -5313,6 +5438,30 @@
         "flags": [
           "free",
           "night"
+        ]
+      }
+    },
+    {
+      "title": "令和8年度愛媛県私立専修学校各種学校 教育シンポジウム",
+      "date_from": "2026-11-24",
+      "date_to": "2026-11-24",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "16:15",
+      "description": null,
+      "image_url": null,
+      "price": "無料（参加は会員校のみ）",
+      "contact": null,
+      "source_url": "https://www.kenbun.jp/event/4128/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": [
+          "free"
         ]
       }
     },
@@ -7940,133 +8089,6 @@
         "flags": [
           "paid",
           "night"
-        ]
-      }
-    },
-    {
-      "title": "第45回愛媛囲碁フェスティバル",
-      "date_from": "2025-05-25",
-      "date_to": "2025-05-25",
-      "open_time": "10:00",
-      "start_time": "10:30",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2117/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "福祉の就職総合フェア2025",
-      "date_from": "2025-05-25",
-      "date_to": "2025-05-25",
-      "open_time": "11:30",
-      "start_time": "12:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2220/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "business"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第64回愛媛電友会総会",
-      "date_from": "2025-05-26",
-      "date_to": "2025-05-26",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2135/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "松山商工会議所 会員大会2025",
-      "date_from": "2025-05-27",
-      "date_to": "2025-05-27",
-      "open_time": "15:00",
-      "start_time": "15:30",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2276/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports",
-          "nature"
-        ],
-        "flags": [
-          "free"
-        ]
-      }
-    },
-    {
-      "title": "第6回「ご恩返しの講演会」",
-      "date_from": "2025-05-28",
-      "date_to": "2025-05-28",
-      "open_time": "12:00",
-      "start_time": "13:00",
-      "end_time": "14:30",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://www.kenbun.jp/event/2118/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [],
-        "flags": [
-          "free"
         ]
       }
     },

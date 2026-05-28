@@ -1,34 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-05-25",
+  "last_success_at": "2026-05-28",
   "events": [
-    {
-      "title": "緑黄色社会 Channel U tour 2025",
-      "date_from": "2025-05-25",
-      "date_to": "2025-05-25",
-      "open_time": "17:00",
-      "start_time": "18:00",
-      "end_time": "20:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8751",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 緑黄色社会 Channel U tour 2025 開場 17:00/開演 18:00/終演 20:30 小ホール 邦楽アンサンブル煌 第17回定期演奏会 開場 13:00/開演 13:30/終演 16:00",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night",
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "四国新聞女性クラブ",
       "date_from": "2025-05-31",
@@ -4982,6 +4955,473 @@
         "flags": [
           "weekend"
         ]
+      }
+    },
+    {
+      "title": "『罠』高松公演",
+      "date_from": "2026-07-01",
+      "date_to": "2026-07-01",
+      "open_time": "17:45",
+      "start_time": "18:30",
+      "end_time": "20:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11169",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 『罠』高松公演 開場 17:45/開演 18:30/終演 20:30",
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "第73回四国地区人権教育研究大会",
+      "date_from": "2026-07-02",
+      "date_to": "2026-07-02",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11170",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 第73回四国地区人権教育研究大会 開場 12:00/開演 13:00/終演 16:00",
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第73回四国地区人権教育研究大会",
+      "date_from": "2026-07-03",
+      "date_to": "2026-07-03",
+      "open_time": "09:10",
+      "start_time": "09:30",
+      "end_time": "16:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11171",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 第73回四国地区人権教育研究大会 開場 09:10/開演 09:30/終演 16:30",
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "香川市民劇場7月例会「老いらくの恋」(秋田雨雀･土方与志記念 青年劇場公演)",
+      "date_from": "2026-07-04",
+      "date_to": "2026-07-04",
+      "open_time": "18:00",
+      "start_time": "18:30",
+      "end_time": "20:40",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11172",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 香川市民劇場7月例会「老いらくの恋」(秋田雨雀･土方与志記念 青年劇場公演) 開場 18:00/開演 18:30/終演 20:40",
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "CHASSEUR Presents イル･ド･フランス国立管弦楽団 with 石井琢磨 高松公演",
+      "date_from": "2026-07-05",
+      "date_to": "2026-07-05",
+      "open_time": "13:00",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11173",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール CHASSEUR Presents イル･ド･フランス国立管弦楽団 with 石井琢磨 高松公演 開場 13:00/開演 14:00/終演 16:00 小ホール 第69回 中・四国矯正歯科学会 高松大会 開場 08:30/開演 09:00/終演 16:30",
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第51回部落解放・人権西日本夏期講座",
+      "date_from": "2026-07-06",
+      "date_to": "2026-07-06",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "16:50",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11175",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 第51回部落解放・人権西日本夏期講座 開場 12:00/開演 13:00/終演 16:50",
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第51回部落解放・人権西日本夏期講座",
+      "date_from": "2026-07-07",
+      "date_to": "2026-07-07",
+      "open_time": "09:00",
+      "start_time": "09:00",
+      "end_time": "12:20",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11176",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 第51回部落解放・人権西日本夏期講座 開場 09:00/開演 09:00/終演 12:20 小ホール 令和8年度香川産業安全衛生大会 開場 12:30/開演 13:30/終演 16:30",
+      "tags": {
+        "type": "lecture",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "第68回中国・四国地区高等学校ＰＴＡ連合会大会 香川大会",
+      "date_from": "2026-07-10",
+      "date_to": "2026-07-10",
+      "open_time": "09:00",
+      "start_time": "09:40",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11180",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 第68回中国・四国地区高等学校ＰＴＡ連合会大会 香川大会 開場 09:00/開演 09:40/終演 16:00",
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "2026年 第19期 香川県民文化大学 7月講座",
+      "date_from": "2026-07-11",
+      "date_to": "2026-07-11",
+      "open_time": "12:00",
+      "start_time": "13:00",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11181",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 2026年 第19期 香川県民文化大学 7月講座 開場 12:00/開演 13:00/終演 15:00",
+      "tags": {
+        "type": "lecture",
+        "genres": [
+          "culture"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "スキマスイッチ TOUR2026 “POPMAN&#8217;S CARNIVAL vol.3&#8243;",
+      "date_from": "2026-07-12",
+      "date_to": "2026-07-12",
+      "open_time": "16:30",
+      "start_time": "17:30",
+      "end_time": "19:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11182",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール スキマスイッチ TOUR2026 “POPMAN&#8217;S CARNIVAL vol.3&#8243; 開場 16:30/開演 17:30/終演 19:00 小ホール 香川二期会合唱団 第58回定期演奏会 開場 13:00/開演 14:00/終演 16:00",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第３０回ふるさとコンサート",
+      "date_from": "2026-07-16",
+      "date_to": "2026-07-16",
+      "open_time": "17:30",
+      "start_time": "18:30",
+      "end_time": "20:40",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11185",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 第３０回ふるさとコンサート 開場 17:30/開演 18:30/終演 20:40 小ホール 非公開",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "JUJU HALL TOUR 2026 純喫茶JUJU「時間旅行」演出:松任谷正隆",
+      "date_from": "2026-07-17",
+      "date_to": "2026-07-17",
+      "open_time": "17:30",
+      "start_time": "18:30",
+      "end_time": "20:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11187",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール JUJU HALL TOUR 2026 純喫茶JUJU「時間旅行」演出:松任谷正隆 開場 17:30/開演 18:30/終演 20:30 小ホール ガクテンソク単独ライブツアー２０２６「九分九厘」 開場 18:15/開演 19:00/終演 20:30",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "THE ORAL CIGARETTES Home Sweet Home TOUR 2026",
+      "date_from": "2026-07-18",
+      "date_to": "2026-07-18",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11189",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール THE ORAL CIGARETTES Home Sweet Home TOUR 2026 開場 17:00/開演 18:00/終演 20:00 小ホール 安藤忠雄氏特別講演会 開場 12:00/開演 13:30/終演 14:40",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第67回香川県合唱祭",
+      "date_from": "2026-07-19",
+      "date_to": "2026-07-19",
+      "open_time": "12:30",
+      "start_time": "13:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11191",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 第67回香川県合唱祭 開場 12:30/開演 13:00/終演 16:00（予定）",
+      "tags": {
+        "type": "festival",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第33回 トリムフェスティバル香川",
+      "date_from": "2026-07-20",
+      "date_to": "2026-07-20",
+      "open_time": "12:30",
+      "start_time": "13:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11192",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 第33回 トリムフェスティバル香川 開場 12:30/開演 13:00/終演 16:00",
+      "tags": {
+        "type": "festival",
+        "genres": [],
+        "flags": []
+      }
+    },
+    {
+      "title": "MYSTERY NIGHT TOUR 2026 稲川淳二の怪談ナイト",
+      "date_from": "2026-07-24",
+      "date_to": "2026-07-24",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": "20:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11193",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール MYSTERY NIGHT TOUR 2026 稲川淳二の怪談ナイト 開場 17:00/開演 18:00/終演 20:00",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "第14回香川県高校生科学研究発表会",
+      "date_from": "2026-07-25",
+      "date_to": "2026-07-25",
+      "open_time": "09:30",
+      "start_time": "10:00",
+      "end_time": "16:30",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11194",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "小ホール 第14回香川県高校生科学研究発表会 開場 09:30/開演 10:00/終演 16:30",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "science"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "四国新聞女性クラブ",
+      "date_from": "2026-07-26",
+      "date_to": "2026-07-26",
+      "open_time": "12:30",
+      "start_time": "13:30",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11195",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 四国新聞女性クラブ 開場 12:30/開演 13:30/終演 16:00 小ホール 第26回玉藻寄席 風間杜夫 落語独演会＆トークショー！ 開場 11:15/開演 12:00/終演 13:30",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第74回全日本吹奏楽コンクール香川県大会 第45回全日本小学生バンドフェスティバル香川県大会",
+      "date_from": "2026-07-31",
+      "date_to": "2026-07-31",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "http://kenminhall.com/visitors/event_detail/?id=11198",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": "大ホール 第74回全日本吹奏楽コンクール香川県大会 第45回全日本小学生バンドフェスティバル香川県大会",
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
       }
     }
   ]

@@ -1,32 +1,8 @@
 {
   "venue_id": "asutamuland",
   "venue_name": "あすたむらんど徳島",
-  "last_success_at": "2026-05-25",
+  "last_success_at": "2026-05-28",
   "events": [
-    {
-      "title": "四国放送まつり2026",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-31",
-      "open_time": null,
-      "start_time": "9:30",
-      "end_time": "17:00",
-      "description": "\r\n        \nステージプログラム、出演者情報、臨時駐車場、無料シャトルバス、よくあるご質問など詳しい情報・最新情報は以下の「四国放送まつり2026特設サイト」をご確認ください。\n▶四国放送まつり2026 特設サイトはこちらから\n \nお問い合わせ\n■四国放送 営業開発部　TEL.088-655-7681\n共催：四国放送株式会社\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/05/flyer_hp2.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17184/",
-      "source_type": "web",
-      "venue_name": "芝生広場",
-      "status": null,
-      "body": "時間: 9:30～17:00\n備考:",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "手づくり工房「ヨーヨー」",
       "date_from": "2026-05-01",
@@ -76,6 +52,30 @@
       }
     },
     {
+      "title": "たっぷりプラネ☆『大解明！太陽のすがた』",
+      "date_from": "2026-04-01",
+      "date_to": "2026-05-31",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "\r\n        太陽のヒミツを紹介します！\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/16750/",
+      "source_type": "web",
+      "venue_name": "プラネタリウム",
+      "status": null,
+      "body": "時間: 時間は変更になる場合があります。\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "キッズ科学教室(前期)つくって飛ばそう！子どもロケット教室",
       "date_from": "2026-05-24",
       "date_to": "2026-07-05",
@@ -104,21 +104,21 @@
       }
     },
     {
-      "title": "たっぷりプラネ☆『大解明！太陽のすがた』",
-      "date_from": "2026-04-01",
+      "title": "四国放送まつり2026",
+      "date_from": "2026-05-30",
       "date_to": "2026-05-31",
       "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "\r\n        太陽のヒミツを紹介します！\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
+      "start_time": "9:30",
+      "end_time": "17:00",
+      "description": "\r\n        \nステージプログラム、出演者情報、臨時駐車場、無料シャトルバス、よくあるご質問など詳しい情報・最新情報は以下の「四国放送まつり2026特設サイト」をご確認ください。\n▶四国放送まつり2026 特設サイトはこちらから\n来園者用駐車場について\nあすたむらんど徳島の駐車場が満車の場合は、\n板野町内の臨時駐車場「ソフトパーク」（約490台）をご利用ください。\nまた、公共交通機関を使ってご利用の方は、\nJR板野駅南～会場間を運行する無料シャトルバスをご利用ください。\n無料シャトルバス\n板野駅 → ソフトパーク → 会場\n※無料シャトルバスは運行台数に限りがあります。\nご乗車まで長時間お待ちいただく場合がございますので予めご了承ください。\n徳島路線バス（有料）徳島駅前～あすたむらんど徳島\n\n▶詳細はこちらから\nお問い合わせ\n■四国放送 営業開発部　TEL.088-655-7681\n共催：四国放送株式会社\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/05/flyer_hp2.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/16750/",
+      "source_url": "https://asutamuland.jp/events/event/17184/",
       "source_type": "web",
-      "venue_name": "プラネタリウム",
+      "venue_name": "芝生広場",
       "status": null,
-      "body": "時間: 時間は変更になる場合があります。\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
+      "body": "時間: 9:30～17:00\n備考:",
       "tags": {
         "type": "other",
         "genres": [],

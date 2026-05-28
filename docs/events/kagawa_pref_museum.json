@@ -1,7 +1,32 @@
 {
   "venue_id": "kagawa_pref_museum",
-  "last_success_at": "2026-05-25",
+  "last_success_at": "2026-05-28",
   "events": [
+    {
+      "title": "常設展「高松藩の参勤交代」 ミュージアム・トーク",
+      "date_from": "2026-05-31",
+      "date_to": "2026-05-31",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "14:30",
+      "description": "担当学芸員が展示内容についてわかりやすく解説します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/05/%E3%83%88%E3%83%BC%E3%82%AF%E3%80%8C%E9%AB%98%E6%9D%BE%E8%97%A9%E3%81%AE%E5%8F%82%E5%8B%A4%E4%BA%A4%E4%BB%A3%E3%80%8D-840x588.jpg",
+      "price": "無料（要観覧券）",
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13728/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
     {
       "title": "常設展「アート・コレクション 香川ゆかりの作家たち」 ミュージアム・トーク",
       "date_from": "2026-06-07",
@@ -77,6 +102,31 @@
         "genres": [
           "art"
         ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "常設展「高松藩の参勤交代」 ミュージアム・トーク",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "14:00",
+      "end_time": "14:30",
+      "description": "担当学芸員が展示内容についてわかりやすく解説します！",
+      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/05/%E3%83%88%E3%83%BC%E3%82%AF%E3%80%8C%E9%AB%98%E6%9D%BE%E8%97%A9%E3%81%AE%E5%8F%82%E5%8B%A4%E4%BA%A4%E4%BB%A3%E3%80%8D-840x588.jpg",
+      "price": "無料（要観覧券）",
+      "contact": null,
+      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13730/",
+      "source_type": "web",
+      "venue_name": "香川県立ミュージアム",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "exhibition",
+        "genres": [],
         "flags": [
           "free",
           "weekend"
@@ -173,60 +223,6 @@
       "price": "無料（要観覧券）",
       "contact": null,
       "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13653/",
-      "source_type": "web",
-      "venue_name": "香川県立ミュージアム",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "常設展「アート・コレクション 20世紀の美術 Ⅱ 西欧美術」 ミュージアム・トーク",
-      "date_from": "2026-07-04",
-      "date_to": "2026-07-04",
-      "open_time": null,
-      "start_time": "14:00",
-      "end_time": "14:30",
-      "description": "担当学芸員が展示内容についてわかりやすく解説します！",
-      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
-      "price": "無料（要観覧券）",
-      "contact": null,
-      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13641/",
-      "source_type": "web",
-      "venue_name": "香川県立ミュージアム",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "exhibition",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "常設展「アート・コレクション 香川ゆかりの作家たち」 ボランティアによるトーク",
-      "date_from": "2026-07-05",
-      "date_to": "2026-07-05",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": "11:30",
-      "description": "当館ボランティアが展示内容について紹介します！",
-      "image_url": "https://www.kmuseum.pref.kagawa.lg.jp/wp-content/uploads/2026/02/%EF%BC%88%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E7%94%BB%E5%83%8F%EF%BC%89%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%88%E3%83%BC%E3%82%AF_%E6%AD%B4%E5%8F%B21-840x560.jpg",
-      "price": "無料（要観覧券）",
-      "contact": null,
-      "source_url": "https://www.kmuseum.pref.kagawa.lg.jp/events/post-13654/",
       "source_type": "web",
       "venue_name": "香川県立ミュージアム",
       "status": null,

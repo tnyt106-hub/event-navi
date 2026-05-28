@@ -1,7 +1,7 @@
 {
   "venue_id": "ehime_prefectural_museum_of_art",
   "venue_name": "愛媛県美術館",
-  "last_success_at": "2026-05-25",
+  "last_success_at": "2026-05-28",
   "events": [
     {
       "title": "金曜ロードショーとジブリ展愛媛展",
@@ -493,28 +493,6 @@
       }
     },
     {
-      "title": "インド藍染め",
-      "date_from": "2026-05-26",
-      "date_to": "2026-05-26",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/ebfe7041-f25c-4841-b530-f0bd709f5d2b",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年5月26日（火）10:30～12:00 2026年5月26日（火）13:30～15:00 2026年5月26日（火）15:00～16:30",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
       "title": "美術館で俳句を詠もう",
       "date_from": "2026-05-29",
       "date_to": "2026-05-29",
@@ -700,6 +678,30 @@
         "flags": [
           "weekend"
         ]
+      }
+    },
+    {
+      "title": "アート・ヤーンの紡ぎ方",
+      "date_from": "2026-06-24",
+      "date_to": "2026-06-24",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/0b3c4572-703c-4476-b702-29052e878f06",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年6月24日（水）10:00～15:00",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "art"
+        ],
+        "flags": []
       }
     }
   ]
