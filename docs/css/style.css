@@ -690,14 +690,6 @@ h2 {
   .today-events__more {
     display: none;
   }
-
-  /*
-    下部固定ナビとカード一覧が視覚的に重ならないよう、
-    トップページのイベントカードに余白を追加する。
-  */
-  body.home-page .today-events {
-    margin-bottom: calc(72px + env(safe-area-inset-bottom));
-  }
 }
 
 /* PC表示: 地図の右側に本日開催中イベントを配置する */
