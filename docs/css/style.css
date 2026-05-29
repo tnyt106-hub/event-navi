@@ -618,25 +618,6 @@ h2 {
    スマホ最適化
 ========================= */
 @media (max-width: 768px) {
-
-  /* 親要素をFlexbox、またはGridの縦並びにする */
-  .home-layout {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* 本日イベントを上に（初期値0より小さい -1 を指定）
-    ※クラス名はstyle.css内に定義されている「.today-events」を使用
-  */
-  .today-events {
-    order: -1;
-  }
-
-  /* 地図エリアは下に（初期値0のまま、または1を指定して後に持ってくる） */
-  .map-wrapper {
-    order: 1;
-  }
-
   .site-header {
     /* スマホでは上下余白をわずかに詰める */
     padding: 14px 12px 12px;
