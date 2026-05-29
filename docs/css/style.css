@@ -644,7 +644,7 @@ h2 {
   .map-wrapper {
     height: calc(100dvh - 320px);
     min-height: 42vh;
-    margin-bottom: calc(72px + env(safe-area-inset-bottom));
+    margin-bottom: calc(30px + env(safe-area-inset-bottom));
   }
   .today-events {padding: 12px;}
   /* スマホの本日イベント一覧は横並びにし、スワイプ操作で閲覧できるようにする */
