@@ -641,7 +641,11 @@ h2 {
   }
 
   /* スマホでは地図の縦幅を縮め、直下の「本日開催中」を見やすくする */
-  .map-wrapper {height: calc(100dvh - 320px); min-height: 42vh;}
+  .map-wrapper {
+    height: calc(100dvh - 320px);
+    min-height: 42vh;
+    margin-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
   .today-events {padding: 12px;}
   /* スマホの本日イベント一覧は横並びにし、スワイプ操作で閲覧できるようにする */
   .today-events__carousel-controls {
