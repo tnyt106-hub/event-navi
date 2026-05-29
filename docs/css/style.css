@@ -619,7 +619,11 @@ h2 {
 ========================= */
 @media (max-width: 768px) {
   /* 親要素をFlexbox、またはGridの縦並びにする */
-  .home-layout {display: flex;flex-direction: column;}
+  .home-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
   /* 本日イベントを上に（初期値0より小さい -1 を指定）*/
   .today-events {order: 0;}
   /* 地図エリアは下に（初期値0のまま、または1を指定して後に持ってくる） */
