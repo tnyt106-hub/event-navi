@@ -1,62 +1,7 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-05-28",
+  "last_success_at": "2026-06-04",
   "events": [
-    {
-      "title": "高知県立県民文化ホール開館50周年 第50回高知県新人演奏会デビューリサイタル",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-30",
-      "open_time": "16:30",
-      "start_time": "17:00",
-      "end_time": "20:00",
-      "description": null,
-      "image_url": null,
-      "price": "全席自由 1,000円 ※当日200円UP ※未就学児無料",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2833",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "culture",
-          "music"
-        ],
-        "flags": [
-          "free",
-          "paid"
-        ]
-      }
-    },
-    {
-      "title": "イルカ55周年コンサート ～あいのたね♥まこう！～",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-30",
-      "open_time": "17:00",
-      "start_time": "17:30",
-      "end_time": "20:00",
-      "description": null,
-      "image_url": null,
-      "price": "全席指定 7,500円 ※未就学児入場不可",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2771",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール オレンジホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "paid",
-          "night"
-        ]
-      }
-    },
     {
       "title": "6月8日(月)開催 ①【能meets謡十徳「大仏供養（だいぶつくよう）」】 ②【能meets高知「景清（かげきよ）」】",
       "date_from": "2026-06-08",
@@ -142,7 +87,7 @@
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "全席指定 前売 3,800円 ※未就学児入場不可 ※当日は500円UP",
+      "price": "全席指定 前売 3,800円 ※未就学児入場不可 ※当日は500円UP ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください",
       "contact": null,
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2805",
       "source_type": "web",
@@ -155,6 +100,31 @@
         "flags": [
           "paid",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "県文シネマ日和Vol.85 聴く隣人のいるところ",
+      "date_from": "2026-07-22",
+      "date_to": "2026-07-22",
+      "open_time": null,
+      "start_time": "11:00",
+      "end_time": "12:51",
+      "description": null,
+      "image_url": null,
+      "price": "全席自由 一般 1,500円 ※2歳以下膝上無料 ※チケット1枚につき、お一人様1回限り有効 ※当日は300円UP ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2849",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "screening",
+        "genres": [],
+        "flags": [
+          "free",
+          "paid"
         ]
       }
     },
@@ -186,6 +156,34 @@
       }
     },
     {
+      "title": "県文シネマ日和Vol.84 高知こどもの映画館2026 機動戦士ガンダム 逆襲のシャア",
+      "date_from": "2026-08-08",
+      "date_to": "2026-08-08",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:30",
+      "description": null,
+      "image_url": null,
+      "price": "全席自由 一般（高校生以上） 1,000円 こども（中学生以下） 500円 ※当日は各200円UP ※2歳以下膝上無料 ※チケット1枚につき、お一人様１回限り有効 ※各部入替制 ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください ★トークイベント「物語から現実の宇宙（そら）へ」は、上映会チケットをチケットをお持ちの方ならどなたでも参加できます",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2843",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール オレンジホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "screening",
+        "genres": [
+          "theater",
+          "kids"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
+    {
       "title": "山里亮太の140 高知公演 ～不思議だと思いませんか？～",
       "date_from": "2026-08-22",
       "date_to": "2026-08-22",
@@ -194,7 +192,7 @@
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "全席指定 4,000円 ※未就学児入場不可 ※当日は500円UP ＜5/24（日）10:00～一般発売開始＞",
+      "price": "全席指定 4,000円 ※未就学児入場不可 ※当日は500円UP ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください ＜5/24（日）10:00～一般発売開始＞",
       "contact": null,
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2841",
       "source_type": "web",
@@ -209,6 +207,30 @@
         "flags": [
           "paid",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "大長編 男肉 du Soleil 「陰謀論と朝まで踊れ ww」高知公演",
+      "date_from": "2026-10-02",
+      "date_to": "2026-10-02",
+      "open_time": "18:30",
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席自由 一般 4,000円 学生 500円 ※未就学児入場不可 ※当日は、一般＝4,500円、学生＝800円 ※高知公演では入場順を示す整理番号はございません ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2844",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [],
+        "flags": [
+          "paid"
         ]
       }
     },
@@ -245,7 +267,7 @@
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "全席自由 1,500円 ※未就学児入場不可 上記は11月23日（月・祝）開催の発表会を観覧される方向けのチケット情報です。",
+      "price": "全席自由 1,500円 ※未就学児入場不可 ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください 上記は11月23日（月・祝）開催の発表会を観覧される方向けのチケット情報です。",
       "contact": null,
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2842",
       "source_type": "web",

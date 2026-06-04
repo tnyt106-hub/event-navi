@@ -1,81 +1,29 @@
 {
   "venue_id": "aizumi_bunka",
   "venue_name": "藍住町総合文化ホール",
-  "last_success_at": "2026-05-28",
+  "last_success_at": "2026-06-04",
   "events": [
     {
-      "title": "【終了】親子で楽しむクラシックコンサートVol.２",
-      "date_from": "2026-05-17",
-      "date_to": "2026-05-17",
-      "open_time": null,
-      "start_time": null,
+      "title": "英国・ケルトの愛らしい旋律たち～ルネサンスから現代のブリテン諸島の歌曲の数々～平井満美子＆佐野健二コンサート",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": "18:30",
+      "start_time": "19:00",
       "end_time": null,
-      "description": "この公演は終了しました。\r\n\r\n親子で楽しむクラシックコンサートVol.2\r\n\r\nお楽しみコーナーや演奏に合わせた絵本の読み聞かせなど、子どもが飽きない工夫がたくさん！\r\n小さなお子さまから大人まで、家族みんなで気軽に楽しめるクラシックコンサートです♬\r\n\r\n​​​\r\n\r\n日時\r\n\r\n　令和８年５月17日（日曜日）　開演／午後２時（開場／午後１時30分）\r\n\r\n場所\r\n\r\n    藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n管弦楽　徳島交響楽団\r\n指揮　大山　晃\r\n司会・読み手　安倍　久恵\r\n\r\nプログラム　※プログラムは変更になる場合があります。予めご了承ください。\r\n\r\n【第１部】\r\nフチーク／剣士の入場\r\nハイドン／交響曲94番「驚愕」第2楽章\r\nお楽しみコーナー（楽器紹介クイズ・指揮者体験）\r\nビゼー／カルメン前奏曲\r\nチャイコフスキー／花のワルツ\r\n\r\n【第２部】\r\nアンダーソン／トランペット吹きの休日\r\n　　　　　  ／ワルツィングキャット\r\n　　　　　 ／シンコペーテッド・クロック\r\nロバート・ロペスとアンダーソン＝ロペス／アナと雪の女王\r\n絵本読み聞かせ&演奏\r",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026010800056/file_contents/omoteA4.jpg",
+      "description": "英国・ケルトの愛らしい旋律たち～ルネサンスから現代のブリテン諸島の歌曲の数々～\r\n平井満美子＆佐野健二コンサート\r\n\r\nジョン・ダウランド没後400年追悼特別企画\r\n\r\n世界に誇る古楽界の至宝デュオが藍住町に降臨。\r\nダウランドの名曲からスカボロフェア、グリーンスリーブス、フォギー・デューまで、珠玉の作品をお届けします。\r\n\r\n\r\n\r\n日時\r\n\r\n令和8年6月20日(土曜日)　開演／午後7時（開場／午後6時30分）\r\n\r\n場所\r\n\r\n藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n平井満美子／歌\r\n佐野健二／リュート\r\n\r\n入場料【全席自由】\r\n\r\n大学生・一般　　2,000円（当日2,500円）\r\n小・中・高校生　1,000円（当日1,500円）\r\n※小学生未満の方は入場できません。\r\n\r\nチケット取扱い\r\n\r\n藍住町総合文化ホール、小山助学館本店、フクタレコード、エミールカルチャー\r\n電話予約は主催者へご連絡ください（小西・080-6386-2946）。\r\n\r\n出演者紹介\r\n\r\n\r\n\r\n \r\n\r\n\r\n",
+      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026030700015/file_contents/202620-1__1.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026010800056/",
+      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026030700015/",
       "source_type": "web",
       "venue_name": "藍住町総合文化ホール",
       "status": null,
-      "body": "開催分: 2026年05月17日（日）",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music",
-          "kids"
-        ],
-        "flags": [
-          "weekend",
-          "family"
-        ]
-      }
-    },
-    {
-      "title": "第18回 吹奏楽団アババイ定期演奏会",
-      "date_from": "2026-05-23",
-      "date_to": "2026-05-23",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "第18回 吹奏楽団アババイ定期演奏会\r\n\r\n　吹奏楽団アババイの定期演奏会。子供から大人までみんなが楽しめる曲が盛りだくさん！\r\nぜひ生演奏の楽しさを味わってください。\r\n\r\n\r\n\r\n日時\r\n\r\n　令和８年５月２３日(土曜日) 　開演／午後６時(開場／午後５時３０分) 　\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　吹奏楽団アババイ\r\n\r\n入場料\r\n\r\n　無料（入場には整理券が必要ですが、当日券もあります）\r\n　未就学児入場可\r\n\r\nチラシ\r\n\r\n　第18回定期演奏会[PDF：613KB]\r\n\r\n主催・お問合せ先\r\n\r\n　主催：吹奏楽団アババイ\r\n　お問合せ：090-8283-9279（秋月）\r\n",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026031200026/file_contents/teienn.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026031200026/",
-      "source_type": "web",
-      "venue_name": "藍住町総合文化ホール",
-      "status": null,
-      "body": "開催分: 2026年05月23日（土）",
+      "body": "開催分: 2026年06月20日（土）",
       "tags": {
         "type": "performance",
         "genres": [
           "music"
         ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "おんやりょう（公演：東京芸術座）",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": "18:00",
-      "start_time": "18:30",
-      "end_time": null,
-      "description": "おんやりょう（公演：東京芸術座）\r\n\r\n消防署のとある1日。消防士と救急救命士の軋轢や、つまずきながらも理想に向かって働く人たちの姿が、温かい目線で描かれる。\r\n\r\n\r\n\r\n日時\r\n\r\n令和8年5月24日（日曜日）開演／午後6時30分（開場／午後6時）\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　出演：梁瀬龍洋　神谷信弘　他　\r\n    作・演出：内藤裕子\r\n\r\n入場料(入場には鳴門市民劇場の会員登録が必要です)\r\n\r\n　入会金　　一般　　　　　　　　　2,500円　　\r\n　　　　　　小・中・高生及び学生　1,000円\r\n　月会費　　一般　　　　　　　　　2,500円　　\r\n　　　　　　小・中・高生及び学生　   500円\r\n\r\nチラシ\r\n\r\n　\r\n\r\n\r\n\r\n\t\r\n\t \r\n\r\n\r\n\r\n\t\r\n\r\n",
-      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026030900040/file_contents/1.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026030900040/",
-      "source_type": "web",
-      "venue_name": "藍住町総合文化ホール",
-      "status": null,
-      "body": "開催分: 2026年05月24日（日）",
-      "tags": {
-        "type": "performance",
-        "genres": [],
         "flags": [
           "night",
           "weekend"

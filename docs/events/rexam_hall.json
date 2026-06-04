@@ -1,83 +1,7 @@
 {
   "venue_id": "rexam_hall",
-  "last_success_at": "2026-05-28",
+  "last_success_at": "2026-06-04",
   "events": [
-    {
-      "title": "四国新聞女性クラブ",
-      "date_from": "2025-05-31",
-      "date_to": "2025-05-31",
-      "open_time": "12:30",
-      "start_time": "13:30",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8761",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール 四国新聞女性クラブ 開場 12:30/開演 13:30/終演 16:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "結成30周年 記念コンサート",
-      "date_from": "2025-06-01",
-      "date_to": "2025-06-01",
-      "open_time": "13:00",
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8944",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "小ホール 結成30周年 記念コンサート 開場 13:00/開演 13:30/終演 15:30（予定）",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "MAZZEL 2nd One Man Tour 2025 &#8220;Royal Straight Flush&#8221;",
-      "date_from": "2025-06-02",
-      "date_to": "2025-06-02",
-      "open_time": "17:30",
-      "start_time": "18:30",
-      "end_time": "20:30",
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "http://kenminhall.com/visitors/event_detail/?id=8946",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": "大ホール MAZZEL 2nd One Man Tour 2025 &#8220;Royal Straight Flush&#8221; 開場 17:30/開演 18:30/終演 20:30",
-      "tags": {
-        "type": "performance",
-        "genres": [
-          "music"
-        ],
-        "flags": [
-          "night"
-        ]
-      }
-    },
     {
       "title": "樫本大進＆アレッシオ・バックス デュオリサイタル",
       "date_from": "2025-06-04",
@@ -4653,9 +4577,9 @@
       "title": "吹奏楽の輪2026",
       "date_from": "2026-05-30",
       "date_to": "2026-05-30",
-      "open_time": "09:30",
+      "open_time": "09:40",
       "start_time": "10:00",
-      "end_time": "16:00",
+      "end_time": "16:50",
       "description": null,
       "image_url": null,
       "price": null,
@@ -4664,7 +4588,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 吹奏楽の輪2026 開場 09:30/開演 10:00/終演 16:00",
+      "body": "大ホール 吹奏楽の輪2026 開場 09:40/開演 10:00/終演 16:50 小ホール ハーイック・カザジャン ヴァイオリンリサイタル 開場 14:30/開演 15:00/終演 16:45",
       "tags": {
         "type": "performance",
         "genres": [],
@@ -4701,7 +4625,7 @@
       }
     },
     {
-      "title": "YUURI ASIA TOUR 2025で行けなくてごめんね2026",
+      "title": "【延期】YUURI ASIA TOUR 2025で行けなくてごめんね2026",
       "date_from": "2026-06-02",
       "date_to": "2026-06-02",
       "open_time": "18:00",
@@ -4715,7 +4639,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール YUURI ASIA TOUR 2025で行けなくてごめんね2026 開場 18:00/開演 19:00/終演 21:00",
+      "body": "大ホール 【延期】YUURI ASIA TOUR 2025で行けなくてごめんね2026 開場 18:00/開演 19:00/終演 21:00",
       "tags": {
         "type": "performance",
         "genres": [
@@ -4753,7 +4677,7 @@
       }
     },
     {
-      "title": "第48回高松定期演奏会",
+      "title": "自衛隊音楽隊 第48回高松定期演奏会",
       "date_from": "2026-06-06",
       "date_to": "2026-06-06",
       "open_time": "13:00",
@@ -4767,7 +4691,7 @@
       "source_type": null,
       "venue_name": null,
       "status": null,
-      "body": "大ホール 第48回高松定期演奏会 開場 13:00/開演 14:00/終演 16:00",
+      "body": "大ホール 自衛隊音楽隊 第48回高松定期演奏会 開場 13:00/開演 14:00/終演 16:00",
       "tags": {
         "type": "performance",
         "genres": [

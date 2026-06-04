@@ -1,61 +1,11 @@
 {
   "venue_id": "ehime-budoukan",
-  "last_success_at": "2026-05-28",
+  "last_success_at": "2026-06-04",
   "events": [
     {
-      "title": "えひめ愛顔のジュニアアスリート発掘事業 育成プログラム 主道場 愛媛県競技力向上対策本部",
-      "date_from": "2026-05-02",
-      "date_to": "2026-05-02",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "国民スポーツ大会＆四国地区大会代表選手選考会、全国中学生空手道選手権大会愛媛県予選、日本スポーツマスターズ愛媛県予選 剣道場 愛媛県空手道連盟",
-      "date_from": "2026-05-03",
-      "date_to": "2026-05-03",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第19回 愛媛県少年少女空手道選手権大会 主道場 愛媛県空手道連盟",
-      "date_from": "2026-05-04",
-      "date_to": "2026-05-04",
+      "title": "令和８年度愛媛県高等学校総合体育大会（5日～6日剣道、6～7日柔道・空手道） 主道場 副道場 愛媛県高等学校体育連盟",
+      "date_from": "2026-06-05",
+      "date_to": "2026-06-05",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -77,105 +27,9 @@
       }
     },
     {
-      "title": "審判講習会 柔道場 極真会館愛媛県戸田道場",
-      "date_from": "2026-05-05",
-      "date_to": "2026-05-05",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "第５回フジ杯えひめオープン2026年卓球大会 主道場 （一社）愛媛県卓球協会",
-      "date_from": "2026-05-05",
-      "date_to": "2026-05-05",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "第５回フジ杯えひめオープン2026年卓球大会 （一社）愛媛県卓球協会",
-      "date_from": "2026-05-06",
-      "date_to": "2026-05-06",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "部内交流大会 柔道場 極真会館愛媛県戸田道場",
-      "date_from": "2026-05-06",
-      "date_to": "2026-05-06",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "愛媛県中学校選抜卓球大会（個人の部） 主道場 （一社）愛媛県卓球協会",
-      "date_from": "2026-05-09",
-      "date_to": "2026-05-09",
+      "title": "令和８年度愛媛県高等学校総合体育大会（5日～6日剣道、6～7日柔道・空手道） 主道場 柔道場 剣道場 副道場 愛媛県高等学校体育連盟",
+      "date_from": "2026-06-06",
+      "date_to": "2026-06-06",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -199,9 +53,9 @@
       }
     },
     {
-      "title": "めざせ運動能力 UP 教室（幼児編） 柔道場 （公財）愛媛県スポーツ振興事業団",
-      "date_from": "2026-05-09",
-      "date_to": "2026-05-09",
+      "title": "令和８年度愛媛県高等学校総合体育大会（5日～6日剣道、6～7日柔道・空手道） 主道場 柔道場 剣道場 愛媛県高等学校体育連盟",
+      "date_from": "2026-06-07",
+      "date_to": "2026-06-07",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -225,9 +79,9 @@
       }
     },
     {
-      "title": "剣道公認審判員審判講習会及び認定審査会（中予） 剣道場 松山市剣道連盟",
-      "date_from": "2026-05-09",
-      "date_to": "2026-05-09",
+      "title": "居合道松山審査会・講習会 副道場 （一社）愛媛県剣道連盟 居合道部会",
+      "date_from": "2026-06-07",
+      "date_to": "2026-06-07",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -252,9 +106,9 @@
       }
     },
     {
-      "title": "第２１回 坊ちゃん・マドンナドッジボール大会 主道場 松山市ドッジボール協会",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
+      "title": "第80回松山市中学校総合体育大会（バレーボール） 主道場 松山市中学校体育連盟",
+      "date_from": "2026-06-09",
+      "date_to": "2026-06-09",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -273,117 +127,13 @@
           "sports",
           "nature"
         ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "中予地区昇段昇級審査 柔道場 愛媛県中予柔道連盟",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "JSKA昇級昇段審査会 剣道場 永木道場",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "杖道県下伝達講習会 副道場 （一社）愛媛県剣道連盟 杖道部会",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "介護予防運動教室 柔道場 （公財）愛媛県スポーツ振興事業団",
-      "date_from": "2026-05-20",
-      "date_to": "2026-05-20",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
         "flags": []
       }
     },
     {
-      "title": "親子武道体験教室（相撲） 柔道場 （公財）愛媛県スポーツ振興事",
-      "date_from": "2026-05-23",
-      "date_to": "2026-05-23",
+      "title": "第80回松山市中学校総合体育大会（柔道） 柔道場 松山市中学校体育連盟",
+      "date_from": "2026-06-09",
+      "date_to": "2026-06-09",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -400,172 +150,15 @@
         "type": "sports",
         "genres": [
           "sports",
-          "kids"
-        ],
-        "flags": [
-          "weekend",
-          "family"
-        ]
-      }
-    },
-    {
-      "title": "第78回四国四県剣道大会 剣道場 副道場 （一社）愛媛県剣道連盟",
-      "date_from": "2026-05-23",
-      "date_to": "2026-05-23",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第78回四国四県剣道大会 剣道場 副道場 （一社）愛媛県剣道連盟",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "愛媛県少年柔道錬成大会（個人試合） 主道場 （一財）愛媛県柔道協会",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "空手協会 級審査会 柔道場 愛媛県空手道連盟",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和８年度体育・保健体育指導力向上研修 主道場 柔道場 剣道場 副道場 愛媛県教育委員会",
-      "date_from": "2026-05-28",
-      "date_to": "2026-05-28",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
+          "nature"
         ],
         "flags": []
       }
     },
     {
-      "title": "第59回愛媛県スポーツ少年大会ミニバスケットボール競技 主道場 公益財団法人愛媛県スポーツ協会",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-30",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "親子健康づくり教室 柔道場 （公財）愛媛県スポーツ振興事業団",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-30",
+      "title": "第80回松山市中学校総合体育大会（剣道） 剣道場 副道場 松山市中学校体育連盟",
+      "date_from": "2026-06-09",
+      "date_to": "2026-06-09",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -582,18 +175,115 @@
         "type": "sports",
         "genres": [
           "sports",
-          "kids"
+          "nature"
         ],
-        "flags": [
-          "weekend",
-          "family"
-        ]
+        "flags": []
       }
     },
     {
-      "title": "第2回ジュニア強化錬成会 剣道場 （一社）愛媛県剣道連盟",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-30",
+      "title": "第80回松山市中学校総合体育大会（バレーボール） 主道場 松山市中学校体育連盟",
+      "date_from": "2026-06-10",
+      "date_to": "2026-06-10",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（柔道） 柔道場 松山市中学校体育連盟",
+      "date_from": "2026-06-10",
+      "date_to": "2026-06-10",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（剣道） 剣道場 副道場 松山市中学校体育連盟",
+      "date_from": "2026-06-10",
+      "date_to": "2026-06-10",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（バレーボール） 主道場 松山市中学校体育連盟",
+      "date_from": "2026-06-11",
+      "date_to": "2026-06-11",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "剣道国スポ少年選手選考会 剣道場 副道場 （一社）愛媛県剣道連盟",
+      "date_from": "2026-06-13",
+      "date_to": "2026-06-13",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -617,9 +307,9 @@
       }
     },
     {
-      "title": "令和８年度愛媛県高等学校総合体育大会 （剣道） 主道場 副道場 愛媛県高等学校体育連盟",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
+      "title": "第32回マルちゃん杯中四国少年柔道大会 主道場 柔道場 （一財）愛媛県柔道協会",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -643,35 +333,9 @@
       }
     },
     {
-      "title": "県高段者大会・形講習会 柔道場 （一財）愛媛県柔道協会",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "糸東会壮風館技術講習会 剣道場 糸東会壮風館",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
+      "title": "松山市空手道協会技術講習会 剣道場 松山市空手道協会",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -696,40 +360,16 @@
       }
     },
     {
-      "title": "えひめ愛顔のジュニアアスリート発掘事業 育成プログラム",
-      "date_from": "2026-05-02",
-      "date_to": "2026-05-02",
+      "title": "杖道県下伝達講習会 副道場 （一社）愛媛県剣道連盟 杖道部会",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 主道場",
+      "description": null,
       "image_url": null,
       "price": null,
-      "contact": "愛媛県競技力向上対策本部",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "国民スポーツ大会＆四国地区大会代表選手選考会、全国中学生空手道選手権大会愛媛県予選、日本スポーツマスターズ愛媛県予選",
-      "date_from": "2026-05-03",
-      "date_to": "2026-05-03",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 剣道場",
-      "image_url": null,
-      "price": null,
-      "contact": "愛媛県空手道連盟",
+      "contact": null,
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -746,16 +386,16 @@
       }
     },
     {
-      "title": "第19回 愛媛県少年少女空手道選手権大会",
-      "date_from": "2026-05-04",
-      "date_to": "2026-05-04",
+      "title": "前期レクバレー大会 主道場 （公財）愛媛県スポーツ振興事業団",
+      "date_from": "2026-06-18",
+      "date_to": "2026-06-18",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 主道場",
+      "description": null,
       "image_url": null,
       "price": null,
-      "contact": "愛媛県空手道連盟",
+      "contact": null,
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -770,110 +410,16 @@
       }
     },
     {
-      "title": "審判講習会",
-      "date_from": "2026-05-05",
-      "date_to": "2026-05-05",
+      "title": "剣道称号形講習会、剣道中四国稽古会 副道場 （一社）愛媛県剣道連盟",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 柔道場",
+      "description": null,
       "image_url": null,
       "price": null,
-      "contact": "極真会館愛媛県戸田道場",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "第５回フジ杯えひめオープン2026年卓球大会",
-      "date_from": "2026-05-05",
-      "date_to": "2026-05-05",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 主道場",
-      "image_url": null,
-      "price": null,
-      "contact": "（一社）愛媛県卓球協会",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "第５回フジ杯えひめオープン2026年卓球大会",
-      "date_from": "2026-05-06",
-      "date_to": "2026-05-06",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 主催・主管",
-      "image_url": null,
-      "price": null,
-      "contact": "（一社）愛媛県卓球協会",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "部内交流大会",
-      "date_from": "2026-05-06",
-      "date_to": "2026-05-06",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 柔道場",
-      "image_url": null,
-      "price": null,
-      "contact": "極真会館愛媛県戸田道場",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": []
-      }
-    },
-    {
-      "title": "愛媛県中学校選抜卓球大会（個人の部）",
-      "date_from": "2026-05-09",
-      "date_to": "2026-05-09",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 主道場",
-      "image_url": null,
-      "price": null,
-      "contact": "（一社）愛媛県卓球協会",
+      "contact": null,
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -890,40 +436,16 @@
       }
     },
     {
-      "title": "めざせ運動能力 UP 教室（幼児編）",
-      "date_from": "2026-05-09",
-      "date_to": "2026-05-09",
+      "title": "四国高等学校柔道選手権大会 主道場 柔道場 （一財）愛媛県柔道協会",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 柔道場",
+      "description": null,
       "image_url": null,
       "price": null,
-      "contact": "（公財）愛媛県スポーツ振興事業団",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "剣道公認審判員審判講習会及び認定審査会（中予）",
-      "date_from": "2026-05-09",
-      "date_to": "2026-05-09",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 剣道場",
-      "image_url": null,
-      "price": null,
-      "contact": "松山市剣道連盟",
+      "contact": null,
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -940,16 +462,16 @@
       }
     },
     {
-      "title": "第２１回 坊ちゃん・マドンナドッジボール大会",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
+      "title": "四国高等学校柔道選手権大会 主道場 柔道場 （一財）愛媛県柔道協会",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 主道場",
+      "description": null,
       "image_url": null,
       "price": null,
-      "contact": "松山市ドッジボール協会",
+      "contact": null,
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -966,110 +488,16 @@
       }
     },
     {
-      "title": "中予地区昇段昇級審査",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
+      "title": "親子武道体験教室（居合道） 副道場 （公財）愛媛県スポーツ振興事業団",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 柔道場",
+      "description": null,
       "image_url": null,
       "price": null,
-      "contact": "愛媛県中予柔道連盟",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "JSKA昇級昇段審査会",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 剣道場",
-      "image_url": null,
-      "price": null,
-      "contact": "永木道場",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "杖道県下伝達講習会",
-      "date_from": "2026-05-10",
-      "date_to": "2026-05-10",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 副道場",
-      "image_url": null,
-      "price": null,
-      "contact": "（一社）愛媛県剣道連盟",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "介護予防運動教室",
-      "date_from": "2026-05-20",
-      "date_to": "2026-05-20",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 柔道場",
-      "image_url": null,
-      "price": null,
-      "contact": "（公財）愛媛県スポーツ振興事業団",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": []
-      }
-    },
-    {
-      "title": "親子武道体験教室（相撲）",
-      "date_from": "2026-05-23",
-      "date_to": "2026-05-23",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 柔道場",
-      "image_url": null,
-      "price": null,
-      "contact": "（公財）愛媛県スポーツ振興事",
+      "contact": null,
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -1088,16 +516,42 @@
       }
     },
     {
-      "title": "第78回四国四県剣道大会",
-      "date_from": "2026-05-23",
-      "date_to": "2026-05-23",
+      "title": "空手協会 強化練習 副道場 松山市空手道協会",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 剣道場",
+      "description": null,
       "image_url": null,
       "price": null,
-      "contact": "（一社）愛媛県剣道連盟",
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "フジカップ・第35回夏の全国小学生ドッジボール選手権 愛媛県予選 主道場 愛媛県ドッジボール協会",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -1114,16 +568,16 @@
       }
     },
     {
-      "title": "第78回四国四県剣道大会",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
+      "title": "愛媛合気会・愛媛大学春季合同審査会 柔道場 愛媛県合気道連盟",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 剣道場",
+      "description": null,
       "image_url": null,
       "price": null,
-      "contact": "（一社）愛媛県剣道連盟",
+      "contact": null,
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -1140,16 +594,121 @@
       }
     },
     {
-      "title": "愛媛県少年柔道錬成大会（個人試合）",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
+      "title": "女子柔道交流会 柔道場 （一財）愛媛県柔道協会",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第３回ジュニア強化練成会 副道場 （一社）愛媛県剣道連盟",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ナカフード杯・第58回愛媛県少年剣道大会 主道場 副道場 （一社）愛媛県剣道連盟",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "food"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "中予地区少年柔道練習会 柔道場 愛媛県中予柔道連盟",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "令和８年度愛媛県高等学校総合体育大会（5日～6日剣道、6～7日柔道・空手道）",
+      "date_from": "2026-06-05",
+      "date_to": "2026-06-05",
       "open_time": null,
       "start_time": null,
       "end_time": null,
       "description": "会場: 主道場",
       "image_url": null,
       "price": null,
-      "contact": "（一財）愛媛県柔道協会",
+      "contact": "愛媛県高等学校体育連盟",
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
@@ -1160,138 +719,13 @@
         "genres": [
           "sports"
         ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "空手協会 級審査会",
-      "date_from": "2026-05-24",
-      "date_to": "2026-05-24",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 柔道場",
-      "image_url": null,
-      "price": null,
-      "contact": "愛媛県空手道連盟",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和８年度体育・保健体育指導力向上研修",
-      "date_from": "2026-05-28",
-      "date_to": "2026-05-28",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 主道場",
-      "image_url": null,
-      "price": null,
-      "contact": "愛媛県教育委員会",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
         "flags": []
       }
     },
     {
-      "title": "第59回愛媛県スポーツ少年大会ミニバスケットボール競技",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-30",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 主道場",
-      "image_url": null,
-      "price": null,
-      "contact": "公益財団法人愛媛県スポーツ協会",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "sports",
-        "genres": [
-          "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "親子健康づくり教室",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-30",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 柔道場",
-      "image_url": null,
-      "price": null,
-      "contact": "（公財）愛媛県スポーツ振興事業団",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "workshop",
-        "genres": [
-          "kids"
-        ],
-        "flags": [
-          "weekend",
-          "family"
-        ]
-      }
-    },
-    {
-      "title": "第2回ジュニア強化錬成会",
-      "date_from": "2026-05-30",
-      "date_to": "2026-05-30",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "会場: 剣道場",
-      "image_url": null,
-      "price": null,
-      "contact": "（一社）愛媛県剣道連盟",
-      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "令和８年度愛媛県高等学校総合体育大会 （剣道）",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
+      "title": "令和８年度愛媛県高等学校総合体育大会（5日～6日剣道、6～7日柔道・空手道）",
+      "date_from": "2026-06-06",
+      "date_to": "2026-06-06",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -1315,9 +749,542 @@
       }
     },
     {
-      "title": "県高段者大会・形講習会",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
+      "title": "令和８年度愛媛県高等学校総合体育大会（5日～6日剣道、6～7日柔道・空手道）",
+      "date_from": "2026-06-07",
+      "date_to": "2026-06-07",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "愛媛県高等学校体育連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "居合道松山審査会・講習会",
+      "date_from": "2026-06-07",
+      "date_to": "2026-06-07",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 副道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（一社）愛媛県剣道連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（バレーボール）",
+      "date_from": "2026-06-09",
+      "date_to": "2026-06-09",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市中学校体育連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（柔道）",
+      "date_from": "2026-06-09",
+      "date_to": "2026-06-09",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 柔道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市中学校体育連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（剣道）",
+      "date_from": "2026-06-09",
+      "date_to": "2026-06-09",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 剣道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市中学校体育連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（バレーボール）",
+      "date_from": "2026-06-10",
+      "date_to": "2026-06-10",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市中学校体育連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（柔道）",
+      "date_from": "2026-06-10",
+      "date_to": "2026-06-10",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 柔道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市中学校体育連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（剣道）",
+      "date_from": "2026-06-10",
+      "date_to": "2026-06-10",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 剣道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市中学校体育連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "第80回松山市中学校総合体育大会（バレーボール）",
+      "date_from": "2026-06-11",
+      "date_to": "2026-06-11",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市中学校体育連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports",
+          "nature"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "剣道国スポ少年選手選考会",
+      "date_from": "2026-06-13",
+      "date_to": "2026-06-13",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 剣道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（一社）愛媛県剣道連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "第32回マルちゃん杯中四国少年柔道大会",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（一財）愛媛県柔道協会",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "松山市空手道協会技術講習会",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 剣道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市空手道協会",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [
+          "science",
+          "nature"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "杖道県下伝達講習会",
+      "date_from": "2026-06-14",
+      "date_to": "2026-06-14",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 副道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（一社）愛媛県剣道連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "前期レクバレー大会",
+      "date_from": "2026-06-18",
+      "date_to": "2026-06-18",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（公財）愛媛県スポーツ振興事業団",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": []
+      }
+    },
+    {
+      "title": "剣道称号形講習会、剣道中四国稽古会",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 副道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（一社）愛媛県剣道連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "四国高等学校柔道選手権大会",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（一財）愛媛県柔道協会",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "四国高等学校柔道選手権大会",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（一財）愛媛県柔道協会",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "親子武道体験教室（居合道）",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 副道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（公財）愛媛県スポーツ振興事業団",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "workshop",
+        "genres": [
+          "kids"
+        ],
+        "flags": [
+          "weekend",
+          "family"
+        ]
+      }
+    },
+    {
+      "title": "空手協会 強化練習",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 副道場",
+      "image_url": null,
+      "price": null,
+      "contact": "松山市空手道協会",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "フジカップ・第35回夏の全国小学生ドッジボール選手権 愛媛県予選",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "愛媛県ドッジボール協会",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "愛媛合気会・愛媛大学春季合同審査会",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 柔道場",
+      "image_url": null,
+      "price": null,
+      "contact": "愛媛県合気道連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "女子柔道交流会",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -1341,25 +1308,76 @@
       }
     },
     {
-      "title": "糸東会壮風館技術講習会",
-      "date_from": "2026-05-31",
-      "date_to": "2026-05-31",
+      "title": "第３回ジュニア強化練成会",
+      "date_from": "2026-06-27",
+      "date_to": "2026-06-27",
       "open_time": null,
       "start_time": null,
       "end_time": null,
-      "description": "会場: 剣道場",
+      "description": "会場: 副道場",
       "image_url": null,
       "price": null,
-      "contact": "糸東会壮風館",
+      "contact": "（一社）愛媛県剣道連盟",
       "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
       "source_type": null,
       "venue_name": null,
       "status": null,
       "body": null,
       "tags": {
-        "type": "workshop",
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "ナカフード杯・第58回愛媛県少年剣道大会",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 主道場",
+      "image_url": null,
+      "price": null,
+      "contact": "（一社）愛媛県剣道連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
         "genres": [
-          "science"
+          "sports",
+          "food"
+        ],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "中予地区少年柔道練習会",
+      "date_from": "2026-06-28",
+      "date_to": "2026-06-28",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": "会場: 柔道場",
+      "image_url": null,
+      "price": null,
+      "contact": "愛媛県中予柔道連盟",
+      "source_url": "https://ehime-spa.jp/budoukan/martial-event/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
         ],
         "flags": [
           "weekend"

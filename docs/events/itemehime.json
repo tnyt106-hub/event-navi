@@ -1,6 +1,6 @@
 {
   "venue_id": "itemehime",
-  "last_success_at": "2026-05-28",
+  "last_success_at": "2026-06-04",
   "events": [
     {
       "title": "SURIFT with 古着卸倉庫 CLASS1 in 愛媛",
@@ -24,6 +24,33 @@
         "flags": [
           "paid",
           "night"
+        ]
+      }
+    },
+    {
+      "title": "おでかけライブin愛媛175",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
+      "open_time": null,
+      "start_time": "11:30",
+      "end_time": "15:30",
+      "description": null,
+      "image_url": null,
+      "price": "有料 料金詳細：パンフレット代 900円",
+      "contact": "お問合せフォーム→https://www.youyou.co.jp/contact/ メールアドレス→abvert@youmedia.net",
+      "source_url": "https://itemehime.com/event/sale/2026/06/7005/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
+          "weekend"
         ]
       }
     },
@@ -204,33 +231,6 @@
         "type": "festival",
         "genres": [
           "food"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "リトル・ママフェスタ 松山2026 Mar",
-      "date_from": "2026-03-21",
-      "date_to": "2026-03-21",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": null,
-      "source_url": "https://itemehime.com/event/festival/2026/03/6538/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "nature"
         ],
         "flags": [
           "free",
