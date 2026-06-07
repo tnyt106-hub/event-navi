@@ -1,56 +1,8 @@
 {
   "venue_id": "asutamuland",
   "venue_name": "あすたむらんど徳島",
-  "last_success_at": "2026-06-04",
+  "last_success_at": "2026-06-07",
   "events": [
-    {
-      "title": "手づくり工房「応援ペンライト」",
-      "date_from": "2026-06-01",
-      "date_to": "2026-06-30",
-      "open_time": null,
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": "\r\n        デコレーションした光るスティックを持って応援しよう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/応援ペンライト.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17236/",
-      "source_type": "web",
-      "venue_name": "体験工房",
-      "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "たっぷりプラネ☆『大解明！ブラックホールのすがた』",
-      "date_from": "2026-06-01",
-      "date_to": "2026-08-31",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": "13:50",
-      "description": "\r\n        ブラックホールの正体を見てみよう！\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/たっぷりプラネ☆.png",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17176/",
-      "source_type": "web",
-      "venue_name": "プラネタリウム",
-      "status": null,
-      "body": "時間: （平 日）13:00～13:50・15:40～16:30 （日・祝）15:40～16:30\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
     {
       "title": "手づくり工房「ヨーヨー」",
       "date_from": "2026-05-01",
@@ -67,6 +19,54 @@
       "venue_name": "体験工房",
       "status": null,
       "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※4/25～5/6の間、午後の最終受付を16:30まで延長します。 ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "特別投映「たなばたのおはなし」",
+      "date_from": "2026-06-13",
+      "date_to": "2026-07-07",
+      "open_time": null,
+      "start_time": "14:20",
+      "end_time": "15:00",
+      "description": "\r\n        今夜見える星空と「たなばた」にまつわるお話を紹介します。\n\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/たなばたのおはなし-1.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17178/",
+      "source_type": "web",
+      "venue_name": "プラネタリウム",
+      "status": null,
+      "body": "時間: 14:20～15:00\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "手づくり工房「応援ペンライト」",
+      "date_from": "2026-06-01",
+      "date_to": "2026-06-30",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": "\r\n        デコレーションした光るスティックを持って応援しよう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/応援ペンライト.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17236/",
+      "source_type": "web",
+      "venue_name": "体験工房",
+      "status": null,
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
       "tags": {
         "type": "workshop",
         "genres": [],
@@ -94,6 +94,56 @@
       "tags": {
         "type": "workshop",
         "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "25周年記念事業ラインナップ",
+      "date_from": "2026-07-18",
+      "date_to": "2026-11-14",
+      "open_time": null,
+      "start_time": "9:30",
+      "end_time": "17:00",
+      "description": "\r\n        あすたむらんど徳島 開園25周年\n\nあすたむらんど徳島は、おかげさまで開園25周年を迎えます。\nこれまで、多くの子どもたちの「はじめて」に寄り添い、学びや発見、感動を届けてきました。\nそしてこれからは、子どもだけでなく、大人にとっても新たな気づきや学びに出会い、明日へ踏み出す力を得られる場所へ。\n考えること。\nつくること。\nつながること。\nこれからも、子どもから大人まで、一人ひとりが新たな気づきや挑戦に出会える場所として。\n「明日に多くの夢がある」場所へ。\n未来を育み、未来をつくる歩みを続けていきます。\n \n考える力　－探求・解決－\n問いを持ち、学び、解決する\n企画展「トレジャーハンターミッション」\n\n自由研究スタート相談会\n\nイマ―シブ 謎解き\n\n \nつくる力　－創造・挑戦－\n創造し、挑戦し、形にする\nチャンバラ合戦\n\n遊山箱工作ワークショップ\n\n明日多夢 子ども会社\n\n \nつながる力　－協働・生活・感性－\n他者・社会・自然と関わり、生きる力を育む\nペルセウス座流星群観望会\n\n職業体験「こどものまち」\n\nサイエンスカフェ\n\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/06/25周年記念事業-1.png",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17882/",
+      "source_type": "web",
+      "venue_name": "あすたむらんど徳島",
+      "status": null,
+      "body": "時間: 9:30～17:00\n備考:",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "趣味工房「サンドアートキャンドル」",
+      "date_from": "2026-06-20",
+      "date_to": "2026-06-20",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": "15:30",
+      "description": "\r\n        カラーサンドを使ったサンドアートに、ジェルワックスを注いでキャンドルを作ろう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n 申込期間：6月13日(土)～6月15日(月) \n\n \n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/サンドアートキャンドル.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17242/",
+      "source_type": "web",
+      "venue_name": "あすたむらんど徳島",
+      "status": null,
+      "body": "時間: 13:30～15:30\n備考: ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。 参加費：1,000円 申込期間：6月13日(土)～6月15日(月) 定員：16名 ※電話またはあすたむらんど公式HP内WEBフォームよりお申込みください。 ※小学校低学年以下のお子様は保護者同伴でご参加ください。",
+      "tags": {
+        "type": "other",
+        "genres": [
+          "art"
+        ],
         "flags": [
           "weekend"
         ]
@@ -128,30 +178,6 @@
       }
     },
     {
-      "title": "特別投映「たなばたのおはなし」",
-      "date_from": "2026-06-13",
-      "date_to": "2026-07-07",
-      "open_time": null,
-      "start_time": "14:20",
-      "end_time": "15:00",
-      "description": "\r\n        今夜見える星空と「たなばた」にまつわるお話を紹介します。\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/たなばたのおはなし-1.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17178/",
-      "source_type": "web",
-      "venue_name": "プラネタリウム",
-      "status": null,
-      "body": "時間: 14:20～15:00\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
       "title": "（6月）あそびのワンダーランド「キッズ つり名人」",
       "date_from": "2026-06-21",
       "date_to": "2026-06-21",
@@ -179,26 +205,24 @@
       }
     },
     {
-      "title": "6月 屋内サイエンスショー(毎日開催)",
+      "title": "たっぷりプラネ☆『大解明！ブラックホールのすがた』",
       "date_from": "2026-06-01",
-      "date_to": "2026-06-30",
+      "date_to": "2026-08-31",
       "open_time": null,
-      "start_time": "11:00",
-      "end_time": "11:20",
-      "description": "\r\n        午前と午後で異なる科学実験が楽しめるよ！🧪\nその場で一緒に体験しながら、科学の驚きを発見しよう！\n（AM）11:00～11:20／サイエンスクイズ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/サイエンスショー「液体のふしぎ」-rotated.jpg",
+      "start_time": "13:00",
+      "end_time": "13:50",
+      "description": "\r\n        ブラックホールの正体を見てみよう！\n\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/たっぷりプラネ☆.png",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17350/",
+      "source_url": "https://asutamuland.jp/events/event/17176/",
       "source_type": "web",
-      "venue_name": "子ども科学館 常設展示場 「科学技術と人間」サイエンスキッチン",
+      "venue_name": "プラネタリウム",
       "status": null,
-      "body": "時間: AM 11:00～11:20（サイエンスクイズ） PM 14:00～14:20（液体のふしぎ）\n備考: 常設展示の観覧券が必要 ※実演内容・実演タイトルは変更になる場合がございます。",
+      "body": "時間: （平 日）13:00～13:50・15:40～16:30 （日・祝）15:40～16:30\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
       "tags": {
         "type": "other",
-        "genres": [
-          "science"
-        ],
+        "genres": [],
         "flags": [
           "weekend"
         ]
@@ -257,79 +281,28 @@
       }
     },
     {
-      "title": "趣味工房「サンドアートキャンドル」",
-      "date_from": "2026-06-20",
-      "date_to": "2026-06-20",
+      "title": "6月 屋内サイエンスショー(毎日開催)",
+      "date_from": "2026-06-01",
+      "date_to": "2026-06-30",
       "open_time": null,
-      "start_time": "13:30",
-      "end_time": "15:30",
-      "description": "\r\n        カラーサンドを使ったサンドアートに、ジェルワックスを注いでキャンドルを作ろう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n 申込期間：6月13日(土)～6月15日(月) \n\n \n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/サンドアートキャンドル.jpg",
+      "start_time": "11:00",
+      "end_time": "11:20",
+      "description": "\r\n        午前と午後で異なる科学実験が楽しめるよ！🧪\nその場で一緒に体験しながら、科学の驚きを発見しよう！\n（AM）11:00～11:20／サイエンスクイズ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/サイエンスショー「液体のふしぎ」-rotated.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17242/",
+      "source_url": "https://asutamuland.jp/events/event/17350/",
       "source_type": "web",
-      "venue_name": "あすたむらんど徳島",
+      "venue_name": "子ども科学館 常設展示場 「科学技術と人間」サイエンスキッチン",
       "status": null,
-      "body": "時間: 13:30～15:30\n備考: ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。 参加費：1,000円 申込期間：6月13日(土)～6月15日(月) 定員：16名 ※電話またはあすたむらんど公式HP内WEBフォームよりお申込みください。 ※小学校低学年以下のお子様は保護者同伴でご参加ください。",
+      "body": "時間: AM 11:00～11:20（サイエンスクイズ） PM 14:00～14:20（液体のふしぎ）\n備考: 常設展示の観覧券が必要 ※実演内容・実演タイトルは変更になる場合がございます。",
       "tags": {
         "type": "other",
-        "genres": [
-          "art"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "環境月間エコ工作",
-      "date_from": "2026-06-06",
-      "date_to": "2026-06-06",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "12:00",
-      "description": "\r\n        ペットボトルじょうろを作ろう！\n※当日先着順にて受付（各回40名程度）\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/環境月間エコ工作.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17192/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 多目的ホール",
-      "status": null,
-      "body": "時間: 10:00～12:00・13:00～15:00\n備考: 協力：公益社団法人徳島県環境技術センター ※当日先着順にて受付（各回40名程度）",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "ファミリーサイエンス教室「はねるボールづくり」",
-      "date_from": "2026-06-07",
-      "date_to": "2026-06-07",
-      "open_time": null,
-      "start_time": "13:30",
-      "end_time": "15:00",
-      "description": "\r\n        オリジナルのはねるボールを作ってみよう！\n 申込締切日：申込締め切りました \n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/ファミリーサイエンス教室「はねるボールづくり」画像-scaled.jpeg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17188/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 多目的ホール",
-      "status": null,
-      "body": "時間: 13:30～15:00\n備考: 定員：10家族 ※抽選 対象：小・中学生を含むご家族",
-      "tags": {
-        "type": "workshop",
         "genres": [
           "science"
         ],
         "flags": [
-          "weekend",
-          "family"
+          "weekend"
         ]
       }
     }

@@ -1,7 +1,7 @@
 {
   "venue_id": "ehime_prefectural_museum_of_art",
   "venue_name": "愛媛県美術館",
-  "last_success_at": "2026-06-04",
+  "last_success_at": "2026-06-07",
   "events": [
     {
       "title": "金曜ロードショーとジブリ展愛媛展",
@@ -635,6 +635,30 @@
       }
     },
     {
+      "title": "シルクスクリーンの刷り体験（ふらりコース）",
+      "date_from": "2026-06-27",
+      "date_to": "2026-09-26",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.ehime-art.jp/event/info/092b22bf-f41e-4b6d-8cd9-9c279c8b6de7",
+      "source_type": "web",
+      "venue_name": "愛媛県美術館",
+      "status": null,
+      "body": "期間原文: 2026年6月27日（土）14:30～16:30 2026年7月25日（土）14:30～16:30 2026年8月22日（土）14:30～16:30 2026年9月26日（土）14:30～16:30",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "17音で美術鑑賞",
       "date_from": "2026-06-28",
       "date_to": "2026-11-29",
@@ -661,9 +685,9 @@
       }
     },
     {
-      "title": "パシャパシャ！紙漉き",
-      "date_from": "2026-07-05",
-      "date_to": "2026-07-12",
+      "title": "簡易機による織り体験（ご予約コース）",
+      "date_from": "2026-07-04",
+      "date_to": "2026-09-05",
       "open_time": null,
       "start_time": null,
       "end_time": null,
@@ -671,39 +695,17 @@
       "image_url": null,
       "price": null,
       "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/ef4bc5e7-da64-40df-8457-835bb4d61614",
+      "source_url": "https://www.ehime-art.jp/event/info/bad006f0-a313-4faa-860c-415dab39616c",
       "source_type": "web",
       "venue_name": "愛媛県美術館",
       "status": null,
-      "body": "期間原文: 2026年7月5日（日）10:30～11:30 2026年7月5日（日）14:00～15:00 2026年7月12日（日）10:30～11:30 2026年7月12日（日）14:00～15:00",
+      "body": "期間原文: 2026年7月4日（土）15:30～16:45 2026年8月1日（土）15:30～16:45 2026年9月5日（土）15:30～16:45",
       "tags": {
-        "type": "other",
+        "type": "workshop",
         "genres": [],
         "flags": [
           "weekend"
         ]
-      }
-    },
-    {
-      "title": "フェルト",
-      "date_from": "2026-07-09",
-      "date_to": "2026-07-09",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": null,
-      "contact": null,
-      "source_url": "https://www.ehime-art.jp/event/info/3a28f2fd-de43-4b3e-aa9a-7b7fad13bcc1",
-      "source_type": "web",
-      "venue_name": "愛媛県美術館",
-      "status": null,
-      "body": "期間原文: 2026年7月9日（木）10:00～16:00",
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": []
       }
     }
   ]

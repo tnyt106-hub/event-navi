@@ -1,6 +1,6 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-06-04",
+  "last_success_at": "2026-06-07",
   "events": [
     {
       "title": "6月8日(月)開催 ①【能meets謡十徳「大仏供養（だいぶつくよう）」】 ②【能meets高知「景清（かげきよ）」】",
@@ -207,6 +207,33 @@
         "flags": [
           "paid",
           "weekend"
+        ]
+      }
+    },
+    {
+      "title": "市川團十郎・ぼたん・新之助 成田屋親子 「伝承への道」",
+      "date_from": "2026-08-27",
+      "date_to": "2026-08-27",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "全席指定 A席 9,500円 ※未就学児入場不可 ＜6/13(土）10:00～一般発売開始＞",
+      "contact": null,
+      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2870",
+      "source_type": "web",
+      "venue_name": "高知県立県民文化ホール オレンジホール",
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "kids"
+        ],
+        "flags": [
+          "paid",
+          "family"
         ]
       }
     },

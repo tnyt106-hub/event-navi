@@ -1,6 +1,6 @@
 {
   "venue_id": "awagin-hall",
-  "last_success_at": "2026-05-28",
+  "last_success_at": "2026-06-07",
   "events": [
     {
       "title": "第45期徳島県シルバー大学校入学式",
@@ -485,7 +485,7 @@
       }
     },
     {
-      "title": "大学・短期大学・専門学校進学ガイダンス",
+      "title": "進路ガイダンス",
       "date_from": "2026-06-15",
       "date_to": "2026-06-15",
       "open_time": null,
