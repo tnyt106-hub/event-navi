@@ -1,24 +1,24 @@
 {
   "venue_id": "asutamuland",
   "venue_name": "あすたむらんど徳島",
-  "last_success_at": "2026-06-07",
+  "last_success_at": "2026-06-13",
   "events": [
     {
-      "title": "手づくり工房「ヨーヨー」",
-      "date_from": "2026-05-01",
+      "title": "手づくり工房「宇宙レジン」",
+      "date_from": "2026-05-08",
       "date_to": "2026-06-30",
       "open_time": null,
       "start_time": "10:30",
       "end_time": "12:00",
-      "description": "\r\n        なんでヨーヨーはもどってくるの？作って学んでみよう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/ヨーヨー.png",
+      "description": "\r\n        レジンを使って宇宙のようなアクセサリーを作ろう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/宇宙レジン-1.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17232/",
+      "source_url": "https://asutamuland.jp/events/event/17234/",
       "source_type": "web",
       "venue_name": "体験工房",
       "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※4/25～5/6の間、午後の最終受付を16:30まで延長します。 ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
       "tags": {
         "type": "workshop",
         "genres": [],
@@ -52,6 +52,58 @@
       }
     },
     {
+      "title": "キッズ科学教室(前期)つくって飛ばそう！子どもロケット教室",
+      "date_from": "2026-05-24",
+      "date_to": "2026-07-05",
+      "open_time": null,
+      "start_time": "13:30",
+      "end_time": "15:00",
+      "description": "\r\n        ロケットの仕組みを学んでより遠くに飛ぶロケットを作ろう！最後は学んだことを活かしてエンジンロケットを飛ばそう！\n申込締め切りました\n \n\n\n\n\n日時\n時間\n\n\n5月24日(日)\n13:30～15:00\n\n\n6月14日(日)\n13:30～15:00\n\n\n6月28日(日)\n13:30～15:00\n\n\n7月5日(日)\n13:00～16:00\n\n\n\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/キッズ科学教室-1.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17186/",
+      "source_type": "web",
+      "venue_name": "子ども科学館 多目的ホール他",
+      "status": null,
+      "body": "時間: 第1回～第3回：13:30～15:00 第4回：13:00～16:00\n備考: 申込締め切りました 定員：10名 対象：4回すべてに参加できる小・中学生 協力：NPO法人べんざいてんのお家 備考：7月5日が悪天候の場合、ロケット打ち上げ日を別途設けます。",
+      "tags": {
+        "type": "workshop",
+        "genres": [
+          "science",
+          "kids"
+        ],
+        "flags": [
+          "weekend",
+          "family"
+        ]
+      }
+    },
+    {
+      "title": "手づくり工房「ヨーヨー」",
+      "date_from": "2026-05-01",
+      "date_to": "2026-06-30",
+      "open_time": null,
+      "start_time": "10:30",
+      "end_time": "12:00",
+      "description": "\r\n        なんでヨーヨーはもどってくるの？作って学んでみよう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/ヨーヨー.png",
+      "price": null,
+      "contact": null,
+      "source_url": "https://asutamuland.jp/events/event/17232/",
+      "source_type": "web",
+      "venue_name": "体験工房",
+      "status": null,
+      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※4/25～5/6の間、午後の最終受付を16:30まで延長します。 ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
+      "tags": {
+        "type": "workshop",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "手づくり工房「応援ペンライト」",
       "date_from": "2026-06-01",
       "date_to": "2026-06-30",
@@ -76,45 +128,21 @@
       }
     },
     {
-      "title": "手づくり工房「宇宙レジン」",
-      "date_from": "2026-05-08",
-      "date_to": "2026-06-30",
+      "title": "たっぷりプラネ☆『大解明！ブラックホールのすがた』",
+      "date_from": "2026-06-01",
+      "date_to": "2026-08-31",
       "open_time": null,
-      "start_time": "10:30",
-      "end_time": "12:00",
-      "description": "\r\n        レジンを使って宇宙のようなアクセサリーを作ろう！\n※材料は十分用意しておりますが、在庫がなくなり次第終了します。\n※6/20は趣味工房開催のため手づくり工房の開催はございません。\n\n※写真はすべてイメージです。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/宇宙レジン-1.jpg",
+      "start_time": "13:00",
+      "end_time": "13:50",
+      "description": "\r\n        ブラックホールの正体を見てみよう！\n\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/たっぷりプラネ☆.png",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17234/",
+      "source_url": "https://asutamuland.jp/events/event/17176/",
       "source_type": "web",
-      "venue_name": "体験工房",
+      "venue_name": "プラネタリウム",
       "status": null,
-      "body": "時間: 平 日／10:30～12:00、13:00～16:00（受付は各回終了30分前まで） 土日祝／10:00～16:30（受付は16:00まで） ※趣味工房の開催や団体のご予約など、状況により工作メニューを変更、または開催時間を変更する場合がございます。\n備考: 300円 ※材料は十分用意しておりますが、在庫がなくなり次第終了します。 ※6/20は趣味工房開催のため手づくり工房の開催はございません。",
-      "tags": {
-        "type": "workshop",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "25周年記念事業ラインナップ",
-      "date_from": "2026-07-18",
-      "date_to": "2026-11-14",
-      "open_time": null,
-      "start_time": "9:30",
-      "end_time": "17:00",
-      "description": "\r\n        あすたむらんど徳島 開園25周年\n\nあすたむらんど徳島は、おかげさまで開園25周年を迎えます。\nこれまで、多くの子どもたちの「はじめて」に寄り添い、学びや発見、感動を届けてきました。\nそしてこれからは、子どもだけでなく、大人にとっても新たな気づきや学びに出会い、明日へ踏み出す力を得られる場所へ。\n考えること。\nつくること。\nつながること。\nこれからも、子どもから大人まで、一人ひとりが新たな気づきや挑戦に出会える場所として。\n「明日に多くの夢がある」場所へ。\n未来を育み、未来をつくる歩みを続けていきます。\n \n考える力　－探求・解決－\n問いを持ち、学び、解決する\n企画展「トレジャーハンターミッション」\n\n自由研究スタート相談会\n\nイマ―シブ 謎解き\n\n \nつくる力　－創造・挑戦－\n創造し、挑戦し、形にする\nチャンバラ合戦\n\n遊山箱工作ワークショップ\n\n明日多夢 子ども会社\n\n \nつながる力　－協働・生活・感性－\n他者・社会・自然と関わり、生きる力を育む\nペルセウス座流星群観望会\n\n職業体験「こどものまち」\n\nサイエンスカフェ\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/06/25周年記念事業-1.png",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17882/",
-      "source_type": "web",
-      "venue_name": "あすたむらんど徳島",
-      "status": null,
-      "body": "時間: 9:30～17:00\n備考:",
+      "body": "時間: （平 日）13:00～13:50・15:40～16:30 （日・祝）15:40～16:30\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
       "tags": {
         "type": "other",
         "genres": [],
@@ -150,30 +178,28 @@
       }
     },
     {
-      "title": "キッズ科学教室(前期)つくって飛ばそう！子どもロケット教室",
-      "date_from": "2026-05-24",
-      "date_to": "2026-07-05",
+      "title": "全日本小中学生ロボット選手権２０２６　四国地区予選　小学生の部",
+      "date_from": "2026-06-27",
+      "date_to": "2026-10-31",
       "open_time": null,
-      "start_time": "13:30",
-      "end_time": "15:00",
-      "description": "\r\n        ロケットの仕組みを学んでより遠くに飛ぶロケットを作ろう！最後は学んだことを活かしてエンジンロケットを飛ばそう！\n申込締め切りました\n \n\n\n\n\n日時\n時間\n\n\n5月24日(日)\n13:30～15:00\n\n\n6月14日(日)\n13:30～15:00\n\n\n6月28日(日)\n13:30～15:00\n\n\n7月5日(日)\n13:00～16:00\n\n\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/04/キッズ科学教室-1.jpg",
+      "start_time": null,
+      "end_time": null,
+      "description": "\r\n        ▼日程\n①6月27日（土）　組立講習・ルール説明会 　13：00～15：00\n今年の競技ルールの説明を行います。ロボット競技初心者の方でも，組立講習会でロボットの組み立てのサポートを行います！（当日キットの配付がありますので必ずご参加ください）\n②8月2日（日）　競技練習会\n③9月6日（日）　競技練習会\n本番と同様のコートで，競技練習会を開催！\n④10月31日（土）　小学生の部　四国地区予選会（予定）13:00~16:00\n自分で改良・改善したロボットで競技大会にチャレンジ！\n \n対象：小学生（定員20名）\n申込締切日：令和8年6月21日（日）まで電話またはWEBにて申込を受付\n \n【注意事項】\n・組立講習・ルール説明会および予選会には必ずご参加ください。\n・募集定員が超過した場合は抽選を行います。\n      ",
+      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17186/",
+      "source_url": "https://asutamuland.jp/events/event/17675/",
       "source_type": "web",
-      "venue_name": "子ども科学館 多目的ホール他",
+      "venue_name": "あすたむらんど徳島",
       "status": null,
-      "body": "時間: 第1回～第3回：13:30～15:00 第4回：13:00～16:00\n備考: 申込締め切りました 定員：10名 対象：4回すべてに参加できる小・中学生 協力：NPO法人べんざいてんのお家 備考：7月5日が悪天候の場合、ロケット打ち上げ日を別途設けます。",
+      "body": "時間: \n備考: 対象：小学生（定員20名） 申込締切日：令和8年6月21日（日）まで電話またはWEBにて申込を受付 【注意事項】 ・組立講習・ルール説明会および予選会には必ずご参加ください。 ・募集定員が超過した場合は抽選を行います。",
       "tags": {
-        "type": "workshop",
+        "type": "sports",
         "genres": [
-          "science",
-          "kids"
+          "sports"
         ],
         "flags": [
-          "weekend",
-          "family"
+          "weekend"
         ]
       }
     },
@@ -205,49 +231,25 @@
       }
     },
     {
-      "title": "たっぷりプラネ☆『大解明！ブラックホールのすがた』",
+      "title": "6月 屋内サイエンスショー(毎日開催)",
       "date_from": "2026-06-01",
-      "date_to": "2026-08-31",
+      "date_to": "2026-06-30",
       "open_time": null,
-      "start_time": "13:00",
-      "end_time": "13:50",
-      "description": "\r\n        ブラックホールの正体を見てみよう！\n\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/たっぷりプラネ☆.png",
+      "start_time": "11:00",
+      "end_time": "11:20",
+      "description": "\r\n        午前と午後で異なる科学実験が楽しめるよ！🧪\nその場で一緒に体験しながら、科学の驚きを発見しよう！\n（AM）11:00～11:20／サイエンスクイズ",
+      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/サイエンスショー「液体のふしぎ」-rotated.jpg",
       "price": null,
       "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17176/",
+      "source_url": "https://asutamuland.jp/events/event/17350/",
       "source_type": "web",
-      "venue_name": "プラネタリウム",
+      "venue_name": "子ども科学館 常設展示場 「科学技術と人間」サイエンスキッチン",
       "status": null,
-      "body": "時間: （平 日）13:00～13:50・15:40～16:30 （日・祝）15:40～16:30\n備考: プラネタリウム観覧券が必要 ※投映スケジュールは変更になる場合がありますので、事前にお問い合わせください。",
+      "body": "時間: AM 11:00～11:20（サイエンスクイズ） PM 14:00～14:20（液体のふしぎ）\n備考: 常設展示の観覧券が必要 ※実演内容・実演タイトルは変更になる場合がございます。",
       "tags": {
         "type": "other",
-        "genres": [],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "全日本小中学生ロボット選手権２０２６　四国地区予選　小学生の部",
-      "date_from": "2026-06-27",
-      "date_to": "2026-10-31",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": "\r\n        ▼日程\n①6月27日（土）　組立講習・ルール説明会 　13：00～15：00\n今年の競技ルールの説明を行います。ロボット競技初心者の方でも，組立講習会でロボットの組み立てのサポートを行います！（当日キットの配付がありますので必ずご参加ください）\n②8月2日（日）　競技練習会\n③9月6日（日）　競技練習会\n本番と同様のコートで，競技練習会を開催！\n④10月31日（土）　小学生の部　四国地区予選会（予定）13:00~16:00\n自分で改良・改善したロボットで競技大会にチャレンジ！\n \n対象：小学生（定員20名）\n申込締切日：令和8年6月21日（日）まで電話またはWEBにて申込を受付\n \n【注意事項】\n・組立講習・ルール説明会および予選会には必ずご参加ください。\n・募集定員が超過した場合は抽選を行います。\n      ",
-      "image_url": "https://asutamuland.jp/wp-content/themes/asutamuland/img/cmn/arrow_nav01.svg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17675/",
-      "source_type": "web",
-      "venue_name": "あすたむらんど徳島",
-      "status": null,
-      "body": "時間: \n備考: 対象：小学生（定員20名） 申込締切日：令和8年6月21日（日）まで電話またはWEBにて申込を受付 【注意事項】 ・組立講習・ルール説明会および予選会には必ずご参加ください。 ・募集定員が超過した場合は抽選を行います。",
-      "tags": {
-        "type": "sports",
         "genres": [
-          "sports"
+          "science"
         ],
         "flags": [
           "weekend"
@@ -274,32 +276,6 @@
         "type": "sports",
         "genres": [
           "sports"
-        ],
-        "flags": [
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "6月 屋内サイエンスショー(毎日開催)",
-      "date_from": "2026-06-01",
-      "date_to": "2026-06-30",
-      "open_time": null,
-      "start_time": "11:00",
-      "end_time": "11:20",
-      "description": "\r\n        午前と午後で異なる科学実験が楽しめるよ！🧪\nその場で一緒に体験しながら、科学の驚きを発見しよう！\n（AM）11:00～11:20／サイエンスクイズ",
-      "image_url": "https://asutamuland.jp/wp-content/uploads/2026/03/サイエンスショー「液体のふしぎ」-rotated.jpg",
-      "price": null,
-      "contact": null,
-      "source_url": "https://asutamuland.jp/events/event/17350/",
-      "source_type": "web",
-      "venue_name": "子ども科学館 常設展示場 「科学技術と人間」サイエンスキッチン",
-      "status": null,
-      "body": "時間: AM 11:00～11:20（サイエンスクイズ） PM 14:00～14:20（液体のふしぎ）\n備考: 常設展示の観覧券が必要 ※実演内容・実演タイトルは変更になる場合がございます。",
-      "tags": {
-        "type": "other",
-        "genres": [
-          "science"
         ],
         "flags": [
           "weekend"

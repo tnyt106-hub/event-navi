@@ -1,6 +1,6 @@
 {
   "venue_id": "anabuki_arena_kagawa",
-  "last_success_at": "2026-06-07",
+  "last_success_at": "2026-06-13",
   "events": [
     {
       "title": "プラセール フットサルスクール",
@@ -475,7 +475,7 @@
       }
     },
     {
-      "title": "マインクラフトリアルナゾトキイベント",
+      "title": "終わらないマイクラ公開実況からの脱出",
       "date_from": "2026-07-20",
       "date_to": "2026-07-20",
       "open_time": "10:15",
@@ -484,14 +484,14 @@
       "description": null,
       "image_url": null,
       "price": "なし",
-      "contact": "087-889-7533",
+      "contact": "野田塾\r\n087-889-7533\r\n\r\n【申込フォーム】\r\nhttps://forms.gle/3i6v7NmxtsEj17NZA",
       "source_url": "https://kagawa-arena.com/event/1321/",
       "source_type": "hybrid_api_scraping",
       "venue_name": null,
       "status": null,
       "body": null,
       "tags": {
-        "type": "event",
+        "type": "other",
         "genres": [],
         "flags": []
       }
@@ -827,6 +827,33 @@
       }
     },
     {
+      "title": "香川県レディース卓球フェスティバル大会",
+      "date_from": "2026-09-06",
+      "date_to": "2026-09-06",
+      "open_time": "08:00",
+      "start_time": "09:00",
+      "end_time": "16:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "担当：石田\r\n090-4783-0563",
+      "source_url": "https://kagawa-arena.com/event/1372/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "【ディズニー・オン・アイス】日本公演40周年記念 ディズニー・オン・アイス “Let’s Party!”",
       "date_from": "2026-09-11",
       "date_to": "2026-09-11",
@@ -1134,6 +1161,33 @@
       }
     },
     {
+      "title": "全日本社会人卓球選手権大会",
+      "date_from": "2026-10-30",
+      "date_to": "2026-11-01",
+      "open_time": "08:00",
+      "start_time": "09:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "担当：片岡\r\n090 -2789 -6012",
+      "source_url": "https://kagawa-arena.com/event/1369/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "sports",
+        "genres": [
+          "sports"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
       "title": "プラセール フットサルスクール",
       "date_from": "2026-11-04",
       "date_to": "2026-11-04",
@@ -1181,6 +1235,33 @@
           "sports"
         ],
         "flags": [
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "【BUMP OF CHICKEN】BUMP OF CHICKEN TOUR 2026-2027 Ratio Clavis",
+      "date_from": "2026-11-21",
+      "date_to": "2026-11-22",
+      "open_time": "17:00",
+      "start_time": "18:00",
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": "アリーナS指定：16,500円（税込）\r\nスタンドA指定：13,200円（税込）\r\nスタンドA着席指定：13,200円（税込）\r\nスタンドA車椅子指定：13,200円（税込）\r\nスタンドBステージサイド指定：8,800円（税込",
+      "contact": "YUMEBANCHI（岡山）\r\n086-231-3531（平日 12:00～17:00）",
+      "source_url": "https://kagawa-arena.com/event/1374/",
+      "source_type": "hybrid_api_scraping",
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
+          "paid",
           "night"
         ]
       }

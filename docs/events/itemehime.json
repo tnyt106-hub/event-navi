@@ -1,7 +1,86 @@
 {
   "venue_id": "itemehime",
-  "last_success_at": "2026-06-07",
+  "last_success_at": "2026-06-13",
   "events": [
+    {
+      "title": "第232回えひめ青空市場",
+      "date_from": "2026-08-30",
+      "date_to": "2026-08-30",
+      "open_time": null,
+      "start_time": "10:00",
+      "end_time": "15:00",
+      "description": null,
+      "image_url": null,
+      "price": "無料",
+      "contact": "089-953-0130",
+      "source_url": "https://itemehime.com/event/sale/2026/08/7057/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "festival",
+        "genres": [
+          "food"
+        ],
+        "flags": [
+          "free",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "MEGA LOVE FES",
+      "date_from": "2026-08-29",
+      "date_to": "2026-08-29",
+      "open_time": null,
+      "start_time": "18:00",
+      "end_time": "17:20",
+      "description": null,
+      "image_url": null,
+      "price": "男性6,900円 女性2,900円 ※グループ割引あり",
+      "contact": "【お問合せフォーム】 https://forms.gle/QGUpofxogTRzPJb27",
+      "source_url": "https://itemehime.com/event/event-other/2026/08/7080/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "paid",
+          "night"
+        ]
+      }
+    },
+    {
+      "title": "&#x1f386;2026年８月１日（土）花火観覧席開催&#x1f386;",
+      "date_from": "2026-08-01",
+      "date_to": "2026-08-02",
+      "open_time": null,
+      "start_time": "19:00",
+      "end_time": "21:00",
+      "description": null,
+      "image_url": null,
+      "price": "大人〚中学生以上〛：6,000円 特製弁当+飲み物2杯 小人〚小学生〛：3,000円 特製弁当+飲み物1杯 幼児〚3歳以上小学生未満〛：1,500円 特製弁当+紙パック飲料２種 ※全て税込価格 ※3歳未満の方は無料ですがお席のみのご用意になります。※席料・立体駐車場の駐車料金を含みます。",
+      "contact": "089-953-0130（平日 9:00～17:00）",
+      "source_url": "https://itemehime.com/event/festival/2026/08/6994/",
+      "source_type": null,
+      "venue_name": null,
+      "status": null,
+      "body": null,
+      "tags": {
+        "type": "other",
+        "genres": [
+          "nature"
+        ],
+        "flags": [
+          "free",
+          "paid"
+        ]
+      }
+    },
     {
       "title": "SURIFT with 古着卸倉庫 CLASS1 in 愛媛",
       "date_from": "2026-06-20",
@@ -180,61 +259,6 @@
         ],
         "flags": [
           "free"
-        ]
-      }
-    },
-    {
-      "title": "マイナビ インターンシップ＆キャリア発見フェア 松山会場",
-      "date_from": "2026-05-09",
-      "date_to": "2026-05-09",
-      "open_time": null,
-      "start_time": "13:00",
-      "end_time": "17:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": "csk-event3@mynavi.jp",
-      "source_url": "https://itemehime.com/event/event-other/2026/05/6696/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "lecture",
-        "genres": [
-          "nature",
-          "business"
-        ],
-        "flags": [
-          "free",
-          "weekend"
-        ]
-      }
-    },
-    {
-      "title": "第231回 えひめ青空市場",
-      "date_from": "2026-03-29",
-      "date_to": "2026-03-29",
-      "open_time": null,
-      "start_time": "10:00",
-      "end_time": "15:00",
-      "description": null,
-      "image_url": null,
-      "price": "無料",
-      "contact": "089-953-0130",
-      "source_url": "https://itemehime.com/event/sale/2026/03/6457/",
-      "source_type": null,
-      "venue_name": null,
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "festival",
-        "genres": [
-          "food"
-        ],
-        "flags": [
-          "free",
-          "weekend"
         ]
       }
     }

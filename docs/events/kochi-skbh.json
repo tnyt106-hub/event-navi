@@ -1,31 +1,7 @@
 {
   "venue_id": "kochi-skbh",
-  "last_success_at": "2026-06-07",
+  "last_success_at": "2026-06-13",
   "events": [
-    {
-      "title": "6月8日(月)開催 ①【能meets謡十徳「大仏供養（だいぶつくよう）」】 ②【能meets高知「景清（かげきよ）」】",
-      "date_from": "2026-06-08",
-      "date_to": "2026-06-08",
-      "open_time": null,
-      "start_time": null,
-      "end_time": null,
-      "description": null,
-      "image_url": null,
-      "price": "参加料 各講座2,000円 ※料金は当日精算",
-      "contact": null,
-      "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2778",
-      "source_type": "web",
-      "venue_name": "高知県立県民文化ホール",
-      "status": null,
-      "body": null,
-      "tags": {
-        "type": "other",
-        "genres": [],
-        "flags": [
-          "paid"
-        ]
-      }
-    },
     {
       "title": "FORUM8 presents 松任谷由実 THE WORMHOLE TOUR 2025-26",
       "date_from": "2026-06-13",
@@ -192,7 +168,7 @@
       "end_time": null,
       "description": null,
       "image_url": null,
-      "price": "全席指定 4,000円 ※未就学児入場不可 ※当日は500円UP ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください ＜5/24（日）10:00～一般発売開始＞",
+      "price": "全席指定 4,000円 ※未就学児入場不可 ※当日は500円UP ※車椅子でご来場希望のお客様は新来島高知重工ホールへチケット購入前にお問い合わせください",
       "contact": null,
       "source_url": "https://www.kkb-hall.jp/event/event_detail.cgi?event_id=2841",
       "source_type": "web",

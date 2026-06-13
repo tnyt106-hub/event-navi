@@ -1,8 +1,32 @@
 {
   "venue_id": "clementplaza",
   "venue_name": "徳島駅クレメントプラザ",
-  "last_success_at": "2026-06-07",
+  "last_success_at": "2026-06-13",
   "events": [
+    {
+      "title": "6月☂ポイント３倍デー♪",
+      "date_from": "2026-06-19",
+      "date_to": "2026-06-21",
+      "open_time": null,
+      "start_time": null,
+      "end_time": null,
+      "description": null,
+      "image_url": null,
+      "price": null,
+      "contact": null,
+      "source_url": "https://clementplaza.com/event/detail/267",
+      "source_type": "web",
+      "venue_name": "徳島駅クレメントプラザ",
+      "status": null,
+      "body": "開催期間: 06月19日〜06月21日",
+      "tags": {
+        "type": "other",
+        "genres": [],
+        "flags": [
+          "weekend"
+        ]
+      }
+    },
     {
       "title": "梅雨を楽しく快適に♪ハッピーつーゆーフェア☂",
       "date_from": "2026-06-01",

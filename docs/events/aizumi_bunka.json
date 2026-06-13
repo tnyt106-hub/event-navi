@@ -1,7 +1,7 @@
 {
   "venue_id": "aizumi_bunka",
   "venue_name": "藍住町総合文化ホール",
-  "last_success_at": "2026-06-07",
+  "last_success_at": "2026-06-13",
   "events": [
     {
       "title": "英国・ケルトの愛らしい旋律たち～ルネサンスから現代のブリテン諸島の歌曲の数々～平井満美子＆佐野健二コンサート",
@@ -26,6 +26,32 @@
         ],
         "flags": [
           "night",
+          "weekend"
+        ]
+      }
+    },
+    {
+      "title": "レクチャーコンサート「オペレッタに描かれた日本と西洋」",
+      "date_from": "2026-06-21",
+      "date_to": "2026-06-21",
+      "open_time": "13:00",
+      "start_time": "13:30",
+      "end_time": null,
+      "description": "レクチャーコンサート「オペレッタに描かれた日本と西洋」\r\n\r\n　楽しく、しかも風刺の利いたストーリー、洗練された親しみやすい音楽、心躍る軽快なダンス、オペレッタは\r\n19世紀半ばから西洋で人気を得ていました。その中には日本を描いたオペレッタもありました。主人公となった\r\nのは芸者です。前半では知られざるジャポニスムのオペレッタを紹介し、アリアや二重唱を演奏いたします。\r\n後半はウィーンの人気のオペレッタ、シュトラウスの《こうもり》から抜粋で演奏いたします。軽快な音楽を\r\nどうぞお楽しみください。\r\n\r\n\r\n\r\n日時\r\n\r\n令和8年6月21日（日曜日）開演／午後1時30分（開場／午後1時）\r\n　　　　　　　　　　　　　終演／午後3時30分\r\n\r\n場所\r\n\r\n　藍住町総合文化ホール　大ホール\r\n\r\n出演者\r\n\r\n　釘宮貴子（お話・ピアノ）　井上ゆかり（ソプラノ）　上ノ坊航也（テノール）　釘宮冴月（ソプラノ）　\r\n粟田美佐（ピアノ）\r\n\r\n入場料\r\n\r\n　無料\r\n\r\nチラシ\r\n\r\nチラシ[PDF：4.47MB]  \r\n\r\n \r\n\r\n主催・お問合せ\r\n\r\n  主催：釘宮貴子（科研費24K159",
+      "image_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026060900010/file_contents/omote.jpg",
+      "price": null,
+      "contact": null,
+      "source_url": "https://www.town.aizumi.lg.jp/bunka-h/event_docs/2026060900010/",
+      "source_type": "web",
+      "venue_name": "藍住町総合文化ホール",
+      "status": null,
+      "body": "開催分: 2026年06月21日（日）",
+      "tags": {
+        "type": "performance",
+        "genres": [
+          "music"
+        ],
+        "flags": [
           "weekend"
         ]
       }
